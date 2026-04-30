@@ -81,10 +81,105 @@
             border: 2px solid rgba(255, 215, 0, 0.5);
         }
 
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            filter: invert(1);
-            cursor: pointer;
+        /* Custom Date Picker */
+        .datepicker-wrapper {
+            position: relative;
+            display: inline-block;
         }
+        .datepicker-input {
+            background: transparent;
+            color: white;
+            font-size: 0.75rem;
+            width: 110px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            caret-color: transparent;
+            user-select: none;
+        }
+        .datepicker-input::placeholder { color: #6b7280; }
+        .datepicker-popup {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            z-index: 9999;
+            background: #112240;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            min-width: 240px;
+        }
+        .datepicker-popup.open { display: block; }
+        .dp-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .dp-nav-btn {
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            line-height: 1;
+        }
+        .dp-nav-btn:hover { background: #1e3a5f; color: #ffd700; }
+        .dp-month-year {
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffd700;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+        .dp-month-year:hover { background: #1e3a5f; }
+        .dp-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+        }
+        .dp-day-name {
+            text-align: center;
+            font-size: 10px;
+            font-weight: 700;
+            color: #6b7280;
+            padding: 4px 0;
+            text-transform: uppercase;
+        }
+        .dp-day {
+            text-align: center;
+            font-size: 12px;
+            padding: 6px 2px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #e5e7eb;
+            transition: background 0.15s;
+        }
+        .dp-day:hover:not(.dp-day-empty):not(.dp-day-disabled) { background: #1e3a5f; color: #ffd700; }
+        .dp-day-empty { cursor: default; }
+        .dp-day-disabled { color: #374151; cursor: not-allowed; }
+        .dp-day-today { color: #60a5fa; font-weight: 700; }
+        .dp-day-selected { background: #ffd700 !important; color: #0a192f !important; font-weight: 700; border-radius: 6px; }
+        .dp-year-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+        .dp-year-item, .dp-month-item {
+            text-align: center;
+            font-size: 12px;
+            padding: 8px 4px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #e5e7eb;
+        }
+        .dp-year-item:hover, .dp-month-item:hover { background: #1e3a5f; color: #ffd700; }
+        .dp-year-item.selected, .dp-month-item.selected { background: #ffd700; color: #0a192f; font-weight: 700; }
 
         .sort-icon { font-size: 0.7rem; opacity: 0.3; margin-left: 4px; }
         .sorted-asc .sort-icon::after { content: '▲'; opacity: 1; color: #ffd700; }
@@ -153,12 +248,18 @@
                 <div class="flex items-center bg-fin-blue border border-gray-700/50 rounded-xl px-3 py-2 shadow-inner">
                     <div class="flex flex-col">
                         <label id="lblFrom" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5">Từ ngày</label>
-                        <input type="date" id="fromDate" class="bg-transparent text-white text-xs focus:outline-none cursor-pointer w-[110px]">
+                        <div class="datepicker-wrapper">
+                            <input type="text" id="fromDate" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                            <div id="fromDatePopup" class="datepicker-popup"></div>
+                        </div>
                     </div>
                     <div class="w-[1px] h-7 bg-gray-700 mx-3"></div>
                     <div class="flex flex-col">
                         <label id="lblTo" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5">Đến ngày</label>
-                        <input type="date" id="toDate" class="bg-transparent text-white text-xs focus:outline-none cursor-pointer w-[110px]">
+                        <div class="datepicker-wrapper">
+                            <input type="text" id="toDate" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                            <div id="toDatePopup" class="datepicker-popup"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -195,7 +296,7 @@
             </div>
         </div>
 
-        <div id="loadingState" class="p-20 text-center text-gray-400">
+        <div id="loadingState" class="p-20 text-center text-gray-400 hidden">
             <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-fin-gold border-t-transparent mb-4"></div>
             <p id="loadingText" class="text-sm font-medium">Đang tải dữ liệu...</p>
         </div>
@@ -203,6 +304,206 @@
     </div>
 
     <script>
+        // ─── Custom Date Picker ───────────────────────────────────────────────────
+        const dpLocale = {
+            vn: {
+                months: ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'],
+                days:   ['T2','T3','T4','T5','T6','T7','CN']
+            },
+            en: {
+                months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+                days:   ['Mo','Tu','We','Th','Fr','Sa','Su']
+            }
+        };
+
+        // Each picker: { inputEl, popupEl, value (Date|null), viewYear, viewMonth, mode:'day'|'month'|'year', min, max, onChange }
+        const pickers = {};
+
+        function isoToDisplay(iso) {
+            if (!iso) return '';
+            const [y, m, d] = iso.split('-');
+            return `${d}/${m}/${y}`;
+        }
+
+        function dateToIso(d) {
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return `${y}-${m}-${day}`;
+        }
+
+        function createPicker(id, onChange) {
+            const inputEl  = document.getElementById(id);
+            const popupEl  = document.getElementById(id + 'Popup');
+            const picker   = { inputEl, popupEl, value: null, viewYear: new Date().getFullYear(), viewMonth: new Date().getMonth(), mode: 'day', min: null, max: null, onChange };
+            pickers[id]    = picker;
+
+            inputEl.addEventListener('click', (e) => { e.stopPropagation(); togglePicker(id); });
+            inputEl.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePicker(id); });
+            popupEl.addEventListener('click', (e) => e.stopPropagation());
+            return picker;
+        }
+
+        function togglePicker(id) {
+            const picker = pickers[id];
+            const isOpen = picker.popupEl.classList.contains('open');
+            // Close all pickers first
+            Object.keys(pickers).forEach(k => closePicker(k));
+            if (!isOpen) {
+                picker.mode = 'day';
+                renderPicker(id);
+                picker.popupEl.classList.add('open');
+            }
+        }
+
+        function closePicker(id) {
+            pickers[id].popupEl.classList.remove('open');
+        }
+
+        function renderPicker(id) {
+            const picker = pickers[id];
+            const loc    = dpLocale[state.lang];
+            const { viewYear, viewMonth, value, min, max } = picker;
+
+            if (picker.mode === 'year') {
+                renderYearView(id, loc);
+            } else if (picker.mode === 'month') {
+                renderMonthView(id, loc);
+            } else {
+                renderDayView(id, loc);
+            }
+        }
+
+        function renderDayView(id, loc) {
+            const picker = pickers[id];
+            const { viewYear, viewMonth, value, min, max } = picker;
+            const minDate = min ? new Date(min + 'T00:00:00') : null;
+            const maxDate = max ? new Date(max + 'T00:00:00') : null;
+            const today   = new Date(); today.setHours(0,0,0,0);
+
+            // First day of month (adjust: Mon=0 ... Sun=6)
+            const firstDay = new Date(viewYear, viewMonth, 1);
+            let startDow = firstDay.getDay(); // 0=Sun
+            startDow = (startDow === 0) ? 6 : startDow - 1; // Mon-based
+
+            const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+            let html = `<div class="dp-header">
+                <button class="dp-nav-btn" onclick="dpNavMonth('${id}',-1)">&#8249;</button>
+                <span class="dp-month-year" onclick="dpSetMode('${id}','month')">${loc.months[viewMonth]} ${viewYear}</span>
+                <button class="dp-nav-btn" onclick="dpNavMonth('${id}',1)">&#8250;</button>
+            </div>
+            <div class="dp-grid">`;
+
+            loc.days.forEach(d => { html += `<div class="dp-day-name">${d}</div>`; });
+
+            for (let i = 0; i < startDow; i++) html += `<div class="dp-day dp-day-empty"></div>`;
+
+            for (let d = 1; d <= daysInMonth; d++) {
+                const thisDate = new Date(viewYear, viewMonth, d);
+                thisDate.setHours(0,0,0,0);
+                const iso = dateToIso(thisDate);
+                const isSelected = value && dateToIso(value) === iso;
+                const isToday    = thisDate.getTime() === today.getTime();
+                const disabled   = (minDate && thisDate < minDate) || (maxDate && thisDate > maxDate);
+                let cls = 'dp-day';
+                if (disabled)   cls += ' dp-day-disabled';
+                if (isToday)    cls += ' dp-day-today';
+                if (isSelected) cls += ' dp-day-selected';
+                const click = disabled ? '' : `onclick="dpSelectDay('${id}','${iso}')"`;
+                html += `<div class="${cls}" ${click}>${d}</div>`;
+            }
+
+            html += `</div>`;
+            picker.popupEl.innerHTML = html;
+        }
+
+        function renderMonthView(id, loc) {
+            const picker = pickers[id];
+            let html = `<div class="dp-header">
+                <button class="dp-nav-btn" onclick="dpNavYear('${id}',-1)">&#8249;</button>
+                <span class="dp-month-year" onclick="dpSetMode('${id}','year')">${picker.viewYear}</span>
+                <button class="dp-nav-btn" onclick="dpNavYear('${id}',1)">&#8250;</button>
+            </div><div class="dp-year-grid">`;
+            loc.months.forEach((m, i) => {
+                const sel = picker.value && picker.value.getMonth() === i && picker.value.getFullYear() === picker.viewYear ? 'selected' : '';
+                html += `<div class="dp-month-item ${sel}" onclick="dpSelectMonth('${id}',${i})">${m}</div>`;
+            });
+            html += `</div>`;
+            picker.popupEl.innerHTML = html;
+        }
+
+        function renderYearView(id, loc) {
+            const picker = pickers[id];
+            const base   = picker.viewYear - 6;
+            let html = `<div class="dp-header">
+                <button class="dp-nav-btn" onclick="dpNavYearPage('${id}',-12)">&#8249;</button>
+                <span class="dp-month-year">${base} – ${base + 11}</span>
+                <button class="dp-nav-btn" onclick="dpNavYearPage('${id}',12)">&#8250;</button>
+            </div><div class="dp-year-grid">`;
+            for (let y = base; y < base + 12; y++) {
+                const sel = picker.value && picker.value.getFullYear() === y ? 'selected' : '';
+                html += `<div class="dp-year-item ${sel}" onclick="dpSelectYear('${id}',${y})">${y}</div>`;
+            }
+            html += `</div>`;
+            picker.popupEl.innerHTML = html;
+        }
+
+        function dpNavMonth(id, delta) {
+            const p = pickers[id];
+            let m = p.viewMonth + delta, y = p.viewYear;
+            if (m < 0)  { m = 11; y--; }
+            if (m > 11) { m = 0;  y++; }
+            p.viewMonth = m; p.viewYear = y;
+            renderPicker(id);
+        }
+        function dpNavYear(id, delta)     { pickers[id].viewYear += delta; renderPicker(id); }
+        function dpNavYearPage(id, delta) { pickers[id].viewYear += delta; renderPicker(id); }
+        function dpSetMode(id, mode)      { pickers[id].mode = mode; renderPicker(id); }
+
+        function dpSelectYear(id, y) {
+            pickers[id].viewYear = y;
+            pickers[id].mode = 'month';
+            renderPicker(id);
+        }
+        function dpSelectMonth(id, m) {
+            pickers[id].viewMonth = m;
+            pickers[id].mode = 'day';
+            renderPicker(id);
+        }
+        function dpSelectDay(id, iso) {
+            const p = pickers[id];
+            p.value = new Date(iso + 'T00:00:00');
+            p.inputEl.value = isoToDisplay(iso);
+            closePicker(id);
+            p.onChange(iso);
+        }
+
+        function setPickerValue(id, iso) {
+            const p = pickers[id];
+            if (!iso) return;
+            p.value = new Date(iso + 'T00:00:00');
+            p.viewYear  = p.value.getFullYear();
+            p.viewMonth = p.value.getMonth();
+            p.inputEl.value = isoToDisplay(iso);
+        }
+
+        function setPickerLimits(id, min, max) {
+            pickers[id].min = min || null;
+            pickers[id].max = max || null;
+        }
+
+        // Re-render open pickers when language changes (updates month/day names)
+        function refreshOpenPickers() {
+            Object.keys(pickers).forEach(id => {
+                if (pickers[id].popupEl.classList.contains('open')) renderPicker(id);
+            });
+        }
+
+        // Close pickers when clicking outside
+        document.addEventListener('click', () => { Object.keys(pickers).forEach(id => closePicker(id)); });
+        // ─────────────────────────────────────────────────────────────────────────
+
         const SUPABASE_URL = 'https://ifjxishcrzndbszmvpef.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmanhpc2hjcnpuZGJzem12cGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNjEwOTcsImV4cCI6MjA5MjkzNzA5N30.0rHs4AWTmRmN34WWdxBM2RsTMu1VQwfKDjve0W2yHEg';
         
@@ -438,10 +739,8 @@
             if (state.searchQuery) {
                 const stockCodes = state.searchQuery.split(',').map(s => s.trim()).filter(s => s);
                 if (stockCodes.length === 1) {
-                    // Single stock code
                     url += `&single_stock=ilike.*${stockCodes[0]}*`;
                 } else if (stockCodes.length > 1) {
-                    // Multiple stock codes - use OR condition
                     const orConditions = stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',');
                     url += `&or=(${orConditions})`;
                 }
@@ -453,27 +752,35 @@
                 const res = await fetch(url, {
                     headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Range': `${start}-${end}`, 'Prefer': 'count=exact' }
                 });
-                state.data = await res.json();
-                
-                // Get total count from Content-Range header
-                const contentRange = res.headers.get('content-range');
-                if (contentRange) {
-                    const match = contentRange.match(/\/(\d+)$/);
-                    if (match) state.totalCount = parseInt(match[1]);
+
+                const json = await res.json();
+
+                // Supabase returns an error object (not an array) on failure
+                if (!Array.isArray(json)) {
+                    console.error('Supabase error:', json);
+                    state.data = [];
+                    state.totalCount = 0;
                 } else {
-                    // Fallback: if no content-range, use data length
-                    state.totalCount = state.data.length;
+                    state.data = json;
+                    const contentRange = res.headers.get('content-range');
+                    if (contentRange) {
+                        const match = contentRange.match(/\/(\d+)$/);
+                        if (match) state.totalCount = parseInt(match[1]);
+                    } else {
+                        state.totalCount = state.data.length;
+                    }
+                    // Preload translations in background
+                    translateNames(state.data.map(d => d.organ_name));
+                    translateHeadlines(state.data.map(d => d.headline));
                 }
-
-                // Preload translations in background (don't wait for it)
-                translateNames(state.data.map(d => d.organ_name));
-                translateHeadlines(state.data.map(d => d.headline));
-
-                document.getElementById('loadingState').classList.add('hidden');
-                renderBody(); renderPaginationUI();
             } catch (e) { 
-                console.error(e);
+                console.error('fetchData error:', e);
+                state.data = [];
+                state.totalCount = 0;
+            } finally {
                 document.getElementById('loadingState').classList.add('hidden');
+                renderBody();
+                renderPaginationUI();
             }
         }
 
@@ -684,20 +991,47 @@
             const lastWeek = new Date();
             lastWeek.setDate(today.getDate() - 7);
             
-            // Set date range limits (30 days back from today)
             const minDate = thirtyDaysAgo.toISOString().split('T')[0];
             const maxDate = today.toISOString().split('T')[0];
-            
-            document.getElementById('fromDate').setAttribute('min', minDate);
-            document.getElementById('fromDate').setAttribute('max', maxDate);
-            document.getElementById('toDate').setAttribute('min', minDate);
-            document.getElementById('toDate').setAttribute('max', maxDate);
-            
+
+            // Init custom date pickers
+            createPicker('fromDate', (iso) => {
+                state.fromDate = iso;
+                // toDate cannot be before fromDate
+                setPickerLimits('toDate', iso, maxDate);
+                // if current toDate is now before the new fromDate, snap it forward
+                if (state.toDate < iso) {
+                    state.toDate = iso;
+                    setPickerValue('toDate', iso);
+                }
+                state.currentPage = 0;
+                fetchData();
+            });
+            createPicker('toDate', (iso) => {
+                state.toDate = iso;
+                // fromDate cannot be after toDate
+                setPickerLimits('fromDate', minDate, iso);
+                // if current fromDate is now after the new toDate, snap it back
+                if (state.fromDate > iso) {
+                    state.fromDate = iso;
+                    setPickerValue('fromDate', iso);
+                }
+                state.currentPage = 0;
+                fetchData();
+            });
+
+            setPickerLimits('fromDate', minDate, maxDate);
+            setPickerLimits('toDate',   minDate, maxDate);
+
             state.fromDate = lastWeek.toISOString().split('T')[0];
-            state.toDate = maxDate;
-            
-            document.getElementById('fromDate').value = state.fromDate;
-            document.getElementById('toDate').value = state.toDate;
+            state.toDate   = maxDate;
+
+            setPickerValue('fromDate', state.fromDate);
+            setPickerValue('toDate',   state.toDate);
+
+            // Apply cross-constraints based on initial values
+            setPickerLimits('fromDate', minDate, state.toDate);
+            setPickerLimits('toDate',   state.fromDate, maxDate);
 
             // Language toggle functionality
             document.getElementById('langToggle').addEventListener('click', () => {
@@ -711,6 +1045,7 @@
                 document.getElementById('lblTo').innerText = i18n[state.lang].lblTo;
                 document.getElementById('prevBtn').innerText = i18n[state.lang].prev;
                 document.getElementById('nextBtn').innerText = i18n[state.lang].next;
+                refreshOpenPickers();
                 
                 renderHeaders(); 
                 renderBody(); 
@@ -737,9 +1072,6 @@
                 fetchData();
             });
 
-            document.getElementById('fromDate').addEventListener('change', (e) => { state.fromDate = e.target.value; state.currentPage = 0; fetchData(); });
-            document.getElementById('toDate').addEventListener('change', (e) => { state.toDate = e.target.value; state.currentPage = 0; fetchData(); });
-            
             document.getElementById('firstBtn').onclick = () => { state.currentPage = 0; fetchData(); };
             document.getElementById('prevBtn').onclick = () => { state.currentPage--; fetchData(); };
             document.getElementById('nextBtn').onclick = () => { state.currentPage++; fetchData(); };
