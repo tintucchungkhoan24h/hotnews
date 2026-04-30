@@ -217,16 +217,32 @@
             vn: {
                 title: 'TIN TỨC CHỨNG KHOÁN 24H', subtitle: 'Cập Nhật Thị Trường Mỗi Ngày', searchPlaceholder: 'Ví dụ: VHM,VIC,FPT',
                 lblFrom: 'Từ ngày', lblTo: 'Đến ngày', loading: 'Đang tải dữ liệu...',
-                cols: { index: '#', publish_time: 'Thời gian', single_stock: 'Mã CK', price_change_today_pct: '% Đổi', organ_name: 'Doanh nghiệp', industry: 'Ngành', current_close: 'Giá', current_volume: 'Khối lượng', headline: 'Tiêu đề' },
+                cols: { index: '#', publish_time: 'Thời gian', single_stock: 'Mã CK', price_change_today_pct: '% Đổi', ma15: 'MA15', organ_name: 'Doanh nghiệp', industry: 'Ngành', current_close: 'Giá', current_volume: 'Khối lượng', headline: 'Tiêu đề' },
                 empty: 'Không có dữ liệu phù hợp.', prev: 'Trước', next: 'Sau',
-                paging: (s, e, t) => `Hiển thị ${s} - ${e} trên tổng ${t}`
+                paging: (s, e, t) => `Hiển thị ${s} - ${e} trên tổng ${t}`,
+                ma15Tooltip: {
+                    '⏫ MA15': 'Tăng mạnh so với MA15',
+                    '⬆️ MA15': 'Trên đường MA15',
+                    '↔️ MA15': 'Trùng với đường MA15',
+                    '⬇️ MA15': 'Dưới đường MA15',
+                    '⏬ MA15': 'Giảm mạnh so với MA15',
+                    'N/A': 'Không có dữ liệu'
+                }
             },
             en: {
                 title: '24H STOCK MARKET NEWS', subtitle: 'Daily Market Updates', searchPlaceholder: 'Example: VHM,VIC,FPT',
                 lblFrom: 'From date', lblTo: 'To date', loading: 'Loading data...',
-                cols: { index: '#', publish_time: 'Time', single_stock: 'Ticker', price_change_today_pct: '% Chg', organ_name: 'Company', industry: 'Industry', current_close: 'Price', current_volume: 'Volume', headline: 'Headline' },
+                cols: { index: '#', publish_time: 'Time', single_stock: 'Ticker', price_change_today_pct: '% Chg', ma15: 'MA15', organ_name: 'Company', industry: 'Industry', current_close: 'Price', current_volume: 'Volume', headline: 'Headline' },
                 empty: 'No matching records found.', prev: 'Prev', next: 'Next',
-                paging: (s, e, t) => `Showing ${s} - ${e} of ${t}`
+                paging: (s, e, t) => `Showing ${s} - ${e} of ${t}`,
+                ma15Tooltip: {
+                    '⏫ MA15': 'Strong increase above MA15',
+                    '⬆️ MA15': 'Above MA15 line',
+                    '↔️ MA15': 'At MA15 line',
+                    '⬇️ MA15': 'Below MA15 line',
+                    '⏬ MA15': 'Strong decrease below MA15',
+                    'N/A': 'No data available'
+                }
             }
         };
 
@@ -431,7 +447,7 @@
                 }
             }
             
-            url += `&order=${state.sortCol}.${state.sortDesc ? 'desc' : 'asc'}`;
+            url += `&order=${(colDbField[state.sortCol] || state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}`;
 
             try {
                 const res = await fetch(url, {
@@ -463,15 +479,16 @@
 
         function renderHeaders() {
             const cols = [
-                { id: 'index', w: 'w-12 text-center', s: false },
-                { id: 'publish_time', w: 'w-32', s: true },
-                { id: 'single_stock', w: 'w-24', s: true },
-                { id: 'price_change_today_pct', w: 'w-24', s: true },
-                { id: 'organ_name', w: 'w-64', s: true },
-                { id: 'industry', w: 'w-40', s: true },
-                { id: 'current_close', w: 'w-24', s: true },
-                { id: 'current_volume', w: 'w-32', s: true },
-                { id: 'headline', w: 'w-auto', s: false }
+                { id: 'index',                 w: 'w-12 text-center', s: false },
+                { id: 'publish_time',          w: 'w-32',  s: true },
+                { id: 'single_stock',          w: 'w-24',  s: true },
+                { id: 'price_change_today_pct',w: 'w-24',  s: true },
+                { id: 'ma15',                  w: 'w-28',  s: true, dbField: 'pct_ma15' },
+                { id: 'organ_name',            w: 'w-64',  s: true },
+                { id: 'industry',              w: 'w-40',  s: true },
+                { id: 'current_close',         w: 'w-24',  s: true },
+                { id: 'current_volume',        w: 'w-32',  s: true },
+                { id: 'headline',              w: 'w-auto', s: false }
             ];
             document.getElementById('tableHeader').innerHTML = cols.map(c => `
                 <th class="px-4 py-4 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getSortClass(c.id) : ''}" 
@@ -484,6 +501,11 @@
             `).join('');
         }
 
+        // Map display column id → actual database field name
+        const colDbField = {
+            'ma15': 'pct_ma15'
+        };
+
         function getSortClass(id) { 
             if (state.sortCol === id) {
                 return state.sortDesc ? 'sorted-desc' : 'sorted-asc';
@@ -495,10 +517,10 @@
             if (state.sortCol === id) {
                 // Same column clicked
                 if (!state.sortDesc) {
-                    // Currently ASC, go to DESC
+                    // Currently ASC → go to DESC
                     state.sortDesc = true;
                 } else {
-                    // Currently DESC, return to default (timesfm_point DESC)
+                    // Currently DESC → return to default (timesfm_point DESC)
                     state.sortCol = 'timesfm_point';
                     state.sortDesc = true;
                 }
@@ -522,6 +544,30 @@
             return `${day}/${month} ${hours}:${minutes}`;
         }
 
+        // Get MA15 status and color based on pct_ma15 value
+        function getMA15Status(pctMa15) {
+            // Using plain Unicode arrows (not emoji) so CSS color works perfectly
+            if (pctMa15 === null || pctMa15 === undefined) {
+                return { key: 'N/A', icon: '—', label: 'N/A', style: 'color:#6b7280;', bold: false };
+            }
+            if (pctMa15 > 5) {
+                // Super-green
+                return { key: '⏫ MA15', icon: '⏫', label: 'MA15', style: 'color:#00c853;', bold: true };
+            } else if (pctMa15 > 1) {
+                // Green
+                return { key: '⬆️ MA15', icon: '⬆️', label: 'MA15', style: 'color:#00e676;', bold: false };
+            } else if (pctMa15 > -1) {
+                // White
+                return { key: '↔️ MA15', icon: '↔', label: 'MA15', style: 'color:#ffffff;', bold: false };
+            } else if (pctMa15 > -5) {
+                // Red
+                return { key: '⬇️ MA15', icon: '⬇️', label: 'MA15', style: 'color:#ff6b6b;', bold: false };
+            } else {
+                // Super-red
+                return { key: '⏬ MA15', icon: '⏬', label: 'MA15', style: 'color:#ff1744;', bold: true };
+            }
+        }
+
         function renderBody() {
             const tbody = document.getElementById('tableBody');
             if (state.data.length === 0) {
@@ -539,6 +585,21 @@
                 const pct = row.price_change_today_pct || 0;
                 const color = pct > 0 ? 'text-fin-green' : (pct < 0 ? 'text-fin-red' : 'text-gray-400');
                 
+                // Get MA15 status
+                const ma15Status = getMA15Status(row.pct_ma15);
+                const ma15Tooltip = i18n[state.lang].ma15Tooltip[ma15Status.key];
+                const ma15Bold = ma15Status.bold ? 'font-bold' : '';
+                const ma15SvgIcons = {
+                    '⏫ MA15': `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 18l8-8 8 8H4z"/><path d="M4 11l8-8 8 8H4z"/></svg>`,
+                    '⬆️ MA15': `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 15l8-8 8 8H4z"/></svg>`,
+                    '↔️ MA15': `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 12l-4-4v3H3v2h1v3l4-4zm8 0l4 4v-3h1v-2h-1V8l-4 4z"/></svg>`,
+                    '⬇️ MA15': `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 9l-8 8-8-8h16z"/></svg>`,
+                    '⏬ MA15': `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6l-8 8-8-8h16z"/><path d="M20 13l-8 8-8-8h16z"/></svg>`,
+                };
+                const ma15Cell = ma15Status.key === 'N/A'
+                    ? `<span style="color:#6b7280;">N/A</span>`
+                    : `<span class="inline-flex items-center gap-1 ${ma15Bold}" style="${ma15Status.style}">${ma15SvgIcons[ma15Status.key] || ''}${ma15Status.label}</span>`;
+                
                 // Highlight headline in yellow if news_impact_score >= 30
                 const impactScore = row.news_impact_score || 0;
                 const headlineColor = impactScore >= 30 ? 'text-fin-gold font-semibold' : 'text-gray-300';
@@ -549,6 +610,7 @@
                         <td class="px-4 py-4 text-gray-400 text-xs">${formatDateTime(row.publish_time)}</td>
                         <td class="px-4 py-4 font-bold text-blue-300 text-sm">${row.single_stock || '-'}</td>
                         <td class="px-4 py-4 font-bold ${color} text-sm">${pct > 0 ? '+' : ''}${pct.toFixed(2)}%</td>
+                        <td class="px-4 py-4 text-xs" title="${ma15Tooltip}"><div class="flex items-center">${ma15Cell}</div></td>
                         <td class="px-4 py-4 text-gray-200 text-xs truncate max-w-[200px]" title="${name}">${name || '-'}</td>
                         <td class="px-4 py-4 text-gray-400 text-xs">${industry || '-'}</td>
                         <td class="px-4 py-4 font-semibold text-xs">${(row.current_close/1000).toFixed(1)}</td>
