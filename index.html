@@ -746,7 +746,8 @@
                 }
             }
             
-            url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}`;
+            const nullsOrder = state.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
+            url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
 
             try {
                 const res = await fetch(url, {
@@ -762,6 +763,16 @@
                     state.totalCount = 0;
                 } else {
                     state.data = json;
+                    // For %Chg column, re-sort client-side treating NULL as 0
+                    // so NULLs appear between positives and negatives, not at extremes
+                    if (state.sortCol === 'price_change_today_pct') {
+                        const dir = state.sortDesc ? -1 : 1;
+                        state.data.sort((a, b) => {
+                            const av = a.price_change_today_pct ?? 0;
+                            const bv = b.price_change_today_pct ?? 0;
+                            return dir * (bv - av);
+                        });
+                    }
                     const contentRange = res.headers.get('content-range');
                     if (contentRange) {
                         const match = contentRange.match(/\/(\d+)$/);
