@@ -746,7 +746,7 @@
                 }
             }
             
-            url += `&order=${(colDbField[state.sortCol] || state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}`;
+            url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}`;
 
             try {
                 const res = await fetch(url, {
@@ -808,10 +808,12 @@
             `).join('');
         }
 
-        // Map display column id → actual database field name
-        const colDbField = {
-            'ma15': 'pct_ma15'
-        };
+        // Map display column id → actual database field name (language-aware)
+        function getDbField(colId) {
+            if (colId === 'ma15')     return 'pct_ma15';
+            if (colId === 'industry') return state.lang === 'en' ? 'industry_en' : 'industry_vn';
+            return colId;
+        }
 
         function getSortClass(id) { 
             if (state.sortCol === id) {
