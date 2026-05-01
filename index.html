@@ -15,6 +15,7 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -392,6 +393,17 @@
         </div>
     </div>
 
+    <!-- Export Button -->
+    <div class="max-w-[1440px] mx-auto mb-4 flex justify-end">
+        <button id="exportBtn" onclick="exportToExcel()" 
+                class="flex items-center gap-2 bg-[#1d6f42] hover:bg-[#25844f] border border-[#2d8f5a] text-white px-4 py-2.5 rounded-xl font-bold text-sm shadow-lg transition-all hover:scale-105 active:scale-95">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12.9,14.5L15.8,19H14L12,15.6L10,19H8.2L11.1,14.5L8.2,10H10L12,13.4L14,10H15.8L12.9,14.5Z"/>
+            </svg>
+            <span id="exportBtnText">Xuất Excel</span>
+        </button>
+    </div>
+
     <!-- Main Table Section -->
     <div class="max-w-[1440px] mx-auto bg-fin-blue-light border border-gray-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
         <div class="overflow-x-auto table-container">
@@ -637,6 +649,7 @@
             vn: {
                 title: 'TIN TỨC CHỨNG KHOÁN 24H', subtitle: 'Cập Nhật Thị Trường Mỗi Ngày', searchPlaceholder: 'Ví dụ: VHM,VIC,FPT',
                 lblFrom: 'Từ ngày', lblTo: 'Đến ngày', loading: 'Đang tải dữ liệu...',
+                exportBtn: 'Xuất Excel', exporting: 'Đang xuất...',
                 cols: { index: '#', publish_time: 'Thời gian', single_stock: 'Mã CK', price_change_today_pct: '% Đổi', ma15: 'MA15', organ_name: 'Doanh nghiệp', industry: 'Ngành', current_close: 'Giá', current_volume: 'Khối lượng', headline: 'Tiêu đề' },
                 chartTooltip: 'Xem biểu đồ trên TradingView',
                 empty: 'Không có dữ liệu phù hợp.', prev: 'Trước', next: 'Sau',
@@ -665,6 +678,7 @@
             en: {
                 title: '24H STOCK MARKET NEWS', subtitle: 'Daily Market Updates', searchPlaceholder: 'Example: VHM,VIC,FPT',
                 lblFrom: 'From date', lblTo: 'To date', loading: 'Loading data...',
+                exportBtn: 'Export Excel', exporting: 'Exporting...',
                 cols: { index: '#', publish_time: 'Time', single_stock: 'Ticker', price_change_today_pct: '% Chg', ma15: 'MA15', organ_name: 'Company', industry: 'Industry', current_close: 'Price', current_volume: 'Volume', headline: 'Headline' },
                 chartTooltip: 'View chart on TradingView',
                 empty: 'No matching records found.', prev: 'Prev', next: 'Next',
@@ -1208,6 +1222,122 @@
             document.getElementById('lastBtn').disabled = end >= state.totalCount;
         }
 
+        // ─── Excel Export ─────────────────────────────────────────────────────────
+
+        async function exportToExcel() {
+            const btn = document.getElementById('exportBtn');
+            const btnText = document.getElementById('exportBtnText');
+            const originalText = btnText.innerText;
+            
+            // Disable button and show loading state
+            btn.disabled = true;
+            btnText.innerText = i18n[state.lang].exporting;
+            btn.classList.add('opacity-60', 'cursor-not-allowed');
+
+            try {
+                // Fetch ALL filtered records (not just current page)
+                let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
+                
+                if (state.searchQuery) {
+                    const stockCodes = state.searchQuery.split(',').map(s => s.trim()).filter(s => s);
+                    if (stockCodes.length === 1) {
+                        url += `&single_stock=ilike.*${stockCodes[0]}*`;
+                    } else if (stockCodes.length > 1) {
+                        const orConditions = stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',');
+                        url += `&or=(${orConditions})`;
+                    }
+                }
+                
+                const nullsOrder = state.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
+                url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
+
+                const res = await fetch(url, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                });
+
+                let allData = await res.json();
+                if (!Array.isArray(allData)) allData = [];
+
+                // Client-side sort for %Chg column (same as table)
+                if (state.sortCol === 'price_change_today_pct') {
+                    const dir = state.sortDesc ? -1 : 1;
+                    allData.sort((a, b) => {
+                        const av = a.price_change_today_pct ?? 0;
+                        const bv = b.price_change_today_pct ?? 0;
+                        return dir * (bv - av);
+                    });
+                }
+
+                // Build Excel data
+                const headers = [
+                    i18n[state.lang].cols.index,
+                    i18n[state.lang].cols.publish_time,
+                    i18n[state.lang].cols.single_stock,
+                    i18n[state.lang].cols.price_change_today_pct,
+                    i18n[state.lang].cols.ma15,
+                    i18n[state.lang].cols.organ_name,
+                    i18n[state.lang].cols.industry,
+                    i18n[state.lang].cols.current_close,
+                    i18n[state.lang].cols.current_volume,
+                    i18n[state.lang].cols.headline,
+                    'Link'
+                ];
+
+                const rows = allData.map((row, idx) => {
+                    const name = state.lang === 'vn' ? row.organ_name : (state.translatedNames[row.organ_name] || row.organ_name);
+                    const industry = state.lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
+                    const headline = state.lang === 'vn' ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
+                    const ma15Status = getMA15Status(row.pct_ma15);
+                    const ma15Text = ma15Status.key === 'N/A' ? 'N/A' : ma15Status.key;
+
+                    return [
+                        idx + 1,
+                        formatDateTime(row.publish_time),
+                        row.single_stock || '-',
+                        row.price_change_today_pct ? `${row.price_change_today_pct.toFixed(2)}%` : '0.00%',
+                        ma15Text,
+                        name || '-',
+                        industry || '-',
+                        row.current_close ? (row.current_close / 1000).toFixed(1) : '-',
+                        row.current_volume ? (row.current_volume / 1000000).toFixed(2) + 'M' : '-',
+                        headline,
+                        row.news_link || ''
+                    ];
+                });
+
+                // Create workbook
+                const wb = XLSX.utils.book_new();
+                const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+
+                // Auto-size columns
+                const colWidths = headers.map((h, i) => {
+                    const maxLen = Math.max(
+                        h.length,
+                        ...rows.map(r => String(r[i] || '').length)
+                    );
+                    return { wch: Math.min(maxLen + 2, 50) };
+                });
+                ws['!cols'] = colWidths;
+
+                XLSX.utils.book_append_sheet(wb, ws, 'Tin Tức Chứng Khoán');
+
+                // Generate filename with date range
+                const filename = `TinTucChungKhoan_${state.fromDate}_${state.toDate}.xlsx`;
+                XLSX.writeFile(wb, filename);
+
+            } catch (error) {
+                console.error('Export error:', error);
+                alert('Lỗi khi xuất file Excel. Vui lòng thử lại.');
+            } finally {
+                // Re-enable button
+                btn.disabled = false;
+                btnText.innerText = originalText;
+                btn.classList.remove('opacity-60', 'cursor-not-allowed');
+            }
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────
+
         window.onload = () => {
             const today = new Date();
             const thirtyDaysAgo = new Date();
@@ -1269,6 +1399,7 @@
                 document.getElementById('lblTo').innerText = i18n[state.lang].lblTo;
                 document.getElementById('prevBtn').innerText = i18n[state.lang].prev;
                 document.getElementById('nextBtn').innerText = i18n[state.lang].next;
+                document.getElementById('exportBtnText').innerText = i18n[state.lang].exportBtn;
                 refreshOpenPickers();
                 
                 renderHeaders(); 
