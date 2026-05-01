@@ -248,9 +248,65 @@
         }
 
         @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Company name tooltip */
+        #company-tooltip {
+            position: fixed;
+            z-index: 99999;
+            background: #1e3a5f;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            color: #f3f4f6;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.5;
+            padding: 8px 12px;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            max-width: min(280px, calc(100vw - 24px));
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            word-break: break-word;
+        }
+        #company-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Progress bar at bottom of tooltip */
+        #company-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background: rgba(255, 215, 0, 0.5);
+            border-radius: 0 0 10px 10px;
+            transform-origin: left;
+            animation: none;
+        }
+        #company-tooltip.visible::after {
+            animation: tooltip-drain 4s linear forwards;
+        }
+        @keyframes tooltip-drain {
+            from { transform: scaleX(1); }
+            to   { transform: scaleX(0); }
+        }
+
+        /* Company name cell — show pointer cursor */
+        .company-name-cell {
+            cursor: pointer;
+        }
+        .company-name-cell:hover {
+            color: #e5e7eb;
+        }
     </style>
 </head>
 <body class="bg-fin-blue text-gray-200 font-sans antialiased">
+
+    <!-- Company name tooltip -->
+    <div id="company-tooltip"></div>
 
     <!-- Main Content Wrapper -->
     <div class="p-4 md:p-6" style="padding-top: 12px;">
@@ -1027,7 +1083,7 @@
                         </td>
                         <td class="px-4 py-4 font-bold ${color} text-sm">${pct > 0 ? '+' : ''}${pct.toFixed(2)}%</td>
                         <td class="px-4 py-4 text-xs" title="${ma15Tooltip}"><div class="flex items-center">${ma15Cell}</div></td>
-                        <td class="px-4 py-4 text-gray-200 text-xs truncate max-w-[200px]" title="${name}">${name || '-'}</td>
+                        <td class="px-4 py-4 text-gray-200 text-xs truncate max-w-[200px] company-name-cell" onclick="showCompanyTooltip(event, this)" title="${name}">${name || '-'}</td>
                         <td class="px-4 py-4 text-gray-400 text-xs">${industry || '-'}</td>
                         <td class="px-4 py-4 font-semibold text-xs">${(row.current_close/1000).toFixed(1)}</td>
                         <td class="px-4 py-4 text-gray-400 text-xs">${(row.current_volume/1000000).toFixed(2)}M</td>
@@ -1263,6 +1319,61 @@
             document.getElementById('footer-copyright-resp').innerHTML    = f.copyrightResp;
             document.getElementById('footer-copyright-copy').innerHTML    = f.copyrightCopy;
         }
+
+        // ─── Company Name Tooltip ─────────────────────────────────────────────────
+        (function() {
+            const tooltip = document.getElementById('company-tooltip');
+            let hideTimer = null;
+
+            function positionTooltip(e) {
+                const margin = 12;
+                const tw = tooltip.offsetWidth  || 280;
+                const th = tooltip.offsetHeight || 48;
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+
+                // Prefer below the tap/click point, fall back to above
+                let x = (e.clientX ?? e.touches?.[0]?.clientX ?? vw / 2) - tw / 2;
+                let y = (e.clientY ?? e.touches?.[0]?.clientY ?? vh / 2) + 16;
+
+                // Clamp horizontally
+                x = Math.max(margin, Math.min(x, vw - tw - margin));
+                // Flip above if it would go off the bottom
+                if (y + th > vh - margin) {
+                    y = (e.clientY ?? e.touches?.[0]?.clientY ?? vh / 2) - th - 16;
+                }
+                y = Math.max(margin, y);
+
+                tooltip.style.left = x + 'px';
+                tooltip.style.top  = y + 'px';
+            }
+
+            window.showCompanyTooltip = function(e, cell) {
+                const fullName = cell.getAttribute('title');
+                if (!fullName || fullName === '-') return;
+
+                // Reset animation by toggling class
+                tooltip.classList.remove('visible');
+                tooltip.textContent = fullName;
+
+                // Position before showing (need a frame for offsetWidth to be valid)
+                requestAnimationFrame(() => {
+                    positionTooltip(e);
+                    tooltip.classList.add('visible');
+
+                    clearTimeout(hideTimer);
+                    hideTimer = setTimeout(() => {
+                        tooltip.classList.remove('visible');
+                    }, 4000);
+                });
+
+                e.stopPropagation();
+            };
+
+            // Tap/click anywhere else hides it immediately
+            document.addEventListener('click',     () => { clearTimeout(hideTimer); tooltip.classList.remove('visible'); });
+            document.addEventListener('touchstart', () => { clearTimeout(hideTimer); tooltip.classList.remove('visible'); }, { passive: true });
+        })();
 
         // ─── TradingView Chart ────────────────────────────────────────────────────
 
