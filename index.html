@@ -1235,28 +1235,55 @@
             btn.classList.add('opacity-60', 'cursor-not-allowed');
 
             try {
-                // Fetch ALL filtered records (not just current page)
-                let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
-                
-                if (state.searchQuery) {
-                    const stockCodes = state.searchQuery.split(',').map(s => s.trim()).filter(s => s);
-                    if (stockCodes.length === 1) {
-                        url += `&single_stock=ilike.*${stockCodes[0]}*`;
-                    } else if (stockCodes.length > 1) {
-                        const orConditions = stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',');
-                        url += `&or=(${orConditions})`;
+                // Fetch ALL filtered records in batches (Supabase max: 1000 per request)
+                const batchSize = 1000;
+                let allData = [];
+                let offset = 0;
+                let hasMore = true;
+
+                while (hasMore) {
+                    let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
+                    
+                    if (state.searchQuery) {
+                        const stockCodes = state.searchQuery.split(',').map(s => s.trim()).filter(s => s);
+                        if (stockCodes.length === 1) {
+                            url += `&single_stock=ilike.*${stockCodes[0]}*`;
+                        } else if (stockCodes.length > 1) {
+                            const orConditions = stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',');
+                            url += `&or=(${orConditions})`;
+                        }
                     }
+                    
+                    const nullsOrder = state.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
+                    url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
+                    url += `&limit=${batchSize}&offset=${offset}`;
+
+                    const res = await fetch(url, {
+                        headers: { 
+                            'apikey': SUPABASE_ANON_KEY, 
+                            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                            'Prefer': 'count=exact'
+                        }
+                    });
+
+                    const batch = await res.json();
+                    if (!Array.isArray(batch) || batch.length === 0) {
+                        hasMore = false;
+                        break;
+                    }
+
+                    allData = allData.concat(batch);
+                    
+                    // If we got fewer records than batchSize, we've reached the end
+                    if (batch.length < batchSize) {
+                        hasMore = false;
+                    } else {
+                        offset += batchSize;
+                    }
+
+                    // Update button text with progress
+                    btnText.innerText = `${i18n[state.lang].exporting} (${allData.length})`;
                 }
-                
-                const nullsOrder = state.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
-                url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
-
-                const res = await fetch(url, {
-                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
-                });
-
-                let allData = await res.json();
-                if (!Array.isArray(allData)) allData = [];
 
                 // Client-side sort for %Chg column (same as table)
                 if (state.sortCol === 'price_change_today_pct') {
@@ -1313,7 +1340,7 @@
                 const colWidths = headers.map((h, i) => {
                     const maxLen = Math.max(
                         h.length,
-                        ...rows.map(r => String(r[i] || '').length)
+                        ...rows.slice(0, 100).map(r => String(r[i] || '').length) // Sample first 100 rows for performance
                     );
                     return { wch: Math.min(maxLen + 2, 50) };
                 });
