@@ -194,6 +194,39 @@
         .sorted-desc .sort-icon::after { content: '▼'; opacity: 1; color: #ffd700; }
         .unsorted .sort-icon::after { content: '↕'; }
 
+        /* Stock code clickable badge */
+        .stock-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #60a5fa;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            white-space: nowrap;
+            user-select: none;
+        }
+        .stock-badge:hover {
+            color: #ffd700;
+            background-color: rgba(255, 215, 0, 0.08);
+            border-color: rgba(255, 215, 0, 0.3);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        /* Chart icon — hidden by default, fades in on hover */
+        .stock-badge .chart-icon {
+            opacity: 0;
+            transition: opacity 0.18s ease;
+            flex-shrink: 0;
+        }
+        .stock-badge:hover .chart-icon {
+            opacity: 1;
+        }
+
         @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
@@ -529,6 +562,7 @@
                 title: 'TIN TỨC CHỨNG KHOÁN 24H', subtitle: 'Cập Nhật Thị Trường Mỗi Ngày', searchPlaceholder: 'Ví dụ: VHM,VIC,FPT',
                 lblFrom: 'Từ ngày', lblTo: 'Đến ngày', loading: 'Đang tải dữ liệu...',
                 cols: { index: '#', publish_time: 'Thời gian', single_stock: 'Mã CK', price_change_today_pct: '% Đổi', ma15: 'MA15', organ_name: 'Doanh nghiệp', industry: 'Ngành', current_close: 'Giá', current_volume: 'Khối lượng', headline: 'Tiêu đề' },
+                chartTooltip: 'Xem biểu đồ trên TradingView',
                 empty: 'Không có dữ liệu phù hợp.', prev: 'Trước', next: 'Sau',
                 paging: (s, e, t) => `Hiển thị ${s} - ${e} trên tổng ${t}`,
                 ma15Tooltip: {
@@ -544,6 +578,7 @@
                 title: '24H STOCK MARKET NEWS', subtitle: 'Daily Market Updates', searchPlaceholder: 'Example: VHM,VIC,FPT',
                 lblFrom: 'From date', lblTo: 'To date', loading: 'Loading data...',
                 cols: { index: '#', publish_time: 'Time', single_stock: 'Ticker', price_change_today_pct: '% Chg', ma15: 'MA15', organ_name: 'Company', industry: 'Industry', current_close: 'Price', current_volume: 'Volume', headline: 'Headline' },
+                chartTooltip: 'View chart on TradingView',
                 empty: 'No matching records found.', prev: 'Prev', next: 'Next',
                 paging: (s, e, t) => `Showing ${s} - ${e} of ${t}`,
                 ma15Tooltip: {
@@ -938,7 +973,14 @@
                     <tr class="hover:bg-fin-gold/5 transition-colors">
                         <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPage * state.pageSize) + idx + 1}</td>
                         <td class="px-4 py-4 text-gray-400 text-xs">${formatDateTime(row.publish_time)}</td>
-                        <td class="px-4 py-4 font-bold text-blue-300 text-sm cursor-pointer hover:text-fin-gold transition-colors" onclick="openTvChart('${row.single_stock || ''}')" title="Xem biểu đồ">${row.single_stock || '-'}</td>
+                        <td class="px-4 py-4">
+                            <span class="stock-badge" onclick="openTvChart('${row.single_stock || ''}')" title="${i18n[state.lang].chartTooltip}">
+                                ${row.single_stock || '-'}
+                                <svg class="chart-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+                                </svg>
+                            </span>
+                        </td>
                         <td class="px-4 py-4 font-bold ${color} text-sm">${pct > 0 ? '+' : ''}${pct.toFixed(2)}%</td>
                         <td class="px-4 py-4 text-xs" title="${ma15Tooltip}"><div class="flex items-center">${ma15Cell}</div></td>
                         <td class="px-4 py-4 text-gray-200 text-xs truncate max-w-[200px]" title="${name}">${name || '-'}</td>
