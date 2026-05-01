@@ -1082,7 +1082,7 @@
                             </span>
                         </td>
                         <td class="px-4 py-4 font-bold ${color} text-sm">${pct > 0 ? '+' : ''}${pct.toFixed(2)}%</td>
-                        <td class="px-4 py-4 text-xs" title="${ma15Tooltip}"><div class="flex items-center">${ma15Cell}</div></td>
+                        <td class="px-4 py-4 text-xs company-name-cell" onclick="showCompanyTooltip(event, this)" title="${ma15Tooltip}"><div class="flex items-center">${ma15Cell}</div></td>
                         <td class="px-4 py-4 text-gray-200 text-xs truncate max-w-[200px] company-name-cell" onclick="showCompanyTooltip(event, this)" title="${name}">${name || '-'}</td>
                         <td class="px-4 py-4 text-gray-400 text-xs">${industry || '-'}</td>
                         <td class="px-4 py-4 font-semibold text-xs">${(row.current_close/1000).toFixed(1)}</td>
