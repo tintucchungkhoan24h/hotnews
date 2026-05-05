@@ -1582,11 +1582,13 @@
             buildFilterContent();
         }
 
-        // Clear all filters
+        // Clear all filters (uncheck all items)
         function clearFilters() {
             const tab = currentTab;
             Object.keys(filterState[tab]).forEach(field => {
                 filterState[tab][field].clear();
+                // Set to __NONE__ to indicate "nothing selected"
+                filterState[tab][field].add('__NONE__');
             });
             
             // Update UI
