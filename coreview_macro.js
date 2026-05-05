@@ -1,5 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════
 // COREVIEW MACRO - Data Fetching & Table Logic
+// Version: 1.2 - Fixed global function accessibility for onclick handlers
 // ═══════════════════════════════════════════════════════════════════════════
 
 // ─── Macro View Initialization ─────────────────────────────────────────────
@@ -193,10 +194,14 @@ async function fetchMacroData() {
         const sortColumn = state.sortColMacro === 'headline' ? 'news_impact_score' : state.sortColMacro;
         const sortOrder = state.sortDescMacro ? 'desc' : 'asc';
         
+        console.log('Macro sort:', sortColumn, sortOrder, 'Column:', state.sortColMacro, 'Desc:', state.sortDescMacro);
+        
         // If there's a search query, fetch all data for client-side filtering
         if (state.searchQueryMacro) {
             // Fetch all records (up to 1000) for accurate search
             let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z&order=${sortColumn}.${sortOrder}&limit=1000`;
+            
+            console.log('Macro fetch URL (with search):', url);
             
             const res = await fetch(url, {
                 headers: { 
@@ -232,6 +237,8 @@ async function fetchMacroData() {
             
             let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z&order=${sortColumn}.${sortOrder}`;
             
+            console.log('Macro fetch URL (no search):', url);
+            
             const res = await fetch(url, {
                 headers: { 
                     'apikey': SUPABASE_ANON_KEY, 
@@ -249,6 +256,12 @@ async function fetchMacroData() {
                 state.totalCountMacro = 0;
             } else {
                 state.dataMacro = json;
+                
+                // Debug: Log first 3 records to verify sort order
+                console.log('Macro data received (first 3):', state.dataMacro.slice(0, 3).map(r => ({
+                    time: r.publish_time,
+                    headline: r.headline?.substring(0, 30)
+                })));
                 
                 const contentRange = res.headers.get('content-range');
                 if (contentRange) {
@@ -327,6 +340,9 @@ function handleSortMacro(id) {
     fetchMacroData();
 }
 
+// Make handleSortMacro globally accessible for onclick handlers
+window.handleSortMacro = handleSortMacro;
+
 // Format date as dd/mm hh:mm
 function formatMacroDateTime(dateString) {
     const date = new Date(dateString);
@@ -362,6 +378,9 @@ function renderMacroBody() {
     }
     
     if (emptyState) emptyState.classList.add('hidden');
+    
+    // Debug: Log what we're about to render
+    console.log('Rendering macro body, first 3 times:', state.dataMacro.slice(0, 3).map(r => r.publish_time));
     
     tbody.innerHTML = state.dataMacro.map((row, idx) => {
         // Use translated headline if in English mode
@@ -565,3 +584,6 @@ async function exportMacroToExcel() {
         btn.classList.remove('opacity-60', 'cursor-not-allowed');
     }
 }
+
+// Make exportMacroToExcel globally accessible for onclick handlers
+window.exportMacroToExcel = exportMacroToExcel;
