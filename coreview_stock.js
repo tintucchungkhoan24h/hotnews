@@ -6,8 +6,11 @@
 // ─── Stock View Initialization ─────────────────────────────────────────────
 
 function initStockView() {
+    console.log('=== INIT STOCK VIEW ===');
+    
     // Force GMT+7 timezone for all date operations
     const today = getGMT7Date();
+    console.log('Today (GMT+7):', today);
     
     // Allow selection of last 30 days (including today)
     const twentyNineDaysAgo = new Date(today);
@@ -19,6 +22,8 @@ function initStockView() {
     // Use GMT+7 date formatting
     const minDate = dateToIso(twentyNineDaysAgo);
     const maxDate = dateToIso(today);
+    
+    console.log('Date range - min:', minDate, 'max:', maxDate);
 
     // Init custom date pickers
     createPicker('fromDate', (iso) => {
@@ -48,6 +53,8 @@ function initStockView() {
 
     state.fromDate = dateToIso(lastWeek);
     state.toDate = maxDate;
+    
+    console.log('Initial state dates - from:', state.fromDate, 'to:', state.toDate);
 
     setPickerValue('fromDate', state.fromDate);
     setPickerValue('toDate', state.toDate);
@@ -64,6 +71,7 @@ function initStockView() {
 
     // Initial render
     renderHeaders();
+    console.log('Calling initial fetchData...');
     fetchData();
 }
 
@@ -133,8 +141,14 @@ function setupStockViewEventListeners() {
 
     const lastBtn = document.getElementById('lastBtn');
     if (lastBtn) {
-        lastBtn.onclick = () => { 
-            state.currentPage = Math.floor(state.totalCount / state.pageSize); 
+        lastBtn.onclick = () => {
+            const lastPage = Math.floor(state.totalCount / state.pageSize);
+            console.log('=== LAST BUTTON CLICKED ===');
+            console.log('Current page:', state.currentPage);
+            console.log('Total count:', state.totalCount);
+            console.log('Page size:', state.pageSize);
+            console.log('Calculated last page:', lastPage);
+            state.currentPage = lastPage; 
             fetchData(); 
         };
     }
@@ -213,43 +227,88 @@ function buildFilterQuery() {
 async function fetchData() {
     document.getElementById('loadingState').classList.remove('hidden');
     
+    console.log('=== FETCH DATA START ===');
+    console.log('Current page:', state.currentPage);
+    console.log('Page size:', state.pageSize);
+    console.log('Sort column:', state.sortCol);
+    
     try {
         let allData = [];
         
-        // For headline column, fetch all data for accurate client-side sorting
+        // For headline column, we need to fetch ALL data for accurate client-side sorting
         if (state.sortCol === 'headline') {
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
+            // For headline sorting, we must fetch ALL records to sort correctly
+            // We'll fetch in batches if needed
+            const batchSize = 1000;
+            let allData = [];
+            let offset = 0;
+            let hasMore = true;
             
-            // Handle multiple stock codes separated by comma
-            if (state.searchQuery) {
-                const stockCodes = state.searchQuery.split(',').map(s => s.trim()).filter(s => s);
-                if (stockCodes.length === 1) {
-                    url += `&single_stock=ilike.*${stockCodes[0]}*`;
-                } else if (stockCodes.length > 1) {
-                    const orConditions = stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',');
-                    url += `&or=(${orConditions})`;
+            console.log('Fetching all records for headline sorting...');
+            
+            while (hasMore) {
+                let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
+                
+                // Handle multiple stock codes separated by comma
+                if (state.searchQuery) {
+                    const stockCodes = state.searchQuery.split(',').map(s => s.trim()).filter(s => s);
+                    if (stockCodes.length === 1) {
+                        url += `&single_stock=ilike.*${stockCodes[0]}*`;
+                    } else if (stockCodes.length > 1) {
+                        const orConditions = stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',');
+                        url += `&or=(${orConditions})`;
+                    }
+                }
+                
+                // Apply filters
+                url += buildFilterQuery();
+                
+                // Fetch with default order, will sort client-side
+                url += `&order=publish_time.desc&limit=${batchSize}&offset=${offset}`;
+                
+                console.log(`Fetching batch ${Math.floor(offset / batchSize) + 1}, offset: ${offset}`);
+                
+                const res = await fetch(url, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Prefer': 'count=exact' }
+                });
+
+                const json = await res.json();
+                
+                if (!Array.isArray(json) || json.length === 0) {
+                    hasMore = false;
+                    break;
+                }
+                
+                allData = allData.concat(json);
+                console.log(`Fetched ${json.length} records, total so far: ${allData.length}`);
+                
+                // Get total count from first batch
+                if (offset === 0) {
+                    const contentRange = res.headers.get('content-range');
+                    console.log('Content-Range header:', contentRange);
+                    if (contentRange) {
+                        const match = contentRange.match(/\/(\d+)$/);
+                        if (match) {
+                            state.totalCount = parseInt(match[1]);
+                            console.log('Total count from server:', state.totalCount);
+                        }
+                    }
+                }
+                
+                // If we got fewer records than batchSize, we've reached the end
+                if (json.length < batchSize) {
+                    hasMore = false;
+                } else {
+                    offset += batchSize;
                 }
             }
             
-            // Apply filters
-            url += buildFilterQuery();
+            console.log('Total fetched records:', allData.length);
             
-            // Fetch with default order, will sort client-side
-            url += `&order=publish_time.desc&limit=1000`;
-            
-            const res = await fetch(url, {
-                headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Prefer': 'count=exact' }
-            });
-
-            const json = await res.json();
-            
-            if (!Array.isArray(json)) {
-                console.error('Supabase error:', json);
-                allData = [];
+            if (allData.length === 0) {
+                state.data = [];
                 state.totalCount = 0;
             } else {
-                allData = json;
-                
                 // Client-side sort by news_impact_score
                 console.log('Table: Sorting by headline, sortDesc:', state.sortDesc);
                 allData.sort((a, b) => {
@@ -267,19 +326,21 @@ async function fetchData() {
                     headline: r.headline?.substring(0, 40)
                 })));
                 
-                // Get total count
-                const contentRange = res.headers.get('content-range');
-                if (contentRange) {
-                    const match = contentRange.match(/\/(\d+)$/);
-                    if (match) state.totalCount = parseInt(match[1]);
-                } else {
+                // Set total count if not already set
+                if (!state.totalCount) {
                     state.totalCount = allData.length;
+                    console.log('Total count from data length:', state.totalCount);
                 }
                 
                 // Apply pagination to sorted results
                 const start = state.currentPage * state.pageSize;
                 const end = start + state.pageSize;
+                console.log('Pagination - start:', start, 'end:', end);
+                console.log('Available data length:', allData.length);
+                
                 state.data = allData.slice(start, end);
+                console.log('Sliced data length:', state.data.length);
+                console.log('Data records:', state.data.map(r => r.single_stock));
             }
         } else {
             // For other columns, use server-side pagination
@@ -343,6 +404,11 @@ async function fetchData() {
             translateNames(state.data.map(d => d.organ_name));
             translateHeadlines(state.data.map(d => d.headline));
         }
+        
+        console.log('=== FETCH DATA END ===');
+        console.log('Final state.data.length:', state.data.length);
+        console.log('Final state.totalCount:', state.totalCount);
+        console.log('Final state.currentPage:', state.currentPage);
     } catch (e) { 
         console.error('fetchData error:', e);
         state.data = [];
@@ -577,6 +643,11 @@ function bindRowTouchEvents() {
 // ─── Pagination ────────────────────────────────────────────────────────────
 
 function renderPaginationUI() {
+    console.log('=== RENDER PAGINATION UI ===');
+    console.log('state.totalCount:', state.totalCount);
+    console.log('state.currentPage:', state.currentPage);
+    console.log('state.pageSize:', state.pageSize);
+    
     if (state.totalCount === 0) {
         document.getElementById('paginationInfo').innerText = '';
         document.getElementById('pageNumbers').innerHTML = '';
@@ -589,10 +660,13 @@ function renderPaginationUI() {
     
     const start = (state.currentPage * state.pageSize) + 1;
     const end = Math.min(start + state.pageSize - 1, state.totalCount);
+    console.log('Pagination display - start:', start, 'end:', end);
+    
     document.getElementById('paginationInfo').innerText = i18n[state.lang].paging(start, end, state.totalCount);
     
     // Calculate total pages
     const totalPages = Math.ceil(state.totalCount / state.pageSize);
+    console.log('Total pages:', totalPages);
     
     // Show 3 page numbers on mobile, 5 on wider screens
     const maxPages = window.innerWidth < 480 ? 3 : 5;

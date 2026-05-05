@@ -225,9 +225,12 @@ async function fetchMacroData() {
         
         console.log('Macro sort:', sortColumn, sortOrder, 'Column:', state.sortColMacro, 'Desc:', state.sortDescMacro);
         
-        // If there's a search query, fetch all data for client-side filtering
+        // If there's a search query, fetch enough data for client-side filtering
         if (state.searchQueryMacro) {
-            // Fetch all records (up to 1000) for accurate search
+            // Calculate how many records we need to fetch
+            const recordsNeeded = (state.currentPageMacro + 1) * state.pageSizeMacro;
+            const fetchLimit = Math.min(recordsNeeded * 2, 1000); // Fetch 2x needed for filtering, cap at 1000
+            
             let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
             
             // Apply filters
@@ -239,14 +242,15 @@ async function fetchMacroData() {
             if (sortColumn !== 'publish_time') {
                 url += `,publish_time.desc`;
             }
-            url += `&limit=1000`;
+            url += `&limit=${fetchLimit}`;
             
             console.log('Macro fetch URL (with search):', url);
             
             const res = await fetch(url, {
                 headers: { 
                     'apikey': SUPABASE_ANON_KEY, 
-                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                    'Prefer': 'count=exact'
                 }
             });
 
@@ -293,6 +297,7 @@ async function fetchMacroData() {
             
             // Apply pagination to filtered results
             state.totalCountMacro = allData.length;
+            
             const start = state.currentPageMacro * state.pageSizeMacro;
             const end = start + state.pageSizeMacro;
             state.dataMacro = allData.slice(start, end);
