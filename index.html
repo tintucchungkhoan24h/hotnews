@@ -888,6 +888,7 @@
                     search: 'Tìm kiếm...',
                     selectAll: '(Chọn Tất Cả)',
                     clearAll: 'Xóa Tất Cả',
+                    selectAllBtn: 'Chọn Tất Cả',
                     apply: 'Áp Dụng',
                     stockCode: 'Mã CK',
                     ma15: 'MA15',
@@ -943,6 +944,7 @@
                     search: 'Search...',
                     selectAll: '(Select All)',
                     clearAll: 'Clear All',
+                    selectAllBtn: 'Select All',
                     apply: 'Apply Filters',
                     stockCode: 'Stock Code',
                     ma15: 'MA15',
@@ -1299,6 +1301,15 @@
                 const industrySelectedCount = filterState.stock.industry.has('__NONE__') ? 0 : 
                     (filterState.stock.industry.size === 0 ? industries.length : filterState.stock.industry.size);
                 
+                // Check if all filters are in "all selected" state (empty sets without __NONE__)
+                const allFiltersSelected = 
+                    filterState.stock.single_stock.size === 0 && !filterState.stock.single_stock.has('__NONE__') &&
+                    filterState.stock.ma15.size === 0 && !filterState.stock.ma15.has('__NONE__') &&
+                    filterState.stock.industry.size === 0 && !filterState.stock.industry.has('__NONE__');
+                
+                // Determine button text
+                const toggleButtonText = allFiltersSelected ? t.clearAll : t.selectAllBtn;
+                
                 // Format header text with counts
                 const stockHeaderText = (stockSelectedCount === stockCodes.length) ? 
                     `${t.stockCode} (${stockCodes.length})` : 
@@ -1416,7 +1427,7 @@
                     
                     <!-- Action Buttons -->
                     <div class="filter-actions">
-                        <button class="filter-btn filter-btn-clear" onclick="clearFilters()">${t.clearAll}</button>
+                        <button class="filter-btn filter-btn-clear" onclick="toggleSelectClearAll()">${toggleButtonText}</button>
                         <button class="filter-btn filter-btn-apply" onclick="applyFilters()">${t.apply}</button>
                     </div>
                 `;
@@ -1439,6 +1450,13 @@
                 // Calculate selected count
                 const sourceSelectedCount = filterState.macro.source_name.has('__NONE__') ? 0 : 
                     (filterState.macro.source_name.size === 0 ? sources.length : filterState.macro.source_name.size);
+                
+                // Check if all filters are in "all selected" state
+                const allFiltersSelected = 
+                    filterState.macro.source_name.size === 0 && !filterState.macro.source_name.has('__NONE__');
+                
+                // Determine button text
+                const toggleButtonText = allFiltersSelected ? t.clearAll : t.selectAllBtn;
                 
                 // Format header text with count
                 const sourceHeaderText = (sourceSelectedCount === sources.length) ? 
@@ -1483,7 +1501,7 @@
                     
                     <!-- Action Buttons -->
                     <div class="filter-actions">
-                        <button class="filter-btn filter-btn-clear" onclick="clearFilters()">${t.clearAll}</button>
+                        <button class="filter-btn filter-btn-clear" onclick="toggleSelectClearAll()">${toggleButtonText}</button>
                         <button class="filter-btn filter-btn-apply" onclick="applyFilters()">${t.apply}</button>
                     </div>
                 `;
@@ -1623,6 +1641,41 @@
             
             // Update UI
             buildFilterContent();
+        }
+        
+        // Select all filters (check all items)
+        function selectAllFilters() {
+            const tab = currentTab;
+            Object.keys(filterState[tab]).forEach(field => {
+                filterState[tab][field].clear();
+                // Empty set means "all selected"
+            });
+            
+            // Update UI
+            buildFilterContent();
+        }
+        
+        // Toggle between Select All and Clear All
+        function toggleSelectClearAll() {
+            const tab = currentTab;
+            
+            // Check if any filter has __NONE__ (meaning nothing selected)
+            const hasNoneSelected = Object.keys(filterState[tab]).some(field => 
+                filterState[tab][field].has('__NONE__')
+            );
+            
+            // Check if all filters are empty (meaning all selected)
+            const allEmpty = Object.keys(filterState[tab]).every(field => 
+                filterState[tab][field].size === 0
+            );
+            
+            if (hasNoneSelected || !allEmpty) {
+                // If nothing selected or some items selected, select all
+                selectAllFilters();
+            } else {
+                // If all selected, clear all
+                clearFilters();
+            }
         }
 
         // Apply filters
@@ -1782,6 +1835,8 @@
         window.toggleFilter = toggleFilter;
         window.toggleSelectAll = toggleSelectAll;
         window.clearFilters = clearFilters;
+        window.selectAllFilters = selectAllFilters;
+        window.toggleSelectClearAll = toggleSelectClearAll;
         window.applyFilters = applyFilters;
         window.toggleFilterSection = toggleFilterSection;
     </script>
