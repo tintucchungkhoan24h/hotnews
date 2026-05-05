@@ -578,6 +578,7 @@
                 const iso = dateToIso(thisDate);
                 const isSelected = value && dateToIso(value) === iso;
                 const isToday    = thisDate.getTime() === today.getTime();
+                // Compare Date objects properly: disable if before minDate OR after maxDate
                 const disabled   = (minDate && thisDate < minDate) || (maxDate && thisDate > maxDate);
                 let cls = 'dp-day';
                 if (disabled)   cls += ' dp-day-disabled';
@@ -1409,13 +1410,17 @@
 
         window.onload = () => {
             const today = new Date();
-            const thirtyDaysAgo = new Date();
+            today.setHours(0, 0, 0, 0); // Set to midnight local time
+            
+            const thirtyDaysAgo = new Date(today);
             thirtyDaysAgo.setDate(today.getDate() - 30);
-            const lastWeek = new Date();
+            
+            const lastWeek = new Date(today);
             lastWeek.setDate(today.getDate() - 7);
             
-            const minDate = thirtyDaysAgo.toISOString().split('T')[0];
-            const maxDate = today.toISOString().split('T')[0];
+            // Use local date formatting to avoid timezone issues
+            const minDate = dateToIso(thirtyDaysAgo);
+            const maxDate = dateToIso(today);
 
             // Init custom date pickers
             createPicker('fromDate', (iso) => {
@@ -1446,7 +1451,7 @@
             setPickerLimits('fromDate', minDate, maxDate);
             setPickerLimits('toDate',   minDate, maxDate);
 
-            state.fromDate = lastWeek.toISOString().split('T')[0];
+            state.fromDate = dateToIso(lastWeek);
             state.toDate   = maxDate;
 
             setPickerValue('fromDate', state.fromDate);
