@@ -478,6 +478,29 @@
 
     <script>
         // ─── Custom Date Picker ───────────────────────────────────────────────────
+        // Force GMT+7 (Vietnam timezone) for all date operations
+        const GMT7_OFFSET = 7 * 60; // 7 hours in minutes
+        
+        function getGMT7Date() {
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const gmt7 = new Date(utc + (GMT7_OFFSET * 60000));
+            gmt7.setHours(0, 0, 0, 0);
+            return gmt7;
+        }
+        
+        function createGMT7Date(year, month, day) {
+            // Create date in GMT+7
+            const date = new Date(Date.UTC(year, month, day, -7, 0, 0)); // UTC time minus 7 hours = GMT+7 midnight
+            return date;
+        }
+        
+        function parseISOtoGMT7(iso) {
+            // Parse YYYY-MM-DD as GMT+7 midnight
+            const [y, m, d] = iso.split('-').map(Number);
+            return createGMT7Date(y, m - 1, d);
+        }
+        
         const dpLocale = {
             vn: {
                 months: ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'],
@@ -499,16 +522,20 @@
         }
 
         function dateToIso(d) {
-            const y = d.getFullYear();
-            const m = String(d.getMonth() + 1).padStart(2, '0');
-            const day = String(d.getDate()).padStart(2, '0');
+            // Convert Date to YYYY-MM-DD in GMT+7
+            const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+            const gmt7 = new Date(utc + (GMT7_OFFSET * 60000));
+            const y = gmt7.getFullYear();
+            const m = String(gmt7.getMonth() + 1).padStart(2, '0');
+            const day = String(gmt7.getDate()).padStart(2, '0');
             return `${y}-${m}-${day}`;
         }
 
         function createPicker(id, onChange) {
             const inputEl  = document.getElementById(id);
             const popupEl  = document.getElementById(id + 'Popup');
-            const picker   = { inputEl, popupEl, value: null, viewYear: new Date().getFullYear(), viewMonth: new Date().getMonth(), mode: 'day', min: null, max: null, onChange };
+            const today = getGMT7Date();
+            const picker   = { inputEl, popupEl, value: null, viewYear: today.getFullYear(), viewMonth: today.getMonth(), mode: 'day', min: null, max: null, onChange };
             pickers[id]    = picker;
 
             inputEl.addEventListener('click', (e) => { e.stopPropagation(); togglePicker(id); });
@@ -550,12 +577,12 @@
         function renderDayView(id, loc) {
             const picker = pickers[id];
             const { viewYear, viewMonth, value, min, max } = picker;
-            const minDate = min ? new Date(min + 'T00:00:00') : null;
-            const maxDate = max ? new Date(max + 'T00:00:00') : null;
-            const today   = new Date(); today.setHours(0,0,0,0);
+            const minDate = min ? parseISOtoGMT7(min) : null;
+            const maxDate = max ? parseISOtoGMT7(max) : null;
+            const today   = getGMT7Date();
 
             // First day of month (adjust: Mon=0 ... Sun=6)
-            const firstDay = new Date(viewYear, viewMonth, 1);
+            const firstDay = createGMT7Date(viewYear, viewMonth, 1);
             let startDow = firstDay.getDay(); // 0=Sun
             startDow = (startDow === 0) ? 6 : startDow - 1; // Mon-based
 
@@ -573,8 +600,7 @@
             for (let i = 0; i < startDow; i++) html += `<div class="dp-day dp-day-empty"></div>`;
 
             for (let d = 1; d <= daysInMonth; d++) {
-                const thisDate = new Date(viewYear, viewMonth, d);
-                thisDate.setHours(0,0,0,0);
+                const thisDate = createGMT7Date(viewYear, viewMonth, d);
                 const iso = dateToIso(thisDate);
                 const isSelected = value && dateToIso(value) === iso;
                 const isToday    = thisDate.getTime() === today.getTime();
@@ -647,7 +673,7 @@
         }
         function dpSelectDay(id, iso) {
             const p = pickers[id];
-            p.value = new Date(iso + 'T00:00:00');
+            p.value = parseISOtoGMT7(iso);
             p.inputEl.value = isoToDisplay(iso);
             closePicker(id);
             p.onChange(iso);
@@ -656,7 +682,7 @@
         function setPickerValue(id, iso) {
             const p = pickers[id];
             if (!iso) return;
-            p.value = new Date(iso + 'T00:00:00');
+            p.value = parseISOtoGMT7(iso);
             p.viewYear  = p.value.getFullYear();
             p.viewMonth = p.value.getMonth();
             p.inputEl.value = isoToDisplay(iso);
@@ -1409,8 +1435,8 @@
         // ─────────────────────────────────────────────────────────────────────────
 
         window.onload = () => {
-            const today = new Date();
-            today.setHours(0, 0, 0, 0); // Set to midnight local time
+            // Force GMT+7 timezone for all date operations
+            const today = getGMT7Date();
             
             const thirtyDaysAgo = new Date(today);
             thirtyDaysAgo.setDate(today.getDate() - 30);
@@ -1418,7 +1444,7 @@
             const lastWeek = new Date(today);
             lastWeek.setDate(today.getDate() - 7);
             
-            // Use local date formatting to avoid timezone issues
+            // Use GMT+7 date formatting
             const minDate = dateToIso(thirtyDaysAgo);
             const maxDate = dateToIso(today);
 
