@@ -655,6 +655,7 @@ async function exportToExcel() {
         while (hasMore) {
             let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
             
+            // Apply search query filter
             if (state.searchQuery) {
                 const stockCodes = state.searchQuery.split(',').map(s => s.trim()).filter(s => s);
                 if (stockCodes.length === 1) {
@@ -663,6 +664,12 @@ async function exportToExcel() {
                     const orConditions = stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',');
                     url += `&or=(${orConditions})`;
                 }
+            }
+            
+            // Apply filter popup filters
+            const filterQuery = buildFilterQuery();
+            if (filterQuery) {
+                url += filterQuery;
             }
             
             // For headline and price_change_today_pct, we'll sort client-side, so use default order

@@ -569,6 +569,12 @@ async function exportMacroToExcel() {
         // Fetch ALL records in one request (up to 1000)
         let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
         
+        // Apply filter popup filters
+        const filterQuery = buildMacroFilterQuery();
+        if (filterQuery) {
+            url += filterQuery;
+        }
+        
         // Add primary sort
         url += `&order=${sortColumn}.${sortOrder}`;
         // Add secondary sort by publish_time for consistent ordering when primary values are equal
