@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════
 // COREVIEW STOCK - Data Fetching & Table Logic
-// Version: 1.1 - Added headline sorting by news_impact_score
+// Version: 1.8 - Fixed headline sort direction bug (DESC/ASC logic)
 // ═══════════════════════════════════════════════════════════════════════════
 
 // ─── Stock View Initialization ─────────────────────────────────────────────
@@ -141,67 +141,128 @@ function setupStockViewEventListeners() {
 
 async function fetchData() {
     document.getElementById('loadingState').classList.remove('hidden');
-    const start = state.currentPage * state.pageSize;
-    const end = start + state.pageSize - 1;
     
-    let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
-    
-    // Handle multiple stock codes separated by comma
-    if (state.searchQuery) {
-        const stockCodes = state.searchQuery.split(',').map(s => s.trim()).filter(s => s);
-        if (stockCodes.length === 1) {
-            url += `&single_stock=ilike.*${stockCodes[0]}*`;
-        } else if (stockCodes.length > 1) {
-            const orConditions = stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',');
-            url += `&or=(${orConditions})`;
-        }
-    }
-    
-    const nullsOrder = (state.sortCol === 'price_change_today_pct' || state.sortCol === 'headline') ? '' : '.nullslast';
-    url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
-
     try {
-        const res = await fetch(url, {
-            headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Range': `${start}-${end}`, 'Prefer': 'count=exact' }
-        });
-
-        const json = await res.json();
-
-        // Supabase returns an error object (not an array) on failure
-        if (!Array.isArray(json)) {
-            console.error('Supabase error:', json);
-            state.data = [];
-            state.totalCount = 0;
-        } else {
-            state.data = json;
-            // For %Chg column, re-sort client-side treating NULL as 0
-            // so NULLs appear between positives and negatives, not at extremes
-            if (state.sortCol === 'price_change_today_pct') {
-                const dir = state.sortDesc ? -1 : 1;
-                state.data.sort((a, b) => {
-                    const av = a.price_change_today_pct ?? 0;
-                    const bv = b.price_change_today_pct ?? 0;
-                    return dir * (bv - av);
-                });
+        let allData = [];
+        
+        // For headline column, fetch all data for accurate client-side sorting
+        if (state.sortCol === 'headline') {
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
+            
+            // Handle multiple stock codes separated by comma
+            if (state.searchQuery) {
+                const stockCodes = state.searchQuery.split(',').map(s => s.trim()).filter(s => s);
+                if (stockCodes.length === 1) {
+                    url += `&single_stock=ilike.*${stockCodes[0]}*`;
+                } else if (stockCodes.length > 1) {
+                    const orConditions = stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',');
+                    url += `&or=(${orConditions})`;
+                }
             }
-            // For headline column, re-sort client-side by news_impact_score
-            // treating NULL as 0 so NULLs appear at the bottom
-            if (state.sortCol === 'headline') {
-                const dir = state.sortDesc ? -1 : 1;
-                state.data.sort((a, b) => {
+            
+            // Fetch with default order, will sort client-side
+            url += `&order=publish_time.desc&limit=1000`;
+            
+            const res = await fetch(url, {
+                headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Prefer': 'count=exact' }
+            });
+
+            const json = await res.json();
+            
+            if (!Array.isArray(json)) {
+                console.error('Supabase error:', json);
+                allData = [];
+                state.totalCount = 0;
+            } else {
+                allData = json;
+                
+                // Client-side sort by news_impact_score
+                console.log('Table: Sorting by headline, sortDesc:', state.sortDesc);
+                allData.sort((a, b) => {
                     const av = a.news_impact_score ?? 0;
                     const bv = b.news_impact_score ?? 0;
-                    return dir * (bv - av);
+                    if (state.sortDesc) {
+                        return bv - av; // DESC: highest first
+                    } else {
+                        return av - bv; // ASC: lowest first
+                    }
                 });
+                console.log('Table: After sort, first 3:', allData.slice(0, 3).map(r => ({
+                    stock: r.single_stock,
+                    score: r.news_impact_score,
+                    headline: r.headline?.substring(0, 40)
+                })));
+                
+                // Get total count
+                const contentRange = res.headers.get('content-range');
+                if (contentRange) {
+                    const match = contentRange.match(/\/(\d+)$/);
+                    if (match) state.totalCount = parseInt(match[1]);
+                } else {
+                    state.totalCount = allData.length;
+                }
+                
+                // Apply pagination to sorted results
+                const start = state.currentPage * state.pageSize;
+                const end = start + state.pageSize;
+                state.data = allData.slice(start, end);
             }
-            const contentRange = res.headers.get('content-range');
-            if (contentRange) {
-                const match = contentRange.match(/\/(\d+)$/);
-                if (match) state.totalCount = parseInt(match[1]);
+        } else {
+            // For other columns, use server-side pagination
+            const start = state.currentPage * state.pageSize;
+            const end = start + state.pageSize - 1;
+            
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
+            
+            // Handle multiple stock codes separated by comma
+            if (state.searchQuery) {
+                const stockCodes = state.searchQuery.split(',').map(s => s.trim()).filter(s => s);
+                if (stockCodes.length === 1) {
+                    url += `&single_stock=ilike.*${stockCodes[0]}*`;
+                } else if (stockCodes.length > 1) {
+                    const orConditions = stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',');
+                    url += `&or=(${orConditions})`;
+                }
+            }
+            
+            const nullsOrder = state.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
+            url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
+
+            const res = await fetch(url, {
+                headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Range': `${start}-${end}`, 'Prefer': 'count=exact' }
+            });
+
+            const json = await res.json();
+
+            // Supabase returns an error object (not an array) on failure
+            if (!Array.isArray(json)) {
+                console.error('Supabase error:', json);
+                state.data = [];
+                state.totalCount = 0;
             } else {
-                state.totalCount = state.data.length;
+                state.data = json;
+                // For %Chg column, re-sort client-side treating NULL as 0
+                // so NULLs appear between positives and negatives, not at extremes
+                if (state.sortCol === 'price_change_today_pct') {
+                    const dir = state.sortDesc ? -1 : 1;
+                    state.data.sort((a, b) => {
+                        const av = a.price_change_today_pct ?? 0;
+                        const bv = b.price_change_today_pct ?? 0;
+                        return dir * (bv - av);
+                    });
+                }
+                const contentRange = res.headers.get('content-range');
+                if (contentRange) {
+                    const match = contentRange.match(/\/(\d+)$/);
+                    if (match) state.totalCount = parseInt(match[1]);
+                } else {
+                    state.totalCount = state.data.length;
+                }
             }
-            // Preload translations in background
+        }
+        
+        // Preload translations in background
+        if (state.data.length > 0) {
             translateNames(state.data.map(d => d.organ_name));
             translateHeadlines(state.data.map(d => d.headline));
         }
@@ -500,6 +561,8 @@ async function exportToExcel() {
     const btnText = document.getElementById('exportBtnText');
     const originalText = btnText.innerText;
     
+    console.log('Export started - Current sort:', state.sortCol, state.sortDesc ? 'DESC' : 'ASC');
+    
     // Disable button and show loading state
     btn.disabled = true;
     btnText.innerText = i18n[state.lang].exporting;
@@ -525,9 +588,18 @@ async function exportToExcel() {
                 }
             }
             
-            const nullsOrder = state.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
-            url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
+            // For headline and price_change_today_pct, we'll sort client-side, so use default order
+            // For other columns, use server-side sort
+            if (state.sortCol === 'headline' || state.sortCol === 'price_change_today_pct') {
+                // Fetch with default order, will sort client-side later
+                url += `&order=publish_time.desc`;
+            } else {
+                const nullsOrder = '.nullslast';
+                url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
+            }
             url += `&limit=${batchSize}&offset=${offset}`;
+            
+            console.log('Export fetch URL:', url);
 
             const res = await fetch(url, {
                 headers: { 
@@ -564,6 +636,25 @@ async function exportToExcel() {
                 const bv = b.price_change_today_pct ?? 0;
                 return dir * (bv - av);
             });
+        }
+        
+        // Client-side sort for headline column by news_impact_score (same as table)
+        if (state.sortCol === 'headline') {
+            console.log('Export: Sorting by headline (news_impact_score), sortDesc:', state.sortDesc);
+            allData.sort((a, b) => {
+                const av = a.news_impact_score ?? 0;
+                const bv = b.news_impact_score ?? 0;
+                if (state.sortDesc) {
+                    return bv - av; // DESC: highest first
+                } else {
+                    return av - bv; // ASC: lowest first
+                }
+            });
+            console.log('Export: After sort, first 3:', allData.slice(0, 3).map(r => ({
+                stock: r.single_stock,
+                score: r.news_impact_score,
+                headline: r.headline?.substring(0, 40)
+            })));
         }
 
         // Build Excel data

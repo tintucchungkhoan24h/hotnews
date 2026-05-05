@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════
 // COREVIEW MACRO - Data Fetching & Table Logic
-// Version: 1.2 - Fixed global function accessibility for onclick handlers
+// Version: 2.2 - Added secondary sort by publish_time for consistent ordering
 // ═══════════════════════════════════════════════════════════════════════════
 
 // ─── Macro View Initialization ─────────────────────────────────────────────
@@ -199,7 +199,15 @@ async function fetchMacroData() {
         // If there's a search query, fetch all data for client-side filtering
         if (state.searchQueryMacro) {
             // Fetch all records (up to 1000) for accurate search
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z&order=${sortColumn}.${sortOrder}&limit=1000`;
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
+            
+            // Add primary sort
+            url += `&order=${sortColumn}.${sortOrder}`;
+            // Add secondary sort by publish_time for consistent ordering when primary values are equal
+            if (sortColumn !== 'publish_time') {
+                url += `,publish_time.desc`;
+            }
+            url += `&limit=1000`;
             
             console.log('Macro fetch URL (with search):', url);
             
@@ -222,6 +230,33 @@ async function fetchMacroData() {
                     const normalizedHeadline = normalizeVietnamese(row.headline || '');
                     return normalizedHeadline.includes(normalizedQuery);
                 });
+                
+                // After filtering, re-sort client-side to maintain correct order
+                console.log('Table: Re-sorting after filter by', sortColumn, sortOrder);
+                if (sortColumn === 'publish_time') {
+                    allData.sort((a, b) => {
+                        const av = new Date(a.publish_time).getTime();
+                        const bv = new Date(b.publish_time).getTime();
+                        return sortOrder === 'desc' ? (bv - av) : (av - bv);
+                    });
+                } else if (sortColumn === 'source_name') {
+                    allData.sort((a, b) => {
+                        const av = (a.source_name || '').toLowerCase();
+                        const bv = (b.source_name || '').toLowerCase();
+                        return sortOrder === 'desc' ? bv.localeCompare(av) : av.localeCompare(bv);
+                    });
+                } else if (sortColumn === 'news_impact_score') {
+                    allData.sort((a, b) => {
+                        const av = a.news_impact_score ?? 0;
+                        const bv = b.news_impact_score ?? 0;
+                        return sortOrder === 'desc' ? (bv - av) : (av - bv);
+                    });
+                }
+                console.log('Table: First 3 after re-sort:', allData.slice(0, 3).map(r => ({
+                    time: r.publish_time,
+                    score: r.news_impact_score,
+                    headline: r.headline?.substring(0, 40)
+                })));
             }
             
             // Apply pagination to filtered results
@@ -235,7 +270,14 @@ async function fetchMacroData() {
             const start = state.currentPageMacro * state.pageSizeMacro;
             const end = start + state.pageSizeMacro - 1;
             
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z&order=${sortColumn}.${sortOrder}`;
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
+            
+            // Add primary sort
+            url += `&order=${sortColumn}.${sortOrder}`;
+            // Add secondary sort by publish_time for consistent ordering when primary values are equal
+            if (sortColumn !== 'publish_time') {
+                url += `,publish_time.desc`;
+            }
             
             console.log('Macro fetch URL (no search):', url);
             
@@ -483,54 +525,79 @@ async function exportMacroToExcel() {
     btn.classList.add('opacity-60', 'cursor-not-allowed');
 
     try {
-        // Fetch ALL filtered records in batches (Supabase max: 1000 per request)
-        const batchSize = 1000;
-        let allData = [];
-        let offset = 0;
-        let hasMore = true;
+        // Use current sort order from the table (same as fetchMacroData)
+        const sortColumn = state.sortColMacro === 'headline' ? 'news_impact_score' : state.sortColMacro;
+        const sortOrder = state.sortDescMacro ? 'desc' : 'asc';
+        
+        console.log('Export Macro: Sorting by', sortColumn, sortOrder);
 
-        while (hasMore) {
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
-            
-            // Order by publish_time descending (newest first)
-            url += `&order=publish_time.desc`;
-            url += `&limit=${batchSize}&offset=${offset}`;
-
-            const res = await fetch(url, {
-                headers: { 
-                    'apikey': SUPABASE_ANON_KEY, 
-                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                    'Prefer': 'count=exact'
-                }
-            });
-
-            const batch = await res.json();
-            if (!Array.isArray(batch) || batch.length === 0) {
-                hasMore = false;
-                break;
-            }
-
-            allData = allData.concat(batch);
-            
-            // If we got fewer records than batchSize, we've reached the end
-            if (batch.length < batchSize) {
-                hasMore = false;
-            } else {
-                offset += batchSize;
-            }
-
-            // Update button text with progress
-            btnText.innerText = `${i18n[state.lang].exporting} (${allData.length})`;
+        // Fetch ALL records in one request (up to 1000)
+        let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
+        
+        // Add primary sort
+        url += `&order=${sortColumn}.${sortOrder}`;
+        // Add secondary sort by publish_time for consistent ordering when primary values are equal
+        if (sortColumn !== 'publish_time') {
+            url += `,publish_time.desc`;
         }
+        url += `&limit=1000`;
+        
+        console.log('Export Macro fetch URL:', url);
 
-        // Apply client-side Vietnamese search filter if exists
+        const res = await fetch(url, {
+            headers: { 
+                'apikey': SUPABASE_ANON_KEY, 
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Prefer': 'count=exact'
+            }
+        });
+
+        let allData = await res.json();
+        
+        if (!Array.isArray(allData)) {
+            console.error('Supabase error:', allData);
+            allData = [];
+        }
+        
+        // Update button text with count
+        btnText.innerText = `${i18n[state.lang].exporting} (${allData.length})`;
+        // Apply client-side Vietnamese search filter if exists (same as table)
         if (state.searchQueryMacro) {
             const normalizedQuery = normalizeVietnamese(state.searchQueryMacro);
             allData = allData.filter(row => {
                 const normalizedHeadline = normalizeVietnamese(row.headline || '');
                 return normalizedHeadline.includes(normalizedQuery);
             });
+            
+            // After filtering, re-sort client-side to maintain correct order
+            console.log('Export Macro: Re-sorting after filter by', sortColumn, sortOrder);
+            if (sortColumn === 'publish_time') {
+                allData.sort((a, b) => {
+                    const av = new Date(a.publish_time).getTime();
+                    const bv = new Date(b.publish_time).getTime();
+                    return sortOrder === 'desc' ? (bv - av) : (av - bv);
+                });
+            } else if (sortColumn === 'source_name') {
+                allData.sort((a, b) => {
+                    const av = (a.source_name || '').toLowerCase();
+                    const bv = (b.source_name || '').toLowerCase();
+                    return sortOrder === 'desc' ? bv.localeCompare(av) : av.localeCompare(bv);
+                });
+            } else if (sortColumn === 'news_impact_score') {
+                allData.sort((a, b) => {
+                    const av = a.news_impact_score ?? 0;
+                    const bv = b.news_impact_score ?? 0;
+                    return sortOrder === 'desc' ? (bv - av) : (av - bv);
+                });
+            }
         }
+        
+        console.log('Export Macro: First 3 after filter:', allData.slice(0, 3).map(r => ({
+            time: r.publish_time,
+            source: r.source_name,
+            score: r.news_impact_score,
+            headline: r.headline?.substring(0, 40)
+        })));
 
         // Build Excel data
         const headers = [
