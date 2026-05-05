@@ -54,13 +54,30 @@
     <link rel="icon" type="image/png" href="ava_icon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
-    <script src="coreview_stock.js?v=1.8"></script>
-    <script src="coreview_macro.js?v=2.2"></script>
+    <!-- JS files loaded dynamically with version control - see bottom of file -->
     <!-- Force browser to reload - cache buster -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <script>
+        // Global version for cache busting - increment this with each deployment
+        const APP_VERSION = '2.0';
+        
+        // Load JS files with version control
+        (function() {
+            const scripts = [
+                'coreview_stock.js',
+                'coreview_macro.js'
+            ];
+            
+            scripts.forEach(function(src) {
+                const script = document.createElement('script');
+                script.src = src + '?v=' + APP_VERSION;
+                script.async = false; // Maintain execution order
+                document.head.appendChild(script);
+            });
+        })();
+        
         tailwind.config = {
             theme: {
                 extend: {
@@ -1938,7 +1955,7 @@
         setupFilterOverlay();
         
         // Load header component
-        fetch('header.html?v=' + Date.now())
+        fetch('header.html?v=' + APP_VERSION)
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
@@ -1958,8 +1975,8 @@
             });
             document.getElementById(`tab-${tab}`).classList.add('active');
             
-            // Add cache buster to force reload
-            const cacheBuster = '?v=' + Date.now();
+            // Use APP_VERSION for cache busting
+            const cacheBuster = '?v=' + APP_VERSION;
             
             if (tab === 'stock') {
                 // Load stock view
@@ -2033,7 +2050,7 @@
         });
         
         // Load footer component
-        fetch('footer.html?v=' + Date.now())
+        fetch('footer.html?v=' + APP_VERSION)
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
