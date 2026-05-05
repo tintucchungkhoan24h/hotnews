@@ -1438,15 +1438,17 @@
             // Force GMT+7 timezone for all date operations
             const today = getGMT7Date();
             
-            const thirtyDaysAgo = new Date(today);
-            thirtyDaysAgo.setDate(today.getDate() - 30);
+            // Allow selection of last 30 days (including today)
+            // Today = day 1, yesterday = day 2, ... 29 days ago = day 30
+            const twentyNineDaysAgo = new Date(today);
+            twentyNineDaysAgo.setDate(today.getDate() - 29);
             
             const lastWeek = new Date(today);
             lastWeek.setDate(today.getDate() - 7);
             
             // Use GMT+7 date formatting
-            const minDate = dateToIso(thirtyDaysAgo);
-            const maxDate = dateToIso(today);
+            const minDate = dateToIso(twentyNineDaysAgo); // e.g., 2026-04-06
+            const maxDate = dateToIso(today);              // e.g., 2026-05-05
 
             // Init custom date pickers
             createPicker('fromDate', (iso) => {
