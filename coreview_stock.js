@@ -87,6 +87,9 @@ function updateStockViewLabels() {
     const exportBtnText = document.getElementById('exportBtnText');
     if (exportBtnText) exportBtnText.innerText = i18n[state.lang].exportBtn;
     
+    const filterBtnText = document.getElementById('filterBtnText');
+    if (filterBtnText) filterBtnText.innerText = i18n[state.lang].filterBtn;
+    
     const loadingText = document.getElementById('loadingText');
     if (loadingText) loadingText.innerText = i18n[state.lang].loading;
 }
@@ -139,6 +142,74 @@ function setupStockViewEventListeners() {
 
 // ─── Data Fetching ─────────────────────────────────────────────────────────
 
+// Helper function to build filter query parameters
+function buildFilterQuery() {
+    const filters = [];
+    
+    // Get filter state from global scope
+    if (typeof filterState !== 'undefined' && filterState.stock) {
+        // Stock code filter
+        if (filterState.stock.single_stock.has('__NONE__')) {
+            // Special case: nothing selected, return impossible condition
+            filters.push('single_stock=eq.__IMPOSSIBLE__');
+        } else if (filterState.stock.single_stock.size > 0) {
+            // Specific codes selected
+            const codes = Array.from(filterState.stock.single_stock);
+            if (codes.length === 1) {
+                filters.push(`single_stock=eq.${codes[0]}`);
+            } else {
+                const orConditions = codes.map(code => `single_stock.eq.${code}`).join(',');
+                filters.push(`or=(${orConditions})`);
+            }
+        }
+        // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
+        
+        // MA15 filter
+        if (filterState.stock.ma15.has('__NONE__')) {
+            // Special case: nothing selected, return impossible condition
+            filters.push('pct_ma15=eq.999999');
+        } else if (filterState.stock.ma15.size > 0) {
+            // Specific ranges selected
+            const ma15Filters = [];
+            filterState.stock.ma15.forEach(key => {
+                if (key === '⏫ MA15') {
+                    ma15Filters.push('pct_ma15.gt.5');
+                } else if (key === '⬆️ MA15') {
+                    ma15Filters.push('and(pct_ma15.gt.1,pct_ma15.lte.5)');
+                } else if (key === '↔️ MA15') {
+                    ma15Filters.push('and(pct_ma15.gte.-1,pct_ma15.lte.1)');
+                } else if (key === '⬇️ MA15') {
+                    ma15Filters.push('and(pct_ma15.gte.-5,pct_ma15.lt.-1)');
+                } else if (key === '⏬ MA15') {
+                    ma15Filters.push('pct_ma15.lt.-5');
+                }
+            });
+            if (ma15Filters.length > 0) {
+                filters.push(`or=(${ma15Filters.join(',')})`);
+            }
+        }
+        // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
+        
+        // Industry filter
+        if (filterState.stock.industry.has('__NONE__')) {
+            // Special case: nothing selected, return impossible condition
+            filters.push('industry_vn=eq.__IMPOSSIBLE__');
+        } else if (filterState.stock.industry.size > 0) {
+            // Specific industries selected
+            const industries = Array.from(filterState.stock.industry);
+            if (industries.length === 1) {
+                filters.push(`industry_vn=eq.${encodeURIComponent(industries[0])}`);
+            } else {
+                const orConditions = industries.map(ind => `industry_vn.eq.${encodeURIComponent(ind)}`).join(',');
+                filters.push(`or=(${orConditions})`);
+            }
+        }
+        // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
+    }
+    
+    return filters.length > 0 ? '&' + filters.join('&') : '';
+}
+
 async function fetchData() {
     document.getElementById('loadingState').classList.remove('hidden');
     
@@ -159,6 +230,9 @@ async function fetchData() {
                     url += `&or=(${orConditions})`;
                 }
             }
+            
+            // Apply filters
+            url += buildFilterQuery();
             
             // Fetch with default order, will sort client-side
             url += `&order=publish_time.desc&limit=1000`;
@@ -224,6 +298,9 @@ async function fetchData() {
                     url += `&or=(${orConditions})`;
                 }
             }
+            
+            // Apply filters
+            url += buildFilterQuery();
             
             const nullsOrder = state.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
             url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;

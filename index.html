@@ -368,12 +368,208 @@
         .tab-button:active {
             transform: scale(0.98);
         }
+
+        /* Filter Popup Styles */
+        #filterPopup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            z-index: 10000;
+            background: #112240;
+            border: 1px solid #374151;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            min-width: 320px;
+            max-width: 90vw;
+            max-height: 80vh;
+            overflow-y: auto;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        #filterPopup.open {
+            opacity: 1;
+            pointer-events: all;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        #filterOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        #filterOverlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .filter-section {
+            margin-bottom: 20px;
+        }
+        .filter-section:last-child {
+            margin-bottom: 0;
+        }
+        .filter-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .filter-search {
+            width: 100%;
+            background: #0a192f;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: white;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+        .filter-search:focus {
+            outline: none;
+            border-color: #ffd700;
+        }
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+            user-select: none;
+        }
+        .filter-option:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+        .filter-checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #4b5563;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a192f;
+            flex-shrink: 0;
+            transition: all 0.15s;
+        }
+        .filter-option.selected .filter-checkbox {
+            background: #ffd700;
+            border-color: #ffd700;
+        }
+        .filter-checkbox svg {
+            width: 12px;
+            height: 12px;
+            color: #0a192f;
+            display: none;
+        }
+        .filter-option.selected .filter-checkbox svg {
+            display: block;
+        }
+        .filter-label {
+            font-size: 13px;
+            color: #e5e7eb;
+            flex: 1;
+        }
+        .filter-count {
+            font-size: 11px;
+            color: #9ca3af;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .filter-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+        }
+        .filter-btn {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s;
+            border: none;
+        }
+        .filter-btn-apply {
+            background: #ffd700;
+            color: #0a192f;
+        }
+        .filter-btn-apply:hover {
+            background: #ffed4e;
+            transform: scale(1.02);
+        }
+        .filter-btn-clear {
+            background: #374151;
+            color: white;
+        }
+        .filter-btn-clear:hover {
+            background: #4b5563;
+        }
+        .filter-select-all {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            margin-bottom: 12px;
+            transition: all 0.15s;
+        }
+        .filter-select-all:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.4);
+        }
+        .filter-select-all .filter-label {
+            font-weight: 600;
+            color: #ffd700;
+        }
+        .filter-select-all.selected .filter-checkbox {
+            background: #ffd700;
+            border-color: #ffd700;
+        }
+        .filter-select-all.selected .filter-checkbox svg {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-fin-blue text-gray-200 font-sans antialiased">
 
     <!-- Company name tooltip -->
     <div id="company-tooltip"></div>
+
+    <!-- Filter Popup Overlay -->
+    <div id="filterOverlay"></div>
+    
+    <!-- Filter Popup -->
+    <div id="filterPopup">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 id="filterPopupTitle" style="font-size: 18px; font-weight: 700; color: #ffd700; margin: 0;">Bộ Lọc</h3>
+            <button onclick="closeFilterPopup()" style="background: none; border: none; color: #9ca3af; cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div id="filterContent"></div>
+    </div>
 
     <!-- Main Content Wrapper -->
     <div class="p-4 md:p-6" style="padding-top: 12px;">
@@ -639,11 +835,23 @@
                 title: 'TIN TỨC CHỨNG KHOÁN 24H', subtitle: 'Cập Nhật Thị Trường Mỗi Ngày', searchPlaceholder: 'Ví dụ: VHM,VIC,FPT',
                 lblFrom: 'Từ ngày', lblTo: 'Đến ngày', loading: 'Đang tải dữ liệu...',
                 exportBtn: 'Xuất Excel', exporting: 'Đang xuất...',
+                filterBtn: 'Lọc',
                 cols: { index: '#', publish_time: 'Thời gian', single_stock: 'Mã CK', price_change_today_pct: '% Đổi', ma15: 'MA15', organ_name: 'Doanh nghiệp', industry: 'Ngành', current_close: 'Giá', current_volume: 'Khối lượng', headline: 'Tiêu đề' },
                 chartTooltip: 'Xem biểu đồ trên TradingView',
                 empty: 'Không có dữ liệu phù hợp.', prev: 'Trước', next: 'Sau',
                 paging: (s, e, t) => `Hiển thị ${s} - ${e} trên tổng ${t}`,
                 tabs: { stock: 'Mã CK', macro: 'Vĩ Mô' },
+                filter: {
+                    title: 'Bộ Lọc',
+                    search: 'Tìm kiếm...',
+                    selectAll: '(Chọn Tất Cả)',
+                    clearAll: 'Xóa Tất Cả',
+                    apply: 'Áp Dụng',
+                    stockCode: 'Mã CK',
+                    ma15: 'MA15',
+                    industry: 'Ngành',
+                    source: 'Nguồn'
+                },
                 macro: {
                     title: 'Phân Tích Vĩ Mô',
                     desc: 'Trang phân tích vĩ mô đang được phát triển. Chúng tôi sẽ cung cấp các chỉ số kinh tế, phân tích xu hướng thị trường và dự báo vĩ mô trong thời gian tới.',
@@ -682,11 +890,23 @@
                 title: '24H STOCK MARKET NEWS', subtitle: 'Daily Market Updates', searchPlaceholder: 'Example: VHM,VIC,FPT',
                 lblFrom: 'From date', lblTo: 'To date', loading: 'Loading data...',
                 exportBtn: 'Export Excel', exporting: 'Exporting...',
+                filterBtn: 'Filter',
                 cols: { index: '#', publish_time: 'Time', single_stock: 'Ticker', price_change_today_pct: '% Chg', ma15: 'MA15', organ_name: 'Company', industry: 'Industry', current_close: 'Price', current_volume: 'Volume', headline: 'Headline' },
                 chartTooltip: 'View chart on TradingView',
                 empty: 'No matching records found.', prev: 'Prev', next: 'Next',
                 paging: (s, e, t) => `Showing ${s} - ${e} of ${t}`,
                 tabs: { stock: 'Stock', macro: 'Macro' },
+                filter: {
+                    title: 'Filters',
+                    search: 'Search...',
+                    selectAll: '(Select All)',
+                    clearAll: 'Clear All',
+                    apply: 'Apply Filters',
+                    stockCode: 'Stock Code',
+                    ma15: 'MA15',
+                    industry: 'Industry',
+                    source: 'Source'
+                },
                 macro: {
                     title: 'Macro Analysis',
                     desc: 'The macro analysis page is under development. We will provide economic indicators, market trend analysis, and macro forecasts soon.',
@@ -934,6 +1154,461 @@
         // ═══════════════════════════════════════════════════════════════════════════
         // NOTE: Company tooltip and TradingView chart logic moved to coreview_stock.js
         // ═══════════════════════════════════════════════════════════════════════════
+
+        // ═══════════════════════════════════════════════════════════════════════════
+        // FILTER SYSTEM
+        // ═══════════════════════════════════════════════════════════════════════════
+        
+        // Filter state
+        const filterState = {
+            stock: {
+                single_stock: new Set(),
+                ma15: new Set(),
+                industry: new Set()
+            },
+            macro: {
+                source_name: new Set()
+            }
+        };
+
+        // Open filter popup
+        function openFilterPopup() {
+            const popup = document.getElementById('filterPopup');
+            const overlay = document.getElementById('filterOverlay');
+            const title = document.getElementById('filterPopupTitle');
+            
+            // Update title based on language
+            if (title) {
+                title.textContent = i18n[state.lang].filter.title;
+            }
+            
+            // Don't clear filters - preserve previous selections
+            // Only initialize if filters have never been set (first time opening)
+            if (currentTab === 'stock') {
+                // If all filters are undefined/not initialized, set to default (empty = all selected)
+                if (typeof filterState.stock.single_stock === 'undefined') {
+                    filterState.stock.single_stock = new Set();
+                }
+                if (typeof filterState.stock.ma15 === 'undefined') {
+                    filterState.stock.ma15 = new Set();
+                }
+                if (typeof filterState.stock.industry === 'undefined') {
+                    filterState.stock.industry = new Set();
+                }
+            } else if (currentTab === 'macro') {
+                if (typeof filterState.macro.source_name === 'undefined') {
+                    filterState.macro.source_name = new Set();
+                }
+            }
+            
+            // Build filter content based on current tab
+            buildFilterContent();
+            
+            popup.classList.add('open');
+            overlay.classList.add('open');
+        }
+
+        // Close filter popup
+        function closeFilterPopup() {
+            const popup = document.getElementById('filterPopup');
+            const overlay = document.getElementById('filterOverlay');
+            
+            popup.classList.remove('open');
+            overlay.classList.remove('open');
+        }
+
+        // Build filter content based on current tab
+        async function buildFilterContent() {
+            const content = document.getElementById('filterContent');
+            const t = i18n[state.lang].filter;
+            
+            if (currentTab === 'stock') {
+                // Fetch unique values for stock filters
+                const stockCodes = await getUniqueStockCodes();
+                const ma15Values = getMA15Categories();
+                const industries = await getUniqueIndustries();
+                
+                // Check if all items are selected for each filter
+                // Empty set means "all selected" (no filter applied)
+                // Set with '__NONE__' means "none selected"
+                const allStockSelected = (filterState.stock.single_stock.size === 0 || 
+                    (stockCodes.length > 0 && stockCodes.every(code => filterState.stock.single_stock.has(code)))) &&
+                    !filterState.stock.single_stock.has('__NONE__');
+                const allMA15Selected = (filterState.stock.ma15.size === 0 || 
+                    (ma15Values.length > 0 && ma15Values.every(val => filterState.stock.ma15.has(val.key)))) &&
+                    !filterState.stock.ma15.has('__NONE__');
+                const allIndustrySelected = (filterState.stock.industry.size === 0 || 
+                    (industries.length > 0 && industries.every(ind => filterState.stock.industry.has(ind)))) &&
+                    !filterState.stock.industry.has('__NONE__');
+                
+                content.innerHTML = `
+                    <!-- Stock Code Filter -->
+                    <div class="filter-section">
+                        <div class="filter-section-title">${t.stockCode}</div>
+                        <input type="text" id="filterSearchStock" class="filter-search" placeholder="${t.search}">
+                        <div class="filter-select-all ${allStockSelected ? 'selected' : ''}" onclick="toggleSelectAll('single_stock')">
+                            <div class="filter-checkbox">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="filter-label">${t.selectAll}</div>
+                        </div>
+                        <div id="filterOptionsStock" class="filter-options">
+                            ${stockCodes.map(code => `
+                                <div class="filter-option ${(filterState.stock.single_stock.size === 0 || filterState.stock.single_stock.has(code)) && !filterState.stock.single_stock.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'single_stock', '${code}')">
+                                    <div class="filter-checkbox">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="filter-label">${code}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- MA15 Filter -->
+                    <div class="filter-section">
+                        <div class="filter-section-title">${t.ma15}</div>
+                        <div class="filter-select-all ${allMA15Selected ? 'selected' : ''}" onclick="toggleSelectAll('ma15')">
+                            <div class="filter-checkbox">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="filter-label">${t.selectAll}</div>
+                        </div>
+                        <div id="filterOptionsMA15" class="filter-options">
+                            ${ma15Values.map(val => `
+                                <div class="filter-option ${(filterState.stock.ma15.size === 0 || filterState.stock.ma15.has(val.key)) && !filterState.stock.ma15.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'ma15', '${val.key}')">
+                                    <div class="filter-checkbox">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="filter-label">${val.label}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Industry Filter -->
+                    <div class="filter-section">
+                        <div class="filter-section-title">${t.industry}</div>
+                        <input type="text" id="filterSearchIndustry" class="filter-search" placeholder="${t.search}">
+                        <div class="filter-select-all ${allIndustrySelected ? 'selected' : ''}" onclick="toggleSelectAll('industry')">
+                            <div class="filter-checkbox">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="filter-label">${t.selectAll}</div>
+                        </div>
+                        <div id="filterOptionsIndustry" class="filter-options">
+                            ${industries.map(ind => {
+                                // Get translated name if in English mode
+                                const displayName = state.lang === 'en' && window.industryTranslations && window.industryTranslations[ind] 
+                                    ? window.industryTranslations[ind] 
+                                    : ind;
+                                return `
+                                <div class="filter-option ${(filterState.stock.industry.size === 0 || filterState.stock.industry.has(ind)) && !filterState.stock.industry.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'industry', '${ind.replace(/'/g, "\\'")}')">
+                                    <div class="filter-checkbox">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="filter-label">${displayName}</div>
+                                </div>
+                            `}).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="filter-actions">
+                        <button class="filter-btn filter-btn-clear" onclick="clearFilters()">${t.clearAll}</button>
+                        <button class="filter-btn filter-btn-apply" onclick="applyFilters()">${t.apply}</button>
+                    </div>
+                `;
+                
+                // Setup search handlers
+                setupFilterSearch('filterSearchStock', 'filterOptionsStock');
+                setupFilterSearch('filterSearchIndustry', 'filterOptionsIndustry');
+                
+            } else if (currentTab === 'macro') {
+                // Fetch unique sources for macro filters
+                const sources = await getUniqueSources();
+                
+                // Check if all sources are selected
+                // Empty set means "all selected" (no filter applied)
+                // Set with '__NONE__' means "none selected"
+                const allSourcesSelected = (filterState.macro.source_name.size === 0 || 
+                    (sources.length > 0 && sources.every(src => filterState.macro.source_name.has(src)))) &&
+                    !filterState.macro.source_name.has('__NONE__');
+                
+                content.innerHTML = `
+                    <!-- Source Filter -->
+                    <div class="filter-section">
+                        <div class="filter-section-title">${t.source}</div>
+                        <input type="text" id="filterSearchSource" class="filter-search" placeholder="${t.search}">
+                        <div class="filter-select-all ${allSourcesSelected ? 'selected' : ''}" onclick="toggleSelectAll('source_name')">
+                            <div class="filter-checkbox">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="filter-label">${t.selectAll}</div>
+                        </div>
+                        <div id="filterOptionsSource" class="filter-options">
+                            ${sources.map(source => `
+                                <div class="filter-option ${(filterState.macro.source_name.size === 0 || filterState.macro.source_name.has(source)) && !filterState.macro.source_name.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('macro', 'source_name', '${source.replace(/'/g, "\\'")}')">
+                                    <div class="filter-checkbox">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="filter-label">${source}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="filter-actions">
+                        <button class="filter-btn filter-btn-clear" onclick="clearFilters()">${t.clearAll}</button>
+                        <button class="filter-btn filter-btn-apply" onclick="applyFilters()">${t.apply}</button>
+                    </div>
+                `;
+                
+                // Setup search handler
+                setupFilterSearch('filterSearchSource', 'filterOptionsSource');
+            }
+        }
+
+        // Setup filter search functionality
+        function setupFilterSearch(inputId, containerId) {
+            const input = document.getElementById(inputId);
+            const container = document.getElementById(containerId);
+            
+            if (!input || !container) return;
+            
+            input.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                const options = container.querySelectorAll('.filter-option');
+                
+                options.forEach(option => {
+                    const label = option.querySelector('.filter-label').textContent.toLowerCase();
+                    if (label.includes(query)) {
+                        option.style.display = 'flex';
+                    } else {
+                        option.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Toggle individual filter (async wrapper)
+        async function toggleFilterAsync(tab, field, value) {
+            // Check if currently "none selected" (__NONE__ marker)
+            const isNoneSelected = filterState[tab][field].has('__NONE__');
+            
+            if (isNoneSelected) {
+                // Currently none selected, user wants to check one item
+                // Clear the __NONE__ marker and add only this item
+                filterState[tab][field].clear();
+                filterState[tab][field].add(value);
+            } else {
+                // Check if currently "all selected" (empty set without __NONE__)
+                const isAllSelected = filterState[tab][field].size === 0;
+                
+                if (isAllSelected) {
+                    // Currently all selected, user wants to uncheck one item
+                    // We need to explicitly select all OTHER items
+                    
+                    // Get all available items based on field type
+                    let allItems = [];
+                    if (field === 'single_stock') {
+                        allItems = await getUniqueStockCodes();
+                    } else if (field === 'ma15') {
+                        allItems = getMA15Categories().map(v => v.key);
+                    } else if (field === 'industry') {
+                        allItems = await getUniqueIndustries();
+                    } else if (field === 'source_name') {
+                        allItems = await getUniqueSources();
+                    }
+                    
+                    // Add all items EXCEPT the one being unchecked
+                    allItems.forEach(item => {
+                        if (item !== value) {
+                            filterState[tab][field].add(item);
+                        }
+                    });
+                } else {
+                    // Normal toggle behavior (some items selected)
+                    if (filterState[tab][field].has(value)) {
+                        filterState[tab][field].delete(value);
+                        // If no items left after delete, it means "all selected" (empty set)
+                    } else {
+                        filterState[tab][field].add(value);
+                    }
+                }
+            }
+            
+            // Update UI
+            await buildFilterContent();
+        }
+        
+        // Synchronous wrapper for onclick handlers
+        function toggleFilter(tab, field, value) {
+            toggleFilterAsync(tab, field, value).catch(err => {
+                console.error('Error toggling filter:', err);
+            });
+        }
+
+        // Toggle select all
+        function toggleSelectAll(field) {
+            const tab = currentTab;
+            const fieldMap = {
+                'single_stock': 'Stock',
+                'ma15': 'MA15',
+                'industry': 'Industry',
+                'source_name': 'Source'
+            };
+            const containerId = `filterOptions${fieldMap[field]}`;
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            const options = container.querySelectorAll('.filter-option');
+            
+            // Check if all visible options are selected
+            const visibleOptions = Array.from(options).filter(opt => opt.style.display !== 'none');
+            
+            // Check current state
+            const currentSize = filterState[tab][field].size;
+            const isAllSelected = currentSize === 0 || visibleOptions.every(opt => opt.classList.contains('selected'));
+            
+            if (isAllSelected) {
+                // Currently all selected -> deselect all
+                // Use a special marker '__NONE__' to indicate "nothing selected"
+                filterState[tab][field].clear();
+                filterState[tab][field].add('__NONE__');
+            } else {
+                // Currently not all selected -> select all (clear to represent "all")
+                filterState[tab][field].clear();
+            }
+            
+            // Update UI
+            buildFilterContent();
+        }
+
+        // Clear all filters
+        function clearFilters() {
+            const tab = currentTab;
+            Object.keys(filterState[tab]).forEach(field => {
+                filterState[tab][field].clear();
+            });
+            
+            // Update UI
+            buildFilterContent();
+        }
+
+        // Apply filters
+        function applyFilters() {
+            closeFilterPopup();
+            
+            // Trigger data refresh with filters
+            if (currentTab === 'stock') {
+                if (typeof fetchData === 'function') {
+                    state.currentPage = 0;
+                    fetchData();
+                }
+            } else if (currentTab === 'macro') {
+                if (typeof fetchMacroData === 'function') {
+                    state.currentPageMacro = 0;
+                    fetchMacroData();
+                }
+            }
+        }
+
+        // Get unique stock codes from current data
+        async function getUniqueStockCodes() {
+            try {
+                const url = `${SUPABASE_URL}/rest/v1/hotnews?select=single_stock&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z&limit=1000`;
+                const res = await fetch(url, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                });
+                const data = await res.json();
+                const codes = [...new Set(data.map(d => d.single_stock).filter(Boolean))].sort();
+                return codes;
+            } catch (e) {
+                console.error('Error fetching stock codes:', e);
+                return [];
+            }
+        }
+
+        // Get MA15 categories
+        function getMA15Categories() {
+            return [
+                { key: '⏫ MA15', label: '⏫ MA15 (>5%)' },
+                { key: '⬆️ MA15', label: '⬆️ MA15 (1-5%)' },
+                { key: '↔️ MA15', label: '↔️ MA15 (-1 to 1%)' },
+                { key: '⬇️ MA15', label: '⬇️ MA15 (-5 to -1%)' },
+                { key: '⏬ MA15', label: '⏬ MA15 (<-5%)' }
+            ];
+        }
+
+        // Get unique industries from current data
+        async function getUniqueIndustries() {
+            try {
+                const url = `${SUPABASE_URL}/rest/v1/hotnews?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z&limit=1000`;
+                const res = await fetch(url, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                });
+                const data = await res.json();
+                
+                // Create a map of Vietnamese to English industries
+                const industryMap = {};
+                data.forEach(d => {
+                    if (d.industry_vn && d.industry_en) {
+                        industryMap[d.industry_vn] = d.industry_en;
+                    }
+                });
+                
+                // Store the mapping globally for later use
+                window.industryTranslations = industryMap;
+                
+                // Return unique Vietnamese industries (sorted)
+                const industries = [...new Set(data.map(d => d.industry_vn).filter(Boolean))].sort();
+                return industries;
+            } catch (e) {
+                console.error('Error fetching industries:', e);
+                return [];
+            }
+        }
+
+        // Get unique sources from current data
+        async function getUniqueSources() {
+            try {
+                const url = `${SUPABASE_URL}/rest/v1/hotnews?select=source_name&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z&limit=1000`;
+                const res = await fetch(url, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                });
+                const data = await res.json();
+                const sources = [...new Set(data.map(d => d.source_name).filter(Boolean))].sort();
+                return sources;
+            } catch (e) {
+                console.error('Error fetching sources:', e);
+                return [];
+            }
+        }
+
+        // Make functions globally accessible
+        window.openFilterPopup = openFilterPopup;
+        window.closeFilterPopup = closeFilterPopup;
+        window.toggleFilter = toggleFilter;
+        window.toggleSelectAll = toggleSelectAll;
+        window.clearFilters = clearFilters;
+        window.applyFilters = applyFilters;
     </script>
     
     </div><!-- End Main Content Wrapper -->
@@ -1019,8 +1694,21 @@
             });
         }
         
+        // Setup filter toggle for overlay close
+        function setupFilterOverlay() {
+            const overlay = document.getElementById('filterOverlay');
+            if (overlay) {
+                overlay.addEventListener('click', () => {
+                    closeFilterPopup();
+                });
+            }
+        }
+        
+        // Call this once on page load
+        setupFilterOverlay();
+        
         // Load header component
-        fetch('header.html')
+        fetch('header.html?v=' + Date.now())
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
@@ -1040,9 +1728,12 @@
             });
             document.getElementById(`tab-${tab}`).classList.add('active');
             
+            // Add cache buster to force reload
+            const cacheBuster = '?v=' + Date.now();
+            
             if (tab === 'stock') {
                 // Load stock view
-                fetch('coreview_stock.html')
+                fetch('coreview_stock.html' + cacheBuster)
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
@@ -1054,7 +1745,7 @@
                     .catch(error => console.error('Error loading stock view:', error));
             } else if (tab === 'macro') {
                 // Load macro view
-                fetch('coreview_macro.html')
+                fetch('coreview_macro.html' + cacheBuster)
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
@@ -1112,7 +1803,7 @@
         });
         
         // Load footer component
-        fetch('footer.html')
+        fetch('footer.html?v=' + Date.now())
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;

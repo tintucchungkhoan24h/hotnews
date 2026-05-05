@@ -101,6 +101,9 @@ function updateMacroViewLabels() {
     
     const exportBtnText = document.getElementById('exportBtnTextMacro');
     if (exportBtnText) exportBtnText.innerText = i18n[state.lang].exportBtn;
+    
+    const filterBtnText = document.getElementById('filterBtnTextMacro');
+    if (filterBtnText) filterBtnText.innerText = i18n[state.lang].filterBtn;
 }
 
 // Setup all event listeners for macro view
@@ -183,6 +186,32 @@ function normalizeVietnamese(text) {
 
 // ─── Data Fetching ─────────────────────────────────────────────────────────
 
+// Helper function to build filter query parameters for macro
+function buildMacroFilterQuery() {
+    const filters = [];
+    
+    // Get filter state from global scope
+    if (typeof filterState !== 'undefined' && filterState.macro) {
+        // Source name filter
+        if (filterState.macro.source_name.has('__NONE__')) {
+            // Special case: nothing selected, return impossible condition
+            filters.push('source_name=eq.__IMPOSSIBLE__');
+        } else if (filterState.macro.source_name.size > 0) {
+            // Specific sources selected
+            const sources = Array.from(filterState.macro.source_name);
+            if (sources.length === 1) {
+                filters.push(`source_name=eq.${encodeURIComponent(sources[0])}`);
+            } else {
+                const orConditions = sources.map(src => `source_name.eq.${encodeURIComponent(src)}`).join(',');
+                filters.push(`or=(${orConditions})`);
+            }
+        }
+        // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
+    }
+    
+    return filters.length > 0 ? '&' + filters.join('&') : '';
+}
+
 async function fetchMacroData() {
     const loadingState = document.getElementById('loadingStateMacro');
     if (loadingState) loadingState.classList.remove('hidden');
@@ -200,6 +229,9 @@ async function fetchMacroData() {
         if (state.searchQueryMacro) {
             // Fetch all records (up to 1000) for accurate search
             let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
+            
+            // Apply filters
+            url += buildMacroFilterQuery();
             
             // Add primary sort
             url += `&order=${sortColumn}.${sortOrder}`;
@@ -271,6 +303,9 @@ async function fetchMacroData() {
             const end = start + state.pageSizeMacro - 1;
             
             let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
+            
+            // Apply filters
+            url += buildMacroFilterQuery();
             
             // Add primary sort
             url += `&order=${sortColumn}.${sortOrder}`;
