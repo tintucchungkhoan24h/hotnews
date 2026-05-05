@@ -1,6 +1,141 @@
 // ═══════════════════════════════════════════════════════════════════════════
 // COREVIEW STOCK - Data Fetching & Table Logic
+// Version: 1.1 - Added headline sorting by news_impact_score
 // ═══════════════════════════════════════════════════════════════════════════
+
+// ─── Stock View Initialization ─────────────────────────────────────────────
+
+function initStockView() {
+    // Force GMT+7 timezone for all date operations
+    const today = getGMT7Date();
+    
+    // Allow selection of last 30 days (including today)
+    const twentyNineDaysAgo = new Date(today);
+    twentyNineDaysAgo.setDate(today.getDate() - 29);
+    
+    const lastWeek = new Date(today);
+    lastWeek.setDate(today.getDate() - 7);
+    
+    // Use GMT+7 date formatting
+    const minDate = dateToIso(twentyNineDaysAgo);
+    const maxDate = dateToIso(today);
+
+    // Init custom date pickers
+    createPicker('fromDate', (iso) => {
+        state.fromDate = iso;
+        setPickerLimits('toDate', iso, maxDate);
+        if (state.toDate < iso) {
+            state.toDate = iso;
+            setPickerValue('toDate', iso);
+        }
+        state.currentPage = 0;
+        fetchData();
+    });
+    
+    createPicker('toDate', (iso) => {
+        state.toDate = iso;
+        setPickerLimits('fromDate', minDate, iso);
+        if (state.fromDate > iso) {
+            state.fromDate = iso;
+            setPickerValue('fromDate', iso);
+        }
+        state.currentPage = 0;
+        fetchData();
+    });
+
+    setPickerLimits('fromDate', minDate, maxDate);
+    setPickerLimits('toDate', minDate, maxDate);
+
+    state.fromDate = dateToIso(lastWeek);
+    state.toDate = maxDate;
+
+    setPickerValue('fromDate', state.fromDate);
+    setPickerValue('toDate', state.toDate);
+
+    // Apply cross-constraints based on initial values
+    setPickerLimits('fromDate', minDate, state.toDate);
+    setPickerLimits('toDate', state.fromDate, maxDate);
+
+    // Update UI labels based on current language
+    updateStockViewLabels();
+
+    // Setup event listeners
+    setupStockViewEventListeners();
+
+    // Initial render
+    renderHeaders();
+    fetchData();
+}
+
+// Update all stock view labels based on current language
+function updateStockViewLabels() {
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) searchInput.placeholder = i18n[state.lang].searchPlaceholder;
+    
+    const lblFrom = document.getElementById('lblFrom');
+    if (lblFrom) lblFrom.innerText = i18n[state.lang].lblFrom;
+    
+    const lblTo = document.getElementById('lblTo');
+    if (lblTo) lblTo.innerText = i18n[state.lang].lblTo;
+    
+    const prevBtn = document.getElementById('prevBtn');
+    if (prevBtn) prevBtn.innerText = i18n[state.lang].prev;
+    
+    const nextBtn = document.getElementById('nextBtn');
+    if (nextBtn) nextBtn.innerText = i18n[state.lang].next;
+    
+    const exportBtnText = document.getElementById('exportBtnText');
+    if (exportBtnText) exportBtnText.innerText = i18n[state.lang].exportBtn;
+    
+    const loadingText = document.getElementById('loadingText');
+    if (loadingText) loadingText.innerText = i18n[state.lang].loading;
+}
+
+// Setup all event listeners for stock view
+function setupStockViewEventListeners() {
+    // Search input
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            state.searchQuery = e.target.value.toUpperCase();
+            state.currentPage = 0;
+            fetchData();
+        });
+    }
+
+    // Pagination buttons
+    const firstBtn = document.getElementById('firstBtn');
+    if (firstBtn) {
+        firstBtn.onclick = () => { 
+            state.currentPage = 0; 
+            fetchData(); 
+        };
+    }
+
+    const prevBtn = document.getElementById('prevBtn');
+    if (prevBtn) {
+        prevBtn.onclick = () => { 
+            state.currentPage--; 
+            fetchData(); 
+        };
+    }
+
+    const nextBtn = document.getElementById('nextBtn');
+    if (nextBtn) {
+        nextBtn.onclick = () => { 
+            state.currentPage++; 
+            fetchData(); 
+        };
+    }
+
+    const lastBtn = document.getElementById('lastBtn');
+    if (lastBtn) {
+        lastBtn.onclick = () => { 
+            state.currentPage = Math.floor(state.totalCount / state.pageSize); 
+            fetchData(); 
+        };
+    }
+}
 
 // ─── Data Fetching ─────────────────────────────────────────────────────────
 
@@ -22,7 +157,7 @@ async function fetchData() {
         }
     }
     
-    const nullsOrder = state.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
+    const nullsOrder = (state.sortCol === 'price_change_today_pct' || state.sortCol === 'headline') ? '' : '.nullslast';
     url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
 
     try {
@@ -46,6 +181,16 @@ async function fetchData() {
                 state.data.sort((a, b) => {
                     const av = a.price_change_today_pct ?? 0;
                     const bv = b.price_change_today_pct ?? 0;
+                    return dir * (bv - av);
+                });
+            }
+            // For headline column, re-sort client-side by news_impact_score
+            // treating NULL as 0 so NULLs appear at the bottom
+            if (state.sortCol === 'headline') {
+                const dir = state.sortDesc ? -1 : 1;
+                state.data.sort((a, b) => {
+                    const av = a.news_impact_score ?? 0;
+                    const bv = b.news_impact_score ?? 0;
                     return dir * (bv - av);
                 });
             }
@@ -84,7 +229,7 @@ function renderHeaders() {
         { id: 'industry',              w: 'w-40',  s: true },
         { id: 'current_close',         w: 'w-24',  s: true },
         { id: 'current_volume',        w: 'w-32',  s: true },
-        { id: 'headline',              w: 'w-auto', s: false }
+        { id: 'headline',              w: 'w-auto', s: true }
     ];
     document.getElementById('tableHeader').innerHTML = cols.map(c => `
         <th class="px-4 py-4 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getSortClass(c.id) : ''}" 
@@ -100,6 +245,7 @@ function renderHeaders() {
 // Map display column id → actual database field name (language-aware)
 function getDbField(colId) {
     if (colId === 'ma15')     return 'pct_ma15';
+    if (colId === 'headline') return 'news_impact_score';
     if (colId === 'industry') return state.lang === 'en' ? 'industry_en' : 'industry_vn';
     return colId;
 }
@@ -123,9 +269,13 @@ function handleSort(id) {
             state.sortDesc = true;
         }
     } else {
-        // Different column clicked, start with ASC
+        // Different column clicked, start with ASC (except for headline)
         state.sortCol = id;
-        state.sortDesc = false;
+        if (id === 'headline') {
+            state.sortDesc = true; // Highest impact score first for headline
+        } else {
+            state.sortDesc = false;
+        }
     }
     state.currentPage = 0; 
     renderHeaders(); 
@@ -482,4 +632,104 @@ async function exportToExcel() {
         btnText.innerText = originalText;
         btn.classList.remove('opacity-60', 'cursor-not-allowed');
     }
+}
+
+// ─── Company Name Tooltip ──────────────────────────────────────────────────
+
+(function() {
+    // Wait for tooltip element to be available
+    setTimeout(() => {
+        const tooltip = document.getElementById('company-tooltip');
+        if (!tooltip) return;
+        
+        let hideTimer = null;
+
+        function positionTooltip(e) {
+            const margin = 12;
+            const tw = tooltip.offsetWidth  || 280;
+            const th = tooltip.offsetHeight || 48;
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+
+            // Prefer below the tap/click point, fall back to above
+            let x = (e.clientX ?? e.touches?.[0]?.clientX ?? vw / 2) - tw / 2;
+            let y = (e.clientY ?? e.touches?.[0]?.clientY ?? vh / 2) + 16;
+
+            // Clamp horizontally
+            x = Math.max(margin, Math.min(x, vw - tw - margin));
+            // Flip above if it would go off the bottom
+            if (y + th > vh - margin) {
+                y = (e.clientY ?? e.touches?.[0]?.clientY ?? vh / 2) - th - 16;
+            }
+            y = Math.max(margin, y);
+
+            tooltip.style.left = x + 'px';
+            tooltip.style.top  = y + 'px';
+        }
+
+        window.showCompanyTooltip = function(e, cell) {
+            const fullName = cell.getAttribute('title');
+            if (!fullName || fullName === '-') return;
+
+            // Reset animation by toggling class
+            tooltip.classList.remove('visible');
+            tooltip.textContent = fullName;
+
+            // Position before showing (need a frame for offsetWidth to be valid)
+            requestAnimationFrame(() => {
+                positionTooltip(e);
+                tooltip.classList.add('visible');
+
+                clearTimeout(hideTimer);
+                hideTimer = setTimeout(() => {
+                    tooltip.classList.remove('visible');
+                }, 4000);
+            });
+
+            e.stopPropagation();
+        };
+
+        // Tap/click anywhere else hides it immediately
+        document.addEventListener('click',     () => { clearTimeout(hideTimer); tooltip.classList.remove('visible'); });
+        document.addEventListener('touchstart', () => { clearTimeout(hideTimer); tooltip.classList.remove('visible'); }, { passive: true });
+    }, 100);
+})();
+
+// ─── TradingView Chart ─────────────────────────────────────────────────────
+
+const HNX_SET = new Set(['AAV','ADC','ALT','AMC','AME','AMV','API','APS','ARM','ATS','BAB','BAX','BBS','BCC','BCF','BED','BKC','BNA','BPC','BTS','BTW','BVS','BXH','C69','CAG','CAN','CAP','CAR','CCR','CDN','CEO','CET','CIA','CJC','CKV','CLH','CLM','CMC','CMS','CPC','CSC','CST','CTB','CTP','CTT','CX8','D11','DAD','DAE','DC2','DDG','DHP','DHT','DIH','DL1','DNC','DNP','DP3','DS3','DST','DTD','DTG','DTK','DVM','DXP','EBS','ECI','EID','EVS','FID','GDW','GIC','GKM','GLT','GMA','GMX','HAD','HAT','HBS','HCC','HCT','HDA','HEV','HGM','HHC','HJS','HKT','HLC','HLD','HMH','HMR','HOM','HTC','HUT','HVT','ICG','IDC','IDJ','IDV','INC','INN','IPA','ITQ','IVS','KDM','KHS','KKC','KMT','KSD','KSF','KST','KSV','KTS','L14','L18','L40','LAS','LBE','LCD','LDP','LHC','LIG','MAC','MAS','MBG','MBS','MCC','MCF','MCO','MDC','MED','MEL','MIC','MKV','MST','MVB','NAG','NAP','NBC','NBP','NBW','NDN','NDX','NET','NFC','NHC','NRC','NSH','NST','NTH','NTP','NVB','OCH','ONE','PBP','PCE','PCH','PCT','PDB','PEN','PGN','PGS','PGT','PHN','PIA','PIC','PJC','PLC','PMB','PMC','PMP','PMS','POT','PPE','PPP','PPS','PPT','PPY','PRC','PRE','PSC','PSD','PSE','PSI','PSW','PTD','PTI','PTS','PTX','PV2','PVB','PVC','PVG','PVI','PVS','QHD','QST','QTC','RCL','S55','S99','SAF','SCG','SCI','SD5','SD9','SDA','SDC','SDG','SDN','SDU','SEB','SED','SFN','SGC','SGD','SGH','SHE','SHN','SHS','SJ1','SJE','SLS','SMN','SMT','SPC','SRA','SSM','STC','STP','SVN','SZB','TA9','TD6','TDT','TET','TFC','THB','THD','THS','THT','TIG','TJC','TKU','TMB','TMC','TMX','TNG','TOT','TPP','TSB','TTC','TTH','TTL','TTT','TV3','TV4','TVC','TVD','TXM','UNI','V12','V21','VBC','VC1','VC2','VC3','VC6','VC7','VC9','VCC','VCM','VCS','VDL','VE1','VE3','VE4','VFS','VGP','VGS','VHE','VHL','VIF','VIG','VIT','VLA','VMC','VMS','VNC','VNF','VNR','VNT','VSA','VSM','VTC','VTH','VTJ','VTV','VTZ','WCS','WSS','X20']);
+
+const UPCOM_SET = new Set(['A32','AAH','AAS','ABB','ABC','ABI','ABW','ACE','ACM','ACS','ACV','AG1','AGF','AGM','AGP','AGX','AIC','AIG','ALC','ALV','AMP','AMS','APC','APF','APL','APP','APT','ART','ATA','ATG','AVC','AVF','AVG','BAL','BBH','BBM','BBT','BCA','BCB','BCP','BCR','BCV','BDG','BDT','BDW','BEL','BGE','BGW','BHA','BHC','BHG','BHH','BHI','BHK','BHP','BIG','BIO','BLF','BLI','BLN','BLT','BMD','BMF','BMG','BMJ','BMK','BMS','BMV','BNW','BOT','BQB','BQP','BRR','BRS','BSA','BSD','BSG','BSH','BSL','BSP','BSQ','BT1','BT6','BTB','BTD','BTG','BTH','BTN','BTU','BTV','BVB','BVG','BVL','BVN','BWA','BWS','C21','C22','C4G','C92','CAD','CAT','CBI','CBS','CC1','CCA','CCM','CCP','CCS','CCT','CCV','CDG','CDO','CDP','CDR','CEN','CFM','CFV','CGV','CH5','CHC','CHS','CI5','CID','CIP','CK8','CKA','CKD','CLX','CMD','CMF','CMI','CMK','CMM','CMN','CMP','CMT','CMW','CNA','CNC','CNN','CNT','CPA','CPH','CPI','CQN','CQT','CSI','CT3','CT6','CTA','CTW','CTX','CVN','CYC','DAC','DAG','DAN','DAS','DBM','DC1','DCF','DCG','DCH','DCR','DCS','DCT','DCV','DDB','DDH','DDM','DDN','DDV','DFC','DFF','DGT','DHB','DHD','DHN','DIC','DID','DKC','DKG','DLD','DLR','DLT','DM7','DMN','DMS','DNA','DND','DNE','DNH','DNL','DNM','DNN','DNT','DNW','DOC','DOP','DP1','DP2','DPC','DPH','DPP','DRG','DRI','DSD','DSG','DSH','DSP','DTC','DTE','DTH','DTI','DTP','DUS','DVC','DVG','DVN','DVT','DVW','DWC','DWS','DXL','DZM','E12','E29','ECO','EFI','EGL','EIC','EIN','EME','EMG','EMS','F88','FBC','FCC','FCS','FGL','FHN','FHS','FIC','FOC','FOX','FRC','FRM','FSO','FT1','FTI','FTM','G20','G36','GCB','GCF','GDA','GER','GGG','GH3','GLC','GLW','GMC','GND','GPC','GSM','GTD','GTS','GTT','GVT','H11','HAC','HAF','HAM','HAN','HAV','HBC','HBD','HBH','HC1','HC3','HCI','HD2','HD6','HD8','HDM','HDP','HDW','HEC','HEJ','HEP','HES','HFB','HFC','HFX','HGT','HHB','HHG','HHN','HIO','HJC','HKB','HLA','HLB','HLO','HLS','HLT','HLY','HMD','HMG','HMS','HNB','HND','HNF','HNG','HNI','HNM','HNP','HNR','HOT','HPB','HPD','HPH','HPI','HPM','HPO','HPP','HPT','HPW','HRB','HSA','HSM','HSP','HSV','HTE','HTM','HTP','HTT','HU3','HU4','HU6','HUG','HVA','HVX','HWS','IBD','ICC','ICF','ICI','ICN','IDP','IFS','IHK','ILA','ILC','ILS','IME','IN4','IRC','ISG','ISH','IST','ITA','ITS','JOS','KCB','KGM','KHD','KHW','KHX','KIP','KPF','KSQ','KTC','KTL','KTT','KVC','L12','L35','L43','L45','L61','L62','L63','LAI','LAW','LCC','LCM','LDW','LEC','LG9','LIC','LKW','LLM','LM3','LM7','LMC','LMH','LMI','LNC','LO5','LPT','LQN','LSG','LTC','LTG','LUT','M10','MA1','MBN','MBT','MCG','MDA','MDF','MEC','MEF','MES','MFS','MGC','MGG','MGR','MH3','MHL','MIE','MKP','MLC','MLS','MML','MNB','MND','MPC','MPT','MPY','MQB','MQN','MRF','MSR','MTA','MTB','MTG','MTH','MTL','MTP','MTS','MTV','MVC','MVN','MZG','NAC','NAS','NAU','NAW','NBE','NBT','NCG','NCS','ND2','NDC','NDF','NDP','NDT','NDW','NED','NGC','NHV','NJC','NLS','NNT','NOS','NQB','NQN','NSG','NSL','NSS','NTF','NTT','NTW','NUE','NVP','NWT','NXT','ODE','OIL','ONW','PAI','PAP','PAS','PAT','PBC','PBT','PCC','PCF','PCG','PCM','PDC','PEG','PEQ','PFL','PGB','PHH','PHP','PHS','PID','PIS','PIV','PJS','PLA','PLE','PLO','PMJ','PMT','PMW','PND','PNG','PNP','PNT','POB','POM','POS','POV','PPH','PPI','PQN','PRO','PRT','PSB','PSG','PSH','PSL','PSN','PSP','PTE','PTG','PTH','PTM','PTO','PTP','PTT','PTV','PVE','PVH','PVL','PVM','PVO','PVR','PVV','PVX','PVY','PWA','PWS','PXA','PXI','PXL','PXM','PXS','PXT','QBS','QCC','QHW','QNC','QNS','QNT','QNU','QNW','QPH','QSP','QTP','RAT','RBC','RCC','RCD','RDP','RGG','RIC','RTB','S12','S72','S74','SAC','SAL','SAS','SB1','SBB','SBD','SBH','SBL','SBM','SBR','SBS','SCC','SCD','SCJ','SCL','SCO','SD2','SD3','SD4','SD6','SD7','SD8','SDD','SDK','SDP','SDT','SDV','SDY','SEA','SEP','SGB','SGI','SGP','SGS','SHC','SHG','SID','SIG','SII','SIV','SJF','SJG','SJM','SKH','SKN','SKV','SLD','SNC','SNZ','SP2','SPB','SPD','SPH','SPI','SPV','SRB','SSF','SSG','SSH','SSN','STD','STH','STL','STS','STT','STW','SVG','SVH','SWC','SZE','SZG','TA6','TAB','TAN','TAR','TAW','TB8','TBD','TBR','TBW','TCJ','TCK','TCW','TDB','TDF','TDS','TED','TGG','TGP','TH1','THM','THN','THP','THU','THW','TID','TIE','TIN','TIS','TKA','TKC','TL4','TLP','TMG','TMW','TNA','TNB','TNP','TNS','TNV','TNW','TOP','TOS','TOW','TPS','TQN','TQW','TR1','TRS','TRT','TRV','TS3','TSD','TSG','TSJ','TST','TT6','TTB','TTD','TTG','TTN','TTS','TTZ','TUG','TV1','TV6','TVA','TVG','TVH','TVM','TVN','TW3','UCT','UDC','UDJ','UDL','UEM','UMC','UPC','UPH','UPS','USC','USD','UTT','UXC','VAV','VBB','VBG','VBH','VCE','VCP','VCR','VCT','VCX','VDB','VDG','VDN','VDT','VE2','VE8','VE9','VEA','VEC','VEF','VES','VET','VFC','VFR','VGG','VGI','VGL','VGR','VGT','VGV','VHD','VHF','VHG','VHH','VIE','VIM','VIN','VIR','VIW','VKC','VKP','VLB','VLC','VLG','VLP','VLS','VLW','VMA','VMG','VMK','VMT','VNA','VNB','VNH','VNI','VNP','VNX','VNY','VNZ','VPA','VPC','VPR','VPW','VQC','VRG','VSE','VSF','VSG','VSN','VST','VTA','VTD','VTE','VTG','VTI','VTK','VTM','VTQ','VTR','VTS','VTX','VUA','VVN','VW3','VWS','VXB','VXP','VXT','WSB','WTC','X26','X77','XDH','XHC','XLV','XMC','XMD','XMP','XPH','YBC','YTC']);
+
+// Persisted exchange overrides (user corrections saved to localStorage)
+const CACHE_VERSION = 'v3';
+const exchangeCache = (() => {
+    try {
+        if (localStorage.getItem('tvExchangeCacheVer') !== CACHE_VERSION) {
+            localStorage.removeItem('tvExchangeCache');
+            localStorage.setItem('tvExchangeCacheVer', CACHE_VERSION);
+            return {};
+        }
+        return JSON.parse(localStorage.getItem('tvExchangeCache') || '{}');
+    } catch (_) { return {}; }
+})();
+
+function saveExchangeCache(symbol, exchange) {
+    exchangeCache[symbol] = exchange;
+    try { localStorage.setItem('tvExchangeCache', JSON.stringify(exchangeCache)); } catch (_) {}
+}
+
+function detectExchange(symbol) {
+    if (exchangeCache[symbol]) return exchangeCache[symbol];
+    if (HNX_SET.has(symbol))   return 'HNX';
+    if (UPCOM_SET.has(symbol)) return 'UPCOM';
+    return 'HOSE';
+}
+
+// Click ticker → open TradingView in new tab (correct symbol, no popup issues)
+function openTvChart(ticker) {
+    if (!ticker || ticker === '-') return;
+    const symbol   = ticker.trim().toUpperCase();
+    const exchange = detectExchange(symbol);
+    window.open(`https://www.tradingview.com/chart/?symbol=${exchange}%3A${symbol}`, '_blank');
 }

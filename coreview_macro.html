@@ -1,0 +1,73 @@
+<!-- Filters Section -->
+<div class="max-w-[1440px] mx-auto mb-6">
+    <div class="bg-fin-blue-light/30 p-3 sm:p-4 md:p-5 rounded-2xl border border-gray-800/50">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- Date Range Filter -->
+            <div class="flex items-center bg-fin-blue border border-gray-700/50 rounded-xl px-3 py-2 shadow-inner w-full sm:w-auto">
+                <div class="flex flex-col flex-1">
+                    <label id="lblFromMacro" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5">Từ ngày</label>
+                    <div class="datepicker-wrapper">
+                        <input type="text" id="fromDateMacro" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                        <div id="fromDateMacroPopup" class="datepicker-popup"></div>
+                    </div>
+                </div>
+                <div class="w-[1px] h-7 bg-gray-700 mx-3"></div>
+                <div class="flex flex-col flex-1">
+                    <label id="lblToMacro" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5">Đến ngày</label>
+                    <div class="datepicker-wrapper">
+                        <input type="text" id="toDateMacro" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                        <div id="toDateMacroPopup" class="datepicker-popup"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative w-full sm:w-64">
+                <input type="text" id="searchInputMacro"
+                    class="w-full bg-fin-blue border border-gray-700/50 rounded-xl py-2.5 px-4 text-sm focus:outline-none focus:border-fin-gold transition-all text-white placeholder-gray-600 shadow-inner"
+                    placeholder="Ví dụ: Giá vàng/gia vang">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Export Button -->
+<div class="max-w-[1440px] mx-auto mb-4 flex justify-end">
+    <button id="exportBtnMacro" onclick="exportMacroToExcel()" 
+            class="flex items-center gap-2 bg-[#1d6f42] hover:bg-[#25844f] border border-[#2d8f5a] text-white px-4 py-2.5 rounded-xl font-bold text-sm shadow-lg transition-all hover:scale-105 active:scale-95">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12.9,14.5L15.8,19H14L12,15.6L10,19H8.2L11.1,14.5L8.2,10H10L12,13.4L14,10H15.8L12.9,14.5Z"/>
+        </svg>
+        <span id="exportBtnTextMacro">Xuất Excel</span>
+    </button>
+</div>
+
+<!-- Main Table Section -->
+<div class="max-w-[1440px] mx-auto bg-fin-blue-light border border-gray-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+    <div class="overflow-x-auto table-container">
+        <table class="w-full text-left border-collapse whitespace-nowrap">
+            <thead>
+                <tr class="bg-gray-800/60 text-gray-400 text-xs uppercase tracking-widest border-b border-gray-700" id="tableHeaderMacro"></tr>
+            </thead>
+            <tbody id="tableBodyMacro" class="text-sm divide-y divide-gray-800/40"></tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="p-3 sm:p-5 border-t border-gray-800 bg-gray-800/20 flex flex-col sm:flex-row justify-between items-center gap-3">
+        <div id="paginationInfoMacro" class="text-xs text-gray-500 font-medium"></div>
+        <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center">
+            <button id="firstBtnMacro" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm">&laquo;</button>
+            <button id="prevBtnMacro" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all">Trước</button>
+            <div id="pageNumbersMacro" class="flex gap-1.5 sm:gap-2"></div>
+            <button id="nextBtnMacro" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all">Sau</button>
+            <button id="lastBtnMacro" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm">&raquo;</button>
+        </div>
+    </div>
+
+    <div id="loadingStateMacro" class="p-20 text-center text-gray-400 hidden">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-fin-gold border-t-transparent mb-4"></div>
+        <p id="loadingTextMacro" class="text-sm font-medium">Đang tải dữ liệu...</p>
+    </div>
+    <div id="emptyStateMacro" class="p-20 text-center text-gray-500 hidden italic text-sm"></div>
+</div>

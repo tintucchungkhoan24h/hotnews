@@ -54,7 +54,8 @@
     <link rel="icon" type="image/png" href="ava_icon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
-    <script src="coreview_stock.js"></script>
+    <script src="coreview_stock.js?v=1.1"></script>
+    <script src="coreview_macro.js"></script>
     <!-- Force browser to reload - cache buster -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -345,6 +346,28 @@
         .company-name-cell:hover {
             color: #e5e7eb;
         }
+
+        /* Tab Navigation Styles */
+        .tab-button {
+            color: #9ca3af;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+        .tab-button:hover {
+            color: #e5e7eb;
+            background: rgba(255, 215, 0, 0.05);
+        }
+        .tab-button.active {
+            color: #0a192f;
+            background: #ffd700;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+        .tab-button:active {
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body class="bg-fin-blue text-gray-200 font-sans antialiased">
@@ -358,7 +381,19 @@
     <!-- Header Component -->
     <div id="header-container"></div>
 
-    <!-- Core Stock View Component -->
+    <!-- Tab Navigation -->
+    <div class="max-w-[1440px] mx-auto mb-6">
+        <div class="flex items-center gap-2 bg-fin-blue-light/30 p-2 rounded-xl border border-gray-800/50 w-fit">
+            <button id="tab-stock" class="tab-button active px-6 py-2.5 rounded-lg font-bold text-sm transition-all">
+                <span class="tab-text">Mã CK</span>
+            </button>
+            <button id="tab-macro" class="tab-button px-6 py-2.5 rounded-lg font-bold text-sm transition-all">
+                <span class="tab-text">Vĩ Mô</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Core View Container (Stock or Macro) -->
     <div id="coreview-container"></div>
 
     <script>
@@ -608,6 +643,20 @@
                 chartTooltip: 'Xem biểu đồ trên TradingView',
                 empty: 'Không có dữ liệu phù hợp.', prev: 'Trước', next: 'Sau',
                 paging: (s, e, t) => `Hiển thị ${s} - ${e} trên tổng ${t}`,
+                tabs: { stock: 'Mã CK', macro: 'Vĩ Mô' },
+                macro: {
+                    title: 'Phân Tích Vĩ Mô',
+                    desc: 'Trang phân tích vĩ mô đang được phát triển. Chúng tôi sẽ cung cấp các chỉ số kinh tế, phân tích xu hướng thị trường và dự báo vĩ mô trong thời gian tới.',
+                    feature1Title: 'Chỉ Số Kinh Tế',
+                    feature1Desc: 'GDP, CPI, lãi suất, tỷ giá',
+                    feature2Title: 'Phân Tích Xu Hướng',
+                    feature2Desc: 'Dòng tiền, thanh khoản thị trường',
+                    feature3Title: 'Dự Báo Vĩ Mô',
+                    feature3Desc: 'Triển vọng kinh tế, chính sách',
+                    feature4Title: 'Báo Cáo Chuyên Sâu',
+                    feature4Desc: 'Phân tích ngành, thị trường',
+                    status: 'Đang Phát Triển'
+                },
                 ma15Tooltip: {
                     '⏫ MA15': 'Tăng mạnh so với MA15',
                     '⬆️ MA15': 'Trên đường MA15',
@@ -637,6 +686,20 @@
                 chartTooltip: 'View chart on TradingView',
                 empty: 'No matching records found.', prev: 'Prev', next: 'Next',
                 paging: (s, e, t) => `Showing ${s} - ${e} of ${t}`,
+                tabs: { stock: 'Stock', macro: 'Macro' },
+                macro: {
+                    title: 'Macro Analysis',
+                    desc: 'The macro analysis page is under development. We will provide economic indicators, market trend analysis, and macro forecasts soon.',
+                    feature1Title: 'Economic Indicators',
+                    feature1Desc: 'GDP, CPI, interest rates, exchange rates',
+                    feature2Title: 'Trend Analysis',
+                    feature2Desc: 'Money flow, market liquidity',
+                    feature3Title: 'Macro Forecasts',
+                    feature3Desc: 'Economic outlook, policy analysis',
+                    feature4Title: 'In-Depth Reports',
+                    feature4Desc: 'Industry and market analysis',
+                    status: 'In Development'
+                },
                 ma15Tooltip: {
                     '⏫ MA15': 'Strong increase above MA15',
                     '⬆️ MA15': 'Above MA15 line',
@@ -729,7 +792,12 @@
             lang: 'vn',
             sortCol: 'timesfm_point', sortDesc: true,
             fromDate: '', toDate: '', searchQuery: '',
-            currentPage: 0, pageSize: 50, totalCount: 0
+            currentPage: 0, pageSize: 50, totalCount: 0,
+            // Macro view state
+            dataMacro: [],
+            fromDateMacro: '', toDateMacro: '', searchQueryMacro: '',
+            currentPageMacro: 0, pageSizeMacro: 50, totalCountMacro: 0,
+            sortColMacro: 'publish_time', sortDescMacro: true
         };
 
         // Hàm dịch tên công ty - Using Lingva (Fast, privacy-focused Google Translate proxy)
@@ -847,110 +915,7 @@
         // has been moved to coreview_stock.js for better code organization
         // ═══════════════════════════════════════════════════════════════════════════
 
-        window.onload = () => {
-            // Force GMT+7 timezone for all date operations
-            const today = getGMT7Date();
-            
-            // Allow selection of last 30 days (including today)
-            // Today = day 1, yesterday = day 2, ... 29 days ago = day 30
-            const twentyNineDaysAgo = new Date(today);
-            twentyNineDaysAgo.setDate(today.getDate() - 29);
-            
-            const lastWeek = new Date(today);
-            lastWeek.setDate(today.getDate() - 7);
-            
-            // Use GMT+7 date formatting
-            const minDate = dateToIso(twentyNineDaysAgo); // e.g., 2026-04-06
-            const maxDate = dateToIso(today);              // e.g., 2026-05-05
-
-            // Init custom date pickers
-            createPicker('fromDate', (iso) => {
-                state.fromDate = iso;
-                // toDate cannot be before fromDate
-                setPickerLimits('toDate', iso, maxDate);
-                // if current toDate is now before the new fromDate, snap it forward
-                if (state.toDate < iso) {
-                    state.toDate = iso;
-                    setPickerValue('toDate', iso);
-                }
-                state.currentPage = 0;
-                fetchData();
-            });
-            createPicker('toDate', (iso) => {
-                state.toDate = iso;
-                // fromDate cannot be after toDate
-                setPickerLimits('fromDate', minDate, iso);
-                // if current fromDate is now after the new toDate, snap it back
-                if (state.fromDate > iso) {
-                    state.fromDate = iso;
-                    setPickerValue('fromDate', iso);
-                }
-                state.currentPage = 0;
-                fetchData();
-            });
-
-            setPickerLimits('fromDate', minDate, maxDate);
-            setPickerLimits('toDate',   minDate, maxDate);
-
-            state.fromDate = dateToIso(lastWeek);
-            state.toDate   = maxDate;
-
-            setPickerValue('fromDate', state.fromDate);
-            setPickerValue('toDate',   state.toDate);
-
-            // Apply cross-constraints based on initial values
-            setPickerLimits('fromDate', minDate, state.toDate);
-            setPickerLimits('toDate',   state.fromDate, maxDate);
-
-            // Language toggle functionality
-            document.getElementById('langToggle').addEventListener('click', () => {
-                state.lang = state.lang === 'vn' ? 'en' : 'vn';
-                document.getElementById('langText').innerText = state.lang.toUpperCase();
-                document.getElementById('langFlag').innerHTML = flags[state.lang];
-                document.getElementById('main-title').innerText = i18n[state.lang].title;
-                document.getElementById('sub-title').innerText = i18n[state.lang].subtitle;
-                document.getElementById('searchInput').placeholder = i18n[state.lang].searchPlaceholder;
-                document.getElementById('lblFrom').innerText = i18n[state.lang].lblFrom;
-                document.getElementById('lblTo').innerText = i18n[state.lang].lblTo;
-                document.getElementById('prevBtn').innerText = i18n[state.lang].prev;
-                document.getElementById('nextBtn').innerText = i18n[state.lang].next;
-                document.getElementById('exportBtnText').innerText = i18n[state.lang].exportBtn;
-                refreshOpenPickers();
-                
-                renderHeaders(); 
-                renderBody(); 
-                renderPaginationUI();
-                renderFooter();
-                
-                // Translations are already preloaded, just render immediately
-                // If any new names or headlines need translation, do it in background
-                if (state.lang === 'en') {
-                    const untranslatedNames = state.data.map(d => d.organ_name).filter(n => !state.translatedNames[n]);
-                    const untranslatedHeadlines = state.data.map(d => d.headline).filter(h => !state.translatedHeadlines[h]);
-                    
-                    if (untranslatedNames.length > 0) {
-                        translateNames(untranslatedNames);
-                    }
-                    if (untranslatedHeadlines.length > 0) {
-                        translateHeadlines(untranslatedHeadlines);
-                    }
-                }
-            });
-
-            document.getElementById('searchInput').addEventListener('input', (e) => {
-                state.searchQuery = e.target.value.toUpperCase();
-                state.currentPage = 0;
-                fetchData();
-            });
-
-            document.getElementById('firstBtn').onclick = () => { state.currentPage = 0; fetchData(); };
-            document.getElementById('prevBtn').onclick = () => { state.currentPage--; fetchData(); };
-            document.getElementById('nextBtn').onclick = () => { state.currentPage++; fetchData(); };
-            document.getElementById('lastBtn').onclick = () => { state.currentPage = Math.floor(state.totalCount / state.pageSize); fetchData(); };
-
-            renderHeaders();
-            fetchData();
-        };
+        // Stock view initialization is now handled in coreview_stock.js
 
         function renderFooter() {
             const f = i18n[state.lang].footer;
@@ -966,101 +931,9 @@
             document.getElementById('footer-copyright-copy').innerHTML    = f.copyrightCopy;
         }
 
-        // ─── Company Name Tooltip ─────────────────────────────────────────────────
-        (function() {
-            const tooltip = document.getElementById('company-tooltip');
-            let hideTimer = null;
-
-            function positionTooltip(e) {
-                const margin = 12;
-                const tw = tooltip.offsetWidth  || 280;
-                const th = tooltip.offsetHeight || 48;
-                const vw = window.innerWidth;
-                const vh = window.innerHeight;
-
-                // Prefer below the tap/click point, fall back to above
-                let x = (e.clientX ?? e.touches?.[0]?.clientX ?? vw / 2) - tw / 2;
-                let y = (e.clientY ?? e.touches?.[0]?.clientY ?? vh / 2) + 16;
-
-                // Clamp horizontally
-                x = Math.max(margin, Math.min(x, vw - tw - margin));
-                // Flip above if it would go off the bottom
-                if (y + th > vh - margin) {
-                    y = (e.clientY ?? e.touches?.[0]?.clientY ?? vh / 2) - th - 16;
-                }
-                y = Math.max(margin, y);
-
-                tooltip.style.left = x + 'px';
-                tooltip.style.top  = y + 'px';
-            }
-
-            window.showCompanyTooltip = function(e, cell) {
-                const fullName = cell.getAttribute('title');
-                if (!fullName || fullName === '-') return;
-
-                // Reset animation by toggling class
-                tooltip.classList.remove('visible');
-                tooltip.textContent = fullName;
-
-                // Position before showing (need a frame for offsetWidth to be valid)
-                requestAnimationFrame(() => {
-                    positionTooltip(e);
-                    tooltip.classList.add('visible');
-
-                    clearTimeout(hideTimer);
-                    hideTimer = setTimeout(() => {
-                        tooltip.classList.remove('visible');
-                    }, 4000);
-                });
-
-                e.stopPropagation();
-            };
-
-            // Tap/click anywhere else hides it immediately
-            document.addEventListener('click',     () => { clearTimeout(hideTimer); tooltip.classList.remove('visible'); });
-            document.addEventListener('touchstart', () => { clearTimeout(hideTimer); tooltip.classList.remove('visible'); }, { passive: true });
-        })();
-
-        // ─── TradingView Chart ────────────────────────────────────────────────────
-
-        const HNX_SET = new Set(['AAV','ADC','ALT','AMC','AME','AMV','API','APS','ARM','ATS','BAB','BAX','BBS','BCC','BCF','BED','BKC','BNA','BPC','BTS','BTW','BVS','BXH','C69','CAG','CAN','CAP','CAR','CCR','CDN','CEO','CET','CIA','CJC','CKV','CLH','CLM','CMC','CMS','CPC','CSC','CST','CTB','CTP','CTT','CX8','D11','DAD','DAE','DC2','DDG','DHP','DHT','DIH','DL1','DNC','DNP','DP3','DS3','DST','DTD','DTG','DTK','DVM','DXP','EBS','ECI','EID','EVS','FID','GDW','GIC','GKM','GLT','GMA','GMX','HAD','HAT','HBS','HCC','HCT','HDA','HEV','HGM','HHC','HJS','HKT','HLC','HLD','HMH','HMR','HOM','HTC','HUT','HVT','ICG','IDC','IDJ','IDV','INC','INN','IPA','ITQ','IVS','KDM','KHS','KKC','KMT','KSD','KSF','KST','KSV','KTS','L14','L18','L40','LAS','LBE','LCD','LDP','LHC','LIG','MAC','MAS','MBG','MBS','MCC','MCF','MCO','MDC','MED','MEL','MIC','MKV','MST','MVB','NAG','NAP','NBC','NBP','NBW','NDN','NDX','NET','NFC','NHC','NRC','NSH','NST','NTH','NTP','NVB','OCH','ONE','PBP','PCE','PCH','PCT','PDB','PEN','PGN','PGS','PGT','PHN','PIA','PIC','PJC','PLC','PMB','PMC','PMP','PMS','POT','PPE','PPP','PPS','PPT','PPY','PRC','PRE','PSC','PSD','PSE','PSI','PSW','PTD','PTI','PTS','PTX','PV2','PVB','PVC','PVG','PVI','PVS','QHD','QST','QTC','RCL','S55','S99','SAF','SCG','SCI','SD5','SD9','SDA','SDC','SDG','SDN','SDU','SEB','SED','SFN','SGC','SGD','SGH','SHE','SHN','SHS','SJ1','SJE','SLS','SMN','SMT','SPC','SRA','SSM','STC','STP','SVN','SZB','TA9','TD6','TDT','TET','TFC','THB','THD','THS','THT','TIG','TJC','TKU','TMB','TMC','TMX','TNG','TOT','TPP','TSB','TTC','TTH','TTL','TTT','TV3','TV4','TVC','TVD','TXM','UNI','V12','V21','VBC','VC1','VC2','VC3','VC6','VC7','VC9','VCC','VCM','VCS','VDL','VE1','VE3','VE4','VFS','VGP','VGS','VHE','VHL','VIF','VIG','VIT','VLA','VMC','VMS','VNC','VNF','VNR','VNT','VSA','VSM','VTC','VTH','VTJ','VTV','VTZ','WCS','WSS','X20']);
-
-        const UPCOM_SET = new Set(['A32','AAH','AAS','ABB','ABC','ABI','ABW','ACE','ACM','ACS','ACV','AG1','AGF','AGM','AGP','AGX','AIC','AIG','ALC','ALV','AMP','AMS','APC','APF','APL','APP','APT','ART','ATA','ATG','AVC','AVF','AVG','BAL','BBH','BBM','BBT','BCA','BCB','BCP','BCR','BCV','BDG','BDT','BDW','BEL','BGE','BGW','BHA','BHC','BHG','BHH','BHI','BHK','BHP','BIG','BIO','BLF','BLI','BLN','BLT','BMD','BMF','BMG','BMJ','BMK','BMS','BMV','BNW','BOT','BQB','BQP','BRR','BRS','BSA','BSD','BSG','BSH','BSL','BSP','BSQ','BT1','BT6','BTB','BTD','BTG','BTH','BTN','BTU','BTV','BVB','BVG','BVL','BVN','BWA','BWS','C21','C22','C4G','C92','CAD','CAT','CBI','CBS','CC1','CCA','CCM','CCP','CCS','CCT','CCV','CDG','CDO','CDP','CDR','CEN','CFM','CFV','CGV','CH5','CHC','CHS','CI5','CID','CIP','CK8','CKA','CKD','CLX','CMD','CMF','CMI','CMK','CMM','CMN','CMP','CMT','CMW','CNA','CNC','CNN','CNT','CPA','CPH','CPI','CQN','CQT','CSI','CT3','CT6','CTA','CTW','CTX','CVN','CYC','DAC','DAG','DAN','DAS','DBM','DC1','DCF','DCG','DCH','DCR','DCS','DCT','DCV','DDB','DDH','DDM','DDN','DDV','DFC','DFF','DGT','DHB','DHD','DHN','DIC','DID','DKC','DKG','DLD','DLR','DLT','DM7','DMN','DMS','DNA','DND','DNE','DNH','DNL','DNM','DNN','DNT','DNW','DOC','DOP','DP1','DP2','DPC','DPH','DPP','DRG','DRI','DSD','DSG','DSH','DSP','DTC','DTE','DTH','DTI','DTP','DUS','DVC','DVG','DVN','DVT','DVW','DWC','DWS','DXL','DZM','E12','E29','ECO','EFI','EGL','EIC','EIN','EME','EMG','EMS','F88','FBC','FCC','FCS','FGL','FHN','FHS','FIC','FOC','FOX','FRC','FRM','FSO','FT1','FTI','FTM','G20','G36','GCB','GCF','GDA','GER','GGG','GH3','GLC','GLW','GMC','GND','GPC','GSM','GTD','GTS','GTT','GVT','H11','HAC','HAF','HAM','HAN','HAV','HBC','HBD','HBH','HC1','HC3','HCI','HD2','HD6','HD8','HDM','HDP','HDW','HEC','HEJ','HEP','HES','HFB','HFC','HFX','HGT','HHB','HHG','HHN','HIO','HJC','HKB','HLA','HLB','HLO','HLS','HLT','HLY','HMD','HMG','HMS','HNB','HND','HNF','HNG','HNI','HNM','HNP','HNR','HOT','HPB','HPD','HPH','HPI','HPM','HPO','HPP','HPT','HPW','HRB','HSA','HSM','HSP','HSV','HTE','HTM','HTP','HTT','HU3','HU4','HU6','HUG','HVA','HVX','HWS','IBD','ICC','ICF','ICI','ICN','IDP','IFS','IHK','ILA','ILC','ILS','IME','IN4','IRC','ISG','ISH','IST','ITA','ITS','JOS','KCB','KGM','KHD','KHW','KHX','KIP','KPF','KSQ','KTC','KTL','KTT','KVC','L12','L35','L43','L45','L61','L62','L63','LAI','LAW','LCC','LCM','LDW','LEC','LG9','LIC','LKW','LLM','LM3','LM7','LMC','LMH','LMI','LNC','LO5','LPT','LQN','LSG','LTC','LTG','LUT','M10','MA1','MBN','MBT','MCG','MDA','MDF','MEC','MEF','MES','MFS','MGC','MGG','MGR','MH3','MHL','MIE','MKP','MLC','MLS','MML','MNB','MND','MPC','MPT','MPY','MQB','MQN','MRF','MSR','MTA','MTB','MTG','MTH','MTL','MTP','MTS','MTV','MVC','MVN','MZG','NAC','NAS','NAU','NAW','NBE','NBT','NCG','NCS','ND2','NDC','NDF','NDP','NDT','NDW','NED','NGC','NHV','NJC','NLS','NNT','NOS','NQB','NQN','NSG','NSL','NSS','NTF','NTT','NTW','NUE','NVP','NWT','NXT','ODE','OIL','ONW','PAI','PAP','PAS','PAT','PBC','PBT','PCC','PCF','PCG','PCM','PDC','PEG','PEQ','PFL','PGB','PHH','PHP','PHS','PID','PIS','PIV','PJS','PLA','PLE','PLO','PMJ','PMT','PMW','PND','PNG','PNP','PNT','POB','POM','POS','POV','PPH','PPI','PQN','PRO','PRT','PSB','PSG','PSH','PSL','PSN','PSP','PTE','PTG','PTH','PTM','PTO','PTP','PTT','PTV','PVE','PVH','PVL','PVM','PVO','PVR','PVV','PVX','PVY','PWA','PWS','PXA','PXI','PXL','PXM','PXS','PXT','QBS','QCC','QHW','QNC','QNS','QNT','QNU','QNW','QPH','QSP','QTP','RAT','RBC','RCC','RCD','RDP','RGG','RIC','RTB','S12','S72','S74','SAC','SAL','SAS','SB1','SBB','SBD','SBH','SBL','SBM','SBR','SBS','SCC','SCD','SCJ','SCL','SCO','SD2','SD3','SD4','SD6','SD7','SD8','SDD','SDK','SDP','SDT','SDV','SDY','SEA','SEP','SGB','SGI','SGP','SGS','SHC','SHG','SID','SIG','SII','SIV','SJF','SJG','SJM','SKH','SKN','SKV','SLD','SNC','SNZ','SP2','SPB','SPD','SPH','SPI','SPV','SRB','SSF','SSG','SSH','SSN','STD','STH','STL','STS','STT','STW','SVG','SVH','SWC','SZE','SZG','TA6','TAB','TAN','TAR','TAW','TB8','TBD','TBR','TBW','TCJ','TCK','TCW','TDB','TDF','TDS','TED','TGG','TGP','TH1','THM','THN','THP','THU','THW','TID','TIE','TIN','TIS','TKA','TKC','TL4','TLP','TMG','TMW','TNA','TNB','TNP','TNS','TNV','TNW','TOP','TOS','TOW','TPS','TQN','TQW','TR1','TRS','TRT','TRV','TS3','TSD','TSG','TSJ','TST','TT6','TTB','TTD','TTG','TTN','TTS','TTZ','TUG','TV1','TV6','TVA','TVG','TVH','TVM','TVN','TW3','UCT','UDC','UDJ','UDL','UEM','UMC','UPC','UPH','UPS','USC','USD','UTT','UXC','VAV','VBB','VBG','VBH','VCE','VCP','VCR','VCT','VCX','VDB','VDG','VDN','VDT','VE2','VE8','VE9','VEA','VEC','VEF','VES','VET','VFC','VFR','VGG','VGI','VGL','VGR','VGT','VGV','VHD','VHF','VHG','VHH','VIE','VIM','VIN','VIR','VIW','VKC','VKP','VLB','VLC','VLG','VLP','VLS','VLW','VMA','VMG','VMK','VMT','VNA','VNB','VNH','VNI','VNP','VNX','VNY','VNZ','VPA','VPC','VPR','VPW','VQC','VRG','VSE','VSF','VSG','VSN','VST','VTA','VTD','VTE','VTG','VTI','VTK','VTM','VTQ','VTR','VTS','VTX','VUA','VVN','VW3','VWS','VXB','VXP','VXT','WSB','WTC','X26','X77','XDH','XHC','XLV','XMC','XMD','XMP','XPH','YBC','YTC']);
-
-        // Persisted exchange overrides (user corrections saved to localStorage)
-        const CACHE_VERSION = 'v3';
-        const exchangeCache = (() => {
-            try {
-                if (localStorage.getItem('tvExchangeCacheVer') !== CACHE_VERSION) {
-                    localStorage.removeItem('tvExchangeCache');
-                    localStorage.setItem('tvExchangeCacheVer', CACHE_VERSION);
-                    return {};
-                }
-                return JSON.parse(localStorage.getItem('tvExchangeCache') || '{}');
-            } catch (_) { return {}; }
-        })();
-
-        function saveExchangeCache(symbol, exchange) {
-            exchangeCache[symbol] = exchange;
-            try { localStorage.setItem('tvExchangeCache', JSON.stringify(exchangeCache)); } catch (_) {}
-        }
-
-        function detectExchange(symbol) {
-            if (exchangeCache[symbol]) return exchangeCache[symbol];
-            if (HNX_SET.has(symbol))   return 'HNX';
-            if (UPCOM_SET.has(symbol)) return 'UPCOM';
-            return 'HOSE';
-        }
-
-        // Click ticker → open TradingView in new tab (correct symbol, no popup issues)
-        function openTvChart(ticker) {
-            if (!ticker || ticker === '-') return;
-            const symbol   = ticker.trim().toUpperCase();
-            const exchange = detectExchange(symbol);
-            window.open(`https://www.tradingview.com/chart/?symbol=${exchange}%3A${symbol}`, '_blank');
-        }
-
-        // ─────────────────────────────────────────────────────────────────────────
+        // ═══════════════════════════════════════════════════════════════════════════
+        // NOTE: Company tooltip and TradingView chart logic moved to coreview_stock.js
+        // ═══════════════════════════════════════════════════════════════════════════
     </script>
     
     </div><!-- End Main Content Wrapper -->
@@ -1070,21 +943,173 @@
 
     <!-- Load Header, Core View, and Footer Components -->
     <script>
+        // Track current active tab
+        let currentTab = 'stock';
+        
+        // Global language toggle handler
+        function setupLanguageToggle() {
+            const langToggle = document.getElementById('langToggle');
+            if (!langToggle) return;
+            
+            langToggle.addEventListener('click', () => {
+                state.lang = state.lang === 'vn' ? 'en' : 'vn';
+                document.getElementById('langText').innerText = state.lang.toUpperCase();
+                document.getElementById('langFlag').innerHTML = flags[state.lang];
+                document.getElementById('main-title').innerText = i18n[state.lang].title;
+                document.getElementById('sub-title').innerText = i18n[state.lang].subtitle;
+                
+                // Update tab labels
+                updateTabLabels();
+                
+                // Update stock view elements if on stock tab
+                if (currentTab === 'stock') {
+                    if (typeof updateStockViewLabels === 'function') {
+                        updateStockViewLabels();
+                    }
+                    
+                    if (typeof refreshOpenPickers === 'function') {
+                        refreshOpenPickers();
+                    }
+                    
+                    if (typeof renderHeaders === 'function') renderHeaders();
+                    if (typeof renderBody === 'function') renderBody();
+                    if (typeof renderPaginationUI === 'function') renderPaginationUI();
+                    
+                    // Translations are already preloaded, just render immediately
+                    // If any new names or headlines need translation, do it in background
+                    if (state.lang === 'en') {
+                        const untranslatedNames = state.data.map(d => d.organ_name).filter(n => !state.translatedNames[n]);
+                        const untranslatedHeadlines = state.data.map(d => d.headline).filter(h => !state.translatedHeadlines[h]);
+                        
+                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') {
+                            translateNames(untranslatedNames);
+                        }
+                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') {
+                            translateHeadlines(untranslatedHeadlines);
+                        }
+                    }
+                }
+                
+                // Update macro view elements if on macro tab
+                if (currentTab === 'macro') {
+                    if (typeof updateMacroViewLabels === 'function') {
+                        updateMacroViewLabels();
+                    }
+                    
+                    if (typeof refreshOpenPickers === 'function') {
+                        refreshOpenPickers();
+                    }
+                    
+                    if (typeof renderMacroHeaders === 'function') renderMacroHeaders();
+                    if (typeof renderMacroBody === 'function') renderMacroBody();
+                    if (typeof renderMacroPaginationUI === 'function') renderMacroPaginationUI();
+                    
+                    // Translations are already preloaded, just render immediately
+                    // If any new headlines need translation, do it in background
+                    if (state.lang === 'en') {
+                        const untranslatedHeadlines = state.dataMacro.map(d => d.headline).filter(h => !state.translatedHeadlines[h]);
+                        
+                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') {
+                            translateHeadlines(untranslatedHeadlines);
+                        }
+                    }
+                }
+                
+                renderFooter();
+            });
+        }
+        
         // Load header component
         fetch('header.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
+                // Setup language toggle after header is loaded
+                setupLanguageToggle();
             })
             .catch(error => console.error('Error loading header:', error));
         
-        // Load core stock view component
-        fetch('coreview_stock.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('coreview-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading core view:', error));
+        // Function to load core view based on tab
+        function loadCoreView(tab) {
+            currentTab = tab;
+            const container = document.getElementById('coreview-container');
+            
+            // Update tab button states
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`tab-${tab}`).classList.add('active');
+            
+            if (tab === 'stock') {
+                // Load stock view
+                fetch('coreview_stock.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        container.innerHTML = data;
+                        // Initialize stock view after loading
+                        if (typeof initStockView === 'function') {
+                            initStockView();
+                        }
+                    })
+                    .catch(error => console.error('Error loading stock view:', error));
+            } else if (tab === 'macro') {
+                // Load macro view
+                fetch('coreview_macro.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        container.innerHTML = data;
+                        // Initialize macro view after loading
+                        if (typeof initMacroView === 'function') {
+                            initMacroView();
+                        }
+                    })
+                    .catch(error => console.error('Error loading macro view:', error));
+            }
+        }
+        
+        // Function to update macro page translations
+        function updateMacroTranslations() {
+            const m = i18n[state.lang].macro;
+            const elements = {
+                'macro-title': m.title,
+                'macro-desc': m.desc,
+                'feature1-title': m.feature1Title,
+                'feature1-desc': m.feature1Desc,
+                'feature2-title': m.feature2Title,
+                'feature2-desc': m.feature2Desc,
+                'feature3-title': m.feature3Title,
+                'feature3-desc': m.feature3Desc,
+                'feature4-title': m.feature4Title,
+                'feature4-desc': m.feature4Desc,
+                'status-text': m.status
+            };
+            
+            Object.keys(elements).forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.innerText = elements[id];
+            });
+        }
+        
+        // Function to update tab labels
+        function updateTabLabels() {
+            const tabs = document.querySelectorAll('.tab-button .tab-text');
+            if (tabs[0]) tabs[0].innerText = i18n[state.lang].tabs.stock;
+            if (tabs[1]) tabs[1].innerText = i18n[state.lang].tabs.macro;
+            
+            // Update macro page if it's currently active
+            if (currentTab === 'macro') {
+                updateMacroTranslations();
+            }
+        }
+        
+        // Initialize: Load stock view by default
+        loadCoreView('stock');
+        
+        // Add tab click handlers
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('tab-stock').addEventListener('click', () => loadCoreView('stock'));
+            document.getElementById('tab-macro').addEventListener('click', () => loadCoreView('macro'));
+        });
         
         // Load footer component
         fetch('footer.html')
