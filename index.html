@@ -39,6 +39,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cập nhật thị trường mỗi ngày. 🔍 Phân tích mã cổ phiếu & Xu hướng đầu tư. 🚀 Đồng hành cùng nhà đầu tư trong và ngoài nước quan tâm đến thị trường Việt Nam.">
+    
+    <!-- Aggressive cache control for Safari iOS -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0, post-check=0, pre-check=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <!-- Safari-specific cache busting -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <title>Tin Tức Chứng Khoán 24h</title>
     
     <!-- Favicon for Google Search (must be multiple of 48px) -->
@@ -54,14 +64,13 @@
     <link rel="icon" type="image/png" href="ava_icon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
-    <!-- JS files loaded dynamically with version control - see bottom of file -->
-    <!-- Force browser to reload - cache buster -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <!-- JS files loaded dynamically with version control - see below -->
     <script>
         // Global version for cache busting - increment this with each deployment
         const APP_VERSION = '2.0';
+        
+        // Add timestamp for Safari iOS aggressive cache busting
+        const CACHE_BUSTER = APP_VERSION + '.' + Math.floor(Date.now() / 60000); // Changes every minute
         
         // Load JS files with version control
         (function() {
@@ -72,7 +81,7 @@
             
             scripts.forEach(function(src) {
                 const script = document.createElement('script');
-                script.src = src + '?v=' + APP_VERSION;
+                script.src = src + '?v=' + CACHE_BUSTER;
                 script.async = false; // Maintain execution order
                 document.head.appendChild(script);
             });
@@ -1955,7 +1964,7 @@
         setupFilterOverlay();
         
         // Load header component
-        fetch('header.html?v=' + APP_VERSION)
+        fetch('header.html?v=' + CACHE_BUSTER)
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
@@ -1975,8 +1984,8 @@
             });
             document.getElementById(`tab-${tab}`).classList.add('active');
             
-            // Use APP_VERSION for cache busting
-            const cacheBuster = '?v=' + APP_VERSION;
+            // Use CACHE_BUSTER for Safari iOS compatibility
+            const cacheBuster = '?v=' + CACHE_BUSTER;
             
             if (tab === 'stock') {
                 // Load stock view
@@ -2050,7 +2059,7 @@
         });
         
         // Load footer component
-        fetch('footer.html?v=' + APP_VERSION)
+        fetch('footer.html?v=' + CACHE_BUSTER)
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;

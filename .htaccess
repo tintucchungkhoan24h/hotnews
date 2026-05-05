@@ -3,3 +3,31 @@ AddCharset UTF-8 .html
 <FilesMatch "\.(html|htm)$">
     Header set Content-Type "text/html; charset=UTF-8"
 </FilesMatch>
+
+# Aggressive cache control for Safari iOS
+<IfModule mod_headers.c>
+    # Prevent caching of HTML files
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0, post-check=0, pre-check=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+    
+    # Cache JS and CSS with version control (1 year)
+    <FilesMatch "\.(js|css)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    
+    # Prevent caching of images that might change
+    <FilesMatch "\.(jpg|jpeg|png|gif|svg|ico)$">
+        Header set Cache-Control "public, max-age=86400"
+    </FilesMatch>
+</IfModule>
+
+# Enable ETags for better cache validation
+FileETag MTime Size
+
+# Disable ETags for HTML to force revalidation
+<FilesMatch "\.(html|htm)$">
+    FileETag None
+</FilesMatch>
