@@ -1466,7 +1466,7 @@
                             </div>
                             <div id="filterOptionsSource" class="filter-options">
                                 ${sources.map(source => {
-                                    const displayName = getSourceDisplayName(source);
+                                    const displayName = getSourceDisplayName(source, state.lang);
                                     return `
                                     <div class="filter-option ${(filterState.macro.source_name.size === 0 || filterState.macro.source_name.has(source)) && !filterState.macro.source_name.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('macro', 'source_name', '${source.replace(/'/g, "\\'")}')">
                                         <div class="filter-checkbox">
@@ -1716,15 +1716,34 @@
         }
         
         // Map source names to Vietnamese display names
-        function getSourceDisplayName(sourceName) {
+        function getSourceDisplayName(sourceName, lang = 'vn') {
             const sourceMap = {
-                'Investing-ChiBaoKinhTe': 'Investing-Chỉ báo kinh tế',
-                'Investing-Forex': 'Investing-Tiền tệ',
-                'Investing-HangHoa': 'Investing-Hàng hoá',
-                'Investing-TheGioi': 'Investing-Thế giới',
-                'Investing-TinPhoBien': 'Investing-Tin phổ biến'
+                'Investing-ChiBaoKinhTe': {
+                    vn: 'Investing-Chỉ báo kinh tế',
+                    en: 'Investing-Economic Indicators'
+                },
+                'Investing-Forex': {
+                    vn: 'Investing-Tiền tệ',
+                    en: 'Investing-Forex'
+                },
+                'Investing-HangHoa': {
+                    vn: 'Investing-Hàng hoá',
+                    en: 'Investing-Commodities'
+                },
+                'Investing-TheGioi': {
+                    vn: 'Investing-Thế giới',
+                    en: 'Investing-World News'
+                },
+                'Investing-TinPhoBien': {
+                    vn: 'Investing-Tin phổ biến',
+                    en: 'Investing-Popular News'
+                }
             };
-            return sourceMap[sourceName] || sourceName;
+            
+            if (sourceMap[sourceName]) {
+                return sourceMap[sourceName][lang] || sourceMap[sourceName]['vn'];
+            }
+            return sourceName;
         }
 
         // Toggle filter section collapse/expand
