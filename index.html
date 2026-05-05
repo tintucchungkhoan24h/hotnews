@@ -423,6 +423,48 @@
             margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 8px;
+            transition: all 0.15s;
+        }
+        .filter-section-title:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+        .filter-section-title .expand-icon {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s ease;
+        }
+        .filter-section-title.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+        .filter-section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .filter-section-content.expanded {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .filter-section-content.expanded::-webkit-scrollbar {
+            width: 6px;
+        }
+        .filter-section-content.expanded::-webkit-scrollbar-track {
+            background: #0a192f;
+            border-radius: 3px;
+        }
+        .filter-section-content.expanded::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 3px;
+        }
+        .filter-section-content.expanded::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
         }
         .filter-search {
             width: 100%;
@@ -1170,6 +1212,14 @@
                 source_name: new Set()
             }
         };
+        
+        // Track expanded/collapsed state of filter sections
+        const filterSectionState = {
+            'stock-code': false,
+            'ma15': false,
+            'industry': false,
+            'source': false
+        };
 
         // Open filter popup
         function openFilterPopup() {
@@ -1244,83 +1294,104 @@
                 content.innerHTML = `
                     <!-- Stock Code Filter -->
                     <div class="filter-section">
-                        <div class="filter-section-title">${t.stockCode}</div>
-                        <input type="text" id="filterSearchStock" class="filter-search" placeholder="${t.search}">
-                        <div class="filter-select-all ${allStockSelected ? 'selected' : ''}" onclick="toggleSelectAll('single_stock')">
-                            <div class="filter-checkbox">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                            </div>
-                            <div class="filter-label">${t.selectAll}</div>
+                        <div class="filter-section-title" onclick="toggleFilterSection('stock-code')">
+                            <span>${t.stockCode}</span>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </div>
-                        <div id="filterOptionsStock" class="filter-options">
-                            ${stockCodes.map(code => `
-                                <div class="filter-option ${(filterState.stock.single_stock.size === 0 || filterState.stock.single_stock.has(code)) && !filterState.stock.single_stock.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'single_stock', '${code}')">
-                                    <div class="filter-checkbox">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                    </div>
-                                    <div class="filter-label">${code}</div>
+                        <div id="filter-section-stock-code" class="filter-section-content">
+                            <input type="text" id="filterSearchStock" class="filter-search" placeholder="${t.search}">
+                            <div class="filter-select-all ${allStockSelected ? 'selected' : ''}" onclick="toggleSelectAll('single_stock')">
+                                <div class="filter-checkbox">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                 </div>
-                            `).join('')}
+                                <div class="filter-label">${t.selectAll}</div>
+                            </div>
+                            <div id="filterOptionsStock" class="filter-options">
+                                ${stockCodes.map(code => `
+                                    <div class="filter-option ${(filterState.stock.single_stock.size === 0 || filterState.stock.single_stock.has(code)) && !filterState.stock.single_stock.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'single_stock', '${code}')">
+                                        <div class="filter-checkbox">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="filter-label">${code}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
                         </div>
                     </div>
                     
                     <!-- MA15 Filter -->
                     <div class="filter-section">
-                        <div class="filter-section-title">${t.ma15}</div>
-                        <div class="filter-select-all ${allMA15Selected ? 'selected' : ''}" onclick="toggleSelectAll('ma15')">
-                            <div class="filter-checkbox">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                            </div>
-                            <div class="filter-label">${t.selectAll}</div>
+                        <div class="filter-section-title" onclick="toggleFilterSection('ma15')">
+                            <span>${t.ma15}</span>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </div>
-                        <div id="filterOptionsMA15" class="filter-options">
-                            ${ma15Values.map(val => `
-                                <div class="filter-option ${(filterState.stock.ma15.size === 0 || filterState.stock.ma15.has(val.key)) && !filterState.stock.ma15.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'ma15', '${val.key}')">
-                                    <div class="filter-checkbox">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                    </div>
-                                    <div class="filter-label">${val.label}</div>
+                        <div id="filter-section-ma15" class="filter-section-content">
+                            <div class="filter-select-all ${allMA15Selected ? 'selected' : ''}" onclick="toggleSelectAll('ma15')">
+                                <div class="filter-checkbox">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                 </div>
-                            `).join('')}
+                                <div class="filter-label">${t.selectAll}</div>
+                            </div>
+                            <div id="filterOptionsMA15" class="filter-options">
+                                ${ma15Values.map(val => `
+                                    <div class="filter-option ${(filterState.stock.ma15.size === 0 || filterState.stock.ma15.has(val.key)) && !filterState.stock.ma15.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'ma15', '${val.key}')">
+                                        <div class="filter-checkbox">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="filter-label">${val.label}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
                         </div>
                     </div>
                     
                     <!-- Industry Filter -->
                     <div class="filter-section">
-                        <div class="filter-section-title">${t.industry}</div>
-                        <input type="text" id="filterSearchIndustry" class="filter-search" placeholder="${t.search}">
-                        <div class="filter-select-all ${allIndustrySelected ? 'selected' : ''}" onclick="toggleSelectAll('industry')">
-                            <div class="filter-checkbox">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                            </div>
-                            <div class="filter-label">${t.selectAll}</div>
+                        <div class="filter-section-title" onclick="toggleFilterSection('industry')">
+                            <span>${t.industry}</span>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </div>
-                        <div id="filterOptionsIndustry" class="filter-options">
-                            ${industries.map(ind => {
-                                // Get translated name if in English mode
-                                const displayName = state.lang === 'en' && window.industryTranslations && window.industryTranslations[ind] 
-                                    ? window.industryTranslations[ind] 
-                                    : ind;
-                                return `
-                                <div class="filter-option ${(filterState.stock.industry.size === 0 || filterState.stock.industry.has(ind)) && !filterState.stock.industry.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'industry', '${ind.replace(/'/g, "\\'")}')">
-                                    <div class="filter-checkbox">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                    </div>
-                                    <div class="filter-label">${displayName}</div>
+                        <div id="filter-section-industry" class="filter-section-content">
+                            <input type="text" id="filterSearchIndustry" class="filter-search" placeholder="${t.search}">
+                            <div class="filter-select-all ${allIndustrySelected ? 'selected' : ''}" onclick="toggleSelectAll('industry')">
+                                <div class="filter-checkbox">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                 </div>
-                            `}).join('')}
+                                <div class="filter-label">${t.selectAll}</div>
+                            </div>
+                            <div id="filterOptionsIndustry" class="filter-options">
+                                ${industries.map(ind => {
+                                    // Get translated name if in English mode
+                                    const displayName = state.lang === 'en' && window.industryTranslations && window.industryTranslations[ind] 
+                                        ? window.industryTranslations[ind] 
+                                        : ind;
+                                    return `
+                                    <div class="filter-option ${(filterState.stock.industry.size === 0 || filterState.stock.industry.has(ind)) && !filterState.stock.industry.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'industry', '${ind.replace(/'/g, "\\'")}')">
+                                        <div class="filter-checkbox">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="filter-label">${displayName}</div>
+                                    </div>
+                                `}).join('')}
+                            </div>
                         </div>
                     </div>
                     
@@ -1349,27 +1420,34 @@
                 content.innerHTML = `
                     <!-- Source Filter -->
                     <div class="filter-section">
-                        <div class="filter-section-title">${t.source}</div>
-                        <input type="text" id="filterSearchSource" class="filter-search" placeholder="${t.search}">
-                        <div class="filter-select-all ${allSourcesSelected ? 'selected' : ''}" onclick="toggleSelectAll('source_name')">
-                            <div class="filter-checkbox">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                            </div>
-                            <div class="filter-label">${t.selectAll}</div>
+                        <div class="filter-section-title" onclick="toggleFilterSection('source')">
+                            <span>${t.source}</span>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </div>
-                        <div id="filterOptionsSource" class="filter-options">
-                            ${sources.map(source => `
-                                <div class="filter-option ${(filterState.macro.source_name.size === 0 || filterState.macro.source_name.has(source)) && !filterState.macro.source_name.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('macro', 'source_name', '${source.replace(/'/g, "\\'")}')">
-                                    <div class="filter-checkbox">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                    </div>
-                                    <div class="filter-label">${source}</div>
+                        <div id="filter-section-source" class="filter-section-content">
+                            <input type="text" id="filterSearchSource" class="filter-search" placeholder="${t.search}">
+                            <div class="filter-select-all ${allSourcesSelected ? 'selected' : ''}" onclick="toggleSelectAll('source_name')">
+                                <div class="filter-checkbox">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                 </div>
-                            `).join('')}
+                                <div class="filter-label">${t.selectAll}</div>
+                            </div>
+                            <div id="filterOptionsSource" class="filter-options">
+                                ${sources.map(source => `
+                                    <div class="filter-option ${(filterState.macro.source_name.size === 0 || filterState.macro.source_name.has(source)) && !filterState.macro.source_name.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('macro', 'source_name', '${source.replace(/'/g, "\\'")}')">
+                                        <div class="filter-checkbox">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="filter-label">${source}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
                         </div>
                     </div>
                     
@@ -1383,6 +1461,9 @@
                 // Setup search handler
                 setupFilterSearch('filterSearchSource', 'filterOptionsSource');
             }
+            
+            // Restore expanded/collapsed state after rebuilding content
+            restoreFilterSectionStates();
         }
 
         // Setup filter search functionality
@@ -1602,6 +1683,36 @@
             }
         }
 
+        // Toggle filter section collapse/expand
+        function toggleFilterSection(sectionId) {
+            const titleElement = document.querySelector(`.filter-section-title[onclick*="${sectionId}"]`);
+            const contentElement = document.getElementById(`filter-section-${sectionId}`);
+            
+            if (!titleElement || !contentElement) return;
+            
+            // Toggle expanded class on both title and content
+            titleElement.classList.toggle('expanded');
+            contentElement.classList.toggle('expanded');
+            
+            // Save the state
+            filterSectionState[sectionId] = contentElement.classList.contains('expanded');
+        }
+        
+        // Restore expanded/collapsed state after rebuilding filter content
+        function restoreFilterSectionStates() {
+            Object.keys(filterSectionState).forEach(sectionId => {
+                if (filterSectionState[sectionId]) {
+                    const titleElement = document.querySelector(`.filter-section-title[onclick*="${sectionId}"]`);
+                    const contentElement = document.getElementById(`filter-section-${sectionId}`);
+                    
+                    if (titleElement && contentElement) {
+                        titleElement.classList.add('expanded');
+                        contentElement.classList.add('expanded');
+                    }
+                }
+            });
+        }
+
         // Make functions globally accessible
         window.openFilterPopup = openFilterPopup;
         window.closeFilterPopup = closeFilterPopup;
@@ -1609,6 +1720,7 @@
         window.toggleSelectAll = toggleSelectAll;
         window.clearFilters = clearFilters;
         window.applyFilters = applyFilters;
+        window.toggleFilterSection = toggleFilterSection;
     </script>
     
     </div><!-- End Main Content Wrapper -->
