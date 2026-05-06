@@ -67,7 +67,7 @@
     <!-- JS files loaded dynamically with version control - see below -->
     <script>
         // Global version for cache busting - increment this with each deployment
-        const APP_VERSION = '2.8';
+        const APP_VERSION = '2.9';
         
         // Add timestamp for Safari iOS aggressive cache busting
         const CACHE_BUSTER = APP_VERSION + '.' + Math.floor(Date.now() / 60000); // Changes every minute
@@ -1614,8 +1614,80 @@
                 }
             }
             
-            // Update UI
-            await buildFilterContent();
+            // Update UI in-place (preserves scroll position)
+            updateFilterUIInPlace(tab, field);
+        }
+        
+        // Update filter UI in-place without rebuilding - preserves scroll position
+        function updateFilterUIInPlace(tab, field) {
+            const t = i18n[state.lang].filter;
+            const fieldMap = {
+                'single_stock': 'Stock',
+                'ma15': 'MA15',
+                'industry': 'Industry',
+                'source_name': 'Source'
+            };
+            const containerId = `filterOptions${fieldMap[field]}`;
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            const fieldState = filterState[tab][field];
+            const isNone = fieldState.has('__NONE__');
+            const isAll = fieldState.size === 0 && !isNone;
+            
+            // Update each option checkbox
+            const options = container.querySelectorAll('.filter-option');
+            options.forEach(option => {
+                const onclick = option.getAttribute('onclick') || '';
+                // Extract value from onclick="toggleFilter('tab', 'field', 'VALUE')"
+                const match = onclick.match(/toggleFilter\([^,]+,\s*[^,]+,\s*'([^']+)'\)/);
+                if (!match) return;
+                const itemValue = match[1];
+                
+                const isSelected = !isNone && (isAll || fieldState.has(itemValue));
+                option.classList.toggle('selected', isSelected);
+            });
+            
+            // Update "Select All" checkbox
+            const sectionIdMap = {
+                'single_stock': 'stock-code',
+                'ma15': 'ma15',
+                'industry': 'industry',
+                'source_name': 'source'
+            };
+            const sectionContent = document.getElementById(`filter-section-${sectionIdMap[field]}`);
+            if (sectionContent) {
+                const selectAllEl = sectionContent.querySelector('.filter-select-all');
+                if (selectAllEl) {
+                    selectAllEl.classList.toggle('selected', isAll);
+                }
+            }
+            
+            // Update header count text
+            const totalItems = container.querySelectorAll('.filter-option').length;
+            const selectedCount = isNone ? 0 : (isAll ? totalItems : fieldState.size);
+            const headerSpan = document.querySelector(`.filter-section-title[onclick*="${sectionIdMap[field]}"] span`);
+            if (headerSpan) {
+                const labelMap = {
+                    'single_stock': t.stockCode,
+                    'ma15': t.ma15,
+                    'industry': t.industry,
+                    'source_name': t.source
+                };
+                const label = labelMap[field];
+                headerSpan.textContent = (selectedCount === totalItems)
+                    ? `${label} (${totalItems})`
+                    : `${label} (${selectedCount}/${totalItems})`;
+            }
+            
+            // Update toggle button text (Select All / Clear All)
+            const toggleBtn = document.querySelector('.filter-btn-clear');
+            if (toggleBtn) {
+                const allFieldsSelected = Object.keys(filterState[tab]).every(f =>
+                    filterState[tab][f].size === 0 && !filterState[tab][f].has('__NONE__')
+                );
+                toggleBtn.textContent = allFieldsSelected ? t.clearAll : t.selectAllBtn;
+            }
         }
         
         // Synchronous wrapper for onclick handlers
@@ -1639,26 +1711,19 @@
             if (!container) return;
             
             const options = container.querySelectorAll('.filter-option');
-            
-            // Check if all visible options are selected
             const visibleOptions = Array.from(options).filter(opt => opt.style.display !== 'none');
-            
-            // Check current state
             const currentSize = filterState[tab][field].size;
             const isAllSelected = currentSize === 0 || visibleOptions.every(opt => opt.classList.contains('selected'));
             
             if (isAllSelected) {
-                // Currently all selected -> deselect all
-                // Use a special marker '__NONE__' to indicate "nothing selected"
                 filterState[tab][field].clear();
                 filterState[tab][field].add('__NONE__');
             } else {
-                // Currently not all selected -> select all (clear to represent "all")
                 filterState[tab][field].clear();
             }
             
-            // Update UI
-            buildFilterContent();
+            // Update UI in-place
+            updateFilterUIInPlace(tab, field);
         }
 
         // Clear all filters (uncheck all items)
