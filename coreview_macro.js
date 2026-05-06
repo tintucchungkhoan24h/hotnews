@@ -571,42 +571,62 @@ async function exportMacroToExcel() {
         
         console.log('Export Macro: Sorting by', sortColumn, sortOrder);
 
-        // Fetch ALL records in one request (up to 1000)
-        let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
-        
-        // Apply filter popup filters
-        const filterQuery = buildMacroFilterQuery();
-        if (filterQuery) {
-            url += filterQuery;
-        }
-        
-        // Add primary sort
-        url += `&order=${sortColumn}.${sortOrder}`;
-        // Add secondary sort by publish_time for consistent ordering when primary values are equal
-        if (sortColumn !== 'publish_time') {
-            url += `,publish_time.desc`;
-        }
-        url += `&limit=1000`;
-        
-        console.log('Export Macro fetch URL:', url);
+        // Fetch ALL records in batches (Supabase max: 1000 per request)
+        const batchSize = 1000;
+        let allData = [];
+        let offset = 0;
+        let hasMore = true;
 
-        const res = await fetch(url, {
-            headers: { 
-                'apikey': SUPABASE_ANON_KEY, 
-                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                'Prefer': 'count=exact'
+        while (hasMore) {
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
+            
+            // Apply filter popup filters
+            const filterQuery = buildMacroFilterQuery();
+            if (filterQuery) {
+                url += filterQuery;
             }
-        });
+            
+            // Add primary sort
+            url += `&order=${sortColumn}.${sortOrder}`;
+            // Add secondary sort by publish_time for consistent ordering when primary values are equal
+            if (sortColumn !== 'publish_time') {
+                url += `,publish_time.desc`;
+            }
+            url += `&limit=${batchSize}&offset=${offset}`;
+            
+            console.log(`Export Macro: Fetching batch ${Math.floor(offset / batchSize) + 1}, offset: ${offset}`);
 
-        let allData = await res.json();
-        
-        if (!Array.isArray(allData)) {
-            console.error('Supabase error:', allData);
-            allData = [];
+            const res = await fetch(url, {
+                headers: { 
+                    'apikey': SUPABASE_ANON_KEY, 
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                    'Prefer': 'count=exact'
+                }
+            });
+
+            const batch = await res.json();
+            
+            if (!Array.isArray(batch) || batch.length === 0) {
+                hasMore = false;
+                break;
+            }
+            
+            allData = allData.concat(batch);
+            console.log(`Export Macro: Fetched ${batch.length} records, total so far: ${allData.length}`);
+            
+            // Update button text with progress
+            btnText.innerText = `${i18n[state.lang].exporting} (${allData.length})`;
+            
+            // If we got fewer records than batchSize, we've reached the end
+            if (batch.length < batchSize) {
+                hasMore = false;
+            } else {
+                offset += batchSize;
+            }
         }
         
-        // Update button text with count
-        btnText.innerText = `${i18n[state.lang].exporting} (${allData.length})`;
+        console.log('Export Macro: Total fetched records:', allData.length);
+        
         // Apply client-side Vietnamese search filter if exists (same as table)
         if (state.searchQueryMacro) {
             const normalizedQuery = normalizeVietnamese(state.searchQueryMacro);
