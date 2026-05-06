@@ -2227,6 +2227,11 @@
             
             langToggle.addEventListener('click', () => {
                 state.lang = state.lang === 'vn' ? 'en' : 'vn';
+                // Sync language across all state objects
+                stateStable.lang = state.lang;
+                stateHigh.lang = state.lang;
+                stateWatchlist.lang = state.lang;
+                
                 document.getElementById('langText').innerText = state.lang.toUpperCase();
                 document.getElementById('langFlag').innerHTML = flags[state.lang];
                 document.getElementById('main-title').innerText = i18n[state.lang].title;
@@ -2287,6 +2292,30 @@
                             translateHeadlines(untranslatedHeadlines);
                         }
                     }
+                }
+                
+                // Update stable view elements if on stable tab
+                if (currentTab === 'stable') {
+                    if (typeof updateStableViewLabels === 'function') updateStableViewLabels();
+                    if (typeof renderStableHeaders === 'function') renderStableHeaders();
+                    if (typeof renderStableBody === 'function') renderStableBody();
+                    if (typeof renderStablePaginationUI === 'function') renderStablePaginationUI();
+                }
+                
+                // Update high view elements if on high tab
+                if (currentTab === 'high') {
+                    if (typeof updateHighViewLabels === 'function') updateHighViewLabels();
+                    if (typeof renderHighHeaders === 'function') renderHighHeaders();
+                    if (typeof renderHighBody === 'function') renderHighBody();
+                    if (typeof renderHighPaginationUI === 'function') renderHighPaginationUI();
+                }
+                
+                // Update watchlist view elements if on watchlist tab
+                if (currentTab === 'watchlist') {
+                    if (typeof updateWatchlistViewLabels === 'function') updateWatchlistViewLabels();
+                    if (typeof renderWatchlistHeaders === 'function') renderWatchlistHeaders();
+                    if (typeof renderWatchlistBody === 'function') renderWatchlistBody();
+                    if (typeof renderWatchlistPaginationUI === 'function') renderWatchlistPaginationUI();
                 }
                 
                 renderFooter();

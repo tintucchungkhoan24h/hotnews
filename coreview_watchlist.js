@@ -69,6 +69,12 @@ function initWatchlistView() {
     // Setup event listeners
     setupWatchlistViewEventListeners();
 
+    // Wire export button via JS (more reliable than inline onclick in dynamic HTML)
+    const exportBtnEl = document.getElementById('exportBtnWatchlist');
+    if (exportBtnEl) {
+        exportBtnEl.onclick = function() { exportWatchlistToExcel(exportBtnEl); };
+    }
+
     // Initial render
     renderWatchlistHeaders();
     console.log('Calling initial fetchWatchlistData...');
@@ -77,32 +83,34 @@ function initWatchlistView() {
 
 // Update all stock view labels based on current language
 function updateWatchlistViewLabels() {
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn';
+
     const searchInputWatchlist = document.getElementById('searchInputWatchlist');
-    if (searchInputWatchlist) searchInputWatchlist.placeholder = i18n[stateWatchlist.lang].searchPlaceholder;
+    if (searchInputWatchlist) searchInputWatchlist.placeholder = i18n[lang].searchPlaceholder;
     
     const lblFromWatchlist = document.getElementById('lblFromWatchlist');
-    if (lblFromWatchlist) lblFromWatchlist.innerText = i18n[stateWatchlist.lang].lblFromWatchlist;
+    if (lblFromWatchlist) lblFromWatchlist.innerText = i18n[lang].lblFrom;
     
     const lblToWatchlist = document.getElementById('lblToWatchlist');
-    if (lblToWatchlist) lblToWatchlist.innerText = i18n[stateWatchlist.lang].lblToWatchlist;
+    if (lblToWatchlist) lblToWatchlist.innerText = i18n[lang].lblTo;
     
     const prevBtnWatchlist = document.getElementById('prevBtnWatchlist');
-    if (prevBtnWatchlist) prevBtnWatchlist.innerText = i18n[stateWatchlist.lang].prev;
+    if (prevBtnWatchlist) prevBtnWatchlist.innerText = i18n[lang].prev;
     
     const nextBtnWatchlist = document.getElementById('nextBtnWatchlist');
-    if (nextBtnWatchlist) nextBtnWatchlist.innerText = i18n[stateWatchlist.lang].next;
+    if (nextBtnWatchlist) nextBtnWatchlist.innerText = i18n[lang].next;
     
     const exportBtnWatchlistText = document.getElementById('exportBtnWatchlistText');
-    if (exportBtnWatchlistText) exportBtnWatchlistText.innerText = i18n[stateWatchlist.lang].exportBtnWatchlist;
+    if (exportBtnWatchlistText) exportBtnWatchlistText.innerText = i18n[lang].exportBtn;
     
     const filterBtnTextWatchlist = document.getElementById('filterBtnTextWatchlist');
-    if (filterBtnTextWatchlist) filterBtnTextWatchlist.innerText = i18n[stateWatchlist.lang].filterBtn;
+    if (filterBtnTextWatchlist) filterBtnTextWatchlist.innerText = i18n[lang].filterBtn;
     
     const loadingTextWatchlist = document.getElementById('loadingTextWatchlist');
-    if (loadingTextWatchlist) loadingTextWatchlist.innerText = i18n[stateWatchlist.lang].loading;
+    if (loadingTextWatchlist) loadingTextWatchlist.innerText = i18n[lang].loading;
     
     const refreshWatchlistBtn = document.getElementById('refreshWatchlistBtn');
-    if (refreshWatchlistBtn) refreshWatchlistBtn.title = i18n[stateWatchlist.lang].refreshBtn;
+    if (refreshWatchlistBtn) refreshWatchlistBtn.title = i18n[lang].refreshBtn;
 }
 
 // Setup all event listeners for stock view
@@ -370,7 +378,7 @@ async function fetchWatchlistData() {
             url += buildWatchlistFilterQuery();
             
             const nullsOrder = stateWatchlist.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
-            url += `&order=${getDbField(stateWatchlist.sortCol)}.${stateWatchlist.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
+            url += `&order=${getDbFieldWatchlist(stateWatchlist.sortCol)}.${stateWatchlist.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
 
             const res = await fetch(url, {
                 headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Range': `${start}-${end}`, 'Prefer': 'count=exact' }
@@ -441,11 +449,12 @@ function renderWatchlistHeaders() {
         { id: 'current_volume',        w: 'w-32',  s: true },
         { id: 'headline',              w: 'w-auto', s: true }
     ];
+    const _lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn';
     document.getElementById('tableHeaderWatchlist').innerHTML = cols.map(c => `
-        <th class="px-4 py-4 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getSortClass(c.id) : ''}" 
+        <th class="px-4 py-4 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getSortClassWatchlist(c.id) : ''}" 
             ${c.s ? `onclick="handleWatchlistSort('${c.id}')"` : ''}>
             <div class="flex items-center">
-                <span>${i18n[stateWatchlist.lang].cols[c.id]}</span>
+                <span>${i18n[_lang].cols[c.id]}</span>
                 ${c.s ? '<span class="sort-icon"></span>' : ''}
             </div>
         </th>
@@ -453,14 +462,15 @@ function renderWatchlistHeaders() {
 }
 
 // Map display column id → actual database field name (language-aware)
-function getDbField(colId) {
+function getDbFieldWatchlist(colId) {
     if (colId === 'ma15')     return 'pct_ma15';
     if (colId === 'headline') return 'news_impact_score';
-    if (colId === 'industry') return stateWatchlist.lang === 'en' ? 'industry_en' : 'industry_vn';
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn';
+    if (colId === 'industry') return lang === 'en' ? 'industry_en' : 'industry_vn';
     return colId;
 }
 
-function getSortClass(id) { 
+function getSortClassWatchlist(id) { 
     if (stateWatchlist.sortCol === id) {
         return stateWatchlist.sortDesc ? 'sorted-desc' : 'sorted-asc';
     }
@@ -512,7 +522,7 @@ function refreshWatchlistData() {
     fetchWatchlistData();
 }
 
-// Toggle clear button visibility
+// Toggle clear button visibility (watchlist-safe wrapper)
 function toggleClearBtn(btnId, value) {
     const btn = document.getElementById(btnId);
     if (btn) btn.classList.toggle('hidden', !value);
@@ -530,8 +540,8 @@ function clearWatchlistSearch() {
     if (btn) btn.classList.add('hidden');
 }
 
-// Format date as dd/mm hh:mm
-function formatDateTime(dateString) {
+// Format date as dd/mm hh:mm (watchlist)
+function formatDateTimeWatchlist(dateString) {
     const date = new Date(dateString);
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -540,50 +550,45 @@ function formatDateTime(dateString) {
     return `${day}/${month} ${hours}:${minutes}`;
 }
 
-// Get MA15 status and color based on pct_ma15 value
-function getMA15Status(pctMa15) {
-    // Using plain Unicode arrows (not emoji) so CSS color works perfectly
+// Get MA15 status and color based on pct_ma15 value (watchlist)
+function getMA15StatusWatchlist(pctMa15) {
     if (pctMa15 === null || pctMa15 === undefined) {
         return { key: 'N/A', icon: '—', label: 'N/A', style: 'color:#6b7280;', bold: false };
     }
     if (pctMa15 > 5) {
-        // Super-green
         return { key: '⏫ MA15', icon: '⏫', label: 'MA15', style: 'color:#00c853;', bold: true };
     } else if (pctMa15 > 1) {
-        // Green
         return { key: '⬆️ MA15', icon: '⬆️', label: 'MA15', style: 'color:#00e676;', bold: false };
     } else if (pctMa15 > -1) {
-        // White
         return { key: '↔️ MA15', icon: '↔', label: 'MA15', style: 'color:#ffffff;', bold: false };
     } else if (pctMa15 > -5) {
-        // Red
         return { key: '⬇️ MA15', icon: '⬇️', label: 'MA15', style: 'color:#ff6b6b;', bold: false };
     } else {
-        // Super-red
         return { key: '⏬ MA15', icon: '⏬', label: 'MA15', style: 'color:#ff1744;', bold: true };
     }
 }
 
 function renderWatchlistBody() {
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn';
     const tbody = document.getElementById('tableBodyWatchlist');
     if (stateWatchlist.data.length === 0) {
         tbody.innerHTML = '';
         document.getElementById('emptyStateWatchlist').classList.remove('hidden');
-        document.getElementById('emptyStateWatchlist').innerText = i18n[stateWatchlist.lang].empty;
+        document.getElementById('emptyStateWatchlist').innerText = i18n[lang].empty;
         return;
     }
     document.getElementById('emptyStateWatchlist').classList.add('hidden');
     
     tbody.innerHTML = stateWatchlist.data.map((row, idx) => {
-        const name = stateWatchlist.lang === 'vn' ? row.organ_name : (stateWatchlist.translatedNames[row.organ_name] || row.organ_name);
-        const industry = stateWatchlist.lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
-        const headline = stateWatchlist.lang === 'vn' ? row.headline : (stateWatchlist.translatedHeadlines[row.headline] || row.headline);
+        const name = lang === 'vn' ? row.organ_name : (stateWatchlist.translatedNames[row.organ_name] || row.organ_name);
+        const industry = lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
+        const headline = lang === 'vn' ? row.headline : (stateWatchlist.translatedHeadlines[row.headline] || row.headline);
         const pct = row.price_change_today_pct || 0;
         const color = pct > 0 ? 'text-fin-green' : (pct < 0 ? 'text-fin-red' : 'text-gray-400');
         
         // Get MA15 status
-        const ma15Status = getMA15Status(row.pct_ma15);
-        const ma15Tooltip = i18n[stateWatchlist.lang].ma15Tooltip[ma15Status.key];
+        const ma15Status = getMA15StatusWatchlist(row.pct_ma15);
+        const ma15Tooltip = i18n[lang].ma15Tooltip[ma15Status.key];
         const ma15Bold = ma15Status.bold ? 'font-bold' : '';
         const ma15SvgIcons = {
             '⏫ MA15': `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 18l8-8 8 8H4z"/><path d="M4 11l8-8 8 8H4z"/></svg>`,
@@ -603,9 +608,9 @@ function renderWatchlistBody() {
         return `
             <tr class="hover:bg-fin-gold/5 transition-colors">
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(stateWatchlist.currentPage * stateWatchlist.pageSize) + idx + 1}</td>
-                <td class="px-4 py-4 text-gray-400 text-xs">${formatDateTime(row.publish_time)}</td>
+                <td class="px-4 py-4 text-gray-400 text-xs">${formatDateTimeWatchlist(row.publish_time)}</td>
                 <td class="px-4 py-4">
-                    <span class="stock-badge" onclick="openTvChart('${row.single_stock || ''}')" title="${i18n[stateWatchlist.lang].chartTooltip}">
+                    <span class="stock-badge" onclick="openTvChart('${row.single_stock || ''}')" title="${i18n[lang].chartTooltip}">
                         ${row.single_stock || '-'}
                         <svg class="chart-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
@@ -628,11 +633,11 @@ function renderWatchlistBody() {
     }).join('');
 
     // Bind touch events for mobile row highlight
-    bindRowTouchEvents();
+    bindRowTouchEventsWatchlist();
 }
 
 // Touch support: highlight stock badge when user taps any cell in a row
-function bindRowTouchEvents() {
+function bindRowTouchEventsWatchlist() {
     const tbody = document.getElementById('tableBodyWatchlist');
     let lastTouched = null;
     let touchStartY = 0;
@@ -706,7 +711,7 @@ function renderWatchlistPaginationUI() {
     const end = Math.min(start + stateWatchlist.pageSize - 1, stateWatchlist.totalCount);
     console.log('Pagination display - start:', start, 'end:', end);
     
-    document.getElementById('paginationInfoWatchlist').innerText = i18n[stateWatchlist.lang].paging(start, end, stateWatchlist.totalCount);
+    document.getElementById('paginationInfoWatchlist').innerText = i18n[(typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn'].paging(start, end, stateWatchlist.totalCount);
     
     // Calculate total pages
     const totalPages = Math.ceil(stateWatchlist.totalCount / stateWatchlist.pageSize);
@@ -751,16 +756,29 @@ function renderWatchlistPaginationUI() {
 
 // ─── Excel Export ──────────────────────────────────────────────────────────
 
-async function exportWatchlistToExcel() {
-    const btn = document.getElementById('exportBtnWatchlist');
-    const btnText = document.getElementById('exportBtnWatchlistText');
+window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
+    console.log('=== WATCHLIST EXPORT CLICKED ===');
+    const btn = btnRef || document.getElementById('exportBtnWatchlist');
+    const btnText = btn ? btn.querySelector('span[id="exportBtnWatchlistText"], span') : null;
+    if (!btn || !btnText) {
+        console.error('Export button elements not found', { btn, btnText });
+        return;
+    }
+    
+    // Guard: ensure dates are initialized
+    if (!stateWatchlist.fromDateWatchlist || !stateWatchlist.toDateWatchlist) {
+        console.error('Export failed: dates not initialized');
+        return;
+    }
+    
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn';
     const originalText = btnText.innerText;
     
     console.log('Export started - Current sort:', stateWatchlist.sortCol, stateWatchlist.sortDesc ? 'DESC' : 'ASC');
     
     // Disable button and show loading state
     btn.disabled = true;
-    btnText.innerText = i18n[stateWatchlist.lang].exporting;
+    btnText.innerText = i18n[lang].exporting;
     btn.classList.add('opacity-60', 'cursor-not-allowed');
 
     try {
@@ -784,20 +802,17 @@ async function exportWatchlistToExcel() {
                 }
             }
             
-            // Apply filter popup filters
+            // Apply filter popup filters (includes wyckoff_phase=Accumulation by default)
             const filterQuery = buildWatchlistFilterQuery();
             if (filterQuery) {
                 url += filterQuery;
             }
             
-            // For headline and price_change_today_pct, we'll sort client-side, so use default order
-            // For other columns, use server-side sort
+            // For headline and price_change_today_pct, sort client-side; otherwise server-side
             if (stateWatchlist.sortCol === 'headline' || stateWatchlist.sortCol === 'price_change_today_pct') {
-                // Fetch with default order, will sort client-side later
                 url += `&order=publish_time.desc`;
             } else {
-                const nullsOrder = '.nullslast';
-                url += `&order=${getDbField(stateWatchlist.sortCol)}.${stateWatchlist.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
+                url += `&order=${getDbFieldWatchlist(stateWatchlist.sortCol)}.${stateWatchlist.sortDesc ? 'desc' : 'asc'}.nullslast`;
             }
             url += `&limit=${batchSize}&offset=${offset}`;
             
@@ -812,25 +827,27 @@ async function exportWatchlistToExcel() {
             });
 
             const batch = await res.json();
-            if (!Array.isArray(batch) || batch.length === 0) {
+            if (!Array.isArray(batch)) {
+                console.error('Supabase export error:', batch);
+                throw new Error(batch?.message || 'Supabase returned non-array response');
+            }
+            if (batch.length === 0) {
                 hasMore = false;
                 break;
             }
 
             allData = allData.concat(batch);
             
-            // If we got fewer records than batchSize, we've reached the end
             if (batch.length < batchSize) {
                 hasMore = false;
             } else {
                 offset += batchSize;
             }
 
-            // Update button text with progress
-            btnText.innerText = `${i18n[stateWatchlist.lang].exporting} (${allData.length})`;
+            btnText.innerText = `${i18n[lang].exporting} (${allData.length})`;
         }
 
-        // Client-side sort for %Chg column (same as table)
+        // Client-side sort for %Chg column
         if (stateWatchlist.sortCol === 'price_change_today_pct') {
             const dir = stateWatchlist.sortDesc ? -1 : 1;
             allData.sort((a, b) => {
@@ -840,58 +857,48 @@ async function exportWatchlistToExcel() {
             });
         }
         
-        // Client-side sort for headline column by news_impact_score (same as table)
+        // Client-side sort for headline column by news_impact_score
         if (stateWatchlist.sortCol === 'headline') {
-            console.log('Export: Sorting by headline (news_impact_score), sortDesc:', stateWatchlist.sortDesc);
             allData.sort((a, b) => {
                 const av = a.news_impact_score ?? 0;
                 const bv = b.news_impact_score ?? 0;
-                if (stateWatchlist.sortDesc) {
-                    return bv - av; // DESC: highest first
-                } else {
-                    return av - bv; // ASC: lowest first
-                }
+                return stateWatchlist.sortDesc ? bv - av : av - bv;
             });
-            console.log('Export: After sort, first 3:', allData.slice(0, 3).map(r => ({
-                stock: r.single_stock,
-                score: r.news_impact_score,
-                headline: r.headline?.substring(0, 40)
-            })));
         }
 
         // Build Excel data
         const headers = [
-            i18n[stateWatchlist.lang].cols.index,
-            i18n[stateWatchlist.lang].cols.publish_time,
-            i18n[stateWatchlist.lang].cols.single_stock,
-            i18n[stateWatchlist.lang].cols.price_change_today_pct,
-            i18n[stateWatchlist.lang].cols.ma15,
-            i18n[stateWatchlist.lang].cols.organ_name,
-            i18n[stateWatchlist.lang].cols.industry,
-            i18n[stateWatchlist.lang].cols.current_close,
-            i18n[stateWatchlist.lang].cols.current_volume,
-            i18n[stateWatchlist.lang].cols.headline,
+            i18n[lang].cols.index,
+            i18n[lang].cols.publish_time,
+            i18n[lang].cols.single_stock,
+            i18n[lang].cols.price_change_today_pct,
+            i18n[lang].cols.ma15,
+            i18n[lang].cols.organ_name,
+            i18n[lang].cols.industry,
+            i18n[lang].cols.current_close,
+            i18n[lang].cols.current_volume,
+            i18n[lang].cols.headline,
             'Link'
         ];
 
         const rows = allData.map((row, idx) => {
-            const name = stateWatchlist.lang === 'vn' ? row.organ_name : (stateWatchlist.translatedNames[row.organ_name] || row.organ_name);
-            const industry = stateWatchlist.lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
-            const headline = stateWatchlist.lang === 'vn' ? row.headline : (stateWatchlist.translatedHeadlines[row.headline] || row.headline);
-            const ma15Status = getMA15Status(row.pct_ma15);
+            const name = lang === 'vn' ? row.organ_name : (stateWatchlist.translatedNames[row.organ_name] || row.organ_name);
+            const industry = lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
+            const headline = lang === 'vn' ? row.headline : (stateWatchlist.translatedHeadlines[row.headline] || row.headline);
+            const ma15Status = getMA15StatusWatchlist(row.pct_ma15);
             const ma15Text = ma15Status.key === 'N/A' ? 'N/A' : ma15Status.key;
 
             return [
                 idx + 1,
-                formatDateTime(row.publish_time),
+                formatDateTimeWatchlist(row.publish_time),
                 row.single_stock || '-',
-                row.price_change_today_pct ? `${row.price_change_today_pct.toFixed(2)}%` : '0.00%',
+                row.price_change_today_pct != null ? `${row.price_change_today_pct.toFixed(2)}%` : '0.00%',
                 ma15Text,
                 name || '-',
                 industry || '-',
                 row.current_close ? (row.current_close / 1000).toFixed(1) : '-',
                 row.current_volume ? (row.current_volume / 1000000).toFixed(2) + 'M' : '-',
-                headline,
+                headline || '-',
                 row.news_link || ''
             ];
         });
@@ -904,23 +911,21 @@ async function exportWatchlistToExcel() {
         const colWidths = headers.map((h, i) => {
             const maxLen = Math.max(
                 h.length,
-                ...rows.slice(0, 100).map(r => String(r[i] || '').length) // Sample first 100 rows for performance
+                ...rows.slice(0, 100).map(r => String(r[i] || '').length)
             );
             return { wch: Math.min(maxLen + 2, 50) };
         });
         ws['!cols'] = colWidths;
 
-        XLSX.utils.book_append_sheet(wb, ws, 'Tin Tức Chứng Khoán');
+        XLSX.utils.book_append_sheet(wb, ws, 'Watchlist');
 
-        // Generate filename with date range
-        const filename = `TinTucChungKhoan_${stateWatchlist.fromDateWatchlist}_${stateWatchlist.toDateWatchlist}.xlsx`;
+        const filename = `Watchlist_${stateWatchlist.fromDateWatchlist}_${stateWatchlist.toDateWatchlist}.xlsx`;
         XLSX.writeFile(wb, filename);
 
     } catch (error) {
         console.error('Export error:', error);
-        alert('Lỗi khi xuất file Excel. Vui lòng thử lại.');
+        alert('Lỗi khi xuất file Excel: ' + (error.message || 'Vui lòng thử lại.'));
     } finally {
-        // Re-enable button
         btn.disabled = false;
         btnText.innerText = originalText;
         btn.classList.remove('opacity-60', 'cursor-not-allowed');
@@ -928,63 +933,5 @@ async function exportWatchlistToExcel() {
 }
 
 // ─── Company Name Tooltip ──────────────────────────────────────────────────
-
-(function() {
-    // Wait for tooltip element to be available
-    setTimeout(() => {
-        const tooltip = document.getElementById('company-tooltip');
-        if (!tooltip) return;
-        
-        let hideTimer = null;
-
-        function positionTooltip(e) {
-            const margin = 12;
-            const tw = tooltip.offsetWidth  || 280;
-            const th = tooltip.offsetHeight || 48;
-            const vw = window.innerWidth;
-            const vh = window.innerHeight;
-
-            // Prefer below the tap/click point, fall back to above
-            let x = (e.clientX ?? e.touches?.[0]?.clientX ?? vw / 2) - tw / 2;
-            let y = (e.clientY ?? e.touches?.[0]?.clientY ?? vh / 2) + 16;
-
-            // Clamp horizontally
-            x = Math.max(margin, Math.min(x, vw - tw - margin));
-            // Flip above if it would go off the bottom
-            if (y + th > vh - margin) {
-                y = (e.clientY ?? e.touches?.[0]?.clientY ?? vh / 2) - th - 16;
-            }
-            y = Math.max(margin, y);
-
-            tooltip.style.left = x + 'px';
-            tooltip.style.top  = y + 'px';
-        }
-
-        window.showCompanyTooltip = function(e, cell) {
-            const fullName = cell.getAttribute('title');
-            if (!fullName || fullName === '-') return;
-
-            // Reset animation by toggling class
-            tooltip.classList.remove('visible');
-            tooltip.textContent = fullName;
-
-            // Position before showing (need a frame for offsetWidth to be valid)
-            requestAnimationFrame(() => {
-                positionTooltip(e);
-                tooltip.classList.add('visible');
-
-                clearTimeout(hideTimer);
-                hideTimer = setTimeout(() => {
-                    tooltip.classList.remove('visible');
-                }, 4000);
-            });
-
-            e.stopPropagation();
-        };
-
-        // Tap/click anywhere else hides it immediately
-        document.addEventListener('click',     () => { clearTimeout(hideTimer); tooltip.classList.remove('visible'); });
-        document.addEventListener('touchstart', () => { clearTimeout(hideTimer); tooltip.classList.remove('visible'); }, { passive: true });
-    }, 100);
-})();
+// Note: showCompanyTooltip and openTvChart are defined in coreview_stock.js and shared globally.
 
