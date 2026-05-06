@@ -486,6 +486,26 @@ function handleSort(id) {
     fetchData();
 }
 
+// Refresh stock data with current filters (keeps page at 0)
+function refreshStockData() {
+    const btn = document.getElementById('refreshStockBtn');
+    const icon = document.getElementById('refreshStockIcon');
+    
+    // Spin animation
+    if (icon) {
+        icon.style.transition = 'transform 0.6s ease';
+        icon.style.transform = 'rotate(360deg)';
+        setTimeout(() => {
+            icon.style.transition = 'none';
+            icon.style.transform = 'rotate(0deg)';
+        }, 600);
+    }
+    
+    // Reset to first page and refetch
+    state.currentPage = 0;
+    fetchData();
+}
+
 // Format date as dd/mm hh:mm
 function formatDateTime(dateString) {
     const date = new Date(dateString);

@@ -425,6 +425,25 @@ function handleSortMacro(id) {
 // Make handleSortMacro globally accessible for onclick handlers
 window.handleSortMacro = handleSortMacro;
 
+// Refresh macro data with current filters (keeps page at 0)
+function refreshMacroData() {
+    const icon = document.getElementById('refreshMacroIcon');
+    
+    // Spin animation
+    if (icon) {
+        icon.style.transition = 'transform 0.6s ease';
+        icon.style.transform = 'rotate(360deg)';
+        setTimeout(() => {
+            icon.style.transition = 'none';
+            icon.style.transform = 'rotate(0deg)';
+        }, 600);
+    }
+    
+    // Reset to first page and refetch
+    state.currentPageMacro = 0;
+    fetchMacroData();
+}
+
 // Format date as dd/mm hh:mm
 function formatMacroDateTime(dateString) {
     const date = new Date(dateString);

@@ -22,10 +22,19 @@
             </div>
 
             <!-- Search Input -->
-            <div class="relative w-full sm:w-64">
+            <div class="relative w-full sm:w-64 flex items-center gap-2">
                 <input type="text" id="searchInputMacro"
                     class="w-full bg-fin-blue border border-gray-700/50 rounded-xl py-2.5 px-4 text-sm focus:outline-none focus:border-fin-gold transition-all text-white placeholder-gray-600 shadow-inner"
                     placeholder="Ví dụ: Giá vàng/gia vang">
+                <button onclick="refreshMacroData()" title="Làm mới dữ liệu"
+                    class="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-fin-blue border border-gray-700/50 rounded-xl text-gray-400 hover:text-fin-gold hover:border-fin-gold transition-all hover:scale-110 active:scale-95"
+                    id="refreshMacroBtn">
+                    <svg id="refreshMacroIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 4 23 10 17 10"></polyline>
+                        <polyline points="1 20 1 14 7 14"></polyline>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
