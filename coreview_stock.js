@@ -100,6 +100,9 @@ function updateStockViewLabels() {
     
     const loadingText = document.getElementById('loadingText');
     if (loadingText) loadingText.innerText = i18n[state.lang].loading;
+    
+    const refreshStockBtn = document.getElementById('refreshStockBtn');
+    if (refreshStockBtn) refreshStockBtn.title = i18n[state.lang].refreshBtn;
 }
 
 // Setup all event listeners for stock view

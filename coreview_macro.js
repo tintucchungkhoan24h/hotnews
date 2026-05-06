@@ -104,6 +104,9 @@ function updateMacroViewLabels() {
     
     const filterBtnText = document.getElementById('filterBtnTextMacro');
     if (filterBtnText) filterBtnText.innerText = i18n[state.lang].filterBtn;
+    
+    const refreshMacroBtn = document.getElementById('refreshMacroBtn');
+    if (refreshMacroBtn) refreshMacroBtn.title = i18n[state.lang].refreshBtn;
 }
 
 // Setup all event listeners for macro view

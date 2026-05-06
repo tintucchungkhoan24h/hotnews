@@ -67,7 +67,7 @@
     <!-- JS files loaded dynamically with version control - see below -->
     <script>
         // Global version for cache busting - increment this with each deployment
-        const APP_VERSION = '2.7';
+        const APP_VERSION = '2.8';
         
         // Add timestamp for Safari iOS aggressive cache busting
         const CACHE_BUSTER = APP_VERSION + '.' + Math.floor(Date.now() / 60000); // Changes every minute
@@ -904,6 +904,7 @@
                 lblFrom: 'Từ ngày', lblTo: 'Đến ngày', loading: 'Đang tải dữ liệu...',
                 exportBtn: 'Xuất Excel', exporting: 'Đang xuất...',
                 filterBtn: 'Lọc',
+                refreshBtn: 'Làm mới dữ liệu',
                 cols: { index: '#', publish_time: 'Thời gian', single_stock: 'Mã CK', price_change_today_pct: '% Đổi', ma15: 'MA15', organ_name: 'Doanh nghiệp', industry: 'Ngành', current_close: 'Giá', current_volume: 'Khối lượng', headline: 'Tiêu đề' },
                 chartTooltip: 'Xem biểu đồ trên TradingView',
                 empty: 'Không có dữ liệu phù hợp.', prev: 'Trước', next: 'Sau',
@@ -960,6 +961,7 @@
                 lblFrom: 'From date', lblTo: 'To date', loading: 'Loading data...',
                 exportBtn: 'Export Excel', exporting: 'Exporting...',
                 filterBtn: 'Filter',
+                refreshBtn: 'Refresh data',
                 cols: { index: '#', publish_time: 'Time', single_stock: 'Ticker', price_change_today_pct: '% Chg', ma15: 'MA15', organ_name: 'Company', industry: 'Industry', current_close: 'Price', current_volume: 'Volume', headline: 'Headline' },
                 chartTooltip: 'View chart on TradingView',
                 empty: 'No matching records found.', prev: 'Prev', next: 'Next',
