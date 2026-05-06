@@ -78,7 +78,8 @@
                 'coreview_stock.js',
                 'coreview_macro.js',
                 'coreview_stable.js',
-                'coreview_high.js'
+                'coreview_high.js',
+                'coreview_watchlist.js'
             ];
             
             scripts.forEach(function(src) {
@@ -704,6 +705,9 @@
             <button id="tab-high" class="tab-button px-5 py-2.5 font-bold text-sm transition-all">
                 <span class="tab-text">Biến động mạnh</span>
             </button>
+            <button id="tab-watchlist" class="tab-button px-5 py-2.5 font-bold text-sm transition-all">
+                <span class="tab-text">⭐ Danh sách theo dõi</span>
+            </button>
         </div>
     </div>
 
@@ -959,7 +963,7 @@
                 chartTooltip: 'Xem biểu đồ trên TradingView',
                 empty: 'Không có dữ liệu phù hợp.', prev: 'Trước', next: 'Sau',
                 paging: (s, e, t) => `Hiển thị ${s} - ${e} trên tổng ${t}`,
-                tabs: { stock: 'Mã CK', macro: 'Vĩ Mô', stable: 'Biến động ổn định', high: 'Biến động mạnh' },
+                tabs: { stock: 'Mã CK', macro: 'Vĩ Mô', stable: 'Biến động ổn định', high: 'Biến động mạnh', watchlist: 'Danh sách theo dõi' },
                 filter: {
                     title: 'Bộ Lọc',
                     search: 'Tìm kiếm...',
@@ -1016,7 +1020,7 @@
                 chartTooltip: 'View chart on TradingView',
                 empty: 'No matching records found.', prev: 'Prev', next: 'Next',
                 paging: (s, e, t) => `Showing ${s} - ${e} of ${t}`,
-                tabs: { stock: 'Stock', macro: 'Macro', stable: 'Stable Volatility', high: 'High Volatility' },
+                tabs: { stock: 'Stock', macro: 'Macro', stable: 'Stable Volatility', high: 'High Volatility', watchlist: 'Watchlist' },
                 filter: {
                     title: 'Filters',
                     search: 'Search...',
@@ -1159,6 +1163,17 @@
             lang: 'vn',
             sortCol: 'timesfm_point', sortDesc: true,
             fromDate: '', toDate: '', searchQuery: '',
+            currentPage: 0, pageSize: 50, totalCount: 0,
+            translatedNames: state.translatedNames,
+            translatedHeadlines: state.translatedHeadlines
+        };
+        
+        // Watchlist state object
+        let stateWatchlist = {
+            data: [],
+            lang: 'vn',
+            sortCol: 'timesfm_point', sortDesc: true,
+            fromDateWatchlist: '', toDateWatchlist: '', searchQuery: '',
             currentPage: 0, pageSize: 50, totalCount: 0,
             translatedNames: state.translatedNames,
             translatedHeadlines: state.translatedHeadlines
@@ -1322,6 +1337,11 @@
                 single_stock: new Set(),
                 ma15: new Set(),
                 industry: new Set()
+            },
+            watchlist: {
+                single_stock: new Set(),
+                ma15: new Set(),
+                industry: new Set()
             }
         };
         
@@ -1387,11 +1407,12 @@
             const content = document.getElementById('filterContent');
             const t = i18n[state.lang].filter;
             
-            if (currentTab === 'stock' || currentTab === 'stable' || currentTab === 'high') {
+            if (currentTab === 'stock' || currentTab === 'stable' || currentTab === 'high' || currentTab === 'watchlist') {
                 // Determine which filter state to use
                 const tabFilterState = currentTab === 'stock' ? filterState.stock : 
                                       currentTab === 'stable' ? filterState.stable : 
-                                      filterState.high;
+                                      currentTab === 'high' ? filterState.high :
+                                      filterState.watchlist;
                 
                 // Fetch unique values for stock filters
                 const stockCodes = await getUniqueStockCodes();
@@ -1962,6 +1983,11 @@
                     stateHigh.currentPage = 0;
                     fetchHighData();
                 }
+            } else if (currentTab === 'watchlist') {
+                if (typeof fetchWatchlistData === 'function') {
+                    stateWatchlist.currentPage = 0;
+                    fetchWatchlistData();
+                }
             }
         }
 
@@ -1978,6 +2004,9 @@
                 } else if (currentTab === 'high') {
                     tableName = 'high_volatility';
                     dateRange = { from: stateHigh.fromDate, to: stateHigh.toDate };
+                } else if (currentTab === 'watchlist') {
+                    tableName = 'hotnews';
+                    dateRange = { from: stateWatchlist.fromDateWatchlist, to: stateWatchlist.toDateWatchlist };
                 }
                 
                 const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=single_stock&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z&limit=1000`;
@@ -2017,6 +2046,9 @@
                 } else if (currentTab === 'high') {
                     tableName = 'high_volatility';
                     dateRange = { from: stateHigh.fromDate, to: stateHigh.toDate };
+                } else if (currentTab === 'watchlist') {
+                    tableName = 'hotnews';
+                    dateRange = { from: stateWatchlist.fromDateWatchlist, to: stateWatchlist.toDateWatchlist };
                 }
                 
                 const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z&limit=1000`;
@@ -2340,6 +2372,18 @@
                         }
                     })
                     .catch(error => console.error('Error loading high view:', error));
+            } else if (tab === 'watchlist') {
+                // Load watchlist view
+                fetch('coreview_watchlist.html' + cacheBuster)
+                    .then(response => response.text())
+                    .then(data => {
+                        container.innerHTML = data;
+                        // Initialize watchlist view after loading
+                        if (typeof initWatchlistView === 'function') {
+                            initWatchlistView();
+                        }
+                    })
+                    .catch(error => console.error('Error loading watchlist view:', error));
             }
         }
         
@@ -2373,6 +2417,7 @@
             if (tabs[1]) tabs[1].innerText = i18n[state.lang].tabs.macro;
             if (tabs[2]) tabs[2].innerText = i18n[state.lang].tabs.stable;
             if (tabs[3]) tabs[3].innerText = i18n[state.lang].tabs.high;
+            if (tabs[4]) tabs[4].innerText = '⭐ ' + i18n[state.lang].tabs.watchlist;
             
             // Update macro page if it's currently active
             if (currentTab === 'macro') {
@@ -2389,6 +2434,7 @@
             document.getElementById('tab-macro').addEventListener('click', () => loadCoreView('macro'));
             document.getElementById('tab-stable').addEventListener('click', () => loadCoreView('stable'));
             document.getElementById('tab-high').addEventListener('click', () => loadCoreView('high'));
+            document.getElementById('tab-watchlist').addEventListener('click', () => loadCoreView('watchlist'));
         });
         
         // Load footer component
