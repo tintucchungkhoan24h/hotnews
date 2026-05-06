@@ -67,7 +67,7 @@
     <!-- JS files loaded dynamically with version control - see below -->
     <script>
         // Global version for cache busting - increment this with each deployment
-        const APP_VERSION = '2.3';
+        const APP_VERSION = '2.6';
         
         // Add timestamp for Safari iOS aggressive cache busting
         const CACHE_BUSTER = APP_VERSION + '.' + Math.floor(Date.now() / 60000); // Changes every minute
@@ -1297,6 +1297,9 @@
 
         // Build filter content based on current tab
         async function buildFilterContent() {
+            console.log('=== BUILD FILTER CONTENT ===');
+            console.log('Current tab:', currentTab);
+            
             const content = document.getElementById('filterContent');
             const t = i18n[state.lang].filter;
             
@@ -1778,15 +1781,53 @@
             }
         }
 
-        // Get unique sources from current data
+        // Get unique sources from ALL data (not filtered by date)
         async function getUniqueSources() {
             try {
-                const url = `${SUPABASE_URL}/rest/v1/hotnews?select=source_name&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z&limit=1000`;
-                const res = await fetch(url, {
-                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
-                });
-                const data = await res.json();
-                const sources = [...new Set(data.map(d => d.source_name).filter(Boolean))].sort();
+                console.log('=== GET UNIQUE SOURCES ===');
+                
+                // Fetch all unique sources in batches to ensure we get everything
+                const batchSize = 1000;
+                let allSources = new Set();
+                let offset = 0;
+                let hasMore = true;
+                
+                while (hasMore) {
+                    const url = `${SUPABASE_URL}/rest/v1/hotnews?select=source_name&match_method=eq.INDUSTRY&limit=${batchSize}&offset=${offset}`;
+                    console.log(`Fetching batch ${Math.floor(offset / batchSize) + 1}, offset: ${offset}`);
+                    
+                    const res = await fetch(url, {
+                        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                    });
+                    const data = await res.json();
+                    console.log(`Fetched ${data.length} records`);
+                    
+                    if (!Array.isArray(data) || data.length === 0) {
+                        hasMore = false;
+                        break;
+                    }
+                    
+                    // Add sources to set
+                    data.forEach(d => {
+                        if (d.source_name) {
+                            allSources.add(d.source_name);
+                        }
+                    });
+                    
+                    console.log(`Unique sources so far: ${allSources.size}`);
+                    
+                    // If we got fewer records than batchSize, we've reached the end
+                    if (data.length < batchSize) {
+                        hasMore = false;
+                    } else {
+                        offset += batchSize;
+                    }
+                }
+                
+                const sources = Array.from(allSources).sort();
+                console.log('Total unique sources found:', sources.length);
+                console.log('Sources list:', sources);
+                
                 return sources;
             } catch (e) {
                 console.error('Error fetching sources:', e);
