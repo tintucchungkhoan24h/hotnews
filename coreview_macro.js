@@ -447,6 +447,17 @@ function refreshMacroData() {
     fetchMacroData();
 }
 
+// Clear macro search input
+function clearMacroSearch() {
+    const input = document.getElementById('searchInputMacro');
+    if (input) {
+        input.value = '';
+        input.dispatchEvent(new Event('input'));
+    }
+    const btn = document.getElementById('clearMacroBtn');
+    if (btn) btn.classList.add('hidden');
+}
+
 // Format date as dd/mm hh:mm
 function formatMacroDateTime(dateString) {
     const date = new Date(dateString);

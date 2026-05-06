@@ -67,7 +67,7 @@
     <!-- JS files loaded dynamically with version control - see below -->
     <script>
         // Global version for cache busting - increment this with each deployment
-        const APP_VERSION = '2.9';
+        const APP_VERSION = '3.1';
         
         // Add timestamp for Safari iOS aggressive cache busting
         const CACHE_BUSTER = APP_VERSION + '.' + Math.floor(Date.now() / 60000); // Changes every minute
@@ -497,7 +497,7 @@
             background: #0a192f;
             border: 1px solid #374151;
             border-radius: 8px;
-            padding: 8px 12px;
+            padding: 8px 36px 8px 12px;
             color: white;
             font-size: 13px;
             margin-bottom: 12px;
@@ -505,6 +505,34 @@
         .filter-search:focus {
             outline: none;
             border-color: #ffd700;
+        }
+        .filter-search-wrapper {
+            position: relative;
+            margin-bottom: 12px;
+        }
+        .filter-search-wrapper .filter-search {
+            margin-bottom: 0;
+        }
+        .filter-search-clear {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            font-size: 13px;
+            line-height: 1;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: color 0.15s;
+        }
+        .filter-search-clear:hover {
+            color: #e5e7eb;
+        }
+        .filter-search-clear.hidden {
+            display: none;
         }
         .filter-option {
             display: flex;
@@ -1362,7 +1390,10 @@
                             </svg>
                         </div>
                         <div id="filter-section-stock-code" class="filter-section-content">
-                            <input type="text" id="filterSearchStock" class="filter-search" placeholder="${t.search}">
+                            <div class="filter-search-wrapper">
+                                <input type="text" id="filterSearchStock" class="filter-search" placeholder="${t.search}" oninput="toggleClearBtn('clearFilterSearchStock', this.value)">
+                                <button id="clearFilterSearchStock" onclick="clearFilterSearch('filterSearchStock', 'filterOptionsStock', 'clearFilterSearchStock')" class="filter-search-clear hidden">✕</button>
+                            </div>
                             <div class="filter-select-all ${allStockSelected ? 'selected' : ''}" onclick="toggleSelectAll('single_stock')">
                                 <div class="filter-checkbox">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -1427,7 +1458,10 @@
                             </svg>
                         </div>
                         <div id="filter-section-industry" class="filter-section-content">
-                            <input type="text" id="filterSearchIndustry" class="filter-search" placeholder="${t.search}">
+                            <div class="filter-search-wrapper">
+                                <input type="text" id="filterSearchIndustry" class="filter-search" placeholder="${t.search}" oninput="toggleClearBtn('clearFilterSearchIndustry', this.value)">
+                                <button id="clearFilterSearchIndustry" onclick="clearFilterSearch('filterSearchIndustry', 'filterOptionsIndustry', 'clearFilterSearchIndustry')" class="filter-search-clear hidden">✕</button>
+                            </div>
                             <div class="filter-select-all ${allIndustrySelected ? 'selected' : ''}" onclick="toggleSelectAll('industry')">
                                 <div class="filter-checkbox">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -1504,7 +1538,10 @@
                             </svg>
                         </div>
                         <div id="filter-section-source" class="filter-section-content">
-                            <input type="text" id="filterSearchSource" class="filter-search" placeholder="${t.search}">
+                            <div class="filter-search-wrapper">
+                                <input type="text" id="filterSearchSource" class="filter-search" placeholder="${t.search}" oninput="toggleClearBtn('clearFilterSearchSource', this.value)">
+                                <button id="clearFilterSearchSource" onclick="clearFilterSearch('filterSearchSource', 'filterOptionsSource', 'clearFilterSearchSource')" class="filter-search-clear hidden">✕</button>
+                            </div>
                             <div class="filter-select-all ${allSourcesSelected ? 'selected' : ''}" onclick="toggleSelectAll('source_name')">
                                 <div class="filter-checkbox">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -1565,6 +1602,26 @@
                     }
                 });
             });
+        }
+        
+        // Clear filter search input and show all options
+        function clearFilterSearch(inputId, containerId, clearBtnId) {
+            const input = document.getElementById(inputId);
+            const container = document.getElementById(containerId);
+            const clearBtn = document.getElementById(clearBtnId);
+            
+            if (input) input.value = '';
+            if (clearBtn) clearBtn.classList.add('hidden');
+            
+            // Show all options
+            if (container) {
+                container.querySelectorAll('.filter-option').forEach(opt => {
+                    opt.style.display = 'flex';
+                });
+            }
+            
+            // Refocus input
+            if (input) input.focus();
         }
 
         // Toggle individual filter (async wrapper)

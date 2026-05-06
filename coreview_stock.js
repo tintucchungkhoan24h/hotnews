@@ -509,6 +509,23 @@ function refreshStockData() {
     fetchData();
 }
 
+// Toggle clear button visibility
+function toggleClearBtn(btnId, value) {
+    const btn = document.getElementById(btnId);
+    if (btn) btn.classList.toggle('hidden', !value);
+}
+
+// Clear stock search input
+function clearStockSearch() {
+    const input = document.getElementById('searchInput');
+    if (input) {
+        input.value = '';
+        input.dispatchEvent(new Event('input'));
+    }
+    const btn = document.getElementById('clearStockBtn');
+    if (btn) btn.classList.add('hidden');
+}
+
 // Format date as dd/mm hh:mm
 function formatDateTime(dateString) {
     const date = new Date(dateString);
