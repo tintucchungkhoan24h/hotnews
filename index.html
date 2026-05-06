@@ -387,6 +387,26 @@
             border-radius: 10px;
             margin: 0 1px;
         }
+        /* Responsive tab padding & font size */
+        .tab-btn-responsive {
+            padding: 6px 10px;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+        @media (min-width: 480px) {
+            .tab-btn-responsive {
+                padding: 8px 14px;
+                font-size: 12px;
+            }
+        }
+        @media (min-width: 640px) {
+            .tab-btn-responsive {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+        /* Hide scrollbar on the tab wrapper */
+        .tab-scroll-wrapper::-webkit-scrollbar { display: none; }
         .tab-button:hover {
             color: #fef9c3;
             background: rgba(255, 255, 255, 0.06);
@@ -691,21 +711,21 @@
     <div id="header-container"></div>
 
     <!-- Tab Navigation -->
-    <div class="max-w-[1440px] mx-auto mb-6">
-        <div class="flex items-center gap-0 bg-fin-blue-light/30 p-1 rounded-xl border border-gray-800/50 w-fit">
-            <button id="tab-stock" class="tab-button active px-5 py-2.5 font-bold text-sm transition-all">
+    <div class="tab-scroll-wrapper max-w-[1440px] mx-auto mb-6 overflow-x-auto" style="scrollbar-width:none;-ms-overflow-style:none;">
+        <div class="flex items-center gap-0 bg-fin-blue-light/30 p-1 rounded-xl border border-gray-800/50 w-fit min-w-full sm:min-w-0">
+            <button id="tab-stock" class="tab-button active tab-btn-responsive font-bold transition-all flex-shrink-0">
                 <span class="tab-text">Mã CK</span>
             </button>
-            <button id="tab-macro" class="tab-button px-5 py-2.5 font-bold text-sm transition-all">
+            <button id="tab-macro" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
                 <span class="tab-text">Vĩ Mô</span>
             </button>
-            <button id="tab-stable" class="tab-button px-5 py-2.5 font-bold text-sm transition-all">
+            <button id="tab-stable" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
                 <span class="tab-text">Biến động ổn định</span>
             </button>
-            <button id="tab-high" class="tab-button px-5 py-2.5 font-bold text-sm transition-all">
+            <button id="tab-high" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
                 <span class="tab-text">Biến động mạnh</span>
             </button>
-            <button id="tab-watchlist" class="tab-button px-5 py-2.5 font-bold text-sm transition-all">
+            <button id="tab-watchlist" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
                 <span class="tab-text">⭐ Danh sách theo dõi</span>
             </button>
         </div>
