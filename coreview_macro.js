@@ -453,6 +453,7 @@ function clearMacroSearch() {
     if (input) {
         input.value = '';
         input.dispatchEvent(new Event('input'));
+        input.focus();
     }
     const btn = document.getElementById('clearMacroBtn');
     if (btn) btn.classList.add('hidden');

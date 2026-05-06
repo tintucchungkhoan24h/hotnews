@@ -521,6 +521,7 @@ function clearStockSearch() {
     if (input) {
         input.value = '';
         input.dispatchEvent(new Event('input'));
+        input.focus();
     }
     const btn = document.getElementById('clearStockBtn');
     if (btn) btn.classList.add('hidden');
