@@ -76,7 +76,9 @@
         (function() {
             const scripts = [
                 'coreview_stock.js',
-                'coreview_macro.js'
+                'coreview_macro.js',
+                'coreview_stable.js',
+                'coreview_high.js'
             ];
             
             scripts.forEach(function(src) {
@@ -381,15 +383,29 @@
             cursor: pointer;
             user-select: none;
             position: relative;
+            border-radius: 10px;
+            margin: 0 1px;
         }
         .tab-button:hover {
             color: #e5e7eb;
-            background: rgba(255, 215, 0, 0.05);
+            background: rgba(255, 255, 0.05);
         }
         .tab-button.active {
             color: #0a192f;
             background: #ffd700;
-            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+        /* Green tab (Stable Volatility) when active */
+        #tab-stable.active {
+            background: #10b981;
+            color: white;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+        /* Red tab (High Volatility) when active */
+        #tab-high.active {
+            background: #ef4444;
+            color: white;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
         }
         .tab-button:active {
             transform: scale(0.98);
@@ -675,12 +691,18 @@
 
     <!-- Tab Navigation -->
     <div class="max-w-[1440px] mx-auto mb-6">
-        <div class="flex items-center gap-2 bg-fin-blue-light/30 p-2 rounded-xl border border-gray-800/50 w-fit">
-            <button id="tab-stock" class="tab-button active px-6 py-2.5 rounded-lg font-bold text-sm transition-all">
+        <div class="flex items-center gap-0 bg-fin-blue-light/30 p-1 rounded-xl border border-gray-800/50 w-fit">
+            <button id="tab-stock" class="tab-button active px-5 py-2.5 font-bold text-sm transition-all">
                 <span class="tab-text">Mã CK</span>
             </button>
-            <button id="tab-macro" class="tab-button px-6 py-2.5 rounded-lg font-bold text-sm transition-all">
+            <button id="tab-macro" class="tab-button px-5 py-2.5 font-bold text-sm transition-all">
                 <span class="tab-text">Vĩ Mô</span>
+            </button>
+            <button id="tab-stable" class="tab-button px-5 py-2.5 font-bold text-sm transition-all">
+                <span class="tab-text">Biến động ổn định</span>
+            </button>
+            <button id="tab-high" class="tab-button px-5 py-2.5 font-bold text-sm transition-all">
+                <span class="tab-text">Biến động mạnh</span>
             </button>
         </div>
     </div>
@@ -937,7 +959,7 @@
                 chartTooltip: 'Xem biểu đồ trên TradingView',
                 empty: 'Không có dữ liệu phù hợp.', prev: 'Trước', next: 'Sau',
                 paging: (s, e, t) => `Hiển thị ${s} - ${e} trên tổng ${t}`,
-                tabs: { stock: 'Mã CK', macro: 'Vĩ Mô' },
+                tabs: { stock: 'Mã CK', macro: 'Vĩ Mô', stable: 'Biến động ổn định', high: 'Biến động mạnh' },
                 filter: {
                     title: 'Bộ Lọc',
                     search: 'Tìm kiếm...',
@@ -994,7 +1016,7 @@
                 chartTooltip: 'View chart on TradingView',
                 empty: 'No matching records found.', prev: 'Prev', next: 'Next',
                 paging: (s, e, t) => `Showing ${s} - ${e} of ${t}`,
-                tabs: { stock: 'Stock', macro: 'Macro' },
+                tabs: { stock: 'Stock', macro: 'Macro', stable: 'Stable Volatility', high: 'High Volatility' },
                 filter: {
                     title: 'Filters',
                     search: 'Search...',
@@ -1118,6 +1140,28 @@
             fromDateMacro: '', toDateMacro: '', searchQueryMacro: '',
             currentPageMacro: 0, pageSizeMacro: 50, totalCountMacro: 0,
             sortColMacro: 'publish_time', sortDescMacro: true
+        };
+        
+        // Stable Volatility state object
+        let stateStable = {
+            data: [],
+            lang: 'vn',
+            sortCol: 'timesfm_point', sortDesc: true,
+            fromDate: '', toDate: '', searchQuery: '',
+            currentPage: 0, pageSize: 50, totalCount: 0,
+            translatedNames: state.translatedNames,
+            translatedHeadlines: state.translatedHeadlines
+        };
+        
+        // High Volatility state object
+        let stateHigh = {
+            data: [],
+            lang: 'vn',
+            sortCol: 'timesfm_point', sortDesc: true,
+            fromDate: '', toDate: '', searchQuery: '',
+            currentPage: 0, pageSize: 50, totalCount: 0,
+            translatedNames: state.translatedNames,
+            translatedHeadlines: state.translatedHeadlines
         };
 
         // Hàm dịch tên công ty - Using Lingva (Fast, privacy-focused Google Translate proxy)
@@ -1268,6 +1312,16 @@
             },
             macro: {
                 source_name: new Set()
+            },
+            stable: {
+                single_stock: new Set(),
+                ma15: new Set(),
+                industry: new Set()
+            },
+            high: {
+                single_stock: new Set(),
+                ma15: new Set(),
+                industry: new Set()
             }
         };
         
@@ -1333,7 +1387,12 @@
             const content = document.getElementById('filterContent');
             const t = i18n[state.lang].filter;
             
-            if (currentTab === 'stock') {
+            if (currentTab === 'stock' || currentTab === 'stable' || currentTab === 'high') {
+                // Determine which filter state to use
+                const tabFilterState = currentTab === 'stock' ? filterState.stock : 
+                                      currentTab === 'stable' ? filterState.stable : 
+                                      filterState.high;
+                
                 // Fetch unique values for stock filters
                 const stockCodes = await getUniqueStockCodes();
                 const ma15Values = getMA15Categories();
@@ -1342,29 +1401,29 @@
                 // Check if all items are selected for each filter
                 // Empty set means "all selected" (no filter applied)
                 // Set with '__NONE__' means "none selected"
-                const allStockSelected = (filterState.stock.single_stock.size === 0 || 
-                    (stockCodes.length > 0 && stockCodes.every(code => filterState.stock.single_stock.has(code)))) &&
-                    !filterState.stock.single_stock.has('__NONE__');
-                const allMA15Selected = (filterState.stock.ma15.size === 0 || 
-                    (ma15Values.length > 0 && ma15Values.every(val => filterState.stock.ma15.has(val.key)))) &&
-                    !filterState.stock.ma15.has('__NONE__');
-                const allIndustrySelected = (filterState.stock.industry.size === 0 || 
-                    (industries.length > 0 && industries.every(ind => filterState.stock.industry.has(ind)))) &&
-                    !filterState.stock.industry.has('__NONE__');
+                const allStockSelected = (tabFilterState.single_stock.size === 0 || 
+                    (stockCodes.length > 0 && stockCodes.every(code => tabFilterState.single_stock.has(code)))) &&
+                    !tabFilterState.single_stock.has('__NONE__');
+                const allMA15Selected = (tabFilterState.ma15.size === 0 || 
+                    (ma15Values.length > 0 && ma15Values.every(val => tabFilterState.ma15.has(val.key)))) &&
+                    !tabFilterState.ma15.has('__NONE__');
+                const allIndustrySelected = (tabFilterState.industry.size === 0 || 
+                    (industries.length > 0 && industries.every(ind => tabFilterState.industry.has(ind)))) &&
+                    !tabFilterState.industry.has('__NONE__');
                 
                 // Calculate selected counts
-                const stockSelectedCount = filterState.stock.single_stock.has('__NONE__') ? 0 : 
-                    (filterState.stock.single_stock.size === 0 ? stockCodes.length : filterState.stock.single_stock.size);
-                const ma15SelectedCount = filterState.stock.ma15.has('__NONE__') ? 0 : 
-                    (filterState.stock.ma15.size === 0 ? ma15Values.length : filterState.stock.ma15.size);
-                const industrySelectedCount = filterState.stock.industry.has('__NONE__') ? 0 : 
-                    (filterState.stock.industry.size === 0 ? industries.length : filterState.stock.industry.size);
+                const stockSelectedCount = tabFilterState.single_stock.has('__NONE__') ? 0 : 
+                    (tabFilterState.single_stock.size === 0 ? stockCodes.length : tabFilterState.single_stock.size);
+                const ma15SelectedCount = tabFilterState.ma15.has('__NONE__') ? 0 : 
+                    (tabFilterState.ma15.size === 0 ? ma15Values.length : tabFilterState.ma15.size);
+                const industrySelectedCount = tabFilterState.industry.has('__NONE__') ? 0 : 
+                    (tabFilterState.industry.size === 0 ? industries.length : tabFilterState.industry.size);
                 
                 // Check if all filters are in "all selected" state (empty sets without __NONE__)
                 const allFiltersSelected = 
-                    filterState.stock.single_stock.size === 0 && !filterState.stock.single_stock.has('__NONE__') &&
-                    filterState.stock.ma15.size === 0 && !filterState.stock.ma15.has('__NONE__') &&
-                    filterState.stock.industry.size === 0 && !filterState.stock.industry.has('__NONE__');
+                    tabFilterState.single_stock.size === 0 && !tabFilterState.single_stock.has('__NONE__') &&
+                    tabFilterState.ma15.size === 0 && !tabFilterState.ma15.has('__NONE__') &&
+                    tabFilterState.industry.size === 0 && !tabFilterState.industry.has('__NONE__');
                 
                 // Determine button text
                 const toggleButtonText = allFiltersSelected ? t.clearAll : t.selectAllBtn;
@@ -2198,6 +2257,30 @@
                         }
                     })
                     .catch(error => console.error('Error loading macro view:', error));
+            } else if (tab === 'stable') {
+                // Load stable volatility view
+                fetch('coreview_stable.html' + cacheBuster)
+                    .then(response => response.text())
+                    .then(data => {
+                        container.innerHTML = data;
+                        // Initialize stable view after loading
+                        if (typeof initStableView === 'function') {
+                            initStableView();
+                        }
+                    })
+                    .catch(error => console.error('Error loading stable view:', error));
+            } else if (tab === 'high') {
+                // Load high volatility view
+                fetch('coreview_high.html' + cacheBuster)
+                    .then(response => response.text())
+                    .then(data => {
+                        container.innerHTML = data;
+                        // Initialize high view after loading
+                        if (typeof initHighView === 'function') {
+                            initHighView();
+                        }
+                    })
+                    .catch(error => console.error('Error loading high view:', error));
             }
         }
         
@@ -2229,6 +2312,8 @@
             const tabs = document.querySelectorAll('.tab-button .tab-text');
             if (tabs[0]) tabs[0].innerText = i18n[state.lang].tabs.stock;
             if (tabs[1]) tabs[1].innerText = i18n[state.lang].tabs.macro;
+            if (tabs[2]) tabs[2].innerText = i18n[state.lang].tabs.stable;
+            if (tabs[3]) tabs[3].innerText = i18n[state.lang].tabs.high;
             
             // Update macro page if it's currently active
             if (currentTab === 'macro') {
@@ -2243,6 +2328,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('tab-stock').addEventListener('click', () => loadCoreView('stock'));
             document.getElementById('tab-macro').addEventListener('click', () => loadCoreView('macro'));
+            document.getElementById('tab-stable').addEventListener('click', () => loadCoreView('stable'));
+            document.getElementById('tab-high').addEventListener('click', () => loadCoreView('high'));
         });
         
         // Load footer component

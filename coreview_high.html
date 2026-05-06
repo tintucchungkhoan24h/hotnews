@@ -1,0 +1,103 @@
+<!-- Filters Section -->
+<div class="max-w-[1440px] mx-auto mb-6">
+    <div class="bg-fin-blue-light/30 p-3 sm:p-4 md:p-5 rounded-2xl border border-gray-800/50">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- Date Range Filter -->
+            <div class="flex items-center bg-fin-blue border border-gray-700/50 rounded-xl px-3 py-2 shadow-inner w-full sm:w-auto">
+                <div class="flex flex-col flex-1">
+                    <label id="lblFromHigh" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5">Từ ngày</label>
+                    <div class="datepicker-wrapper">
+                        <input type="text" id="fromDateHigh" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                        <div id="fromDateHighPopup" class="datepicker-popup"></div>
+                    </div>
+                </div>
+                <div class="w-[1px] h-7 bg-gray-700 mx-3"></div>
+                <div class="flex flex-col flex-1">
+                    <label id="lblToHigh" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5">Đến ngày</label>
+                    <div class="datepicker-wrapper">
+                        <input type="text" id="toDateHigh" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                        <div id="toDateHighPopup" class="datepicker-popup"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative w-full sm:w-56 flex items-center gap-2">
+                <div class="relative w-full">
+                    <input type="text" id="searchInputHigh"
+                        class="w-full bg-fin-blue border border-gray-700/50 rounded-xl py-2.5 pl-4 pr-8 text-sm focus:outline-none focus:border-fin-gold transition-all text-white placeholder-gray-600 shadow-inner"
+                        placeholder="Ví dụ: VHM,VIC,FPT"
+                        oninput="toggleClearBtn('clearHighBtn', this.value)">
+                    <button id="clearHighBtn"
+                        onclick="clearHighSearch()"
+                        class="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors hidden"
+                        tabindex="-1">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <button onclick="refreshHighData()" title="Làm mới dữ liệu"
+                    class="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-fin-blue border border-gray-700/50 rounded-xl text-gray-400 hover:text-fin-gold hover:border-fin-gold transition-all hover:scale-110 active:scale-95"
+                    id="refreshHighBtn">
+                    <svg id="refreshHighIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 4 23 10 17 10"></polyline>
+                        <polyline points="1 20 1 14 7 14"></polyline>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filter and Export Buttons -->
+<div class="max-w-[1440px] mx-auto mb-4 flex justify-between items-center gap-3">
+    <!-- Filter Button -->
+    <button id="filterToggleHigh" onclick="openFilterPopup()" class="flex items-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-2.5 rounded-xl font-bold text-sm hover:border-fin-gold hover:bg-gray-700 transition-all hover:scale-105 active:scale-95">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+        </svg>
+        <span id="filterBtnTextHigh">Lọc</span>
+    </button>
+    
+    <!-- Export Button -->
+    <button id="exportBtnHigh" onclick="exportHighToExcel()" 
+            class="flex items-center gap-2 bg-[#1d6f42] hover:bg-[#25844f] border border-[#2d8f5a] text-white px-4 py-2.5 rounded-xl font-bold text-sm shadow-lg transition-all hover:scale-105 active:scale-95">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12.9,14.5L15.8,19H14L12,15.6L10,19H8.2L11.1,14.5L8.2,10H10L12,13.4L14,10H15.8L12.9,14.5Z"/>
+        </svg>
+        <span id="exportBtnTextHigh">Xuất Excel</span>
+    </button>
+</div>
+
+<!-- Main Table Section -->
+<div class="max-w-[1440px] mx-auto bg-fin-blue-light border border-gray-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+    <div class="overflow-x-auto table-container">
+        <table class="w-full text-left border-collapse whitespace-nowrap">
+            <thead>
+                <tr class="bg-gray-800/60 text-gray-400 text-xs uppercase tracking-widest border-b border-gray-700" id="tableHeaderHigh"></tr>
+            </thead>
+            <tbody id="tableBodyHigh" class="text-sm divide-y divide-gray-800/40"></tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="p-3 sm:p-5 border-t border-gray-800 bg-gray-800/20 flex flex-col sm:flex-row justify-between items-center gap-3">
+        <div id="paginationInfoHigh" class="text-xs text-gray-500 font-medium"></div>
+        <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center">
+            <button id="firstBtnHigh" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm">&laquo;</button>
+            <button id="prevBtnHigh" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all">Trước</button>
+            <div id="pageNumbersHigh" class="flex gap-1.5 sm:gap-2"></div>
+            <button id="nextBtnHigh" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all">Sau</button>
+            <button id="lastBtnHigh" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm">&raquo;</button>
+        </div>
+    </div>
+
+    <div id="loadingStateHigh" class="p-20 text-center text-gray-400 hidden">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-fin-gold border-t-transparent mb-4"></div>
+        <p id="loadingTextHigh" class="text-sm font-medium">Đang tải dữ liệu...</p>
+    </div>
+    <div id="emptyStateHigh" class="p-20 text-center text-gray-500 hidden italic text-sm"></div>
+</div>
