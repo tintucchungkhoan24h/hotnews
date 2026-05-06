@@ -1997,6 +1997,7 @@
                 // Determine which table to query based on current tab
                 let tableName = 'hotnews';
                 let dateRange = { from: state.fromDate, to: state.toDate };
+                let additionalFilter = '';
                 
                 if (currentTab === 'stable') {
                     tableName = 'stable_volatility';
@@ -2007,9 +2008,11 @@
                 } else if (currentTab === 'watchlist') {
                     tableName = 'hotnews';
                     dateRange = { from: stateWatchlist.fromDateWatchlist, to: stateWatchlist.toDateWatchlist };
+                    // Add default filter for watchlist: wyckoff_phase = Accumulation
+                    additionalFilter = '&wyckoff_phase=eq.Accumulation';
                 }
                 
-                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=single_stock&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z&limit=1000`;
+                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=single_stock&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z${additionalFilter}&limit=1000`;
                 const res = await fetch(url, {
                     headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
                 });
@@ -2039,6 +2042,7 @@
                 // Determine which table to query based on current tab
                 let tableName = 'hotnews';
                 let dateRange = { from: state.fromDate, to: state.toDate };
+                let additionalFilter = '';
                 
                 if (currentTab === 'stable') {
                     tableName = 'stable_volatility';
@@ -2049,9 +2053,11 @@
                 } else if (currentTab === 'watchlist') {
                     tableName = 'hotnews';
                     dateRange = { from: stateWatchlist.fromDateWatchlist, to: stateWatchlist.toDateWatchlist };
+                    // Add default filter for watchlist: wyckoff_phase = Accumulation
+                    additionalFilter = '&wyckoff_phase=eq.Accumulation';
                 }
                 
-                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z&limit=1000`;
+                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z${additionalFilter}&limit=1000`;
                 const res = await fetch(url, {
                     headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
                 });
