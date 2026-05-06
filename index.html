@@ -1463,7 +1463,7 @@
                             </div>
                             <div id="filterOptionsStock" class="filter-options">
                                 ${stockCodes.map(code => `
-                                    <div class="filter-option ${(filterState.stock.single_stock.size === 0 || filterState.stock.single_stock.has(code)) && !filterState.stock.single_stock.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'single_stock', '${code}')">
+                                    <div class="filter-option ${(tabFilterState.single_stock.size === 0 || tabFilterState.single_stock.has(code)) && !tabFilterState.single_stock.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('${currentTab}', 'single_stock', '${code}')">
                                         <div class="filter-checkbox">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                                                 <polyline points="20 6 9 17 4 12"></polyline>
@@ -1495,7 +1495,7 @@
                             </div>
                             <div id="filterOptionsMA15" class="filter-options">
                                 ${ma15Values.map(val => `
-                                    <div class="filter-option ${(filterState.stock.ma15.size === 0 || filterState.stock.ma15.has(val.key)) && !filterState.stock.ma15.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'ma15', '${val.key}')">
+                                    <div class="filter-option ${(tabFilterState.ma15.size === 0 || tabFilterState.ma15.has(val.key)) && !tabFilterState.ma15.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('${currentTab}', 'ma15', '${val.key}')">
                                         <div class="filter-checkbox">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                                                 <polyline points="20 6 9 17 4 12"></polyline>
@@ -1536,7 +1536,7 @@
                                         ? window.industryTranslations[ind] 
                                         : ind;
                                     return `
-                                    <div class="filter-option ${(filterState.stock.industry.size === 0 || filterState.stock.industry.has(ind)) && !filterState.stock.industry.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('stock', 'industry', '${ind.replace(/'/g, "\\'")}')">
+                                    <div class="filter-option ${(tabFilterState.industry.size === 0 || tabFilterState.industry.has(ind)) && !tabFilterState.industry.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('${currentTab}', 'industry', '${ind.replace(/'/g, "\\'")}')">
                                         <div class="filter-checkbox">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                                                 <polyline points="20 6 9 17 4 12"></polyline>
@@ -1745,9 +1745,34 @@
                     // Normal toggle behavior (some items selected)
                     if (filterState[tab][field].has(value)) {
                         filterState[tab][field].delete(value);
-                        // If no items left after delete, it means "all selected" (empty set)
+                        
+                        // If no items left after delete, set to __NONE__ (nothing selected)
+                        if (filterState[tab][field].size === 0) {
+                            filterState[tab][field].add('__NONE__');
+                        }
                     } else {
                         filterState[tab][field].add(value);
+                        
+                        // Check if ALL items are now selected
+                        // Get all available items based on field type
+                        let allItems = [];
+                        if (field === 'single_stock') {
+                            allItems = await getUniqueStockCodes();
+                        } else if (field === 'ma15') {
+                            allItems = getMA15Categories().map(v => v.key);
+                        } else if (field === 'industry') {
+                            allItems = await getUniqueIndustries();
+                        } else if (field === 'source_name') {
+                            allItems = await getUniqueSources();
+                        }
+                        
+                        // If all items are now selected, clear the set to represent "all selected"
+                        if (filterState[tab][field].size === allItems.length) {
+                            const allSelected = allItems.every(item => filterState[tab][field].has(item));
+                            if (allSelected) {
+                                filterState[tab][field].clear();
+                            }
+                        }
                     }
                 }
             }
@@ -1926,6 +1951,16 @@
                 if (typeof fetchMacroData === 'function') {
                     state.currentPageMacro = 0;
                     fetchMacroData();
+                }
+            } else if (currentTab === 'stable') {
+                if (typeof fetchStableData === 'function') {
+                    stateStable.currentPage = 0;
+                    fetchStableData();
+                }
+            } else if (currentTab === 'high') {
+                if (typeof fetchHighData === 'function') {
+                    stateHigh.currentPage = 0;
+                    fetchHighData();
                 }
             }
         }
