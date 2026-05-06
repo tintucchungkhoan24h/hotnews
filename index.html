@@ -1968,7 +1968,19 @@
         // Get unique stock codes from current data
         async function getUniqueStockCodes() {
             try {
-                const url = `${SUPABASE_URL}/rest/v1/hotnews?select=single_stock&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z&limit=1000`;
+                // Determine which table to query based on current tab
+                let tableName = 'hotnews';
+                let dateRange = { from: state.fromDate, to: state.toDate };
+                
+                if (currentTab === 'stable') {
+                    tableName = 'stable_volatility';
+                    dateRange = { from: stateStable.fromDate, to: stateStable.toDate };
+                } else if (currentTab === 'high') {
+                    tableName = 'high_volatility';
+                    dateRange = { from: stateHigh.fromDate, to: stateHigh.toDate };
+                }
+                
+                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=single_stock&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z&limit=1000`;
                 const res = await fetch(url, {
                     headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
                 });
@@ -1995,7 +2007,19 @@
         // Get unique industries from current data
         async function getUniqueIndustries() {
             try {
-                const url = `${SUPABASE_URL}/rest/v1/hotnews?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z&limit=1000`;
+                // Determine which table to query based on current tab
+                let tableName = 'hotnews';
+                let dateRange = { from: state.fromDate, to: state.toDate };
+                
+                if (currentTab === 'stable') {
+                    tableName = 'stable_volatility';
+                    dateRange = { from: stateStable.fromDate, to: stateStable.toDate };
+                } else if (currentTab === 'high') {
+                    tableName = 'high_volatility';
+                    dateRange = { from: stateHigh.fromDate, to: stateHigh.toDate };
+                }
+                
+                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z&limit=1000`;
                 const res = await fetch(url, {
                     headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
                 });
