@@ -67,7 +67,7 @@
     <!-- JS files loaded dynamically with version control - see below -->
     <script>
         // Global version for cache busting - increment this with each deployment
-        const APP_VERSION = '3.1';
+        const APP_VERSION = '3.2';
         
         // Add timestamp for Safari iOS aggressive cache busting
         const CACHE_BUSTER = APP_VERSION + '.' + Math.floor(Date.now() / 60000); // Changes every minute
@@ -1582,6 +1582,31 @@
             restoreFilterSectionStates();
         }
 
+        // Normalize Vietnamese text for search (removes diacritics)
+        function normalizeFilterText(text) {
+            if (!text) return '';
+            let s = text.toLowerCase();
+            const map = {
+                'à':'a','á':'a','ả':'a','ã':'a','ạ':'a',
+                'ă':'a','ằ':'a','ắ':'a','ẳ':'a','ẵ':'a','ặ':'a',
+                'â':'a','ầ':'a','ấ':'a','ẩ':'a','ẫ':'a','ậ':'a',
+                'đ':'d',
+                'è':'e','é':'e','ẻ':'e','ẽ':'e','ẹ':'e',
+                'ê':'e','ề':'e','ế':'e','ể':'e','ễ':'e','ệ':'e',
+                'ì':'i','í':'i','ỉ':'i','ĩ':'i','ị':'i',
+                'ò':'o','ó':'o','ỏ':'o','õ':'o','ọ':'o',
+                'ô':'o','ồ':'o','ố':'o','ổ':'o','ỗ':'o','ộ':'o',
+                'ơ':'o','ờ':'o','ớ':'o','ở':'o','ỡ':'o','ợ':'o',
+                'ù':'u','ú':'u','ủ':'u','ũ':'u','ụ':'u',
+                'ư':'u','ừ':'u','ứ':'u','ử':'u','ữ':'u','ự':'u',
+                'ỳ':'y','ý':'y','ỷ':'y','ỹ':'y','ỵ':'y'
+            };
+            for (const [a, b] of Object.entries(map)) {
+                s = s.replace(new RegExp(a, 'g'), b);
+            }
+            return s;
+        }
+
         // Setup filter search functionality
         function setupFilterSearch(inputId, containerId) {
             const input = document.getElementById(inputId);
@@ -1590,16 +1615,13 @@
             if (!input || !container) return;
             
             input.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase();
+                const raw = e.target.value;
+                const query = normalizeFilterText(raw);
                 const options = container.querySelectorAll('.filter-option');
                 
                 options.forEach(option => {
-                    const label = option.querySelector('.filter-label').textContent.toLowerCase();
-                    if (label.includes(query)) {
-                        option.style.display = 'flex';
-                    } else {
-                        option.style.display = 'none';
-                    }
+                    const label = normalizeFilterText(option.querySelector('.filter-label').textContent);
+                    option.style.display = label.includes(query) ? 'flex' : 'none';
                 });
             });
         }
