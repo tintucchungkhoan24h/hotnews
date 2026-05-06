@@ -2360,63 +2360,68 @@
             const cacheBuster = '?v=' + CACHE_BUSTER;
             
             if (tab === 'stock') {
-                // Load stock view
                 fetch('coreview_stock.html' + cacheBuster)
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
-                        // Initialize stock view after loading
-                        if (typeof initStockView === 'function') {
-                            initStockView();
+                        // Restore search query before init
+                        if (state.searchQuery) {
+                            const el = document.getElementById('searchInput');
+                            if (el) { el.value = state.searchQuery; toggleClearBtn('clearStockBtn', state.searchQuery); }
                         }
+                        if (typeof initStockView === 'function') initStockView();
                     })
                     .catch(error => console.error('Error loading stock view:', error));
             } else if (tab === 'macro') {
-                // Load macro view
                 fetch('coreview_macro.html' + cacheBuster)
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
-                        // Initialize macro view after loading
-                        if (typeof initMacroView === 'function') {
-                            initMacroView();
+                        // Restore search query before init
+                        if (state.searchQueryMacro) {
+                            const el = document.getElementById('searchInputMacro');
+                            if (el) { el.value = state.searchQueryMacro; toggleClearBtn('clearMacroBtn', state.searchQueryMacro); }
                         }
+                        if (typeof initMacroView === 'function') initMacroView();
                     })
                     .catch(error => console.error('Error loading macro view:', error));
             } else if (tab === 'stable') {
-                // Load stable volatility view
                 fetch('coreview_stable.html' + cacheBuster)
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
-                        // Initialize stable view after loading
-                        if (typeof initStableView === 'function') {
-                            initStableView();
+                        // Restore search query before init
+                        if (stateStable.searchQuery) {
+                            const el = document.getElementById('searchInputStable');
+                            if (el) { el.value = stateStable.searchQuery; toggleClearBtn('clearStableBtn', stateStable.searchQuery); }
                         }
+                        if (typeof initStableView === 'function') initStableView();
                     })
                     .catch(error => console.error('Error loading stable view:', error));
             } else if (tab === 'high') {
-                // Load high volatility view
                 fetch('coreview_high.html' + cacheBuster)
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
-                        // Initialize high view after loading
-                        if (typeof initHighView === 'function') {
-                            initHighView();
+                        // Restore search query before init
+                        if (stateHigh.searchQuery) {
+                            const el = document.getElementById('searchInputHigh');
+                            if (el) { el.value = stateHigh.searchQuery; toggleClearBtn('clearHighBtn', stateHigh.searchQuery); }
                         }
+                        if (typeof initHighView === 'function') initHighView();
                     })
                     .catch(error => console.error('Error loading high view:', error));
             } else if (tab === 'watchlist') {
-                // Load watchlist view
                 fetch('coreview_watchlist.html' + cacheBuster)
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
-                        // Initialize watchlist view after loading
-                        if (typeof initWatchlistView === 'function') {
-                            initWatchlistView();
+                        // Restore search query before init
+                        if (stateWatchlist.searchQuery) {
+                            const el = document.getElementById('searchInputWatchlist');
+                            if (el) { el.value = stateWatchlist.searchQuery; toggleClearBtn('clearWatchlistBtn', stateWatchlist.searchQuery); }
                         }
+                        if (typeof initWatchlistView === 'function') initWatchlistView();
                     })
                     .catch(error => console.error('Error loading watchlist view:', error));
             }
