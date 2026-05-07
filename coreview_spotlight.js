@@ -172,8 +172,8 @@ function setupSpotlightViewEventListeners() {
 function buildSpotlightFilterQuery() {
     const filters = [];
     
-    // DEFAULT FILTER: Always add recommendation = HOLD for spotlight
-    filters.push('recommendation=eq.HOLD');
+    // DEFAULT FILTER: Always add recommendation = HOLD or BUY for spotlight
+    filters.push('or=(recommendation.eq.HOLD,recommendation.eq.BUY)');
     
     // Get filter state from global scope
     if (typeof filterState !== 'undefined' && filterState.spotlight) {

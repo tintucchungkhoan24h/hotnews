@@ -2061,8 +2061,8 @@
                 } else if (currentTab === 'spotlight') {
                     tableName = 'hotnews';
                     dateRange = { from: stateSpotlight.fromDateSpotlight, to: stateSpotlight.toDateSpotlight };
-                    // Add default filter for spotlight: recommendation = HOLD
-                    additionalFilter = '&recommendation=eq.HOLD';
+                    // Add default filter for spotlight: recommendation = HOLD or BUY
+                    additionalFilter = '&or=(recommendation.eq.HOLD,recommendation.eq.BUY)';
                 }
                 
                 const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=single_stock&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z${additionalFilter}&limit=1000`;
@@ -2111,8 +2111,8 @@
                 } else if (currentTab === 'spotlight') {
                     tableName = 'hotnews';
                     dateRange = { from: stateSpotlight.fromDateSpotlight, to: stateSpotlight.toDateSpotlight };
-                    // Add default filter for spotlight: recommendation = HOLD
-                    additionalFilter = '&recommendation=eq.HOLD';
+                    // Add default filter for spotlight: recommendation = HOLD or BUY
+                    additionalFilter = '&or=(recommendation.eq.HOLD,recommendation.eq.BUY)';
                 }
                 
                 const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z${additionalFilter}&limit=1000`;
