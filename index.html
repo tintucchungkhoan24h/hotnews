@@ -79,7 +79,8 @@
                 'coreview_macro.js',
                 'coreview_stable.js',
                 'coreview_high.js',
-                'coreview_watchlist.js'
+                'coreview_watchlist.js',
+                'coreview_spotlight.js'
             ];
             
             scripts.forEach(function(src) {
@@ -728,6 +729,9 @@
             <button id="tab-watchlist" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
                 <span class="tab-text">⭐ Danh sách theo dõi</span>
             </button>
+            <button id="tab-spotlight" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
+                <span class="tab-text">🚀 Mã Nổi Bật</span>
+            </button>
         </div>
     </div>
 
@@ -983,7 +987,7 @@
                 chartTooltip: 'Xem biểu đồ trên TradingView',
                 empty: 'Không có dữ liệu phù hợp.', prev: 'Trước', next: 'Sau',
                 paging: (s, e, t) => `Hiển thị ${s} - ${e} trên tổng ${t}`,
-                tabs: { stock: 'Mã CK', macro: 'Vĩ Mô', stable: 'Biến động ổn định', high: 'Biến động mạnh', watchlist: 'Danh sách theo dõi' },
+                tabs: { stock: 'Mã CK', macro: 'Vĩ Mô', stable: 'Biến động ổn định', high: 'Biến động mạnh', watchlist: 'Danh sách theo dõi', spotlight: 'Mã Nổi Bật' },
                 filter: {
                     title: 'Bộ Lọc',
                     search: 'Tìm kiếm...',
@@ -1040,7 +1044,7 @@
                 chartTooltip: 'View chart on TradingView',
                 empty: 'No matching records found.', prev: 'Prev', next: 'Next',
                 paging: (s, e, t) => `Showing ${s} - ${e} of ${t}`,
-                tabs: { stock: 'Stock', macro: 'Macro', stable: 'Stable Volatility', high: 'High Volatility', watchlist: 'Watchlist' },
+                tabs: { stock: 'Stock', macro: 'Macro', stable: 'Stable Volatility', high: 'High Volatility', watchlist: 'Watchlist', spotlight: 'Spotlight Stocks' },
                 filter: {
                     title: 'Filters',
                     search: 'Search...',
@@ -1194,6 +1198,17 @@
             lang: 'vn',
             sortCol: 'timesfm_point', sortDesc: true,
             fromDateWatchlist: '', toDateWatchlist: '', searchQuery: '',
+            currentPage: 0, pageSize: 50, totalCount: 0,
+            translatedNames: state.translatedNames,
+            translatedHeadlines: state.translatedHeadlines
+        };
+
+        // Spotlight state object
+        let stateSpotlight = {
+            data: [],
+            lang: 'vn',
+            sortCol: 'timesfm_point', sortDesc: true,
+            fromDateSpotlight: '', toDateSpotlight: '', searchQuery: '',
             currentPage: 0, pageSize: 50, totalCount: 0,
             translatedNames: state.translatedNames,
             translatedHeadlines: state.translatedHeadlines
@@ -1362,6 +1377,11 @@
                 single_stock: new Set(),
                 ma15: new Set(),
                 industry: new Set()
+            },
+            spotlight: {
+                single_stock: new Set(),
+                ma15: new Set(),
+                industry: new Set()
             }
         };
         
@@ -1427,12 +1447,13 @@
             const content = document.getElementById('filterContent');
             const t = i18n[state.lang].filter;
             
-            if (currentTab === 'stock' || currentTab === 'stable' || currentTab === 'high' || currentTab === 'watchlist') {
+            if (currentTab === 'stock' || currentTab === 'stable' || currentTab === 'high' || currentTab === 'watchlist' || currentTab === 'spotlight') {
                 // Determine which filter state to use
                 const tabFilterState = currentTab === 'stock' ? filterState.stock : 
                                       currentTab === 'stable' ? filterState.stable : 
                                       currentTab === 'high' ? filterState.high :
-                                      filterState.watchlist;
+                                      currentTab === 'watchlist' ? filterState.watchlist :
+                                      filterState.spotlight;
                 
                 // Fetch unique values for stock filters
                 const stockCodes = await getUniqueStockCodes();
@@ -2008,6 +2029,11 @@
                     stateWatchlist.currentPage = 0;
                     fetchWatchlistData();
                 }
+            } else if (currentTab === 'spotlight') {
+                if (typeof fetchSpotlightData === 'function') {
+                    stateSpotlight.currentPage = 0;
+                    fetchSpotlightData();
+                }
             }
         }
 
@@ -2030,6 +2056,11 @@
                     dateRange = { from: stateWatchlist.fromDateWatchlist, to: stateWatchlist.toDateWatchlist };
                     // Add default filter for watchlist: wyckoff_phase = Accumulation
                     additionalFilter = '&wyckoff_phase=eq.Accumulation';
+                } else if (currentTab === 'spotlight') {
+                    tableName = 'hotnews';
+                    dateRange = { from: stateSpotlight.fromDateSpotlight, to: stateSpotlight.toDateSpotlight };
+                    // Add default filter for spotlight: recommendation = HOLD
+                    additionalFilter = '&recommendation=eq.HOLD';
                 }
                 
                 const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=single_stock&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z${additionalFilter}&limit=1000`;
@@ -2075,6 +2106,11 @@
                     dateRange = { from: stateWatchlist.fromDateWatchlist, to: stateWatchlist.toDateWatchlist };
                     // Add default filter for watchlist: wyckoff_phase = Accumulation
                     additionalFilter = '&wyckoff_phase=eq.Accumulation';
+                } else if (currentTab === 'spotlight') {
+                    tableName = 'hotnews';
+                    dateRange = { from: stateSpotlight.fromDateSpotlight, to: stateSpotlight.toDateSpotlight };
+                    // Add default filter for spotlight: recommendation = HOLD
+                    additionalFilter = '&recommendation=eq.HOLD';
                 }
                 
                 const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z${additionalFilter}&limit=1000`;
@@ -2251,6 +2287,7 @@
                 stateStable.lang = state.lang;
                 stateHigh.lang = state.lang;
                 stateWatchlist.lang = state.lang;
+                stateSpotlight.lang = state.lang;
                 
                 document.getElementById('langText').innerText = state.lang.toUpperCase();
                 document.getElementById('langFlag').innerHTML = flags[state.lang];
@@ -2336,6 +2373,14 @@
                     if (typeof renderWatchlistHeaders === 'function') renderWatchlistHeaders();
                     if (typeof renderWatchlistBody === 'function') renderWatchlistBody();
                     if (typeof renderWatchlistPaginationUI === 'function') renderWatchlistPaginationUI();
+                }
+                
+                // Update spotlight view elements if on spotlight tab
+                if (currentTab === 'spotlight') {
+                    if (typeof updateSpotlightViewLabels === 'function') updateSpotlightViewLabels();
+                    if (typeof renderSpotlightHeaders === 'function') renderSpotlightHeaders();
+                    if (typeof renderSpotlightBody === 'function') renderSpotlightBody();
+                    if (typeof renderSpotlightPaginationUI === 'function') renderSpotlightPaginationUI();
                 }
                 
                 renderFooter();
@@ -2444,6 +2489,19 @@
                         if (typeof initWatchlistView === 'function') initWatchlistView();
                     })
                     .catch(error => console.error('Error loading watchlist view:', error));
+            } else if (tab === 'spotlight') {
+                fetch('coreview_spotlight.html' + cacheBuster)
+                    .then(response => response.text())
+                    .then(data => {
+                        container.innerHTML = data;
+                        // Restore search query before init
+                        if (stateSpotlight.searchQuery) {
+                            const el = document.getElementById('searchInputSpotlight');
+                            if (el) { el.value = stateSpotlight.searchQuery; toggleClearBtn('clearSpotlightBtn', stateSpotlight.searchQuery); }
+                        }
+                        if (typeof initSpotlightView === 'function') initSpotlightView();
+                    })
+                    .catch(error => console.error('Error loading spotlight view:', error));
             }
         }
         
@@ -2478,6 +2536,7 @@
             if (tabs[2]) tabs[2].innerText = i18n[state.lang].tabs.stable;
             if (tabs[3]) tabs[3].innerText = i18n[state.lang].tabs.high;
             if (tabs[4]) tabs[4].innerText = '⭐ ' + i18n[state.lang].tabs.watchlist;
+            if (tabs[5]) tabs[5].innerText = '🚀 ' + i18n[state.lang].tabs.spotlight;
             
             // Update macro page if it's currently active
             if (currentTab === 'macro') {
@@ -2495,6 +2554,7 @@
             document.getElementById('tab-stable').addEventListener('click', () => loadCoreView('stable'));
             document.getElementById('tab-high').addEventListener('click', () => loadCoreView('high'));
             document.getElementById('tab-watchlist').addEventListener('click', () => loadCoreView('watchlist'));
+            document.getElementById('tab-spotlight').addEventListener('click', () => loadCoreView('spotlight'));
         });
         
         // Load footer component
