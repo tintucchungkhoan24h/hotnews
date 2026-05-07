@@ -83,7 +83,7 @@ function initMacroView() {
 // Update all macro view labels based on current language
 function updateMacroViewLabels() {
     const searchInput = document.getElementById('searchInputMacro');
-    if (searchInput) searchInput.placeholder = state.lang === 'vn' ? 'Ví dụ: Giá vàng/gia vang' : 'Example: Giá vàng/gia vang';
+    if (searchInput) searchInput.placeholder = i18n[state.lang].searchPlaceholderMacro;
     
     const lblFrom = document.getElementById('lblFromMacro');
     if (lblFrom) lblFrom.innerText = i18n[state.lang].lblFrom;
