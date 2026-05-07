@@ -51,8 +51,9 @@ function initHighView() {
     setPickerLimits('fromDateHigh', minDate, maxDate);
     setPickerLimits('toDateHigh', minDate, maxDate);
 
-    stateHigh.fromDate = dateToIso(lastWeek);
-    stateHigh.toDate = maxDate;
+    // Only set default dates on first load; preserve user selection on tab revisit
+    if (!stateHigh.fromDate) stateHigh.fromDate = dateToIso(lastWeek);
+    if (!stateHigh.toDate) stateHigh.toDate = maxDate;
     
     console.log('Initial state dates - from:', stateHigh.fromDate, 'to:', stateHigh.toDate);
 

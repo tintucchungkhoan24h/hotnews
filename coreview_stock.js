@@ -51,8 +51,9 @@ function initStockView() {
     setPickerLimits('fromDate', minDate, maxDate);
     setPickerLimits('toDate', minDate, maxDate);
 
-    state.fromDate = dateToIso(lastWeek);
-    state.toDate = maxDate;
+    // Only set default dates on first load; preserve user selection on tab revisit
+    if (!state.fromDate) state.fromDate = dateToIso(lastWeek);
+    if (!state.toDate) state.toDate = maxDate;
     
     console.log('Initial state dates - from:', state.fromDate, 'to:', state.toDate);
 

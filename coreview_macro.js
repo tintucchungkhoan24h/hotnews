@@ -47,8 +47,9 @@ function initMacroView() {
     setPickerLimits('fromDateMacro', minDate, maxDate);
     setPickerLimits('toDateMacro', minDate, maxDate);
 
-    state.fromDateMacro = dateToIso(sevenDaysAgo);
-    state.toDateMacro = maxDate;
+    // Only set default dates on first load; preserve user selection on tab revisit
+    if (!state.fromDateMacro) state.fromDateMacro = dateToIso(sevenDaysAgo);
+    if (!state.toDateMacro) state.toDateMacro = maxDate;
 
     setPickerValue('fromDateMacro', state.fromDateMacro);
     setPickerValue('toDateMacro', state.toDateMacro);

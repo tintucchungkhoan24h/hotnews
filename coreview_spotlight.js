@@ -51,8 +51,9 @@ function initSpotlightView() {
     setPickerLimits('fromDateSpotlight', minDate, maxDate);
     setPickerLimits('toDateSpotlight', minDate, maxDate);
 
-    stateSpotlight.fromDateSpotlight = dateToIso(lastWeek);
-    stateSpotlight.toDateSpotlight = maxDate;
+    // Only set default dates on first load; preserve user selection on tab revisit
+    if (!stateSpotlight.fromDateSpotlight) stateSpotlight.fromDateSpotlight = dateToIso(lastWeek);
+    if (!stateSpotlight.toDateSpotlight) stateSpotlight.toDateSpotlight = maxDate;
     
     console.log('Initial state dates - from:', stateSpotlight.fromDateSpotlight, 'to:', stateSpotlight.toDateSpotlight);
 

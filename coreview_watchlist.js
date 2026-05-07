@@ -51,8 +51,9 @@ function initWatchlistView() {
     setPickerLimits('fromDateWatchlist', minDate, maxDate);
     setPickerLimits('toDateWatchlist', minDate, maxDate);
 
-    stateWatchlist.fromDateWatchlist = dateToIso(lastWeek);
-    stateWatchlist.toDateWatchlist = maxDate;
+    // Only set default dates on first load; preserve user selection on tab revisit
+    if (!stateWatchlist.fromDateWatchlist) stateWatchlist.fromDateWatchlist = dateToIso(lastWeek);
+    if (!stateWatchlist.toDateWatchlist) stateWatchlist.toDateWatchlist = maxDate;
     
     console.log('Initial state dates - from:', stateWatchlist.fromDateWatchlist, 'to:', stateWatchlist.toDateWatchlist);
 

@@ -51,8 +51,9 @@ function initStableView() {
     setPickerLimits('fromDateStable', minDate, maxDate);
     setPickerLimits('toDateStable', minDate, maxDate);
 
-    stateStable.fromDate = dateToIso(lastWeek);
-    stateStable.toDate = maxDate;
+    // Only set default dates on first load; preserve user selection on tab revisit
+    if (!stateStable.fromDate) stateStable.fromDate = dateToIso(lastWeek);
+    if (!stateStable.toDate) stateStable.toDate = maxDate;
     
     console.log('Initial state dates - from:', stateStable.fromDate, 'to:', stateStable.toDate);
 
