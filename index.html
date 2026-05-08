@@ -1025,12 +1025,15 @@
                 footer: {
                     col1Title: 'Về Chúng Tôi',
                     col1Desc1: 'Cung cấp thông tin thị trường tài chính theo tiêu chí <span class="text-fin-gold font-bold">3S</span>: <span class="text-gray-300"> Short</span> (Ngắn gọn) – <span class="text-gray-300"> Sharp</span> (Sắc nét) – <span class="text-gray-300"> Straight</span> (Trực diện).',
-                    col1Desc2: 'Giúp nhà đầu tư nắm bắt dòng tiền và xu hướng thị trường nhanh nhất mỗi ngày.',
+                    col1Desc2: '"Giúp nhà đầu tư nắm bắt dòng tiền và xu hướng thị trường nhanh nhất mỗi ngày."',
                     col2Title: 'Liên Hệ Quảng Cáo',
-                    col2Founder: 'Founder: Phạm Văn Thiện',
+                    col2Founder: 'Phạm Văn Thiện',
                     col3Title: 'Kết Nối Hệ Sinh Thái',
-                    ecosystemDesc: 'Cập nhật thông tin về dòng tiền và cơ hội đầu tư hàng ngày qua các nền tảng:',
-                    mapsLabel: 'Google Maps – Xem vị trí',
+                    mapsLabel: 'Google Maps',
+                    addressLabel: 'Trụ sở chính',
+                    directionsLink: 'Chỉ đường trên Google Maps →',
+                    version: 'Phiên bản 4.0',
+                    updated: 'Cập nhật: 08/05/2026',
                     copyrightResp: 'Người chịu trách nhiệm nội dung: <span class="text-gray-300 font-semibold">Phạm Văn Thiện</span>',
                     copyrightCopy: '© 2026 Tin Tức Chứng Khoán 24h — Founder <span class="text-gray-300 font-semibold">Phạm Văn Thiện</span>'
                 }
@@ -1083,12 +1086,15 @@
                 footer: {
                     col1Title: 'About Us',
                     col1Desc1: 'Delivering financial market insights based on the <span class="text-fin-gold font-bold">3S</span> principle: <span class="text-gray-300"> Short</span> – <span class="text-gray-300"> Sharp</span> – <span class="text-gray-300"> Straight</span>.',
-                    col1Desc2: 'Helping investors track money flow and market trends faster every day.',
+                    col1Desc2: '"Helping investors track money flow and market trends faster every day."',
                     col2Title: 'Advertising Contact',
-                    col2Founder: 'Founder: Phạm Văn Thiện',
+                    col2Founder: 'Phạm Văn Thiện',
                     col3Title: 'Our Ecosystem',
-                    ecosystemDesc: 'Stay updated on money flow and daily investment opportunities across our platforms:',
-                    mapsLabel: 'Google Maps – View location',
+                    mapsLabel: 'Google Maps',
+                    addressLabel: 'Headquarters',
+                    directionsLink: 'Get directions on Google Maps →',
+                    version: 'Version 4.0',
+                    updated: 'Updated: 08/05/2026',
                     copyrightResp: 'Content responsible: <span class="text-gray-300 font-semibold">Phạm Văn Thiện</span>',
                     copyrightCopy: '© 2026 Tin Tức Chứng Khoán 24h — Founder <span class="text-gray-300 font-semibold">Phạm Văn Thiện</span>'
                 }
@@ -1335,16 +1341,20 @@
 
         function renderFooter() {
             const f = i18n[state.lang].footer;
-            document.getElementById('footer-col1-title').innerText        = f.col1Title;
-            document.getElementById('footer-col1-desc1').innerHTML        = f.col1Desc1;
-            document.getElementById('footer-col1-desc2').innerText        = f.col1Desc2;
-            document.getElementById('footer-col2-title').innerText        = f.col2Title;
-            document.getElementById('footer-col2-founder').innerText      = f.col2Founder;
-            document.getElementById('footer-col3-title').innerText        = f.col3Title;
-            document.getElementById('footer-ecosystem-desc').innerText    = f.ecosystemDesc;
-            document.getElementById('footer-maps-label').innerText        = f.mapsLabel;
-            document.getElementById('footer-copyright-resp').innerHTML    = f.copyrightResp;
-            document.getElementById('footer-copyright-copy').innerHTML    = f.copyrightCopy;
+            const el = (id) => document.getElementById(id);
+            if (el('footer-col1-title'))     el('footer-col1-title').innerText     = f.col1Title;
+            if (el('footer-col1-desc1'))     el('footer-col1-desc1').innerHTML     = f.col1Desc1;
+            if (el('footer-col1-desc2'))     el('footer-col1-desc2').innerText     = f.col1Desc2;
+            if (el('footer-col2-title'))     el('footer-col2-title').innerText     = f.col2Title;
+            if (el('footer-col2-founder'))   el('footer-col2-founder').innerText   = f.col2Founder;
+            if (el('footer-col3-title'))     el('footer-col3-title').innerText     = f.col3Title;
+            if (el('footer-maps-label'))     el('footer-maps-label').innerText     = f.mapsLabel;
+            if (el('footer-address-label'))  el('footer-address-label').innerText  = f.addressLabel;
+            if (el('footer-directions-link'))el('footer-directions-link').innerText= f.directionsLink;
+            if (el('footer-version'))        el('footer-version').innerText        = f.version;
+            if (el('footer-updated'))        el('footer-updated').innerText        = f.updated;
+            if (el('footer-copyright-resp')) el('footer-copyright-resp').innerHTML = f.copyrightResp;
+            if (el('footer-copyright-copy')) el('footer-copyright-copy').innerHTML = f.copyrightCopy;
         }
 
         // ═══════════════════════════════════════════════════════════════════════════
