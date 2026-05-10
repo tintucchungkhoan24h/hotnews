@@ -2090,11 +2090,12 @@
 
         // Get MA15 categories
         function getMA15Categories() {
+            const isVn = state.lang === 'vn';
             return [
                 { key: '⏫ MA15', label: '⏫ MA15 (>5%)' },
-                { key: '⬆️ MA15', label: '⬆️ MA15 (1-5%)' },
-                { key: '↔️ MA15', label: '↔️ MA15 (-1 to 1%)' },
-                { key: '⬇️ MA15', label: '⬇️ MA15 (-5 to -1%)' },
+                { key: '⬆️ MA15', label: isVn ? '⬆️ MA15 (1 đến 5%)' : '⬆️ MA15 (1 to 5%)' },
+                { key: '↔️ MA15', label: isVn ? '↔️ MA15 (-1 đến 1%)' : '↔️ MA15 (-1 to 1%)' },
+                { key: '⬇️ MA15', label: isVn ? '⬇️ MA15 (-5 đến -1%)' : '⬇️ MA15 (-5 to -1%)' },
                 { key: '⏬ MA15', label: '⏬ MA15 (<-5%)' }
             ];
         }
