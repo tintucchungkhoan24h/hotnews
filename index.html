@@ -738,7 +738,7 @@
             padding: 8px 12px; background: #112240;
             cursor: grab; border-bottom: 1px solid #1e3a5f;
         ">
-            <span id="videoTitle" style="font-size:11px;font-weight:700;color:#ffffff;letter-spacing:0.3px;line-height:1.3;flex:1;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">Video</span>
+            <span id="videoTitle" style="font-size:11px;font-weight:700;color:#ffffff;letter-spacing:0.3px;line-height:1.3;flex:1;min-width:0;">Video</span>
             <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:8px;">
                 <!-- Close button -->
                 <button onclick="closeVideoPlayer()" title="Close" style="
@@ -2696,11 +2696,6 @@
         function loadCoreView(tab) {
             currentTab = tab;
             const container = document.getElementById('coreview-container');
-            
-            // Pause video when switching away from stock/macro
-            if (videoState.open && videoState.tab !== tab) {
-                pauseVideoPlayer();
-            }
             
             // Update tab button states
             document.querySelectorAll('.tab-button').forEach(btn => {
