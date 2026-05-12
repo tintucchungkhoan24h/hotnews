@@ -1079,6 +1079,7 @@
                 exportBtn: 'Xuất Excel', exporting: 'Đang xuất...',
                 filterBtn: 'Lọc',
                 refreshBtn: 'Làm mới dữ liệu',
+                watchNewsBtn: 'Xem tin tức',
                 cols: { index: '#', publish_time: 'Thời gian', single_stock: 'Mã CK', price_change_today_pct: '% Đổi', ma15: 'MA15', organ_name: 'Doanh nghiệp', industry: 'Ngành', current_close: 'Giá', current_volume: 'Khối lượng', headline: 'Tiêu đề' },
                 chartTooltip: 'Xem biểu đồ trên TradingView',
                 empty: 'Không có dữ liệu phù hợp.', prev: 'Trước', next: 'Sau',
@@ -1140,6 +1141,7 @@
                 exportBtn: 'Export Excel', exporting: 'Exporting...',
                 filterBtn: 'Filter',
                 refreshBtn: 'Refresh data',
+                watchNewsBtn: 'Watch news',
                 cols: { index: '#', publish_time: 'Time', single_stock: 'Ticker', price_change_today_pct: '% Chg', ma15: 'MA15', organ_name: 'Company', industry: 'Industry', current_close: 'Price', current_volume: 'Volume', headline: 'Headline' },
                 chartTooltip: 'View chart on TradingView',
                 empty: 'No matching records found.', prev: 'Prev', next: 'Next',
@@ -2573,17 +2575,20 @@
                 directLink.innerText = lang === 'vn' ? '▶ Mở video trực tiếp' : '▶ Open video directly';
             }
 
-            // Load new source — start muted for autoplay compliance, unmute on first interaction
+            // Load new source — start muted for autoplay compliance, unmute immediately after play starts
             if (fallback) fallback.style.display = 'none';
             video.style.display = 'block';
             video.muted = true;
             source.src = url;
             video.load();
-            video.play().catch(() => {
-                // Autoplay still blocked — user can press play manually
+            video.play().then(() => {
+                // Autoplay succeeded — unmute now
+                video.muted = false;
+            }).catch(() => {
+                // Autoplay blocked — keep muted, user can press play manually
             });
 
-            // Unmute on first user interaction with the video
+            // Also unmute on first user interaction
             video.addEventListener('click', () => { video.muted = false; }, { once: true });
             video.addEventListener('touchstart', () => { video.muted = false; }, { once: true });
 

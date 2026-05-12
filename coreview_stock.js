@@ -104,6 +104,9 @@ function updateStockViewLabels() {
     
     const refreshStockBtn = document.getElementById('refreshStockBtn');
     if (refreshStockBtn) refreshStockBtn.title = i18n[state.lang].refreshBtn;
+
+    const stockVideoBtnText = document.getElementById('stockVideoBtnText');
+    if (stockVideoBtnText) stockVideoBtnText.innerText = i18n[state.lang].watchNewsBtn;
 }
 
 // Setup all event listeners for stock view
