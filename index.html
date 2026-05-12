@@ -2404,6 +2404,25 @@
                 document.getElementById('main-title').innerText = i18n[state.lang].title;
                 document.getElementById('sub-title').innerText = i18n[state.lang].subtitle;
                 
+                // Switch video language if player is open
+                if (videoState.open && videoState.tab) {
+                    const filename = VIDEO_FILES[videoState.tab]?.[state.lang];
+                    if (filename) {
+                        const video = document.getElementById('videoIframe');
+                        const source = document.getElementById('videoSource');
+                        const title = document.getElementById('videoTitle');
+                        const wasPlaying = !video.paused;
+                        const currentTime = video.currentTime;
+                        if (title) title.innerText = VIDEO_TITLES[videoState.tab]?.[state.lang] || 'Video';
+                        video.muted = true;
+                        source.src = getVideoUrl(filename);
+                        video.load();
+                        if (wasPlaying) {
+                            video.play().then(() => { video.muted = false; }).catch(() => {});
+                        }
+                    }
+                }
+
                 // Update tab labels
                 updateTabLabels();
                 
