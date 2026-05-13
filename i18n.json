@@ -77,7 +77,8 @@
         "feature3Desc": "Triển vọng kinh tế, chính sách",
         "feature4Title": "Báo Cáo Chuyên Sâu",
         "feature4Desc": "Phân tích ngành, thị trường",
-        "status": "Đang Phát Triển"
+        "status": "Đang Phát Triển",
+        "sheetName": "Tin Vĩ Mô"
       },
       "header": {
         "mainTitle": "TIN TỨC CHỨNG KHOÁN 24H",
@@ -139,7 +140,9 @@
       },
       "lang": {
         "short": "VN"
-      }
+      },
+      "exportError": "Lỗi khi xuất file Excel. Vui lòng thử lại.",
+      "exportErrorWithMessage": "Lỗi khi xuất file Excel: {message}"
     },
     "en": {
       "title": "24H STOCK MARKET NEWS",
@@ -214,7 +217,8 @@
         "feature3Desc": "Economic outlook, policy analysis",
         "feature4Title": "In-Depth Reports",
         "feature4Desc": "Industry and market analysis",
-        "status": "In Development"
+        "status": "In Development",
+        "sheetName": "Macro News"
       },
       "header": {
         "mainTitle": "24H STOCK MARKET NEWS",
@@ -276,7 +280,9 @@
       },
       "lang": {
         "short": "EN"
-      }
+      },
+      "exportError": "Error exporting Excel file. Please try again.",
+      "exportErrorWithMessage": "Error exporting Excel file: {message}"
     }
   }
 }

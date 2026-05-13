@@ -739,7 +739,7 @@ async function exportMacroToExcel() {
         });
         ws['!cols'] = colWidths;
 
-        XLSX.utils.book_append_sheet(wb, ws, state.lang === 'vn' ? 'Tin Vĩ Mô' : 'Macro News');
+        XLSX.utils.book_append_sheet(wb, ws, i18n[state.lang].macro.sheetName);
 
         // Generate filename with date range
         const filename = `TinViMo_${state.fromDateMacro}_${state.toDateMacro}.xlsx`;
@@ -747,7 +747,7 @@ async function exportMacroToExcel() {
 
     } catch (error) {
         console.error('Export error:', error);
-        alert(state.lang === 'vn' ? 'Lỗi khi xuất file Excel. Vui lòng thử lại.' : 'Error exporting Excel file. Please try again.');
+        alert(i18n[state.lang].exportError);
     } finally {
         // Re-enable button
         btn.disabled = false;

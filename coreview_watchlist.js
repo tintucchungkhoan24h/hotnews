@@ -925,7 +925,7 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
 
     } catch (error) {
         console.error('Export error:', error);
-        alert('Lỗi khi xuất file Excel: ' + (error.message || 'Vui lòng thử lại.'));
+        alert(i18n[stateWatchlist.lang].exportErrorWithMessage.replace('{message}', error.message || i18n[stateWatchlist.lang].exportError.split('. ')[1]));
     } finally {
         btn.disabled = false;
         btnText.innerText = originalText;

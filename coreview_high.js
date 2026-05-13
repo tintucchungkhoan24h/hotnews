@@ -908,7 +908,7 @@ async function exportHighToExcel() {
         });
         ws['!cols'] = colWidths;
 
-        XLSX.utils.book_append_sheet(wb, ws, 'Tin Tức Chứng Khoán');
+        XLSX.utils.book_append_sheet(wb, ws, i18n[stateHigh.lang].excelSheetName);
 
         // Generate filename with date range
         const filename = `TinTucChungKhoan_${stateHigh.fromDate}_${stateHigh.toDate}.xlsx`;
@@ -916,7 +916,7 @@ async function exportHighToExcel() {
 
     } catch (error) {
         console.error('Export error:', error);
-        alert('Lỗi khi xuất file Excel. Vui lòng thử lại.');
+        alert(i18n[stateHigh.lang].exportError);
     } finally {
         // Re-enable button
         btn.disabled = false;

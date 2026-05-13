@@ -5,7 +5,7 @@
             <!-- Date Range Filter -->
             <div class="flex items-center bg-fin-blue border border-gray-700/50 rounded-xl px-3 py-2 shadow-inner w-full sm:w-auto">
                 <div class="flex flex-col flex-1">
-                    <label id="lblFromMacro" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5">Từ ngày</label>
+                    <label id="lblFromMacro" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblFrom">Từ ngày</label>
                     <div class="datepicker-wrapper">
                         <input type="text" id="fromDateMacro" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
                         <div id="fromDateMacroPopup" class="datepicker-popup"></div>
@@ -13,7 +13,7 @@
                 </div>
                 <div class="w-[1px] h-7 bg-gray-700 mx-3"></div>
                 <div class="flex flex-col flex-1">
-                    <label id="lblToMacro" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5">Đến ngày</label>
+                    <label id="lblToMacro" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblTo">Đến ngày</label>
                     <div class="datepicker-wrapper">
                         <input type="text" id="toDateMacro" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
                         <div id="toDateMacroPopup" class="datepicker-popup"></div>
@@ -38,7 +38,7 @@
                         </svg>
                     </button>
                 </div>
-                <button onclick="refreshMacroData()" title="Làm mới dữ liệu"
+                <button onclick="refreshMacroData()" data-title-key="refreshBtn" title="Làm mới dữ liệu"
                     class="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-fin-blue border border-gray-700/50 rounded-xl text-gray-400 hover:text-fin-gold hover:border-fin-gold transition-all hover:scale-110 active:scale-95"
                     id="refreshMacroBtn">
                     <svg id="refreshMacroIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -59,13 +59,13 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
         </svg>
-        <span id="filterBtnTextMacro">Filter</span>
+        <span id="filterBtnTextMacro" data-text-key="filterBtn">Filter</span>
     </button>
 
     <!-- Video Play Button -->
     <button onclick="openVideoPlayer('macro')" title="Xem video" class="flex items-center gap-1.5 bg-gray-800 border border-gray-700 text-white px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm sm:px-4 hover:border-fin-gold hover:bg-gray-700 transition-all hover:scale-105 active:scale-95 whitespace-nowrap">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        <span id="macroVideoBtnText">Xem tin tức</span>
+        <span id="macroVideoBtnText" data-text-key="watchNewsBtn">Xem tin tức</span>
     </button>
     
     <!-- Export Button -->
@@ -74,7 +74,7 @@
         <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
             <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12.9,14.5L15.8,19H14L12,15.6L10,19H8.2L11.1,14.5L8.2,10H10L12,13.4L14,10H15.8L12.9,14.5Z"/>
         </svg>
-        <span id="exportBtnTextMacro">Xuất Excel</span>
+        <span id="exportBtnTextMacro" data-text-key="exportBtn">Xuất Excel</span>
     </button>
 </div>
 
@@ -94,16 +94,16 @@
         <div id="paginationInfoMacro" class="text-xs text-gray-500 font-medium"></div>
         <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center">
             <button id="firstBtnMacro" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm">&laquo;</button>
-            <button id="prevBtnMacro" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all">Trước</button>
+            <button id="prevBtnMacro" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all" data-text-key="prev">Trước</button>
             <div id="pageNumbersMacro" class="flex gap-1.5 sm:gap-2"></div>
-            <button id="nextBtnMacro" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all">Sau</button>
+            <button id="nextBtnMacro" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all" data-text-key="next">Sau</button>
             <button id="lastBtnMacro" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm">&raquo;</button>
         </div>
     </div>
 
     <div id="loadingStateMacro" class="p-20 text-center text-gray-400 hidden">
         <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-fin-gold border-t-transparent mb-4"></div>
-        <p id="loadingTextMacro" class="text-sm font-medium">Đang tải dữ liệu...</p>
+        <p id="loadingTextMacro" class="text-sm font-medium" data-text-key="loading">Đang tải dữ liệu...</p>
     </div>
     <div id="emptyStateMacro" class="p-20 text-center text-gray-500 hidden italic text-sm"></div>
 </div>

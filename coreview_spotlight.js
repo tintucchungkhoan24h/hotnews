@@ -925,7 +925,7 @@ window.exportSpotlightToExcel = async function exportSpotlightToExcel(btnRef) {
 
     } catch (error) {
         console.error('Export error:', error);
-        alert('Lỗi khi xuất file Excel: ' + (error.message || 'Vui lòng thử lại.'));
+        alert(i18n[stateSpotlight.lang].exportErrorWithMessage.replace('{message}', error.message || i18n[stateSpotlight.lang].exportError.split('. ')[1]));
     } finally {
         btn.disabled = false;
         btnText.innerText = originalText;
