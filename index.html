@@ -2389,6 +2389,9 @@
                 // Update tab labels
                 updateTabLabels();
                 
+                // Update footer translations as well
+                if (typeof renderFooter === 'function') renderFooter();
+                
                 // Update stock view elements if on stock tab
                 if (currentTab === 'stock') {
                     if (typeof updateStockViewLabels === 'function') {
@@ -2835,6 +2838,7 @@
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
                 applyTranslations(state.lang || 'vn');
+                if (typeof renderFooter === 'function') renderFooter();
             })
             .catch(error => console.error('Error loading footer:', error));
     </script>
