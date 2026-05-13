@@ -148,7 +148,7 @@
       "title": "24H STOCK MARKET NEWS",
       "subtitle": "Daily Market Updates",
       "searchPlaceholder": "VHM, VIC, FPT...",
-      "searchPlaceholderMacro": "Gold price/gold...",
+      "searchPlaceholderMacro": "Giá vàng/gia vang...",
       "lblFrom": "From date",
       "lblTo": "To date",
       "loading": "Loading data...",
