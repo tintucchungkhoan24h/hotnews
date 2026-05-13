@@ -1,0 +1,282 @@
+{
+  "languages": [
+    "vi",
+    "en"
+  ],
+  "translations": {
+    "vn": {
+      "title": "TIN TỨC CHỨNG KHOÁN 24H",
+      "subtitle": "Cập Nhật Thị Trường Mỗi Ngày",
+      "searchPlaceholder": "VHM, VIC, FPT...",
+      "searchPlaceholderMacro": "Giá vàng/gia vang...",
+      "lblFrom": "Từ ngày",
+      "lblTo": "Đến ngày",
+      "loading": "Đang tải dữ liệu...",
+      "exportBtn": "Xuất Excel",
+      "exporting": "Đang xuất...",
+      "filterBtn": "Lọc",
+      "refreshBtn": "Làm mới dữ liệu",
+      "watchNewsBtn": "Xem tin tức",
+      "empty": "Không có dữ liệu phù hợp.",
+      "prev": "Trước",
+      "next": "Sau",
+      "paging": "Hiển thị {start} - {end} trên tổng {total}",
+      "chartTooltip": "Xem biểu đồ trên TradingView",
+      "langToggleLabel": "VN",
+      "excelSheetName": "Tin Tức Chứng Khoán",
+      "tabs": {
+        "stock": "Mã CK",
+        "macro": "Vĩ Mô",
+        "stable": "Biến động ổn định",
+        "high": "Biến động mạnh",
+        "watchlist": "Danh sách theo dõi",
+        "spotlight": "Mã Nổi Bật"
+      },
+      "cols": {
+        "index": "#",
+        "publish_time": "Thời gian",
+        "single_stock": "Mã CK",
+        "price_change_today_pct": "% Đổi",
+        "ma15": "MA15",
+        "organ_name": "Doanh nghiệp",
+        "industry": "Ngành",
+        "current_close": "Giá",
+        "current_volume": "Khối lượng",
+        "headline": "Tiêu đề",
+        "source": "Nguồn",
+        "time": "Thời gian"
+      },
+      "filter": {
+        "title": "Bộ Lọc",
+        "search": "Tìm kiếm...",
+        "selectAll": "(Chọn Tất Cả)",
+        "clearAll": "Xóa Tất Cả",
+        "selectAllBtn": "Chọn Tất Cả",
+        "apply": "Áp Dụng",
+        "stockCode": "Mã CK",
+        "ma15": "MA15",
+        "industry": "Ngành",
+        "source": "Nguồn"
+      },
+      "ma15Tooltip": {
+        "strongAbove": "Tăng mạnh so với MA15",
+        "above": "Trên đường MA15",
+        "at": "Trùng với đường MA15",
+        "below": "Dưới đường MA15",
+        "strongBelow": "Giảm mạnh so với MA15",
+        "na": "Không có dữ liệu"
+      },
+      "macro": {
+        "title": "Phân Tích Vĩ Mô",
+        "desc": "Trang phân tích vĩ mô đang được phát triển. Chúng tôi sẽ cung cấp các chỉ số kinh tế, phân tích xu hướng thị trường và dự báo vĩ mô trong thời gian tới.",
+        "feature1Title": "Chỉ Số Kinh Tế",
+        "feature1Desc": "GDP, CPI, lãi suất, tỷ giá",
+        "feature2Title": "Phân Tích Xu Hướng",
+        "feature2Desc": "Dòng tiền, thanh khoản thị trường",
+        "feature3Title": "Dự Báo Vĩ Mô",
+        "feature3Desc": "Triển vọng kinh tế, chính sách",
+        "feature4Title": "Báo Cáo Chuyên Sâu",
+        "feature4Desc": "Phân tích ngành, thị trường",
+        "status": "Đang Phát Triển"
+      },
+      "header": {
+        "mainTitle": "TIN TỨC CHỨNG KHOÁN 24H",
+        "subTitle": "Cập Nhật Thị Trường Mỗi Ngày",
+        "refreshTitle": "Làm mới trang"
+      },
+      "footer": {
+        "col1Title": "Về Chúng Tôi",
+        "col1Desc1": "Cung cấp thông tin thị trường tài chính theo tiêu chí 3S: Short (Ngắn gọn) – Sharp (Sắc nét) – Straight (Trực diện).",
+        "col1Desc2": "\"Giúp nhà đầu tư nắm bắt dòng tiền và xu hướng thị trường nhanh nhất mỗi ngày.\"",
+        "col2Title": "Liên Hệ Quảng Cáo",
+        "col2Founder": "Phạm Văn Thiện",
+        "founderName": "Phạm Văn Thiện",
+        "founderLabel": "Founder",
+        "hotlineLabel": "Hotline",
+        "emailLabel": "Email",
+        "col3Title": "Kết Nối Hệ Sinh Thái",
+        "mapsLabel": "Google Maps",
+        "addressLabel": "Trụ sở chính",
+        "directionsLink": "Chỉ đường trên Google Maps →",
+        "version": "Phiên bản 4.0",
+        "updated": "Cập nhật: 08/05/2026",
+        "copyrightResp": "Người chịu trách nhiệm nội dung: Phạm Văn Thiện",
+        "copyrightCopy": "© 2026 Tin Tức Chứng Khoán 24h — Founder Phạm Văn Thiện",
+        "newsTitle": "TIN TỨC",
+        "newsTitle2": "CHỨNG KHOÁN 24H"
+      },
+      "video": {
+        "title": "Video",
+        "cannotLoad": "Video không thể tải.",
+        "openDirect": "▶ Mở video trực tiếp",
+        "close": "Đóng"
+      },
+      "filterPopup": {
+        "title": "Bộ Lọc",
+        "close": "Đóng"
+      },
+      "social": {
+        "googleMaps": "Google Maps",
+        "facebook": "Facebook",
+        "tiktok": "TikTok",
+        "youtube": "YouTube",
+        "linkedin": "LinkedIn",
+        "twitter": "X (Twitter)"
+      },
+      "contact": {
+        "founderLabel": "Founder",
+        "hotlineLabel": "Hotline",
+        "emailLabel": "Email",
+        "phoneNumber": "0906 411 561",
+        "emailAddress": "admin@tintucchungkhoan24h.com",
+        "address": "29/22 Nguyễn Văn Khối, Phường Thông Tây Hội, Quận Gò Vấp, TP.HCM 71400"
+      },
+      "brand": {
+        "threeS": "3S",
+        "short": "Short",
+        "sharp": "Sharp",
+        "straight": "Straight"
+      },
+      "lang": {
+        "short": "VN"
+      }
+    },
+    "en": {
+      "title": "24H STOCK MARKET NEWS",
+      "subtitle": "Daily Market Updates",
+      "searchPlaceholder": "VHM, VIC, FPT...",
+      "searchPlaceholderMacro": "Gold price/gold...",
+      "lblFrom": "From date",
+      "lblTo": "To date",
+      "loading": "Loading data...",
+      "exportBtn": "Export Excel",
+      "exporting": "Exporting...",
+      "filterBtn": "Filter",
+      "refreshBtn": "Refresh data",
+      "watchNewsBtn": "Watch news",
+      "empty": "No matching records found.",
+      "prev": "Prev",
+      "next": "Next",
+      "paging": "Showing {start} - {end} of {total}",
+      "chartTooltip": "View chart on TradingView",
+      "langToggleLabel": "EN",
+      "excelSheetName": "Stock Market News",
+      "tabs": {
+        "stock": "Stock",
+        "macro": "Macro",
+        "stable": "Stable Volatility",
+        "high": "High Volatility",
+        "watchlist": "Watchlist",
+        "spotlight": "Spotlight Stocks"
+      },
+      "cols": {
+        "index": "#",
+        "publish_time": "Time",
+        "single_stock": "Ticker",
+        "price_change_today_pct": "% Chg",
+        "ma15": "MA15",
+        "organ_name": "Company",
+        "industry": "Industry",
+        "current_close": "Price",
+        "current_volume": "Volume",
+        "headline": "Headline",
+        "source": "Source",
+        "time": "Time"
+      },
+      "filter": {
+        "title": "Filters",
+        "search": "Search...",
+        "selectAll": "(Select All)",
+        "clearAll": "Clear All",
+        "selectAllBtn": "Select All",
+        "apply": "Apply Filters",
+        "stockCode": "Stock Code",
+        "ma15": "MA15",
+        "industry": "Industry",
+        "source": "Source"
+      },
+      "ma15Tooltip": {
+        "strongAbove": "Strong increase above MA15",
+        "above": "Above MA15 line",
+        "at": "At MA15 line",
+        "below": "Below MA15 line",
+        "strongBelow": "Strong decrease below MA15",
+        "na": "No data available"
+      },
+      "macro": {
+        "title": "Macro Analysis",
+        "desc": "The macro analysis page is under development. We will provide economic indicators, market trend analysis, and macro forecasts soon.",
+        "feature1Title": "Economic Indicators",
+        "feature1Desc": "GDP, CPI, interest rates, exchange rates",
+        "feature2Title": "Trend Analysis",
+        "feature2Desc": "Money flow, market liquidity",
+        "feature3Title": "Macro Forecasts",
+        "feature3Desc": "Economic outlook, policy analysis",
+        "feature4Title": "In-Depth Reports",
+        "feature4Desc": "Industry and market analysis",
+        "status": "In Development"
+      },
+      "header": {
+        "mainTitle": "24H STOCK MARKET NEWS",
+        "subTitle": "Daily Market Updates",
+        "refreshTitle": "Refresh page"
+      },
+      "footer": {
+        "col1Title": "About Us",
+        "col1Desc1": "Delivering financial market insights based on the 3S principle: Short – Sharp – Straight.",
+        "col1Desc2": "\"Helping investors track money flow and market trends faster every day.\"",
+        "col2Title": "Advertising Contact",
+        "col2Founder": "Phạm Văn Thiện",
+        "founderName": "Phạm Văn Thiện",
+        "founderLabel": "Founder",
+        "hotlineLabel": "Hotline",
+        "emailLabel": "Email",
+        "col3Title": "Our Ecosystem",
+        "mapsLabel": "Google Maps",
+        "addressLabel": "Headquarters",
+        "directionsLink": "Get directions on Google Maps →",
+        "version": "Version 4.0",
+        "updated": "Updated: 08/05/2026",
+        "copyrightResp": "Content responsible: Phạm Văn Thiện",
+        "copyrightCopy": "© 2026 Tin Tức Chứng Khoán 24h — Founder Phạm Văn Thiện",
+        "newsTitle": "NEWS",
+        "newsTitle2": "STOCK MARKET NEWS"
+      },
+      "video": {
+        "title": "Video",
+        "cannotLoad": "Video cannot be loaded.",
+        "openDirect": "▶ Open video directly",
+        "close": "Close"
+      },
+      "filterPopup": {
+        "title": "Filters",
+        "close": "Close"
+      },
+      "social": {
+        "googleMaps": "Google Maps",
+        "facebook": "Facebook",
+        "tiktok": "TikTok",
+        "youtube": "YouTube",
+        "linkedin": "LinkedIn",
+        "twitter": "X (Twitter)"
+      },
+      "contact": {
+        "founderLabel": "Founder",
+        "hotlineLabel": "Hotline",
+        "emailLabel": "Email",
+        "phoneNumber": "0906 411 561",
+        "emailAddress": "admin@tintucchungkhoan24h.com",
+        "address": "29/22 Nguyễn Văn Khối, Phường Thông Tây Hội, Quận Gò Vấp, TP.HCM 71400"
+      },
+      "brand": {
+        "threeS": "3S",
+        "short": "Short",
+        "sharp": "Sharp",
+        "straight": "Straight"
+      },
+      "lang": {
+        "short": "EN"
+      }
+    }
+  }
+}

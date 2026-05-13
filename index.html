@@ -72,25 +72,6 @@
         // Add timestamp for Safari iOS aggressive cache busting
         const CACHE_BUSTER = APP_VERSION + '.' + Math.floor(Date.now() / 60000); // Changes every minute
         
-        // Load JS files with version control
-        (function() {
-            const scripts = [
-                'coreview_stock.js',
-                'coreview_macro.js',
-                'coreview_stable.js',
-                'coreview_high.js',
-                'coreview_watchlist.js',
-                'coreview_spotlight.js'
-            ];
-            
-            scripts.forEach(function(src) {
-                const script = document.createElement('script');
-                script.src = src + '?v=' + CACHE_BUSTER;
-                script.async = false; // Maintain execution order
-                document.head.appendChild(script);
-            });
-        })();
-        
         tailwind.config = {
             theme: {
                 extend: {
@@ -810,22 +791,22 @@
     <div class="tab-scroll-wrapper max-w-[1440px] mx-auto mb-6 overflow-x-auto" style="scrollbar-width:none;-ms-overflow-style:none;">
         <div class="flex items-center gap-0 bg-fin-blue-light/30 p-1 rounded-xl border border-gray-800/50 w-fit min-w-full sm:min-w-0">
             <button id="tab-stock" class="tab-button active tab-btn-responsive font-bold transition-all flex-shrink-0">
-                <span class="tab-text">Mã CK</span>
+                <span class="tab-text" data-text-key="tabs.stock">Mã CK</span>
             </button>
             <button id="tab-macro" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
-                <span class="tab-text">Vĩ Mô</span>
+                <span class="tab-text" data-text-key="tabs.macro">Vĩ Mô</span>
             </button>
             <button id="tab-stable" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
-                <span class="tab-text">Biến động ổn định</span>
+                <span class="tab-text" data-text-key="tabs.stable">Biến động ổn định</span>
             </button>
             <button id="tab-high" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
-                <span class="tab-text">Biến động mạnh</span>
+                <span class="tab-text" data-text-key="tabs.high">Biến động mạnh</span>
             </button>
             <button id="tab-watchlist" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
-                <span class="tab-text">⭐ Danh sách theo dõi</span>
+                <span class="tab-text" data-text-key="tabs.watchlist">⭐ Danh sách theo dõi</span>
             </button>
             <button id="tab-spotlight" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
-                <span class="tab-text">🚀 Mã Nổi Bật</span>
+                <span class="tab-text" data-text-key="tabs.spotlight">🚀 Mã Nổi Bật</span>
             </button>
         </div>
     </div>
@@ -1071,134 +1052,89 @@
         // Option 2: LibreTranslate (Free, no API key needed)
         const USE_LIBRE_TRANSLATE = false; // Set to false to use Gemini
 
-        const i18n = {
-            vn: {
-                title: 'TIN TỨC CHỨNG KHOÁN 24H', subtitle: 'Cập Nhật Thị Trường Mỗi Ngày', searchPlaceholder: 'VHM, VIC, FPT...',
-                searchPlaceholderMacro: 'Giá vàng/gia vang...',
-                lblFrom: 'Từ ngày', lblTo: 'Đến ngày', loading: 'Đang tải dữ liệu...',
-                exportBtn: 'Xuất Excel', exporting: 'Đang xuất...',
-                filterBtn: 'Lọc',
-                refreshBtn: 'Làm mới dữ liệu',
-                watchNewsBtn: 'Xem tin tức',
-                cols: { index: '#', publish_time: 'Thời gian', single_stock: 'Mã CK', price_change_today_pct: '% Đổi', ma15: 'MA15', organ_name: 'Doanh nghiệp', industry: 'Ngành', current_close: 'Giá', current_volume: 'Khối lượng', headline: 'Tiêu đề' },
-                chartTooltip: 'Xem biểu đồ trên TradingView',
-                empty: 'Không có dữ liệu phù hợp.', prev: 'Trước', next: 'Sau',
-                paging: (s, e, t) => `Hiển thị ${s} - ${e} trên tổng ${t}`,
-                tabs: { stock: 'Mã CK', macro: 'Vĩ Mô', stable: 'Biến động ổn định', high: 'Biến động mạnh', watchlist: 'Danh sách theo dõi', spotlight: 'Mã Nổi Bật' },
-                filter: {
-                    title: 'Bộ Lọc',
-                    search: 'Tìm kiếm...',
-                    selectAll: '(Chọn Tất Cả)',
-                    clearAll: 'Xóa Tất Cả',
-                    selectAllBtn: 'Chọn Tất Cả',
-                    apply: 'Áp Dụng',
-                    stockCode: 'Mã CK',
-                    ma15: 'MA15',
-                    industry: 'Ngành',
-                    source: 'Nguồn'
-                },
-                macro: {
-                    title: 'Phân Tích Vĩ Mô',
-                    desc: 'Trang phân tích vĩ mô đang được phát triển. Chúng tôi sẽ cung cấp các chỉ số kinh tế, phân tích xu hướng thị trường và dự báo vĩ mô trong thời gian tới.',
-                    feature1Title: 'Chỉ Số Kinh Tế',
-                    feature1Desc: 'GDP, CPI, lãi suất, tỷ giá',
-                    feature2Title: 'Phân Tích Xu Hướng',
-                    feature2Desc: 'Dòng tiền, thanh khoản thị trường',
-                    feature3Title: 'Dự Báo Vĩ Mô',
-                    feature3Desc: 'Triển vọng kinh tế, chính sách',
-                    feature4Title: 'Báo Cáo Chuyên Sâu',
-                    feature4Desc: 'Phân tích ngành, thị trường',
-                    status: 'Đang Phát Triển'
-                },
-                ma15Tooltip: {
-                    '⏫ MA15': 'Tăng mạnh so với MA15',
-                    '⬆️ MA15': 'Trên đường MA15',
-                    '↔️ MA15': 'Trùng với đường MA15',
-                    '⬇️ MA15': 'Dưới đường MA15',
-                    '⏬ MA15': 'Giảm mạnh so với MA15',
-                    'N/A': 'Không có dữ liệu'
-                },
-                footer: {
-                    col1Title: 'Về Chúng Tôi',
-                    col1Desc1: 'Cung cấp thông tin thị trường tài chính theo tiêu chí <span class="text-fin-gold font-bold">3S</span>: <span class="text-gray-300"> Short</span> (Ngắn gọn) – <span class="text-gray-300"> Sharp</span> (Sắc nét) – <span class="text-gray-300"> Straight</span> (Trực diện).',
-                    col1Desc2: '"Giúp nhà đầu tư nắm bắt dòng tiền và xu hướng thị trường nhanh nhất mỗi ngày."',
-                    col2Title: 'Liên Hệ Quảng Cáo',
-                    col2Founder: 'Phạm Văn Thiện',
-                    col3Title: 'Kết Nối Hệ Sinh Thái',
-                    mapsLabel: 'Google Maps',
-                    addressLabel: 'Trụ sở chính',
-                    directionsLink: 'Chỉ đường trên Google Maps →',
-                    version: 'Phiên bản 4.0',
-                    updated: 'Cập nhật: 08/05/2026',
-                    copyrightResp: 'Người chịu trách nhiệm nội dung: <span class="text-gray-300 font-semibold">Phạm Văn Thiện</span>',
-                    copyrightCopy: '© 2026 Tin Tức Chứng Khoán 24h — Founder <span class="text-gray-300 font-semibold">Phạm Văn Thiện</span>'
-                }
-            },
-            en: {
-                title: '24H STOCK MARKET NEWS', subtitle: 'Daily Market Updates', searchPlaceholder: 'VHM, VIC, FPT...',
-                searchPlaceholderMacro: 'Giá vàng/gia vang...',
-                lblFrom: 'From date', lblTo: 'To date', loading: 'Loading data...',
-                exportBtn: 'Export Excel', exporting: 'Exporting...',
-                filterBtn: 'Filter',
-                refreshBtn: 'Refresh data',
-                watchNewsBtn: 'Watch news',
-                cols: { index: '#', publish_time: 'Time', single_stock: 'Ticker', price_change_today_pct: '% Chg', ma15: 'MA15', organ_name: 'Company', industry: 'Industry', current_close: 'Price', current_volume: 'Volume', headline: 'Headline' },
-                chartTooltip: 'View chart on TradingView',
-                empty: 'No matching records found.', prev: 'Prev', next: 'Next',
-                paging: (s, e, t) => `Showing ${s} - ${e} of ${t}`,
-                tabs: { stock: 'Stock', macro: 'Macro', stable: 'Stable Volatility', high: 'High Volatility', watchlist: 'Watchlist', spotlight: 'Spotlight Stocks' },
-                filter: {
-                    title: 'Filters',
-                    search: 'Search...',
-                    selectAll: '(Select All)',
-                    clearAll: 'Clear All',
-                    selectAllBtn: 'Select All',
-                    apply: 'Apply Filters',
-                    stockCode: 'Stock Code',
-                    ma15: 'MA15',
-                    industry: 'Industry',
-                    source: 'Source'
-                },
-                macro: {
-                    title: 'Macro Analysis',
-                    desc: 'The macro analysis page is under development. We will provide economic indicators, market trend analysis, and macro forecasts soon.',
-                    feature1Title: 'Economic Indicators',
-                    feature1Desc: 'GDP, CPI, interest rates, exchange rates',
-                    feature2Title: 'Trend Analysis',
-                    feature2Desc: 'Money flow, market liquidity',
-                    feature3Title: 'Macro Forecasts',
-                    feature3Desc: 'Economic outlook, policy analysis',
-                    feature4Title: 'In-Depth Reports',
-                    feature4Desc: 'Industry and market analysis',
-                    status: 'In Development'
-                },
-                ma15Tooltip: {
-                    '⏫ MA15': 'Strong increase above MA15',
-                    '⬆️ MA15': 'Above MA15 line',
-                    '↔️ MA15': 'At MA15 line',
-                    '⬇️ MA15': 'Below MA15 line',
-                    '⏬ MA15': 'Strong decrease below MA15',
-                    'N/A': 'No data available'
-                },
-                footer: {
-                    col1Title: 'About Us',
-                    col1Desc1: 'Delivering financial market insights based on the <span class="text-fin-gold font-bold">3S</span> principle: <span class="text-gray-300"> Short</span> – <span class="text-gray-300"> Sharp</span> – <span class="text-gray-300"> Straight</span>.',
-                    col1Desc2: '"Helping investors track money flow and market trends faster every day."',
-                    col2Title: 'Advertising Contact',
-                    col2Founder: 'Phạm Văn Thiện',
-                    col3Title: 'Our Ecosystem',
-                    mapsLabel: 'Google Maps',
-                    addressLabel: 'Headquarters',
-                    directionsLink: 'Get directions on Google Maps →',
-                    version: 'Version 4.0',
-                    updated: 'Updated: 08/05/2026',
-                    copyrightResp: 'Content responsible: <span class="text-gray-300 font-semibold">Phạm Văn Thiện</span>',
-                    copyrightCopy: '© 2026 Tin Tức Chứng Khoán 24h — Founder <span class="text-gray-300 font-semibold">Phạm Văn Thiện</span>'
-                }
-            }
-        };
+        // Load translations from i18n.json
+        let i18n = null;
 
-        const flags = {
+        async function loadTranslations() {
+            try {
+                const response = await fetch('i18n.json?v=' + CACHE_BUSTER);
+                const data = await response.json();
+                i18n = data.translations;
+                console.log('Translations loaded successfully');
+                applyTranslations(); // Apply translations after loading
+            } catch (error) {
+                console.error('Failed to load translations:', error);
+                // Fallback: could set a basic i18n object here if needed
+            }
+        }
+
+        // Apply translations to elements with data attributes
+        function applyTranslations(lang = 'vn') {
+            if (!i18n || !i18n[lang]) return;
+
+            // Apply data-text-key attributes
+            document.querySelectorAll('[data-text-key]').forEach(el => {
+                const key = el.getAttribute('data-text-key');
+                const keys = key.split('.');
+                let value = i18n[lang];
+                for (const k of keys) {
+                    value = value?.[k];
+                }
+                if (value) el.textContent = value;
+            });
+
+            // Apply data-title-key attributes
+            document.querySelectorAll('[data-title-key]').forEach(el => {
+                const key = el.getAttribute('data-title-key');
+                const keys = key.split('.');
+                let value = i18n[lang];
+                for (const k of keys) {
+                    value = value?.[k];
+                }
+                if (value) el.setAttribute('title', value);
+            });
+        }
+
+        // Load translations and then load JS files
+        function loadScripts() {
+            const scripts = [
+                'coreview_stock.js',
+                'coreview_macro.js',
+                'coreview_stable.js',
+                'coreview_high.js',
+                'coreview_watchlist.js',
+                'coreview_spotlight.js'
+            ];
+
+            return Promise.all(scripts.map(src => new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src + '?v=' + CACHE_BUSTER;
+                script.async = false; // Maintain execution order
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            })));
+        }
+
+        async function initApp() {
+            try {
+                await loadTranslations();
+                await loadScripts();
+                applyTranslations(state.lang || 'vn');
+                // Note: setupLanguageToggle will be called after header is loaded (see fetch block)
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', () => loadCoreView('stock'));
+                } else {
+                    loadCoreView('stock');
+                }
+            } catch (error) {
+                console.error('App initialization failed:', error);
+            }
+        }
+
+        initApp();
+
+    const flags = {
             vn: `<svg class="flag-icon" viewBox="0 0 30 20"><rect width="30" height="20" fill="#da251d"/><polygon points="15,4 16.176,8.618 21,8.618 17.088,11.382 18.264,16 15,13.236 11.736,16 12.912,11.382 9,8.618 13.824,8.618" fill="#ffff00"/></svg>`,
             en: `<svg class="flag-icon" viewBox="0 0 60 30"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg>`
         };
@@ -2389,20 +2325,47 @@
         // Global language toggle handler
         function setupLanguageToggle() {
             const langToggle = document.getElementById('langToggle');
-            if (!langToggle) return;
+            if (!langToggle) {
+                console.error('langToggle button not found');
+                return;
+            }
+            console.log('setupLanguageToggle: langToggle button found, attaching listener');
             
             langToggle.addEventListener('click', () => {
-                state.lang = state.lang === 'vn' ? 'en' : 'vn';
-                // Sync language across all state objects
-                stateStable.lang = state.lang;
-                stateHigh.lang = state.lang;
-                stateWatchlist.lang = state.lang;
-                stateSpotlight.lang = state.lang;
-                
-                document.getElementById('langText').innerText = state.lang.toUpperCase();
-                document.getElementById('langFlag').innerHTML = flags[state.lang];
-                document.getElementById('main-title').innerText = i18n[state.lang].title;
-                document.getElementById('sub-title').innerText = i18n[state.lang].subtitle;
+                try {
+                    console.log('Language toggle clicked, switching from', state.lang, 'to', state.lang === 'vn' ? 'en' : 'vn');
+                    console.log('i18n loaded:', !!i18n);
+                    state.lang = state.lang === 'vn' ? 'en' : 'vn';
+                    // Sync language across all state objects
+                    stateStable.lang = state.lang;
+                    stateHigh.lang = state.lang;
+                    stateWatchlist.lang = state.lang;
+                    stateSpotlight.lang = state.lang;
+                    
+                    // Update flag immediately
+                    document.getElementById('langFlag').innerHTML = flags[state.lang];
+                    
+                    // Apply translations to all elements with data attributes
+                    // This will also update langText via data-text-key
+                    applyTranslations(state.lang);
+                    
+                    // Also update langText directly to ensure button works
+                    if (i18n && i18n[state.lang] && i18n[state.lang].lang && i18n[state.lang].lang.short) {
+                        document.getElementById('langText').textContent = i18n[state.lang].lang.short;
+                    } else {
+                        console.warn('i18n.lang.short not available for language:', state.lang);
+                    }
+                    
+                    // Update main title and subtitle (fallback for elements without data attributes)
+                    if (i18n && i18n[state.lang]) {
+                        document.getElementById('main-title').innerText = i18n[state.lang].title;
+                        document.getElementById('sub-title').innerText = i18n[state.lang].subtitle;
+                    }
+                    
+                    console.log('Language changed to:', state.lang);
+                } catch (error) {
+                    console.error('Error in language toggle:', error);
+                }
                 
                 // Switch video language if player is open
                 if (videoState.open && videoState.tab) {
@@ -2536,6 +2499,7 @@
                 document.getElementById('header-container').innerHTML = data;
                 // Setup language toggle after header is loaded
                 setupLanguageToggle();
+                applyTranslations(state.lang || 'vn');
             })
             .catch(error => console.error('Error loading header:', error));
         
@@ -2853,8 +2817,7 @@
             }
         }
         
-        // Initialize: Load stock view by default
-        loadCoreView('stock');
+        // Tab click handlers are enabled after DOM content loads.
         
         // Add tab click handlers
         document.addEventListener('DOMContentLoaded', () => {
@@ -2871,6 +2834,7 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
+                applyTranslations(state.lang || 'vn');
             })
             .catch(error => console.error('Error loading footer:', error));
     </script>
