@@ -123,9 +123,7 @@
         "newsTitle2": "CHỨNG KHOÁN 24H"
       },
       "video": {
-        "title": "Video",
         "cannotLoad": "Video không thể tải.",
-        "openDirect": "▶ Mở video trực tiếp",
         "close": "Đóng",
         "tabVideoTitle": "Xem video",
         "titleStock": "Toàn Cảnh Thị Trường Chứng Khoán Hôm Nay",
@@ -299,9 +297,8 @@
         "newsTitle2": "STOCK MARKET NEWS"
       },
       "video": {
-        "title": "Video",
+
         "cannotLoad": "Video cannot be loaded.",
-        "openDirect": "▶ Open video directly",
         "close": "Close",
         "tabVideoTitle": "Watch video",
         "titleStock": "Today's Stock Market Overview",
