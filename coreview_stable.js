@@ -146,7 +146,7 @@ function setupStableViewEventListeners() {
     const lastBtn = document.getElementById('lastBtnStable');
     if (lastBtn) {
         lastBtn.onclick = () => {
-            const lastPage = Math.floor(stateStable.totalCount / stateStable.pageSize);
+            const lastPage = Math.ceil(stateStable.totalCount / stateStable.pageSize) - 1;
             console.log('=== LAST BUTTON CLICKED ===');
             console.log('Current page:', stateStable.currentPage);
             console.log('Total count:', stateStable.totalCount);

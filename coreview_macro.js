@@ -153,7 +153,7 @@ function setupMacroViewEventListeners() {
     const lastBtn = document.getElementById('lastBtnMacro');
     if (lastBtn) {
         lastBtn.onclick = () => { 
-            state.currentPageMacro = Math.floor(state.totalCountMacro / state.pageSizeMacro); 
+            state.currentPageMacro = Math.ceil(state.totalCountMacro / state.pageSizeMacro) - 1; 
             fetchMacroData(); 
         };
     }

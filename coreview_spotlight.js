@@ -154,7 +154,7 @@ function setupSpotlightViewEventListeners() {
     const lastBtnSpotlight = document.getElementById('lastBtnSpotlight');
     if (lastBtnSpotlight) {
         lastBtnSpotlight.onclick = () => {
-            const lastPage = Math.floor(stateSpotlight.totalCount / stateSpotlight.pageSize);
+            const lastPage = Math.ceil(stateSpotlight.totalCount / stateSpotlight.pageSize) - 1;
             console.log('=== LAST BUTTON CLICKED ===');
             console.log('Current page:', stateSpotlight.currentPage);
             console.log('Total count:', stateSpotlight.totalCount);

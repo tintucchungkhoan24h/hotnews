@@ -149,7 +149,7 @@ function setupStockViewEventListeners() {
     const lastBtn = document.getElementById('lastBtn');
     if (lastBtn) {
         lastBtn.onclick = () => {
-            const lastPage = Math.floor(state.totalCount / state.pageSize);
+            const lastPage = Math.ceil(state.totalCount / state.pageSize) - 1;
             console.log('=== LAST BUTTON CLICKED ===');
             console.log('Current page:', state.currentPage);
             console.log('Total count:', state.totalCount);

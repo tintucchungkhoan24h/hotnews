@@ -154,7 +154,7 @@ function setupWatchlistViewEventListeners() {
     const lastBtnWatchlist = document.getElementById('lastBtnWatchlist');
     if (lastBtnWatchlist) {
         lastBtnWatchlist.onclick = () => {
-            const lastPage = Math.floor(stateWatchlist.totalCount / stateWatchlist.pageSize);
+            const lastPage = Math.ceil(stateWatchlist.totalCount / stateWatchlist.pageSize) - 1;
             console.log('=== LAST BUTTON CLICKED ===');
             console.log('Current page:', stateWatchlist.currentPage);
             console.log('Total count:', stateWatchlist.totalCount);

@@ -1070,6 +1070,7 @@
 
         let i18nLanguages = [DEFAULT_LANG]; // populated from i18n.json after load
         let i18nFlags = {};                 // populated from i18n.json after load
+        let i18nLangShort = {};             // populated from i18n.json after load
 
         async function loadTranslations() {
             try {
@@ -1082,12 +1083,21 @@
                 if (data.flags) {
                     i18nFlags = data.flags;
                 }
+                if (data.lang) {
+                    i18nLangShort = data.lang;
+                }
 
-                // Attach flag markup to translations so applyTranslations can use it consistently
-                Object.keys(i18nFlags).forEach(lang => {
-                    if (i18n[lang]) {
-                        i18n[lang].lang = i18n[lang].lang || {};
-                        i18n[lang].lang.flag = i18nFlags[lang];
+                // Attach flag markup and language labels to translations so applyTranslations can use them consistently
+                Object.keys(i18nLanguages).forEach(lang => {
+                    const languageCode = i18nLanguages[lang];
+                    if (i18n[languageCode]) {
+                        i18n[languageCode].lang = i18n[languageCode].lang || {};
+                        if (i18nFlags[languageCode]) {
+                            i18n[languageCode].lang.flag = i18nFlags[languageCode];
+                        }
+                        if (i18nLangShort[languageCode]) {
+                            i18n[languageCode].lang.short = i18nLangShort[languageCode];
+                        }
                     }
                 });
 
@@ -2386,10 +2396,11 @@
                     applyTranslations(state.lang);
                     
                     // Also update langText directly to ensure button works
-                    if (i18n && i18n[state.lang] && i18n[state.lang].lang && i18n[state.lang].lang.short) {
-                        document.getElementById('langText').textContent = i18n[state.lang].lang.short;
+                    const langShort = i18n[state.lang]?.lang?.short || i18nLangShort[state.lang];
+                    if (langShort) {
+                        document.getElementById('langText').textContent = langShort;
                     } else {
-                        console.warn('i18n.lang.short not available for language:', state.lang);
+                        console.warn('Language short label not available for language:', state.lang);
                     }
                     
                     // Update main title and subtitle (fallback for elements without data attributes)

@@ -146,7 +146,7 @@ function setupHighViewEventListeners() {
     const lastBtn = document.getElementById('lastBtnHigh');
     if (lastBtn) {
         lastBtn.onclick = () => {
-            const lastPage = Math.floor(stateHigh.totalCount / stateHigh.pageSize);
+            const lastPage = Math.ceil(stateHigh.totalCount / stateHigh.pageSize) - 1;
             console.log('=== LAST BUTTON CLICKED ===');
             console.log('Current page:', stateHigh.currentPage);
             console.log('Total count:', stateHigh.totalCount);
