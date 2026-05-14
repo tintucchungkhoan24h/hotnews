@@ -920,7 +920,7 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
         });
         ws['!cols'] = colWidths;
 
-        XLSX.utils.book_append_sheet(wb, ws, 'Watchlist');
+        XLSX.utils.book_append_sheet(wb, ws, i18n[lang].watchlist.sheetName);
 
         const filename = `Watchlist_${stateWatchlist.fromDateWatchlist}_${stateWatchlist.toDateWatchlist}.xlsx`;
         XLSX.writeFile(wb, filename);

@@ -381,10 +381,10 @@ async function fetchMacroData() {
 
 function renderMacroHeaders() {
     const cols = [
-        { id: 'index', label: '#', w: 'w-12 text-center', sortable: false },
-        { id: 'publish_time', label: state.lang === 'vn' ? 'Thời gian' : 'Time', w: 'w-32', sortable: true },
-        { id: 'source_name', label: state.lang === 'vn' ? 'Nguồn' : 'Source', w: 'w-40', sortable: true },
-        { id: 'headline', label: state.lang === 'vn' ? 'Tiêu đề' : 'Headline', w: 'w-auto', sortable: true }
+        { id: 'index', label: i18n[state.lang].cols.index, w: 'w-12 text-center', sortable: false },
+        { id: 'publish_time', label: i18n[state.lang].cols.publish_time, w: 'w-32', sortable: true },
+        { id: 'source_name', label: i18n[state.lang].cols.source, w: 'w-40', sortable: true },
+        { id: 'headline', label: i18n[state.lang].cols.headline, w: 'w-auto', sortable: true }
     ];
     
     const tableHeader = document.getElementById('tableHeaderMacro');
@@ -706,9 +706,9 @@ async function exportMacroToExcel() {
         // Build Excel data
         const headers = [
             i18n[state.lang].cols.index,
-            state.lang === 'vn' ? 'Thời gian' : 'Time',
-            state.lang === 'vn' ? 'Nguồn' : 'Source',
-            state.lang === 'vn' ? 'Tiêu đề' : 'Headline',
+            i18n[state.lang].cols.publish_time,
+            i18n[state.lang].cols.source,
+            i18n[state.lang].cols.headline,
             'Link'
         ];
 

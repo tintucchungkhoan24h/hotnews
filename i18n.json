@@ -80,6 +80,12 @@
         "status": "Đang Phát Triển",
         "sheetName": "Tin Vĩ Mô"
       },
+      "spotlight": {
+        "sheetName": "Mã Nổi Bật"
+      },
+      "watchlist": {
+        "sheetName": "Danh Sách Theo Dõi"
+      },
       "header": {
         "mainTitle": "TIN TỨC CHỨNG KHOÁN 24H",
         "subTitle": "Cập Nhật Thị Trường Mỗi Ngày",
@@ -233,6 +239,12 @@
         "feature4Desc": "Industry and market analysis",
         "status": "In Development",
         "sheetName": "Macro News"
+      },
+      "spotlight": {
+        "sheetName": "Spotlight Stocks"
+      },
+      "watchlist": {
+        "sheetName": "Watchlist"
       },
       "header": {
         "mainTitle": "24H STOCK MARKET NEWS",

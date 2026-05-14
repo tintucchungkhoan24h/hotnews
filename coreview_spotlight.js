@@ -920,7 +920,7 @@ window.exportSpotlightToExcel = async function exportSpotlightToExcel(btnRef) {
         });
         ws['!cols'] = colWidths;
 
-        XLSX.utils.book_append_sheet(wb, ws, 'Spotlight');
+        XLSX.utils.book_append_sheet(wb, ws, i18n[lang].spotlight.sheetName);
 
         const filename = `Spotlight_${stateSpotlight.fromDateSpotlight}_${stateSpotlight.toDateSpotlight}.xlsx`;
         XLSX.writeFile(wb, filename);
