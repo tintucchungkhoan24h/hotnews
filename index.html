@@ -134,6 +134,53 @@
         #langToggle:active {
             transform: scale(0.96);
         }
+
+        /* Language dropdown menu */
+        .lang-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            min-width: 220px;
+            background: rgba(10, 18, 47, 0.98);
+            border: 1px solid #334155;
+            border-radius: 18px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+            backdrop-filter: blur(16px);
+            padding: 8px 0;
+            z-index: 50;
+            display: none;
+        }
+        .lang-menu.open {
+            display: block;
+        }
+        .lang-option {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            border: none;
+            color: #f8fafc;
+            padding: 10px 14px;
+            cursor: pointer;
+            font-size: 12px;
+            text-align: left;
+            transition: background 0.15s ease;
+        }
+        .lang-option:hover {
+            background: rgba(255,255,255,0.06);
+        }
+        .lang-option svg {
+            width: 22px;
+            height: 15px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        .lang-option span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
         
         /* Tùy chỉnh thanh cuộn */
         .table-container::-webkit-scrollbar { height: 8px; width: 8px; }
@@ -1087,6 +1134,16 @@
                     const languageCode = i18nLanguages[lang];
                     if (i18n[languageCode]) {
                         i18n[languageCode].lang = i18n[languageCode].lang || {};
+                                if (i18nFlags[languageCode]) {
+                            i18n[languageCode].lang.flag = i18nFlags[languageCode];
+                        }
+                        if (i18nLangShort[languageCode]) {
+                            i18n[languageCode].lang.short = i18nLangShort[languageCode];
+                        }
+                    } else {
+                        // Ensure unsupported languages do not break the UI by falling back to English or default translations.
+                        i18n[languageCode] = i18n.en || i18n[DEFAULT_LANG] || {};
+                        i18n[languageCode].lang = i18n[languageCode].lang || {};
                         if (i18nFlags[languageCode]) {
                             i18n[languageCode].lang.flag = i18nFlags[languageCode];
                         }
@@ -1121,13 +1178,14 @@
 
         // Apply translations to elements with data attributes
         function applyTranslations(lang = DEFAULT_LANG) {
-            if (!i18n || !i18n[lang]) return;
+            if (!i18n) return;
+            const translationRoot = i18n[lang] || i18n[DEFAULT_LANG] || i18n.en || {};
 
             // Apply data-text-key attributes
             document.querySelectorAll('[data-text-key]').forEach(el => {
                 const key = el.getAttribute('data-text-key');
                 const keys = key.split('.');
-                let value = i18n[lang];
+                let value = translationRoot;
                 for (const k of keys) {
                     value = value?.[k];
                 }
@@ -2365,51 +2423,44 @@
         // Global language toggle handler
         function setupLanguageToggle() {
             const langToggle = document.getElementById('langToggle');
-            if (!langToggle) {
-                console.error('langToggle button not found');
+            const langMenu = document.getElementById('langMenu');
+            if (!langToggle || !langMenu) {
+                console.error('langToggle or langMenu not found');
                 return;
             }
-            console.log('setupLanguageToggle: langToggle button found, attaching listener');
-            
-            langToggle.addEventListener('click', () => {
-                try {
-                    console.log('Language toggle clicked, switching from', state.lang, 'to', i18nLanguages[(i18nLanguages.indexOf(state.lang) + 1) % i18nLanguages.length]);
-                    console.log('i18n loaded:', !!i18n);
-                    state.lang = i18nLanguages[(i18nLanguages.indexOf(state.lang) + 1) % i18nLanguages.length];
-                    // Sync language across all state objects
-                    stateStable.lang = state.lang;
-                    stateHigh.lang = state.lang;
-                    stateWatchlist.lang = state.lang;
-                    stateSpotlight.lang = state.lang;
-                    
-                    // Update flag from i18nFlags or translation wrapper
-                    const flagMarkup = i18nFlags[state.lang] || i18n[state.lang]?.lang?.flag;
-                    document.getElementById('langFlag').innerHTML = flagMarkup || '';
-                    
-                    // Apply translations to all elements with data attributes
-                    // This will also update langText via data-text-key
-                    applyTranslations(state.lang);
-                    
-                    // Also update langText directly to ensure button works
-                    const langShort = i18n[state.lang]?.lang?.short || i18nLangShort[state.lang];
-                    if (langShort) {
-                        document.getElementById('langText').textContent = langShort;
-                    } else {
-                        console.warn('Language short label not available for language:', state.lang);
-                    }
-                    
-                    // Update main title and subtitle (fallback for elements without data attributes)
-                    if (i18n && i18n[state.lang]) {
-                        document.getElementById('main-title').innerText = i18n[state.lang].title;
-                        document.getElementById('sub-title').innerText = i18n[state.lang].subtitle;
-                    }
-                    
-                    console.log('Language changed to:', state.lang);
-                } catch (error) {
-                    console.error('Error in language toggle:', error);
-                }
-                
-                // Switch video language if player is open
+            console.log('setupLanguageToggle: langToggle button found, attaching listeners');
+
+            function closeLanguageMenu() {
+                langMenu.classList.remove('open');
+                langMenu.setAttribute('aria-hidden', 'true');
+            }
+
+            function openLanguageMenu() {
+                langMenu.classList.add('open');
+                langMenu.setAttribute('aria-hidden', 'false');
+            }
+
+            function selectLanguage(lang) {
+                if (!lang || state.lang === lang) return;
+                state.lang = lang;
+                stateStable.lang = state.lang;
+                stateHigh.lang = state.lang;
+                stateWatchlist.lang = state.lang;
+                stateSpotlight.lang = state.lang;
+
+                const flagMarkup = i18nFlags[state.lang] || i18n[state.lang]?.lang?.flag || '';
+                document.getElementById('langFlag').innerHTML = flagMarkup;
+
+                const langShort = i18n[state.lang]?.lang?.short || i18nLangShort[state.lang] || state.lang.toUpperCase();
+                document.getElementById('langText').textContent = langShort;
+
+                applyTranslations(state.lang);
+                const translationRoot = i18n[state.lang] || i18n[DEFAULT_LANG] || i18n.en || {};
+                document.getElementById('main-title').innerText = translationRoot.title || document.getElementById('main-title').innerText;
+                document.getElementById('sub-title').innerText = translationRoot.subtitle || document.getElementById('sub-title').innerText;
+
+                console.log('Language changed to:', state.lang);
+
                 if (videoState.open && videoState.tab) {
                     const filename = VIDEO_FILES[videoState.tab]?.[state.lang];
                     if (filename) {
@@ -2417,7 +2468,6 @@
                         const source = document.getElementById('videoSource');
                         const title = document.getElementById('videoTitle');
                         const wasPlaying = !video.paused;
-                        const currentTime = video.currentTime;
                         if (title) title.innerText = getI18nVideoTabTitle(videoState.tab, state.lang);
                         video.muted = true;
                         source.src = getVideoUrl(filename);
@@ -2428,94 +2478,81 @@
                     }
                 }
 
-                // Update tab labels
                 updateTabLabels();
-                
-                // Update stock view elements if on stock tab
                 if (currentTab === 'stock') {
-                    if (typeof updateStockViewLabels === 'function') {
-                        updateStockViewLabels();
-                    }
-                    
-                    if (typeof refreshOpenPickers === 'function') {
-                        refreshOpenPickers();
-                    }
-                    
+                    if (typeof updateStockViewLabels === 'function') updateStockViewLabels();
+                    if (typeof refreshOpenPickers === 'function') refreshOpenPickers();
                     if (typeof renderHeaders === 'function') renderHeaders();
                     if (typeof renderBody === 'function') renderBody();
                     if (typeof renderPaginationUI === 'function') renderPaginationUI();
-                    
-                    // Translations are already preloaded, just render immediately
-                    // If any new names or headlines need translation, do it in background
                     if (state.lang !== DEFAULT_LANG) {
                         const untranslatedNames = state.data.map(d => d.organ_name).filter(n => !state.translatedNames[n]);
                         const untranslatedHeadlines = state.data.map(d => d.headline).filter(h => !state.translatedHeadlines[h]);
-                        
-                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') {
-                            translateNames(untranslatedNames);
-                        }
-                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') {
-                            translateHeadlines(untranslatedHeadlines);
-                        }
+                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') translateNames(untranslatedNames);
+                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
                     }
                 }
-                
-                // Update macro view elements if on macro tab
                 if (currentTab === 'macro') {
-                    if (typeof updateMacroViewLabels === 'function') {
-                        updateMacroViewLabels();
-                    }
-                    
-                    if (typeof refreshOpenPickers === 'function') {
-                        refreshOpenPickers();
-                    }
-                    
+                    if (typeof updateMacroViewLabels === 'function') updateMacroViewLabels();
+                    if (typeof refreshOpenPickers === 'function') refreshOpenPickers();
                     if (typeof renderMacroHeaders === 'function') renderMacroHeaders();
                     if (typeof renderMacroBody === 'function') renderMacroBody();
                     if (typeof renderMacroPaginationUI === 'function') renderMacroPaginationUI();
-                    
-                    // Translations are already preloaded, just render immediately
-                    // If any new headlines need translation, do it in background
                     if (state.lang !== DEFAULT_LANG) {
                         const untranslatedHeadlines = state.dataMacro.map(d => d.headline).filter(h => !state.translatedHeadlines[h]);
-                        
-                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') {
-                            translateHeadlines(untranslatedHeadlines);
-                        }
+                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
                     }
                 }
-                
-                // Update stable view elements if on stable tab
                 if (currentTab === 'stable') {
                     if (typeof updateStableViewLabels === 'function') updateStableViewLabels();
                     if (typeof renderStableHeaders === 'function') renderStableHeaders();
                     if (typeof renderStableBody === 'function') renderStableBody();
                     if (typeof renderStablePaginationUI === 'function') renderStablePaginationUI();
                 }
-                
-                // Update high view elements if on high tab
                 if (currentTab === 'high') {
                     if (typeof updateHighViewLabels === 'function') updateHighViewLabels();
                     if (typeof renderHighHeaders === 'function') renderHighHeaders();
                     if (typeof renderHighBody === 'function') renderHighBody();
                     if (typeof renderHighPaginationUI === 'function') renderHighPaginationUI();
                 }
-                
-                // Update watchlist view elements if on watchlist tab
                 if (currentTab === 'watchlist') {
                     if (typeof updateWatchlistViewLabels === 'function') updateWatchlistViewLabels();
                     if (typeof renderWatchlistHeaders === 'function') renderWatchlistHeaders();
                     if (typeof renderWatchlistBody === 'function') renderWatchlistBody();
                     if (typeof renderWatchlistPaginationUI === 'function') renderWatchlistPaginationUI();
                 }
-                
-                // Update spotlight view elements if on spotlight tab
                 if (currentTab === 'spotlight') {
                     if (typeof updateSpotlightViewLabels === 'function') updateSpotlightViewLabels();
                     if (typeof renderSpotlightHeaders === 'function') renderSpotlightHeaders();
                     if (typeof renderSpotlightBody === 'function') renderSpotlightBody();
                     if (typeof renderSpotlightPaginationUI === 'function') renderSpotlightPaginationUI();
                 }
+            }
+
+            langToggle.addEventListener('click', (event) => {
+                event.stopPropagation();
+                if (langMenu.classList.contains('open')) {
+                    closeLanguageMenu();
+                } else {
+                    openLanguageMenu();
+                }
+            });
+
+            document.querySelectorAll('#langMenu .lang-option').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const lang = button.getAttribute('data-lang');
+                    selectLanguage(lang);
+                    closeLanguageMenu();
+                });
+            });
+
+            document.addEventListener('click', () => {
+                closeLanguageMenu();
+            });
+
+            langMenu.addEventListener('click', (event) => {
+                event.stopPropagation();
             });
         }
         
