@@ -141,13 +141,18 @@
             top: calc(100% + 10px);
             right: 0;
             min-width: 220px;
+            max-width: min(320px, calc(100vw - 24px));
+            max-height: min(70vh, 360px);
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             background: rgba(10, 18, 47, 0.98);
             border: 1px solid #334155;
             border-radius: 18px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.55);
             backdrop-filter: blur(16px);
             padding: 8px 0;
-            z-index: 50;
+            z-index: 10050;
             display: none;
         }
         .lang-menu.open {
@@ -1223,6 +1228,10 @@
                 
                 console.log('Translations loaded successfully, default lang:', DEFAULT_LANG);
                 applyTranslations(); // Apply translations after loading
+                // Header may load before i18n.json on slow networks; rebuild language menu when languages are known
+                if (typeof window.refreshLanguageMenuHtml === 'function') {
+                    window.refreshLanguageMenuHtml();
+                }
             } catch (error) {
                 console.error('Failed to load translations:', error);
             }
@@ -2540,6 +2549,32 @@
     <script>
         // Track current active tab
         let currentTab = 'stock';
+
+        /** Only attach document / toggle listeners once; menu HTML is refreshed separately. */
+        let _languageToggleListenersBound = false;
+
+        /**
+         * Rebuild #langMenu from i18nLanguages. Call after i18n.json loads (header may load first on mobile).
+         * Uses event delegation on #langMenu so listeners stay valid when this runs again.
+         */
+        window.refreshLanguageMenuHtml = function refreshLanguageMenuHtml() {
+            const langMenu = document.getElementById('langMenu');
+            if (!langMenu) return;
+            const langs = Array.isArray(i18nLanguages) ? i18nLanguages : [];
+            if (langs.length === 0) return;
+            const langNames = { vi: 'Tiếng Việt', en: 'English', ko: '한국어', zh: '繁體中文', th: 'ภาษาไทย' };
+            langMenu.innerHTML = langs.map((languageCode) => {
+                const flagMarkup = i18nFlags[languageCode] || '';
+                const langShort = i18nLangShort[languageCode] || languageCode.toUpperCase();
+                const langName = langNames[languageCode] || languageCode;
+                return `
+                        <button type="button" class="lang-option" data-lang="${languageCode}">
+                            <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;">${flagMarkup}</span>
+                            <span>${langName} (${langShort})</span>
+                        </button>
+                    `;
+            }).join('');
+        };
         
         // Global language toggle handler
         function setupLanguageToggle() {
@@ -2550,21 +2585,7 @@
                 return;
             }
 
-            // Build language menu dynamically from i18n data (header is now loaded)
-            if (i18nLanguages.length > 0) {
-                langMenu.innerHTML = i18nLanguages.map(languageCode => {
-                    const flagMarkup = i18nFlags[languageCode] || '';
-                    const langShort = i18nLangShort[languageCode] || languageCode.toUpperCase();
-                    const langNames = { vi: 'Tiếng Việt', en: 'English', ko: '한국어', zh: '繁體中文', th: 'ภาษาไทย' };
-                    const langName = langNames[languageCode] || languageCode;
-                    return `
-                        <button type="button" class="lang-option" data-lang="${languageCode}">
-                            <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;">${flagMarkup}</span>
-                            <span>${langName} (${langShort})</span>
-                        </button>
-                    `;
-                }).join('');
-            }
+            window.refreshLanguageMenuHtml();
 
             console.log('setupLanguageToggle: langToggle button found, attaching listeners');
 
@@ -2737,6 +2758,11 @@
                 }
             }
 
+            if (_languageToggleListenersBound) {
+                return;
+            }
+            _languageToggleListenersBound = true;
+
             langToggle.addEventListener('click', (event) => {
                 event.stopPropagation();
                 if (langMenu.classList.contains('open')) {
@@ -2746,22 +2772,23 @@
                 }
             });
 
-            document.querySelectorAll('#langMenu .lang-option').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    const lang = button.getAttribute('data-lang');
-                    selectLanguage(lang);
-                    closeLanguageMenu();
-                });
-            });
-
-            document.addEventListener('click', () => {
+            // Delegation: survives innerHTML refresh when i18n.json arrives after header
+            langMenu.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const btn = event.target.closest('.lang-option');
+                if (!btn) return;
+                selectLanguage(btn.getAttribute('data-lang'));
                 closeLanguageMenu();
             });
 
-            langMenu.addEventListener('click', (event) => {
-                event.stopPropagation();
-            });
+            function dismissLanguageMenuIfOutside(event) {
+                if (!langMenu.classList.contains('open')) return;
+                const t = event.target;
+                if (langToggle.contains(t) || langMenu.contains(t)) return;
+                closeLanguageMenu();
+            }
+            document.addEventListener('click', dismissLanguageMenuIfOutside);
+            document.addEventListener('touchstart', dismissLanguageMenuIfOutside, { passive: true });
         }
         
         // Setup filter toggle for overlay close
