@@ -2828,43 +2828,16 @@
             }
         }
         
-        // Function to update macro page translations
-        function updateMacroTranslations() {
-            const m = i18n[state.lang].macro;
-            const elements = {
-                'macro-title': m.title,
-                'macro-desc': m.desc,
-                'feature1-title': m.feature1Title,
-                'feature1-desc': m.feature1Desc,
-                'feature2-title': m.feature2Title,
-                'feature2-desc': m.feature2Desc,
-                'feature3-title': m.feature3Title,
-                'feature3-desc': m.feature3Desc,
-                'feature4-title': m.feature4Title,
-                'feature4-desc': m.feature4Desc,
-                'status-text': m.status
-            };
-            
-            Object.keys(elements).forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.innerText = elements[id];
-            });
-        }
-        
         // Function to update tab labels
         function updateTabLabels() {
             const tabs = document.querySelectorAll('.tab-button .tab-text');
+            // Update tab labels
             if (tabs[0]) tabs[0].innerText = i18n[state.lang].tabs.stock;
             if (tabs[1]) tabs[1].innerText = i18n[state.lang].tabs.macro;
             if (tabs[2]) tabs[2].innerText = i18n[state.lang].tabs.stable;
             if (tabs[3]) tabs[3].innerText = i18n[state.lang].tabs.high;
             if (tabs[4]) tabs[4].innerText = i18n[state.lang].tabs.watchlist;
             if (tabs[5]) tabs[5].innerText = i18n[state.lang].tabs.spotlight;
-            
-            // Update macro page if it's currently active
-            if (currentTab === 'macro') {
-                updateMacroTranslations();
-            }
         }
         
         // Tab click handlers are enabled after DOM content loads.

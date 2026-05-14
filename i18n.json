@@ -82,17 +82,6 @@
         "na": "Không có dữ liệu"
       },
       "macro": {
-        "title": "Phân Tích Vĩ Mô",
-        "desc": "Trang phân tích vĩ mô đang được phát triển. Chúng tôi sẽ cung cấp các chỉ số kinh tế, phân tích xu hướng thị trường và dự báo vĩ mô trong thời gian tới.",
-        "feature1Title": "Chỉ Số Kinh Tế",
-        "feature1Desc": "GDP, CPI, lãi suất, tỷ giá",
-        "feature2Title": "Phân Tích Xu Hướng",
-        "feature2Desc": "Dòng tiền, thanh khoản thị trường",
-        "feature3Title": "Dự Báo Vĩ Mô",
-        "feature3Desc": "Triển vọng kinh tế, chính sách",
-        "feature4Title": "Báo Cáo Chuyên Sâu",
-        "feature4Desc": "Phân tích ngành, thị trường",
-        "status": "Đang Phát Triển",
         "sheetName": "Tin Vĩ Mô"
       },
       "stable": {
@@ -269,17 +258,6 @@
         "na": "No data available"
       },
       "macro": {
-        "title": "Macro Analysis",
-        "desc": "The macro analysis page is under development. We will provide economic indicators, market trend analysis, and macro forecasts soon.",
-        "feature1Title": "Economic Indicators",
-        "feature1Desc": "GDP, CPI, interest rates, exchange rates",
-        "feature2Title": "Trend Analysis",
-        "feature2Desc": "Money flow, market liquidity",
-        "feature3Title": "Macro Forecasts",
-        "feature3Desc": "Economic outlook, policy analysis",
-        "feature4Title": "In-Depth Reports",
-        "feature4Desc": "Industry and market analysis",
-        "status": "In Development",
         "sheetName": "Macro News"
       },
       "stable": {
