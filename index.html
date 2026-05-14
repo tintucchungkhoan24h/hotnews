@@ -1060,6 +1060,18 @@
                 const response = await fetch('i18n.json?v=' + CACHE_BUSTER);
                 const data = await response.json();
                 i18n = data.translations;
+                
+                // Convert paging strings to functions
+                Object.keys(i18n).forEach(lang => {
+                    const pagingTemplate = i18n[lang].paging;
+                    i18n[lang].paging = function(start, end, total) {
+                        return pagingTemplate
+                            .replace('{start}', start)
+                            .replace('{end}', end)
+                            .replace('{total}', total);
+                    };
+                });
+                
                 console.log('Translations loaded successfully');
                 applyTranslations(); // Apply translations after loading
             } catch (error) {
