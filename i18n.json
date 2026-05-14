@@ -410,6 +410,591 @@
       "exportError": "Error exporting Excel file. Please try again.",
       "exportErrorWithMessage": "Error exporting Excel file: {message}",
       "exportUnexpectedResponse": "Unexpected response format from server."
+    },
+    "ko": {
+      "title": "24시간 증시 뉴스",
+      "subtitle": "매일 시장 업데이트",
+      "searchPlaceholder": "VHM, VIC, FPT...",
+      "searchPlaceholderMacro": "금값/환율...",
+      "lblFrom": "시작일",
+      "lblTo": "종료일",
+      "loading": "데이터를 불러오는 중...",
+      "exportBtn": "Excel보내기",
+      "exporting": "보내는 중...",
+      "filterBtn": "필터",
+      "refreshBtn": "데이터 새로고침",
+      "watchNewsBtn": "뉴스 보기",
+      "empty": "일치하는 데이터가 없습니다.",
+      "prev": "이전",
+      "next": "다음",
+      "paging": "{start} - {end} / 총 {total}건",
+      "chartTooltip": "TradingView에서 차트 보기",
+      "excelSheetName": "증시 뉴스",
+      "tabs": {
+        "stock": "종목",
+        "macro": "거시",
+        "stable": "안정 변동성",
+        "high": "고변동성",
+        "watchlist": "⭐ 관심목록",
+        "spotlight": "🚀 주목 종목"
+      },
+      "cols": {
+        "index": "#",
+        "publish_time": "시간",
+        "single_stock": "티커",
+        "price_change_today_pct": "% 변동",
+        "ma15": "MA15",
+        "organ_name": "기업",
+        "industry": "업종",
+        "current_close": "가격",
+        "current_volume": "거래량",
+        "headline": "제목",
+        "source": "출처",
+        "link": "링크",
+        "time": "시간"
+      },
+      "filter": {
+        "title": "필터",
+        "search": "검색...",
+        "selectAll": "(전체 선택)",
+        "clearAll": "전체 해제",
+        "selectAllBtn": "전체 선택",
+        "apply": "적용",
+        "stockCode": "종목 코드",
+        "ma15": "MA15",
+        "industry": "업종",
+        "source": "출처",
+        "ma15Ranges": {
+          "strongAbove": "⏫ MA15 (>5%)",
+          "above": "⬆️ MA15 (1~5%)",
+          "at": "↔️ MA15 (-1~1%)",
+          "below": "⬇️ MA15 (-5~-1%)",
+          "strongBelow": "⏬ MA15 (<-5%)"
+        }
+      },
+      "ma15Tooltip": {
+        "strongAbove": "MA15 대비 강한 상승",
+        "above": "MA15 위",
+        "at": "MA15 부근",
+        "below": "MA15 아래",
+        "strongBelow": "MA15 대비 강한 하락",
+        "na": "데이터 없음"
+      },
+      "macro": {
+        "sheetName": "거시 뉴스"
+      },
+      "stable": {
+        "sheetName": "안정 변동성"
+      },
+      "high": {
+        "sheetName": "고변동성"
+      },
+      "spotlight": {
+        "sheetName": "주목 종목"
+      },
+      "watchlist": {
+        "sheetName": "관심목록"
+      },
+      "header": {
+        "mainTitle": "24시간 증시 뉴스",
+        "subTitle": "매일 시장 업데이트",
+        "refreshTitle": "페이지 새로고침"
+      },
+      "footer": {
+        "col1Title": "회사 소개",
+        "col1Desc1": "3S 원칙에 따른 금융 시장 정보: Short(간결) – Sharp(명확) – Straight(직설).",
+        "col1Desc2": "\"투자자가 매일 자금 흐름과 시장 추세를 더 빠르게 파악하도록 돕습니다.\"",
+        "col2Title": "광고 문의",
+        "col2Founder": "Phạm Văn Thiện",
+        "founderName": "Phạm Văn Thiện",
+        "founderLabel": "창립자",
+        "hotlineLabel": "핫라인",
+        "emailLabel": "이메일",
+        "col3Title": "에코시스템",
+        "mapsLabel": "Google 지도",
+        "addressLabel": "본사",
+        "directionsLink": "Google 지도에서 길 찾기 →",
+        "version": "버전 4.0",
+        "updated": "업데이트: 2026-05-08",
+        "copyrightResp": "콘텐츠 책임: Phạm Văn Thiện",
+        "copyrightCopy": "© 2026 24시간 증시 뉴스 — 창립자 Phạm Văn Thiện",
+        "newsTitle": "뉴스",
+        "newsTitle2": "증시 뉴스"
+      },
+      "video": {
+        "cannotLoad": "동영상을 불러올 수 없습니다.",
+        "close": "닫기",
+        "tabVideoTitle": "동영상 보기",
+        "titleStock": "오늘의 증시 전망",
+        "titleMacro": "거시경제: 지난 24시간 주요 동향"
+      },
+      "filterPopup": {
+        "title": "필터",
+        "close": "닫기"
+      },
+      "social": {
+        "googleMaps": "Google 지도",
+        "facebook": "Facebook",
+        "tiktok": "TikTok",
+        "youtube": "YouTube",
+        "linkedin": "LinkedIn",
+        "twitter": "X (Twitter)"
+      },
+      "sourceNames": {
+        "Investing-ChiBaoKinhTe": "Investing-경제지표",
+        "Investing-Forex": "Investing-외환",
+        "Investing-HangHoa": "Investing-원자재",
+        "Investing-TheGioi": "Investing-세계",
+        "Investing-TinPhoBien": "Investing-인기 뉴스"
+      },
+      "contact": {
+        "founderLabel": "창립자",
+        "founderName": "Phạm Văn Thiện",
+        "hotlineLabel": "핫라인",
+        "emailLabel": "이메일",
+        "phoneNumber": "0906 411 561",
+        "emailAddress": "admin@tintucchungkhoan24h.com",
+        "address": "29/22 Nguyễn Văn Khối, Phường Thông Tây Hội, Quận Gò Vấp, TP.HCM 71400"
+      },
+      "brand": {
+        "threeS": "3S",
+        "short": "Short",
+        "sharp": "Sharp",
+        "straight": "Straight",
+        "logoAlt": "24시간 증시 뉴스 로고"
+      },
+      "datepicker": {
+        "months": [
+          "1월",
+          "2월",
+          "3월",
+          "4월",
+          "5월",
+          "6월",
+          "7월",
+          "8월",
+          "9월",
+          "10월",
+          "11월",
+          "12월"
+        ],
+        "days": [
+          "월",
+          "화",
+          "수",
+          "목",
+          "금",
+          "토",
+          "일"
+        ],
+        "inputPlaceholder": "dd/mm/yyyy"
+      },
+      "notApplicable": "해당 없음",
+      "page": {
+        "documentTitle": "24시간 증시 뉴스",
+        "metaDescription": "매일 시장 업데이트. 베트남 증시를 따라가는 투자자를 위한 종목 분석과 투자 동향."
+      },
+      "exportFilePrefix": {
+        "stock": "StockMarketNews",
+        "macro": "MacroNews",
+        "stable": "StableVolatility",
+        "high": "HighVolatility",
+        "watchlist": "Watchlist",
+        "spotlight": "Spotlight"
+      },
+      "exportError": "Excel보내기 오류. 다시 시도해 주세요.",
+      "exportErrorWithMessage": "Excel보내기 오류: {message}",
+      "exportUnexpectedResponse": "서버 응답 형식이 올바르지 않습니다."
+    },
+    "zh": {
+      "title": "24小時股市新聞",
+      "subtitle": "每日市場更新",
+      "searchPlaceholder": "VHM, VIC, FPT...",
+      "searchPlaceholderMacro": "金價／匯率...",
+      "lblFrom": "開始日期",
+      "lblTo": "結束日期",
+      "loading": "載入資料中...",
+      "exportBtn": "匯出 Excel",
+      "exporting": "匯出中...",
+      "filterBtn": "篩選",
+      "refreshBtn": "重新整理資料",
+      "watchNewsBtn": "觀看新聞",
+      "empty": "沒有符合的資料。",
+      "prev": "上一頁",
+      "next": "下一頁",
+      "paging": "顯示第 {start} - {end} 筆，共 {total} 筆",
+      "chartTooltip": "在 TradingView 查看圖表",
+      "excelSheetName": "股市新聞",
+      "tabs": {
+        "stock": "個股",
+        "macro": "總經",
+        "stable": "穩定波動",
+        "high": "高波動",
+        "watchlist": "⭐ 自選股",
+        "spotlight": "🚀 焦點股"
+      },
+      "cols": {
+        "index": "#",
+        "publish_time": "時間",
+        "single_stock": "代號",
+        "price_change_today_pct": "% 漲跌",
+        "ma15": "MA15",
+        "organ_name": "公司",
+        "industry": "產業",
+        "current_close": "價格",
+        "current_volume": "成交量",
+        "headline": "標題",
+        "source": "來源",
+        "link": "連結",
+        "time": "時間"
+      },
+      "filter": {
+        "title": "篩選",
+        "search": "搜尋...",
+        "selectAll": "（全選）",
+        "clearAll": "全部清除",
+        "selectAllBtn": "全選",
+        "apply": "套用",
+        "stockCode": "股票代號",
+        "ma15": "MA15",
+        "industry": "產業",
+        "source": "來源",
+        "ma15Ranges": {
+          "strongAbove": "⏫ MA15 (>5%)",
+          "above": "⬆️ MA15 (1 至 5%)",
+          "at": "↔️ MA15 (-1 至 1%)",
+          "below": "⬇️ MA15 (-5 至 -1%)",
+          "strongBelow": "⏬ MA15 (<-5%)"
+        }
+      },
+      "ma15Tooltip": {
+        "strongAbove": "相對 MA15 強勢上漲",
+        "above": "在 MA15 之上",
+        "at": "貼近 MA15",
+        "below": "在 MA15 之下",
+        "strongBelow": "相對 MA15 弱勢下跌",
+        "na": "無資料"
+      },
+      "macro": {
+        "sheetName": "總經新聞"
+      },
+      "stable": {
+        "sheetName": "穩定波動"
+      },
+      "high": {
+        "sheetName": "高波動"
+      },
+      "spotlight": {
+        "sheetName": "焦點股"
+      },
+      "watchlist": {
+        "sheetName": "自選股"
+      },
+      "header": {
+        "mainTitle": "24小時股市新聞",
+        "subTitle": "每日市場更新",
+        "refreshTitle": "重新整理頁面"
+      },
+      "footer": {
+        "col1Title": "關於我們",
+        "col1Desc1": "依 3S 原則提供金融市場資訊：Short（精簡）– Sharp（犀利）– Straight（直白）。",
+        "col1Desc2": "「協助投資者更快掌握資金流向與市場趨勢。」",
+        "col2Title": "廣告合作",
+        "col2Founder": "Phạm Văn Thiện",
+        "founderName": "Phạm Văn Thiện",
+        "founderLabel": "創辦人",
+        "hotlineLabel": "客服專線",
+        "emailLabel": "電子郵件",
+        "col3Title": "生態系連結",
+        "mapsLabel": "Google 地圖",
+        "addressLabel": "總部地址",
+        "directionsLink": "在 Google 地圖開啟路線 →",
+        "version": "版本 4.0",
+        "updated": "更新：2026/05/08",
+        "copyrightResp": "內容負責人：Phạm Văn Thiện",
+        "copyrightCopy": "© 2026 24小時股市新聞 — 創辦人 Phạm Văn Thiện",
+        "newsTitle": "新聞",
+        "newsTitle2": "股市新聞"
+      },
+      "video": {
+        "cannotLoad": "無法載入影片。",
+        "close": "關閉",
+        "tabVideoTitle": "觀看影片",
+        "titleStock": "今日股市總覽",
+        "titleMacro": "總體經濟：過去 24 小時重點"
+      },
+      "filterPopup": {
+        "title": "篩選",
+        "close": "關閉"
+      },
+      "social": {
+        "googleMaps": "Google 地圖",
+        "facebook": "Facebook",
+        "tiktok": "TikTok",
+        "youtube": "YouTube",
+        "linkedin": "LinkedIn",
+        "twitter": "X（Twitter）"
+      },
+      "sourceNames": {
+        "Investing-ChiBaoKinhTe": "Investing-經濟指標",
+        "Investing-Forex": "Investing-外匯",
+        "Investing-HangHoa": "Investing-大宗商品",
+        "Investing-TheGioi": "Investing-國際",
+        "Investing-TinPhoBien": "Investing-熱門新聞"
+      },
+      "contact": {
+        "founderLabel": "創辦人",
+        "founderName": "Phạm Văn Thiện",
+        "hotlineLabel": "客服專線",
+        "emailLabel": "電子郵件",
+        "phoneNumber": "0906 411 561",
+        "emailAddress": "admin@tintucchungkhoan24h.com",
+        "address": "29/22 Nguyễn Văn Khối, Phường Thông Tây Hội, Quận Gò Vấp, TP.HCM 71400"
+      },
+      "brand": {
+        "threeS": "3S",
+        "short": "Short",
+        "sharp": "Sharp",
+        "straight": "Straight",
+        "logoAlt": "24小時股市新聞標誌"
+      },
+      "datepicker": {
+        "months": [
+          "一月",
+          "二月",
+          "三月",
+          "四月",
+          "五月",
+          "六月",
+          "七月",
+          "八月",
+          "九月",
+          "十月",
+          "十一月",
+          "十二月"
+        ],
+        "days": [
+          "一",
+          "二",
+          "三",
+          "四",
+          "五",
+          "六",
+          "日"
+        ],
+        "inputPlaceholder": "dd/mm/yyyy"
+      },
+      "notApplicable": "不適用",
+      "page": {
+        "documentTitle": "24小時股市新聞",
+        "metaDescription": "每日市場更新。股票分析與投資趨勢，服務關注越南市場的投資人。"
+      },
+      "exportFilePrefix": {
+        "stock": "StockMarketNews",
+        "macro": "MacroNews",
+        "stable": "StableVolatility",
+        "high": "HighVolatility",
+        "watchlist": "Watchlist",
+        "spotlight": "Spotlight"
+      },
+      "exportError": "匯出 Excel 時發生錯誤，請再試一次。",
+      "exportErrorWithMessage": "匯出 Excel 時發生錯誤：{message}",
+      "exportUnexpectedResponse": "伺服器回傳的資料格式不正確。"
+    },
+    "th": {
+      "title": "ข่าวหุ้น 24 ชั่วโมง",
+      "subtitle": "อัปเดตตลาดทุกวัน",
+      "searchPlaceholder": "VHM, VIC, FPT...",
+      "searchPlaceholderMacro": "ราคาทองคำ/อัตราแลกเปลี่ยน...",
+      "lblFrom": "จากวันที่",
+      "lblTo": "ถึงวันที่",
+      "loading": "กำลังโหลดข้อมูล...",
+      "exportBtn": "ส่งออก Excel",
+      "exporting": "กำลังส่งออก...",
+      "filterBtn": "ตัวกรอง",
+      "refreshBtn": "รีเฟรชข้อมูล",
+      "watchNewsBtn": "ดูข่าว",
+      "empty": "ไม่พบข้อมูลที่ตรงกัน",
+      "prev": "ก่อนหน้า",
+      "next": "ถัดไป",
+      "paging": "แสดง {start} - {end} จากทั้งหมด {total} รายการ",
+      "chartTooltip": "ดูกราฟใน TradingView",
+      "excelSheetName": "ข่าวตลาดหุ้น",
+      "tabs": {
+        "stock": "หุ้น",
+        "macro": "เศรษฐกิจมหภาค",
+        "stable": "ความผันผวนต่ำ",
+        "high": "ความผันผวนสูง",
+        "watchlist": "⭐ วอตช์ลิสต์",
+        "spotlight": "🚀 หุ้นเด่น"
+      },
+      "cols": {
+        "index": "#",
+        "publish_time": "เวลา",
+        "single_stock": "สัญลักษณ์",
+        "price_change_today_pct": "% เปลี่ยน",
+        "ma15": "MA15",
+        "organ_name": "บริษัท",
+        "industry": "อุตสาหกรรม",
+        "current_close": "ราคา",
+        "current_volume": "ปริมาณ",
+        "headline": "หัวข้อ",
+        "source": "แหล่งที่มา",
+        "link": "ลิงก์",
+        "time": "เวลา"
+      },
+      "filter": {
+        "title": "ตัวกรอง",
+        "search": "ค้นหา...",
+        "selectAll": "(เลือกทั้งหมด)",
+        "clearAll": "ล้างทั้งหมด",
+        "selectAllBtn": "เลือกทั้งหมด",
+        "apply": "นำไปใช้",
+        "stockCode": "รหัสหุ้น",
+        "ma15": "MA15",
+        "industry": "อุตสาหกรรม",
+        "source": "แหล่งที่มา",
+        "ma15Ranges": {
+          "strongAbove": "⏫ MA15 (>5%)",
+          "above": "⬆️ MA15 (1 ถึง 5%)",
+          "at": "↔️ MA15 (-1 ถึง 1%)",
+          "below": "⬇️ MA15 (-5 ถึง -1%)",
+          "strongBelow": "⏬ MA15 (<-5%)"
+        }
+      },
+      "ma15Tooltip": {
+        "strongAbove": "สูงกว่า MA15 อย่างชัดเจน",
+        "above": "เหนือเส้น MA15",
+        "at": "ใกล้เส้น MA15",
+        "below": "ต่ำกว่าเส้น MA15",
+        "strongBelow": "ต่ำกว่า MA15 อย่างชัดเจน",
+        "na": "ไม่มีข้อมูล"
+      },
+      "macro": {
+        "sheetName": "ข่าวเศรษฐกิจมหภาค"
+      },
+      "stable": {
+        "sheetName": "ความผันผวนต่ำ"
+      },
+      "high": {
+        "sheetName": "ความผันผวนสูง"
+      },
+      "spotlight": {
+        "sheetName": "หุ้นเด่น"
+      },
+      "watchlist": {
+        "sheetName": "วอตช์ลิสต์"
+      },
+      "header": {
+        "mainTitle": "ข่าวหุ้น 24 ชั่วโมง",
+        "subTitle": "อัปเดตตลาดทุกวัน",
+        "refreshTitle": "รีเฟรชหน้า"
+      },
+      "footer": {
+        "col1Title": "เกี่ยวกับเรา",
+        "col1Desc1": "นำเสนอข้อมูลตลาดการเงินตามหลัก 3S: Short (กระชับ) – Sharp (เฉียบคม) – Straight (ตรงไปตรงมา).",
+        "col1Desc2": "\"ช่วยให้นักลงทุนติดตามกระแสเงินและแนวโน้มตลาดได้เร็วขึ้นทุกวัน\"",
+        "col2Title": "ติดต่อโฆษณา",
+        "col2Founder": "Phạm Văn Thiện",
+        "founderName": "Phạm Văn Thiện",
+        "founderLabel": "ผู้ก่อตั้ง",
+        "hotlineLabel": "สายด่วน",
+        "emailLabel": "อีเมล",
+        "col3Title": "ระบบนิเวศของเรา",
+        "mapsLabel": "Google Maps",
+        "addressLabel": "สำนักงานใหญ่",
+        "directionsLink": "เปิดเส้นทางใน Google Maps →",
+        "version": "เวอร์ชัน 4.0",
+        "updated": "อัปเดต: 08/05/2026",
+        "copyrightResp": "ผู้รับผิดชอบเนื้อหา: Phạm Văn Thiện",
+        "copyrightCopy": "© 2026 ข่าวหุ้น 24 ชั่วโมง — ผู้ก่อตั้ง Phạm Văn Thiện",
+        "newsTitle": "ข่าว",
+        "newsTitle2": "ข่าวตลาดหุ้น"
+      },
+      "video": {
+        "cannotLoad": "ไม่สามารถโหลดวิดีโอได้",
+        "close": "ปิด",
+        "tabVideoTitle": "ดูวิดีโอ",
+        "titleStock": "ภาพรวมตลาดหุ้นวันนี้",
+        "titleMacro": "เศรษฐกิจมหภาค: เหตุการณ์สำคัญ 24 ชั่วโมงที่ผ่านมา"
+      },
+      "filterPopup": {
+        "title": "ตัวกรอง",
+        "close": "ปิด"
+      },
+      "social": {
+        "googleMaps": "Google Maps",
+        "facebook": "Facebook",
+        "tiktok": "TikTok",
+        "youtube": "YouTube",
+        "linkedin": "LinkedIn",
+        "twitter": "X (Twitter)"
+      },
+      "sourceNames": {
+        "Investing-ChiBaoKinhTe": "Investing-ตัวชี้วัดเศรษฐกิจ",
+        "Investing-Forex": "Investing-ฟอเร็กซ์",
+        "Investing-HangHoa": "Investing-สินค้าโภคภัณฑ์",
+        "Investing-TheGioi": "Investing-ข่าวโลก",
+        "Investing-TinPhoBien": "Investing-ข่าวยอดนิยม"
+      },
+      "contact": {
+        "founderLabel": "ผู้ก่อตั้ง",
+        "founderName": "Phạm Văn Thiện",
+        "hotlineLabel": "สายด่วน",
+        "emailLabel": "อีเมล",
+        "phoneNumber": "0906 411 561",
+        "emailAddress": "admin@tintucchungkhoan24h.com",
+        "address": "29/22 Nguyễn Văn Khối, Phường Thông Tây Hội, Quận Gò Vấp, TP.HCM 71400"
+      },
+      "brand": {
+        "threeS": "3S",
+        "short": "Short",
+        "sharp": "Sharp",
+        "straight": "Straight",
+        "logoAlt": "โลโก้ข่าวหุ้น 24 ชั่วโมง"
+      },
+      "datepicker": {
+        "months": [
+          "มกราคม",
+          "กุมภาพันธ์",
+          "มีนาคม",
+          "เมษายน",
+          "พฤษภาคม",
+          "มิถุนายน",
+          "กรกฎาคม",
+          "สิงหาคม",
+          "กันยายน",
+          "ตุลาคม",
+          "พฤศจิกายน",
+          "ธันวาคม"
+        ],
+        "days": [
+          "จ",
+          "อ",
+          "พ",
+          "พฤ",
+          "ศ",
+          "ส",
+          "อา"
+        ],
+        "inputPlaceholder": "dd/mm/yyyy"
+      },
+      "notApplicable": "ไม่ระบุ",
+      "page": {
+        "documentTitle": "ข่าวหุ้น 24 ชั่วโมง",
+        "metaDescription": "อัปเดตตลาดทุกวัน วิเคราะห์หุ้นและแนวโน้มการลงทุน สำหรับนักลงทุนที่ติดตามตลาดเวียดนาม"
+      },
+      "exportFilePrefix": {
+        "stock": "StockMarketNews",
+        "macro": "MacroNews",
+        "stable": "StableVolatility",
+        "high": "HighVolatility",
+        "watchlist": "Watchlist",
+        "spotlight": "Spotlight"
+      },
+      "exportError": "ส่งออก Excel ไม่สำเร็จ โปรดลองอีกครั้ง",
+      "exportErrorWithMessage": "ส่งออก Excel ไม่สำเร็จ: {message}",
+      "exportUnexpectedResponse": "รูปแบบข้อมูลจากเซิร์ฟเวอร์ไม่ถูกต้อง"
     }
   }
 }
