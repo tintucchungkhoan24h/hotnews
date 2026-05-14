@@ -2562,7 +2562,7 @@
             if (!langMenu) return;
             const langs = Array.isArray(i18nLanguages) ? i18nLanguages : [];
             if (langs.length === 0) return;
-            const langNames = { vi: 'Tiếng Việt', en: 'English', ko: '한국어', zh: '繁體中文', th: 'ภาษาไทย' };
+            const langNames = { vi: 'Tiếng Việt', en: 'English', ko: '한국어', zh: '繁體中文', th: 'ภาษาไทย', ar: 'العربية' };
             langMenu.innerHTML = langs.map((languageCode) => {
                 const flagMarkup = i18nFlags[languageCode] || '';
                 const langShort = i18nLangShort[languageCode] || languageCode.toUpperCase();
