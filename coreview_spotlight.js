@@ -881,7 +881,7 @@ window.exportSpotlightToExcel = async function exportSpotlightToExcel(btnRef) {
             i18n[lang].cols.current_close,
             i18n[lang].cols.current_volume,
             i18n[lang].cols.headline,
-            'Link'
+            i18n[lang].cols.link
         ];
 
         const rows = allData.map((row, idx) => {
@@ -922,7 +922,7 @@ window.exportSpotlightToExcel = async function exportSpotlightToExcel(btnRef) {
 
         XLSX.utils.book_append_sheet(wb, ws, i18n[lang].spotlight.sheetName);
 
-        const filename = `Spotlight_${stateSpotlight.fromDateSpotlight}_${stateSpotlight.toDateSpotlight}.xlsx`;
+        const filename = `${i18n[lang].exportFilePrefix.spotlight}_${stateSpotlight.fromDateSpotlight}_${stateSpotlight.toDateSpotlight}.xlsx`;
         XLSX.writeFile(wb, filename);
 
     } catch (error) {

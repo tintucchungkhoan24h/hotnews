@@ -874,7 +874,7 @@ async function exportToExcel() {
             i18n[state.lang].cols.current_close,
             i18n[state.lang].cols.current_volume,
             i18n[state.lang].cols.headline,
-            'Link'
+            i18n[state.lang].cols.link
         ];
 
         const rows = allData.map((row, idx) => {
@@ -916,7 +916,7 @@ async function exportToExcel() {
         XLSX.utils.book_append_sheet(wb, ws, i18n[state.lang].excelSheetName);
 
         // Generate filename with date range
-        const filename = `TinTucChungKhoan_${state.fromDate}_${state.toDate}.xlsx`;
+        const filename = `${i18n[state.lang].exportFilePrefix.stock}_${state.fromDate}_${state.toDate}.xlsx`;
         XLSX.writeFile(wb, filename);
 
     } catch (error) {

@@ -881,7 +881,7 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
             i18n[lang].cols.current_close,
             i18n[lang].cols.current_volume,
             i18n[lang].cols.headline,
-            'Link'
+            i18n[lang].cols.link
         ];
 
         const rows = allData.map((row, idx) => {
@@ -922,7 +922,7 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
 
         XLSX.utils.book_append_sheet(wb, ws, i18n[lang].watchlist.sheetName);
 
-        const filename = `Watchlist_${stateWatchlist.fromDateWatchlist}_${stateWatchlist.toDateWatchlist}.xlsx`;
+        const filename = `${i18n[lang].exportFilePrefix.watchlist}_${stateWatchlist.fromDateWatchlist}_${stateWatchlist.toDateWatchlist}.xlsx`;
         XLSX.writeFile(wb, filename);
 
     } catch (error) {

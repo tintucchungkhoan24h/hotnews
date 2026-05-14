@@ -709,7 +709,7 @@ async function exportMacroToExcel() {
             i18n[state.lang].cols.publish_time,
             i18n[state.lang].cols.source,
             i18n[state.lang].cols.headline,
-            'Link'
+            i18n[state.lang].cols.link
         ];
 
         const rows = allData.map((row, idx) => {
@@ -742,7 +742,7 @@ async function exportMacroToExcel() {
         XLSX.utils.book_append_sheet(wb, ws, i18n[state.lang].macro.sheetName);
 
         // Generate filename with date range
-        const filename = `TinViMo_${state.fromDateMacro}_${state.toDateMacro}.xlsx`;
+        const filename = `${i18n[state.lang].exportFilePrefix.macro}_${state.fromDateMacro}_${state.toDateMacro}.xlsx`;
         XLSX.writeFile(wb, filename);
 
     } catch (error) {

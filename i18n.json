@@ -88,6 +88,12 @@
         "status": "Đang Phát Triển",
         "sheetName": "Tin Vĩ Mô"
       },
+      "stable": {
+        "sheetName": "Biến Động Ổn Định"
+      },
+      "high": {
+        "sheetName": "Biến Động Mạnh"
+      },
       "spotlight": {
         "sheetName": "Mã Nổi Bật"
       },
@@ -272,6 +278,12 @@
         "feature4Desc": "Industry and market analysis",
         "status": "In Development",
         "sheetName": "Macro News"
+      },
+      "stable": {
+        "sheetName": "Stable Volatility"
+      },
+      "high": {
+        "sheetName": "High Volatility"
       },
       "spotlight": {
         "sheetName": "Spotlight Stocks"
