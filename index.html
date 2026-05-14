@@ -1297,14 +1297,24 @@
 
         // flags are now stored in i18n[lang].lang.flag — no hardcoded object needed
 
-        // Load cached translations from localStorage
+        // Per-language caches: { en: { "VNM": "..." }, ko: { ... }, ... }
         function loadTranslationCache() {
             try {
-                const cached = localStorage.getItem('companyTranslations');
-                if (cached) {
-                    const parsed = JSON.parse(cached);
-                    console.log(`📦 Loaded ${Object.keys(parsed).length} cached company translations`);
+                const v2 = localStorage.getItem('companyTranslationsByLang');
+                if (v2) {
+                    const parsed = JSON.parse(v2);
+                    const n = Object.keys(parsed).reduce((a, k) => a + Object.keys(parsed[k] || {}).length, 0);
+                    console.log(`📦 Loaded company translations (${n} entries across ${Object.keys(parsed).length} locales)`);
                     return parsed;
+                }
+                const legacy = localStorage.getItem('companyTranslations');
+                if (legacy) {
+                    const flat = JSON.parse(legacy);
+                    const migrated = { en: flat };
+                    localStorage.setItem('companyTranslationsByLang', JSON.stringify(migrated));
+                    localStorage.removeItem('companyTranslations');
+                    console.log('📦 Migrated legacy company translations → companyTranslationsByLang (en)');
+                    return migrated;
                 }
             } catch (e) {
                 console.error('Error loading translation cache:', e);
@@ -1312,19 +1322,23 @@
             return {};
         }
 
-        // Load cached headline translations
         function loadHeadlineCache() {
             try {
-                const cached = localStorage.getItem('headlineTranslations');
-                if (cached) {
-                    const parsed = JSON.parse(cached);
-                    console.log(`📦 Loaded ${Object.keys(parsed).length} cached headline translations`);
-                    // Debug: show first few translations
-                    const samples = Object.entries(parsed).slice(0, 3);
-                    if (samples.length > 0) {
-                        console.log('Sample headlines:', samples);
-                    }
+                const v2 = localStorage.getItem('headlineTranslationsByLang');
+                if (v2) {
+                    const parsed = JSON.parse(v2);
+                    const n = Object.keys(parsed).reduce((a, k) => a + Object.keys(parsed[k] || {}).length, 0);
+                    console.log(`📦 Loaded headline translations (${n} entries across ${Object.keys(parsed).length} locales)`);
                     return parsed;
+                }
+                const legacy = localStorage.getItem('headlineTranslations');
+                if (legacy) {
+                    const flat = JSON.parse(legacy);
+                    const migrated = { en: flat };
+                    localStorage.setItem('headlineTranslationsByLang', JSON.stringify(migrated));
+                    localStorage.removeItem('headlineTranslations');
+                    console.log('📦 Migrated legacy headline translations → headlineTranslationsByLang (en)');
+                    return migrated;
                 }
             } catch (e) {
                 console.error('Error loading headline cache:', e);
@@ -1333,31 +1347,93 @@
             return {};
         }
 
-        // Save translations to localStorage
+        function loadIndustryTranslationCache() {
+            try {
+                const raw = localStorage.getItem('industryTranslationsByLang');
+                if (raw) return JSON.parse(raw);
+            } catch (e) {
+                console.error('Error loading industry translation cache:', e);
+            }
+            return {};
+        }
+
         function saveTranslationCache() {
             try {
-                localStorage.setItem('companyTranslations', JSON.stringify(state.translatedNames));
-                console.log(`💾 Saved ${Object.keys(state.translatedNames).length} company translations to cache`);
+                localStorage.setItem('companyTranslationsByLang', JSON.stringify(state.translatedNames));
+                const n = Object.keys(state.translatedNames).reduce((a, k) => a + Object.keys(state.translatedNames[k] || {}).length, 0);
+                console.log(`💾 Saved ${n} company translations (${Object.keys(state.translatedNames).length} locales)`);
             } catch (e) {
                 console.error('Error saving translation cache:', e);
             }
         }
 
-        // Save headline translations to localStorage
         function saveHeadlineCache() {
             try {
-                localStorage.setItem('headlineTranslations', JSON.stringify(state.translatedHeadlines));
-                console.log(`💾 Saved ${Object.keys(state.translatedHeadlines).length} headline translations to cache`);
+                localStorage.setItem('headlineTranslationsByLang', JSON.stringify(state.translatedHeadlines));
+                const n = Object.keys(state.translatedHeadlines).reduce((a, k) => a + Object.keys(state.translatedHeadlines[k] || {}).length, 0);
+                console.log(`💾 Saved ${n} headline translations (${Object.keys(state.translatedHeadlines).length} locales)`);
             } catch (e) {
                 console.error('Error saving headline cache:', e);
             }
         }
 
+        function saveIndustryTranslationCache() {
+            try {
+                localStorage.setItem('industryTranslationsByLang', JSON.stringify(state.translatedIndustries));
+            } catch (e) {
+                console.error('Error saving industry translation cache:', e);
+            }
+        }
+
+        /** Vietnamese → target UI language via Lingva; falls back to English then original text. */
+        async function translateTextViToLang(text, targetLang) {
+            if (!text || !targetLang || targetLang === DEFAULT_LANG) return text;
+            const targets = targetLang === 'en' ? ['en'] : [targetLang, 'en'];
+            const tried = new Set();
+            for (const tgt of targets) {
+                if (!tgt || tried.has(tgt)) continue;
+                tried.add(tgt);
+                try {
+                    const url = `https://lingva.ml/api/v1/vi/${tgt}/${encodeURIComponent(text)}`;
+                    const res = await fetch(url);
+                    const result = await res.json();
+                    if (result && result.translation) return result.translation;
+                } catch (e) { /* try next */ }
+            }
+            return text;
+        }
+
+        function getTranslatedOrgan(name, lang) {
+            if (!name) return '';
+            if (lang === DEFAULT_LANG) return name;
+            const b = state.translatedNames[lang];
+            return (b && b[name]) || name;
+        }
+
+        function getTranslatedHeadline(headline, lang) {
+            if (!headline) return '';
+            if (lang === DEFAULT_LANG) return headline;
+            const b = state.translatedHeadlines[lang];
+            return (b && b[headline]) || headline;
+        }
+
+        function getTranslatedIndustry(industryVn, lang) {
+            if (!industryVn) return '';
+            if (lang === DEFAULT_LANG) return industryVn;
+            const b = state.translatedIndustries[lang];
+            if (b && b[industryVn]) return b[industryVn];
+            if (window.industryTranslations && window.industryTranslations[industryVn]) {
+                return window.industryTranslations[industryVn];
+            }
+            return industryVn;
+        }
+
         // Global state object
         let state = {
             data: [], 
-            translatedNames: loadTranslationCache(), // Load cached company translations
-            translatedHeadlines: loadHeadlineCache(), // Load cached headline translations
+            translatedNames: loadTranslationCache(), // { locale: { "VNM": "..." } }
+            translatedHeadlines: loadHeadlineCache(),
+            translatedIndustries: loadIndustryTranslationCache(),
             lang: DEFAULT_LANG,
             sortCol: 'timesfm_point', sortDesc: true,
             fromDate: '', toDate: '', searchQuery: '',
@@ -1377,7 +1453,8 @@
             fromDate: '', toDate: '', searchQuery: '',
             currentPage: 0, pageSize: 50, totalCount: 0,
             translatedNames: state.translatedNames,
-            translatedHeadlines: state.translatedHeadlines
+            translatedHeadlines: state.translatedHeadlines,
+            translatedIndustries: state.translatedIndustries
         };
         
         // High Volatility state object
@@ -1388,7 +1465,8 @@
             fromDate: '', toDate: '', searchQuery: '',
             currentPage: 0, pageSize: 50, totalCount: 0,
             translatedNames: state.translatedNames,
-            translatedHeadlines: state.translatedHeadlines
+            translatedHeadlines: state.translatedHeadlines,
+            translatedIndustries: state.translatedIndustries
         };
         
         // Watchlist state object
@@ -1399,7 +1477,8 @@
             fromDateWatchlist: '', toDateWatchlist: '', searchQuery: '',
             currentPage: 0, pageSize: 50, totalCount: 0,
             translatedNames: state.translatedNames,
-            translatedHeadlines: state.translatedHeadlines
+            translatedHeadlines: state.translatedHeadlines,
+            translatedIndustries: state.translatedIndustries
         };
 
         // Spotlight state object
@@ -1410,117 +1489,137 @@
             fromDateSpotlight: '', toDateSpotlight: '', searchQuery: '',
             currentPage: 0, pageSize: 50, totalCount: 0,
             translatedNames: state.translatedNames,
-            translatedHeadlines: state.translatedHeadlines
+            translatedHeadlines: state.translatedHeadlines,
+            translatedIndustries: state.translatedIndustries
         };
 
-        // Hàm dịch tên công ty - Using Lingva (Fast, privacy-focused Google Translate proxy)
+        // Hàm dịch tên công ty — Lingva vi → current UI language (per-locale cache)
         async function translateNames(names) {
-            const list = Array.from(new Set(names.filter(n => n && !state.translatedNames[n])));
+            const lang = state.lang;
+            if (lang === DEFAULT_LANG) return;
+            if (!state.translatedNames[lang]) state.translatedNames[lang] = {};
+            const bucket = state.translatedNames[lang];
+            const list = Array.from(new Set(names.filter(n => n && !bucket[n])));
             if (list.length === 0) {
-                console.log('✅ All company names already cached!');
+                console.log('✅ All company names already cached for', lang);
                 return;
             }
 
-            console.log(`🌐 Translating ${list.length} company names using Lingva...`);
+            console.log(`🌐 Translating ${list.length} company names → ${lang} (Lingva)...`);
 
-            // Translate in large batches of 20 for maximum speed
             const batchSize = 20;
             let newTranslations = 0;
-            
+
             for (let i = 0; i < list.length; i += batchSize) {
                 const batch = list.slice(i, i + batchSize);
-                
-                // Translate entire batch in parallel (no waiting)
+
                 const promises = batch.map(async (name) => {
                     try {
-                        const url = `https://lingva.ml/api/v1/vi/en/${encodeURIComponent(name)}`;
-                        const res = await fetch(url);
-                        const result = await res.json();
-                        
-                        if (result && result.translation) {
-                            state.translatedNames[name] = result.translation;
-                            newTranslations++;
-                            return true;
-                        } else {
-                            state.translatedNames[name] = name;
-                            return false;
-                        }
+                        const translated = await translateTextViToLang(name, lang);
+                        const out = (translated && String(translated).trim()) ? translated : name;
+                        const changed = out !== name;
+                        bucket[name] = out;
+                        if (changed) newTranslations++;
+                        return changed;
                     } catch (e) {
-                        state.translatedNames[name] = name;
+                        bucket[name] = name;
                         return false;
                     }
                 });
-                
-                // Wait for batch to complete
+
                 await Promise.all(promises);
-                
-                // Progressive update: Save and re-render after each batch
+
                 if (newTranslations > 0) {
                     saveTranslationCache();
-                    if (state.lang !== DEFAULT_LANG) {
-                        renderBody(); // Update UI immediately with new translations
+                    if (state.lang !== DEFAULT_LANG && typeof renderBody === 'function') {
+                        renderBody();
                     }
                 }
-                
-                console.log(`✓ Batch ${Math.floor(i / batchSize) + 1}: ${newTranslations} translations`);
+
+                console.log(`✓ Batch ${Math.floor(i / batchSize) + 1}: cumulative ${newTranslations} new translations`);
             }
-            
-            console.log(`✅ Completed: ${newTranslations} company names translated!`);
+
+            console.log(`✅ Completed: ${newTranslations} company names translated for ${lang}!`);
         }
 
-        // Hàm dịch tiêu đề tin tức - Using Lingva with progressive loading
         async function translateHeadlines(headlines) {
-            const list = Array.from(new Set(headlines.filter(h => h && h.trim() && !state.translatedHeadlines[h])));
+            const lang = state.lang;
+            if (lang === DEFAULT_LANG) return;
+            if (!state.translatedHeadlines[lang]) state.translatedHeadlines[lang] = {};
+            const bucket = state.translatedHeadlines[lang];
+            const list = Array.from(new Set(headlines.filter(h => h && h.trim() && !bucket[h])));
             if (list.length === 0) {
-                console.log('✅ All headlines already cached!');
+                console.log('✅ All headlines already cached for', lang);
                 return;
             }
 
-            console.log(`📰 Translating ${list.length} headlines using Lingva...`);
+            console.log(`📰 Translating ${list.length} headlines → ${lang} (Lingva)...`);
 
-            // Translate in batches of 15 for headlines
             const batchSize = 15;
             let newTranslations = 0;
-            
+
             for (let i = 0; i < list.length; i += batchSize) {
                 const batch = list.slice(i, i + batchSize);
-                
-                // Translate entire batch in parallel
+
                 const promises = batch.map(async (headline) => {
                     try {
-                        const url = `https://lingva.ml/api/v1/vi/en/${encodeURIComponent(headline)}`;
-                        const res = await fetch(url);
-                        const result = await res.json();
-                        
-                        if (result && result.translation) {
-                            state.translatedHeadlines[headline] = result.translation;
-                            newTranslations++;
-                            return true;
-                        } else {
-                            state.translatedHeadlines[headline] = headline;
-                            return false;
-                        }
+                        const translated = await translateTextViToLang(headline, lang);
+                        const out = (translated && String(translated).trim()) ? translated : headline;
+                        const changed = out !== headline;
+                        bucket[headline] = out;
+                        if (changed) newTranslations++;
+                        return changed;
                     } catch (e) {
-                        state.translatedHeadlines[headline] = headline;
+                        bucket[headline] = headline;
                         return false;
                     }
                 });
-                
-                // Wait for batch to complete
+
                 await Promise.all(promises);
-                
-                // Progressive update: Save and re-render after each batch
+
                 if (newTranslations > 0) {
                     saveHeadlineCache();
-                    if (state.lang !== DEFAULT_LANG) {
-                        renderBody(); // Update UI immediately with new translations
+                    if (state.lang !== DEFAULT_LANG && typeof renderBody === 'function') {
+                        renderBody();
                     }
                 }
-                
-                console.log(`✓ Batch ${Math.floor(i / batchSize) + 1}: ${newTranslations} headlines`);
+
+                console.log(`✓ Batch ${Math.floor(i / batchSize) + 1}: cumulative ${newTranslations} headlines`);
             }
-            
-            console.log(`✅ Completed: ${newTranslations} headlines translated!`);
+
+            console.log(`✅ Completed: ${newTranslations} headlines translated for ${lang}!`);
+        }
+
+        async function translateIndustries(industries) {
+            const lang = state.lang;
+            if (lang === DEFAULT_LANG) return;
+            if (!state.translatedIndustries[lang]) state.translatedIndustries[lang] = {};
+            const bucket = state.translatedIndustries[lang];
+            const list = Array.from(new Set(industries.filter(ind => ind && !bucket[ind])));
+            if (list.length === 0) return;
+
+            console.log(`🏭 Translating ${list.length} industry labels → ${lang} (Lingva)...`);
+            let newTranslations = 0;
+            const batchSize = 25;
+
+            for (let i = 0; i < list.length; i += batchSize) {
+                const batch = list.slice(i, i + batchSize);
+                await Promise.all(batch.map(async (ind) => {
+                    try {
+                        const translated = await translateTextViToLang(ind, lang);
+                        const out = (translated && String(translated).trim()) ? translated : ind;
+                        if (out !== ind) newTranslations++;
+                        bucket[ind] = out;
+                    } catch (e) {
+                        bucket[ind] = ind;
+                    }
+                }));
+                if (newTranslations > 0) {
+                    saveIndustryTranslationCache();
+                    if (typeof renderBody === 'function') renderBody();
+                }
+            }
+            console.log(`✅ Industry labels translated for ${lang} (${newTranslations} new)`);
         }
 
         // ═══════════════════════════════════════════════════════════════════════════
@@ -1778,10 +1877,7 @@
                             </div>
                             <div id="filterOptionsIndustry" class="filter-options">
                                 ${industries.map(ind => {
-                                    // Get translated name if in English mode
-                                    const displayName = state.lang !== DEFAULT_LANG && window.industryTranslations && window.industryTranslations[ind] 
-                                        ? window.industryTranslations[ind] 
-                                        : ind;
+                                    const displayName = getTranslatedIndustry(ind, state.lang);
                                     return `
                                     <div class="filter-option ${(tabFilterState.industry.size === 0 || tabFilterState.industry.has(ind)) && !tabFilterState.industry.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('${currentTab}', 'industry', '${ind.replace(/'/g, "\\'")}')">
                                         <div class="filter-checkbox">
@@ -2534,10 +2630,16 @@
                     if (typeof renderBody === 'function') renderBody();
                     if (typeof renderPaginationUI === 'function') renderPaginationUI();
                     if (state.lang !== DEFAULT_LANG) {
-                        const untranslatedNames = state.data.map(d => d.organ_name).filter(n => !state.translatedNames[n]);
-                        const untranslatedHeadlines = state.data.map(d => d.headline).filter(h => !state.translatedHeadlines[h]);
+                        const L = state.lang;
+                        const nameB = state.translatedNames[L] || {};
+                        const headB = state.translatedHeadlines[L] || {};
+                        const indB = state.translatedIndustries[L] || {};
+                        const untranslatedNames = state.data.map(d => d.organ_name).filter(n => n && !nameB[n]);
+                        const untranslatedHeadlines = state.data.map(d => d.headline).filter(h => h && !headB[h]);
+                        const untranslatedIndustries = state.data.map(d => d.industry_vn).filter(ind => ind && !indB[ind]);
                         if (untranslatedNames.length > 0 && typeof translateNames === 'function') translateNames(untranslatedNames);
                         if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
+                        if (untranslatedIndustries.length > 0 && typeof translateIndustries === 'function') translateIndustries(untranslatedIndustries);
                     }
                 }
                 if (currentTab === 'macro') {
@@ -2547,7 +2649,9 @@
                     if (typeof renderMacroBody === 'function') renderMacroBody();
                     if (typeof renderMacroPaginationUI === 'function') renderMacroPaginationUI();
                     if (state.lang !== DEFAULT_LANG) {
-                        const untranslatedHeadlines = state.dataMacro.map(d => d.headline).filter(h => !state.translatedHeadlines[h]);
+                        const L = state.lang;
+                        const headB = state.translatedHeadlines[L] || {};
+                        const untranslatedHeadlines = state.dataMacro.map(d => d.headline).filter(h => h && !headB[h]);
                         if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
                     }
                 }
@@ -2556,24 +2660,72 @@
                     if (typeof renderStableHeaders === 'function') renderStableHeaders();
                     if (typeof renderStableBody === 'function') renderStableBody();
                     if (typeof renderStablePaginationUI === 'function') renderStablePaginationUI();
+                    if (state.lang !== DEFAULT_LANG) {
+                        const L = state.lang;
+                        const nameB = state.translatedNames[L] || {};
+                        const headB = state.translatedHeadlines[L] || {};
+                        const indB = state.translatedIndustries[L] || {};
+                        const untranslatedNames = stateStable.data.map(d => d.organ_name).filter(n => n && !nameB[n]);
+                        const untranslatedHeadlines = stateStable.data.map(d => d.headline).filter(h => h && !headB[h]);
+                        const untranslatedIndustries = stateStable.data.map(d => d.industry_vn).filter(ind => ind && !indB[ind]);
+                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') translateNames(untranslatedNames);
+                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
+                        if (untranslatedIndustries.length > 0 && typeof translateIndustries === 'function') translateIndustries(untranslatedIndustries);
+                    }
                 }
                 if (currentTab === 'high') {
                     if (typeof updateHighViewLabels === 'function') updateHighViewLabels();
                     if (typeof renderHighHeaders === 'function') renderHighHeaders();
                     if (typeof renderHighBody === 'function') renderHighBody();
                     if (typeof renderHighPaginationUI === 'function') renderHighPaginationUI();
+                    if (state.lang !== DEFAULT_LANG) {
+                        const L = state.lang;
+                        const nameB = state.translatedNames[L] || {};
+                        const headB = state.translatedHeadlines[L] || {};
+                        const indB = state.translatedIndustries[L] || {};
+                        const untranslatedNames = stateHigh.data.map(d => d.organ_name).filter(n => n && !nameB[n]);
+                        const untranslatedHeadlines = stateHigh.data.map(d => d.headline).filter(h => h && !headB[h]);
+                        const untranslatedIndustries = stateHigh.data.map(d => d.industry_vn).filter(ind => ind && !indB[ind]);
+                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') translateNames(untranslatedNames);
+                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
+                        if (untranslatedIndustries.length > 0 && typeof translateIndustries === 'function') translateIndustries(untranslatedIndustries);
+                    }
                 }
                 if (currentTab === 'watchlist') {
                     if (typeof updateWatchlistViewLabels === 'function') updateWatchlistViewLabels();
                     if (typeof renderWatchlistHeaders === 'function') renderWatchlistHeaders();
                     if (typeof renderWatchlistBody === 'function') renderWatchlistBody();
                     if (typeof renderWatchlistPaginationUI === 'function') renderWatchlistPaginationUI();
+                    if (state.lang !== DEFAULT_LANG) {
+                        const L = state.lang;
+                        const nameB = state.translatedNames[L] || {};
+                        const headB = state.translatedHeadlines[L] || {};
+                        const indB = state.translatedIndustries[L] || {};
+                        const untranslatedNames = stateWatchlist.data.map(d => d.organ_name).filter(n => n && !nameB[n]);
+                        const untranslatedHeadlines = stateWatchlist.data.map(d => d.headline).filter(h => h && !headB[h]);
+                        const untranslatedIndustries = stateWatchlist.data.map(d => d.industry_vn).filter(ind => ind && !indB[ind]);
+                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') translateNames(untranslatedNames);
+                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
+                        if (untranslatedIndustries.length > 0 && typeof translateIndustries === 'function') translateIndustries(untranslatedIndustries);
+                    }
                 }
                 if (currentTab === 'spotlight') {
                     if (typeof updateSpotlightViewLabels === 'function') updateSpotlightViewLabels();
                     if (typeof renderSpotlightHeaders === 'function') renderSpotlightHeaders();
                     if (typeof renderSpotlightBody === 'function') renderSpotlightBody();
                     if (typeof renderSpotlightPaginationUI === 'function') renderSpotlightPaginationUI();
+                    if (state.lang !== DEFAULT_LANG) {
+                        const L = state.lang;
+                        const nameB = state.translatedNames[L] || {};
+                        const headB = state.translatedHeadlines[L] || {};
+                        const indB = state.translatedIndustries[L] || {};
+                        const untranslatedNames = stateSpotlight.data.map(d => d.organ_name).filter(n => n && !nameB[n]);
+                        const untranslatedHeadlines = stateSpotlight.data.map(d => d.headline).filter(h => h && !headB[h]);
+                        const untranslatedIndustries = stateSpotlight.data.map(d => d.industry_vn).filter(ind => ind && !indB[ind]);
+                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') translateNames(untranslatedNames);
+                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
+                        if (untranslatedIndustries.length > 0 && typeof translateIndustries === 'function') translateIndustries(untranslatedIndustries);
+                    }
                 }
             }
 
@@ -2638,8 +2790,8 @@
             return `${VIDEO_BASE}/${filename}?v=${ts}`;
         }
         const VIDEO_FILES = {
-            stock: { vi: 'vi-stock.mp4', en: 'en-stock.mp4', ko: 'en-stock.mp4', zh: 'en-stock.mp4', th: 'en-stock.mp4' },
-            macro: { vi: 'vi-macro.mp4', en: 'en-macro.mp4', ko: 'en-macro.mp4', zh: 'en-macro.mp4', th: 'en-macro.mp4' }
+            stock: { vi: 'vi-stock.mp4', en: 'en-stock.mp4', ko: 'ko-stock.mp4', zh: 'zh-stock.mp4', th: 'th-stock.mp4' },
+            macro: { vi: 'vi-macro.mp4', en: 'en-macro.mp4', ko: 'ko-macro.mp4', zh: 'zh-macro.mp4', th: 'th-macro.mp4' }
         };
 
         function getI18nVideoTabTitle(tab, lang) {

@@ -410,6 +410,7 @@ async function fetchData() {
         if (state.data.length > 0) {
             translateNames(state.data.map(d => d.organ_name));
             translateHeadlines(state.data.map(d => d.headline));
+            translateIndustries(state.data.map(d => d.industry_vn));
         }
         
         console.log('=== FETCH DATA END ===');
@@ -576,9 +577,9 @@ function renderBody() {
     document.getElementById('emptyState').classList.add('hidden');
     
     tbody.innerHTML = state.data.map((row, idx) => {
-        const name = state.lang === DEFAULT_LANG ? row.organ_name : (state.translatedNames[row.organ_name] || row.organ_name);
-        const industry = state.lang === DEFAULT_LANG ? row.industry_vn : (row.industry_en || row.industry_vn);
-        const headline = state.lang === DEFAULT_LANG ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
+        const name = getTranslatedOrgan(row.organ_name, state.lang);
+        const industry = getTranslatedIndustry(row.industry_vn, state.lang);
+        const headline = getTranslatedHeadline(row.headline, state.lang);
         const pct = row.price_change_today_pct || 0;
         const color = pct > 0 ? 'text-fin-green' : (pct < 0 ? 'text-fin-red' : 'text-gray-400');
         
@@ -884,9 +885,9 @@ async function exportToExcel() {
         ];
 
         const rows = allData.map((row, idx) => {
-            const name = state.lang === DEFAULT_LANG ? row.organ_name : (state.translatedNames[row.organ_name] || row.organ_name);
-            const industry = state.lang === DEFAULT_LANG ? row.industry_vn : (row.industry_en || row.industry_vn);
-            const headline = state.lang === DEFAULT_LANG ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
+            const name = getTranslatedOrgan(row.organ_name, state.lang);
+            const industry = getTranslatedIndustry(row.industry_vn, state.lang);
+            const headline = getTranslatedHeadline(row.headline, state.lang);
             const ma15Status = getMA15Status(row.pct_ma15);
             const ma15Text = ma15Status.key === 'N/A' ? i18n[state.lang].notApplicable : ma15Status.key;
 

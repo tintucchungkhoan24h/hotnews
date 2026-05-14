@@ -418,6 +418,7 @@ async function fetchSpotlightData() {
         if (stateSpotlight.data.length > 0) {
             translateNames(stateSpotlight.data.map(d => d.organ_name));
             translateHeadlines(stateSpotlight.data.map(d => d.headline));
+            translateIndustries(stateSpotlight.data.map(d => d.industry_vn));
         }
         
         console.log('=== FETCH DATA END ===');
@@ -581,9 +582,9 @@ function renderSpotlightBody() {
     document.getElementById('emptyStateSpotlight').classList.add('hidden');
     
     tbody.innerHTML = stateSpotlight.data.map((row, idx) => {
-        const name = lang === DEFAULT_LANG ? row.organ_name : (stateSpotlight.translatedNames[row.organ_name] || row.organ_name);
-        const industry = lang === DEFAULT_LANG ? row.industry_vn : (row.industry_en || row.industry_vn);
-        const headline = lang === DEFAULT_LANG ? row.headline : (stateSpotlight.translatedHeadlines[row.headline] || row.headline);
+        const name = getTranslatedOrgan(row.organ_name, lang);
+        const industry = getTranslatedIndustry(row.industry_vn, lang);
+        const headline = getTranslatedHeadline(row.headline, lang);
         const pct = row.price_change_today_pct || 0;
         const color = pct > 0 ? 'text-fin-green' : (pct < 0 ? 'text-fin-red' : 'text-gray-400');
         
@@ -891,9 +892,9 @@ window.exportSpotlightToExcel = async function exportSpotlightToExcel(btnRef) {
         ];
 
         const rows = allData.map((row, idx) => {
-            const name = lang === DEFAULT_LANG ? row.organ_name : (stateSpotlight.translatedNames[row.organ_name] || row.organ_name);
-            const industry = lang === DEFAULT_LANG ? row.industry_vn : (row.industry_en || row.industry_vn);
-            const headline = lang === DEFAULT_LANG ? row.headline : (stateSpotlight.translatedHeadlines[row.headline] || row.headline);
+            const name = getTranslatedOrgan(row.organ_name, lang);
+            const industry = getTranslatedIndustry(row.industry_vn, lang);
+            const headline = getTranslatedHeadline(row.headline, lang);
             const ma15Status = getMA15StatusSpotlight(row.pct_ma15);
             const ma15Text = ma15Status.key === 'N/A' ? i18n[lang].notApplicable : ma15Status.key;
 
