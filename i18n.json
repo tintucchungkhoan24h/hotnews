@@ -3,6 +3,10 @@
     "vi",
     "en"
   ],
+  "flags": {
+    "vi": "<svg class=\"flag-icon\" viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#da251d\"/><polygon points=\"15,4 16.176,8.618 21,8.618 17.088,11.382 18.264,16 15,13.236 11.736,16 12.912,11.382 9,8.618 13.824,8.618\" fill=\"#ffff00\"/></svg>",
+    "en": "<svg class=\"flag-icon\" viewBox=\"0 0 60 30\"><clipPath id=\"s\"><path d=\"M0,0 v30 h60 v-30 z\"/></clipPath><path d=\"M0,0 v30 h60 v-30 z\" fill=\"#012169\"/><path d=\"M0,0 L60,30 M60,0 L0,30\" stroke=\"#fff\" stroke-width=\"6\"/><path d=\"M30,0 v30 M0,15 h60\" stroke=\"#fff\" stroke-width=\"10\"/><path d=\"M30,0 v30 M0,15 h60\" stroke=\"#C8102E\" stroke-width=\"6\"/></svg>"
+  },
   "translations": {
     "vi": {
       "title": "TIN TỨC CHỨNG KHOÁN 24H",

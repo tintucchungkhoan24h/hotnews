@@ -1069,6 +1069,7 @@
         })();
 
         let i18nLanguages = [DEFAULT_LANG]; // populated from i18n.json after load
+        let i18nFlags = {};                 // populated from i18n.json after load
 
         async function loadTranslations() {
             try {
@@ -1078,6 +1079,17 @@
                 if (data.languages && data.languages.length > 0) {
                     i18nLanguages = data.languages;
                 }
+                if (data.flags) {
+                    i18nFlags = data.flags;
+                }
+
+                // Attach flag markup to translations so applyTranslations can use it consistently
+                Object.keys(i18nFlags).forEach(lang => {
+                    if (i18n[lang]) {
+                        i18n[lang].lang = i18n[lang].lang || {};
+                        i18n[lang].lang.flag = i18nFlags[lang];
+                    }
+                });
 
                 // Derive default language from i18n.json languages array
                 // (DEFAULT_LANG is already set via sync XHR at startup; state objects
@@ -1154,6 +1166,13 @@
             const metaDesc = document.querySelector('meta[name="description"]');
             if (metaDesc && pg && pg.metaDescription) metaDesc.setAttribute('content', pg.metaDescription);
             document.documentElement.lang = lang;
+
+            // Sync flag from i18nFlags or translation wrapper
+            const flagEl = document.getElementById('langFlag');
+            if (flagEl) {
+                const flagMarkup = i18nFlags[lang] || i18n[lang]?.lang?.flag;
+                if (flagMarkup) flagEl.innerHTML = flagMarkup;
+            }
         }
 
         // Load translations and then load JS files
@@ -1196,10 +1215,7 @@
 
         initApp();
 
-    const flags = {
-            vi: `<svg class="flag-icon" viewBox="0 0 30 20"><rect width="30" height="20" fill="#da251d"/><polygon points="15,4 16.176,8.618 21,8.618 17.088,11.382 18.264,16 15,13.236 11.736,16 12.912,11.382 9,8.618 13.824,8.618" fill="#ffff00"/></svg>`,
-            en: `<svg class="flag-icon" viewBox="0 0 60 30"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg>`
-        };
+        // flags are now stored in i18n[lang].lang.flag — no hardcoded object needed
 
         // Load cached translations from localStorage
         function loadTranslationCache() {
@@ -2361,8 +2377,9 @@
                     stateWatchlist.lang = state.lang;
                     stateSpotlight.lang = state.lang;
                     
-                    // Update flag immediately
-                    document.getElementById('langFlag').innerHTML = flags[state.lang];
+                    // Update flag from i18nFlags or translation wrapper
+                    const flagMarkup = i18nFlags[state.lang] || i18n[state.lang]?.lang?.flag;
+                    document.getElementById('langFlag').innerHTML = flagMarkup || '';
                     
                     // Apply translations to all elements with data attributes
                     // This will also update langText via data-text-key
