@@ -44,6 +44,7 @@
         "current_volume": "Khối lượng",
         "headline": "Tiêu đề",
         "source": "Nguồn",
+        "link": "Liên kết",
         "time": "Thời gian"
       },
       "filter": {
@@ -56,7 +57,14 @@
         "stockCode": "Mã CK",
         "ma15": "MA15",
         "industry": "Ngành",
-        "source": "Nguồn"
+        "source": "Nguồn",
+        "ma15Ranges": {
+          "strongAbove": "⏫ MA15 (>5%)",
+          "above": "⬆️ MA15 (1 đến 5%)",
+          "at": "↔️ MA15 (-1 đến 1%)",
+          "below": "⬇️ MA15 (-5 đến -1%)",
+          "strongBelow": "⏬ MA15 (<-5%)"
+        }
       },
       "ma15Tooltip": {
         "strongAbove": "Tăng mạnh so với MA15",
@@ -133,6 +141,13 @@
         "linkedin": "LinkedIn",
         "twitter": "X (Twitter)"
       },
+      "sourceNames": {
+        "Investing-ChiBaoKinhTe": "Investing-Chỉ báo kinh tế",
+        "Investing-Forex": "Investing-Tiền tệ",
+        "Investing-HangHoa": "Investing-Hàng hoá",
+        "Investing-TheGioi": "Investing-Thế giới",
+        "Investing-TinPhoBien": "Investing-Tin phổ biến"
+      },
       "contact": {
         "founderLabel": "Founder",
         "founderName": "Phạm Văn Thiện",
@@ -160,6 +175,14 @@
       "page": {
         "documentTitle": "Tin Tức Chứng Khoán 24h",
         "metaDescription": "Cập nhật thị trường mỗi ngày. 🔍 Phân tích mã cổ phiếu & Xu hướng đầu tư. 🚀 Đồng hành cùng nhà đầu tư trong và ngoài nước quan tâm đến thị trường Việt Nam."
+      },
+      "exportFilePrefix": {
+        "stock": "TinTucChungKhoan",
+        "macro": "TinViMo",
+        "stable": "BienDongOnDinh",
+        "high": "BienDongManh",
+        "watchlist": "DanhSachTheoDoi",
+        "spotlight": "MaNoiBat"
       },
       "exportError": "Lỗi khi xuất file Excel. Vui lòng thử lại.",
       "exportErrorWithMessage": "Lỗi khi xuất file Excel: {message}"
@@ -204,6 +227,7 @@
         "current_volume": "Volume",
         "headline": "Headline",
         "source": "Source",
+        "link": "Link",
         "time": "Time"
       },
       "filter": {
@@ -216,7 +240,14 @@
         "stockCode": "Stock Code",
         "ma15": "MA15",
         "industry": "Industry",
-        "source": "Source"
+        "source": "Source",
+        "ma15Ranges": {
+          "strongAbove": "⏫ MA15 (>5%)",
+          "above": "⬆️ MA15 (1 to 5%)",
+          "at": "↔️ MA15 (-1 to 1%)",
+          "below": "⬇️ MA15 (-5 to -1%)",
+          "strongBelow": "⏬ MA15 (<-5%)"
+        }
       },
       "ma15Tooltip": {
         "strongAbove": "Strong increase above MA15",
@@ -293,6 +324,13 @@
         "linkedin": "LinkedIn",
         "twitter": "X (Twitter)"
       },
+      "sourceNames": {
+        "Investing-ChiBaoKinhTe": "Investing-Economic Indicators",
+        "Investing-Forex": "Investing-Forex",
+        "Investing-HangHoa": "Investing-Commodities",
+        "Investing-TheGioi": "Investing-World News",
+        "Investing-TinPhoBien": "Investing-Popular News"
+      },
       "contact": {
         "founderLabel": "Founder",
         "founderName": "Phạm Văn Thiện",
@@ -320,6 +358,14 @@
       "page": {
         "documentTitle": "24H Stock Market News",
         "metaDescription": "Daily market updates. Stock analysis and investment trends. For investors following the Vietnamese market."
+      },
+      "exportFilePrefix": {
+        "stock": "StockMarketNews",
+        "macro": "MacroNews",
+        "stable": "StableVolatility",
+        "high": "HighVolatility",
+        "watchlist": "Watchlist",
+        "spotlight": "Spotlight"
       },
       "exportError": "Error exporting Excel file. Please try again.",
       "exportErrorWithMessage": "Error exporting Excel file: {message}"

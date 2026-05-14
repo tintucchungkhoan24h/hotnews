@@ -38,7 +38,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cập nhật thị trường mỗi ngày. 🔍 Phân tích mã cổ phiếu & Xu hướng đầu tư. 🚀 Đồng hành cùng nhà đầu tư trong và ngoài nước quan tâm đến thị trường Việt Nam.">
+    <meta name="description" content="">
     
     <!-- Aggressive cache control for Safari iOS -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0, post-check=0, pre-check=0">
@@ -49,7 +49,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
-    <title>Tin Tức Chứng Khoán 24h</title>
+    <title></title>
     
     <!-- Favicon for Google Search (must be multiple of 48px) -->
     <link rel="icon" type="image/png" sizes="48x48" href="ava_icon.png">
@@ -719,7 +719,7 @@
             padding: 8px 12px; background: #112240;
             cursor: grab; border-bottom: 1px solid #1e3a5f;
         ">
-            <span id="videoTitle" style="font-size:11px;font-weight:700;color:#ffffff;letter-spacing:0.3px;line-height:1.3;flex:1;min-width:0;" data-text-key="video.title">Video</span>
+            <span id="videoTitle" style="font-size:11px;font-weight:700;color:#ffffff;letter-spacing:0.3px;line-height:1.3;flex:1;min-width:0;" data-text-key="video.title"></span>
             <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:8px;">
                 <!-- Close button -->
                 <button onclick="closeVideoPlayer()" data-title-key="video.close" style="
@@ -753,12 +753,12 @@
                 display:none;
             ">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="#ffd700"><path d="M8 5v14l11-7z"/></svg>
-                <p style="color:#9ca3af;font-size:12px;margin:0;" data-text-key="video.cannotLoad">Video không thể tải.</p>
+                <p style="color:#9ca3af;font-size:12px;margin:0;" data-text-key="video.cannotLoad"></p>
                 <a id="videoDirectLink" href="#" target="_blank" style="
                     color:#ffd700;font-size:12px;font-weight:700;
                     padding:8px 16px;border:1px solid #ffd700;border-radius:8px;
                     text-decoration:none;
-                " data-text-key="video.openDirect">▶ Mở video trực tiếp</a>
+                " data-text-key="video.openDirect"></a>
             </div>
         </div>
     </div>
@@ -770,7 +770,7 @@
     <!-- Filter Popup -->
     <div id="filterPopup">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h3 id="filterPopupTitle" style="font-size: 18px; font-weight: 700; color: #ffd700; margin: 0;" data-text-key="filter.title">Bộ Lọc</h3>
+            <h3 id="filterPopupTitle" style="font-size: 18px; font-weight: 700; color: #ffd700; margin: 0;" data-text-key="filter.title"></h3>
             <button onclick="closeFilterPopup()" data-title-key="filterPopup.close" style="background: none; border: none; color: #9ca3af; cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -791,16 +791,16 @@
     <div class="tab-scroll-wrapper max-w-[1440px] mx-auto mb-6 overflow-x-auto" style="scrollbar-width:none;-ms-overflow-style:none;">
         <div class="flex items-center gap-0 bg-fin-blue-light/30 p-1 rounded-xl border border-gray-800/50 w-fit min-w-full sm:min-w-0">
             <button id="tab-stock" class="tab-button active tab-btn-responsive font-bold transition-all flex-shrink-0">
-                <span class="tab-text" data-text-key="tabs.stock">Mã CK</span>
+                <span class="tab-text" data-text-key="tabs.stock"></span>
             </button>
             <button id="tab-macro" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
-                <span class="tab-text" data-text-key="tabs.macro">Vĩ Mô</span>
+                <span class="tab-text" data-text-key="tabs.macro"></span>
             </button>
             <button id="tab-stable" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
-                <span class="tab-text" data-text-key="tabs.stable">Biến động ổn định</span>
+                <span class="tab-text" data-text-key="tabs.stable"></span>
             </button>
             <button id="tab-high" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
-                <span class="tab-text" data-text-key="tabs.high">Biến động mạnh</span>
+                <span class="tab-text" data-text-key="tabs.high"></span>
             </button>
             <button id="tab-watchlist" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
                 <span class="tab-text" data-text-key="tabs.watchlist"></span>
@@ -2139,13 +2139,13 @@
 
         // Get MA15 categories
         function getMA15Categories() {
-            const isVn = state.lang === 'vn';
+            const ranges = i18n?.[state.lang]?.filter?.ma15Ranges || {};
             return [
-                { key: '⏫ MA15', label: '⏫ MA15 (>5%)' },
-                { key: '⬆️ MA15', label: isVn ? '⬆️ MA15 (1 đến 5%)' : '⬆️ MA15 (1 to 5%)' },
-                { key: '↔️ MA15', label: isVn ? '↔️ MA15 (-1 đến 1%)' : '↔️ MA15 (-1 to 1%)' },
-                { key: '⬇️ MA15', label: isVn ? '⬇️ MA15 (-5 đến -1%)' : '⬇️ MA15 (-5 to -1%)' },
-                { key: '⏬ MA15', label: '⏬ MA15 (<-5%)' }
+                { key: '⏫ MA15', label: ranges.strongAbove || '' },
+                { key: '⬆️ MA15', label: ranges.above || '' },
+                { key: '↔️ MA15', label: ranges.at || '' },
+                { key: '⬇️ MA15', label: ranges.below || '' },
+                { key: '⏬ MA15', label: ranges.strongBelow || '' }
             ];
         }
 
@@ -2255,35 +2255,10 @@
             }
         }
         
-        // Map source names to Vietnamese display names
+        // Map source names to localized display names
         function getSourceDisplayName(sourceName, lang = 'vn') {
-            const sourceMap = {
-                'Investing-ChiBaoKinhTe': {
-                    vn: 'Investing-Chỉ báo kinh tế',
-                    en: 'Investing-Economic Indicators'
-                },
-                'Investing-Forex': {
-                    vn: 'Investing-Tiền tệ',
-                    en: 'Investing-Forex'
-                },
-                'Investing-HangHoa': {
-                    vn: 'Investing-Hàng hoá',
-                    en: 'Investing-Commodities'
-                },
-                'Investing-TheGioi': {
-                    vn: 'Investing-Thế giới',
-                    en: 'Investing-World News'
-                },
-                'Investing-TinPhoBien': {
-                    vn: 'Investing-Tin phổ biến',
-                    en: 'Investing-Popular News'
-                }
-            };
-            
-            if (sourceMap[sourceName]) {
-                return sourceMap[sourceName][lang] || sourceMap[sourceName]['vn'];
-            }
-            return sourceName;
+            const sourceMap = i18n?.[lang]?.sourceNames || {};
+            return sourceMap[sourceName] || sourceName;
         }
 
         // Toggle filter section collapse/expand
@@ -2532,11 +2507,11 @@
         };
 
         function getI18nVideoTabTitle(tab, lang) {
-            if (!i18n || !i18n[lang] || !i18n[lang].video) return 'Video';
+            if (!i18n || !i18n[lang] || !i18n[lang].video) return '';
             const v = i18n[lang].video;
             if (tab === 'stock') return v.titleStock || v.title;
             if (tab === 'macro') return v.titleMacro || v.title;
-            return v.title;
+            return v.title || '';
         }
 
         let videoState = {
