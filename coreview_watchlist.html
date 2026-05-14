@@ -7,7 +7,7 @@
                 <div class="flex flex-col flex-1">
                     <label id="lblFromWatchlist" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblFrom">Từ ngày</label>
                     <div class="datepicker-wrapper">
-                        <input type="text" id="fromDateWatchlist" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                        <input type="text" id="fromDateWatchlist" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly>
                         <div id="fromDateWatchlistPopup" class="datepicker-popup"></div>
                     </div>
                 </div>
@@ -15,7 +15,7 @@
                 <div class="flex flex-col flex-1">
                     <label id="lblToWatchlist" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblTo">Đến ngày</label>
                     <div class="datepicker-wrapper">
-                        <input type="text" id="toDateWatchlist" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                        <input type="text" id="toDateWatchlist" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly>
                         <div id="toDateWatchlistPopup" class="datepicker-popup"></div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                 <div class="relative w-full">
                     <input type="text" id="searchInputWatchlist"
                         class="w-full bg-fin-blue border border-gray-700/50 rounded-xl py-2.5 pl-4 pr-8 text-sm focus:outline-none focus:border-fin-gold transition-all text-white placeholder-gray-600 shadow-inner"
-                        placeholder="VHM, VIC, FPT..."
+                        data-placeholder-key="searchPlaceholder"
                         oninput="toggleClearBtn('clearWatchlistBtn', this.value)">
                     <button id="clearWatchlistBtn"
                         onclick="clearWatchlistSearch()"
@@ -38,7 +38,7 @@
                         </svg>
                     </button>
                 </div>
-                <button onclick="refreshWatchlistData()" data-title-key="refreshBtn" title="Làm mới dữ liệu"
+                <button onclick="refreshWatchlistData()" data-title-key="refreshBtn"
                     class="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-fin-blue border border-gray-700/50 rounded-xl text-gray-400 hover:text-fin-gold hover:border-fin-gold transition-all hover:scale-110 active:scale-95"
                     id="refreshWatchlistBtn">
                     <svg id="refreshWatchlistIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">

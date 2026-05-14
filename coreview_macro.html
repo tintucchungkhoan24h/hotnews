@@ -7,7 +7,7 @@
                 <div class="flex flex-col flex-1">
                     <label id="lblFromMacro" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblFrom">Từ ngày</label>
                     <div class="datepicker-wrapper">
-                        <input type="text" id="fromDateMacro" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                        <input type="text" id="fromDateMacro" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly>
                         <div id="fromDateMacroPopup" class="datepicker-popup"></div>
                     </div>
                 </div>
@@ -15,7 +15,7 @@
                 <div class="flex flex-col flex-1">
                     <label id="lblToMacro" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblTo">Đến ngày</label>
                     <div class="datepicker-wrapper">
-                        <input type="text" id="toDateMacro" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                        <input type="text" id="toDateMacro" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly>
                         <div id="toDateMacroPopup" class="datepicker-popup"></div>
                     </div>
                 </div>
@@ -27,7 +27,6 @@
                     <input type="text" id="searchInputMacro"
                         class="w-full bg-fin-blue border border-gray-700/50 rounded-xl py-2.5 pl-4 pr-8 text-sm focus:outline-none focus:border-fin-gold transition-all text-white placeholder-gray-600 shadow-inner"
                         data-placeholder-key="searchPlaceholderMacro"
-                        placeholder="Giá vàng/gia vang..."
                         oninput="toggleClearBtn('clearMacroBtn', this.value)">
                     <button id="clearMacroBtn"
                         onclick="clearMacroSearch()"
@@ -39,7 +38,7 @@
                         </svg>
                     </button>
                 </div>
-                <button onclick="refreshMacroData()" data-title-key="refreshBtn" title="Làm mới dữ liệu"
+                <button onclick="refreshMacroData()" data-title-key="refreshBtn"
                     class="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-fin-blue border border-gray-700/50 rounded-xl text-gray-400 hover:text-fin-gold hover:border-fin-gold transition-all hover:scale-110 active:scale-95"
                     id="refreshMacroBtn">
                     <svg id="refreshMacroIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -64,7 +63,7 @@
     </button>
 
     <!-- Video Play Button -->
-    <button onclick="openVideoPlayer('macro')" title="Xem video" class="flex items-center gap-1.5 bg-gray-800 border border-gray-700 text-white px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm sm:px-4 hover:border-fin-gold hover:bg-gray-700 transition-all hover:scale-105 active:scale-95 whitespace-nowrap">
+    <button onclick="openVideoPlayer('macro')" data-title-key="video.tabVideoTitle" class="flex items-center gap-1.5 bg-gray-800 border border-gray-700 text-white px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm sm:px-4 hover:border-fin-gold hover:bg-gray-700 transition-all hover:scale-105 active:scale-95 whitespace-nowrap">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
         <span id="macroVideoBtnText" data-text-key="watchNewsBtn">Xem tin tức</span>
     </button>

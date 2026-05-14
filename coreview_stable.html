@@ -7,7 +7,7 @@
                 <div class="flex flex-col flex-1">
                     <label id="lblFromStable" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblFrom">Từ ngày</label>
                     <div class="datepicker-wrapper">
-                        <input type="text" id="fromDateStable" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                        <input type="text" id="fromDateStable" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly>
                         <div id="fromDateStablePopup" class="datepicker-popup"></div>
                     </div>
                 </div>
@@ -15,7 +15,7 @@
                 <div class="flex flex-col flex-1">
                     <label id="lblToStable" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblTo">Đến ngày</label>
                     <div class="datepicker-wrapper">
-                        <input type="text" id="toDateStable" class="datepicker-input" placeholder="dd/mm/yyyy" readonly>
+                        <input type="text" id="toDateStable" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly>
                         <div id="toDateStablePopup" class="datepicker-popup"></div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                 <div class="relative w-full">
                     <input type="text" id="searchInputStable"
                         class="w-full bg-fin-blue border border-gray-700/50 rounded-xl py-2.5 pl-4 pr-8 text-sm focus:outline-none focus:border-fin-gold transition-all text-white placeholder-gray-600 shadow-inner"
-                        placeholder="VHM, VIC, FPT..."
+                        data-placeholder-key="searchPlaceholder"
                         oninput="toggleClearBtn('clearStableBtn', this.value)">
                     <button id="clearStableBtn"
                         onclick="clearStableSearch()"
@@ -38,7 +38,7 @@
                         </svg>
                     </button>
                 </div>
-                <button onclick="refreshStableData()" data-title-key="refreshBtn" title="Làm mới dữ liệu"
+                <button onclick="refreshStableData()" data-title-key="refreshBtn"
                     class="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-fin-blue border border-gray-700/50 rounded-xl text-gray-400 hover:text-fin-gold hover:border-fin-gold transition-all hover:scale-110 active:scale-95"
                     id="refreshStableBtn">
                     <svg id="refreshStableIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">

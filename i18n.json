@@ -110,7 +110,10 @@
         "title": "Video",
         "cannotLoad": "Video không thể tải.",
         "openDirect": "▶ Mở video trực tiếp",
-        "close": "Đóng"
+        "close": "Đóng",
+        "tabVideoTitle": "Xem video",
+        "titleStock": "Toàn Cảnh Thị Trường Chứng Khoán Hôm Nay",
+        "titleMacro": "Kinh Tế Vĩ Mô: Những Diễn Biến Đáng Chú Ý 24h Qua"
       },
       "filterPopup": {
         "title": "Bộ Lọc",
@@ -140,6 +143,16 @@
       },
       "lang": {
         "short": "VN"
+      },
+      "datepicker": {
+        "months": ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        "days": ["T2", "T3", "T4", "T5", "T6", "T7", "CN"],
+        "inputPlaceholder": "dd/mm/yyyy"
+      },
+      "notApplicable": "N/A",
+      "page": {
+        "documentTitle": "Tin Tức Chứng Khoán 24h",
+        "metaDescription": "Cập nhật thị trường mỗi ngày. 🔍 Phân tích mã cổ phiếu & Xu hướng đầu tư. 🚀 Đồng hành cùng nhà đầu tư trong và ngoài nước quan tâm đến thị trường Việt Nam."
       },
       "exportError": "Lỗi khi xuất file Excel. Vui lòng thử lại.",
       "exportErrorWithMessage": "Lỗi khi xuất file Excel: {message}"
@@ -250,7 +263,10 @@
         "title": "Video",
         "cannotLoad": "Video cannot be loaded.",
         "openDirect": "▶ Open video directly",
-        "close": "Close"
+        "close": "Close",
+        "tabVideoTitle": "Watch video",
+        "titleStock": "Today's Stock Market Overview",
+        "titleMacro": "Macroeconomics: Key Developments Over the Past 24 Hours"
       },
       "filterPopup": {
         "title": "Filters",
@@ -280,6 +296,16 @@
       },
       "lang": {
         "short": "EN"
+      },
+      "datepicker": {
+        "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        "days": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+        "inputPlaceholder": "dd/mm/yyyy"
+      },
+      "notApplicable": "N/A",
+      "page": {
+        "documentTitle": "24H Stock Market News",
+        "metaDescription": "Daily market updates. Stock analysis and investment trends. For investors following the Vietnamese market."
       },
       "exportError": "Error exporting Excel file. Please try again.",
       "exportErrorWithMessage": "Error exporting Excel file: {message}"

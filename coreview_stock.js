@@ -584,7 +584,9 @@ function renderBody() {
         
         // Get MA15 status
         const ma15Status = getMA15Status(row.pct_ma15);
-        const ma15Tooltip = i18n[state.lang].ma15Tooltip[ma15Status.key];
+        const ma15Tooltip = ma15Status.key === 'N/A'
+            ? i18n[state.lang].ma15Tooltip.na
+            : (i18n[state.lang].ma15Tooltip[ma15Status.key] || '');
         const ma15Bold = ma15Status.bold ? 'font-bold' : '';
         const ma15SvgIcons = {
             '⏫ MA15': `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 18l8-8 8 8H4z"/><path d="M4 11l8-8 8 8H4z"/></svg>`,
@@ -594,7 +596,7 @@ function renderBody() {
             '⏬ MA15': `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6l-8 8-8-8h16z"/><path d="M20 13l-8 8-8-8h16z"/></svg>`,
         };
         const ma15Cell = ma15Status.key === 'N/A'
-            ? `<span style="color:#6b7280;">N/A</span>`
+            ? `<span style="color:#6b7280;">${i18n[state.lang].notApplicable}</span>`
             : `<span class="inline-flex items-center gap-1 ${ma15Bold}" style="${ma15Status.style}">${ma15SvgIcons[ma15Status.key] || ''}${ma15Status.label}</span>`;
         
         // Highlight headline in yellow if news_impact_score >= 30
@@ -880,7 +882,7 @@ async function exportToExcel() {
             const industry = state.lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
             const headline = state.lang === 'vn' ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
             const ma15Status = getMA15Status(row.pct_ma15);
-            const ma15Text = ma15Status.key === 'N/A' ? 'N/A' : ma15Status.key;
+            const ma15Text = ma15Status.key === 'N/A' ? i18n[state.lang].notApplicable : ma15Status.key;
 
             return [
                 idx + 1,
