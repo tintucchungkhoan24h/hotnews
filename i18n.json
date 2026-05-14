@@ -23,6 +23,14 @@
     "th": "TH",
     "ar": "AR"
   },
+  "langNames": {
+    "vi": "Tiếng Việt",
+    "en": "English",
+    "ko": "한국어",
+    "zh": "繁體中文",
+    "th": "ภาษาไทย",
+    "ar": "العربية"
+  },
   "translations": {
     "vi": {
       "title": "TIN TỨC CHỨNG KHOÁN 24H",

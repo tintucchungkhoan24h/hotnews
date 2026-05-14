@@ -1153,6 +1153,7 @@
 
         // Load translations from i18n.json
         let i18n = null;
+        let i18nLangNames = {}; // native labels for language menu; filled by sync XHR + fetch
 
         // DEFAULT_LANG — read synchronously from i18n.json before any state is initialized
         const DEFAULT_LANG = (() => {
@@ -1161,6 +1162,9 @@
                 xhr.open('GET', 'i18n.json', false); // synchronous
                 xhr.send();
                 const data = JSON.parse(xhr.responseText);
+                if (data.langNames && typeof data.langNames === 'object') {
+                    i18nLangNames = data.langNames;
+                }
                 return (data.languages && data.languages[0]) || 'vi';
             } catch (e) {
                 return 'vi';
@@ -1184,6 +1188,9 @@
                 }
                 if (data.lang) {
                     i18nLangShort = data.lang;
+                }
+                if (data.langNames && typeof data.langNames === 'object') {
+                    i18nLangNames = data.langNames;
                 }
 
                 // Attach flag markup and language labels to translations so applyTranslations can use them consistently
@@ -2562,11 +2569,10 @@
             if (!langMenu) return;
             const langs = Array.isArray(i18nLanguages) ? i18nLanguages : [];
             if (langs.length === 0) return;
-            const langNames = { vi: 'Tiếng Việt', en: 'English', ko: '한국어', zh: '繁體中文', th: 'ภาษาไทย', ar: 'العربية' };
             langMenu.innerHTML = langs.map((languageCode) => {
                 const flagMarkup = i18nFlags[languageCode] || '';
                 const langShort = i18nLangShort[languageCode] || languageCode.toUpperCase();
-                const langName = langNames[languageCode] || languageCode;
+                const langName = (i18nLangNames && i18nLangNames[languageCode]) || languageCode;
                 return `
                         <button type="button" class="lang-option" data-lang="${languageCode}">
                             <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;">${flagMarkup}</span>
@@ -2825,8 +2831,8 @@
             return `${VIDEO_BASE}/${filename}?v=${ts}`;
         }
         const VIDEO_FILES = {
-            stock: { vi: 'vi-stock.mp4', en: 'en-stock.mp4', ko: 'ko-stock.mp4', zh: 'zh-stock.mp4', th: 'th-stock.mp4' },
-            macro: { vi: 'vi-macro.mp4', en: 'en-macro.mp4', ko: 'ko-macro.mp4', zh: 'zh-macro.mp4', th: 'th-macro.mp4' }
+            stock: { vi: 'vi-stock.mp4', en: 'en-stock.mp4', ko: 'ko-stock.mp4', zh: 'zh-stock.mp4', th: 'th-stock.mp4',ar: 'ar-stock.mp4' },
+            macro: { vi: 'vi-macro.mp4', en: 'en-macro.mp4', ko: 'ko-macro.mp4', zh: 'zh-macro.mp4', th: 'th-macro.mp4',ar: 'ar-macro.mp4' }
         };
 
         function getI18nVideoTabTitle(tab, lang) {
