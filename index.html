@@ -1120,6 +1120,16 @@
                 }
                 if (value) el.setAttribute('placeholder', value);
             });
+            // Apply data-alt-key attributes
+            document.querySelectorAll('[data-alt-key]').forEach(el => {
+                const key = el.getAttribute('data-alt-key');
+                const keys = key.split('.');
+                let value = i18n[lang];
+                for (const k of keys) {
+                    value = value?.[k];
+                }
+                if (value) el.setAttribute('alt', value);
+            });
 
             const pg = i18n[lang].page;
             if (pg && pg.documentTitle) document.title = pg.documentTitle;
