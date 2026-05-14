@@ -22,7 +22,6 @@
       "next": "Sau",
       "paging": "Hiển thị {start} - {end} trên tổng {total}",
       "chartTooltip": "Xem biểu đồ trên TradingView",
-      "langToggleLabel": "VN",
       "excelSheetName": "Tin Tức Chứng Khoán",
       "tabs": {
         "stock": "Mã CK",
@@ -213,7 +212,6 @@
       "next": "Next",
       "paging": "Showing {start} - {end} of {total}",
       "chartTooltip": "View chart on TradingView",
-      "langToggleLabel": "EN",
       "excelSheetName": "Stock Market News",
       "tabs": {
         "stock": "Stock",
