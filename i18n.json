@@ -29,8 +29,8 @@
         "macro": "Vĩ Mô",
         "stable": "Biến động ổn định",
         "high": "Biến động mạnh",
-        "watchlist": "Danh sách theo dõi",
-        "spotlight": "Mã Nổi Bật"
+        "watchlist": "⭐ Danh sách theo dõi",
+        "spotlight": "🚀 Mã Nổi Bật"
       },
       "cols": {
         "index": "#",
@@ -220,8 +220,8 @@
         "macro": "Macro",
         "stable": "Stable Volatility",
         "high": "High Volatility",
-        "watchlist": "Watchlist",
-        "spotlight": "Spotlight Stocks"
+        "watchlist": "⭐ Watchlist",
+        "spotlight": "🚀 Spotlight Stocks"
       },
       "cols": {
         "index": "#",
