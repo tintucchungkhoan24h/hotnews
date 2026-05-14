@@ -839,13 +839,10 @@
             return createGMT7Date(y, m - 1, d);
         }
         
-        let dpLocale = {
-            vn: { months: [], days: [] },
-            en: { months: [], days: [] }
-        };
+        let dpLocale = {};
         function syncDatepickerLocaleFromI18n() {
             if (!i18n) return;
-            ['vn', 'en'].forEach(function (lang) {
+            Object.keys(i18n).forEach(function (lang) {
                 const d = i18n[lang].datepicker;
                 if (d && d.months && d.days) {
                     dpLocale[lang] = { months: d.months, days: d.days };
@@ -1058,11 +1055,33 @@
         // Load translations from i18n.json
         let i18n = null;
 
+        // DEFAULT_LANG — read synchronously from i18n.json before any state is initialized
+        const DEFAULT_LANG = (() => {
+            try {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'i18n.json', false); // synchronous
+                xhr.send();
+                const data = JSON.parse(xhr.responseText);
+                return (data.languages && data.languages[0]) || 'vi';
+            } catch (e) {
+                return 'vi';
+            }
+        })();
+
+        let i18nLanguages = [DEFAULT_LANG]; // populated from i18n.json after load
+
         async function loadTranslations() {
             try {
                 const response = await fetch('i18n.json?v=' + CACHE_BUSTER);
                 const data = await response.json();
                 i18n = data.translations;
+                if (data.languages && data.languages.length > 0) {
+                    i18nLanguages = data.languages;
+                }
+
+                // Derive default language from i18n.json languages array
+                // (DEFAULT_LANG is already set via sync XHR at startup; state objects
+                //  are already initialized with the correct value)
                 
                 // Convert paging strings to functions
                 Object.keys(i18n).forEach(lang => {
@@ -1076,16 +1095,15 @@
                 });
                 syncDatepickerLocaleFromI18n();
                 
-                console.log('Translations loaded successfully');
+                console.log('Translations loaded successfully, default lang:', DEFAULT_LANG);
                 applyTranslations(); // Apply translations after loading
             } catch (error) {
                 console.error('Failed to load translations:', error);
-                // Fallback: could set a basic i18n object here if needed
             }
         }
 
         // Apply translations to elements with data attributes
-        function applyTranslations(lang = 'vn') {
+        function applyTranslations(lang = DEFAULT_LANG) {
             if (!i18n || !i18n[lang]) return;
 
             // Apply data-text-key attributes
@@ -1135,7 +1153,7 @@
             if (pg && pg.documentTitle) document.title = pg.documentTitle;
             const metaDesc = document.querySelector('meta[name="description"]');
             if (metaDesc && pg && pg.metaDescription) metaDesc.setAttribute('content', pg.metaDescription);
-            document.documentElement.lang = lang === 'vn' ? 'vi' : 'en';
+            document.documentElement.lang = lang;
         }
 
         // Load translations and then load JS files
@@ -1163,7 +1181,7 @@
             try {
                 await loadTranslations();
                 await loadScripts();
-                applyTranslations(state.lang || 'vn');
+                applyTranslations(state.lang || DEFAULT_LANG);
                 if (typeof updateTabLabels === 'function') updateTabLabels();
                 // Note: setupLanguageToggle will be called after header is loaded (see fetch block)
                 if (document.readyState === 'loading') {
@@ -1179,7 +1197,7 @@
         initApp();
 
     const flags = {
-            vn: `<svg class="flag-icon" viewBox="0 0 30 20"><rect width="30" height="20" fill="#da251d"/><polygon points="15,4 16.176,8.618 21,8.618 17.088,11.382 18.264,16 15,13.236 11.736,16 12.912,11.382 9,8.618 13.824,8.618" fill="#ffff00"/></svg>`,
+            vi: `<svg class="flag-icon" viewBox="0 0 30 20"><rect width="30" height="20" fill="#da251d"/><polygon points="15,4 16.176,8.618 21,8.618 17.088,11.382 18.264,16 15,13.236 11.736,16 12.912,11.382 9,8.618 13.824,8.618" fill="#ffff00"/></svg>`,
             en: `<svg class="flag-icon" viewBox="0 0 60 30"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg>`
         };
 
@@ -1244,7 +1262,7 @@
             data: [], 
             translatedNames: loadTranslationCache(), // Load cached company translations
             translatedHeadlines: loadHeadlineCache(), // Load cached headline translations
-            lang: 'vn',
+            lang: DEFAULT_LANG,
             sortCol: 'timesfm_point', sortDesc: true,
             fromDate: '', toDate: '', searchQuery: '',
             currentPage: 0, pageSize: 50, totalCount: 0,
@@ -1258,7 +1276,7 @@
         // Stable Volatility state object
         let stateStable = {
             data: [],
-            lang: 'vn',
+            lang: DEFAULT_LANG,
             sortCol: 'timesfm_point', sortDesc: true,
             fromDate: '', toDate: '', searchQuery: '',
             currentPage: 0, pageSize: 50, totalCount: 0,
@@ -1269,7 +1287,7 @@
         // High Volatility state object
         let stateHigh = {
             data: [],
-            lang: 'vn',
+            lang: DEFAULT_LANG,
             sortCol: 'timesfm_point', sortDesc: true,
             fromDate: '', toDate: '', searchQuery: '',
             currentPage: 0, pageSize: 50, totalCount: 0,
@@ -1280,7 +1298,7 @@
         // Watchlist state object
         let stateWatchlist = {
             data: [],
-            lang: 'vn',
+            lang: DEFAULT_LANG,
             sortCol: 'timesfm_point', sortDesc: true,
             fromDateWatchlist: '', toDateWatchlist: '', searchQuery: '',
             currentPage: 0, pageSize: 50, totalCount: 0,
@@ -1291,7 +1309,7 @@
         // Spotlight state object
         let stateSpotlight = {
             data: [],
-            lang: 'vn',
+            lang: DEFAULT_LANG,
             sortCol: 'timesfm_point', sortDesc: true,
             fromDateSpotlight: '', toDateSpotlight: '', searchQuery: '',
             currentPage: 0, pageSize: 50, totalCount: 0,
@@ -1343,7 +1361,7 @@
                 // Progressive update: Save and re-render after each batch
                 if (newTranslations > 0) {
                     saveTranslationCache();
-                    if (state.lang === 'en') {
+                    if (state.lang !== DEFAULT_LANG) {
                         renderBody(); // Update UI immediately with new translations
                     }
                 }
@@ -1398,7 +1416,7 @@
                 // Progressive update: Save and re-render after each batch
                 if (newTranslations > 0) {
                     saveHeadlineCache();
-                    if (state.lang === 'en') {
+                    if (state.lang !== DEFAULT_LANG) {
                         renderBody(); // Update UI immediately with new translations
                     }
                 }
@@ -1665,7 +1683,7 @@
                             <div id="filterOptionsIndustry" class="filter-options">
                                 ${industries.map(ind => {
                                     // Get translated name if in English mode
-                                    const displayName = state.lang === 'en' && window.industryTranslations && window.industryTranslations[ind] 
+                                    const displayName = state.lang !== DEFAULT_LANG && window.industryTranslations && window.industryTranslations[ind] 
                                         ? window.industryTranslations[ind] 
                                         : ind;
                                     return `
@@ -2266,7 +2284,7 @@
         }
         
         // Map source names to localized display names
-        function getSourceDisplayName(sourceName, lang = 'vn') {
+        function getSourceDisplayName(sourceName, lang = DEFAULT_LANG) {
             const sourceMap = i18n?.[lang]?.sourceNames || {};
             return sourceMap[sourceName] || sourceName;
         }
@@ -2334,9 +2352,9 @@
             
             langToggle.addEventListener('click', () => {
                 try {
-                    console.log('Language toggle clicked, switching from', state.lang, 'to', state.lang === 'vn' ? 'en' : 'vn');
+                    console.log('Language toggle clicked, switching from', state.lang, 'to', i18nLanguages[(i18nLanguages.indexOf(state.lang) + 1) % i18nLanguages.length]);
                     console.log('i18n loaded:', !!i18n);
-                    state.lang = state.lang === 'vn' ? 'en' : 'vn';
+                    state.lang = i18nLanguages[(i18nLanguages.indexOf(state.lang) + 1) % i18nLanguages.length];
                     // Sync language across all state objects
                     stateStable.lang = state.lang;
                     stateHigh.lang = state.lang;
@@ -2406,7 +2424,7 @@
                     
                     // Translations are already preloaded, just render immediately
                     // If any new names or headlines need translation, do it in background
-                    if (state.lang === 'en') {
+                    if (state.lang !== DEFAULT_LANG) {
                         const untranslatedNames = state.data.map(d => d.organ_name).filter(n => !state.translatedNames[n]);
                         const untranslatedHeadlines = state.data.map(d => d.headline).filter(h => !state.translatedHeadlines[h]);
                         
@@ -2435,7 +2453,7 @@
                     
                     // Translations are already preloaded, just render immediately
                     // If any new headlines need translation, do it in background
-                    if (state.lang === 'en') {
+                    if (state.lang !== DEFAULT_LANG) {
                         const untranslatedHeadlines = state.dataMacro.map(d => d.headline).filter(h => !state.translatedHeadlines[h]);
                         
                         if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') {
@@ -2498,7 +2516,7 @@
                 document.getElementById('header-container').innerHTML = data;
                 // Setup language toggle after header is loaded
                 setupLanguageToggle();
-                applyTranslations(state.lang || 'vn');
+                applyTranslations(state.lang || DEFAULT_LANG);
             })
             .catch(error => console.error('Error loading header:', error));
         
@@ -2535,7 +2553,7 @@
 
         function openVideoPlayer(tab, event) {
             if (event) event.stopPropagation();
-            const lang = state.lang || 'vn';
+            const lang = state.lang || DEFAULT_LANG;
             const filename = VIDEO_FILES[tab]?.[lang];
             if (!filename) return;
 
@@ -2692,7 +2710,7 @@
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
-                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || 'vn');
+                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || DEFAULT_LANG);
                         if (state.searchQuery) {
                             const el = document.getElementById('searchInput');
                             if (el) { el.value = state.searchQuery; toggleClearBtn('clearStockBtn', state.searchQuery); }
@@ -2710,7 +2728,7 @@
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
-                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || 'vn');
+                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || DEFAULT_LANG);
                         if (state.searchQueryMacro) {
                             const el = document.getElementById('searchInputMacro');
                             if (el) { el.value = state.searchQueryMacro; toggleClearBtn('clearMacroBtn', state.searchQueryMacro); }
@@ -2728,7 +2746,7 @@
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
-                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || 'vn');
+                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || DEFAULT_LANG);
                         // Restore search query before init
                         if (stateStable.searchQuery) {
                             const el = document.getElementById('searchInputStable');
@@ -2742,7 +2760,7 @@
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
-                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || 'vn');
+                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || DEFAULT_LANG);
                         // Restore search query before init
                         if (stateHigh.searchQuery) {
                             const el = document.getElementById('searchInputHigh');
@@ -2756,7 +2774,7 @@
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
-                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || 'vn');
+                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || DEFAULT_LANG);
                         // Restore search query before init
                         if (stateWatchlist.searchQuery) {
                             const el = document.getElementById('searchInputWatchlist');
@@ -2770,7 +2788,7 @@
                     .then(response => response.text())
                     .then(data => {
                         container.innerHTML = data;
-                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || 'vn');
+                        if (typeof applyTranslations === 'function') applyTranslations(state.lang || DEFAULT_LANG);
                         // Restore search query before init
                         if (stateSpotlight.searchQuery) {
                             const el = document.getElementById('searchInputSpotlight');
@@ -2838,7 +2856,7 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
-                applyTranslations(state.lang || 'vn');
+                applyTranslations(state.lang || DEFAULT_LANG);
             })
             .catch(error => console.error('Error loading footer:', error));
     </script>

@@ -84,7 +84,7 @@ function initSpotlightView() {
 
 // Update all stock view labels based on current language
 function updateSpotlightViewLabels() {
-    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || 'vn';
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || DEFAULT_LANG;
 
     const searchInputSpotlight = document.getElementById('searchInputSpotlight');
     if (searchInputSpotlight) searchInputSpotlight.placeholder = i18n[lang].searchPlaceholder;
@@ -450,7 +450,7 @@ function renderSpotlightHeaders() {
         { id: 'current_volume',        w: 'w-32',  s: true },
         { id: 'headline',              w: 'w-auto', s: true }
     ];
-    const _lang = (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || 'vn';
+    const _lang = (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || DEFAULT_LANG;
     document.getElementById('tableHeaderSpotlight').innerHTML = cols.map(c => `
         <th class="px-4 py-4 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getSortClassSpotlight(c.id) : ''}" 
             ${c.s ? `onclick="handleSpotlightSort('${c.id}')"` : ''}>
@@ -466,8 +466,8 @@ function renderSpotlightHeaders() {
 function getDbFieldSpotlight(colId) {
     if (colId === 'ma15')     return 'pct_ma15';
     if (colId === 'headline') return 'news_impact_score';
-    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || 'vn';
-    if (colId === 'industry') return lang === 'en' ? 'industry_en' : 'industry_vn';
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || DEFAULT_LANG;
+    if (colId === 'industry') return lang !== DEFAULT_LANG ? 'industry_en' : 'industry_vn';
     return colId;
 }
 
@@ -570,7 +570,7 @@ function getMA15StatusSpotlight(pctMa15) {
 }
 
 function renderSpotlightBody() {
-    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || 'vn';
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || DEFAULT_LANG;
     const tbody = document.getElementById('tableBodySpotlight');
     if (stateSpotlight.data.length === 0) {
         tbody.innerHTML = '';
@@ -581,9 +581,9 @@ function renderSpotlightBody() {
     document.getElementById('emptyStateSpotlight').classList.add('hidden');
     
     tbody.innerHTML = stateSpotlight.data.map((row, idx) => {
-        const name = lang === 'vn' ? row.organ_name : (stateSpotlight.translatedNames[row.organ_name] || row.organ_name);
-        const industry = lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
-        const headline = lang === 'vn' ? row.headline : (stateSpotlight.translatedHeadlines[row.headline] || row.headline);
+        const name = lang === DEFAULT_LANG ? row.organ_name : (stateSpotlight.translatedNames[row.organ_name] || row.organ_name);
+        const industry = lang === DEFAULT_LANG ? row.industry_vn : (row.industry_en || row.industry_vn);
+        const headline = lang === DEFAULT_LANG ? row.headline : (stateSpotlight.translatedHeadlines[row.headline] || row.headline);
         const pct = row.price_change_today_pct || 0;
         const color = pct > 0 ? 'text-fin-green' : (pct < 0 ? 'text-fin-red' : 'text-gray-400');
         
@@ -720,7 +720,7 @@ function renderSpotlightPaginationUI() {
     const end = Math.min(start + stateSpotlight.pageSize - 1, stateSpotlight.totalCount);
     console.log('Pagination display - start:', start, 'end:', end);
     
-    document.getElementById('paginationInfoSpotlight').innerText = i18n[(typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || 'vn'].paging(start, end, stateSpotlight.totalCount);
+    document.getElementById('paginationInfoSpotlight').innerText = i18n[(typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || DEFAULT_LANG].paging(start, end, stateSpotlight.totalCount);
     
     // Calculate total pages
     const totalPages = Math.ceil(stateSpotlight.totalCount / stateSpotlight.pageSize);
@@ -780,7 +780,7 @@ window.exportSpotlightToExcel = async function exportSpotlightToExcel(btnRef) {
         return;
     }
     
-    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || 'vn';
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || DEFAULT_LANG;
     const originalText = btnText.innerText;
     
     console.log('Export started - Current sort:', stateSpotlight.sortCol, stateSpotlight.sortDesc ? 'DESC' : 'ASC');
@@ -891,9 +891,9 @@ window.exportSpotlightToExcel = async function exportSpotlightToExcel(btnRef) {
         ];
 
         const rows = allData.map((row, idx) => {
-            const name = lang === 'vn' ? row.organ_name : (stateSpotlight.translatedNames[row.organ_name] || row.organ_name);
-            const industry = lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
-            const headline = lang === 'vn' ? row.headline : (stateSpotlight.translatedHeadlines[row.headline] || row.headline);
+            const name = lang === DEFAULT_LANG ? row.organ_name : (stateSpotlight.translatedNames[row.organ_name] || row.organ_name);
+            const industry = lang === DEFAULT_LANG ? row.industry_vn : (row.industry_en || row.industry_vn);
+            const headline = lang === DEFAULT_LANG ? row.headline : (stateSpotlight.translatedHeadlines[row.headline] || row.headline);
             const ma15Status = getMA15StatusSpotlight(row.pct_ma15);
             const ma15Text = ma15Status.key === 'N/A' ? i18n[lang].notApplicable : ma15Status.key;
 

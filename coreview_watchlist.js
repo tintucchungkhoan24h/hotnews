@@ -84,7 +84,7 @@ function initWatchlistView() {
 
 // Update all stock view labels based on current language
 function updateWatchlistViewLabels() {
-    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn';
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || DEFAULT_LANG;
 
     const searchInputWatchlist = document.getElementById('searchInputWatchlist');
     if (searchInputWatchlist) searchInputWatchlist.placeholder = i18n[lang].searchPlaceholder;
@@ -450,7 +450,7 @@ function renderWatchlistHeaders() {
         { id: 'current_volume',        w: 'w-32',  s: true },
         { id: 'headline',              w: 'w-auto', s: true }
     ];
-    const _lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn';
+    const _lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || DEFAULT_LANG;
     document.getElementById('tableHeaderWatchlist').innerHTML = cols.map(c => `
         <th class="px-4 py-4 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getSortClassWatchlist(c.id) : ''}" 
             ${c.s ? `onclick="handleWatchlistSort('${c.id}')"` : ''}>
@@ -466,8 +466,8 @@ function renderWatchlistHeaders() {
 function getDbFieldWatchlist(colId) {
     if (colId === 'ma15')     return 'pct_ma15';
     if (colId === 'headline') return 'news_impact_score';
-    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn';
-    if (colId === 'industry') return lang === 'en' ? 'industry_en' : 'industry_vn';
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || DEFAULT_LANG;
+    if (colId === 'industry') return lang !== DEFAULT_LANG ? 'industry_en' : 'industry_vn';
     return colId;
 }
 
@@ -570,7 +570,7 @@ function getMA15StatusWatchlist(pctMa15) {
 }
 
 function renderWatchlistBody() {
-    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn';
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || DEFAULT_LANG;
     const tbody = document.getElementById('tableBodyWatchlist');
     if (stateWatchlist.data.length === 0) {
         tbody.innerHTML = '';
@@ -581,9 +581,9 @@ function renderWatchlistBody() {
     document.getElementById('emptyStateWatchlist').classList.add('hidden');
     
     tbody.innerHTML = stateWatchlist.data.map((row, idx) => {
-        const name = lang === 'vn' ? row.organ_name : (stateWatchlist.translatedNames[row.organ_name] || row.organ_name);
-        const industry = lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
-        const headline = lang === 'vn' ? row.headline : (stateWatchlist.translatedHeadlines[row.headline] || row.headline);
+        const name = lang === DEFAULT_LANG ? row.organ_name : (stateWatchlist.translatedNames[row.organ_name] || row.organ_name);
+        const industry = lang === DEFAULT_LANG ? row.industry_vn : (row.industry_en || row.industry_vn);
+        const headline = lang === DEFAULT_LANG ? row.headline : (stateWatchlist.translatedHeadlines[row.headline] || row.headline);
         const pct = row.price_change_today_pct || 0;
         const color = pct > 0 ? 'text-fin-green' : (pct < 0 ? 'text-fin-red' : 'text-gray-400');
         
@@ -720,7 +720,7 @@ function renderWatchlistPaginationUI() {
     const end = Math.min(start + stateWatchlist.pageSize - 1, stateWatchlist.totalCount);
     console.log('Pagination display - start:', start, 'end:', end);
     
-    document.getElementById('paginationInfoWatchlist').innerText = i18n[(typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn'].paging(start, end, stateWatchlist.totalCount);
+    document.getElementById('paginationInfoWatchlist').innerText = i18n[(typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || DEFAULT_LANG].paging(start, end, stateWatchlist.totalCount);
     
     // Calculate total pages
     const totalPages = Math.ceil(stateWatchlist.totalCount / stateWatchlist.pageSize);
@@ -780,7 +780,7 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
         return;
     }
     
-    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || 'vn';
+    const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || DEFAULT_LANG;
     const originalText = btnText.innerText;
     
     console.log('Export started - Current sort:', stateWatchlist.sortCol, stateWatchlist.sortDesc ? 'DESC' : 'ASC');
@@ -891,9 +891,9 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
         ];
 
         const rows = allData.map((row, idx) => {
-            const name = lang === 'vn' ? row.organ_name : (stateWatchlist.translatedNames[row.organ_name] || row.organ_name);
-            const industry = lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
-            const headline = lang === 'vn' ? row.headline : (stateWatchlist.translatedHeadlines[row.headline] || row.headline);
+            const name = lang === DEFAULT_LANG ? row.organ_name : (stateWatchlist.translatedNames[row.organ_name] || row.organ_name);
+            const industry = lang === DEFAULT_LANG ? row.industry_vn : (row.industry_en || row.industry_vn);
+            const headline = lang === DEFAULT_LANG ? row.headline : (stateWatchlist.translatedHeadlines[row.headline] || row.headline);
             const ma15Status = getMA15StatusWatchlist(row.pct_ma15);
             const ma15Text = ma15Status.key === 'N/A' ? i18n[lang].notApplicable : ma15Status.key;
 

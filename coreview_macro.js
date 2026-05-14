@@ -504,7 +504,7 @@ function renderMacroBody() {
     
     tbody.innerHTML = state.dataMacro.map((row, idx) => {
         // Use translated headline if in English mode
-        const headline = state.lang === 'vn' ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
+        const headline = state.lang === DEFAULT_LANG ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
         
         // Highlight headline in yellow if news_impact_score >= 30
         const impactScore = row.news_impact_score || 0;
@@ -714,7 +714,7 @@ async function exportMacroToExcel() {
 
         const rows = allData.map((row, idx) => {
             // Use translated headline if in English mode
-            const headline = state.lang === 'vn' ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
+            const headline = state.lang === DEFAULT_LANG ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
             
             return [
                 idx + 1,

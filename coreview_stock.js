@@ -457,7 +457,7 @@ function renderHeaders() {
 function getDbField(colId) {
     if (colId === 'ma15')     return 'pct_ma15';
     if (colId === 'headline') return 'news_impact_score';
-    if (colId === 'industry') return state.lang === 'en' ? 'industry_en' : 'industry_vn';
+    if (colId === 'industry') return state.lang !== DEFAULT_LANG ? 'industry_en' : 'industry_vn';
     return colId;
 }
 
@@ -576,9 +576,9 @@ function renderBody() {
     document.getElementById('emptyState').classList.add('hidden');
     
     tbody.innerHTML = state.data.map((row, idx) => {
-        const name = state.lang === 'vn' ? row.organ_name : (state.translatedNames[row.organ_name] || row.organ_name);
-        const industry = state.lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
-        const headline = state.lang === 'vn' ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
+        const name = state.lang === DEFAULT_LANG ? row.organ_name : (state.translatedNames[row.organ_name] || row.organ_name);
+        const industry = state.lang === DEFAULT_LANG ? row.industry_vn : (row.industry_en || row.industry_vn);
+        const headline = state.lang === DEFAULT_LANG ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
         const pct = row.price_change_today_pct || 0;
         const color = pct > 0 ? 'text-fin-green' : (pct < 0 ? 'text-fin-red' : 'text-gray-400');
         
@@ -884,9 +884,9 @@ async function exportToExcel() {
         ];
 
         const rows = allData.map((row, idx) => {
-            const name = state.lang === 'vn' ? row.organ_name : (state.translatedNames[row.organ_name] || row.organ_name);
-            const industry = state.lang === 'vn' ? row.industry_vn : (row.industry_en || row.industry_vn);
-            const headline = state.lang === 'vn' ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
+            const name = state.lang === DEFAULT_LANG ? row.organ_name : (state.translatedNames[row.organ_name] || row.organ_name);
+            const industry = state.lang === DEFAULT_LANG ? row.industry_vn : (row.industry_en || row.industry_vn);
+            const headline = state.lang === DEFAULT_LANG ? row.headline : (state.translatedHeadlines[row.headline] || row.headline);
             const ma15Status = getMA15Status(row.pct_ma15);
             const ma15Text = ma15Status.key === 'N/A' ? i18n[state.lang].notApplicable : ma15Status.key;
 
