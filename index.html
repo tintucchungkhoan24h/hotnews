@@ -1234,7 +1234,24 @@
             const flagEl = document.getElementById('langFlag');
             if (flagEl) {
                 const flagMarkup = i18nFlags[lang] || i18n[lang]?.lang?.flag;
-                if (flagMarkup) flagEl.innerHTML = flagMarkup;
+                if (flagMarkup) {
+                    flagEl.innerHTML = flagMarkup;
+                    // Set flag style
+                    const svg = flagEl.querySelector('svg');
+                    if (svg) {
+                        svg.style.width = '22px';
+                        svg.style.height = '15px';
+                        svg.style.borderRadius = '2px';
+                        svg.style.display = 'block';
+                    }
+                }
+            }
+
+            // Sync language short code
+            const langTextEl = document.getElementById('langText');
+            if (langTextEl) {
+                const langShort = i18nLangShort[lang] || i18n[lang]?.lang?.short || lang.toUpperCase();
+                langTextEl.textContent = langShort;
             }
         }
 
@@ -2428,6 +2445,23 @@
                 console.error('langToggle or langMenu not found');
                 return;
             }
+
+            // Build language menu dynamically from i18n data (header is now loaded)
+            if (i18nLanguages.length > 0) {
+                langMenu.innerHTML = i18nLanguages.map(languageCode => {
+                    const flagMarkup = i18nFlags[languageCode] || '';
+                    const langShort = i18nLangShort[languageCode] || languageCode.toUpperCase();
+                    const langNames = { vi: 'Tiếng Việt', en: 'English', ko: '한국어', zh: '繁體中文', th: 'ภาษาไทย' };
+                    const langName = langNames[languageCode] || languageCode;
+                    return `
+                        <button type="button" class="lang-option" data-lang="${languageCode}">
+                            <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;">${flagMarkup}</span>
+                            <span>${langName} (${langShort})</span>
+                        </button>
+                    `;
+                }).join('');
+            }
+
             console.log('setupLanguageToggle: langToggle button found, attaching listeners');
 
             function closeLanguageMenu() {
@@ -2449,10 +2483,24 @@
                 stateSpotlight.lang = state.lang;
 
                 const flagMarkup = i18nFlags[state.lang] || i18n[state.lang]?.lang?.flag || '';
-                document.getElementById('langFlag').innerHTML = flagMarkup;
+                const flagEl = document.getElementById('langFlag');
+                if (flagEl) {
+                    flagEl.innerHTML = flagMarkup;
+                    // Set flag style
+                    const svg = flagEl.querySelector('svg');
+                    if (svg) {
+                        svg.style.width = '22px';
+                        svg.style.height = '15px';
+                        svg.style.borderRadius = '2px';
+                        svg.style.display = 'block';
+                    }
+                }
 
-                const langShort = i18n[state.lang]?.lang?.short || i18nLangShort[state.lang] || state.lang.toUpperCase();
-                document.getElementById('langText').textContent = langShort;
+                const langShort = i18nLangShort[state.lang] || i18n[state.lang]?.lang?.short || state.lang.toUpperCase();
+                const langTextEl = document.getElementById('langText');
+                if (langTextEl) {
+                    langTextEl.textContent = langShort;
+                }
 
                 applyTranslations(state.lang);
                 const translationRoot = i18n[state.lang] || i18n[DEFAULT_LANG] || i18n.en || {};
