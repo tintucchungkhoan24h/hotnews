@@ -1094,6 +1094,58 @@
         // Option 2: LibreTranslate (Free, no API key needed)
         const USE_LIBRE_TRANSLATE = false; // Set to false to use Gemini
 
+        /** Max parallel Lingva requests (same host; ~6–12 is usually safe in browsers). */
+        const LINGVA_MAX_CONCURRENT = 10;
+        /** Debounce disk save + table refresh while many strings stream in. */
+        const LINGVA_UI_FLUSH_MS = 200;
+
+        let _lingvaUiFlushTimer = null;
+        function flushTranslationUi(saves) {
+            clearTimeout(_lingvaUiFlushTimer);
+            _lingvaUiFlushTimer = setTimeout(() => {
+                _lingvaUiFlushTimer = null;
+                try {
+                    if (saves.names) saveTranslationCache();
+                    if (saves.headlines) saveHeadlineCache();
+                    if (saves.industries) saveIndustryTranslationCache();
+                } catch (e) { /* ignore */ }
+                if (state.lang !== DEFAULT_LANG) {
+                    if (typeof renderBody === 'function') renderBody();
+                    if (typeof renderMacroBody === 'function') renderMacroBody();
+                }
+            }, LINGVA_UI_FLUSH_MS);
+        }
+
+        function flushTranslationUiImmediate(saves) {
+            clearTimeout(_lingvaUiFlushTimer);
+            _lingvaUiFlushTimer = null;
+            try {
+                if (saves.names) saveTranslationCache();
+                if (saves.headlines) saveHeadlineCache();
+                if (saves.industries) saveIndustryTranslationCache();
+            } catch (e) { /* ignore */ }
+            if (state.lang !== DEFAULT_LANG) {
+                if (typeof renderBody === 'function') renderBody();
+                if (typeof renderMacroBody === 'function') renderMacroBody();
+            }
+        }
+
+        /** Run async work on each item with at most `limit` in flight (better than batch-then-wait). */
+        async function mapWithConcurrency(items, limit, worker) {
+            if (!items || items.length === 0) return;
+            const executing = new Set();
+            for (const item of items) {
+                const p = (async () => {
+                    await worker(item);
+                })().finally(() => executing.delete(p));
+                executing.add(p);
+                if (executing.size >= limit) {
+                    await Promise.race(executing);
+                }
+            }
+            await Promise.all(executing);
+        }
+
         // Load translations from i18n.json
         let i18n = null;
 
@@ -1505,41 +1557,22 @@
                 return;
             }
 
-            console.log(`🌐 Translating ${list.length} company names → ${lang} (Lingva)...`);
+            console.log(`🌐 Translating ${list.length} company names → ${lang} (Lingva, up to ${LINGVA_MAX_CONCURRENT} parallel)...`);
 
-            const batchSize = 20;
-            let newTranslations = 0;
-
-            for (let i = 0; i < list.length; i += batchSize) {
-                const batch = list.slice(i, i + batchSize);
-
-                const promises = batch.map(async (name) => {
-                    try {
-                        const translated = await translateTextViToLang(name, lang);
-                        const out = (translated && String(translated).trim()) ? translated : name;
-                        const changed = out !== name;
-                        bucket[name] = out;
-                        if (changed) newTranslations++;
-                        return changed;
-                    } catch (e) {
-                        bucket[name] = name;
-                        return false;
-                    }
-                });
-
-                await Promise.all(promises);
-
-                if (newTranslations > 0) {
-                    saveTranslationCache();
-                    if (state.lang !== DEFAULT_LANG && typeof renderBody === 'function') {
-                        renderBody();
-                    }
+            await mapWithConcurrency(list, LINGVA_MAX_CONCURRENT, async (name) => {
+                try {
+                    const translated = await translateTextViToLang(name, lang);
+                    const out = (translated && String(translated).trim()) ? translated : name;
+                    bucket[name] = out;
+                } catch (e) {
+                    bucket[name] = name;
                 }
+                flushTranslationUi({ names: true, headlines: false, industries: false });
+            });
 
-                console.log(`✓ Batch ${Math.floor(i / batchSize) + 1}: cumulative ${newTranslations} new translations`);
-            }
-
-            console.log(`✅ Completed: ${newTranslations} company names translated for ${lang}!`);
+            const newTranslations = list.filter((n) => bucket[n] && bucket[n] !== n).length;
+            flushTranslationUiImmediate({ names: true, headlines: false, industries: false });
+            console.log(`✅ Completed: ${newTranslations} company names updated for ${lang}!`);
         }
 
         async function translateHeadlines(headlines) {
@@ -1553,41 +1586,22 @@
                 return;
             }
 
-            console.log(`📰 Translating ${list.length} headlines → ${lang} (Lingva)...`);
+            console.log(`📰 Translating ${list.length} headlines → ${lang} (Lingva, up to ${LINGVA_MAX_CONCURRENT} parallel)...`);
 
-            const batchSize = 15;
-            let newTranslations = 0;
-
-            for (let i = 0; i < list.length; i += batchSize) {
-                const batch = list.slice(i, i + batchSize);
-
-                const promises = batch.map(async (headline) => {
-                    try {
-                        const translated = await translateTextViToLang(headline, lang);
-                        const out = (translated && String(translated).trim()) ? translated : headline;
-                        const changed = out !== headline;
-                        bucket[headline] = out;
-                        if (changed) newTranslations++;
-                        return changed;
-                    } catch (e) {
-                        bucket[headline] = headline;
-                        return false;
-                    }
-                });
-
-                await Promise.all(promises);
-
-                if (newTranslations > 0) {
-                    saveHeadlineCache();
-                    if (state.lang !== DEFAULT_LANG && typeof renderBody === 'function') {
-                        renderBody();
-                    }
+            await mapWithConcurrency(list, LINGVA_MAX_CONCURRENT, async (headline) => {
+                try {
+                    const translated = await translateTextViToLang(headline, lang);
+                    const out = (translated && String(translated).trim()) ? translated : headline;
+                    bucket[headline] = out;
+                } catch (e) {
+                    bucket[headline] = headline;
                 }
+                flushTranslationUi({ names: false, headlines: true, industries: false });
+            });
 
-                console.log(`✓ Batch ${Math.floor(i / batchSize) + 1}: cumulative ${newTranslations} headlines`);
-            }
-
-            console.log(`✅ Completed: ${newTranslations} headlines translated for ${lang}!`);
+            const newTranslations = list.filter((h) => bucket[h] && bucket[h] !== h).length;
+            flushTranslationUiImmediate({ names: false, headlines: true, industries: false });
+            console.log(`✅ Completed: ${newTranslations} headlines updated for ${lang}!`);
         }
 
         async function translateIndustries(industries) {
@@ -1598,28 +1612,22 @@
             const list = Array.from(new Set(industries.filter(ind => ind && !bucket[ind])));
             if (list.length === 0) return;
 
-            console.log(`🏭 Translating ${list.length} industry labels → ${lang} (Lingva)...`);
-            let newTranslations = 0;
-            const batchSize = 25;
+            console.log(`🏭 Translating ${list.length} industry labels → ${lang} (Lingva, up to ${LINGVA_MAX_CONCURRENT} parallel)...`);
 
-            for (let i = 0; i < list.length; i += batchSize) {
-                const batch = list.slice(i, i + batchSize);
-                await Promise.all(batch.map(async (ind) => {
-                    try {
-                        const translated = await translateTextViToLang(ind, lang);
-                        const out = (translated && String(translated).trim()) ? translated : ind;
-                        if (out !== ind) newTranslations++;
-                        bucket[ind] = out;
-                    } catch (e) {
-                        bucket[ind] = ind;
-                    }
-                }));
-                if (newTranslations > 0) {
-                    saveIndustryTranslationCache();
-                    if (typeof renderBody === 'function') renderBody();
+            await mapWithConcurrency(list, LINGVA_MAX_CONCURRENT, async (ind) => {
+                try {
+                    const translated = await translateTextViToLang(ind, lang);
+                    const out = (translated && String(translated).trim()) ? translated : ind;
+                    bucket[ind] = out;
+                } catch (e) {
+                    bucket[ind] = ind;
                 }
-            }
-            console.log(`✅ Industry labels translated for ${lang} (${newTranslations} new)`);
+                flushTranslationUi({ names: false, headlines: false, industries: true });
+            });
+
+            const newTranslations = list.filter((ind) => bucket[ind] && bucket[ind] !== ind).length;
+            flushTranslationUiImmediate({ names: false, headlines: false, industries: true });
+            console.log(`✅ Industry labels done for ${lang} (${newTranslations} changed)`);
         }
 
         // ═══════════════════════════════════════════════════════════════════════════
