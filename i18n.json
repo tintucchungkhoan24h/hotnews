@@ -31,6 +31,24 @@
     "th": "ภาษาไทย",
     "ar": "العربية"
   },
+  "videoFiles": {
+    "stock": {
+      "vi": "vi-stock.mp4",
+      "en": "en-stock.mp4",
+      "ko": "ko-stock.mp4",
+      "zh": "zh-stock.mp4",
+      "th": "th-stock.mp4",
+      "ar": "ar-stock.mp4"
+    },
+    "macro": {
+      "vi": "vi-macro.mp4",
+      "en": "en-macro.mp4",
+      "ko": "ko-macro.mp4",
+      "zh": "zh-macro.mp4",
+      "th": "th-macro.mp4",
+      "ar": "ar-macro.mp4"
+    }
+  },
   "translations": {
     "vi": {
       "title": "TIN TỨC CHỨNG KHOÁN 24H",

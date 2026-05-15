@@ -1154,6 +1154,7 @@
         // Load translations from i18n.json
         let i18n = null;
         let i18nLangNames = {}; // native labels for language menu; filled by sync XHR + fetch
+        let i18nVideoFiles = {}; // tab -> lang -> filename; filled by sync XHR + fetch
 
         // DEFAULT_LANG — read synchronously from i18n.json before any state is initialized
         const DEFAULT_LANG = (() => {
@@ -1164,6 +1165,9 @@
                 const data = JSON.parse(xhr.responseText);
                 if (data.langNames && typeof data.langNames === 'object') {
                     i18nLangNames = data.langNames;
+                }
+                if (data.videoFiles && typeof data.videoFiles === 'object') {
+                    i18nVideoFiles = data.videoFiles;
                 }
                 return (data.languages && data.languages[0]) || 'vi';
             } catch (e) {
@@ -1191,6 +1195,9 @@
                 }
                 if (data.langNames && typeof data.langNames === 'object') {
                     i18nLangNames = data.langNames;
+                }
+                if (data.videoFiles && typeof data.videoFiles === 'object') {
+                    i18nVideoFiles = data.videoFiles;
                 }
 
                 // Attach flag markup and language labels to translations so applyTranslations can use them consistently
@@ -2641,7 +2648,7 @@
                 console.log('Language changed to:', state.lang);
 
                 if (videoState.open && videoState.tab) {
-                    const filename = VIDEO_FILES[videoState.tab]?.[state.lang];
+                    const filename = i18nVideoFiles[videoState.tab]?.[state.lang];
                     if (filename) {
                         const video = document.getElementById('videoIframe');
                         const source = document.getElementById('videoSource');
@@ -2830,10 +2837,6 @@
             const ts = new Date().getTime();
             return `${VIDEO_BASE}/${filename}?v=${ts}`;
         }
-        const VIDEO_FILES = {
-            stock: { vi: 'vi-stock.mp4', en: 'en-stock.mp4', ko: 'ko-stock.mp4', zh: 'zh-stock.mp4', th: 'th-stock.mp4',ar: 'ar-stock.mp4' },
-            macro: { vi: 'vi-macro.mp4', en: 'en-macro.mp4', ko: 'ko-macro.mp4', zh: 'zh-macro.mp4', th: 'th-macro.mp4',ar: 'ar-macro.mp4' }
-        };
 
         function getI18nVideoTabTitle(tab, lang) {
             if (!i18n || !i18n[lang] || !i18n[lang].video) return '';
@@ -2855,7 +2858,7 @@
         function openVideoPlayer(tab, event) {
             if (event) event.stopPropagation();
             const lang = state.lang || DEFAULT_LANG;
-            const filename = VIDEO_FILES[tab]?.[lang];
+            const filename = i18nVideoFiles[tab]?.[lang];
             if (!filename) return;
 
             const container = document.getElementById('videoPlayerContainer');
