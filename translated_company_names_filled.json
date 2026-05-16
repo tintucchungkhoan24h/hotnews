@@ -905,7 +905,7 @@
       "en": "Hanoi Beer - Alcohol - Beverage Joint Stock Corporation",
       "ko": "하노이 맥주 - 주류 - 음료 합자회사",
       "zh": "河内啤酒-酒精-饮料股份公司",
-      "th": "",
+      "th": "ฮานอยเบียร์ - แอลกอฮอล์ - เครื่องดื่ม Joint Stock Corporation",
       "ar": "بيرة هانوي - الكحول - شركة المشروبات المساهمة",
       "ja": "ハノイビール - アルコール - 飲料株式会社"
     },
@@ -1327,7 +1327,7 @@
       "vi": "Công ty Cổ phần Nhiệt điện Bà Rịa",
       "en": "Ba Ria Thermal Power Joint Stock Company",
       "ko": "바리아 화력발전 주식회사",
-      "zh": "",
+      "zh": "巴地热电股份公司",
       "th": "บริษัทร่วมหุ้น Ba Ria Thermal Power",
       "ar": "شركة با ريا للطاقة الحرارية المساهمة",
       "ja": "バリア火力株式会社"
@@ -2707,7 +2707,7 @@
       "zh": "同奈建筑材料屋顶股份公司",
       "th": "บริษัท ร่วมหุ้นหลังคาวัสดุก่อสร้างดงนาย",
       "ar": "شركة دونغ ناي لمواد البناء والأسقف المساهمة",
-      "ja": ""
+      "ja": "ドンナイ建設資材屋根株式会社"
     },
     "DCV": {
       "vi": "Công ty Cổ phần Quản Lý Quỹ đầu tư Dragon Capital Việt Nam",
@@ -2793,11 +2793,11 @@
     "DGC": {
       "vi": "Công ty Cổ phần Tập đoàn Hóa chất Đức Giang",
       "en": "Duc Giang Chemical Group Joint Stock Company",
-      "ko": "Duc Giang Chemical Group 주식 회사",
+      "ko": "득장 화학 그룹 주식회사",
       "zh": "德江化学集团股份公司",
-      "th": "บริษัทร่วมหุ้น Duc Giang Chemical Group",
+      "th": "บริษัท ดึ๊กยาง เคมิคอล กรุ๊ป คอร์ปอเรชัน",
       "ar": "شركة دوك جيانج للكيماويات المساهمة",
-      "ja": "Duc Giang Chemical Group Joint Stock Company"
+      "ja": "ドゥクザン化学グループ株式会社"
     },
     "DGT": {
       "vi": "Công ty Cổ phần Công trình Giao thông Đồng Nai",
@@ -3956,7 +3956,7 @@
       "en": "Saigon Forestry Joint Stock Company",
       "ko": "사이공 임업 주식회사",
       "zh": "西贡林业股份公司",
-      "th": "",
+      "th": "บริษัทร่วมหุ้นไซ่ง่อนป่าไม้",
       "ar": "شركة سايجون للغابات المساهمة",
       "ja": "サイゴン林業合資会社"
     },
@@ -5709,11 +5709,11 @@
     "IMP": {
       "vi": "Công ty Cổ phần Dược phẩm Imexpharm",
       "en": "Imexpharm Pharmaceutical Joint Stock Company",
-      "ko": "아이멕스팜 제약 주식회사",
+      "ko": "하우장 제약 주식회사",
       "zh": "Imexpharm 制药股份公司",
-      "th": "บริษัทร่วมหุ้น Imexpharm Pharmaceutical",
+      "th": "บริษัท เฮา ยาง ฟาร์มาซูติคอล จอยท์ สต็อก",
       "ar": "شركة ايمكسفارم الدوائية المساهمة",
-      "ja": "Imexpharm Pharmaceutical Joint Stock Company"
+      "ja": "ハウザン製薬株式会社"
     },
     "IN4": {
       "vi": "Công ty Cổ phần In số 4",
@@ -6565,7 +6565,7 @@
       "vi": "Công ty Cổ phần Điện nhẹ Viễn Thông",
       "en": "Telecommunications Light Electricity Joint Stock Company",
       "ko": "통신 경전 주식회사",
-      "zh": "",
+      "zh": "电信光电股份公司",
       "th": "บริษัทร่วมหุ้นการไฟฟ้าแสงสว่างโทรคมนาคม",
       "ar": "شركة الاتصالات والكهرباء الخفيفة مساهمة",
       "ja": "電気通信光電気株式会社"
@@ -6655,7 +6655,7 @@
       "vi": "Công ty Cổ phần Chứng khoán MB",
       "en": "MB Securities Joint Stock Company",
       "ko": "MB증권 주식회사",
-      "zh": "",
+      "zh": "MB证券股份有限公司",
       "th": "บริษัทหลักทรัพย์เอ็ม บี จอยท์สต็อค",
       "ar": "شركة إم بي للأوراق المالية المساهمة",
       "ja": "MB証券株式会社"
@@ -6664,7 +6664,7 @@
       "vi": "Công ty Cổ phần Bất động sản cho thuê Minh Bảo Tín",
       "en": "Minh Bao Tin Rental Real Estate Joint Stock Company",
       "ko": "Minh Bao Tin 임대 부동산 주식회사",
-      "zh": "",
+      "zh": "明宝田租赁房地产股份公司",
       "th": "Minh Bao Tin บริษัทร่วมหุ้นให้เช่าอสังหาริมทรัพย์",
       "ar": "شركة مينه باو تين لتأجير العقارات المساهمة",
       "ja": "ミン・バオ・ティン・レンタル不動産株式会社"
@@ -6673,7 +6673,7 @@
       "vi": "Công ty Cổ phần Gạch ngói cao cấp",
       "en": "Premium Tile Joint Stock Company",
       "ko": "프리미엄 타일 주식회사",
-      "zh": "",
+      "zh": "高级瓷砖股份公司",
       "th": "บริษัทร่วมหุ้นกระเบื้องพรีเมี่ยม",
       "ar": "شركة البلاط المتميزة المساهمة",
       "ja": "プレミアムタイル株式会社"
@@ -6727,7 +6727,7 @@
       "vi": "Công ty Cổ phần In và Bao bì Mỹ Châu",
       "en": "My Chau Printing and Packaging Joint Stock Company",
       "ko": "My Chau 인쇄 및 포장 주식회사",
-      "zh": "",
+      "zh": "美洲印刷包装股份公司",
       "th": "บริษัทร่วมทุนการพิมพ์และบรรจุภัณฑ์ My Chau",
       "ar": "شركة ماي تشاو للطباعة والتغليف المساهمة",
       "ja": "マイチャウ印刷包装合資会社"
@@ -6817,7 +6817,7 @@
       "vi": "Công ty Cổ phần Dịch vụ kỹ thuật Mobifone",
       "en": "Mobifone Technical Services Joint Stock Company",
       "ko": "Mobifone 기술 서비스 주식회사",
-      "zh": "",
+      "zh": "Mobifone 技术服务股份公司",
       "th": "บริษัทร่วมหุ้น Mobifone Technical Services",
       "ar": "شركة موبيفون للخدمات الفنية مساهمة",
       "ja": "モビフォン テクニカル サービス株式会社"
@@ -6880,7 +6880,7 @@
       "vi": "Công ty Cổ phần Kỹ nghệ Khoáng sản Quảng Nam",
       "en": "Quang Nam Mineral Industry Joint Stock Company",
       "ko": "Quang Nam 광물산업 주식회사",
-      "zh": "",
+      "zh": "广南矿产工业股份公司",
       "th": "บริษัท ร่วมหุ้นอุตสาหกรรมแร่ Quang Nam",
       "ar": "شركة كوانج نام للصناعات المعدنية المساهمة",
       "ja": "クアンナム鉱業株式会社"
@@ -8899,7 +8899,7 @@
       "zh": "Petrolimex Nghe Tinh 运输和服务股份公司",
       "th": "Petrolimex Nghe Tinh Transport and Services บริษัทร่วมหุ้น",
       "ar": "شركة بتروليمكس نغي تينه للنقل والخدمات المساهمة",
-      "ja": ""
+      "ja": "ペトロリメックス ゲティン交通およびサービス株式会社"
     },
     "PV2": {
       "vi": "Công ty Cổ phần Đầu tư PV2",
@@ -9617,7 +9617,7 @@
       "en": "Thanh Thanh Cong Joint Stock Company - Bien Hoa",
       "ko": "Thanh Thanh Cong 주식회사 - Bien Hoa",
       "zh": "Thanh Thanh Cong 股份公司 - 边和",
-      "th": "",
+      "th": "บริษัท ร่วมหุ้น Thanh Thanh Cong - Bien Hoa",
       "ar": "شركة ثانه ثانه كونغ المساهمة - بيان هوا",
       "ja": "Thanh Thanh Cong Joint Stock Company - Bien Hoa"
     },
@@ -9634,7 +9634,7 @@
       "vi": "Công ty Cổ phần Xây dựng số 5",
       "en": "Construction Joint Stock Company No. 5",
       "ko": "건설합자회사 제5호",
-      "zh": "",
+      "zh": "第五建设股份公司",
       "th": "บริษัท ร่วมก่อสร้างหมายเลข 5",
       "ar": "شركة البناء المساهمة رقم 5",
       "ja": "建設第5株式会社"
@@ -13633,7 +13633,7 @@
       "zh": "越中广平股份公司",
       "th": "บริษัทร่วมหุ้นเวียตจุงกวางบินห์",
       "ar": "شركة فييت ترونج كوانج بينه المساهمة",
-      "ja": ""
+      "ja": "ベト・チュン・クアンビン株式会社"
     },
     "VTR": {
       "vi": "Công ty Cổ phần Du lịch Vietravel",
