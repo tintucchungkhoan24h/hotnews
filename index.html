@@ -1297,7 +1297,10 @@
 
         async function initApp() {
             try {
-                await loadTranslations();
+                await Promise.all([
+                    loadTranslations(),
+                    loadStaticTranslations()
+                ]);
                 await loadScripts();
                 applyTranslations(state.lang || DEFAULT_LANG);
                 if (typeof updateTabLabels === 'function') updateTabLabels();
@@ -1315,9 +1318,65 @@
         initApp();
 
         // flags are now stored in i18n[lang].lang.flag — no hardcoded object needed
+        // ─────────────────────────────────────────────────────────────────────────
+        // STATIC TRANSLATIONS — loaded from pre-built JSON files
+        // companyMap: { ticker -> { vi, en, ko, zh, ... } }
+        // industryByVi: { vi_name -> { vi, en, ko, zh, ... } }
+        // ─────────────────────────────────────────────────────────────────────────
+        let companyMap = {};    // keyed by ticker (single_stock)
+        let industryByVi = {};  // keyed by Vietnamese industry name
 
+        async function loadStaticTranslations() {
+            try {
+                const [compRes, indRes] = await Promise.all([
+                    fetch('translated_company_names_filled.json?v=' + CACHE_BUSTER),
+                    fetch('translated_industry_names_filled.json?v=' + CACHE_BUSTER)
+                ]);
+                const compData = await compRes.json();
+                const indData  = await indRes.json();
 
+                // companyMap: ticker -> { vi, en, ko, zh, th, ar, ja }
+                companyMap = compData.companies || {};
 
+                // industryByVi: vi_name -> { vi, en, ko, zh, th, ar, ja }
+                const rawIndustries = indData.industries || {};
+                industryByVi = {};
+                Object.values(rawIndustries).forEach(entry => {
+                    if (entry.vi) industryByVi[entry.vi] = entry;
+                });
+
+                console.log(`🌐 Static translations loaded: ${Object.keys(companyMap).length} companies, ${Object.keys(industryByVi).length} industries`);
+            } catch (e) {
+                console.warn('⚠️ Could not load static translation files:', e);
+            }
+        }
+
+        /**
+         * Look up a company name translation.
+         * Uses the ticker (single_stock) as key; falls back to organ_name if not found.
+         * @param {string} ticker  - row.single_stock
+         * @param {string} organName - row.organ_name (fallback)
+         * @param {string} lang    - target language code
+         */
+        function getTranslatedOrgan(ticker, organName, lang) {
+            if (!organName) return '';
+            if (lang === DEFAULT_LANG) return organName;
+            const entry = ticker ? companyMap[ticker] : null;
+            return (entry && entry[lang]) || organName;
+        }
+
+        /**
+         * Look up an industry translation.
+         * Uses the Vietnamese industry name as key.
+         * @param {string} industryVn - row.industry_vn
+         * @param {string} lang       - target language code
+         */
+        function getTranslatedIndustry(industryVn, lang) {
+            if (!industryVn) return '';
+            if (lang === DEFAULT_LANG) return industryVn;
+            const entry = industryByVi[industryVn];
+            return (entry && entry[lang]) || industryVn;
+        }
 
 
         // Global state object
@@ -1627,7 +1686,7 @@
                             </div>
                             <div id="filterOptionsIndustry" class="filter-options">
                                 ${industries.map(ind => {
-                                    const displayName = ind;
+                                    const displayName = getTranslatedIndustry(ind, state.lang);
                                     return `
                                     <div class="filter-option ${(tabFilterState.industry.size === 0 || tabFilterState.industry.has(ind)) && !tabFilterState.industry.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('${currentTab}', 'industry', '${ind.replace(/'/g, "\\'")}')">
                                         <div class="filter-checkbox">

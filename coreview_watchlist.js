@@ -463,7 +463,7 @@ function getDbFieldWatchlist(colId) {
     if (colId === 'ma15')     return 'pct_ma15';
     if (colId === 'headline') return 'news_impact_score';
     const lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || DEFAULT_LANG;
-    if (colId === 'industry') return lang !== DEFAULT_LANG ? 'industry_en' : 'industry_vn';
+    if (colId === 'industry') return 'industry_vn';
     return colId;
 }
 
@@ -577,8 +577,8 @@ function renderWatchlistBody() {
     document.getElementById('emptyStateWatchlist').classList.add('hidden');
     
     tbody.innerHTML = stateWatchlist.data.map((row, idx) => {
-        const name = row.organ_name || '';
-        const industry = row.industry_vn || '';
+        const name = getTranslatedOrgan(row.single_stock, row.organ_name, lang);
+        const industry = getTranslatedIndustry(row.industry_vn, lang);
         const headline = row.headline || '';
         const pct = row.price_change_today_pct || 0;
         const color = pct > 0 ? 'text-fin-green' : (pct < 0 ? 'text-fin-red' : 'text-gray-400');
@@ -887,8 +887,8 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
         ];
 
         const rows = allData.map((row, idx) => {
-            const name = row.organ_name || '';
-            const industry = row.industry_vn || '';
+            const name = getTranslatedOrgan(row.single_stock, row.organ_name, lang);
+            const industry = getTranslatedIndustry(row.industry_vn, lang);
             const headline = row.headline || '';
             const ma15Status = getMA15StatusWatchlist(row.pct_ma15);
             const ma15Text = ma15Status.key === 'N/A' ? i18n[lang].notApplicable : ma15Status.key;

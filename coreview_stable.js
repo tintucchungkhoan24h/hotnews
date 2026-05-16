@@ -450,7 +450,7 @@ function renderStableHeaders() {
 function getStableDbField(colId) {
     if (colId === 'ma15')     return 'pct_ma15';
     if (colId === 'headline') return 'news_impact_score';
-    if (colId === 'industry') return stateStable.lang !== DEFAULT_LANG ? 'industry_en' : 'industry_vn';
+    if (colId === 'industry') return 'industry_vn';
     return colId;
 }
 
@@ -569,8 +569,8 @@ function renderStableBody() {
     document.getElementById('emptyStateStable').classList.add('hidden');
     
     tbody.innerHTML = stateStable.data.map((row, idx) => {
-        const name = row.organ_name || '';
-        const industry = row.industry_vn || '';
+        const name = getTranslatedOrgan(row.single_stock, row.organ_name, stateStable.lang);
+        const industry = getTranslatedIndustry(row.industry_vn, stateStable.lang);
         const headline = row.headline || '';
         const pct = row.price_change_today_pct || 0;
         const color = pct > 0 ? 'text-fin-green' : (pct < 0 ? 'text-fin-red' : 'text-gray-400');
@@ -877,8 +877,8 @@ async function exportStableToExcel() {
         ];
 
         const rows = allData.map((row, idx) => {
-            const name = row.organ_name || '';
-            const industry = row.industry_vn || '';
+            const name = getTranslatedOrgan(row.single_stock, row.organ_name, stateStable.lang);
+            const industry = getTranslatedIndustry(row.industry_vn, stateStable.lang);
             const headline = row.headline || '';
             const ma15Status = getStableMA15Status(row.pct_ma15);
             const ma15Text = ma15Status.key === 'N/A' ? i18n[stateStable.lang].notApplicable : ma15Status.key;
