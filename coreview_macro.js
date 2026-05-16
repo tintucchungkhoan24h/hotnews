@@ -362,10 +362,7 @@ async function fetchMacroData() {
             }
         }
         
-        // Preload headline translations in background
-        if (state.dataMacro.length > 0 && typeof translateHeadlines === 'function') {
-            translateHeadlines(state.dataMacro.map(d => d.headline));
-        }
+
     } catch (e) { 
         console.error('fetchMacroData error:', e);
         state.dataMacro = [];
@@ -503,8 +500,8 @@ function renderMacroBody() {
     console.log('Rendering macro body, first 3 times:', state.dataMacro.slice(0, 3).map(r => r.publish_time));
     
     tbody.innerHTML = state.dataMacro.map((row, idx) => {
-        // Use translated headline if in English mode
-        const headline = getTranslatedHeadline(row.headline, state.lang);
+        // Use headline directly
+        const headline = row.headline || '';
         
         // Highlight headline in yellow if news_impact_score >= 30
         const impactScore = row.news_impact_score || 0;
@@ -713,8 +710,8 @@ async function exportMacroToExcel() {
         ];
 
         const rows = allData.map((row, idx) => {
-            // Use translated headline if in English mode
-            const headline = getTranslatedHeadline(row.headline, state.lang);
+            // Use headline directly
+            const headline = row.headline || '';
             
             return [
                 idx + 1,

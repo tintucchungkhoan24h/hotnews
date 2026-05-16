@@ -1,0 +1,359 @@
+{
+  "industries": {
+    "530": {
+      "vi": "Sản xuất Dầu khí",
+      "en": "Oil & Gas Producers",
+      "ko": "석유 생산",
+      "zh": "石油生产",
+      "th": "การผลิตปิโตรเลียม",
+      "ar": "إنتاج البترول",
+      "ja": "石油生産"
+    },
+    "570": {
+      "vi": "Thiết bị, Dịch vụ và Phân phối Dầu khí",
+      "en": "Oil Equipment, Services & Distribution",
+      "ko": "석유 및 가스 장비, 서비스 및 유통",
+      "zh": "石油和天然气设备、服务和分销",
+      "th": "อุปกรณ์ บริการ และการจัดจำหน่ายน้ำมันและก๊าซ",
+      "ar": "معدات وخدمات وتوزيع النفط والغاز",
+      "ja": "石油およびガスの機器、サービス、流通"
+    },
+    "1350": {
+      "vi": "Hóa chất",
+      "en": "Chemicals",
+      "ko": "약",
+      "zh": "化学品",
+      "th": "เคมีภัณฑ์",
+      "ar": "المواد الكيميائية",
+      "ja": "化学薬品"
+    },
+    "1730": {
+      "vi": "Lâm nghiệp và Giấy",
+      "en": "Forestry & Paper",
+      "ko": "임업 및 제지",
+      "zh": "林业和造纸",
+      "th": "ป่าไม้และกระดาษ",
+      "ar": "الغابات والورق",
+      "ja": "林業と製紙"
+    },
+    "1750": {
+      "vi": "Kim loại",
+      "en": "Industrial Metals & Mining",
+      "ko": "금속",
+      "zh": "金属",
+      "th": "โลหะ",
+      "ar": "معدن",
+      "ja": "金属"
+    },
+    "1770": {
+      "vi": "Khai khoáng",
+      "en": "Mining",
+      "ko": "추출물",
+      "zh": "萃取",
+      "th": "สารสกัด",
+      "ar": "استخراجي",
+      "ja": "抽出的"
+    },
+    "2350": {
+      "vi": "Xây dựng và Vật liệu",
+      "en": "Construction & Materials",
+      "ko": "건축 및 재료",
+      "zh": "建筑和材料",
+      "th": "การก่อสร้างและวัสดุ",
+      "ar": "البناء والمواد",
+      "ja": "構造と材料"
+    },
+    "2720": {
+      "vi": "Hàng công nghiệp",
+      "en": "General Industrials",
+      "ko": "산업용품",
+      "zh": "工业品",
+      "th": "สินค้าอุตสาหกรรม",
+      "ar": "السلع الصناعية",
+      "ja": "工業製品"
+    },
+    "2730": {
+      "vi": "Điện tử & Thiết bị điện",
+      "en": "Electronic & Electrical Equipment",
+      "ko": "전자 및 전기 장비",
+      "zh": "电子及电气设备",
+      "th": "อุปกรณ์อิเล็กทรอนิกส์และไฟฟ้า",
+      "ar": "الالكترونيات والمعدات الكهربائية",
+      "ja": "電子・電気機器"
+    },
+    "2750": {
+      "vi": "Công nghiệp nặng",
+      "en": "Industrial Engineering",
+      "ko": "중공업",
+      "zh": "重工业",
+      "th": "อุตสาหกรรมหนัก",
+      "ar": "صناعة ثقيلة",
+      "ja": "重工業"
+    },
+    "2770": {
+      "vi": "Vận tải",
+      "en": "Industrial Transportation",
+      "ko": "수송",
+      "zh": "运输",
+      "th": "ขนส่ง",
+      "ar": "ينقل",
+      "ja": "輸送"
+    },
+    "2790": {
+      "vi": "Tư vấn & Hỗ trợ Kinh doanh",
+      "en": "Support Services",
+      "ko": "비즈니스 컨설팅 및 지원",
+      "zh": "业务咨询与支持",
+      "th": "การให้คำปรึกษาและสนับสนุนทางธุรกิจ",
+      "ar": "استشارات ودعم الأعمال",
+      "ja": "ビジネスコンサルティングとサポート"
+    },
+    "3350": {
+      "vi": "Ô tô và phụ tùng",
+      "en": "Automobiles & Parts",
+      "ko": "자동차 및 예비 부품",
+      "zh": "汽车及零配件",
+      "th": "รถยนต์และอะไหล่",
+      "ar": "السيارات وقطع الغيار",
+      "ja": "自動車およびスペアパーツ"
+    },
+    "3530": {
+      "vi": "Bia và đồ uống",
+      "en": "Beverages",
+      "ko": "맥주와 음료",
+      "zh": "啤酒和饮料",
+      "th": "เบียร์และเครื่องดื่ม",
+      "ar": "البيرة والمشروبات",
+      "ja": "ビールと飲み物"
+    },
+    "3570": {
+      "vi": "Sản xuất thực phẩm",
+      "en": "Food Producers",
+      "ko": "식량 생산",
+      "zh": "食品生产",
+      "th": "การผลิตอาหาร",
+      "ar": "إنتاج الغذاء",
+      "ja": "食料生産"
+    },
+    "3720": {
+      "vi": "Hàng gia dụng",
+      "en": "Household Goods & Home Construction",
+      "ko": "가정 용품",
+      "zh": "家居用品",
+      "th": "ของใช้ในครัวเรือน",
+      "ar": "السلع المنزلية",
+      "ja": "家庭用品"
+    },
+    "3740": {
+      "vi": "Hàng hóa giải trí",
+      "en": "Leisure Goods",
+      "ko": "엔터테인먼트 상품",
+      "zh": "娱乐用品",
+      "th": "สินค้าบันเทิง",
+      "ar": "السلع الترفيهية",
+      "ja": "エンターテイメントグッズ"
+    },
+    "3760": {
+      "vi": "Hàng cá nhân",
+      "en": "Personal Goods",
+      "ko": "개인용품",
+      "zh": "个人物品",
+      "th": "ของใช้ส่วนตัว",
+      "ar": "السلع الشخصية",
+      "ja": "私物"
+    },
+    "3780": {
+      "vi": "Thuốc lá",
+      "en": "Tobacco",
+      "ko": "담배",
+      "zh": "卷烟",
+      "th": "บุหรี่",
+      "ar": "سيجارة",
+      "ja": "シガレット"
+    },
+    "4530": {
+      "vi": "Thiết bị và Dịch vụ Y tế",
+      "en": "Health Care Equipment & Services",
+      "ko": "의료 장비 및 서비스",
+      "zh": "医疗设备和服务",
+      "th": "อุปกรณ์และบริการทางการแพทย์",
+      "ar": "المعدات والخدمات الطبية",
+      "ja": "医療機器とサービス"
+    },
+    "4570": {
+      "vi": "Dược phẩm",
+      "en": "Pharmaceuticals & Biotechnology",
+      "ko": "제약",
+      "zh": "药品",
+      "th": "ยา",
+      "ar": "المستحضرات الصيدلانية",
+      "ja": "医薬品"
+    },
+    "5330": {
+      "vi": "Phân phối thực phẩm & dược phẩm",
+      "en": "Food & Drug Retailers",
+      "ko": "식품 및 의약품 유통",
+      "zh": "分发食品和药品",
+      "th": "จำหน่ายอาหารและยา",
+      "ar": "توزيع المواد الغذائية والأدوية",
+      "ja": "食品・医薬品の流通"
+    },
+    "5370": {
+      "vi": "Bán lẻ",
+      "en": "General Retailers",
+      "ko": "소매",
+      "zh": "零售",
+      "th": "ขายปลีก",
+      "ar": "بيع بالتجزئة",
+      "ja": "小売り"
+    },
+    "5550": {
+      "vi": "Truyền thông",
+      "en": "Media",
+      "ko": "의사소통",
+      "zh": "沟通",
+      "th": "การสื่อสาร",
+      "ar": "تواصل",
+      "ja": "コミュニケーション"
+    },
+    "5750": {
+      "vi": "Du lịch & Giải trí",
+      "en": "Travel & Leisure",
+      "ko": "여행 및 엔터테인먼트",
+      "zh": "旅游及娱乐",
+      "th": "การเดินทางและความบันเทิง",
+      "ar": "السفر والترفيه",
+      "ja": "旅行とエンターテイメント"
+    },
+    "6530": {
+      "vi": "Viễn thông cố định",
+      "en": "Fixed Line Telecommunications",
+      "ko": "고정통신",
+      "zh": "固定电信",
+      "th": "โทรคมนาคมคงที่",
+      "ar": "الاتصالات الثابتة",
+      "ja": "固定通信"
+    },
+    "6570": {
+      "vi": "Viễn thông di động",
+      "en": "Mobile Telecommunications",
+      "ko": "이동통신",
+      "zh": "移动通讯",
+      "th": "โทรคมนาคมเคลื่อนที่",
+      "ar": "الاتصالات المتنقلة",
+      "ja": "移動体通信"
+    },
+    "7530": {
+      "vi": "Sản xuất & Phân phối Điện",
+      "en": "Electricity",
+      "ko": "전력 생산 및 유통",
+      "zh": "电力生产和分配",
+      "th": "การผลิตและจำหน่ายไฟฟ้า",
+      "ar": "إنتاج وتوزيع الكهرباء",
+      "ja": "電力の生産と配電"
+    },
+    "7570": {
+      "vi": "Nước & Khí đốt",
+      "en": "Gas, Water & Multi-utilities",
+      "ko": "물 및 가스",
+      "zh": "水和煤气",
+      "th": "น้ำและก๊าซ",
+      "ar": "المياه والغاز",
+      "ja": "水道とガス"
+    },
+    "8350": {
+      "vi": "Ngân hàng",
+      "en": "Banks",
+      "ko": "은행",
+      "zh": "银行",
+      "th": "ธนาคาร",
+      "ar": "بنك",
+      "ja": "銀行"
+    },
+    "8530": {
+      "vi": "Bảo hiểm phi nhân thọ",
+      "en": "Nonlife Insurance",
+      "ko": "손해보험",
+      "zh": "非人寿保险",
+      "th": "ประกันวินาศภัย",
+      "ar": "التأمين على غير الحياة",
+      "ja": "損害保険"
+    },
+    "8570": {
+      "vi": "Bảo hiểm nhân thọ",
+      "en": "Life Insurance",
+      "ko": "생명 보험",
+      "zh": "人寿保险",
+      "th": "ประกันชีวิต",
+      "ar": "التأمين على الحياة",
+      "ja": "生命保険"
+    },
+    "8630": {
+      "vi": "Bất động sản",
+      "en": "Real Estate Investment & Services",
+      "ko": "부동산",
+      "zh": "房地产",
+      "th": "อสังหาริมทรัพย์",
+      "ar": "العقارات",
+      "ja": "不動産"
+    },
+    "8770": {
+      "vi": "Dịch vụ tài chính",
+      "en": "Financial Services",
+      "ko": "금융 서비스",
+      "zh": "金融服务",
+      "th": "บริการทางการเงิน",
+      "ar": "الخدمات المالية",
+      "ja": "金融サービス"
+    },
+    "8980": {
+      "vi": "Quỹ đầu tư",
+      "en": "Equity Investment Instruments",
+      "ko": "투자 기금",
+      "zh": "投资基金",
+      "th": "กองทุนรวมที่ลงทุน",
+      "ar": "صندوق الاستثمار",
+      "ja": "投資ファンド"
+    },
+    "9530": {
+      "vi": "Phần mềm & Dịch vụ Máy tính",
+      "en": "Software & Computer Services",
+      "ko": "컴퓨터 소프트웨어 및 서비스",
+      "zh": "计算机软件与服务",
+      "th": "ซอฟต์แวร์และบริการคอมพิวเตอร์",
+      "ar": "برامج وخدمات الكمبيوتر",
+      "ja": "コンピュータ ソフトウェアとサービス"
+    },
+    "9570": {
+      "vi": "Thiết bị và Phần cứng",
+      "en": "Technology Hardware & Equipment",
+      "ko": "장치 및 하드웨어",
+      "zh": "设备和硬件",
+      "th": "อุปกรณ์และฮาร์ดแวร์",
+      "ar": "الأجهزة والأجهزة",
+      "ja": "デバイスとハードウェア"
+    }
+  },
+  "instructions": {
+    "description": "Translate industry names for all languages",
+    "languages": [
+      "vi",
+      "en",
+      "ko",
+      "zh",
+      "th",
+      "ar",
+      "ja"
+    ],
+    "format": {
+      "icb_code": "Industry code (key)",
+      "vi": "Vietnamese name (already provided from icb_name)",
+      "en": "English name (already provided from en_icb_name)",
+      "ko": "Korean translation",
+      "zh": "Chinese translation",
+      "th": "Thai translation",
+      "ar": "Arabic translation",
+      "ja": "Japanese translation"
+    }
+  }
+}

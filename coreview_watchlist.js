@@ -414,12 +414,7 @@ async function fetchWatchlistData() {
             }
         }
         
-        // Preload translations in background
-        if (stateWatchlist.data.length > 0) {
-            translateNames(stateWatchlist.data.map(d => d.organ_name));
-            translateHeadlines(stateWatchlist.data.map(d => d.headline));
-            translateIndustries(stateWatchlist.data.map(d => d.industry_vn));
-        }
+
         
         console.log('=== FETCH DATA END ===');
         console.log('Final stateWatchlist.data.length:', stateWatchlist.data.length);
@@ -582,9 +577,9 @@ function renderWatchlistBody() {
     document.getElementById('emptyStateWatchlist').classList.add('hidden');
     
     tbody.innerHTML = stateWatchlist.data.map((row, idx) => {
-        const name = getTranslatedOrgan(row.organ_name, lang);
-        const industry = getTranslatedIndustry(row.industry_vn, lang);
-        const headline = getTranslatedHeadline(row.headline, lang);
+        const name = row.organ_name || '';
+        const industry = row.industry_vn || '';
+        const headline = row.headline || '';
         const pct = row.price_change_today_pct || 0;
         const color = pct > 0 ? 'text-fin-green' : (pct < 0 ? 'text-fin-red' : 'text-gray-400');
         
@@ -892,9 +887,9 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
         ];
 
         const rows = allData.map((row, idx) => {
-            const name = getTranslatedOrgan(row.organ_name, lang);
-            const industry = getTranslatedIndustry(row.industry_vn, lang);
-            const headline = getTranslatedHeadline(row.headline, lang);
+            const name = row.organ_name || '';
+            const industry = row.industry_vn || '';
+            const headline = row.headline || '';
             const ma15Status = getMA15StatusWatchlist(row.pct_ma15);
             const ma15Text = ma15Status.key === 'N/A' ? i18n[lang].notApplicable : ma15Status.key;
 

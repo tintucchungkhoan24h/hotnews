@@ -1092,64 +1092,8 @@
         const SUPABASE_URL = 'https://ifjxishcrzndbszmvpef.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmanhpc2hjcnpuZGJzem12cGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNjEwOTcsImV4cCI6MjA5MjkzNzA5N30.0rHs4AWTmRmN34WWdxBM2RsTMu1VQwfKDjve0W2yHEg';
         
-        // Translation API Key - Choose one option:
-        // Option 1: Gemini API (Free tier available) - Get key at: https://makersuite.google.com/app/apikey
-        const GEMINI_API_KEY = "AIzaSyCC2fv231TLVO9SIs7J88Gb5AG4GWF2xe8"; // Gemini API key
-        
-        // Option 2: LibreTranslate (Free, no API key needed)
-        const USE_LIBRE_TRANSLATE = false; // Set to false to use Gemini
 
-        /** Max parallel Lingva requests (same host; ~6–12 is usually safe in browsers). */
-        const LINGVA_MAX_CONCURRENT = 10;
-        /** Debounce disk save + table refresh while many strings stream in. */
-        const LINGVA_UI_FLUSH_MS = 200;
 
-        let _lingvaUiFlushTimer = null;
-        function flushTranslationUi(saves) {
-            clearTimeout(_lingvaUiFlushTimer);
-            _lingvaUiFlushTimer = setTimeout(() => {
-                _lingvaUiFlushTimer = null;
-                try {
-                    if (saves.names) saveTranslationCache();
-                    if (saves.headlines) saveHeadlineCache();
-                    if (saves.industries) saveIndustryTranslationCache();
-                } catch (e) { /* ignore */ }
-                if (state.lang !== DEFAULT_LANG) {
-                    if (typeof renderBody === 'function') renderBody();
-                    if (typeof renderMacroBody === 'function') renderMacroBody();
-                }
-            }, LINGVA_UI_FLUSH_MS);
-        }
-
-        function flushTranslationUiImmediate(saves) {
-            clearTimeout(_lingvaUiFlushTimer);
-            _lingvaUiFlushTimer = null;
-            try {
-                if (saves.names) saveTranslationCache();
-                if (saves.headlines) saveHeadlineCache();
-                if (saves.industries) saveIndustryTranslationCache();
-            } catch (e) { /* ignore */ }
-            if (state.lang !== DEFAULT_LANG) {
-                if (typeof renderBody === 'function') renderBody();
-                if (typeof renderMacroBody === 'function') renderMacroBody();
-            }
-        }
-
-        /** Run async work on each item with at most `limit` in flight (better than batch-then-wait). */
-        async function mapWithConcurrency(items, limit, worker) {
-            if (!items || items.length === 0) return;
-            const executing = new Set();
-            for (const item of items) {
-                const p = (async () => {
-                    await worker(item);
-                })().finally(() => executing.delete(p));
-                executing.add(p);
-                if (executing.size >= limit) {
-                    await Promise.race(executing);
-                }
-            }
-            await Promise.all(executing);
-        }
 
         // Load translations from i18n.json
         let i18n = null;
@@ -1372,143 +1316,13 @@
 
         // flags are now stored in i18n[lang].lang.flag — no hardcoded object needed
 
-        // Per-language caches: { en: { "VNM": "..." }, ko: { ... }, ... }
-        function loadTranslationCache() {
-            try {
-                const v2 = localStorage.getItem('companyTranslationsByLang');
-                if (v2) {
-                    const parsed = JSON.parse(v2);
-                    const n = Object.keys(parsed).reduce((a, k) => a + Object.keys(parsed[k] || {}).length, 0);
-                    console.log(`📦 Loaded company translations (${n} entries across ${Object.keys(parsed).length} locales)`);
-                    return parsed;
-                }
-                const legacy = localStorage.getItem('companyTranslations');
-                if (legacy) {
-                    const flat = JSON.parse(legacy);
-                    const migrated = { en: flat };
-                    localStorage.setItem('companyTranslationsByLang', JSON.stringify(migrated));
-                    localStorage.removeItem('companyTranslations');
-                    console.log('📦 Migrated legacy company translations → companyTranslationsByLang (en)');
-                    return migrated;
-                }
-            } catch (e) {
-                console.error('Error loading translation cache:', e);
-            }
-            return {};
-        }
 
-        function loadHeadlineCache() {
-            try {
-                const v2 = localStorage.getItem('headlineTranslationsByLang');
-                if (v2) {
-                    const parsed = JSON.parse(v2);
-                    const n = Object.keys(parsed).reduce((a, k) => a + Object.keys(parsed[k] || {}).length, 0);
-                    console.log(`📦 Loaded headline translations (${n} entries across ${Object.keys(parsed).length} locales)`);
-                    return parsed;
-                }
-                const legacy = localStorage.getItem('headlineTranslations');
-                if (legacy) {
-                    const flat = JSON.parse(legacy);
-                    const migrated = { en: flat };
-                    localStorage.setItem('headlineTranslationsByLang', JSON.stringify(migrated));
-                    localStorage.removeItem('headlineTranslations');
-                    console.log('📦 Migrated legacy headline translations → headlineTranslationsByLang (en)');
-                    return migrated;
-                }
-            } catch (e) {
-                console.error('Error loading headline cache:', e);
-            }
-            console.log('📦 No headline cache found, will translate on first load');
-            return {};
-        }
 
-        function loadIndustryTranslationCache() {
-            try {
-                const raw = localStorage.getItem('industryTranslationsByLang');
-                if (raw) return JSON.parse(raw);
-            } catch (e) {
-                console.error('Error loading industry translation cache:', e);
-            }
-            return {};
-        }
 
-        function saveTranslationCache() {
-            try {
-                localStorage.setItem('companyTranslationsByLang', JSON.stringify(state.translatedNames));
-                const n = Object.keys(state.translatedNames).reduce((a, k) => a + Object.keys(state.translatedNames[k] || {}).length, 0);
-                console.log(`💾 Saved ${n} company translations (${Object.keys(state.translatedNames).length} locales)`);
-            } catch (e) {
-                console.error('Error saving translation cache:', e);
-            }
-        }
-
-        function saveHeadlineCache() {
-            try {
-                localStorage.setItem('headlineTranslationsByLang', JSON.stringify(state.translatedHeadlines));
-                const n = Object.keys(state.translatedHeadlines).reduce((a, k) => a + Object.keys(state.translatedHeadlines[k] || {}).length, 0);
-                console.log(`💾 Saved ${n} headline translations (${Object.keys(state.translatedHeadlines).length} locales)`);
-            } catch (e) {
-                console.error('Error saving headline cache:', e);
-            }
-        }
-
-        function saveIndustryTranslationCache() {
-            try {
-                localStorage.setItem('industryTranslationsByLang', JSON.stringify(state.translatedIndustries));
-            } catch (e) {
-                console.error('Error saving industry translation cache:', e);
-            }
-        }
-
-        /** Vietnamese → target UI language via Lingva; falls back to English then original text. */
-        async function translateTextViToLang(text, targetLang) {
-            if (!text || !targetLang || targetLang === DEFAULT_LANG) return text;
-            const targets = targetLang === 'en' ? ['en'] : [targetLang, 'en'];
-            const tried = new Set();
-            for (const tgt of targets) {
-                if (!tgt || tried.has(tgt)) continue;
-                tried.add(tgt);
-                try {
-                    const url = `https://lingva.ml/api/v1/vi/${tgt}/${encodeURIComponent(text)}`;
-                    const res = await fetch(url);
-                    const result = await res.json();
-                    if (result && result.translation) return result.translation;
-                } catch (e) { /* try next */ }
-            }
-            return text;
-        }
-
-        function getTranslatedOrgan(name, lang) {
-            if (!name) return '';
-            if (lang === DEFAULT_LANG) return name;
-            const b = state.translatedNames[lang];
-            return (b && b[name]) || name;
-        }
-
-        function getTranslatedHeadline(headline, lang) {
-            if (!headline) return '';
-            if (lang === DEFAULT_LANG) return headline;
-            const b = state.translatedHeadlines[lang];
-            return (b && b[headline]) || headline;
-        }
-
-        function getTranslatedIndustry(industryVn, lang) {
-            if (!industryVn) return '';
-            if (lang === DEFAULT_LANG) return industryVn;
-            const b = state.translatedIndustries[lang];
-            if (b && b[industryVn]) return b[industryVn];
-            if (window.industryTranslations && window.industryTranslations[industryVn]) {
-                return window.industryTranslations[industryVn];
-            }
-            return industryVn;
-        }
 
         // Global state object
         let state = {
-            data: [], 
-            translatedNames: loadTranslationCache(), // { locale: { "VNM": "..." } }
-            translatedHeadlines: loadHeadlineCache(),
-            translatedIndustries: loadIndustryTranslationCache(),
+            data: [],
             lang: DEFAULT_LANG,
             sortCol: 'timesfm_point', sortDesc: true,
             fromDate: '', toDate: '', searchQuery: '',
@@ -1526,10 +1340,7 @@
             lang: DEFAULT_LANG,
             sortCol: 'timesfm_point', sortDesc: true,
             fromDate: '', toDate: '', searchQuery: '',
-            currentPage: 0, pageSize: 50, totalCount: 0,
-            translatedNames: state.translatedNames,
-            translatedHeadlines: state.translatedHeadlines,
-            translatedIndustries: state.translatedIndustries
+            currentPage: 0, pageSize: 50, totalCount: 0
         };
         
         // High Volatility state object
@@ -1538,10 +1349,7 @@
             lang: DEFAULT_LANG,
             sortCol: 'timesfm_point', sortDesc: true,
             fromDate: '', toDate: '', searchQuery: '',
-            currentPage: 0, pageSize: 50, totalCount: 0,
-            translatedNames: state.translatedNames,
-            translatedHeadlines: state.translatedHeadlines,
-            translatedIndustries: state.translatedIndustries
+            currentPage: 0, pageSize: 50, totalCount: 0
         };
         
         // Watchlist state object
@@ -1550,10 +1358,7 @@
             lang: DEFAULT_LANG,
             sortCol: 'timesfm_point', sortDesc: true,
             fromDateWatchlist: '', toDateWatchlist: '', searchQuery: '',
-            currentPage: 0, pageSize: 50, totalCount: 0,
-            translatedNames: state.translatedNames,
-            translatedHeadlines: state.translatedHeadlines,
-            translatedIndustries: state.translatedIndustries
+            currentPage: 0, pageSize: 50, totalCount: 0
         };
 
         // Spotlight state object
@@ -1562,96 +1367,10 @@
             lang: DEFAULT_LANG,
             sortCol: 'timesfm_point', sortDesc: true,
             fromDateSpotlight: '', toDateSpotlight: '', searchQuery: '',
-            currentPage: 0, pageSize: 50, totalCount: 0,
-            translatedNames: state.translatedNames,
-            translatedHeadlines: state.translatedHeadlines,
-            translatedIndustries: state.translatedIndustries
+            currentPage: 0, pageSize: 50, totalCount: 0
         };
 
-        // Hàm dịch tên công ty — Lingva vi → current UI language (per-locale cache)
-        async function translateNames(names) {
-            const lang = state.lang;
-            if (lang === DEFAULT_LANG) return;
-            if (!state.translatedNames[lang]) state.translatedNames[lang] = {};
-            const bucket = state.translatedNames[lang];
-            const list = Array.from(new Set(names.filter(n => n && !bucket[n])));
-            if (list.length === 0) {
-                console.log('✅ All company names already cached for', lang);
-                return;
-            }
 
-            console.log(`🌐 Translating ${list.length} company names → ${lang} (Lingva, up to ${LINGVA_MAX_CONCURRENT} parallel)...`);
-
-            await mapWithConcurrency(list, LINGVA_MAX_CONCURRENT, async (name) => {
-                try {
-                    const translated = await translateTextViToLang(name, lang);
-                    const out = (translated && String(translated).trim()) ? translated : name;
-                    bucket[name] = out;
-                } catch (e) {
-                    bucket[name] = name;
-                }
-                flushTranslationUi({ names: true, headlines: false, industries: false });
-            });
-
-            const newTranslations = list.filter((n) => bucket[n] && bucket[n] !== n).length;
-            flushTranslationUiImmediate({ names: true, headlines: false, industries: false });
-            console.log(`✅ Completed: ${newTranslations} company names updated for ${lang}!`);
-        }
-
-        async function translateHeadlines(headlines) {
-            const lang = state.lang;
-            if (lang === DEFAULT_LANG) return;
-            if (!state.translatedHeadlines[lang]) state.translatedHeadlines[lang] = {};
-            const bucket = state.translatedHeadlines[lang];
-            const list = Array.from(new Set(headlines.filter(h => h && h.trim() && !bucket[h])));
-            if (list.length === 0) {
-                console.log('✅ All headlines already cached for', lang);
-                return;
-            }
-
-            console.log(`📰 Translating ${list.length} headlines → ${lang} (Lingva, up to ${LINGVA_MAX_CONCURRENT} parallel)...`);
-
-            await mapWithConcurrency(list, LINGVA_MAX_CONCURRENT, async (headline) => {
-                try {
-                    const translated = await translateTextViToLang(headline, lang);
-                    const out = (translated && String(translated).trim()) ? translated : headline;
-                    bucket[headline] = out;
-                } catch (e) {
-                    bucket[headline] = headline;
-                }
-                flushTranslationUi({ names: false, headlines: true, industries: false });
-            });
-
-            const newTranslations = list.filter((h) => bucket[h] && bucket[h] !== h).length;
-            flushTranslationUiImmediate({ names: false, headlines: true, industries: false });
-            console.log(`✅ Completed: ${newTranslations} headlines updated for ${lang}!`);
-        }
-
-        async function translateIndustries(industries) {
-            const lang = state.lang;
-            if (lang === DEFAULT_LANG) return;
-            if (!state.translatedIndustries[lang]) state.translatedIndustries[lang] = {};
-            const bucket = state.translatedIndustries[lang];
-            const list = Array.from(new Set(industries.filter(ind => ind && !bucket[ind])));
-            if (list.length === 0) return;
-
-            console.log(`🏭 Translating ${list.length} industry labels → ${lang} (Lingva, up to ${LINGVA_MAX_CONCURRENT} parallel)...`);
-
-            await mapWithConcurrency(list, LINGVA_MAX_CONCURRENT, async (ind) => {
-                try {
-                    const translated = await translateTextViToLang(ind, lang);
-                    const out = (translated && String(translated).trim()) ? translated : ind;
-                    bucket[ind] = out;
-                } catch (e) {
-                    bucket[ind] = ind;
-                }
-                flushTranslationUi({ names: false, headlines: false, industries: true });
-            });
-
-            const newTranslations = list.filter((ind) => bucket[ind] && bucket[ind] !== ind).length;
-            flushTranslationUiImmediate({ names: false, headlines: false, industries: true });
-            console.log(`✅ Industry labels done for ${lang} (${newTranslations} changed)`);
-        }
 
         // ═══════════════════════════════════════════════════════════════════════════
         // NOTE: Data fetching, table rendering, pagination, and Excel export logic
@@ -1908,7 +1627,7 @@
                             </div>
                             <div id="filterOptionsIndustry" class="filter-options">
                                 ${industries.map(ind => {
-                                    const displayName = getTranslatedIndustry(ind, state.lang);
+                                    const displayName = ind;
                                     return `
                                     <div class="filter-option ${(tabFilterState.industry.size === 0 || tabFilterState.industry.has(ind)) && !tabFilterState.industry.has('__NONE__') ? 'selected' : ''}" onclick="toggleFilter('${currentTab}', 'industry', '${ind.replace(/'/g, "\\'")}')">
                                         <div class="filter-checkbox">
@@ -2671,18 +2390,6 @@
                     if (typeof renderHeaders === 'function') renderHeaders();
                     if (typeof renderBody === 'function') renderBody();
                     if (typeof renderPaginationUI === 'function') renderPaginationUI();
-                    if (state.lang !== DEFAULT_LANG) {
-                        const L = state.lang;
-                        const nameB = state.translatedNames[L] || {};
-                        const headB = state.translatedHeadlines[L] || {};
-                        const indB = state.translatedIndustries[L] || {};
-                        const untranslatedNames = state.data.map(d => d.organ_name).filter(n => n && !nameB[n]);
-                        const untranslatedHeadlines = state.data.map(d => d.headline).filter(h => h && !headB[h]);
-                        const untranslatedIndustries = state.data.map(d => d.industry_vn).filter(ind => ind && !indB[ind]);
-                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') translateNames(untranslatedNames);
-                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
-                        if (untranslatedIndustries.length > 0 && typeof translateIndustries === 'function') translateIndustries(untranslatedIndustries);
-                    }
                 }
                 if (currentTab === 'macro') {
                     if (typeof updateMacroViewLabels === 'function') updateMacroViewLabels();
@@ -2690,84 +2397,30 @@
                     if (typeof renderMacroHeaders === 'function') renderMacroHeaders();
                     if (typeof renderMacroBody === 'function') renderMacroBody();
                     if (typeof renderMacroPaginationUI === 'function') renderMacroPaginationUI();
-                    if (state.lang !== DEFAULT_LANG) {
-                        const L = state.lang;
-                        const headB = state.translatedHeadlines[L] || {};
-                        const untranslatedHeadlines = state.dataMacro.map(d => d.headline).filter(h => h && !headB[h]);
-                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
-                    }
                 }
                 if (currentTab === 'stable') {
                     if (typeof updateStableViewLabels === 'function') updateStableViewLabels();
                     if (typeof renderStableHeaders === 'function') renderStableHeaders();
                     if (typeof renderStableBody === 'function') renderStableBody();
                     if (typeof renderStablePaginationUI === 'function') renderStablePaginationUI();
-                    if (state.lang !== DEFAULT_LANG) {
-                        const L = state.lang;
-                        const nameB = state.translatedNames[L] || {};
-                        const headB = state.translatedHeadlines[L] || {};
-                        const indB = state.translatedIndustries[L] || {};
-                        const untranslatedNames = stateStable.data.map(d => d.organ_name).filter(n => n && !nameB[n]);
-                        const untranslatedHeadlines = stateStable.data.map(d => d.headline).filter(h => h && !headB[h]);
-                        const untranslatedIndustries = stateStable.data.map(d => d.industry_vn).filter(ind => ind && !indB[ind]);
-                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') translateNames(untranslatedNames);
-                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
-                        if (untranslatedIndustries.length > 0 && typeof translateIndustries === 'function') translateIndustries(untranslatedIndustries);
-                    }
                 }
                 if (currentTab === 'high') {
                     if (typeof updateHighViewLabels === 'function') updateHighViewLabels();
                     if (typeof renderHighHeaders === 'function') renderHighHeaders();
                     if (typeof renderHighBody === 'function') renderHighBody();
                     if (typeof renderHighPaginationUI === 'function') renderHighPaginationUI();
-                    if (state.lang !== DEFAULT_LANG) {
-                        const L = state.lang;
-                        const nameB = state.translatedNames[L] || {};
-                        const headB = state.translatedHeadlines[L] || {};
-                        const indB = state.translatedIndustries[L] || {};
-                        const untranslatedNames = stateHigh.data.map(d => d.organ_name).filter(n => n && !nameB[n]);
-                        const untranslatedHeadlines = stateHigh.data.map(d => d.headline).filter(h => h && !headB[h]);
-                        const untranslatedIndustries = stateHigh.data.map(d => d.industry_vn).filter(ind => ind && !indB[ind]);
-                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') translateNames(untranslatedNames);
-                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
-                        if (untranslatedIndustries.length > 0 && typeof translateIndustries === 'function') translateIndustries(untranslatedIndustries);
-                    }
                 }
                 if (currentTab === 'watchlist') {
                     if (typeof updateWatchlistViewLabels === 'function') updateWatchlistViewLabels();
                     if (typeof renderWatchlistHeaders === 'function') renderWatchlistHeaders();
                     if (typeof renderWatchlistBody === 'function') renderWatchlistBody();
                     if (typeof renderWatchlistPaginationUI === 'function') renderWatchlistPaginationUI();
-                    if (state.lang !== DEFAULT_LANG) {
-                        const L = state.lang;
-                        const nameB = state.translatedNames[L] || {};
-                        const headB = state.translatedHeadlines[L] || {};
-                        const indB = state.translatedIndustries[L] || {};
-                        const untranslatedNames = stateWatchlist.data.map(d => d.organ_name).filter(n => n && !nameB[n]);
-                        const untranslatedHeadlines = stateWatchlist.data.map(d => d.headline).filter(h => h && !headB[h]);
-                        const untranslatedIndustries = stateWatchlist.data.map(d => d.industry_vn).filter(ind => ind && !indB[ind]);
-                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') translateNames(untranslatedNames);
-                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
-                        if (untranslatedIndustries.length > 0 && typeof translateIndustries === 'function') translateIndustries(untranslatedIndustries);
-                    }
                 }
                 if (currentTab === 'spotlight') {
                     if (typeof updateSpotlightViewLabels === 'function') updateSpotlightViewLabels();
                     if (typeof renderSpotlightHeaders === 'function') renderSpotlightHeaders();
                     if (typeof renderSpotlightBody === 'function') renderSpotlightBody();
                     if (typeof renderSpotlightPaginationUI === 'function') renderSpotlightPaginationUI();
-                    if (state.lang !== DEFAULT_LANG) {
-                        const L = state.lang;
-                        const nameB = state.translatedNames[L] || {};
-                        const headB = state.translatedHeadlines[L] || {};
-                        const indB = state.translatedIndustries[L] || {};
-                        const untranslatedNames = stateSpotlight.data.map(d => d.organ_name).filter(n => n && !nameB[n]);
-                        const untranslatedHeadlines = stateSpotlight.data.map(d => d.headline).filter(h => h && !headB[h]);
-                        const untranslatedIndustries = stateSpotlight.data.map(d => d.industry_vn).filter(ind => ind && !indB[ind]);
-                        if (untranslatedNames.length > 0 && typeof translateNames === 'function') translateNames(untranslatedNames);
-                        if (untranslatedHeadlines.length > 0 && typeof translateHeadlines === 'function') translateHeadlines(untranslatedHeadlines);
-                        if (untranslatedIndustries.length > 0 && typeof translateIndustries === 'function') translateIndustries(untranslatedIndustries);
-                    }
                 }
             }
 
