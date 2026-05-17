@@ -865,6 +865,9 @@ async function exportToExcel() {
             })));
         }
 
+        // Prefetch headline translations for the full export dataset
+        await prefetchHeadlineTranslations(allData, state.lang);
+
         // Build Excel data
         const headers = [
             i18n[state.lang].cols.index,
@@ -883,7 +886,7 @@ async function exportToExcel() {
         const rows = allData.map((row, idx) => {
             const name = getTranslatedOrgan(row.single_stock, row.organ_name, state.lang);
             const industry = getTranslatedIndustry(row.industry_vn, state.lang);
-            const headline = row.headline || '';
+            const headline = getTranslatedHeadline(row, state.lang);
             const ma15Status = getMA15Status(row.pct_ma15);
             const ma15Text = ma15Status.key === 'N/A' ? i18n[state.lang].notApplicable : ma15Status.key;
 

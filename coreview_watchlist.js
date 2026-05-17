@@ -872,6 +872,9 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
             });
         }
 
+        // Prefetch headline translations for the full export dataset
+        await prefetchHeadlineTranslations(allData, lang);
+
         // Build Excel data
         const headers = [
             i18n[lang].cols.index,
@@ -890,7 +893,7 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
         const rows = allData.map((row, idx) => {
             const name = getTranslatedOrgan(row.single_stock, row.organ_name, lang);
             const industry = getTranslatedIndustry(row.industry_vn, lang);
-            const headline = row.headline || '';
+            const headline = getTranslatedHeadline(row, lang);
             const ma15Status = getMA15StatusWatchlist(row.pct_ma15);
             const ma15Text = ma15Status.key === 'N/A' ? i18n[lang].notApplicable : ma15Status.key;
 

@@ -701,6 +701,9 @@ async function exportMacroToExcel() {
             headline: r.headline?.substring(0, 40)
         })));
 
+        // Prefetch headline translations for the full export dataset
+        await prefetchHeadlineTranslations(allData, state.lang);
+
         // Build Excel data
         const headers = [
             i18n[state.lang].cols.index,
@@ -711,8 +714,7 @@ async function exportMacroToExcel() {
         ];
 
         const rows = allData.map((row, idx) => {
-            // Use headline directly
-            const headline = row.headline || '';
+            const headline = getTranslatedHeadline(row, state.lang);
             
             return [
                 idx + 1,
