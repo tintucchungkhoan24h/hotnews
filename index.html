@@ -1379,6 +1379,78 @@
             return (entry && entry[lang]) || industryVn;
         }
 
+        // ─── Headline Translation (mul_lang_headline) ──────────────────────────────
+        // Cache key: "${event_id}_${lang_code}" → translated headline string (or null = not found)
+        window.headlineTranslationCache = Object.create(null);
+
+        /**
+         * Batch-prefetch translated headlines for the given rows + lang.
+         * No-op for 'vi' (source language — headlines are already Vietnamese).
+         * Fetches from mul_lang_headline filtered by lang_code + event_id list.
+         * @param {Array} rows  - data rows, each must have .event_id
+         * @param {string} lang - target language code (e.g. 'en', 'ko', 'zh')
+         */
+        window.prefetchHeadlineTranslations = async function(rows, lang) {
+            if (!rows || rows.length === 0) return;
+            if (!lang || lang === 'vi') return; // Vietnamese is source — no lookup needed
+
+            // Collect event_ids not yet cached for this lang
+            const missing = rows
+                .filter(r => r.event_id != null && !((`${r.event_id}_${lang}`) in window.headlineTranslationCache))
+                .map(r => r.event_id);
+
+            // Debug: log which rows have null event_id
+            const nullIds = rows.filter(r => r.event_id == null);
+            if (nullIds.length > 0) {
+                console.warn(`[HeadlineTrans] ${nullIds.length} rows have null event_id — cannot translate:`, nullIds.map(r => r.headline?.substring(0, 50)));
+            }
+
+            if (missing.length === 0) {
+                console.log(`[HeadlineTrans] All ${rows.length} rows already cached for lang="${lang}"`);
+                return;
+            }
+
+            try {
+                const ids = missing.join(',');
+                const url = `${SUPABASE_URL}/rest/v1/mul_lang_headline?select=event_id,headline&lang_code=eq.${lang}&event_id=in.(${ids})`;
+                console.log(`[HeadlineTrans] Fetching ${missing.length} translations (lang=${lang}):`, url);
+                const res = await fetch(url, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                });
+                const data = await res.json();
+                console.log(`[HeadlineTrans] Response (${Array.isArray(data) ? data.length : 'ERROR'} records):`, data);
+                if (Array.isArray(data)) {
+                    data.forEach(r => {
+                        window.headlineTranslationCache[`${r.event_id}_${lang}`] = r.headline || '';
+                    });
+                }
+                // Mark all missing as resolved (null = not found → will fall back to row.headline)
+                missing.forEach(id => {
+                    const key = `${id}_${lang}`;
+                    if (!(key in window.headlineTranslationCache)) {
+                        console.log(`[HeadlineTrans] No translation found for event_id="${id}" lang="${lang}" — using fallback`);
+                        window.headlineTranslationCache[key] = null;
+                    }
+                });
+            } catch (e) {
+                console.warn('[HeadlineTrans] prefetchHeadlineTranslations error:', e);
+            }
+        };
+
+        /**
+         * Get the display headline for a row in the requested language.
+         * Falls back to row.headline (Vietnamese) when no translation is available.
+         * @param {Object} row  - data row with .event_id and .headline
+         * @param {string} lang - target language code
+         * @returns {string}
+         */
+        window.getTranslatedHeadline = function(row, lang) {
+            if (!lang || lang === 'vi' || row.event_id == null) return row.headline || '';
+            const cached = window.headlineTranslationCache[`${row.event_id}_${lang}`];
+            return (cached != null && cached !== '') ? cached : (row.headline || '');
+        };
+        // ──────────────────────────────────────────────────────────────────────────
+
 
         // Global state object
         let state = {
@@ -2391,7 +2463,7 @@
                 langMenu.setAttribute('aria-hidden', 'false');
             }
 
-            function selectLanguage(lang) {
+            async function selectLanguage(lang) {
                 if (!lang || state.lang === lang) return;
                 state.lang = lang;
                 stateStable.lang = state.lang;
@@ -2448,6 +2520,7 @@
                     if (typeof updateStockViewLabels === 'function') updateStockViewLabels();
                     if (typeof refreshOpenPickers === 'function') refreshOpenPickers();
                     if (typeof renderHeaders === 'function') renderHeaders();
+                    await prefetchHeadlineTranslations(state.data, lang);
                     if (typeof renderBody === 'function') renderBody();
                     if (typeof renderPaginationUI === 'function') renderPaginationUI();
                 }
@@ -2455,30 +2528,35 @@
                     if (typeof updateMacroViewLabels === 'function') updateMacroViewLabels();
                     if (typeof refreshOpenPickers === 'function') refreshOpenPickers();
                     if (typeof renderMacroHeaders === 'function') renderMacroHeaders();
+                    await prefetchHeadlineTranslations(state.dataMacro, lang);
                     if (typeof renderMacroBody === 'function') renderMacroBody();
                     if (typeof renderMacroPaginationUI === 'function') renderMacroPaginationUI();
                 }
                 if (currentTab === 'stable') {
                     if (typeof updateStableViewLabels === 'function') updateStableViewLabels();
                     if (typeof renderStableHeaders === 'function') renderStableHeaders();
+                    await prefetchHeadlineTranslations(stateStable.data, lang);
                     if (typeof renderStableBody === 'function') renderStableBody();
                     if (typeof renderStablePaginationUI === 'function') renderStablePaginationUI();
                 }
                 if (currentTab === 'high') {
                     if (typeof updateHighViewLabels === 'function') updateHighViewLabels();
                     if (typeof renderHighHeaders === 'function') renderHighHeaders();
+                    await prefetchHeadlineTranslations(stateHigh.data, lang);
                     if (typeof renderHighBody === 'function') renderHighBody();
                     if (typeof renderHighPaginationUI === 'function') renderHighPaginationUI();
                 }
                 if (currentTab === 'watchlist') {
                     if (typeof updateWatchlistViewLabels === 'function') updateWatchlistViewLabels();
                     if (typeof renderWatchlistHeaders === 'function') renderWatchlistHeaders();
+                    await prefetchHeadlineTranslations(stateWatchlist.data, lang);
                     if (typeof renderWatchlistBody === 'function') renderWatchlistBody();
                     if (typeof renderWatchlistPaginationUI === 'function') renderWatchlistPaginationUI();
                 }
                 if (currentTab === 'spotlight') {
                     if (typeof updateSpotlightViewLabels === 'function') updateSpotlightViewLabels();
                     if (typeof renderSpotlightHeaders === 'function') renderSpotlightHeaders();
+                    await prefetchHeadlineTranslations(stateSpotlight.data, lang);
                     if (typeof renderSpotlightBody === 'function') renderSpotlightBody();
                     if (typeof renderSpotlightPaginationUI === 'function') renderSpotlightPaginationUI();
                 }

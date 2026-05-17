@@ -369,6 +369,7 @@ async function fetchMacroData() {
         state.totalCountMacro = 0;
     } finally {
         if (loadingState) loadingState.classList.add('hidden');
+        await prefetchHeadlineTranslations(state.dataMacro, state.lang);
         renderMacroBody();
         renderMacroPaginationUI();
     }
@@ -500,8 +501,8 @@ function renderMacroBody() {
     console.log('Rendering macro body, first 3 times:', state.dataMacro.slice(0, 3).map(r => r.publish_time));
     
     tbody.innerHTML = state.dataMacro.map((row, idx) => {
-        // Use headline directly
-        const headline = row.headline || '';
+        // Use translated headline based on current language
+        const headline = getTranslatedHeadline(row, state.lang);
         
         // Highlight headline in yellow if news_impact_score >= 30
         const impactScore = row.news_impact_score || 0;

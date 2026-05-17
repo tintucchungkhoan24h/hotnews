@@ -418,6 +418,7 @@ async function fetchData() {
         state.totalCount = 0;
     } finally {
         document.getElementById('loadingState').classList.add('hidden');
+        await prefetchHeadlineTranslations(state.data, state.lang);
         renderBody();
         renderPaginationUI();
     }
@@ -574,7 +575,7 @@ function renderBody() {
     tbody.innerHTML = state.data.map((row, idx) => {
         const name = getTranslatedOrgan(row.single_stock, row.organ_name, state.lang);
         const industry = getTranslatedIndustry(row.industry_vn, state.lang);
-        const headline = row.headline || '';
+        const headline = getTranslatedHeadline(row, state.lang);
         const pct = row.price_change_today_pct || 0;
         const color = pct > 0 ? 'text-fin-green' : (pct < 0 ? 'text-fin-red' : 'text-gray-400');
         
