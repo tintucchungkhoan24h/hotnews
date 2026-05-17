@@ -115,11 +115,11 @@ function updateMacroViewLabels() {
 
 // Setup all event listeners for macro view
 function setupMacroViewEventListeners() {
-    // Search input with Vietnamese text normalization
+    // Search input — store raw value; filtering happens at fetch time
     const searchInput = document.getElementById('searchInputMacro');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
-            state.searchQueryMacro = normalizeVietnamese(e.target.value);
+            state.searchQueryMacro = e.target.value;
             state.currentPageMacro = 0;
             fetchMacroData();
         });
@@ -159,7 +159,7 @@ function setupMacroViewEventListeners() {
     }
 }
 
-// ─── Vietnamese Text Normalization ─────────────────────────────────────────
+// ─── Language-Aware Search Helpers ────────────────────────────────────────
 
 function normalizeVietnamese(text) {
     if (!text) return '';
@@ -189,6 +189,35 @@ function normalizeVietnamese(text) {
     }
     
     return normalized;
+}
+
+/**
+ * Get the text to search against for a given row, based on current language.
+ * - Vietnamese (vi): normalize diacritics so partial matches work without accents.
+ * - Other languages: use the translated headline (lowercased), falling back to
+ *   the Vietnamese headline so rows without a translation are still searchable.
+ */
+function getMacroSearchText(row, lang) {
+    if (lang === 'vi') {
+        // Vietnamese — diacritic-insensitive search on the raw headline
+        return normalizeVietnamese(row.headline || '');
+    }
+    // Other languages — search on the translated headline (already fetched in cache)
+    const translated = (typeof getTranslatedHeadline === 'function')
+        ? getTranslatedHeadline(row, lang)
+        : (row.headline || '');
+    return translated.toLowerCase();
+}
+
+/**
+ * Normalize the user's search query to match getMacroSearchText output.
+ * - Vietnamese: strip diacritics.
+ * - Other languages: lowercase only.
+ */
+function normalizeMacroQuery(query, lang) {
+    if (!query) return '';
+    if (lang === 'vi') return normalizeVietnamese(query);
+    return query.toLowerCase();
 }
 
 // ─── Data Fetching ─────────────────────────────────────────────────────────
@@ -267,12 +296,19 @@ async function fetchMacroData() {
                 console.error('Supabase error:', json);
                 allData = [];
             } else {
-                // Client-side filtering with Vietnamese normalization
-                const normalizedQuery = normalizeVietnamese(state.searchQueryMacro);
+                // For non-Vietnamese languages, prefetch translations before filtering
+                // so getMacroSearchText can read from the headline cache
+                if (state.lang !== 'vi') {
+                    await prefetchHeadlineTranslations(json, state.lang);
+                }
+                
+                // Client-side filtering — language-aware
+                const normalizedQuery = normalizeMacroQuery(state.searchQueryMacro, state.lang);
                 allData = json.filter(row => {
-                    const normalizedHeadline = normalizeVietnamese(row.headline || '');
-                    return normalizedHeadline.includes(normalizedQuery);
+                    const searchText = getMacroSearchText(row, state.lang);
+                    return searchText.includes(normalizedQuery);
                 });
+
                 
                 // After filtering, re-sort client-side to maintain correct order
                 console.log('Table: Re-sorting after filter by', sortColumn, sortOrder);
@@ -665,10 +701,10 @@ async function exportMacroToExcel() {
         
         // Apply client-side Vietnamese search filter if exists (same as table)
         if (state.searchQueryMacro) {
-            const normalizedQuery = normalizeVietnamese(state.searchQueryMacro);
+            const normalizedQuery = normalizeMacroQuery(state.searchQueryMacro, state.lang);
             allData = allData.filter(row => {
-                const normalizedHeadline = normalizeVietnamese(row.headline || '');
-                return normalizedHeadline.includes(normalizedQuery);
+                const searchText = getMacroSearchText(row, state.lang);
+                return searchText.includes(normalizedQuery);
             });
             
             // After filtering, re-sort client-side to maintain correct order
