@@ -479,8 +479,20 @@ function refreshMacroData() {
             icon.style.transform = 'rotate(0deg)';
         }, 600);
     }
+
+    // Clear headline translation cache for the current language so that
+    // all translations are re-fetched fresh from mul_lang_headline.
+    if (window.headlineTranslationCache && state.lang && state.lang !== 'vi') {
+        const suffix = `_${state.lang}`;
+        Object.keys(window.headlineTranslationCache).forEach(key => {
+            if (key.endsWith(suffix)) {
+                delete window.headlineTranslationCache[key];
+            }
+        });
+        console.log(`[Refresh] Cleared translation cache for lang="${state.lang}"`);
+    }
     
-    // Reset to first page and refetch
+    // Reset to first page and refetch (main data + translations)
     state.currentPageMacro = 0;
     fetchMacroData();
 }

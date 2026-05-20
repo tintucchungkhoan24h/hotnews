@@ -514,8 +514,21 @@ function refreshSpotlightData() {
             icon.style.transform = 'rotate(0deg)';
         }, 600);
     }
-    
-    // Reset to first page and refetch
+
+    // Clear headline translation cache for the current language so that
+    // all translations are re-fetched fresh from mul_lang_headline.
+    const _sLang = (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang;
+    if (window.headlineTranslationCache && _sLang && _sLang !== 'vi') {
+        const suffix = `_${_sLang}`;
+        Object.keys(window.headlineTranslationCache).forEach(key => {
+            if (key.endsWith(suffix)) {
+                delete window.headlineTranslationCache[key];
+            }
+        });
+        console.log(`[Refresh Spotlight] Cleared translation cache for lang="${_sLang}"`);
+    }
+
+    // Reset to first page and refetch (main data + translations)
     stateSpotlight.currentPage = 0;
     fetchSpotlightData();
 }

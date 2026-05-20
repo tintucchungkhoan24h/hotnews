@@ -501,8 +501,20 @@ function refreshStableData() {
             icon.style.transform = 'rotate(0deg)';
         }, 600);
     }
-    
-    // Reset to first page and refetch
+
+    // Clear headline translation cache for the current language so that
+    // all translations are re-fetched fresh from mul_lang_headline.
+    if (window.headlineTranslationCache && stateStable.lang && stateStable.lang !== 'vi') {
+        const suffix = `_${stateStable.lang}`;
+        Object.keys(window.headlineTranslationCache).forEach(key => {
+            if (key.endsWith(suffix)) {
+                delete window.headlineTranslationCache[key];
+            }
+        });
+        console.log(`[Refresh Stable] Cleared translation cache for lang="${stateStable.lang}"`);
+    }
+
+    // Reset to first page and refetch (main data + translations)
     stateStable.currentPage = 0;
     fetchStableData();
 }
