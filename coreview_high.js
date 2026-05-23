@@ -620,7 +620,7 @@ function renderHighBody() {
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(stateHigh.currentPage * stateHigh.pageSize) + idx + 1}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${formatHighDateTime(row.publish_time)}</td>
                 <td class="px-4 py-4">
-                    <span class="stock-badge" onclick="openTvChart('${row.single_stock || ''}')" title="${i18n[stateHigh.lang].chartTooltip}">
+                    <span class="stock-badge" onclick="openTvChart('${row.single_stock || ''}', '${row.com_group_code || ''}')" title="${i18n[stateHigh.lang].chartTooltip}">
                         ${row.single_stock || '-'}
                         <svg class="chart-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
