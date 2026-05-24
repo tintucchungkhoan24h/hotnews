@@ -308,7 +308,7 @@
         "ma15": "MA15",
         "industry": "Industry",
         "source": "Source",
-        "volumeLabel": "Volume (M)",
+        "volumeLabel": "Volume (Million)",
         "volumeMinPlaceholder": "Min",
         "volumeMaxPlaceholder": "Max",
         "volumeDescription": "Volume: {min} – {max}",

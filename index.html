@@ -1019,25 +1019,6 @@
             const picker = pickers[id];
             const loc    = dpLocale[state.lang];
             const { viewYear, viewMonth, value, min, max } = picker;
-
-            if (picker.mode === 'year') {
-                renderYearView(id, loc);
-            } else if (picker.mode === 'month') {
-                renderMonthView(id, loc);
-            } else {
-                renderDayView(id, loc);
-            }
-        }
-
-        function renderDayView(id, loc) {
-            const picker = pickers[id];
-            const { viewYear, viewMonth, value, min, max } = picker;
-            const minDate = min ? parseISOtoGMT7(min) : null;
-            const maxDate = max ? parseISOtoGMT7(max) : null;
-            const today   = getGMT7Date();
-
-            // First day of month (adjust: Mon=0 ... Sun=6)
-            const firstDay = createGMT7Date(viewYear, viewMonth, 1);
             let startDow = firstDay.getDay(); // 0=Sun
             startDow = (startDow === 0) ? 6 : startDow - 1; // Mon-based
 
@@ -1635,9 +1616,11 @@
 
         // Cache volume bounds per tab so synchronous handlers can use the same full-range values
         const volumeBoundsCache = {};
+        // Store initial volume defaults as seen when the filter popup was first opened
+        const volumeDefaults = {};
 
         // Open filter popup
-        function openFilterPopup() {
+        async function openFilterPopup() {
             const popup = document.getElementById('filterPopup');
             const overlay = document.getElementById('filterOverlay');
             const title = document.getElementById('filterPopupTitle');
@@ -1685,9 +1668,24 @@
             // Refresh volume bounds cache before showing the filter popup
             delete volumeBoundsCache[currentTab];
 
-            // Build filter content based on current tab
-            buildFilterContent();
-            
+            // Build filter content based on current tab and wait for it to finish
+            await buildFilterContent();
+
+            // Capture the visible volume defaults for this tab if not already stored.
+            try {
+                const minInput = document.getElementById('filterVolumeMin');
+                const maxInput = document.getElementById('filterVolumeMax');
+                if (!volumeDefaults[currentTab] && minInput && maxInput) {
+                    const min = parseVolumeNumber(minInput.value);
+                    const max = parseVolumeNumber(maxInput.value);
+                    if (Number.isFinite(min) && Number.isFinite(max)) {
+                        volumeDefaults[currentTab] = { min: Number(min.toFixed(2)), max: Number(max.toFixed(2)) };
+                    }
+                }
+            } catch (e) {
+                console.warn('Error capturing volume defaults:', e);
+            }
+
             popup.classList.add('open');
             overlay.classList.add('open');
         }
@@ -1708,7 +1706,7 @@
             
             const content = document.getElementById('filterContent');
             const t = i18n[state.lang].filter;
-            const volumeLabel = i18n[state.lang].cols?.current_volume || t.volumeLabel;
+            const volumeLabel = t.volumeLabel || i18n[state.lang].cols?.current_volume;
             
             if (currentTab === 'stock' || currentTab === 'stable' || currentTab === 'high' || currentTab === 'watchlist' || currentTab === 'spotlight') {
                 // Determine which filter state to use
@@ -1767,6 +1765,11 @@
                 const volumeBounds = await fetchVolumeBoundsForTab(currentTab);
                 console.log('Fetched volume bounds for tab', currentTab, volumeBounds);
                 volumeBoundsCache[currentTab] = volumeBounds;
+                // Persist per-tab defaults on the filter state itself so Clear All
+                // can restore the exact values that were shown when the popup opened.
+                if (!tabFilterState.volumeDefaults) {
+                    tabFilterState.volumeDefaults = { min: volumeBounds.min, max: volumeBounds.max };
+                }
                 if (!tabFilterState.volume || typeof tabFilterState.volume !== 'object') {
                     tabFilterState.volume = { min: volumeBounds.min, max: volumeBounds.max };
                 } else {
@@ -1934,6 +1937,28 @@
                         <button class="filter-btn filter-btn-apply" onclick="applyFilters()">${t.apply}</button>
                     </div>
                 `;
+
+                // Ensure the rendered inputs keep an immutable defaultValue to restore later
+                try {
+                    const minEl = document.getElementById('filterVolumeMin');
+                    const maxEl = document.getElementById('filterVolumeMax');
+                    if (minEl && maxEl) {
+                        // Store the initial displayed values on the DOM elements
+                        minEl.defaultValue = minEl.value;
+                        maxEl.defaultValue = maxEl.value;
+
+                        // Also persist to filterState for extra reliability
+                        if (!tabFilterState.volumeDefaults) {
+                            const dmin = parseVolumeNumber(minEl.value);
+                            const dmax = parseVolumeNumber(maxEl.value);
+                            if (Number.isFinite(dmin) && Number.isFinite(dmax)) {
+                                tabFilterState.volumeDefaults = { min: Number(dmin.toFixed(2)), max: Number(dmax.toFixed(2)) };
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Could not set volume input defaults:', e);
+                }
                 
                 // Setup search handlers
                 setupFilterSearch('filterSearchStock', 'filterOptionsStock');
@@ -2481,8 +2506,26 @@
                     // Set to __NONE__ to indicate "nothing selected"
                     filterState[tab][field].add('__NONE__');
                 } else if (field === 'volume') {
-                    const bounds = getVolumeBoundsForTab(tab);
-                    filterState[tab].volume = { min: bounds.min, max: bounds.max };
+                    // Reset volume to the defaults captured when the popup was first opened.
+                    // Prefer stored `volumeDefaults`, then try reading the inputs' initial
+                    // values (input.defaultValue), then fall back to computed bounds.
+                    // Prefer per-tab stored defaults on the filter state, then global cache, then input defaults
+                    let defaults = (filterState[tab] && filterState[tab].volumeDefaults) ? filterState[tab].volumeDefaults : volumeDefaults[tab];
+                    if (!defaults) {
+                        const minInput = document.getElementById('filterVolumeMin');
+                        const maxInput = document.getElementById('filterVolumeMax');
+                        if (minInput && maxInput) {
+                            const tryMin = parseVolumeNumber(minInput.defaultValue || minInput.value);
+                            const tryMax = parseVolumeNumber(maxInput.defaultValue || maxInput.value);
+                            if (Number.isFinite(tryMin) && Number.isFinite(tryMax)) {
+                                defaults = { min: Number(tryMin.toFixed(2)), max: Number(tryMax.toFixed(2)) };
+                            }
+                        }
+                    }
+                    if (!defaults) {
+                        defaults = getVolumeBoundsForTab(tab);
+                    }
+                    filterState[tab].volume = { min: defaults.min, max: defaults.max };
                 }
             });
             
@@ -2498,8 +2541,9 @@
                     filterState[tab][field].clear();
                     // Empty set means "all selected"
                 } else if (field === 'volume') {
-                    const bounds = getVolumeBoundsForTab(tab);
-                    filterState[tab].volume = { min: bounds.min, max: bounds.max };
+                    // Do not change volume when selecting all - keep user's current volume
+                    // This ensures 'Select All' leaves volume untouched per UX requirement.
+                    return;
                 }
             });
             
@@ -2714,12 +2758,12 @@
             return `&or=(${stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',')})`;
         }
 
-        function buildTabFilterQuery(tab, includeVolume = true) {
+        function buildTabFilterQuery(tab, includeVolume = true, treatNoneAsAll = false) {
             const filters = [];
             const tabFilterState = filterState[tab];
             if (!tabFilterState) return '';
 
-            if (tabFilterState.single_stock.has('__NONE__')) {
+            if (tabFilterState.single_stock.has('__NONE__') && !treatNoneAsAll) {
                 filters.push('single_stock=eq.__IMPOSSIBLE__');
             } else if (tabFilterState.single_stock.size > 0) {
                 const codes = Array.from(tabFilterState.single_stock);
@@ -2730,7 +2774,7 @@
                 }
             }
 
-            if (tabFilterState.ma15.has('__NONE__')) {
+            if (tabFilterState.ma15.has('__NONE__') && !treatNoneAsAll) {
                 filters.push('pct_ma15=eq.999999');
             } else if (tabFilterState.ma15.size > 0) {
                 const ma15Filters = [];
@@ -2752,7 +2796,7 @@
                 }
             }
 
-            if (tabFilterState.industry.has('__NONE__')) {
+            if (tabFilterState.industry.has('__NONE__') && !treatNoneAsAll) {
                 filters.push('industry_vn=eq.__IMPOSSIBLE__');
             } else if (tabFilterState.industry.size > 0) {
                 const industries = Array.from(tabFilterState.industry).map(ind => encodeURIComponent(ind));
@@ -2779,12 +2823,20 @@
                 return { min: 0, max: 0 };
             }
 
-            const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=min(current_volume),max(current_volume)&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00Z&publish_time=lte.${ctx.dateRange.to}T23:59:59Z${ctx.extraQuery}${buildTabSearchQuery(tab)}${buildTabFilterQuery(tab, false)}`;
+            // Build filter query but sanitize any __NONE__ or __IMPOSSIBLE__ fragments
+            const rawFilter = `${ctx.extraQuery}${buildTabSearchQuery(tab)}${buildTabFilterQuery(tab, false, true)}`;
+            console.debug('fetchVolumeBoundsForTab: rawFilter', rawFilter);
+            const sanitizedFilter = rawFilter.replace(/(&|^)\w+=[^&]*(__NONE__|__IMPOSSIBLE__)/g, '');
+            console.debug('fetchVolumeBoundsForTab: sanitizedFilter', sanitizedFilter);
+            const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=min(current_volume),max(current_volume)&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00Z&publish_time=lte.${ctx.dateRange.to}T23:59:59Z${sanitizedFilter}`;
             try {
+                console.debug('fetchVolumeBoundsForTab: requesting URL', url);
                 const res = await fetch(url, {
                     headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
                 });
+                console.debug('fetchVolumeBoundsForTab: response status', res.status);
                 const json = await res.json();
+                console.debug('fetchVolumeBoundsForTab: response json', json);
                 if (Array.isArray(json) && json.length > 0) {
                     const minValue = parseVolumeNumber(json[0].min);
                     const maxValue = parseVolumeNumber(json[0].max);
@@ -2796,7 +2848,7 @@
                     }
                 }
 
-                console.warn('Volume bounds aggregate returned no valid values, falling back to row fetch for tab:', tab);
+                console.warn('Volume bounds aggregate returned no valid values, falling back to row fetch for tab:', tab, 'rawFilter', rawFilter);
                 return await fetchVolumeBoundsFromRows(tab);
             } catch (e) {
                 console.error('Error fetching volume bounds:', e);
@@ -2817,12 +2869,17 @@
             let hasValue = false;
 
             while (true) {
-                const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=current_volume&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00Z&publish_time=lte.${ctx.dateRange.to}T23:59:59Z${ctx.extraQuery}${buildTabSearchQuery(tab)}${buildTabFilterQuery(tab, false)}&limit=${batchSize}&offset=${offset}`;
+                const rawFilter = `${ctx.extraQuery}${buildTabSearchQuery(tab)}${buildTabFilterQuery(tab, false, true)}`;
+                const sanitizedFilter = rawFilter.replace(/(&|^)\w+=[^&]*(__NONE__|__IMPOSSIBLE__)/g, '');
+                const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=current_volume&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00Z&publish_time=lte.${ctx.dateRange.to}T23:59:59Z${sanitizedFilter}&limit=${batchSize}&offset=${offset}`;
                 try {
+                    console.debug('fetchVolumeBoundsFromRows: requesting URL', url);
                     const res = await fetch(url, {
                         headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
                     });
+                    console.debug('fetchVolumeBoundsFromRows: response status', res.status);
                     const json = await res.json();
+                    console.debug('fetchVolumeBoundsFromRows: received', json && json.length ? `${json.length} rows` : json);
                     if (!Array.isArray(json) || json.length === 0) {
                         break;
                     }
