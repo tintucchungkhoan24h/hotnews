@@ -554,7 +554,7 @@ function renderMacroBody() {
         
         // Highlight headline in yellow if news_impact_score >= 30
         const impactScore = row.news_impact_score || 0;
-        const headlineColor = impactScore >= 50 ? 'text-fin-gold font-semibold' : 'text-gray-300';
+        const headlineColor = impactScore >= 40 ? 'text-fin-gold font-semibold' : 'text-gray-300';
         
         return `
             <tr class="hover:bg-fin-gold/5 transition-colors">
