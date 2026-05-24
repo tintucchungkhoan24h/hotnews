@@ -699,6 +699,11 @@
             flex-direction: column;
             gap: 6px;
         }
+        .volume-input-with-spinner {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
         .volume-input-label {
             font-size: 12px;
             font-weight: 600;
@@ -712,6 +717,30 @@
             background: #0a192f;
             color: #e5e7eb;
             font-size: 13px;
+        }
+        .volume-spinner {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .volume-spinner-btn {
+            width: 32px;
+            height: 28px;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            background: #112240;
+            color: #e5e7eb;
+            font-size: 12px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        .volume-spinner-btn:hover {
+            border-color: #ffd700;
+            color: #ffd700;
         }
         .filter-volume-input:focus {
             outline: none;
@@ -1870,17 +1899,29 @@
                             <div class="volume-input-grid">
                                 <div class="volume-input-item">
                                     <label class="volume-input-label" for="filterVolumeMin">${t.volumeMinPlaceholder}</label>
-                                    <input id="filterVolumeMin" class="filter-volume-input" type="text" inputmode="decimal" autocomplete="off"
-                                        value="${Number(tabFilterState.volume.min).toFixed(2)}"
-                                        onblur="onVolumeInputBlur('${currentTab}', 'min')"
-                                        oninput="onVolumeInputChange('${currentTab}', 'min')">
+                                    <div class="volume-input-with-spinner">
+                                        <input id="filterVolumeMin" class="filter-volume-input" type="text" inputmode="decimal"
+                                            value="${Number(tabFilterState.volume.min).toFixed(2)}"
+                                            onblur="onVolumeInputBlur('${currentTab}', 'min')"
+                                            oninput="onVolumeInputChange('${currentTab}', 'min')">
+                                        <div class="volume-spinner">
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustVolumeInput('${currentTab}', 'min', 0.5)">▲</button>
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustVolumeInput('${currentTab}', 'min', -0.5)">▼</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="volume-input-item">
                                     <label class="volume-input-label" for="filterVolumeMax">${t.volumeMaxPlaceholder}</label>
-                                    <input id="filterVolumeMax" class="filter-volume-input" type="text" inputmode="decimal" autocomplete="off"
-                                        value="${Number(tabFilterState.volume.max).toFixed(2)}"
-                                        onblur="onVolumeInputBlur('${currentTab}', 'max')"
-                                        oninput="onVolumeInputChange('${currentTab}', 'max')">
+                                    <div class="volume-input-with-spinner">
+                                        <input id="filterVolumeMax" class="filter-volume-input" type="text" inputmode="decimal"
+                                            value="${Number(tabFilterState.volume.max).toFixed(2)}"
+                                            onblur="onVolumeInputBlur('${currentTab}', 'max')"
+                                            oninput="onVolumeInputChange('${currentTab}', 'max')">
+                                        <div class="volume-spinner">
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustVolumeInput('${currentTab}', 'max', 0.5)">▲</button>
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustVolumeInput('${currentTab}', 'max', -0.5)">▼</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div id="filterVolumeDescription" class="filter-volume-description">${formatVolumeRangeText(tabFilterState.volume.min, tabFilterState.volume.max)}</div>
@@ -2118,17 +2159,35 @@
             return String(value).replace(/,/g, '.');
         }
 
+        function sanitizeNumericString(value) {
+            let s = normalizeDecimalInput(value);
+            // Allow digits and at most one dot
+            s = s.replace(/[^0-9.]/g, '');
+            const parts = s.split('.');
+            if (parts.length > 2) {
+                s = parts[0] + '.' + parts.slice(1).join('');
+            }
+            return s;
+        }
+
         function onVolumeInputChange(tab, key) {
             const minInput = document.getElementById('filterVolumeMin');
             const maxInput = document.getElementById('filterVolumeMax');
             if (!minInput || !maxInput) return;
 
-            minInput.value = normalizeDecimalInput(minInput.value);
-            maxInput.value = normalizeDecimalInput(maxInput.value);
+            minInput.value = sanitizeNumericString(minInput.value);
+            maxInput.value = sanitizeNumericString(maxInput.value);
 
             const bounds = getVolumeBoundsForTab(tab);
-            let minValue = clampVolumeValue(minInput.value, bounds.min, bounds.max);
-            let maxValue = clampVolumeValue(maxInput.value, bounds.min, bounds.max);
+            let minValue = parseVolumeNumber(minInput.value);
+            let maxValue = parseVolumeNumber(maxInput.value);
+
+            if (!Number.isFinite(minValue)) {
+                minValue = bounds.min;
+            }
+            if (!Number.isFinite(maxValue)) {
+                maxValue = bounds.max;
+            }
 
             if (key === 'min' && minValue > maxValue) {
                 minValue = maxValue;
@@ -2143,17 +2202,68 @@
             updateFilterVolumeDescription(tab);
         }
 
+        function adjustVolumeInput(tab, key, delta) {
+            const input = document.getElementById(`filterVolume${key === 'min' ? 'Min' : 'Max'}`);
+            if (!input) return;
+
+            input.value = sanitizeNumericString(input.value);
+            let value = parseVolumeNumber(input.value);
+            const bounds = getVolumeBoundsForTab(tab);
+
+            if (!Number.isFinite(value)) {
+                value = key === 'min' ? bounds.min : bounds.max;
+            }
+            value = Number((value + delta).toFixed(2));
+
+            if (key === 'min' && value < bounds.min) {
+                value = bounds.min;
+            }
+            if (key === 'max' && value > bounds.max) {
+                value = bounds.max;
+            }
+
+            if (key === 'min') {
+                const maxValue = parseVolumeNumber(document.getElementById('filterVolumeMax')?.value);
+                if (Number.isFinite(maxValue) && value > maxValue) {
+                    value = maxValue;
+                }
+            } else {
+                const minValue = parseVolumeNumber(document.getElementById('filterVolumeMin')?.value);
+                if (Number.isFinite(minValue) && value < minValue) {
+                    value = minValue;
+                }
+            }
+
+            input.value = value.toFixed(2);
+            filterState[tab].volume[key] = value;
+            updateFilterVolumeDescription(tab);
+        }
+
         function onVolumeInputBlur(tab, key) {
             const minInput = document.getElementById('filterVolumeMin');
             const maxInput = document.getElementById('filterVolumeMax');
             if (!minInput || !maxInput) return;
 
-            minInput.value = normalizeDecimalInput(minInput.value);
-            maxInput.value = normalizeDecimalInput(maxInput.value);
+            minInput.value = sanitizeNumericString(minInput.value);
+            maxInput.value = sanitizeNumericString(maxInput.value);
 
             const bounds = getVolumeBoundsForTab(tab);
-            let minValue = clampVolumeValue(minInput.value, bounds.min, bounds.max);
-            let maxValue = clampVolumeValue(maxInput.value, bounds.min, bounds.max);
+            let minValue = parseVolumeNumber(minInput.value);
+            let maxValue = parseVolumeNumber(maxInput.value);
+
+            if (!Number.isFinite(minValue)) {
+                minValue = bounds.min;
+            }
+            if (!Number.isFinite(maxValue)) {
+                maxValue = bounds.max;
+            }
+
+            if (minValue < bounds.min) {
+                minValue = bounds.min;
+            }
+            if (maxValue > bounds.max) {
+                maxValue = bounds.max;
+            }
 
             if (minValue > maxValue) {
                 if (key === 'min') {
