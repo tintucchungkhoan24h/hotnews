@@ -1579,7 +1579,8 @@
                 single_stock: new Set(),
                 ma15: new Set(),
                 industry: new Set(),
-                volume: { min: null, max: null }
+                volume: { min: null, max: null },
+                price: { min: null, max: null }
             },
             macro: {
                 source_name: new Set()
@@ -1588,25 +1589,29 @@
                 single_stock: new Set(),
                 ma15: new Set(),
                 industry: new Set(),
-                volume: { min: null, max: null }
+                volume: { min: null, max: null },
+                price: { min: null, max: null }
             },
             high: {
                 single_stock: new Set(),
                 ma15: new Set(),
                 industry: new Set(),
-                volume: { min: null, max: null }
+                volume: { min: null, max: null },
+                price: { min: null, max: null }
             },
             watchlist: {
                 single_stock: new Set(),
                 ma15: new Set(),
                 industry: new Set(),
-                volume: { min: null, max: null }
+                volume: { min: null, max: null },
+                price: { min: null, max: null }
             },
             spotlight: {
                 single_stock: new Set(),
                 ma15: new Set(),
                 industry: new Set(),
-                volume: { min: null, max: null }
+                volume: { min: null, max: null },
+                price: { min: null, max: null }
             }
         };
         
@@ -1618,10 +1623,12 @@
             'source': false
         };
 
-        // Cache volume bounds per tab so synchronous handlers can use the same full-range values
+        // Cache volume/price bounds per tab so synchronous handlers can use the same full-range values
         const volumeBoundsCache = {};
-        // Store initial volume defaults as seen when the filter popup was first opened
+        const priceBoundsCache = {};
+        // Store initial volume/price defaults as seen when the filter popup was first opened
         const volumeDefaults = {};
+        const priceDefaults = {};
 
         // Open filter popup
         async function openFilterPopup() {
@@ -1669,8 +1676,9 @@
                 }
             }
             
-            // Refresh volume bounds cache before showing the filter popup
+            // Refresh volume/price bounds cache before showing the filter popup
             delete volumeBoundsCache[currentTab];
+            delete priceBoundsCache[currentTab];
 
             // Build filter content based on current tab and wait for it to finish
             await buildFilterContent();
@@ -1711,6 +1719,9 @@
             const content = document.getElementById('filterContent');
             const t = i18n[state.lang].filter;
             const volumeLabel = t.volumeLabel || i18n[state.lang].cols?.current_volume;
+            const priceLabel = t.priceLabel || i18n[state.lang].cols?.current_close;
+            const priceMinPlaceholder = t.priceMinPlaceholder || t.volumeMinPlaceholder || 'Min';
+            const priceMaxPlaceholder = t.priceMaxPlaceholder || t.volumeMaxPlaceholder || 'Max';
             
             if (currentTab === 'stock' || currentTab === 'stable' || currentTab === 'high' || currentTab === 'watchlist' || currentTab === 'spotlight') {
                 // Determine which filter state to use
@@ -1769,10 +1780,16 @@
                 const volumeBounds = await fetchVolumeBoundsForTab(currentTab);
                 console.log('Fetched volume bounds for tab', currentTab, volumeBounds);
                 volumeBoundsCache[currentTab] = volumeBounds;
+                const priceBounds = await fetchPriceBoundsForTab(currentTab);
+                console.log('Fetched price bounds for tab', currentTab, priceBounds);
+                priceBoundsCache[currentTab] = priceBounds;
                 // Persist per-tab defaults on the filter state itself so Clear All
                 // can restore the exact values that were shown when the popup opened.
                 if (!tabFilterState.volumeDefaults) {
                     tabFilterState.volumeDefaults = { min: volumeBounds.min, max: volumeBounds.max };
+                }
+                if (!tabFilterState.priceDefaults) {
+                    tabFilterState.priceDefaults = { min: priceBounds.min, max: priceBounds.max };
                 }
                 if (!tabFilterState.volume || typeof tabFilterState.volume !== 'object') {
                     tabFilterState.volume = { min: volumeBounds.min, max: volumeBounds.max };
@@ -1787,6 +1804,21 @@
                     tabFilterState.volume.max = clampVolumeValue(tabFilterState.volume.max, volumeBounds.min, volumeBounds.max);
                     if (tabFilterState.volume.min > tabFilterState.volume.max) {
                         tabFilterState.volume.min = tabFilterState.volume.max;
+                    }
+                }
+                if (!tabFilterState.price || typeof tabFilterState.price !== 'object') {
+                    tabFilterState.price = { min: priceBounds.min, max: priceBounds.max };
+                } else {
+                    if (tabFilterState.price.min === null || tabFilterState.price.min === undefined) {
+                        tabFilterState.price.min = priceBounds.min;
+                    }
+                    if (tabFilterState.price.max === null || tabFilterState.price.max === undefined) {
+                        tabFilterState.price.max = priceBounds.max;
+                    }
+                    tabFilterState.price.min = clampVolumeValue(tabFilterState.price.min, priceBounds.min, priceBounds.max);
+                    tabFilterState.price.max = clampVolumeValue(tabFilterState.price.max, priceBounds.min, priceBounds.max);
+                    if (tabFilterState.price.min > tabFilterState.price.max) {
+                        tabFilterState.price.min = tabFilterState.price.max;
                     }
                 }
                 
@@ -1931,7 +1963,45 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="filterVolumeDescription" class="filter-volume-description">${formatVolumeRangeText(tabFilterState.volume.min, tabFilterState.volume.max)}</div>
+                            <div id="filterVolumeDescription" class="filter-volume-description">${formatRangeText(volumeLabel, t.volumeUnit, tabFilterState.volume.min, tabFilterState.volume.max)}</div>
+                        </div>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="filter-section">
+                        <div class="filter-section-title" style="cursor:default;">
+                            <span>${priceLabel}</span>
+                        </div>
+                        <div class="filter-section-content expanded filter-volume-section" style="max-height:none;">
+                            <div class="volume-input-grid">
+                                <div class="volume-input-item">
+                                    <label class="volume-input-label" for="filterPriceMin">${priceMinPlaceholder}</label>
+                                    <div class="volume-input-with-spinner">
+                                        <input id="filterPriceMin" class="filter-volume-input" type="text" inputmode="decimal"
+                                            value="${Number(tabFilterState.price.min).toFixed(1)}"
+                                            onblur="onPriceInputBlur('${currentTab}', 'min')"
+                                            oninput="onPriceInputChange('${currentTab}', 'min')">
+                                        <div class="volume-spinner">
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustPriceInput('${currentTab}', 'min', 0.5)">▲</button>
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustPriceInput('${currentTab}', 'min', -0.5)">▼</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="volume-input-item">
+                                    <label class="volume-input-label" for="filterPriceMax">${priceMaxPlaceholder}</label>
+                                    <div class="volume-input-with-spinner">
+                                        <input id="filterPriceMax" class="filter-volume-input" type="text" inputmode="decimal"
+                                            value="${Number(tabFilterState.price.max).toFixed(1)}"
+                                            onblur="onPriceInputBlur('${currentTab}', 'max')"
+                                            oninput="onPriceInputChange('${currentTab}', 'max')">
+                                        <div class="volume-spinner">
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustPriceInput('${currentTab}', 'max', 0.5)">▲</button>
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustPriceInput('${currentTab}', 'max', -0.5)">▼</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="filterPriceDescription" class="filter-volume-description">${formatRangeText(priceLabel, t.priceUnit, tabFilterState.price.min, tabFilterState.price.max, 1)}</div>
                         </div>
                     </div>
                     
@@ -1959,6 +2029,15 @@
                                 tabFilterState.volumeDefaults = { min: Number(dmin.toFixed(2)), max: Number(dmax.toFixed(2)) };
                             }
                         }
+                        const priceMinEl = document.getElementById('filterPriceMin');
+                        const priceMaxEl = document.getElementById('filterPriceMax');
+                        if (priceMinEl && priceMaxEl && !tabFilterState.priceDefaults) {
+                            const pdmin = parseVolumeNumber(priceMinEl.value);
+                            const pdmax = parseVolumeNumber(priceMaxEl.value);
+                            if (Number.isFinite(pdmin) && Number.isFinite(pdmax)) {
+                                tabFilterState.priceDefaults = { min: Number(pdmin.toFixed(2)), max: Number(pdmax.toFixed(2)) };
+                            }
+                        }
                     }
                 } catch (e) {
                     console.warn('Could not set volume input defaults:', e);
@@ -1968,6 +2047,7 @@
                 setupFilterSearch('filterSearchStock', 'filterOptionsStock');
                 setupFilterSearch('filterSearchIndustry', 'filterOptionsIndustry');
                 updateFilterVolumeDescription(currentTab);
+                updateFilterPriceDescription(currentTab);
                 
             } else if (currentTab === 'macro') {
                 // Fetch unique sources for macro filters
@@ -2152,19 +2232,16 @@
             return Number(normalized);
         }
 
-        function formatVolumeRangeText(minM, maxM) {
-            const cols = i18n[state.lang].cols || {};
-            const filterText = i18n[state.lang].filter || {};
-            const label = cols.current_volume || filterText.volumeLabel;
-            const unit = filterText.volumeUnit ? ` ${filterText.volumeUnit}` : '';
+        function formatRangeText(label, unit, minM, maxM, decimals = 2) {
             const fmt = (value) => {
                 const n = parseVolumeNumber(value);
                 if (!Number.isFinite(n)) {
-                    return '0.00';
+                    return decimals === 1 ? '0.0' : '0.00';
                 }
-                return n.toFixed(2);
+                return n.toFixed(decimals);
             };
-            return `${label}: ${fmt(minM)} – ${fmt(maxM)}${unit}`;
+            const unitText = unit ? ` ${unit}` : '';
+            return `${label}: ${fmt(minM)} – ${fmt(maxM)}${unitText}`;
         }
 
         function clampVolumeValue(value, min, max) {
@@ -2185,7 +2262,21 @@
 
             const minValue = Number(minInput.value) || 0;
             const maxValue = Number(maxInput.value) || 0;
-            desc.textContent = formatVolumeRangeText(minValue, maxValue);
+            desc.textContent = formatRangeText(i18n[state.lang].filter.volumeLabel || i18n[state.lang].cols?.current_volume, i18n[state.lang].filter.volumeUnit, minValue, maxValue);
+        }
+
+        function updateFilterPriceDescription(tab) {
+            const minInput = document.getElementById('filterPriceMin');
+            const maxInput = document.getElementById('filterPriceMax');
+            const desc = document.getElementById('filterPriceDescription');
+            if (!minInput || !maxInput || !desc) return;
+
+            const t = i18n[state.lang].filter;
+            const label = t.priceLabel || i18n[state.lang].cols?.current_close;
+            const unit = t.priceUnit || '';
+            const minValue = Number(minInput.value) || 0;
+            const maxValue = Number(maxInput.value) || 0;
+            desc.textContent = formatRangeText(label, unit, minValue, maxValue, 1);
         }
 
         function normalizeDecimalInput(value) {
@@ -2241,6 +2332,105 @@
 
             // Refresh the description using the current typed values where possible.
             updateFilterVolumeDescription(tab);
+        }
+
+        function onPriceInputChange(tab, key) {
+            const minInput = document.getElementById('filterPriceMin');
+            const maxInput = document.getElementById('filterPriceMax');
+            if (!minInput || !maxInput) return;
+
+            const bounds = getPriceBoundsForTab(tab);
+            let currentMin = parseVolumeNumber(minInput.value);
+            let currentMax = parseVolumeNumber(maxInput.value);
+            if (!Number.isFinite(currentMin)) currentMin = bounds.min;
+            if (!Number.isFinite(currentMax)) currentMax = bounds.max;
+
+            if (key === 'min' && currentMin > currentMax) {
+                currentMin = currentMax;
+            }
+            if (key === 'max' && currentMax < currentMin) {
+                currentMax = currentMin;
+            }
+
+            filterState[tab].price = { min: Number(currentMin.toFixed(1)), max: Number(currentMax.toFixed(1)) };
+            updateFilterPriceDescription(tab);
+        }
+
+        function adjustPriceInput(tab, key, delta) {
+            const input = document.getElementById(`filterPrice${key === 'min' ? 'Min' : 'Max'}`);
+            if (!input) return;
+
+            input.value = sanitizeNumericString(input.value);
+            let value = parseVolumeNumber(input.value);
+            const bounds = getPriceBoundsForTab(tab);
+
+            if (!Number.isFinite(value)) {
+                value = key === 'min' ? bounds.min : bounds.max;
+            }
+            value = Number((value + delta).toFixed(2));
+
+            if (key === 'min' && value < bounds.min) {
+                value = bounds.min;
+            }
+            if (key === 'max' && value > bounds.max) {
+                value = bounds.max;
+            }
+
+            if (key === 'min') {
+                const maxValue = parseVolumeNumber(document.getElementById('filterPriceMax')?.value);
+                if (Number.isFinite(maxValue) && value > maxValue) {
+                    value = maxValue;
+                }
+            } else {
+                const minValue = parseVolumeNumber(document.getElementById('filterPriceMin')?.value);
+                if (Number.isFinite(minValue) && value < minValue) {
+                    value = minValue;
+                }
+            }
+
+            input.value = value.toFixed(1);
+            filterState[tab].price[key] = Number(value.toFixed(1));
+            updateFilterPriceDescription(tab);
+        }
+
+        function onPriceInputBlur(tab, key) {
+            const minInput = document.getElementById('filterPriceMin');
+            const maxInput = document.getElementById('filterPriceMax');
+            if (!minInput || !maxInput) return;
+
+            minInput.value = sanitizeNumericString(minInput.value);
+            maxInput.value = sanitizeNumericString(maxInput.value);
+
+            const bounds = getPriceBoundsForTab(tab);
+            let minValue = parseVolumeNumber(minInput.value);
+            let maxValue = parseVolumeNumber(maxInput.value);
+
+            if (!Number.isFinite(minValue)) {
+                minValue = bounds.min;
+            }
+            if (!Number.isFinite(maxValue)) {
+                maxValue = bounds.max;
+            }
+
+            if (minValue < bounds.min) {
+                minValue = bounds.min;
+            }
+            if (maxValue > bounds.max) {
+                maxValue = bounds.max;
+            }
+
+            if (minValue > maxValue) {
+                if (key === 'min') {
+                    minValue = maxValue;
+                } else {
+                    maxValue = minValue;
+                }
+            }
+
+            minInput.value = minValue.toFixed(1);
+            maxInput.value = maxValue.toFixed(1);
+            filterState[tab].price = { min: Number(minValue.toFixed(1)), max: Number(maxValue.toFixed(1)) };
+            updateFilterPriceDescription(tab);
         }
 
         function adjustVolumeInput(tab, key, delta) {
@@ -2513,15 +2703,17 @@
                     filterState[tab][field].clear();
                     // Set to __NONE__ to indicate "nothing selected"
                     filterState[tab][field].add('__NONE__');
-                } else if (field === 'volume') {
-                    // Reset volume to the defaults captured when the popup was first opened.
-                    // Prefer stored `volumeDefaults`, then try reading the inputs' initial
-                    // values (input.defaultValue), then fall back to computed bounds.
-                    // Prefer per-tab stored defaults on the filter state, then global cache, then input defaults
-                    let defaults = (filterState[tab] && filterState[tab].volumeDefaults) ? filterState[tab].volumeDefaults : volumeDefaults[tab];
+                } else if (field === 'volume' || field === 'price') {
+                    const isPrice = field === 'price';
+                    const defaultsKey = isPrice ? 'priceDefaults' : 'volumeDefaults';
+                    const globalDefaults = isPrice ? priceDefaults[tab] : volumeDefaults[tab];
+                    const boundsFn = isPrice ? getPriceBoundsForTab : getVolumeBoundsForTab;
+                    const inputPrefix = isPrice ? 'filterPrice' : 'filterVolume';
+
+                    let defaults = (filterState[tab] && filterState[tab][defaultsKey]) ? filterState[tab][defaultsKey] : globalDefaults;
                     if (!defaults) {
-                        const minInput = document.getElementById('filterVolumeMin');
-                        const maxInput = document.getElementById('filterVolumeMax');
+                        const minInput = document.getElementById(`${inputPrefix}Min`);
+                        const maxInput = document.getElementById(`${inputPrefix}Max`);
                         if (minInput && maxInput) {
                             const tryMin = parseVolumeNumber(minInput.defaultValue || minInput.value);
                             const tryMax = parseVolumeNumber(maxInput.defaultValue || maxInput.value);
@@ -2531,9 +2723,9 @@
                         }
                     }
                     if (!defaults) {
-                        defaults = getVolumeBoundsForTab(tab);
+                        defaults = boundsFn(tab);
                     }
-                    filterState[tab].volume = { min: defaults.min, max: defaults.max };
+                    filterState[tab][field] = { min: defaults.min, max: defaults.max };
                 }
             });
             
@@ -2548,13 +2740,17 @@
                 if (filterState[tab][field] instanceof Set) {
                     filterState[tab][field].clear();
                     // Empty set means "all selected"
-                } else if (field === 'volume') {
-                    // Reset volume to the defaults (same as Clear All) when Select All is used
-                    const stateDefaults = (filterState[tab] && filterState[tab].volumeDefaults) ? filterState[tab].volumeDefaults : null;
-                    let defaults = stateDefaults || volumeDefaults[tab] || null;
+                } else if (field === 'volume' || field === 'price') {
+                    const isPrice = field === 'price';
+                    const stateDefaults = (filterState[tab] && filterState[tab][isPrice ? 'priceDefaults' : 'volumeDefaults']) ? filterState[tab][isPrice ? 'priceDefaults' : 'volumeDefaults'] : null;
+                    const globalDefaults = isPrice ? priceDefaults[tab] : volumeDefaults[tab] || null;
+                    const inputPrefix = isPrice ? 'filterPrice' : 'filterVolume';
+                    const boundsFn = isPrice ? getPriceBoundsForTab : getVolumeBoundsForTab;
+
+                    let defaults = stateDefaults || globalDefaults;
                     if (!defaults) {
-                        const minInput = document.getElementById('filterVolumeMin');
-                        const maxInput = document.getElementById('filterVolumeMax');
+                        const minInput = document.getElementById(`${inputPrefix}Min`);
+                        const maxInput = document.getElementById(`${inputPrefix}Max`);
                         if (minInput && maxInput) {
                             const tryMin = parseVolumeNumber(minInput.defaultValue || minInput.value);
                             const tryMax = parseVolumeNumber(maxInput.defaultValue || maxInput.value);
@@ -2564,13 +2760,13 @@
                         }
                     }
                     if (!defaults) {
-                        defaults = getVolumeBoundsForTab(tab);
+                        defaults = boundsFn(tab);
                     }
                     if (!defaults || !Number.isFinite(defaults.min) || !Number.isFinite(defaults.max)) {
                         defaults = { min: 0, max: 0 };
                     }
                     if (defaults.min > defaults.max) defaults.max = defaults.min;
-                    filterState[tab].volume = { min: defaults.min, max: defaults.max };
+                    filterState[tab][field] = { min: defaults.min, max: defaults.max };
                 }
             });
             
@@ -2812,7 +3008,7 @@
             return `&or=(${stockCodes.map(code => `single_stock.ilike.*${code}*`).join(',')})`;
         }
 
-        function buildTabFilterQuery(tab, includeVolume = true, treatNoneAsAll = false) {
+        function buildTabFilterQuery(tab, includeVolume = true, includePrice = true, treatNoneAsAll = false) {
             const filters = [];
             const tabFilterState = filterState[tab];
             if (!tabFilterState) return '';
@@ -2866,6 +3062,13 @@
                 const maxVolume = Math.ceil(tabFilterState.volume.max * 1000000);
                 filters.push(`current_volume=gte.${minVolume}`);
                 filters.push(`current_volume=lte.${maxVolume}`);
+            }
+
+            if (includePrice && tabFilterState.price && typeof tabFilterState.price.min === 'number' && typeof tabFilterState.price.max === 'number') {
+                const minPrice = Math.floor(tabFilterState.price.min * 1000);
+                const maxPrice = Math.ceil(tabFilterState.price.max * 1000);
+                filters.push(`current_close=gte.${minPrice}`);
+                filters.push(`current_close=lte.${maxPrice}`);
             }
 
             return filters.length > 0 ? '&' + filters.join('&') : '';
@@ -2999,7 +3202,132 @@
             };
         }
 
-        // Get unique sources from ALL data (not filtered by date)
+        async function fetchPriceBoundsForTab(tab) {
+            const ctx = getTabQueryContext(tab);
+            if (!ctx.dateRange.from || !ctx.dateRange.to) {
+                return { min: 0, max: 0 };
+            }
+
+            const rawFilter = `${ctx.extraQuery}${buildTabSearchQuery(tab)}${buildTabFilterQuery(tab, true, false, true)}`;
+            console.debug('fetchPriceBoundsForTab: rawFilter', rawFilter);
+            const sanitizedFilter = rawFilter.replace(/(&|^)\w+=[^&]*(__NONE__|__IMPOSSIBLE__)/g, '');
+            console.debug('fetchPriceBoundsForTab: sanitizedFilter', sanitizedFilter);
+            const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=min(current_close),max(current_close)&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00Z&publish_time=lte.${ctx.dateRange.to}T23:59:59Z${sanitizedFilter}`;
+            try {
+                console.debug('fetchPriceBoundsForTab: requesting URL', url);
+                const res = await fetch(url, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                });
+                console.debug('fetchPriceBoundsForTab: response status', res.status);
+                const json = await res.json();
+                console.debug('fetchPriceBoundsForTab: response json', json);
+                if (Array.isArray(json) && json.length > 0) {
+                    const minValue = parseVolumeNumber(json[0].min);
+                    const maxValue = parseVolumeNumber(json[0].max);
+                    if (Number.isFinite(minValue) && Number.isFinite(maxValue)) {
+                        const minThousands = Math.floor(minValue / 10) / 100;
+                        const maxThousands = Math.ceil(maxValue / 10) / 100;
+                        return {
+                            min: Number(minThousands.toFixed(2)),
+                            max: Number(maxThousands.toFixed(2))
+                        };
+                    }
+                }
+
+                console.warn('Price bounds aggregate returned no valid values, falling back to row fetch for tab:', tab, 'rawFilter', rawFilter);
+                return await fetchPriceBoundsFromRows(tab);
+            } catch (e) {
+                console.error('Error fetching price bounds:', e);
+                return await fetchPriceBoundsFromRows(tab);
+            }
+        }
+
+        async function fetchPriceBoundsFromRows(tab) {
+            const ctx = getTabQueryContext(tab);
+            if (!ctx.dateRange.from || !ctx.dateRange.to) {
+                return { min: 0, max: 0 };
+            }
+
+            const batchSize = 1000;
+            let offset = 0;
+            let minValue = Infinity;
+            let maxValue = -Infinity;
+            let hasValue = false;
+
+            while (true) {
+                const rawFilter = `${ctx.extraQuery}${buildTabSearchQuery(tab)}${buildTabFilterQuery(tab, true, false, true)}`;
+                const sanitizedFilter = rawFilter.replace(/(&|^)\w+=[^&]*(__NONE__|__IMPOSSIBLE__)/g, '');
+                const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=current_close&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00Z&publish_time=lte.${ctx.dateRange.to}T23:59:59Z${sanitizedFilter}&limit=${batchSize}&offset=${offset}`;
+                try {
+                    console.debug('fetchPriceBoundsFromRows: requesting URL', url);
+                    const res = await fetch(url, {
+                        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                    });
+                    console.debug('fetchPriceBoundsFromRows: response status', res.status);
+                    const json = await res.json();
+                    console.debug('fetchPriceBoundsFromRows: received', json && json.length ? `${json.length} rows` : json);
+                    if (!Array.isArray(json) || json.length === 0) {
+                        break;
+                    }
+                    json.forEach(row => {
+                        const value = parseVolumeNumber(row.current_close);
+                        if (Number.isFinite(value)) {
+                            hasValue = true;
+                            minValue = Math.min(minValue, value);
+                            maxValue = Math.max(maxValue, value);
+                        }
+                    });
+                    if (json.length < batchSize) {
+                        break;
+                    }
+                    offset += batchSize;
+                } catch (e) {
+                    console.error('Error fetching price rows for fallback:', e);
+                    break;
+                }
+            }
+
+            if (!hasValue || minValue === Infinity || maxValue === -Infinity) {
+                return { min: 0, max: 0 };
+            }
+            const minThousands = Math.floor(minValue / 10) / 100;
+            const maxThousands = Math.ceil(maxValue / 10) / 100;
+            return {
+                min: Number(minThousands.toFixed(2)),
+                max: Number(maxThousands.toFixed(2))
+            };
+        }
+
+        function getPriceBoundsForTab(tab) {
+            if (priceBoundsCache[tab]) {
+                return priceBoundsCache[tab];
+            }
+
+            const dataMap = {
+                stock: state && state.data ? state.data : [],
+                stable: stateStable && stateStable.data ? stateStable.data : [],
+                high: stateHigh && stateHigh.data ? stateHigh.data : [],
+                watchlist: stateWatchlist && stateWatchlist.data ? stateWatchlist.data : [],
+                spotlight: stateSpotlight && stateSpotlight.data ? stateSpotlight.data : []
+            };
+            const rows = dataMap[tab] || [];
+            const values = rows
+                .map(row => parseVolumeNumber(row.current_close) / 1000)
+                .filter(v => Number.isFinite(v));
+
+            if (values.length === 0) {
+                return { min: 0, max: 0 };
+            }
+
+            const min = Math.min(...values);
+            const max = Math.max(...values);
+            const minRounded = Math.floor(min * 100) / 100;
+            const maxRounded = Math.ceil(max * 100) / 100;
+            return {
+                min: Number(minRounded.toFixed(2)),
+                max: Number(maxRounded.toFixed(2))
+            };
+        }
         async function getUniqueSources() {
             try {
                 console.log('=== GET UNIQUE SOURCES ===');

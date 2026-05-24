@@ -233,6 +233,13 @@ function buildFilterQuery() {
             filters.push(`current_volume=gte.${minVolume}`);
             filters.push(`current_volume=lte.${maxVolume}`);
         }
+
+        if (filterState.stock.price && typeof filterState.stock.price.min === 'number' && typeof filterState.stock.price.max === 'number') {
+            const minPrice = Math.floor(filterState.stock.price.min * 1000);
+            const maxPrice = Math.ceil(filterState.stock.price.max * 1000);
+            filters.push(`current_close=gte.${minPrice}`);
+            filters.push(`current_close=lte.${maxPrice}`);
+        }
     }
     
     return filters.length > 0 ? '&' + filters.join('&') : '';
