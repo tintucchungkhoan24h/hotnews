@@ -34,7 +34,14 @@ function initSpotlightView() {
             setPickerValue('toDateSpotlight', iso);
         }
         stateSpotlight.currentPage = 0;
-        fetchSpotlightData();
+        if (typeof window.invalidateBoundsForTab === 'function') {
+            window.invalidateBoundsForTab('spotlight');
+        }
+        fetchSpotlightData().then(() => {
+            if (typeof window.refreshBoundsForTab === 'function') {
+                window.refreshBoundsForTab('spotlight');
+            }
+        });
     });
     
     createPicker('toDateSpotlight', (iso) => {
@@ -45,7 +52,14 @@ function initSpotlightView() {
             setPickerValue('fromDateSpotlight', iso);
         }
         stateSpotlight.currentPage = 0;
-        fetchSpotlightData();
+        if (typeof window.invalidateBoundsForTab === 'function') {
+            window.invalidateBoundsForTab('spotlight');
+        }
+        fetchSpotlightData().then(() => {
+            if (typeof window.refreshBoundsForTab === 'function') {
+                window.refreshBoundsForTab('spotlight');
+            }
+        });
     });
 
     setPickerLimits('fromDateSpotlight', minDate, maxDate);

@@ -34,7 +34,14 @@ function initWatchlistView() {
             setPickerValue('toDateWatchlist', iso);
         }
         stateWatchlist.currentPage = 0;
-        fetchWatchlistData();
+        if (typeof window.invalidateBoundsForTab === 'function') {
+            window.invalidateBoundsForTab('watchlist');
+        }
+        fetchWatchlistData().then(() => {
+            if (typeof window.refreshBoundsForTab === 'function') {
+                window.refreshBoundsForTab('watchlist');
+            }
+        });
     });
     
     createPicker('toDateWatchlist', (iso) => {
@@ -45,7 +52,14 @@ function initWatchlistView() {
             setPickerValue('fromDateWatchlist', iso);
         }
         stateWatchlist.currentPage = 0;
-        fetchWatchlistData();
+        if (typeof window.invalidateBoundsForTab === 'function') {
+            window.invalidateBoundsForTab('watchlist');
+        }
+        fetchWatchlistData().then(() => {
+            if (typeof window.refreshBoundsForTab === 'function') {
+                window.refreshBoundsForTab('watchlist');
+            }
+        });
     });
 
     setPickerLimits('fromDateWatchlist', minDate, maxDate);

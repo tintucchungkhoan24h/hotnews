@@ -1635,6 +1635,8 @@
             const priceBounds = await fetchPriceBoundsForTab(tab);
             volumeBoundsCache[tab] = volumeBounds;
             priceBoundsCache[tab] = priceBounds;
+            volumeDefaults[tab] = { min: volumeBounds.min, max: volumeBounds.max };
+            priceDefaults[tab] = { min: priceBounds.min, max: priceBounds.max };
 
             const tabFilterState = tab === 'stock' ? filterState.stock :
                 tab === 'stable' ? filterState.stable :
@@ -1643,12 +1645,8 @@
                 tab === 'spotlight' ? filterState.spotlight : null;
 
             if (tabFilterState) {
-                if (!tabFilterState.volumeDefaults) {
-                    tabFilterState.volumeDefaults = { min: volumeBounds.min, max: volumeBounds.max };
-                }
-                if (!tabFilterState.priceDefaults) {
-                    tabFilterState.priceDefaults = { min: priceBounds.min, max: priceBounds.max };
-                }
+                tabFilterState.volumeDefaults = { min: volumeBounds.min, max: volumeBounds.max };
+                tabFilterState.priceDefaults = { min: priceBounds.min, max: priceBounds.max };
             }
         }
 

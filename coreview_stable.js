@@ -34,7 +34,14 @@ function initStableView() {
             setPickerValue('toDateStable', iso);
         }
         stateStable.currentPage = 0;
-        fetchStableData();
+        if (typeof window.invalidateBoundsForTab === 'function') {
+            window.invalidateBoundsForTab('stable');
+        }
+        fetchStableData().then(() => {
+            if (typeof window.refreshBoundsForTab === 'function') {
+                window.refreshBoundsForTab('stable');
+            }
+        });
     });
     
     createPicker('toDateStable', (iso) => {
@@ -45,7 +52,14 @@ function initStableView() {
             setPickerValue('fromDateStable', iso);
         }
         stateStable.currentPage = 0;
-        fetchStableData();
+        if (typeof window.invalidateBoundsForTab === 'function') {
+            window.invalidateBoundsForTab('stable');
+        }
+        fetchStableData().then(() => {
+            if (typeof window.refreshBoundsForTab === 'function') {
+                window.refreshBoundsForTab('stable');
+            }
+        });
     });
 
     setPickerLimits('fromDateStable', minDate, maxDate);

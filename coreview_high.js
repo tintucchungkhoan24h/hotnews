@@ -34,7 +34,14 @@ function initHighView() {
             setPickerValue('toDateHigh', iso);
         }
         stateHigh.currentPage = 0;
-        fetchHighData();
+        if (typeof window.invalidateBoundsForTab === 'function') {
+            window.invalidateBoundsForTab('high');
+        }
+        fetchHighData().then(() => {
+            if (typeof window.refreshBoundsForTab === 'function') {
+                window.refreshBoundsForTab('high');
+            }
+        });
     });
     
     createPicker('toDateHigh', (iso) => {
@@ -45,7 +52,14 @@ function initHighView() {
             setPickerValue('fromDateHigh', iso);
         }
         stateHigh.currentPage = 0;
-        fetchHighData();
+        if (typeof window.invalidateBoundsForTab === 'function') {
+            window.invalidateBoundsForTab('high');
+        }
+        fetchHighData().then(() => {
+            if (typeof window.refreshBoundsForTab === 'function') {
+                window.refreshBoundsForTab('high');
+            }
+        });
     });
 
     setPickerLimits('fromDateHigh', minDate, maxDate);
