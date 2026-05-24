@@ -682,6 +682,46 @@
             padding: 2px 6px;
             border-radius: 4px;
         }
+        .filter-volume-section {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #374151;
+            border-radius: 12px;
+            margin-top: 12px;
+        }
+        .volume-input-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+        .volume-input-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .volume-input-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #d1d5db;
+        }
+        .filter-volume-input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid #374151;
+            background: #0a192f;
+            color: #e5e7eb;
+            font-size: 13px;
+        }
+        .filter-volume-input:focus {
+            outline: none;
+            border-color: #ffd700;
+        }
+        .filter-volume-description {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #d1d5db;
+        }
         .filter-actions {
             display: flex;
             gap: 8px;
@@ -1524,7 +1564,8 @@
             stock: {
                 single_stock: new Set(),
                 ma15: new Set(),
-                industry: new Set()
+                industry: new Set(),
+                volume: { min: null, max: null }
             },
             macro: {
                 source_name: new Set()
@@ -1532,22 +1573,26 @@
             stable: {
                 single_stock: new Set(),
                 ma15: new Set(),
-                industry: new Set()
+                industry: new Set(),
+                volume: { min: null, max: null }
             },
             high: {
                 single_stock: new Set(),
                 ma15: new Set(),
-                industry: new Set()
+                industry: new Set(),
+                volume: { min: null, max: null }
             },
             watchlist: {
                 single_stock: new Set(),
                 ma15: new Set(),
-                industry: new Set()
+                industry: new Set(),
+                volume: { min: null, max: null }
             },
             spotlight: {
                 single_stock: new Set(),
                 ma15: new Set(),
-                industry: new Set()
+                industry: new Set(),
+                volume: { min: null, max: null }
             }
         };
         
@@ -1583,9 +1628,25 @@
                 if (typeof filterState.stock.industry === 'undefined') {
                     filterState.stock.industry = new Set();
                 }
+                if (typeof filterState.stock.volume === 'undefined') {
+                    filterState.stock.volume = { min: null, max: null };
+                }
             } else if (currentTab === 'macro') {
                 if (typeof filterState.macro.source_name === 'undefined') {
                     filterState.macro.source_name = new Set();
+                }
+            } else if (['stable', 'high', 'watchlist', 'spotlight'].includes(currentTab)) {
+                if (typeof filterState[currentTab].single_stock === 'undefined') {
+                    filterState[currentTab].single_stock = new Set();
+                }
+                if (typeof filterState[currentTab].ma15 === 'undefined') {
+                    filterState[currentTab].ma15 = new Set();
+                }
+                if (typeof filterState[currentTab].industry === 'undefined') {
+                    filterState[currentTab].industry = new Set();
+                }
+                if (typeof filterState[currentTab].volume === 'undefined') {
+                    filterState[currentTab].volume = { min: null, max: null };
                 }
             }
             
@@ -1666,6 +1727,18 @@
                 const industryHeaderText = (industrySelectedCount === industries.length) ? 
                     `${t.industry} (${industries.length})` : 
                     `${t.industry} (${industrySelectedCount}/${industries.length})`;
+                
+                const volumeBounds = getVolumeBoundsForTab(currentTab);
+                if (!tabFilterState.volume || typeof tabFilterState.volume !== 'object') {
+                    tabFilterState.volume = { min: volumeBounds.min, max: volumeBounds.max };
+                } else {
+                    if (tabFilterState.volume.min === null || tabFilterState.volume.min === undefined) {
+                        tabFilterState.volume.min = volumeBounds.min;
+                    }
+                    if (tabFilterState.volume.max === null || tabFilterState.volume.max === undefined) {
+                        tabFilterState.volume.max = volumeBounds.max;
+                    }
+                }
                 
                 content.innerHTML = `
                     <!-- Stock Code Filter -->
@@ -1773,6 +1846,34 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Volume Filter -->
+                    <div class="filter-section">
+                        <div class="filter-section-title" style="cursor:default;">
+                            <span>${t.volumeLabel}</span>
+                        </div>
+                        <div class="filter-section-content expanded filter-volume-section" style="max-height:none;">
+                            <div class="volume-input-grid">
+                                <div class="volume-input-item">
+                                    <label class="volume-input-label" for="filterVolumeMin">${t.volumeMinPlaceholder}</label>
+                                    <input id="filterVolumeMin" class="filter-volume-input" type="number" step="0.5" inputmode="decimal"
+                                        min="${volumeBounds.min}" max="${volumeBounds.max}"
+                                        value="${Number(tabFilterState.volume.min).toFixed(2)}"
+                                        onblur="onVolumeInputBlur('${currentTab}', 'min')"
+                                        oninput="onVolumeInputChange('${currentTab}', 'min')">
+                                </div>
+                                <div class="volume-input-item">
+                                    <label class="volume-input-label" for="filterVolumeMax">${t.volumeMaxPlaceholder}</label>
+                                    <input id="filterVolumeMax" class="filter-volume-input" type="number" step="0.5" inputmode="decimal"
+                                        min="${volumeBounds.min}" max="${volumeBounds.max}"
+                                        value="${Number(tabFilterState.volume.max).toFixed(2)}"
+                                        onblur="onVolumeInputBlur('${currentTab}', 'max')"
+                                        oninput="onVolumeInputChange('${currentTab}', 'max')">
+                                </div>
+                            </div>
+                            <div id="filterVolumeDescription" class="filter-volume-description">${formatVolumeRangeText(tabFilterState.volume.min, tabFilterState.volume.max)}</div>
+                        </div>
+                    </div>
                     
                     <!-- Action Buttons -->
                     <div class="filter-actions">
@@ -1784,6 +1885,7 @@
                 // Setup search handlers
                 setupFilterSearch('filterSearchStock', 'filterOptionsStock');
                 setupFilterSearch('filterSearchIndustry', 'filterOptionsIndustry');
+                updateFilterVolumeDescription(currentTab);
                 
             } else if (currentTab === 'macro') {
                 // Fetch unique sources for macro filters
@@ -1930,6 +2032,113 @@
             if (input) input.focus();
         }
 
+        function getVolumeBoundsForTab(tab) {
+            const dataMap = {
+                stock: window.state && window.state.data ? window.state.data : [],
+                stable: window.stateStable && window.stateStable.data ? window.stateStable.data : [],
+                high: window.stateHigh && window.stateHigh.data ? window.stateHigh.data : [],
+                watchlist: window.stateWatchlist && window.stateWatchlist.data ? window.stateWatchlist.data : [],
+                spotlight: window.stateSpotlight && window.stateSpotlight.data ? window.stateSpotlight.data : []
+            };
+            const rows = dataMap[tab] || [];
+            const values = rows
+                .map(row => Number(row.current_volume))
+                .filter(v => Number.isFinite(v));
+
+            if (values.length === 0) {
+                return { min: 0, max: 0 };
+            }
+
+            const min = Math.min(...values) / 1000000;
+            const max = Math.max(...values) / 1000000;
+            return {
+                min: Number(min.toFixed(2)),
+                max: Number(max.toFixed(2))
+            };
+        }
+
+        function formatVolumeRangeText(minM, maxM) {
+            const fmt = (value) => {
+                const n = Number(value);
+                if (!Number.isFinite(n) || n <= 0) {
+                    return '0M';
+                }
+                if (n < 1) {
+                    return `${Math.round(n * 1000)}K`;
+                }
+                return `${n.toFixed(2)}M`;
+            };
+            return `${i18n[state.lang].filter.volumeDescription.replace('{min}', fmt(minM)).replace('{max}', fmt(maxM))}`;
+        }
+
+        function clampVolumeValue(value, min, max) {
+            let num = parseFloat(value);
+            if (Number.isNaN(num)) {
+                num = min;
+            }
+            if (num < min) num = min;
+            if (num > max) num = max;
+            return Number(num.toFixed(2));
+        }
+
+        function updateFilterVolumeDescription(tab) {
+            const minInput = document.getElementById('filterVolumeMin');
+            const maxInput = document.getElementById('filterVolumeMax');
+            const desc = document.getElementById('filterVolumeDescription');
+            if (!minInput || !maxInput || !desc) return;
+
+            const minValue = Number(minInput.value) || 0;
+            const maxValue = Number(maxInput.value) || 0;
+            desc.textContent = formatVolumeRangeText(minValue, maxValue);
+        }
+
+        function onVolumeInputChange(tab, key) {
+            const minInput = document.getElementById('filterVolumeMin');
+            const maxInput = document.getElementById('filterVolumeMax');
+            if (!minInput || !maxInput) return;
+
+            const bounds = getVolumeBoundsForTab(tab);
+            const minValue = clampVolumeValue(minInput.value, bounds.min, bounds.max);
+            const maxValue = clampVolumeValue(maxInput.value, bounds.min, bounds.max);
+
+            if (key === 'min' && minValue > Number(maxInput.value || bounds.max)) {
+                minInput.value = Number(maxValue).toFixed(2);
+            }
+            if (key === 'max' && maxValue < Number(minInput.value || bounds.min)) {
+                maxInput.value = Number(minValue).toFixed(2);
+            }
+
+            filterState[tab].volume = {
+                min: Number(minInput.value) || bounds.min,
+                max: Number(maxInput.value) || bounds.max
+            };
+            updateFilterVolumeDescription(tab);
+        }
+
+        function onVolumeInputBlur(tab, key) {
+            const minInput = document.getElementById('filterVolumeMin');
+            const maxInput = document.getElementById('filterVolumeMax');
+            if (!minInput || !maxInput) return;
+
+            const bounds = getVolumeBoundsForTab(tab);
+            const minValue = clampVolumeValue(minInput.value, bounds.min, bounds.max);
+            const maxValue = clampVolumeValue(maxInput.value, bounds.min, bounds.max);
+            let finalMin = minValue;
+            let finalMax = maxValue;
+            if (finalMin > finalMax) {
+                if (key === 'min') {
+                    finalMin = finalMax;
+                } else {
+                    finalMax = finalMin;
+                }
+            }
+
+            minInput.value = finalMin.toFixed(2);
+            maxInput.value = finalMax.toFixed(2);
+            filterState[tab].volume = { min: finalMin, max: finalMax };
+            updateFilterVolumeDescription(tab);
+        }
+
         // Toggle individual filter (async wrapper)
         async function toggleFilterAsync(tab, field, value) {
             // Check if currently "none selected" (__NONE__ marker)
@@ -2071,9 +2280,10 @@
             // Update toggle button text (Select All / Clear All)
             const toggleBtn = document.querySelector('.filter-btn-clear');
             if (toggleBtn) {
-                const allFieldsSelected = Object.keys(filterState[tab]).every(f =>
-                    filterState[tab][f].size === 0 && !filterState[tab][f].has('__NONE__')
-                );
+                const allFieldsSelected = Object.keys(filterState[tab]).every(f => {
+                    if (!(filterState[tab][f] instanceof Set)) return true;
+                    return filterState[tab][f].size === 0 && !filterState[tab][f].has('__NONE__');
+                });
                 toggleBtn.textContent = allFieldsSelected ? t.clearAll : t.selectAllBtn;
             }
         }
@@ -2118,9 +2328,14 @@
         function clearFilters() {
             const tab = currentTab;
             Object.keys(filterState[tab]).forEach(field => {
-                filterState[tab][field].clear();
-                // Set to __NONE__ to indicate "nothing selected"
-                filterState[tab][field].add('__NONE__');
+                if (filterState[tab][field] instanceof Set) {
+                    filterState[tab][field].clear();
+                    // Set to __NONE__ to indicate "nothing selected"
+                    filterState[tab][field].add('__NONE__');
+                } else if (field === 'volume') {
+                    const bounds = getVolumeBoundsForTab(tab);
+                    filterState[tab].volume = { min: bounds.min, max: bounds.max };
+                }
             });
             
             // Update UI
@@ -2131,8 +2346,13 @@
         function selectAllFilters() {
             const tab = currentTab;
             Object.keys(filterState[tab]).forEach(field => {
-                filterState[tab][field].clear();
-                // Empty set means "all selected"
+                if (filterState[tab][field] instanceof Set) {
+                    filterState[tab][field].clear();
+                    // Empty set means "all selected"
+                } else if (field === 'volume') {
+                    const bounds = getVolumeBoundsForTab(tab);
+                    filterState[tab].volume = { min: bounds.min, max: bounds.max };
+                }
             });
             
             // Update UI
@@ -2145,12 +2365,12 @@
             
             // Check if any filter has __NONE__ (meaning nothing selected)
             const hasNoneSelected = Object.keys(filterState[tab]).some(field => 
-                filterState[tab][field].has('__NONE__')
+                filterState[tab][field] instanceof Set && filterState[tab][field].has('__NONE__')
             );
             
             // Check if all filters are empty (meaning all selected)
             const allEmpty = Object.keys(filterState[tab]).every(field => 
-                filterState[tab][field].size === 0
+                filterState[tab][field] instanceof Set ? filterState[tab][field].size === 0 : true
             );
             
             if (hasNoneSelected || !allEmpty) {
