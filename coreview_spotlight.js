@@ -238,8 +238,15 @@ function buildSpotlightFilterQuery() {
         if (filterState.spotlight.volume && typeof filterState.spotlight.volume.min === 'number' && typeof filterState.spotlight.volume.max === 'number') {
             const minVolume = Math.floor(filterState.spotlight.volume.min * 1000000);
             const maxVolume = Math.ceil(filterState.spotlight.volume.max * 1000000);
-              filters.push(`current_volume=gte.${minVolume}`);
-              filters.push(`current_volume=lte.${maxVolume}`);
+            filters.push(`current_volume=gte.${minVolume}`);
+            filters.push(`current_volume=lte.${maxVolume}`);
+        }
+
+        if (filterState.spotlight.price && typeof filterState.spotlight.price.min === 'number' && typeof filterState.spotlight.price.max === 'number') {
+            const minPrice = Math.floor(filterState.spotlight.price.min * 1000);
+            const maxPrice = Math.ceil(filterState.spotlight.price.max * 1000);
+            filters.push(`current_close=gte.${minPrice}`);
+            filters.push(`current_close=lte.${maxPrice}`);
         }
     }
     

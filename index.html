@@ -1630,6 +1630,43 @@
         const volumeDefaults = {};
         const priceDefaults = {};
 
+        async function refreshBoundsForTab(tab) {
+            const volumeBounds = await fetchVolumeBoundsForTab(tab);
+            const priceBounds = await fetchPriceBoundsForTab(tab);
+            volumeBoundsCache[tab] = volumeBounds;
+            priceBoundsCache[tab] = priceBounds;
+
+            const tabFilterState = tab === 'stock' ? filterState.stock :
+                tab === 'stable' ? filterState.stable :
+                tab === 'high' ? filterState.high :
+                tab === 'watchlist' ? filterState.watchlist :
+                tab === 'spotlight' ? filterState.spotlight : null;
+
+            if (tabFilterState) {
+                if (!tabFilterState.volumeDefaults) {
+                    tabFilterState.volumeDefaults = { min: volumeBounds.min, max: volumeBounds.max };
+                }
+                if (!tabFilterState.priceDefaults) {
+                    tabFilterState.priceDefaults = { min: priceBounds.min, max: priceBounds.max };
+                }
+            }
+        }
+
+        async function ensureBoundsForTab(tab) {
+            if (!volumeBoundsCache[tab] || !priceBoundsCache[tab]) {
+                await refreshBoundsForTab(tab);
+            }
+            return {
+                volume: volumeBoundsCache[tab] || { min: 0, max: 0 },
+                price: priceBoundsCache[tab] || { min: 0, max: 0 }
+            };
+        }
+
+        function invalidateBoundsForTab(tab) {
+            delete volumeBoundsCache[tab];
+            delete priceBoundsCache[tab];
+        }
+
         // Open filter popup
         async function openFilterPopup() {
             const popup = document.getElementById('filterPopup');
@@ -1676,9 +1713,8 @@
                 }
             }
             
-            // Refresh volume/price bounds cache before showing the filter popup
-            delete volumeBoundsCache[currentTab];
-            delete priceBoundsCache[currentTab];
+            // Ensure volume/price bounds are loaded and cached for this tab before showing the popup
+            await ensureBoundsForTab(currentTab);
 
             // Build filter content based on current tab and wait for it to finish
             await buildFilterContent();
@@ -1777,12 +1813,10 @@
                     `${t.industry} (${industries.length})` : 
                     `${t.industry} (${industrySelectedCount}/${industries.length})`;
                 
-                const volumeBounds = await fetchVolumeBoundsForTab(currentTab);
-                console.log('Fetched volume bounds for tab', currentTab, volumeBounds);
-                volumeBoundsCache[currentTab] = volumeBounds;
-                const priceBounds = await fetchPriceBoundsForTab(currentTab);
-                console.log('Fetched price bounds for tab', currentTab, priceBounds);
-                priceBoundsCache[currentTab] = priceBounds;
+                const bounds = await ensureBoundsForTab(currentTab);
+                const volumeBounds = bounds.volume;
+                const priceBounds = bounds.price;
+                console.log('Using cached bounds for tab', currentTab, 'volume', volumeBounds, 'price', priceBounds);
                 // Persist per-tab defaults on the filter state itself so Clear All
                 // can restore the exact values that were shown when the popup opened.
                 if (!tabFilterState.volumeDefaults) {

@@ -240,6 +240,14 @@ function buildWatchlistFilterQuery() {
                 const maxVolume = Math.ceil(filterState.watchlist.volume.max * 1000000);
                 filters.push(`current_volume=gte.${minVolume}`);
                 filters.push(`current_volume=lte.${maxVolume}`);
+            }
+
+            if (filterState.watchlist.price && typeof filterState.watchlist.price.min === 'number' && typeof filterState.watchlist.price.max === 'number') {
+                const minPrice = Math.floor(filterState.watchlist.price.min * 1000);
+                const maxPrice = Math.ceil(filterState.watchlist.price.max * 1000);
+                filters.push(`current_close=gte.${minPrice}`);
+                filters.push(`current_close=lte.${maxPrice}`);
+            }
         }
     }
     

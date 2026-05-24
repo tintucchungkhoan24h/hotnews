@@ -229,6 +229,14 @@ function buildStableFilterQuery() {
                 const maxVolume = Math.ceil(filterState.stable.volume.max * 1000000);
                 filters.push(`current_volume=gte.${minVolume}`);
                 filters.push(`current_volume=lte.${maxVolume}`);
+            }
+
+            if (filterState.stable.price && typeof filterState.stable.price.min === 'number' && typeof filterState.stable.price.max === 'number') {
+                const minPrice = Math.floor(filterState.stable.price.min * 1000);
+                const maxPrice = Math.ceil(filterState.stable.price.max * 1000);
+                filters.push(`current_close=gte.${minPrice}`);
+                filters.push(`current_close=lte.${maxPrice}`);
+            }
         }
     }
     

@@ -34,7 +34,14 @@ function initStockView() {
             setPickerValue('toDate', iso);
         }
         state.currentPage = 0;
-        fetchData();
+        if (typeof window.invalidateBoundsForTab === 'function') {
+            window.invalidateBoundsForTab('stock');
+        }
+        fetchData().then(() => {
+            if (typeof window.refreshBoundsForTab === 'function') {
+                window.refreshBoundsForTab('stock');
+            }
+        });
     });
     
     createPicker('toDate', (iso) => {
@@ -45,7 +52,14 @@ function initStockView() {
             setPickerValue('fromDate', iso);
         }
         state.currentPage = 0;
-        fetchData();
+        if (typeof window.invalidateBoundsForTab === 'function') {
+            window.invalidateBoundsForTab('stock');
+        }
+        fetchData().then(() => {
+            if (typeof window.refreshBoundsForTab === 'function') {
+                window.refreshBoundsForTab('stock');
+            }
+        });
     });
 
     setPickerLimits('fromDate', minDate, maxDate);
@@ -73,7 +87,11 @@ function initStockView() {
     // Initial render
     renderHeaders();
     console.log('Calling initial fetchData...');
-    fetchData();
+    fetchData().then(() => {
+        if (typeof window.refreshBoundsForTab === 'function') {
+            window.refreshBoundsForTab('stock');
+        }
+    });
 }
 
 // Update all stock view labels based on current language
