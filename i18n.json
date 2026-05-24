@@ -316,7 +316,7 @@
         "volumeLabel": "Volume",
         "volumeUnit": "Million",
         "priceLabel": "Price",
-        "priceUnit": "",
+        "priceUnit": "thousand VND",
         "priceMinPlaceholder": "Min",
         "priceMaxPlaceholder": "Max",
         "volumeMinPlaceholder": "Min",
