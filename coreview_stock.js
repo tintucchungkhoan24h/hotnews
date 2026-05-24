@@ -230,8 +230,8 @@ function buildFilterQuery() {
         if (filterState.stock.volume && typeof filterState.stock.volume.min === 'number' && typeof filterState.stock.volume.max === 'number') {
             const minVolume = Math.round(filterState.stock.volume.min * 1000000);
             const maxVolume = Math.round(filterState.stock.volume.max * 1000000);
-            filters.push(`current_volume.gte.${minVolume}`);
-            filters.push(`current_volume.lte.${maxVolume}`);
+            filters.push(`current_volume=gte.${minVolume}`);
+            filters.push(`current_volume=lte.${maxVolume}`);
         }
     }
     
@@ -375,11 +375,14 @@ async function fetchData() {
             }
             
             // Apply filters
-            url += buildFilterQuery();
+            const filterQuery = buildFilterQuery();
+            console.debug('fetchData: Applying filters, filterState.stock.volume =', filterState.stock && filterState.stock.volume, 'filterQuery=', filterQuery);
+            url += filterQuery;
             
             const nullsOrder = state.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
             url += `&order=${getDbField(state.sortCol)}.${state.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
 
+            console.debug('fetchData: requesting URL', url);
             const res = await fetch(url, {
                 headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Range': `${start}-${end}`, 'Prefer': 'count=exact' }
             });

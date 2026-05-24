@@ -2596,7 +2596,34 @@
         // Apply filters
         function applyFilters() {
             closeFilterPopup();
-            
+            // Ensure volume inputs are parsed and stored before applying filters
+            try {
+                const tab = currentTab;
+                const minInput = document.getElementById('filterVolumeMin');
+                const maxInput = document.getElementById('filterVolumeMax');
+                if (minInput && maxInput && filterState[tab]) {
+                    const bounds = getVolumeBoundsForTab(tab);
+                    let minValue = parseVolumeNumber(minInput.value);
+                    let maxValue = parseVolumeNumber(maxInput.value);
+                    if (!Number.isFinite(minValue)) minValue = bounds.min;
+                    if (!Number.isFinite(maxValue)) maxValue = bounds.max;
+                    if (minValue < bounds.min) minValue = bounds.min;
+                    if (maxValue > bounds.max) maxValue = bounds.max;
+                    if (minValue > maxValue) {
+                        // adjust to keep valid
+                        if (minValue === parseVolumeNumber(minInput.value)) {
+                            minValue = maxValue;
+                        } else {
+                            maxValue = minValue;
+                        }
+                    }
+                    filterState[tab].volume = { min: Number(minValue.toFixed(2)), max: Number(maxValue.toFixed(2)) };
+                    updateFilterVolumeDescription(tab);
+                }
+            } catch (e) {
+                console.warn('applyFilters: error parsing volume inputs', e);
+            }
+
             // Trigger data refresh with filters
             if (currentTab === 'stock') {
                 if (typeof fetchData === 'function') {
@@ -2829,8 +2856,8 @@
             if (includeVolume && tabFilterState.volume && typeof tabFilterState.volume.min === 'number' && typeof tabFilterState.volume.max === 'number') {
                 const minVolume = Math.round(tabFilterState.volume.min * 1000000);
                 const maxVolume = Math.round(tabFilterState.volume.max * 1000000);
-                filters.push(`current_volume.gte.${minVolume}`);
-                filters.push(`current_volume.lte.${maxVolume}`);
+                filters.push(`current_volume=gte.${minVolume}`);
+                filters.push(`current_volume=lte.${maxVolume}`);
             }
 
             return filters.length > 0 ? '&' + filters.join('&') : '';

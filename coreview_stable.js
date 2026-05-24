@@ -224,11 +224,11 @@ function buildStableFilterQuery() {
         }
         // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
 
-        if (filterState.stable.volume && typeof filterState.stable.volume.min === 'number' && typeof filterState.stable.volume.max === 'number') {
-            const minVolume = Math.round(filterState.stable.volume.min * 1000000);
-            const maxVolume = Math.round(filterState.stable.volume.max * 1000000);
-            filters.push(`current_volume.gte.${minVolume}`);
-            filters.push(`current_volume.lte.${maxVolume}`);
+            if (filterState.stable.volume && typeof filterState.stable.volume.min === 'number' && typeof filterState.stable.volume.max === 'number') {
+                const minVolume = Math.round(filterState.stable.volume.min * 1000000);
+                const maxVolume = Math.round(filterState.stable.volume.max * 1000000);
+                filters.push(`current_volume=gte.${minVolume}`);
+                filters.push(`current_volume=lte.${maxVolume}`);
         }
     }
     

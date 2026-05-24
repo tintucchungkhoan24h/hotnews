@@ -238,8 +238,8 @@ function buildSpotlightFilterQuery() {
         if (filterState.spotlight.volume && typeof filterState.spotlight.volume.min === 'number' && typeof filterState.spotlight.volume.max === 'number') {
             const minVolume = Math.round(filterState.spotlight.volume.min * 1000000);
             const maxVolume = Math.round(filterState.spotlight.volume.max * 1000000);
-            filters.push(`current_volume.gte.${minVolume}`);
-            filters.push(`current_volume.lte.${maxVolume}`);
+              filters.push(`current_volume=gte.${minVolume}`);
+              filters.push(`current_volume=lte.${maxVolume}`);
         }
     }
     
