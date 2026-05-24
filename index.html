@@ -2541,9 +2541,28 @@
                     filterState[tab][field].clear();
                     // Empty set means "all selected"
                 } else if (field === 'volume') {
-                    // Do not change volume when selecting all - keep user's current volume
-                    // This ensures 'Select All' leaves volume untouched per UX requirement.
-                    return;
+                    // Reset volume to the defaults (same as Clear All) when Select All is used
+                    const stateDefaults = (filterState[tab] && filterState[tab].volumeDefaults) ? filterState[tab].volumeDefaults : null;
+                    let defaults = stateDefaults || volumeDefaults[tab] || null;
+                    if (!defaults) {
+                        const minInput = document.getElementById('filterVolumeMin');
+                        const maxInput = document.getElementById('filterVolumeMax');
+                        if (minInput && maxInput) {
+                            const tryMin = parseVolumeNumber(minInput.defaultValue || minInput.value);
+                            const tryMax = parseVolumeNumber(maxInput.defaultValue || maxInput.value);
+                            if (Number.isFinite(tryMin) && Number.isFinite(tryMax)) {
+                                defaults = { min: Number(tryMin.toFixed(2)), max: Number(tryMax.toFixed(2)) };
+                            }
+                        }
+                    }
+                    if (!defaults) {
+                        defaults = getVolumeBoundsForTab(tab);
+                    }
+                    if (!defaults || !Number.isFinite(defaults.min) || !Number.isFinite(defaults.max)) {
+                        defaults = { min: 0, max: 0 };
+                    }
+                    if (defaults.min > defaults.max) defaults.max = defaults.min;
+                    filterState[tab].volume = { min: defaults.min, max: defaults.max };
                 }
             });
             
