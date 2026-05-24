@@ -2175,30 +2175,38 @@
             const maxInput = document.getElementById('filterVolumeMax');
             if (!minInput || !maxInput) return;
 
-            minInput.value = sanitizeNumericString(minInput.value);
-            maxInput.value = sanitizeNumericString(maxInput.value);
+            // Allow free-form typing: sanitize characters but do not force formatting
+            // or replace the user's partial input while they are typing. Only
+            // update the canonical filter state when the typed value parses to
+            // a finite number. Final formatting is applied on blur or via the
+            // spinner buttons.
+            const sMin = sanitizeNumericString(minInput.value);
+            const sMax = sanitizeNumericString(maxInput.value);
+            // Keep the user's current edit (sanitized) in the field so backspace works
+            minInput.value = sMin;
+            maxInput.value = sMax;
 
             const bounds = getVolumeBoundsForTab(tab);
-            let minValue = parseVolumeNumber(minInput.value);
-            let maxValue = parseVolumeNumber(maxInput.value);
+            const parsedMin = parseVolumeNumber(sMin);
+            const parsedMax = parseVolumeNumber(sMax);
 
-            if (!Number.isFinite(minValue)) {
-                minValue = bounds.min;
-            }
-            if (!Number.isFinite(maxValue)) {
-                maxValue = bounds.max;
+            // Update internal filter state only when values are valid numbers.
+            if (Number.isFinite(parsedMin) && Number.isFinite(parsedMax)) {
+                let minValue = parsedMin;
+                let maxValue = parsedMax;
+
+                if (minValue < bounds.min) minValue = bounds.min;
+                if (maxValue > bounds.max) maxValue = bounds.max;
+
+                if (minValue > maxValue) {
+                    if (key === 'min') minValue = maxValue;
+                    else maxValue = minValue;
+                }
+
+                filterState[tab].volume = { min: Number(minValue.toFixed(2)), max: Number(maxValue.toFixed(2)) };
             }
 
-            if (key === 'min' && minValue > maxValue) {
-                minValue = maxValue;
-            }
-            if (key === 'max' && maxValue < minValue) {
-                maxValue = minValue;
-            }
-
-            minInput.value = minValue.toFixed(2);
-            maxInput.value = maxValue.toFixed(2);
-            filterState[tab].volume = { min: minValue, max: maxValue };
+            // Refresh the description using the current typed values where possible.
             updateFilterVolumeDescription(tab);
         }
 
