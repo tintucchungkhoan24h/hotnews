@@ -171,18 +171,12 @@ function setupWatchlistViewEventListeners() {
 // Helper function to build filter query parameters
 function buildWatchlistFilterQuery() {
     const filters = [];
-    
-    // DEFAULT FILTER: Always add wyckoff_phase = Accumulation for watchlist
     filters.push('wyckoff_phase=eq.Accumulation');
-    
-    // Get filter state from global scope
+
     if (typeof filterState !== 'undefined' && filterState.watchlist) {
-        // Stock code filter
         if (filterState.watchlist.single_stock.has('__NONE__')) {
-            // Special case: nothing selected, return impossible condition
             filters.push('single_stock=eq.__IMPOSSIBLE__');
         } else if (filterState.watchlist.single_stock.size > 0) {
-            // Specific codes selected
             const codes = Array.from(filterState.watchlist.single_stock);
             if (codes.length === 1) {
                 filters.push(`single_stock=eq.${codes[0]}`);
@@ -191,14 +185,10 @@ function buildWatchlistFilterQuery() {
                 filters.push(`or=(${orConditions})`);
             }
         }
-        // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
-        
-        // MA15 filter
+
         if (filterState.watchlist.ma15.has('__NONE__')) {
-            // Special case: nothing selected, return impossible condition
             filters.push('pct_ma15=eq.999999');
         } else if (filterState.watchlist.ma15.size > 0) {
-            // Specific ranges selected
             const ma15Filters = [];
             filterState.watchlist.ma15.forEach(key => {
                 if (key === '⏫ MA15') {
@@ -217,14 +207,10 @@ function buildWatchlistFilterQuery() {
                 filters.push(`or=(${ma15Filters.join(',')})`);
             }
         }
-        // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
-        
-        // Industry filter
+
         if (filterState.watchlist.industry.has('__NONE__')) {
-            // Special case: nothing selected, return impossible condition
             filters.push('industry_vn=eq.__IMPOSSIBLE__');
         } else if (filterState.watchlist.industry.size > 0) {
-            // Specific industries selected
             const industries = Array.from(filterState.watchlist.industry);
             if (industries.length === 1) {
                 filters.push(`industry_vn=eq.${encodeURIComponent(industries[0])}`);
@@ -233,24 +219,22 @@ function buildWatchlistFilterQuery() {
                 filters.push(`or=(${orConditions})`);
             }
         }
-        // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
 
-            if (filterState.watchlist.volume && typeof filterState.watchlist.volume.min === 'number' && typeof filterState.watchlist.volume.max === 'number') {
-                const minVolume = Math.floor(filterState.watchlist.volume.min * 1000000);
-                const maxVolume = Math.ceil(filterState.watchlist.volume.max * 1000000);
-                filters.push(`current_volume=gte.${minVolume}`);
-                filters.push(`current_volume=lte.${maxVolume}`);
-            }
+        if (filterState.watchlist.volume && typeof filterState.watchlist.volume.min === 'number' && typeof filterState.watchlist.volume.max === 'number') {
+            const minVolume = Math.floor(filterState.watchlist.volume.min * 1000000);
+            const maxVolume = Math.ceil(filterState.watchlist.volume.max * 1000000);
+            filters.push(`current_volume=gte.${minVolume}`);
+            filters.push(`current_volume=lte.${maxVolume}`);
+        }
 
-            if (filterState.watchlist.price && typeof filterState.watchlist.price.min === 'number' && typeof filterState.watchlist.price.max === 'number') {
-                const minPrice = Math.floor(filterState.watchlist.price.min * 1000);
-                const maxPrice = Math.ceil(filterState.watchlist.price.max * 1000);
-                filters.push(`current_close=gte.${minPrice}`);
-                filters.push(`current_close=lte.${maxPrice}`);
-            }
+        if (filterState.watchlist.price && typeof filterState.watchlist.price.min === 'number' && typeof filterState.watchlist.price.max === 'number') {
+            const minPrice = Math.floor(filterState.watchlist.price.min * 1000);
+            const maxPrice = Math.ceil(filterState.watchlist.price.max * 1000);
+            filters.push(`current_close=gte.${minPrice}`);
+            filters.push(`current_close=lte.${maxPrice}`);
         }
     }
-    
+
     return filters.length > 0 ? '&' + filters.join('&') : '';
 }
 
@@ -261,6 +245,7 @@ async function fetchWatchlistData() {
     console.log('Current page:', stateWatchlist.currentPage);
     console.log('Page size:', stateWatchlist.pageSize);
     console.log('Sort column:', stateWatchlist.sortCol);
+    console.log('Date range:', stateWatchlist.fromDateWatchlist, '->', stateWatchlist.toDateWatchlist);
     
     try {
         let allData = [];
@@ -277,7 +262,7 @@ async function fetchWatchlistData() {
             console.log('Fetching all records for headline sorting...');
             
             while (hasMore) {
-                let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateWatchlist.fromDateWatchlist}T00:00:00Z&publish_time=lte.${stateWatchlist.toDateWatchlist}T23:59:59Z`;
+                let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateWatchlist.fromDateWatchlist}T00:00:00%2B07:00:00&publish_time=lte.${stateWatchlist.toDateWatchlist}T23:59:59%2B07:00:00`;
                 
                 // Handle multiple stock codes separated by comma
                 if (stateWatchlist.searchQuery) {
@@ -296,6 +281,7 @@ async function fetchWatchlistData() {
                 // Fetch with default order, will sort client-side
                 url += `&order=publish_time.desc&limit=${batchSize}&offset=${offset}`;
                 
+                console.log('Headline fetch URL:', url);
                 console.log(`Fetching batch ${Math.floor(offset / batchSize) + 1}, offset: ${offset}`);
                 
                 const res = await fetch(url, {
@@ -377,7 +363,7 @@ async function fetchWatchlistData() {
             const start = stateWatchlist.currentPage * stateWatchlist.pageSize;
             const end = start + stateWatchlist.pageSize - 1;
             
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateWatchlist.fromDateWatchlist}T00:00:00Z&publish_time=lte.${stateWatchlist.toDateWatchlist}T23:59:59Z`;
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateWatchlist.fromDateWatchlist}T00:00:00%2B07:00:00&publish_time=lte.${stateWatchlist.toDateWatchlist}T23:59:59%2B07:00:00`;
             
             // Handle multiple stock codes separated by comma
             if (stateWatchlist.searchQuery) {
@@ -392,7 +378,7 @@ async function fetchWatchlistData() {
             
             // Apply filters
             url += buildWatchlistFilterQuery();
-            
+            console.log('Fetch URL:', url);
             const nullsOrder = stateWatchlist.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
             url += `&order=${getDbFieldWatchlist(stateWatchlist.sortCol)}.${stateWatchlist.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
 
@@ -823,7 +809,7 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
         let hasMore = true;
 
         while (hasMore) {
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateWatchlist.fromDateWatchlist}T00:00:00Z&publish_time=lte.${stateWatchlist.toDateWatchlist}T23:59:59Z`;
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateWatchlist.fromDateWatchlist}T00:00:00%2B07:00:00&publish_time=lte.${stateWatchlist.toDateWatchlist}T23:59:59%2B07:00:00`;
             
             // Apply search query filter
             if (stateWatchlist.searchQuery) {

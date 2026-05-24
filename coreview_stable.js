@@ -163,15 +163,12 @@ function setupStableViewEventListeners() {
 // Helper function to build filter query parameters
 function buildStableFilterQuery() {
     const filters = [];
-    
-    // Get filter state from global scope
+
     if (typeof filterState !== 'undefined' && filterState.stable) {
         // Stock code filter
         if (filterState.stable.single_stock.has('__NONE__')) {
-            // Special case: nothing selected, return impossible condition
             filters.push('single_stock=eq.__IMPOSSIBLE__');
         } else if (filterState.stable.single_stock.size > 0) {
-            // Specific codes selected
             const codes = Array.from(filterState.stable.single_stock);
             if (codes.length === 1) {
                 filters.push(`single_stock=eq.${codes[0]}`);
@@ -180,14 +177,11 @@ function buildStableFilterQuery() {
                 filters.push(`or=(${orConditions})`);
             }
         }
-        // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
-        
+
         // MA15 filter
         if (filterState.stable.ma15.has('__NONE__')) {
-            // Special case: nothing selected, return impossible condition
             filters.push('pct_ma15=eq.999999');
         } else if (filterState.stable.ma15.size > 0) {
-            // Specific ranges selected
             const ma15Filters = [];
             filterState.stable.ma15.forEach(key => {
                 if (key === '⏫ MA15') {
@@ -206,14 +200,11 @@ function buildStableFilterQuery() {
                 filters.push(`or=(${ma15Filters.join(',')})`);
             }
         }
-        // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
-        
+
         // Industry filter
         if (filterState.stable.industry.has('__NONE__')) {
-            // Special case: nothing selected, return impossible condition
             filters.push('industry_vn=eq.__IMPOSSIBLE__');
         } else if (filterState.stable.industry.size > 0) {
-            // Specific industries selected
             const industries = Array.from(filterState.stable.industry);
             if (industries.length === 1) {
                 filters.push(`industry_vn=eq.${encodeURIComponent(industries[0])}`);
@@ -222,24 +213,22 @@ function buildStableFilterQuery() {
                 filters.push(`or=(${orConditions})`);
             }
         }
-        // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
 
-            if (filterState.stable.volume && typeof filterState.stable.volume.min === 'number' && typeof filterState.stable.volume.max === 'number') {
-                const minVolume = Math.floor(filterState.stable.volume.min * 1000000);
-                const maxVolume = Math.ceil(filterState.stable.volume.max * 1000000);
-                filters.push(`current_volume=gte.${minVolume}`);
-                filters.push(`current_volume=lte.${maxVolume}`);
-            }
+        if (filterState.stable.volume && typeof filterState.stable.volume.min === 'number' && typeof filterState.stable.volume.max === 'number') {
+            const minVolume = Math.floor(filterState.stable.volume.min * 1000000);
+            const maxVolume = Math.ceil(filterState.stable.volume.max * 1000000);
+            filters.push(`current_volume=gte.${minVolume}`);
+            filters.push(`current_volume=lte.${maxVolume}`);
+        }
 
-            if (filterState.stable.price && typeof filterState.stable.price.min === 'number' && typeof filterState.stable.price.max === 'number') {
-                const minPrice = Math.floor(filterState.stable.price.min * 1000);
-                const maxPrice = Math.ceil(filterState.stable.price.max * 1000);
-                filters.push(`current_close=gte.${minPrice}`);
-                filters.push(`current_close=lte.${maxPrice}`);
-            }
+        if (filterState.stable.price && typeof filterState.stable.price.min === 'number' && typeof filterState.stable.price.max === 'number') {
+            const minPrice = Math.floor(filterState.stable.price.min * 1000);
+            const maxPrice = Math.ceil(filterState.stable.price.max * 1000);
+            filters.push(`current_close=gte.${minPrice}`);
+            filters.push(`current_close=lte.${maxPrice}`);
         }
     }
-    
+
     return filters.length > 0 ? '&' + filters.join('&') : '';
 }
 
@@ -250,6 +239,7 @@ async function fetchStableData() {
     console.log('Current page:', stateStable.currentPage);
     console.log('Page size:', stateStable.pageSize);
     console.log('Sort column:', stateStable.sortCol);
+    console.log('Date range:', stateStable.fromDate, '->', stateStable.toDate);
     
     try {
         let allData = [];
@@ -266,7 +256,7 @@ async function fetchStableData() {
             console.log('Fetching all records for headline sorting...');
             
             while (hasMore) {
-                let url = `${SUPABASE_URL}/rest/v1/stable_volatility?select=*&match_method=eq.TICKER&publish_time=gte.${stateStable.fromDate}T00:00:00Z&publish_time=lte.${stateStable.toDate}T23:59:59Z`;
+                let url = `${SUPABASE_URL}/rest/v1/stable_volatility?select=*&match_method=eq.TICKER&publish_time=gte.${stateStable.fromDate}T00:00:00%2B07:00:00&publish_time=lte.${stateStable.toDate}T23:59:59%2B07:00:00`;
                 
                 // Handle multiple stock codes separated by comma
                 if (stateStable.searchQuery) {
@@ -285,6 +275,7 @@ async function fetchStableData() {
                 // Fetch with default order, will sort client-side
                 url += `&order=publish_time.desc&limit=${batchSize}&offset=${offset}`;
                 
+                console.log('Headline fetch URL:', url);
                 console.log(`Fetching batch ${Math.floor(offset / batchSize) + 1}, offset: ${offset}`);
                 
                 const res = await fetch(url, {
@@ -366,7 +357,7 @@ async function fetchStableData() {
             const start = stateStable.currentPage * stateStable.pageSize;
             const end = start + stateStable.pageSize - 1;
             
-            let url = `${SUPABASE_URL}/rest/v1/stable_volatility?select=*&match_method=eq.TICKER&publish_time=gte.${stateStable.fromDate}T00:00:00Z&publish_time=lte.${stateStable.toDate}T23:59:59Z`;
+            let url = `${SUPABASE_URL}/rest/v1/stable_volatility?select=*&match_method=eq.TICKER&publish_time=gte.${stateStable.fromDate}T00:00:00%2B07:00:00&publish_time=lte.${stateStable.toDate}T23:59:59%2B07:00:00`;
             
             // Handle multiple stock codes separated by comma
             if (stateStable.searchQuery) {
@@ -381,6 +372,7 @@ async function fetchStableData() {
             
             // Apply filters
             url += buildStableFilterQuery();
+            console.log('Fetch URL:', url);
             
             const nullsOrder = stateStable.sortCol === 'price_change_today_pct' ? '' : '.nullslast';
             url += `&order=${getStableDbField(stateStable.sortCol)}.${stateStable.sortDesc ? 'desc' : 'asc'}${nullsOrder}`;
@@ -801,7 +793,7 @@ async function exportStableToExcel() {
         let hasMore = true;
 
         while (hasMore) {
-            let url = `${SUPABASE_URL}/rest/v1/stable_volatility?select=*&match_method=eq.TICKER&publish_time=gte.${stateStable.fromDate}T00:00:00Z&publish_time=lte.${stateStable.toDate}T23:59:59Z`;
+            let url = `${SUPABASE_URL}/rest/v1/stable_volatility?select=*&match_method=eq.TICKER&publish_time=gte.${stateStable.fromDate}T00:00:00%2B07:00:00&publish_time=lte.${stateStable.toDate}T23:59:59%2B07:00:00`;
             
             // Apply search query filter
             if (stateStable.searchQuery) {

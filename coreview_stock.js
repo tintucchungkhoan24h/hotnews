@@ -286,7 +286,7 @@ async function fetchData() {
             console.log('Fetching all records for headline sorting...');
             
             while (hasMore) {
-                let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
+                let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00%2B07:00:00&publish_time=lte.${state.toDate}T23:59:59%2B07:00:00`;
                 
                 // Handle multiple stock codes separated by comma
                 if (state.searchQuery) {
@@ -386,7 +386,7 @@ async function fetchData() {
             const start = state.currentPage * state.pageSize;
             const end = start + state.pageSize - 1;
             
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00%2B07:00:00&publish_time=lte.${state.toDate}T23:59:59%2B07:00:00`;
             
             // Handle multiple stock codes separated by comma
             if (state.searchQuery) {
@@ -824,7 +824,7 @@ async function exportToExcel() {
         let hasMore = true;
 
         while (hasMore) {
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00Z&publish_time=lte.${state.toDate}T23:59:59Z`;
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${state.fromDate}T00:00:00%2B07:00:00&publish_time=lte.${state.toDate}T23:59:59%2B07:00:00`;
             
             // Apply search query filter
             if (state.searchQuery) {

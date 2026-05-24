@@ -2922,7 +2922,7 @@
                     additionalFilter = '&or=(recommendation.eq.HOLD,recommendation.eq.BUY)';
                 }
                 
-                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=single_stock&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z${additionalFilter}&limit=1000`;
+                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=single_stock&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${dateRange.to}T23:59:59%2B07:00:00${additionalFilter}&limit=1000`;
                 const res = await fetch(url, {
                     headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
                 });
@@ -2973,7 +2973,7 @@
                     additionalFilter = '&or=(recommendation.eq.HOLD,recommendation.eq.BUY)';
                 }
                 
-                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00Z&publish_time=lte.${dateRange.to}T23:59:59Z${additionalFilter}&limit=1000`;
+                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${dateRange.to}T23:59:59%2B07:00:00${additionalFilter}&limit=1000`;
                 const res = await fetch(url, {
                     headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
                 });
@@ -3119,7 +3119,7 @@
             console.debug('fetchVolumeBoundsForTab: rawFilter', rawFilter);
             const sanitizedFilter = rawFilter.replace(/(&|^)\w+=[^&]*(__NONE__|__IMPOSSIBLE__)/g, '');
             console.debug('fetchVolumeBoundsForTab: sanitizedFilter', sanitizedFilter);
-            const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=min(current_volume),max(current_volume)&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00Z&publish_time=lte.${ctx.dateRange.to}T23:59:59Z${sanitizedFilter}`;
+            const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=min(current_volume),max(current_volume)&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${ctx.dateRange.to}T23:59:59%2B07:00:00${sanitizedFilter}`;
             try {
                 console.debug('fetchVolumeBoundsForTab: requesting URL', url);
                 const res = await fetch(url, {
@@ -3164,7 +3164,7 @@
             while (true) {
                 const rawFilter = `${ctx.extraQuery}${buildTabSearchQuery(tab)}${buildTabFilterQuery(tab, false, true)}`;
                 const sanitizedFilter = rawFilter.replace(/(&|^)\w+=[^&]*(__NONE__|__IMPOSSIBLE__)/g, '');
-                const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=current_volume&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00Z&publish_time=lte.${ctx.dateRange.to}T23:59:59Z${sanitizedFilter}&limit=${batchSize}&offset=${offset}`;
+                const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=current_volume&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${ctx.dateRange.to}T23:59:59%2B07:00:00${sanitizedFilter}&limit=${batchSize}&offset=${offset}`;
                 try {
                     console.debug('fetchVolumeBoundsFromRows: requesting URL', url);
                     const res = await fetch(url, {
@@ -3246,7 +3246,7 @@
             console.debug('fetchPriceBoundsForTab: rawFilter', rawFilter);
             const sanitizedFilter = rawFilter.replace(/(&|^)\w+=[^&]*(__NONE__|__IMPOSSIBLE__)/g, '');
             console.debug('fetchPriceBoundsForTab: sanitizedFilter', sanitizedFilter);
-            const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=min(current_close),max(current_close)&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00Z&publish_time=lte.${ctx.dateRange.to}T23:59:59Z${sanitizedFilter}`;
+            const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=min(current_close),max(current_close)&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${ctx.dateRange.to}T23:59:59%2B07:00:00${sanitizedFilter}`;
             try {
                 console.debug('fetchPriceBoundsForTab: requesting URL', url);
                 const res = await fetch(url, {
@@ -3291,7 +3291,7 @@
             while (true) {
                 const rawFilter = `${ctx.extraQuery}${buildTabSearchQuery(tab)}${buildTabFilterQuery(tab, true, false, true)}`;
                 const sanitizedFilter = rawFilter.replace(/(&|^)\w+=[^&]*(__NONE__|__IMPOSSIBLE__)/g, '');
-                const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=current_close&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00Z&publish_time=lte.${ctx.dateRange.to}T23:59:59Z${sanitizedFilter}&limit=${batchSize}&offset=${offset}`;
+                const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=current_close&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${ctx.dateRange.to}T23:59:59%2B07:00:00${sanitizedFilter}&limit=${batchSize}&offset=${offset}`;
                 try {
                     console.debug('fetchPriceBoundsFromRows: requesting URL', url);
                     const res = await fetch(url, {

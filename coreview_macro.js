@@ -267,7 +267,7 @@ async function fetchMacroData() {
             const recordsNeeded = (state.currentPageMacro + 1) * state.pageSizeMacro;
             const fetchLimit = Math.min(recordsNeeded * 2, 1000); // Fetch 2x needed for filtering, cap at 1000
             
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00%2B07:00:00&publish_time=lte.${state.toDateMacro}T23:59:59%2B07:00:00`;
             
             // Apply filters
             url += buildMacroFilterQuery();
@@ -350,7 +350,7 @@ async function fetchMacroData() {
             const start = state.currentPageMacro * state.pageSizeMacro;
             const end = start + state.pageSizeMacro - 1;
             
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00%2B07:00:00&publish_time=lte.${state.toDateMacro}T23:59:59%2B07:00:00`;
             
             // Apply filters
             url += buildMacroFilterQuery();
@@ -662,7 +662,7 @@ async function exportMacroToExcel() {
         let hasMore = true;
 
         while (hasMore) {
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00Z&publish_time=lte.${state.toDateMacro}T23:59:59Z`;
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.INDUSTRY&publish_time=gte.${state.fromDateMacro}T00:00:00%2B07:00:00&publish_time=lte.${state.toDateMacro}T23:59:59%2B07:00:00`;
             
             // Apply filter popup filters
             const filterQuery = buildMacroFilterQuery();

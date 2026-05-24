@@ -276,7 +276,7 @@ async function fetchSpotlightData() {
             console.log('Fetching all records for headline sorting...');
             
             while (hasMore) {
-                let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateSpotlight.fromDateSpotlight}T00:00:00Z&publish_time=lte.${stateSpotlight.toDateSpotlight}T23:59:59Z`;
+                let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateSpotlight.fromDateSpotlight}T00:00:00%2B07:00:00&publish_time=lte.${stateSpotlight.toDateSpotlight}T23:59:59%2B07:00:00`;
                 
                 // Handle multiple stock codes separated by comma
                 if (stateSpotlight.searchQuery) {
@@ -376,7 +376,7 @@ async function fetchSpotlightData() {
             const start = stateSpotlight.currentPage * stateSpotlight.pageSize;
             const end = start + stateSpotlight.pageSize - 1;
             
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateSpotlight.fromDateSpotlight}T00:00:00Z&publish_time=lte.${stateSpotlight.toDateSpotlight}T23:59:59Z`;
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateSpotlight.fromDateSpotlight}T00:00:00%2B07:00:00&publish_time=lte.${stateSpotlight.toDateSpotlight}T23:59:59%2B07:00:00`;
             
             // Handle multiple stock codes separated by comma
             if (stateSpotlight.searchQuery) {
@@ -822,7 +822,7 @@ window.exportSpotlightToExcel = async function exportSpotlightToExcel(btnRef) {
         let hasMore = true;
 
         while (hasMore) {
-            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateSpotlight.fromDateSpotlight}T00:00:00Z&publish_time=lte.${stateSpotlight.toDateSpotlight}T23:59:59Z`;
+            let url = `${SUPABASE_URL}/rest/v1/hotnews?select=*&match_method=eq.TICKER&publish_time=gte.${stateSpotlight.fromDateSpotlight}T00:00:00%2B07:00:00&publish_time=lte.${stateSpotlight.toDateSpotlight}T23:59:59%2B07:00:00`;
             
             // Apply search query filter
             if (stateSpotlight.searchQuery) {
