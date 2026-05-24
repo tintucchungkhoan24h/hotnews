@@ -34,6 +34,9 @@ function initSpotlightView() {
             setPickerValue('toDateSpotlight', iso);
         }
         stateSpotlight.currentPage = 0;
+        if (typeof window.clearDefaultRangeFiltersForTab === 'function') {
+            window.clearDefaultRangeFiltersForTab('spotlight');
+        }
         if (typeof window.invalidateBoundsForTab === 'function') {
             window.invalidateBoundsForTab('spotlight');
         }
@@ -52,6 +55,9 @@ function initSpotlightView() {
             setPickerValue('fromDateSpotlight', iso);
         }
         stateSpotlight.currentPage = 0;
+        if (typeof window.clearDefaultRangeFiltersForTab === 'function') {
+            window.clearDefaultRangeFiltersForTab('spotlight');
+        }
         if (typeof window.invalidateBoundsForTab === 'function') {
             window.invalidateBoundsForTab('spotlight');
         }

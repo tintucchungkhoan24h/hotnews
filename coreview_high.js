@@ -34,6 +34,9 @@ function initHighView() {
             setPickerValue('toDateHigh', iso);
         }
         stateHigh.currentPage = 0;
+        if (typeof window.clearDefaultRangeFiltersForTab === 'function') {
+            window.clearDefaultRangeFiltersForTab('high');
+        }
         if (typeof window.invalidateBoundsForTab === 'function') {
             window.invalidateBoundsForTab('high');
         }
@@ -52,6 +55,9 @@ function initHighView() {
             setPickerValue('fromDateHigh', iso);
         }
         stateHigh.currentPage = 0;
+        if (typeof window.clearDefaultRangeFiltersForTab === 'function') {
+            window.clearDefaultRangeFiltersForTab('high');
+        }
         if (typeof window.invalidateBoundsForTab === 'function') {
             window.invalidateBoundsForTab('high');
         }

@@ -34,6 +34,9 @@ function initStockView() {
             setPickerValue('toDate', iso);
         }
         state.currentPage = 0;
+        if (typeof window.clearDefaultRangeFiltersForTab === 'function') {
+            window.clearDefaultRangeFiltersForTab('stock');
+        }
         if (typeof window.invalidateBoundsForTab === 'function') {
             window.invalidateBoundsForTab('stock');
         }
@@ -52,6 +55,9 @@ function initStockView() {
             setPickerValue('fromDate', iso);
         }
         state.currentPage = 0;
+        if (typeof window.clearDefaultRangeFiltersForTab === 'function') {
+            window.clearDefaultRangeFiltersForTab('stock');
+        }
         if (typeof window.invalidateBoundsForTab === 'function') {
             window.invalidateBoundsForTab('stock');
         }

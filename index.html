@@ -1665,6 +1665,30 @@
             delete priceBoundsCache[tab];
         }
 
+        function clearDefaultRangeFiltersForTab(tab) {
+            const tabFilterState = tab === 'stock' ? filterState.stock :
+                tab === 'stable' ? filterState.stable :
+                tab === 'high' ? filterState.high :
+                tab === 'watchlist' ? filterState.watchlist :
+                tab === 'spotlight' ? filterState.spotlight : null;
+            if (!tabFilterState) return;
+
+            const tabVolumeDefault = volumeDefaults[tab];
+            const tabPriceDefault = priceDefaults[tab];
+
+            if (tabVolumeDefault && tabFilterState.volume &&
+                tabFilterState.volume.min === tabVolumeDefault.min &&
+                tabFilterState.volume.max === tabVolumeDefault.max) {
+                tabFilterState.volume = { min: null, max: null };
+            }
+
+            if (tabPriceDefault && tabFilterState.price &&
+                tabFilterState.price.min === tabPriceDefault.min &&
+                tabFilterState.price.max === tabPriceDefault.max) {
+                tabFilterState.price = { min: null, max: null };
+            }
+        }
+
         // Open filter popup
         async function openFilterPopup() {
             const popup = document.getElementById('filterPopup');

@@ -34,6 +34,9 @@ function initStableView() {
             setPickerValue('toDateStable', iso);
         }
         stateStable.currentPage = 0;
+        if (typeof window.clearDefaultRangeFiltersForTab === 'function') {
+            window.clearDefaultRangeFiltersForTab('stable');
+        }
         if (typeof window.invalidateBoundsForTab === 'function') {
             window.invalidateBoundsForTab('stable');
         }
@@ -52,6 +55,9 @@ function initStableView() {
             setPickerValue('fromDateStable', iso);
         }
         stateStable.currentPage = 0;
+        if (typeof window.clearDefaultRangeFiltersForTab === 'function') {
+            window.clearDefaultRangeFiltersForTab('stable');
+        }
         if (typeof window.invalidateBoundsForTab === 'function') {
             window.invalidateBoundsForTab('stable');
         }

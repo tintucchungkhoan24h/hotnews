@@ -34,6 +34,9 @@ function initWatchlistView() {
             setPickerValue('toDateWatchlist', iso);
         }
         stateWatchlist.currentPage = 0;
+        if (typeof window.clearDefaultRangeFiltersForTab === 'function') {
+            window.clearDefaultRangeFiltersForTab('watchlist');
+        }
         if (typeof window.invalidateBoundsForTab === 'function') {
             window.invalidateBoundsForTab('watchlist');
         }
@@ -52,6 +55,9 @@ function initWatchlistView() {
             setPickerValue('fromDateWatchlist', iso);
         }
         stateWatchlist.currentPage = 0;
+        if (typeof window.clearDefaultRangeFiltersForTab === 'function') {
+            window.clearDefaultRangeFiltersForTab('watchlist');
+        }
         if (typeof window.invalidateBoundsForTab === 'function') {
             window.invalidateBoundsForTab('watchlist');
         }
