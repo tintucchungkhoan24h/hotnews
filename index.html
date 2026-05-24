@@ -1019,6 +1019,9 @@
             const picker = pickers[id];
             const loc    = dpLocale[state.lang];
             const { viewYear, viewMonth, value, min, max } = picker;
+            const today  = getGMT7Date();
+            console.debug('renderPicker', id, viewYear, viewMonth, 'min=', min, 'max=', max, 'value=', value);
+            const firstDay = createGMT7Date(viewYear, viewMonth, 1);
             let startDow = firstDay.getDay(); // 0=Sun
             startDow = (startDow === 0) ? 6 : startDow - 1; // Mon-based
 
@@ -1040,8 +1043,8 @@
                 const iso = dateToIso(thisDate);
                 const isSelected = value && dateToIso(value) === iso;
                 const isToday    = thisDate.getTime() === today.getTime();
-                // Compare Date objects properly: disable if before minDate OR after maxDate
-                const disabled   = (minDate && thisDate < minDate) || (maxDate && thisDate > maxDate);
+                // Compare Date objects properly: disable if before min OR after max
+                const disabled   = (min && thisDate < min) || (max && thisDate > max);
                 let cls = 'dp-day';
                 if (disabled)   cls += ' dp-day-disabled';
                 if (isToday)    cls += ' dp-day-today';
@@ -1125,8 +1128,9 @@
         }
 
         function setPickerLimits(id, min, max) {
-            pickers[id].min = min || null;
-            pickers[id].max = max || null;
+            const p = pickers[id];
+            p.min = min ? parseISOtoGMT7(min) : null;
+            p.max = max ? parseISOtoGMT7(max) : null;
         }
 
         // Re-render open pickers when language changes (updates month/day names)
