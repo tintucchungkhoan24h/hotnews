@@ -2154,7 +2154,9 @@
 
         function formatVolumeRangeText(minM, maxM) {
             const cols = i18n[state.lang].cols || {};
-            const label = cols.current_volume || i18n[state.lang].filter.volumeLabel;
+            const filterText = i18n[state.lang].filter || {};
+            const label = cols.current_volume || filterText.volumeLabel;
+            const unit = filterText.volumeUnit ? ` ${filterText.volumeUnit}` : '';
             const fmt = (value) => {
                 const n = parseVolumeNumber(value);
                 if (!Number.isFinite(n)) {
@@ -2162,7 +2164,7 @@
                 }
                 return n.toFixed(2);
             };
-            return `${label}: ${fmt(minM)} – ${fmt(maxM)}`;
+            return `${label}: ${fmt(minM)} – ${fmt(maxM)}${unit}`;
         }
 
         function clampVolumeValue(value, min, max) {
