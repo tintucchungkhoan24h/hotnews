@@ -236,8 +236,8 @@ function buildSpotlightFilterQuery() {
         // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
 
         if (filterState.spotlight.volume && typeof filterState.spotlight.volume.min === 'number' && typeof filterState.spotlight.volume.max === 'number') {
-            const minVolume = Math.round(filterState.spotlight.volume.min * 1000000);
-            const maxVolume = Math.round(filterState.spotlight.volume.max * 1000000);
+            const minVolume = Math.floor(filterState.spotlight.volume.min * 1000000);
+            const maxVolume = Math.ceil(filterState.spotlight.volume.max * 1000000);
               filters.push(`current_volume=gte.${minVolume}`);
               filters.push(`current_volume=lte.${maxVolume}`);
         }

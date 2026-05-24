@@ -2129,9 +2129,11 @@
 
             const min = Math.min(...values) / 1000000;
             const max = Math.max(...values) / 1000000;
+            const minRounded = Math.floor(min * 100) / 100;
+            const maxRounded = Math.ceil(max * 100) / 100;
             return {
-                min: Number(min.toFixed(2)),
-                max: Number(max.toFixed(2))
+                min: Number(minRounded.toFixed(2)),
+                max: Number(maxRounded.toFixed(2))
             };
         }
 
@@ -2854,8 +2856,8 @@
             }
 
             if (includeVolume && tabFilterState.volume && typeof tabFilterState.volume.min === 'number' && typeof tabFilterState.volume.max === 'number') {
-                const minVolume = Math.round(tabFilterState.volume.min * 1000000);
-                const maxVolume = Math.round(tabFilterState.volume.max * 1000000);
+                const minVolume = Math.floor(tabFilterState.volume.min * 1000000);
+                const maxVolume = Math.ceil(tabFilterState.volume.max * 1000000);
                 filters.push(`current_volume=gte.${minVolume}`);
                 filters.push(`current_volume=lte.${maxVolume}`);
             }
@@ -2887,9 +2889,11 @@
                     const minValue = parseVolumeNumber(json[0].min);
                     const maxValue = parseVolumeNumber(json[0].max);
                     if (Number.isFinite(minValue) && Number.isFinite(maxValue)) {
+                        const minMillion = Math.floor(minValue / 10000) / 100;
+                        const maxMillion = Math.ceil(maxValue / 10000) / 100;
                         return {
-                            min: Number((minValue / 1000000).toFixed(2)),
-                            max: Number((maxValue / 1000000).toFixed(2))
+                            min: Number(minMillion.toFixed(2)),
+                            max: Number(maxMillion.toFixed(2))
                         };
                     }
                 }
@@ -2950,9 +2954,11 @@
             if (!hasValue || minValue === Infinity || maxValue === -Infinity) {
                 return { min: 0, max: 0 };
             }
+            const minMillion = Math.floor(minValue / 10000) / 100;
+            const maxMillion = Math.ceil(maxValue / 10000) / 100;
             return {
-                min: Number((minValue / 1000000).toFixed(2)),
-                max: Number((maxValue / 1000000).toFixed(2))
+                min: Number(minMillion.toFixed(2)),
+                max: Number(maxMillion.toFixed(2))
             };
         }
 
@@ -2979,9 +2985,11 @@
 
             const min = Math.min(...values) / 1000000;
             const max = Math.max(...values) / 1000000;
+            const minRounded = Math.floor(min * 100) / 100;
+            const maxRounded = Math.ceil(max * 100) / 100;
             return {
-                min: Number(min.toFixed(2)),
-                max: Number(max.toFixed(2))
+                min: Number(minRounded.toFixed(2)),
+                max: Number(maxRounded.toFixed(2))
             };
         }
 

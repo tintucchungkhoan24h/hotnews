@@ -225,8 +225,8 @@ function buildHighFilterQuery() {
         // If size is 0 and no __NONE__, it means "all selected" - don't add any filter
 
             if (filterState.high.volume && typeof filterState.high.volume.min === 'number' && typeof filterState.high.volume.max === 'number') {
-                const minVolume = Math.round(filterState.high.volume.min * 1000000);
-                const maxVolume = Math.round(filterState.high.volume.max * 1000000);
+                const minVolume = Math.floor(filterState.high.volume.min * 1000000);
+                const maxVolume = Math.ceil(filterState.high.volume.max * 1000000);
                 filters.push(`current_volume=gte.${minVolume}`);
                 filters.push(`current_volume=lte.${maxVolume}`);
         }
