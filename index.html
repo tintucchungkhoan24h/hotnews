@@ -1631,6 +1631,15 @@
         const priceDefaults = {};
 
         async function refreshBoundsForTab(tab) {
+            if (tab === 'macro') {
+                const emptyBounds = { min: 0, max: 0 };
+                volumeBoundsCache[tab] = emptyBounds;
+                priceBoundsCache[tab] = emptyBounds;
+                volumeDefaults[tab] = { min: 0, max: 0 };
+                priceDefaults[tab] = { min: 0, max: 0 };
+                return;
+            }
+
             const volumeBounds = await fetchVolumeBoundsForTab(tab);
             const priceBounds = await fetchPriceBoundsForTab(tab);
             volumeBoundsCache[tab] = volumeBounds;
@@ -1651,6 +1660,13 @@
         }
 
         async function ensureBoundsForTab(tab) {
+            if (tab === 'macro') {
+                return {
+                    volume: { min: 0, max: 0 },
+                    price: { min: 0, max: 0 }
+                };
+            }
+
             if (!volumeBoundsCache[tab] || !priceBoundsCache[tab]) {
                 await refreshBoundsForTab(tab);
             }
@@ -1735,8 +1751,11 @@
                 }
             }
             
-            // Ensure volume/price bounds are loaded and cached for this tab before showing the popup
-            await ensureBoundsForTab(currentTab);
+            // Ensure volume/price bounds are loaded and cached for this tab before showing the popup.
+            // Macro tab does not use volume/price filters, so skip bounds fetching for it.
+            if (currentTab !== 'macro') {
+                await ensureBoundsForTab(currentTab);
+            }
 
             // Build filter content based on current tab and wait for it to finish
             await buildFilterContent();
