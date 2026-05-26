@@ -247,6 +247,13 @@ function buildStableFilterQuery() {
             filters.push(`current_close=gte.${minPrice}`);
             filters.push(`current_close=lte.${maxPrice}`);
         }
+
+        if (filterState.stable.priceChange && typeof filterState.stable.priceChange.min === 'number' && typeof filterState.stable.priceChange.max === 'number') {
+            const minPriceChange = filterState.stable.priceChange.min;
+            const maxPriceChange = filterState.stable.priceChange.max;
+            filters.push(`price_change_today_pct=gte.${minPriceChange}`);
+            filters.push(`price_change_today_pct=lte.${maxPriceChange}`);
+        }
     }
 
     return filters.length > 0 ? '&' + filters.join('&') : '';

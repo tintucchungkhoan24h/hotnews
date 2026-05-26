@@ -1580,7 +1580,8 @@
                 ma15: new Set(),
                 industry: new Set(),
                 volume: { min: null, max: null },
-                price: { min: null, max: null }
+                price: { min: null, max: null },
+                priceChange: { min: null, max: null }
             },
             macro: {
                 source_name: new Set()
@@ -1590,28 +1591,32 @@
                 ma15: new Set(),
                 industry: new Set(),
                 volume: { min: null, max: null },
-                price: { min: null, max: null }
+                price: { min: null, max: null },
+                priceChange: { min: null, max: null }
             },
             high: {
                 single_stock: new Set(),
                 ma15: new Set(),
                 industry: new Set(),
                 volume: { min: null, max: null },
-                price: { min: null, max: null }
+                price: { min: null, max: null },
+                priceChange: { min: null, max: null }
             },
             watchlist: {
                 single_stock: new Set(),
                 ma15: new Set(),
                 industry: new Set(),
                 volume: { min: null, max: null },
-                price: { min: null, max: null }
+                price: { min: null, max: null },
+                priceChange: { min: null, max: null }
             },
             spotlight: {
                 single_stock: new Set(),
                 ma15: new Set(),
                 industry: new Set(),
                 volume: { min: null, max: null },
-                price: { min: null, max: null }
+                price: { min: null, max: null },
+                priceChange: { min: null, max: null }
             }
         };
         
@@ -1626,26 +1631,33 @@
         // Cache volume/price bounds per tab so synchronous handlers can use the same full-range values
         const volumeBoundsCache = {};
         const priceBoundsCache = {};
+        const priceChangeBoundsCache = {};
         // Store initial volume/price defaults as seen when the filter popup was first opened
         const volumeDefaults = {};
         const priceDefaults = {};
+        const priceChangeDefaults = {};
 
         async function refreshBoundsForTab(tab) {
             if (tab === 'macro') {
                 const emptyBounds = { min: 0, max: 0 };
                 volumeBoundsCache[tab] = emptyBounds;
                 priceBoundsCache[tab] = emptyBounds;
+                priceChangeBoundsCache[tab] = { min: -6.88, max: 6.69 };
                 volumeDefaults[tab] = { min: 0, max: 0 };
                 priceDefaults[tab] = { min: 0, max: 0 };
+                priceChangeDefaults[tab] = { min: -6.88, max: 6.69 };
                 return;
             }
 
             const volumeBounds = await fetchVolumeBoundsForTab(tab);
             const priceBounds = await fetchPriceBoundsForTab(tab);
+            const priceChangeBounds = getPriceChangeBoundsForTab(tab);
             volumeBoundsCache[tab] = volumeBounds;
             priceBoundsCache[tab] = priceBounds;
+            priceChangeBoundsCache[tab] = priceChangeBounds;
             volumeDefaults[tab] = { min: volumeBounds.min, max: volumeBounds.max };
             priceDefaults[tab] = { min: priceBounds.min, max: priceBounds.max };
+            priceChangeDefaults[tab] = { min: priceChangeBounds.min, max: priceChangeBounds.max };
 
             const tabFilterState = tab === 'stock' ? filterState.stock :
                 tab === 'stable' ? filterState.stable :
@@ -1656,6 +1668,7 @@
             if (tabFilterState) {
                 tabFilterState.volumeDefaults = { min: volumeBounds.min, max: volumeBounds.max };
                 tabFilterState.priceDefaults = { min: priceBounds.min, max: priceBounds.max };
+                tabFilterState.priceChangeDefaults = { min: priceChangeBounds.min, max: priceChangeBounds.max };
             }
         }
 
@@ -1663,22 +1676,25 @@
             if (tab === 'macro') {
                 return {
                     volume: { min: 0, max: 0 },
-                    price: { min: 0, max: 0 }
+                    price: { min: 0, max: 0 },
+                    priceChange: { min: -6.88, max: 6.69 }
                 };
             }
 
-            if (!volumeBoundsCache[tab] || !priceBoundsCache[tab]) {
+            if (!volumeBoundsCache[tab] || !priceBoundsCache[tab] || !priceChangeBoundsCache[tab]) {
                 await refreshBoundsForTab(tab);
             }
             return {
                 volume: volumeBoundsCache[tab] || { min: 0, max: 0 },
-                price: priceBoundsCache[tab] || { min: 0, max: 0 }
+                price: priceBoundsCache[tab] || { min: 0, max: 0 },
+                priceChange: priceChangeBoundsCache[tab] || { min: -6.88, max: 6.69 }
             };
         }
 
         function invalidateBoundsForTab(tab) {
             delete volumeBoundsCache[tab];
             delete priceBoundsCache[tab];
+            delete priceChangeBoundsCache[tab];
         }
 
         function clearDefaultRangeFiltersForTab(tab) {
@@ -1691,6 +1707,7 @@
 
             const tabVolumeDefault = volumeDefaults[tab];
             const tabPriceDefault = priceDefaults[tab];
+            const tabPriceChangeDefault = priceChangeDefaults[tab];
 
             if (tabVolumeDefault && tabFilterState.volume &&
                 tabFilterState.volume.min === tabVolumeDefault.min &&
@@ -1702,6 +1719,12 @@
                 tabFilterState.price.min === tabPriceDefault.min &&
                 tabFilterState.price.max === tabPriceDefault.max) {
                 tabFilterState.price = { min: null, max: null };
+            }
+
+            if (tabPriceChangeDefault && tabFilterState.priceChange &&
+                tabFilterState.priceChange.min === tabPriceChangeDefault.min &&
+                tabFilterState.priceChange.max === tabPriceChangeDefault.max) {
+                tabFilterState.priceChange = { min: null, max: null };
             }
         }
 
@@ -1799,6 +1822,9 @@
             const priceLabel = t.priceLabel || i18n[state.lang].cols?.current_close;
             const priceMinPlaceholder = t.priceMinPlaceholder || t.volumeMinPlaceholder || 'Min';
             const priceMaxPlaceholder = t.priceMaxPlaceholder || t.volumeMaxPlaceholder || 'Max';
+            const priceChangeLabel = t.priceChangeLabel || '% Change';
+            const priceChangeMinPlaceholder = t.priceChangeMinPlaceholder || 'Min';
+            const priceChangeMaxPlaceholder = t.priceChangeMaxPlaceholder || 'Max';
             
             if (currentTab === 'stock' || currentTab === 'stable' || currentTab === 'high' || currentTab === 'watchlist' || currentTab === 'spotlight') {
                 // Determine which filter state to use
@@ -2079,6 +2105,44 @@
                             <div id="filterPriceDescription" class="filter-volume-description">${formatRangeText(priceLabel, t.priceUnit, tabFilterState.price.min, tabFilterState.price.max, 1)}</div>
                         </div>
                     </div>
+
+                    <!-- Price Change Filter -->
+                    <div class="filter-section">
+                        <div class="filter-section-title" style="cursor:default;">
+                            <span>${priceChangeLabel}</span>
+                        </div>
+                        <div class="filter-section-content expanded filter-volume-section" style="max-height:none;">
+                            <div class="volume-input-grid">
+                                <div class="volume-input-item">
+                                    <label class="volume-input-label" for="filterPriceChangeMin">${priceChangeMinPlaceholder}</label>
+                                    <div class="volume-input-with-spinner">
+                                        <input id="filterPriceChangeMin" class="filter-volume-input" type="text" inputmode="decimal"
+                                            value="${Number(tabFilterState.priceChange.min ?? -6.88).toFixed(2)}"
+                                            onblur="onPriceChangeInputBlur('${currentTab}', 'min')"
+                                            oninput="onPriceChangeInputChange('${currentTab}', 'min')">
+                                        <div class="volume-spinner">
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustPriceChangeInput('${currentTab}', 'min', 1)">▲</button>
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustPriceChangeInput('${currentTab}', 'min', -1)">▼</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="volume-input-item">
+                                    <label class="volume-input-label" for="filterPriceChangeMax">${priceChangeMaxPlaceholder}</label>
+                                    <div class="volume-input-with-spinner">
+                                        <input id="filterPriceChangeMax" class="filter-volume-input" type="text" inputmode="decimal"
+                                            value="${Number(tabFilterState.priceChange.max ?? 6.69).toFixed(2)}"
+                                            onblur="onPriceChangeInputBlur('${currentTab}', 'max')"
+                                            oninput="onPriceChangeInputChange('${currentTab}', 'max')">
+                                        <div class="volume-spinner">
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustPriceChangeInput('${currentTab}', 'max', 1)">▲</button>
+                                            <button type="button" class="volume-spinner-btn" onclick="adjustPriceChangeInput('${currentTab}', 'max', -1)">▼</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="filterPriceChangeDescription" class="filter-volume-description">${t.priceChangeDescription.replace('{min}', Number(tabFilterState.priceChange.min ?? -6.88).toFixed(2)).replace('{max}', Number(tabFilterState.priceChange.max ?? 6.69).toFixed(2))}</div>
+                        </div>
+                    </div>
                     
                     <!-- Action Buttons -->
                     <div class="filter-actions">
@@ -2354,6 +2418,20 @@
             desc.textContent = formatRangeText(label, unit, minValue, maxValue, 1);
         }
 
+        function updateFilterPriceChangeDescription(tab) {
+            const minInput = document.getElementById('filterPriceChangeMin');
+            const maxInput = document.getElementById('filterPriceChangeMax');
+            const desc = document.getElementById('filterPriceChangeDescription');
+            if (!minInput || !maxInput || !desc) return;
+
+            const t = i18n[state.lang].filter;
+            const label = t.priceChangeLabel || 'Price change';
+            const unit = t.priceChangeUnit || '%';
+            const minValue = Number(minInput.value) || -100;
+            const maxValue = Number(maxInput.value) || 100;
+            desc.textContent = formatRangeText(label, unit, minValue, maxValue, 2);
+        }
+
         function normalizeDecimalInput(value) {
             return String(value).replace(/,/g, '.');
         }
@@ -2597,6 +2675,117 @@
             updateFilterVolumeDescription(tab);
         }
 
+        function onPriceChangeInputChange(tab, key) {
+            const minInput = document.getElementById('filterPriceChangeMin');
+            const maxInput = document.getElementById('filterPriceChangeMax');
+            if (!minInput || !maxInput) return;
+
+            const sMin = sanitizeNumericString(minInput.value);
+            const sMax = sanitizeNumericString(maxInput.value);
+            minInput.value = sMin;
+            maxInput.value = sMax;
+
+            const bounds = getPriceChangeBoundsForTab(tab);
+            const parsedMin = parseVolumeNumber(sMin);
+            const parsedMax = parseVolumeNumber(sMax);
+
+            if (Number.isFinite(parsedMin) && Number.isFinite(parsedMax)) {
+                let currentMin = parsedMin;
+                let currentMax = parsedMax;
+
+                if (currentMin < bounds.min) currentMin = bounds.min;
+                if (currentMax > bounds.max) currentMax = bounds.max;
+
+                if (key === 'min' && currentMin > currentMax) {
+                    currentMin = currentMax;
+                }
+                if (key === 'max' && currentMax < currentMin) {
+                    currentMax = currentMin;
+                }
+
+                filterState[tab].priceChange = { min: Number(currentMin.toFixed(2)), max: Number(currentMax.toFixed(2)) };
+            }
+
+            updateFilterPriceChangeDescription(tab);
+        }
+
+        function adjustPriceChangeInput(tab, key, delta) {
+            const input = document.getElementById(`filterPriceChange${key === 'min' ? 'Min' : 'Max'}`);
+            if (!input) return;
+
+            input.value = sanitizeNumericString(input.value);
+            let value = parseVolumeNumber(input.value);
+            const bounds = getPriceChangeBoundsForTab(tab);
+
+            if (!Number.isFinite(value)) {
+                value = key === 'min' ? bounds.min : bounds.max;
+            }
+            value = Number((value + delta).toFixed(2));
+
+            if (key === 'min' && value < bounds.min) {
+                value = bounds.min;
+            }
+            if (key === 'max' && value > bounds.max) {
+                value = bounds.max;
+            }
+
+            if (key === 'min') {
+                const maxValue = parseVolumeNumber(document.getElementById('filterPriceChangeMax')?.value);
+                if (Number.isFinite(maxValue) && value > maxValue) {
+                    value = maxValue;
+                }
+            } else {
+                const minValue = parseVolumeNumber(document.getElementById('filterPriceChangeMin')?.value);
+                if (Number.isFinite(minValue) && value < minValue) {
+                    value = minValue;
+                }
+            }
+
+            input.value = value.toFixed(2);
+            filterState[tab].priceChange[key] = Number(value.toFixed(2));
+            updateFilterPriceChangeDescription(tab);
+        }
+
+        function onPriceChangeInputBlur(tab, key) {
+            const minInput = document.getElementById('filterPriceChangeMin');
+            const maxInput = document.getElementById('filterPriceChangeMax');
+            if (!minInput || !maxInput) return;
+
+            minInput.value = sanitizeNumericString(minInput.value);
+            maxInput.value = sanitizeNumericString(maxInput.value);
+
+            const bounds = getPriceChangeBoundsForTab(tab);
+            let minValue = parseVolumeNumber(minInput.value);
+            let maxValue = parseVolumeNumber(maxInput.value);
+
+            if (!Number.isFinite(minValue)) {
+                minValue = bounds.min;
+            }
+            if (!Number.isFinite(maxValue)) {
+                maxValue = bounds.max;
+            }
+
+            if (minValue < bounds.min) {
+                minValue = bounds.min;
+            }
+            if (maxValue > bounds.max) {
+                maxValue = bounds.max;
+            }
+
+            if (minValue > maxValue) {
+                if (key === 'min') {
+                    minValue = maxValue;
+                } else {
+                    maxValue = minValue;
+                }
+            }
+
+            minInput.value = minValue.toFixed(2);
+            maxInput.value = maxValue.toFixed(2);
+            filterState[tab].priceChange = { min: Number(minValue.toFixed(2)), max: Number(maxValue.toFixed(2)) };
+            updateFilterPriceChangeDescription(tab);
+        }
+
         // Toggle individual filter (async wrapper)
         async function toggleFilterAsync(tab, field, value) {
             // Check if currently "none selected" (__NONE__ marker)
@@ -2790,12 +2979,13 @@
                     filterState[tab][field].clear();
                     // Set to __NONE__ to indicate "nothing selected"
                     filterState[tab][field].add('__NONE__');
-                } else if (field === 'volume' || field === 'price') {
+                } else if (field === 'volume' || field === 'price' || field === 'priceChange') {
                     const isPrice = field === 'price';
-                    const defaultsKey = isPrice ? 'priceDefaults' : 'volumeDefaults';
-                    const globalDefaults = isPrice ? priceDefaults[tab] : volumeDefaults[tab];
-                    const boundsFn = isPrice ? getPriceBoundsForTab : getVolumeBoundsForTab;
-                    const inputPrefix = isPrice ? 'filterPrice' : 'filterVolume';
+                    const isPriceChange = field === 'priceChange';
+                    const defaultsKey = isPriceChange ? 'priceChangeDefaults' : (isPrice ? 'priceDefaults' : 'volumeDefaults');
+                    const globalDefaults = isPriceChange ? priceChangeDefaults[tab] : (isPrice ? priceDefaults[tab] : volumeDefaults[tab]);
+                    const boundsFn = isPriceChange ? getPriceChangeBoundsForTab : (isPrice ? getPriceBoundsForTab : getVolumeBoundsForTab);
+                    const inputPrefix = isPriceChange ? 'filterPriceChange' : (isPrice ? 'filterPrice' : 'filterVolume');
 
                     let defaults = (filterState[tab] && filterState[tab][defaultsKey]) ? filterState[tab][defaultsKey] : globalDefaults;
                     if (!defaults) {
@@ -2827,12 +3017,14 @@
                 if (filterState[tab][field] instanceof Set) {
                     filterState[tab][field].clear();
                     // Empty set means "all selected"
-                } else if (field === 'volume' || field === 'price') {
+                } else if (field === 'volume' || field === 'price' || field === 'priceChange') {
                     const isPrice = field === 'price';
-                    const stateDefaults = (filterState[tab] && filterState[tab][isPrice ? 'priceDefaults' : 'volumeDefaults']) ? filterState[tab][isPrice ? 'priceDefaults' : 'volumeDefaults'] : null;
-                    const globalDefaults = isPrice ? priceDefaults[tab] : volumeDefaults[tab] || null;
-                    const inputPrefix = isPrice ? 'filterPrice' : 'filterVolume';
-                    const boundsFn = isPrice ? getPriceBoundsForTab : getVolumeBoundsForTab;
+                    const isPriceChange = field === 'priceChange';
+                    const defaultsKey = isPriceChange ? 'priceChangeDefaults' : (isPrice ? 'priceDefaults' : 'volumeDefaults');
+                    const stateDefaults = (filterState[tab] && filterState[tab][defaultsKey]) ? filterState[tab][defaultsKey] : null;
+                    const globalDefaults = isPriceChange ? priceChangeDefaults[tab] : (isPrice ? priceDefaults[tab] : volumeDefaults[tab] || null);
+                    const inputPrefix = isPriceChange ? 'filterPriceChange' : (isPrice ? 'filterPrice' : 'filterVolume');
+                    const boundsFn = isPriceChange ? getPriceChangeBoundsForTab : (isPrice ? getPriceBoundsForTab : getVolumeBoundsForTab);
 
                     let defaults = stateDefaults || globalDefaults;
                     if (!defaults) {
@@ -3415,6 +3607,34 @@
                 max: Number(maxRounded.toFixed(2))
             };
         }
+
+        function getPriceChangeBoundsForTab(tab) {
+            const dataMap = {
+                stock: state && state.data ? state.data : [],
+                stable: stateStable && stateStable.data ? stateStable.data : [],
+                high: stateHigh && stateHigh.data ? stateHigh.data : [],
+                watchlist: stateWatchlist && stateWatchlist.data ? stateWatchlist.data : [],
+                spotlight: stateSpotlight && stateSpotlight.data ? stateSpotlight.data : []
+            };
+            const rows = dataMap[tab] || [];
+            const values = rows
+                .map(row => parseVolumeNumber(row.price_change_today_pct))
+                .filter(v => Number.isFinite(v));
+
+            if (values.length === 0) {
+                return { min: -100, max: 100 };
+            }
+
+            const min = Math.min(...values);
+            const max = Math.max(...values);
+            const minRounded = Math.floor(min * 100) / 100;
+            const maxRounded = Math.ceil(max * 100) / 100;
+            return {
+                min: Number(minRounded.toFixed(2)),
+                max: Number(maxRounded.toFixed(2))
+            };
+        }
+
         async function getUniqueSources() {
             try {
                 console.log('=== GET UNIQUE SOURCES ===');
