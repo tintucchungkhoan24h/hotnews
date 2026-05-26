@@ -2442,11 +2442,22 @@
 
         function sanitizeNumericString(value) {
             let s = normalizeDecimalInput(value);
-            // Allow digits and at most one dot
-            s = s.replace(/[^0-9.]/g, '');
-            const parts = s.split('.');
-            if (parts.length > 2) {
-                s = parts[0] + '.' + parts.slice(1).join('');
+            // Allow digits, minus sign at start, and at most one dot
+            s = s.replace(/[^0-9.\-]/g, '');
+            // Ensure minus sign only appears at the start
+            if (s.includes('-')) {
+                const parts = s.split('-');
+                const firstPart = parts.shift();
+                s = '-' + parts.join('').replace(/-/g, '') + firstPart;
+            }
+            // Ensure at most one minus sign
+            const minusCount = (s.match(/-/g) || []).length;
+            if (minusCount > 1) {
+                s = '-' + s.replace(/-/g, '');
+            }
+            const dotParts = s.split('.');
+            if (dotParts.length > 2) {
+                s = dotParts[0] + '.' + dotParts.slice(1).join('');
             }
             return s;
         }
