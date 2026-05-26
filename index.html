@@ -2429,11 +2429,12 @@
             if (!minInput || !maxInput || !desc) return;
 
             const t = i18n[state.lang].filter;
-            const label = t.priceChangeLabel || 'Price change';
-            const unit = t.priceChangeUnit || '%';
-            const minValue = Number(minInput.value) || -100;
-            const maxValue = Number(maxInput.value) || 100;
-            desc.textContent = formatRangeText(label, unit, minValue, maxValue, 2);
+            const template = t.priceChangeDescription || 'Price Change: {min} to {max} %';
+            const minValue = Number(minInput.value).toFixed(2);
+            const maxValue = Number(maxInput.value).toFixed(2);
+            desc.textContent = template
+                .replace('{min}', minValue)
+                .replace('{max}', maxValue);
         }
 
         function normalizeDecimalInput(value) {
