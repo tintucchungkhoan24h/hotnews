@@ -421,10 +421,11 @@ async function fetchStableData() {
                 // so NULLs appear between positives and negatives, not at extremes
                 if (stateStable.sortCol === 'price_change_today_pct') {
                     const dir = stateStable.sortDesc ? -1 : 1;
+                    console.debug('[Stable] Sorting %Chg client-side, direction:', stateStable.sortDesc ? 'DESC' : 'ASC');
                     stateStable.data.sort((a, b) => {
-                        const av = a.price_change_today_pct ?? 0;
-                        const bv = b.price_change_today_pct ?? 0;
-                        return dir * (bv - av);
+                        const av = Number(a.price_change_today_pct ?? 0);
+                        const bv = Number(b.price_change_today_pct ?? 0);
+                        return dir * (av - bv);
                     });
                 }
                 const contentRange = res.headers.get('content-range');
@@ -518,6 +519,9 @@ function handleStableSort(id) {
     }
     stateStable.currentPage = 0; 
     renderStableHeaders(); 
+    if (id === 'price_change_today_pct') {
+        console.debug('[Stable] handleStableSort: %Chg clicked. sortCol=', stateStable.sortCol, 'sortDesc=', stateStable.sortDesc ? 'DESC' : 'ASC');
+    }
     fetchStableData();
 }
 
@@ -882,10 +886,11 @@ async function exportStableToExcel() {
         // Client-side sort for %Chg column (same as table)
         if (stateStable.sortCol === 'price_change_today_pct') {
             const dir = stateStable.sortDesc ? -1 : 1;
+            console.debug('[Stable][Export] Sorting %Chg client-side, direction:', stateStable.sortDesc ? 'DESC' : 'ASC');
             allData.sort((a, b) => {
-                const av = a.price_change_today_pct ?? 0;
-                const bv = b.price_change_today_pct ?? 0;
-                return dir * (bv - av);
+                const av = Number(a.price_change_today_pct ?? 0);
+                const bv = Number(b.price_change_today_pct ?? 0);
+                return dir * (av - bv);
             });
         }
         

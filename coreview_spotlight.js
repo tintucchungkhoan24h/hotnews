@@ -439,10 +439,11 @@ async function fetchSpotlightData() {
                 // so NULLs appear between positives and negatives, not at extremes
                 if (stateSpotlight.sortCol === 'price_change_today_pct') {
                     const dir = stateSpotlight.sortDesc ? -1 : 1;
+                    console.debug('[Spotlight] Sorting %Chg client-side, direction:', stateSpotlight.sortDesc ? 'DESC' : 'ASC');
                     stateSpotlight.data.sort((a, b) => {
-                        const av = a.price_change_today_pct ?? 0;
-                        const bv = b.price_change_today_pct ?? 0;
-                        return dir * (bv - av);
+                        const av = Number(a.price_change_today_pct ?? 0);
+                        const bv = Number(b.price_change_today_pct ?? 0);
+                        return dir * (av - bv);
                     });
                 }
                 const contentRange = res.headers.get('content-range');
@@ -538,6 +539,9 @@ function handleSpotlightSort(id) {
     }
     stateSpotlight.currentPage = 0; 
     renderSpotlightHeaders(); 
+    if (id === 'price_change_today_pct') {
+        console.debug('[Spotlight] handleSpotlightSort: %Chg clicked. sortCol=', stateSpotlight.sortCol, 'sortDesc=', stateSpotlight.sortDesc ? 'DESC' : 'ASC');
+    }
     fetchSpotlightData();
 }
 
@@ -910,10 +914,11 @@ window.exportSpotlightToExcel = async function exportSpotlightToExcel(btnRef) {
         // Client-side sort for %Chg column
         if (stateSpotlight.sortCol === 'price_change_today_pct') {
             const dir = stateSpotlight.sortDesc ? -1 : 1;
+            console.debug('[Spotlight][Export] Sorting %Chg client-side, direction:', stateSpotlight.sortDesc ? 'DESC' : 'ASC');
             allData.sort((a, b) => {
-                const av = a.price_change_today_pct ?? 0;
-                const bv = b.price_change_today_pct ?? 0;
-                return dir * (bv - av);
+                const av = Number(a.price_change_today_pct ?? 0);
+                const bv = Number(b.price_change_today_pct ?? 0);
+                return dir * (av - bv);
             });
         }
         

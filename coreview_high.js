@@ -418,10 +418,11 @@ async function fetchHighData() {
                 // so NULLs appear between positives and negatives, not at extremes
                 if (stateHigh.sortCol === 'price_change_today_pct') {
                     const dir = stateHigh.sortDesc ? -1 : 1;
+                    console.debug('[High] Sorting %Chg client-side, direction:', stateHigh.sortDesc ? 'DESC' : 'ASC');
                     stateHigh.data.sort((a, b) => {
-                        const av = a.price_change_today_pct ?? 0;
-                        const bv = b.price_change_today_pct ?? 0;
-                        return dir * (bv - av);
+                        const av = Number(a.price_change_today_pct ?? 0);
+                        const bv = Number(b.price_change_today_pct ?? 0);
+                        return dir * (av - bv);
                     });
                 }
                 const contentRange = res.headers.get('content-range');
@@ -515,6 +516,9 @@ function handleHighSort(id) {
     }
     stateHigh.currentPage = 0; 
     renderHighHeaders(); 
+    if (id === 'price_change_today_pct') {
+        console.debug('[High] handleHighSort: %Chg clicked. sortCol=', stateHigh.sortCol, 'sortDesc=', stateHigh.sortDesc ? 'DESC' : 'ASC');
+    }
     fetchHighData();
 }
 
@@ -879,10 +883,11 @@ async function exportHighToExcel() {
         // Client-side sort for %Chg column (same as table)
         if (stateHigh.sortCol === 'price_change_today_pct') {
             const dir = stateHigh.sortDesc ? -1 : 1;
+            console.debug('[High][Export] Sorting %Chg client-side, direction:', stateHigh.sortDesc ? 'DESC' : 'ASC');
             allData.sort((a, b) => {
-                const av = a.price_change_today_pct ?? 0;
-                const bv = b.price_change_today_pct ?? 0;
-                return dir * (bv - av);
+                const av = Number(a.price_change_today_pct ?? 0);
+                const bv = Number(b.price_change_today_pct ?? 0);
+                return dir * (av - bv);
             });
         }
         
