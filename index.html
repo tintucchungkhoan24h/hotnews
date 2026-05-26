@@ -2414,20 +2414,32 @@
             const maxInput = document.getElementById('filterPriceMax');
             if (!minInput || !maxInput) return;
 
+            const sMin = sanitizeNumericString(minInput.value);
+            const sMax = sanitizeNumericString(maxInput.value);
+            minInput.value = sMin;
+            maxInput.value = sMax;
+
             const bounds = getPriceBoundsForTab(tab);
-            let currentMin = parseVolumeNumber(minInput.value);
-            let currentMax = parseVolumeNumber(maxInput.value);
-            if (!Number.isFinite(currentMin)) currentMin = bounds.min;
-            if (!Number.isFinite(currentMax)) currentMax = bounds.max;
+            const parsedMin = parseVolumeNumber(sMin);
+            const parsedMax = parseVolumeNumber(sMax);
 
-            if (key === 'min' && currentMin > currentMax) {
-                currentMin = currentMax;
-            }
-            if (key === 'max' && currentMax < currentMin) {
-                currentMax = currentMin;
+            if (Number.isFinite(parsedMin) && Number.isFinite(parsedMax)) {
+                let currentMin = parsedMin;
+                let currentMax = parsedMax;
+
+                if (currentMin < bounds.min) currentMin = bounds.min;
+                if (currentMax > bounds.max) currentMax = bounds.max;
+
+                if (key === 'min' && currentMin > currentMax) {
+                    currentMin = currentMax;
+                }
+                if (key === 'max' && currentMax < currentMin) {
+                    currentMax = currentMin;
+                }
+
+                filterState[tab].price = { min: Number(currentMin.toFixed(1)), max: Number(currentMax.toFixed(1)) };
             }
 
-            filterState[tab].price = { min: Number(currentMin.toFixed(1)), max: Number(currentMax.toFixed(1)) };
             updateFilterPriceDescription(tab);
         }
 
