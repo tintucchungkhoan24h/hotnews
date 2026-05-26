@@ -3666,12 +3666,69 @@
                         return { min: Number(minRounded.toFixed(2)), max: Number(maxRounded.toFixed(2)) };
                     }
                 }
-                // Fallback to client-side calculation if aggregate query returns nothing
-                return getPriceChangeBoundsForTab(tab);
+
+                console.warn('Price-change bounds aggregate returned no valid values, falling back to row fetch for tab:', tab, 'rawFilter', rawFilter);
+                return await fetchPriceChangeBoundsFromRows(tab);
             } catch (e) {
                 console.error('Error fetching price-change bounds:', e);
-                return getPriceChangeBoundsForTab(tab);
+                return await fetchPriceChangeBoundsFromRows(tab);
             }
+        }
+
+        async function fetchPriceChangeBoundsFromRows(tab) {
+            const ctx = getTabQueryContext(tab);
+            if (!ctx.dateRange.from || !ctx.dateRange.to) {
+                return { min: -100, max: 100 };
+            }
+
+            const batchSize = 1000;
+            let offset = 0;
+            let minValue = Infinity;
+            let maxValue = -Infinity;
+            let hasValue = false;
+
+            while (true) {
+                const rawFilter = `${ctx.extraQuery}${buildTabSearchQuery(tab)}${buildTabFilterQuery(tab, true, true, true)}`;
+                const sanitizedFilter = rawFilter.replace(/(&|^)\w+=[^&]*(__NONE__|__IMPOSSIBLE__)/g, '');
+                const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=price_change_today_pct&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${ctx.dateRange.to}T23:59:59%2B07:00:00${sanitizedFilter}&limit=${batchSize}&offset=${offset}`;
+                try {
+                    console.debug('fetchPriceChangeBoundsFromRows: requesting URL', url);
+                    const res = await fetch(url, {
+                        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                    });
+                    console.debug('fetchPriceChangeBoundsFromRows: response status', res.status);
+                    const json = await res.json();
+                    console.debug('fetchPriceChangeBoundsFromRows: received', json && json.length ? `${json.length} rows` : json);
+                    if (!Array.isArray(json) || json.length === 0) {
+                        break;
+                    }
+                    json.forEach(row => {
+                        const value = parseVolumeNumber(row.price_change_today_pct);
+                        if (Number.isFinite(value)) {
+                            hasValue = true;
+                            minValue = Math.min(minValue, value);
+                            maxValue = Math.max(maxValue, value);
+                        }
+                    });
+                    if (json.length < batchSize) {
+                        break;
+                    }
+                    offset += batchSize;
+                } catch (e) {
+                    console.error('Error fetching price-change rows for fallback:', e);
+                    break;
+                }
+            }
+
+            if (!hasValue || minValue === Infinity || maxValue === -Infinity) {
+                return { min: -100, max: 100 };
+            }
+            const minRounded = Math.floor(minValue * 100) / 100;
+            const maxRounded = Math.ceil(maxValue * 100) / 100;
+            return {
+                min: Number(minRounded.toFixed(2)),
+                max: Number(maxRounded.toFixed(2))
+            };
         }
 
         async function getUniqueSources() {
