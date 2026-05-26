@@ -1638,20 +1638,12 @@
         const priceChangeDefaults = {};
 
         async function refreshBoundsForTab(tab) {
-            if (tab === 'macro') {
-                const emptyBounds = { min: 0, max: 0 };
-                volumeBoundsCache[tab] = emptyBounds;
-                priceBoundsCache[tab] = emptyBounds;
-                priceChangeBoundsCache[tab] = { min: -6.88, max: 6.69 };
-                volumeDefaults[tab] = { min: 0, max: 0 };
-                priceDefaults[tab] = { min: 0, max: 0 };
-                priceChangeDefaults[tab] = { min: -6.88, max: 6.69 };
-                return;
-            }
-
+            // Fetch server-side aggregates for volume/price/priceChange so
+            // min/max reflect the current table & date-range instead of
+            // relying on hard-coded defaults or stale client-side rows.
             const volumeBounds = await fetchVolumeBoundsForTab(tab);
             const priceBounds = await fetchPriceBoundsForTab(tab);
-            const priceChangeBounds = getPriceChangeBoundsForTab(tab);
+            const priceChangeBounds = await fetchPriceChangeBoundsForTab(tab);
             volumeBoundsCache[tab] = volumeBounds;
             priceBoundsCache[tab] = priceBounds;
             priceChangeBoundsCache[tab] = priceChangeBounds;
@@ -1673,21 +1665,13 @@
         }
 
         async function ensureBoundsForTab(tab) {
-            if (tab === 'macro') {
-                return {
-                    volume: { min: 0, max: 0 },
-                    price: { min: 0, max: 0 },
-                    priceChange: { min: -6.88, max: 6.69 }
-                };
-            }
-
             if (!volumeBoundsCache[tab] || !priceBoundsCache[tab] || !priceChangeBoundsCache[tab]) {
                 await refreshBoundsForTab(tab);
             }
             return {
                 volume: volumeBoundsCache[tab] || { min: 0, max: 0 },
                 price: priceBoundsCache[tab] || { min: 0, max: 0 },
-                priceChange: priceChangeBoundsCache[tab] || { min: -6.88, max: 6.69 }
+                priceChange: priceChangeBoundsCache[tab] || { min: -100, max: 100 }
             };
         }
 
@@ -1883,6 +1867,7 @@
                 const bounds = await ensureBoundsForTab(currentTab);
                 const volumeBounds = bounds.volume;
                 const priceBounds = bounds.price;
+                const priceChangeBounds = bounds.priceChange;
                 console.log('Using cached bounds for tab', currentTab, 'volume', volumeBounds, 'price', priceBounds);
                 // Persist per-tab defaults on the filter state itself so Clear All
                 // can restore the exact values that were shown when the popup opened.
@@ -1891,6 +1876,9 @@
                 }
                 if (!tabFilterState.priceDefaults) {
                     tabFilterState.priceDefaults = { min: priceBounds.min, max: priceBounds.max };
+                }
+                if (!tabFilterState.priceChangeDefaults) {
+                    tabFilterState.priceChangeDefaults = { min: priceChangeBounds.min, max: priceChangeBounds.max };
                 }
                 if (!tabFilterState.volume || typeof tabFilterState.volume !== 'object') {
                     tabFilterState.volume = { min: volumeBounds.min, max: volumeBounds.max };
@@ -1920,6 +1908,22 @@
                     tabFilterState.price.max = clampVolumeValue(tabFilterState.price.max, priceBounds.min, priceBounds.max);
                     if (tabFilterState.price.min > tabFilterState.price.max) {
                         tabFilterState.price.min = tabFilterState.price.max;
+                    }
+                }
+                // Initialize priceChange defaults and clamp
+                if (!tabFilterState.priceChange || typeof tabFilterState.priceChange !== 'object') {
+                    tabFilterState.priceChange = { min: priceChangeBounds.min, max: priceChangeBounds.max };
+                } else {
+                    if (tabFilterState.priceChange.min === null || tabFilterState.priceChange.min === undefined) {
+                        tabFilterState.priceChange.min = priceChangeBounds.min;
+                    }
+                    if (tabFilterState.priceChange.max === null || tabFilterState.priceChange.max === undefined) {
+                        tabFilterState.priceChange.max = priceChangeBounds.max;
+                    }
+                    tabFilterState.priceChange.min = clampVolumeValue(tabFilterState.priceChange.min, priceChangeBounds.min, priceChangeBounds.max);
+                    tabFilterState.priceChange.max = clampVolumeValue(tabFilterState.priceChange.max, priceChangeBounds.min, priceChangeBounds.max);
+                    if (tabFilterState.priceChange.min > tabFilterState.priceChange.max) {
+                        tabFilterState.priceChange.min = tabFilterState.priceChange.max;
                     }
                 }
                 
@@ -2117,7 +2121,7 @@
                                     <label class="volume-input-label" for="filterPriceChangeMin">${priceChangeMinPlaceholder}</label>
                                     <div class="volume-input-with-spinner">
                                         <input id="filterPriceChangeMin" class="filter-volume-input" type="text" inputmode="decimal"
-                                            value="${Number(tabFilterState.priceChange.min ?? -6.88).toFixed(2)}"
+                                            value="${Number(tabFilterState.priceChange.min ?? priceChangeBounds.min).toFixed(2)}"
                                             onblur="onPriceChangeInputBlur('${currentTab}', 'min')"
                                             oninput="onPriceChangeInputChange('${currentTab}', 'min')">
                                         <div class="volume-spinner">
@@ -2130,7 +2134,7 @@
                                     <label class="volume-input-label" for="filterPriceChangeMax">${priceChangeMaxPlaceholder}</label>
                                     <div class="volume-input-with-spinner">
                                         <input id="filterPriceChangeMax" class="filter-volume-input" type="text" inputmode="decimal"
-                                            value="${Number(tabFilterState.priceChange.max ?? 6.69).toFixed(2)}"
+                                            value="${Number(tabFilterState.priceChange.max ?? priceChangeBounds.max).toFixed(2)}"
                                             onblur="onPriceChangeInputBlur('${currentTab}', 'max')"
                                             oninput="onPriceChangeInputChange('${currentTab}', 'max')">
                                         <div class="volume-spinner">
@@ -2140,7 +2144,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="filterPriceChangeDescription" class="filter-volume-description">${t.priceChangeDescription.replace('{min}', Number(tabFilterState.priceChange.min ?? -6.88).toFixed(2)).replace('{max}', Number(tabFilterState.priceChange.max ?? 6.69).toFixed(2))}</div>
+                            <div id="filterPriceChangeDescription" class="filter-volume-description">${t.priceChangeDescription.replace('{min}', Number(tabFilterState.priceChange.min ?? priceChangeBounds.min).toFixed(2)).replace('{max}', Number(tabFilterState.priceChange.max ?? priceChangeBounds.max).toFixed(2))}</div>
                         </div>
                     </div>
                     
@@ -3609,6 +3613,10 @@
         }
 
         function getPriceChangeBoundsForTab(tab) {
+            if (priceChangeBoundsCache[tab]) {
+                return priceChangeBoundsCache[tab];
+            }
+
             const dataMap = {
                 stock: state && state.data ? state.data : [],
                 stable: stateStable && stateStable.data ? stateStable.data : [],
@@ -3633,6 +3641,37 @@
                 min: Number(minRounded.toFixed(2)),
                 max: Number(maxRounded.toFixed(2))
             };
+        }
+
+        async function fetchPriceChangeBoundsForTab(tab) {
+            const ctx = getTabQueryContext(tab);
+            if (!ctx.dateRange.from || !ctx.dateRange.to) {
+                return { min: -100, max: 100 };
+            }
+
+            const rawFilter = `${ctx.extraQuery}${buildTabSearchQuery(tab)}${buildTabFilterQuery(tab, true, true, true)}`;
+            const sanitizedFilter = rawFilter.replace(/(&|^)\w+=[^&]*(__NONE__|__IMPOSSIBLE__)/g, '');
+            const url = `${SUPABASE_URL}/rest/v1/${ctx.tableName}?select=min(price_change_today_pct),max(price_change_today_pct)&match_method=eq.TICKER&publish_time=gte.${ctx.dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${ctx.dateRange.to}T23:59:59%2B07:00:00${sanitizedFilter}`;
+            try {
+                const res = await fetch(url, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                });
+                const json = await res.json();
+                if (Array.isArray(json) && json.length > 0) {
+                    const minValue = parseVolumeNumber(json[0].min);
+                    const maxValue = parseVolumeNumber(json[0].max);
+                    if (Number.isFinite(minValue) && Number.isFinite(maxValue)) {
+                        const minRounded = Math.floor(minValue * 100) / 100;
+                        const maxRounded = Math.ceil(maxValue * 100) / 100;
+                        return { min: Number(minRounded.toFixed(2)), max: Number(maxRounded.toFixed(2)) };
+                    }
+                }
+                // Fallback to client-side calculation if aggregate query returns nothing
+                return getPriceChangeBoundsForTab(tab);
+            } catch (e) {
+                console.error('Error fetching price-change bounds:', e);
+                return getPriceChangeBoundsForTab(tab);
+            }
         }
 
         async function getUniqueSources() {
