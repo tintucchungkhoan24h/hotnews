@@ -121,7 +121,7 @@
         "priceChangeUnit": "%",
         "priceChangeMinPlaceholder": "Tối thiểu",
         "priceChangeMaxPlaceholder": "Tối đa",
-        "priceChangeDescription": "% Thay đổi giá: {min} đến {max} %",
+        "priceChangeDescription": "Thay đổi giá: {min} đến {max} %",
         "volumeDescription": "Khối lượng: {min} – {max}",
         "ma15Ranges": {
           "strongAbove": "⏫ MA15 (>5%)",
