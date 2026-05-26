@@ -482,8 +482,8 @@
       "lblFrom": "시작일",
       "lblTo": "종료일",
       "loading": "데이터를 불러오는 중...",
-      "exportBtn": "Excel보내기",
-      "exporting": "보내는 중...",
+      "exportBtn": "Excel 내보내기",
+      "exporting": "내보내는 중...",
       "filterBtn": "필터",
       "refreshBtn": "데이터 새로고침",
       "watchNewsBtn": "뉴스 보기",
@@ -679,8 +679,8 @@
         "watchlist": "Watchlist",
         "spotlight": "Spotlight"
       },
-      "exportError": "Excel보내기 오류. 다시 시도해 주세요.",
-      "exportErrorWithMessage": "Excel보내기 오류: {message}",
+      "exportError": "Excel 내보내기 오류. 다시 시도해 주세요.",
+      "exportErrorWithMessage": "Excel 내보내기 오류: {message}",
       "exportUnexpectedResponse": "서버 응답 형식이 올바르지 않습니다."
     },
     "zh": {
