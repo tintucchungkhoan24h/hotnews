@@ -3193,12 +3193,35 @@
                     additionalFilter = '&or=(recommendation.eq.HOLD,recommendation.eq.BUY)';
                 }
                 
-                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=single_stock&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${dateRange.to}T23:59:59%2B07:00:00${additionalFilter}&limit=1000`;
-                const res = await fetch(url, {
-                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
-                });
-                const data = await res.json();
-                const codes = [...new Set(data.map(d => d.single_stock).filter(Boolean))].sort();
+                // FIX: Paginate through ALL rows so the limit=1000 cap does not
+                // truncate results for longer date ranges (which have more total rows).
+                // Previously, limit=1000 on raw rows caused fewer unique codes to be
+                // seen for 14-day ranges (130) than 7-day ranges (149).
+                const batchSize = 1000;
+                let allData = [];
+                let offset = 0;
+                let hasMore = true;
+
+                while (hasMore) {
+                    const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=single_stock&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${dateRange.to}T23:59:59%2B07:00:00${additionalFilter}&limit=${batchSize}&offset=${offset}`;
+                    const res = await fetch(url, {
+                        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                    });
+                    const data = await res.json();
+                    if (!Array.isArray(data) || data.length === 0) {
+                        hasMore = false;
+                        break;
+                    }
+                    allData = allData.concat(data);
+                    if (data.length < batchSize) {
+                        hasMore = false;
+                    } else {
+                        offset += batchSize;
+                    }
+                }
+
+                const codes = [...new Set(allData.map(d => d.single_stock).filter(Boolean))].sort();
+                console.log(`[getUniqueStockCodes] tab=${currentTab} fetched ${allData.length} rows → ${codes.length} unique codes`);
                 return codes;
             } catch (e) {
                 console.error('Error fetching stock codes:', e);
@@ -3244,11 +3267,31 @@
                     additionalFilter = '&or=(recommendation.eq.HOLD,recommendation.eq.BUY)';
                 }
                 
-                const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${dateRange.to}T23:59:59%2B07:00:00${additionalFilter}&limit=1000`;
-                const res = await fetch(url, {
-                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
-                });
-                const data = await res.json();
+                // FIX: Paginate through ALL rows (same fix as getUniqueStockCodes).
+                const batchSize = 1000;
+                let allData = [];
+                let offset = 0;
+                let hasMore = true;
+
+                while (hasMore) {
+                    const url = `${SUPABASE_URL}/rest/v1/${tableName}?select=industry_vn,industry_en&match_method=eq.TICKER&publish_time=gte.${dateRange.from}T00:00:00%2B07:00:00&publish_time=lte.${dateRange.to}T23:59:59%2B07:00:00${additionalFilter}&limit=${batchSize}&offset=${offset}`;
+                    const res = await fetch(url, {
+                        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                    });
+                    const batchData = await res.json();
+                    if (!Array.isArray(batchData) || batchData.length === 0) {
+                        hasMore = false;
+                        break;
+                    }
+                    allData = allData.concat(batchData);
+                    if (batchData.length < batchSize) {
+                        hasMore = false;
+                    } else {
+                        offset += batchSize;
+                    }
+                }
+
+                const data = allData;
                 
                 // Create a map of Vietnamese to English industries
                 const industryMap = {};
