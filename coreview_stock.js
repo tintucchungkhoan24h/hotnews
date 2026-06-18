@@ -689,7 +689,7 @@ function renderBody() {
                 <td class="px-4 py-4 font-semibold text-xs">${(row.current_close/1000).toFixed(1)}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${(row.current_volume/1000000).toFixed(2)}M</td>
                 <td class="px-4 py-4"
-                    onmouseenter="(function(e){ var q=window.extractFixedSentences&&extractFixedSentences('${(row.quote_50_word||'').replace(/'/g,"&#39;").replace(/\n/g," ")}','${(row.single_stock||'').replace(/'/g,"&#39;")}'); if(q) showNewsQuoteTooltip(e,q); })(event)"
+                    onmouseenter="(function(e){ var q=window.extractFixedSentences&&extractFixedSentences('${(row.quote_50_word||'').replace(/'/g,"&#39;").replace(/\n/g," ")}','${(row.single_stock||'').replace(/'/g,"&#39;")}'); if(q) showNewsQuoteTooltip(e,q,'${(row.source_name||'').replace(/'/g,"&#39;")}'); })(event)"
                     onmouseleave="hideNewsQuoteTooltip&&hideNewsQuoteTooltip()">
                     <a href="${row.news_link}" target="_blank" class="${headlineColor} hover:text-fin-gold hover:underline transition-all text-xs line-clamp-1">
                         ${headline}
@@ -1131,14 +1131,23 @@ window.extractFixedSentences = function(text, ticker) {
         tip.style.top  = y + 'px';
     }
 
-    window.showNewsQuoteTooltip = function(e, quoteText) {
+    window.showNewsQuoteTooltip = function(e, quoteText, sourceName) {
         if (!quoteText) return;
         const tip = document.getElementById('news-quote-tooltip');
         if (!tip) return;
 
         clearTimeout(_nqHideTimer);
         tip.classList.remove('visible');
-        tip.innerHTML = quoteText;
+        
+        let htmlContent = '';
+        if (sourceName) {
+            const div = document.createElement('div');
+            div.textContent = sourceName;
+            htmlContent += `<div style="font-size: 10px; color: #9ca3af; font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em;">${div.innerHTML}</div>`;
+        }
+        htmlContent += `<div>${quoteText}</div>`;
+        
+        tip.innerHTML = htmlContent;
 
         requestAnimationFrame(() => {
             _nqPosition(e);
