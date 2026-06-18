@@ -1117,11 +1117,14 @@ window.extractFixedSentences = function(text, ticker) {
     function _nqPosition(e) {
         const tip = document.getElementById('news-quote-tooltip');
         if (!tip) return;
-        const margin = 12;
-        const tw = tip.offsetWidth  || 420;
-        const th = tip.offsetHeight || 60;
         const vw = window.innerWidth;
         const vh = window.innerHeight;
+        const margin = 12;
+
+        tip.style.maxWidth = Math.min(480, vw - 32) + 'px';
+
+        const tw = tip.offsetWidth  || 420;
+        const th = tip.offsetHeight || 60;
 
         // Place below the mouse, flip above if it clips the bottom
         let x = (e.clientX ?? vw / 2) - tw / 2;
@@ -1172,6 +1175,10 @@ window.extractFixedSentences = function(text, ticker) {
         tip.innerHTML = htmlContent;
 
         requestAnimationFrame(() => {
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            tip.style.maxWidth = Math.min(480, vw - 32) + 'px';
+
             if (anchorTr) {
                 const stockBadge = anchorTr.querySelector('.stock-badge');
                 if (stockBadge) {
@@ -1179,13 +1186,21 @@ window.extractFixedSentences = function(text, ticker) {
                     const margin = 8;
                     let x = rect.left;
                     let y = rect.bottom + margin;
+                    
                     const tw = tip.offsetWidth || 420;
                     const th = tip.offsetHeight || 60;
-                    const vw = window.innerWidth;
-                    const vh = window.innerHeight;
+                    
                     if (x + tw > vw - margin) x = vw - tw - margin;
                     if (x < margin) x = margin;
-                    if (y + th > vh - margin) y = rect.top - th - margin;
+                    
+                    if (y + th > vh - margin) {
+                        y = rect.top - th - margin;
+                        // Prevent clipping off the top edge if the popup is taller than the space above
+                        if (y < margin) {
+                            y = rect.bottom + margin;
+                        }
+                    }
+                    
                     tip.style.left = x + 'px';
                     tip.style.top  = y + 'px';
                 } else {
