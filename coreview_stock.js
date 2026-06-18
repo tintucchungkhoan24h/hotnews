@@ -671,7 +671,12 @@ function renderBody() {
         const headlineColor = impactScore >= 40 ? 'text-fin-gold font-semibold' : 'text-gray-300';
         
         return `
-            <tr class="hover:bg-fin-gold/5 transition-colors">
+            <tr class="hover:bg-fin-gold/5 transition-colors"
+                data-quote="${(row.quote_50_word||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
+                data-stock="${(row.single_stock||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
+                data-source="${(row.source_name||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
+                onmouseenter="(function(e, el){ var q=window.extractFixedSentences&&extractFixedSentences(el.dataset.quote, el.dataset.stock); if(q) showNewsQuoteTooltip(e, q, el.dataset.source, el); })(event, this)"
+                onmouseleave="hideNewsQuoteTooltip&&hideNewsQuoteTooltip()">
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPage * state.pageSize) + idx + 1}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${formatDateTime(row.publish_time)}</td>
                 <td class="px-4 py-4">
@@ -689,8 +694,8 @@ function renderBody() {
                 <td class="px-4 py-4 font-semibold text-xs">${(row.current_close/1000).toFixed(1)}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${(row.current_volume/1000000).toFixed(2)}M</td>
                 <td class="px-4 py-4"
-                    onmouseenter="(function(e){ var q=window.extractFixedSentences&&extractFixedSentences('${(row.quote_50_word||'').replace(/'/g,"&#39;").replace(/\n/g," ")}','${(row.single_stock||'').replace(/'/g,"&#39;")}'); if(q) showNewsQuoteTooltip(e,q,'${(row.source_name||'').replace(/'/g,"&#39;")}'); })(event)"
-                    onmouseleave="hideNewsQuoteTooltip&&hideNewsQuoteTooltip()">
+                    onmouseenter="(function(e, el){ e.stopPropagation(); var tr=el.closest('tr'); var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source); })(event, this)"
+                    onmouseleave="(function(e, el){ hideNewsQuoteTooltip&&hideNewsQuoteTooltip(); var tr=el.closest('tr'); var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, tr); })(event, this)">
                     <a href="${row.news_link}" target="_blank" class="${headlineColor} hover:text-fin-gold hover:underline transition-all text-xs line-clamp-1">
                         ${headline}
                     </a>
@@ -1131,7 +1136,7 @@ window.extractFixedSentences = function(text, ticker) {
         tip.style.top  = y + 'px';
     }
 
-    window.showNewsQuoteTooltip = function(e, quoteText, sourceName) {
+    window.showNewsQuoteTooltip = function(e, quoteText, sourceName, anchorTr = null) {
         if (!quoteText) return;
         const tip = document.getElementById('news-quote-tooltip');
         if (!tip) return;
@@ -1150,7 +1155,27 @@ window.extractFixedSentences = function(text, ticker) {
         tip.innerHTML = htmlContent;
 
         requestAnimationFrame(() => {
-            _nqPosition(e);
+            if (anchorTr) {
+                const stockBadge = anchorTr.querySelector('.stock-badge');
+                if (stockBadge) {
+                    const rect = stockBadge.getBoundingClientRect();
+                    const margin = 8;
+                    let x = rect.left;
+                    let y = rect.bottom + margin;
+                    const tw = tip.offsetWidth || 420;
+                    const th = tip.offsetHeight || 60;
+                    const vw = window.innerWidth;
+                    const vh = window.innerHeight;
+                    if (x + tw > vw - margin) x = vw - tw - margin;
+                    if (y + th > vh - margin) y = rect.top - th - margin;
+                    tip.style.left = x + 'px';
+                    tip.style.top  = y + 'px';
+                } else {
+                    _nqPosition(e);
+                }
+            } else {
+                _nqPosition(e);
+            }
             tip.classList.add('visible');
         });
     };
