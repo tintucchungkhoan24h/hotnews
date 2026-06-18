@@ -1170,6 +1170,25 @@ window.extractFixedSentences = function(text, ticker) {
         const plainQuote = quoteText ? (new DOMParser().parseFromString(quoteText, 'text/html')).body.textContent : '';
         const currentLang = window._appLang || 'vi';
 
+        // Helper: find ticker from clicked row (anchorTr) or hovered row
+        const getTicker = () => {
+            if (anchorTr && anchorTr.dataset && anchorTr.dataset.stock) return anchorTr.dataset.stock;
+            if (e && e.target && e.target.closest) {
+                const hoveredTr = e.target.closest('tr');
+                if (hoveredTr && hoveredTr.dataset && hoveredTr.dataset.stock) return hoveredTr.dataset.stock;
+            }
+            return null;
+        };
+
+        // Helper: highlight all occurrences of the ticker in gold+bold inside escaped HTML
+        const applyTickerHighlight = (safeHTML) => {
+            const ticker = getTicker();
+            if (!ticker) return safeHTML;
+            const safeTicker = ticker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const highlightRegex = new RegExp(`\\b(${safeTicker})\\b`, 'gi');
+            return safeHTML.replace(highlightRegex, '<span style="color:#ffd700;font-weight:bold;">$1</span>');
+        };
+
         let htmlContent = '';
         if (sourceName) {
             htmlContent += `<div style="font-size: 10px; color: #9ca3af; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em;">${esc(sourceName)}</div>`;
@@ -1177,15 +1196,22 @@ window.extractFixedSentences = function(text, ticker) {
         if (rawTitle) {
             htmlContent += `<div id="nq-title" style="font-size: 12px; color: #ffd700; font-weight: 600; margin-bottom: 6px; line-height: 1.4;">${esc(rawTitle)}</div>`;
         }
-        htmlContent += `<div id="nq-quote" style="font-size: 12px; color: #d1d5db; line-height: 1.5;">${quoteText}${currentLang !== 'vi' ? ' <span style="opacity:0.5;">(...)</span>' : ''}</div>`;
-        
+
+        if (currentLang === 'vi') {
+            // Vietnamese: extractFixedSentences already applied highlight spans — use directly
+            htmlContent += `<div id="nq-quote" style="font-size: 12px; color: #d1d5db; line-height: 1.5;">${quoteText}</div>`;
+        } else {
+            // Non-Vietnamese: show plain text with loading indicator while translation fetches
+            htmlContent += `<div id="nq-quote" style="font-size: 12px; color: #d1d5db; line-height: 1.5;">${applyTickerHighlight(esc(plainQuote))} <span style="opacity:0.5;">(...)</span></div>`;
+        }
+
         tip.innerHTML = htmlContent;
 
         if (currentLang !== 'vi' && window.translateText) {
             if (rawTitle) {
                 window.translateText(rawTitle, currentLang).then(translated => {
                     if (tip.dataset.reqId === reqId) {
-                        const tEl = document.getElementById('nq-title');
+                        const tEl = tip.querySelector('#nq-title');
                         if (tEl) tEl.innerHTML = esc(translated);
                     }
                 });
@@ -1193,8 +1219,8 @@ window.extractFixedSentences = function(text, ticker) {
             if (plainQuote) {
                 window.translateText(plainQuote, currentLang).then(translated => {
                     if (tip.dataset.reqId === reqId) {
-                        const qEl = document.getElementById('nq-quote');
-                        if (qEl) qEl.innerHTML = esc(translated);
+                        const qEl = tip.querySelector('#nq-quote');
+                        if (qEl) qEl.innerHTML = applyTickerHighlight(esc(translated));
                     }
                 });
             }
