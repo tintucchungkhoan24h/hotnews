@@ -1558,6 +1558,8 @@
             currentPageMacro: 0, pageSizeMacro: 50, totalCountMacro: 0,
             sortColMacro: 'publish_time', sortDescMacro: true
         };
+        // Expose current language globally so dynamically-loaded scripts can read it reliably
+        window._appLang = DEFAULT_LANG;
         
         // Stable Volatility state object
         let stateStable = {
@@ -3987,6 +3989,7 @@
             async function selectLanguage(lang) {
                 if (!lang || state.lang === lang) return;
                 state.lang = lang;
+                window._appLang = lang; // keep global in sync for dynamically-loaded scripts
                 stateStable.lang = state.lang;
                 stateHigh.lang = state.lang;
                 stateWatchlist.lang = state.lang;

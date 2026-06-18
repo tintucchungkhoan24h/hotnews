@@ -1168,7 +1168,7 @@ window.extractFixedSentences = function(text, ticker) {
 
         const rawTitle = title ? decodeHtml(title) : '';
         const plainQuote = quoteText ? (new DOMParser().parseFromString(quoteText, 'text/html')).body.textContent : '';
-        const currentLang = (typeof state !== 'undefined' && state.lang) ? state.lang : 'vi';
+        const currentLang = window._appLang || 'vi';
 
         let htmlContent = '';
         if (sourceName) {
