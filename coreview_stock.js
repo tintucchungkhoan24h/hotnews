@@ -1220,6 +1220,9 @@ window.extractFixedSentences = function(text, ticker) {
         
         clearTimeout(_nqHideTimer);
         tip.classList.remove('visible');
+        // Disable pointer events so hidden popup never blocks clicks on rows beneath it
+        tip.style.pointerEvents = 'none';
+        tip.dataset.link = '';
     };
 
     // Close popup when clicking outside any table row or the popup itself
@@ -1235,6 +1238,8 @@ window.extractFixedSentences = function(text, ticker) {
 
         // Everything else → close
         tip.classList.remove('visible');
+        tip.style.pointerEvents = 'none';
+        tip.dataset.link = '';
         window._toggledNewsQuoteTr = null;
         window._toggledMacroTr = null;
     }, true); // capture phase so it fires before row onclick
