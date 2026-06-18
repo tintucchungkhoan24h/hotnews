@@ -676,7 +676,8 @@ function renderBody() {
                 data-stock="${(row.single_stock||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-source="${(row.source_name||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 onmouseenter="(function(e, el){ var q=window.extractFixedSentences&&extractFixedSentences(el.dataset.quote, el.dataset.stock); if(q) showNewsQuoteTooltip(e, q, el.dataset.source, el); })(event, this)"
-                onmouseleave="hideNewsQuoteTooltip&&hideNewsQuoteTooltip()">
+                onmouseleave="hideNewsQuoteTooltip&&hideNewsQuoteTooltip()"
+                onclick="hideNewsQuoteTooltip&&hideNewsQuoteTooltip(event)">
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPage * state.pageSize) + idx + 1}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${formatDateTime(row.publish_time)}</td>
                 <td class="px-4 py-4">
@@ -1143,6 +1144,7 @@ window.extractFixedSentences = function(text, ticker) {
 
         clearTimeout(_nqHideTimer);
         tip.classList.remove('visible');
+        tip.dataset.showTime = Date.now(); // Track when it was shown for mobile logic
         
         let htmlContent = '';
         if (sourceName) {
@@ -1180,9 +1182,19 @@ window.extractFixedSentences = function(text, ticker) {
         });
     };
 
-    window.hideNewsQuoteTooltip = function() {
+    window.hideNewsQuoteTooltip = function(e) {
         const tip = document.getElementById('news-quote-tooltip');
         if (!tip) return;
+        
+        // On mobile, a tap triggers mouseenter (show) followed immediately by click (hide).
+        // If the hide is triggered by a click within 1000ms of showing, ignore it so the 1st tap shows the popup.
+        if (e && e.type === 'click') {
+            const showTime = parseInt(tip.dataset.showTime || '0', 10);
+            if (Date.now() - showTime < 1000) {
+                return;
+            }
+        }
+        
         clearTimeout(_nqHideTimer);
         tip.classList.remove('visible');
     };
