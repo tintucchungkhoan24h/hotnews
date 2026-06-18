@@ -566,8 +566,10 @@ function renderMacroBody() {
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPageMacro * state.pageSizeMacro) + idx + 1}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${formatMacroDateTime(row.publish_time)}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${formatSourceName(row.source_name)}</td>
-                <td class="px-4 py-4">
-                    <a href="${row.news_link || '#'}" target="_blank" class="${headlineColor} hover:text-fin-gold hover:underline transition-all text-xs">
+                <td class="px-4 py-4"
+                    onmouseenter="(function(e, el){ e.stopPropagation(); var tr=el.closest('tr'); var s=tr.dataset.summary; if(s) window.showNewsQuoteTooltip&&window.showNewsQuoteTooltip(e, s, tr.dataset.source, null, null, tr.dataset.headline); })(event, this)"
+                    onmouseleave="(function(e, el){ var tr=el.closest('tr'); if (window._toggledMacroTr === tr) { window.restoreMacroQuoteTooltip&&window.restoreMacroQuoteTooltip(e, tr); } else { window.hideNewsQuoteTooltip&&window.hideNewsQuoteTooltip(); } })(event, this)">
+                    <a href="${row.news_link || '#'}" target="_blank" class="${headlineColor} hover:text-fin-gold hover:underline transition-all text-xs line-clamp-1">
                         ${headline || '-'}
                     </a>
                 </td>
@@ -859,4 +861,25 @@ window.toggleMacroQuoteTooltip = function(e, trElement) {
             window._toggledMacroTr = trElement;
         }
     }
+};
+
+window.restoreMacroQuoteTooltip = function(e, trElement) {
+    if (!window.showNewsQuoteTooltip || window._toggledMacroTr !== trElement) return;
+    const summary = trElement.dataset.summary;
+    const source  = trElement.dataset.source;
+    const link    = trElement.dataset.link || '';
+    const title   = trElement.dataset.headline || '';
+    if (!summary) return;
+
+    const rect = trElement.getBoundingClientRect();
+    const fakeBadge = {
+        getBoundingClientRect: () => ({
+            left: rect.left + 8, bottom: rect.bottom, top: rect.top, right: rect.left + 80
+        })
+    };
+    const fakeAnchor = {
+        querySelector: (sel) => sel === '.stock-badge' ? fakeBadge : null,
+        dataset: trElement.dataset
+    };
+    window.showNewsQuoteTooltip(e, summary, source, fakeAnchor, link, title);
 };
