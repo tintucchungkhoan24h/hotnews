@@ -1158,21 +1158,47 @@ window.extractFixedSentences = function(text, ticker) {
             tip.style.cursor = 'default';
         }
 
+        const reqId = String(Date.now() + Math.random());
+        tip.dataset.reqId = reqId;
+
         // Safely escape plain text for innerHTML
         const esc = (t) => { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; };
         // Decode HTML entities (e.g. &aacute; → á) so translated headlines render correctly
         const decodeHtml = (html) => { const ta = document.createElement('textarea'); ta.innerHTML = html; return ta.value; };
 
+        const rawTitle = title ? decodeHtml(title) : '';
+        const plainQuote = quoteText ? (new DOMParser().parseFromString(quoteText, 'text/html')).body.textContent : '';
+        const currentLang = (typeof state !== 'undefined' && state.lang) ? state.lang : 'vi';
+
         let htmlContent = '';
         if (sourceName) {
             htmlContent += `<div style="font-size: 10px; color: #9ca3af; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em;">${esc(sourceName)}</div>`;
         }
-        if (title) {
-            htmlContent += `<div style="font-size: 12px; color: #ffd700; font-weight: 600; margin-bottom: 6px; line-height: 1.4;">${esc(decodeHtml(title))}</div>`;
+        if (rawTitle) {
+            htmlContent += `<div id="nq-title" style="font-size: 12px; color: #ffd700; font-weight: 600; margin-bottom: 6px; line-height: 1.4;">${esc(rawTitle)}</div>`;
         }
-        htmlContent += `<div style="font-size: 12px; color: #d1d5db; line-height: 1.5;">${quoteText}</div>`;
+        htmlContent += `<div id="nq-quote" style="font-size: 12px; color: #d1d5db; line-height: 1.5;">${quoteText}${currentLang !== 'vi' ? ' <span style="opacity:0.5;">(...)</span>' : ''}</div>`;
         
         tip.innerHTML = htmlContent;
+
+        if (currentLang !== 'vi' && window.translateText) {
+            if (rawTitle) {
+                window.translateText(rawTitle, currentLang).then(translated => {
+                    if (tip.dataset.reqId === reqId) {
+                        const tEl = document.getElementById('nq-title');
+                        if (tEl) tEl.innerHTML = esc(translated);
+                    }
+                });
+            }
+            if (plainQuote) {
+                window.translateText(plainQuote, currentLang).then(translated => {
+                    if (tip.dataset.reqId === reqId) {
+                        const qEl = document.getElementById('nq-quote');
+                        if (qEl) qEl.innerHTML = esc(translated);
+                    }
+                });
+            }
+        }
 
         requestAnimationFrame(() => {
             const vw = window.innerWidth;
