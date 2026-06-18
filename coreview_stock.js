@@ -1083,14 +1083,25 @@ window.extractFixedSentences = function(text, ticker) {
     const tickerRegex = new RegExp(`\\b${ticker}\\b`, 'i');
     const tickerIndex = sentences.findIndex(s => tickerRegex.test(s));
 
-    if (tickerIndex === -1) return text;   // fallback: return full text
-
-    const result = [sentences[tickerIndex]];
-    if (tickerIndex + 1 < sentences.length) {
-        result.push(sentences[tickerIndex + 1]);
+    let finalText = text;
+    if (tickerIndex !== -1) {
+        const result = [sentences[tickerIndex]];
+        if (tickerIndex + 1 < sentences.length) {
+            result.push(sentences[tickerIndex + 1]);
+        }
+        finalText = '... ' + result.join('. ') + ' ...';
     }
 
-    return '... ' + result.join('. ') + ' ...';
+    // Escape HTML to prevent XSS
+    const div = document.createElement('div');
+    div.textContent = finalText;
+    let safeHTML = div.innerHTML;
+
+    // Highlight ticker (yellow and bold)
+    const highlightRegex = new RegExp(`\\b(${ticker})\\b`, 'gi');
+    safeHTML = safeHTML.replace(highlightRegex, '<span class="text-fin-gold font-bold">$1</span>');
+
+    return safeHTML;
 };
 
 // Show the news-quote-tooltip next to the hovered headline cell.
@@ -1127,7 +1138,7 @@ window.extractFixedSentences = function(text, ticker) {
 
         clearTimeout(_nqHideTimer);
         tip.classList.remove('visible');
-        tip.textContent = quoteText;
+        tip.innerHTML = quoteText;
 
         requestAnimationFrame(() => {
             _nqPosition(e);
