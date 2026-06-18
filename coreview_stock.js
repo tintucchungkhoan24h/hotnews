@@ -675,6 +675,7 @@ function renderBody() {
                 data-quote="${(row.quote_50_word||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-stock="${(row.single_stock||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-source="${(row.source_name||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
+                data-link="${(row.news_link||'').replace(/"/g, '&quot;')}"
                 onclick="window.toggleNewsQuoteTooltip&&toggleNewsQuoteTooltip(event, this)">
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPage * state.pageSize) + idx + 1}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${formatDateTime(row.publish_time)}</td>
@@ -1135,7 +1136,7 @@ window.extractFixedSentences = function(text, ticker) {
         tip.style.top  = y + 'px';
     }
 
-    window.showNewsQuoteTooltip = function(e, quoteText, sourceName, anchorTr = null) {
+    window.showNewsQuoteTooltip = function(e, quoteText, sourceName, anchorTr = null, link = null) {
         if (!quoteText) return;
         const tip = document.getElementById('news-quote-tooltip');
         if (!tip) return;
@@ -1143,7 +1144,16 @@ window.extractFixedSentences = function(text, ticker) {
         clearTimeout(_nqHideTimer);
         tip.classList.remove('visible');
         tip.dataset.showTime = Date.now(); // Track when it was shown for mobile logic
+        tip.dataset.link = link || (anchorTr ? anchorTr.dataset.link : '');
         
+        if (anchorTr) {
+            tip.style.pointerEvents = 'auto';
+            tip.style.cursor = 'pointer';
+        } else {
+            tip.style.pointerEvents = 'none';
+            tip.style.cursor = 'default';
+        }
+
         let htmlContent = '';
         if (sourceName) {
             const div = document.createElement('div');
@@ -1185,14 +1195,18 @@ window.extractFixedSentences = function(text, ticker) {
     window.toggleNewsQuoteTooltip = function(e, trElement) {
         const tip = document.getElementById('news-quote-tooltip');
         if (!tip) return;
+
+        // Don't toggle if the click was on the stock-badge (chart link) or a <a> headline
+        if (e.target.closest('.stock-badge') || e.target.closest('a')) return;
         
         if (tip.classList.contains('visible') && window._toggledNewsQuoteTr === trElement) {
             window.hideNewsQuoteTooltip();
             window._toggledNewsQuoteTr = null;
         } else {
             var q = window.extractFixedSentences && extractFixedSentences(trElement.dataset.quote, trElement.dataset.stock);
+            var link = trElement.dataset.link || '';
             if (q) {
-                window.showNewsQuoteTooltip(e, q, trElement.dataset.source, trElement);
+                window.showNewsQuoteTooltip(e, q, trElement.dataset.source, trElement, link);
                 window._toggledNewsQuoteTr = trElement;
             }
         }

@@ -661,6 +661,7 @@ function renderWatchlistBody() {
                 data-quote="${(row.quote_50_word||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-stock="${(row.single_stock||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-source="${(row.source_name||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
+                data-link="${(row.news_link||'').replace(/"/g, '&quot;')}"
                 onclick="window.toggleNewsQuoteTooltip&&toggleNewsQuoteTooltip(event, this)">
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(stateWatchlist.currentPage * stateWatchlist.pageSize) + idx + 1}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${formatDateTimeWatchlist(row.publish_time)}</td>
