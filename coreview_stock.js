@@ -1206,6 +1206,8 @@ window.extractFixedSentences = function(text, ticker) {
             var q = window.extractFixedSentences && extractFixedSentences(trElement.dataset.quote, trElement.dataset.stock);
             var link = trElement.dataset.link || '';
             if (q) {
+                // Clear macro tab state when switching to a stock tab row
+                window._toggledMacroTr = null;
                 window.showNewsQuoteTooltip(e, q, trElement.dataset.source, trElement, link);
                 window._toggledNewsQuoteTr = trElement;
             }

@@ -557,7 +557,11 @@ function renderMacroBody() {
         const headlineColor = impactScore >= 40 ? 'text-fin-gold font-semibold' : 'text-gray-300';
         
         return `
-            <tr class="hover:bg-fin-gold/5 transition-colors">
+            <tr class="hover:bg-fin-gold/5 transition-colors"
+                data-summary="${(row.summary||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
+                data-source="${(row.source_name||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
+                data-link="${(row.news_link||'').replace(/"/g, '&quot;')}"
+                onclick="window.toggleMacroQuoteTooltip&&toggleMacroQuoteTooltip(event, this)">
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPageMacro * state.pageSizeMacro) + idx + 1}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${formatMacroDateTime(row.publish_time)}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${formatSourceName(row.source_name)}</td>
@@ -806,3 +810,54 @@ async function exportMacroToExcel() {
 
 // Make exportMacroToExcel globally accessible for onclick handlers
 window.exportMacroToExcel = exportMacroToExcel;
+
+// ─── Macro Row Popup (summary) ─────────────────────────────────────────────
+// Reuses the shared #news-quote-tooltip. Anchors below the clicked row.
+
+window._toggledMacroTr = null;
+
+window.toggleMacroQuoteTooltip = function(e, trElement) {
+    const tip = document.getElementById('news-quote-tooltip');
+    if (!tip) return;
+
+    // Don't toggle when clicking on the headline <a> link
+    if (e.target.closest('a')) return;
+
+    if (tip.classList.contains('visible') && window._toggledMacroTr === trElement) {
+        // 2nd click — hide
+        window.hideNewsQuoteTooltip && window.hideNewsQuoteTooltip();
+        window._toggledMacroTr = null;
+    } else {
+        const summary = trElement.dataset.summary;
+        const source  = trElement.dataset.source;
+        const link    = trElement.dataset.link || '';
+        if (!summary) return;
+
+        // Reset any previously toggled stock-tab row
+        window._toggledNewsQuoteTr = null;
+
+        // Show tooltip anchored to the row itself (no stock-badge, use row rect)
+        if (window.showNewsQuoteTooltip) {
+            // Temporarily patch anchorTr so it positions below the row
+            const origFn = window.showNewsQuoteTooltip;
+
+            // Build a fake anchorTr with a .stock-badge at the row's top-left
+            const rect = trElement.getBoundingClientRect();
+            const fakeBadge = {
+                getBoundingClientRect: () => ({
+                    left: rect.left + 8,
+                    bottom: rect.bottom,
+                    top: rect.top,
+                    right: rect.left + 80
+                })
+            };
+            const fakeAnchor = {
+                querySelector: (sel) => sel === '.stock-badge' ? fakeBadge : null,
+                dataset: trElement.dataset
+            };
+
+            window.showNewsQuoteTooltip(e, summary, source, fakeAnchor, link);
+            window._toggledMacroTr = trElement;
+        }
+    }
+};
