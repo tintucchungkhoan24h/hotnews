@@ -675,9 +675,7 @@ function renderBody() {
                 data-quote="${(row.quote_50_word||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-stock="${(row.single_stock||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-source="${(row.source_name||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
-                onmouseenter="(function(e, el){ var q=window.extractFixedSentences&&extractFixedSentences(el.dataset.quote, el.dataset.stock); if(q) showNewsQuoteTooltip(e, q, el.dataset.source, el); })(event, this)"
-                onmouseleave="hideNewsQuoteTooltip&&hideNewsQuoteTooltip()"
-                onclick="hideNewsQuoteTooltip&&hideNewsQuoteTooltip(event)">
+                onclick="window.toggleNewsQuoteTooltip&&toggleNewsQuoteTooltip(event, this)">
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPage * state.pageSize) + idx + 1}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${formatDateTime(row.publish_time)}</td>
                 <td class="px-4 py-4">
@@ -696,7 +694,7 @@ function renderBody() {
                 <td class="px-4 py-4 text-gray-400 text-xs">${(row.current_volume/1000000).toFixed(2)}M</td>
                 <td class="px-4 py-4"
                     onmouseenter="(function(e, el){ e.stopPropagation(); var tr=el.closest('tr'); var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source); })(event, this)"
-                    onmouseleave="(function(e, el){ hideNewsQuoteTooltip&&hideNewsQuoteTooltip(); var tr=el.closest('tr'); var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, tr); })(event, this)">
+                    onmouseleave="(function(e, el){ var tr=el.closest('tr'); if (window._toggledNewsQuoteTr === tr) { var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, tr); } else { hideNewsQuoteTooltip&&hideNewsQuoteTooltip(); } })(event, this)">
                     <a href="${row.news_link}" target="_blank" class="${headlineColor} hover:text-fin-gold hover:underline transition-all text-xs line-clamp-1">
                         ${headline}
                     </a>
@@ -1182,18 +1180,27 @@ window.extractFixedSentences = function(text, ticker) {
         });
     };
 
-    window.hideNewsQuoteTooltip = function(e) {
+    window._toggledNewsQuoteTr = null;
+
+    window.toggleNewsQuoteTooltip = function(e, trElement) {
         const tip = document.getElementById('news-quote-tooltip');
         if (!tip) return;
         
-        // On mobile, a tap triggers mouseenter (show) followed immediately by click (hide).
-        // If the hide is triggered by a click within 1000ms of showing, ignore it so the 1st tap shows the popup.
-        if (e && e.type === 'click') {
-            const showTime = parseInt(tip.dataset.showTime || '0', 10);
-            if (Date.now() - showTime < 1000) {
-                return;
+        if (tip.classList.contains('visible') && window._toggledNewsQuoteTr === trElement) {
+            window.hideNewsQuoteTooltip();
+            window._toggledNewsQuoteTr = null;
+        } else {
+            var q = window.extractFixedSentences && extractFixedSentences(trElement.dataset.quote, trElement.dataset.stock);
+            if (q) {
+                window.showNewsQuoteTooltip(e, q, trElement.dataset.source, trElement);
+                window._toggledNewsQuoteTr = trElement;
             }
         }
+    };
+
+    window.hideNewsQuoteTooltip = function() {
+        const tip = document.getElementById('news-quote-tooltip');
+        if (!tip) return;
         
         clearTimeout(_nqHideTimer);
         tip.classList.remove('visible');
