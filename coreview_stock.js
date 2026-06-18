@@ -677,6 +677,7 @@ function renderBody() {
                 data-source="${(row.source_name||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-headline="${(headline||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-link="${(row.news_link||'').replace(/"/g, '&quot;')}"
+                data-time="${formatDateTime(row.publish_time)}"
                 onclick="window.toggleNewsQuoteTooltip&&toggleNewsQuoteTooltip(event, this)">
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPage * state.pageSize) + idx + 1}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${formatDateTime(row.publish_time)}</td>
@@ -695,7 +696,7 @@ function renderBody() {
                 <td class="px-4 py-4 font-semibold text-xs">${(row.current_close/1000).toFixed(1)}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${(row.current_volume/1000000).toFixed(2)}M</td>
                 <td class="px-4 py-4"
-                    onmouseenter="(function(e, el){ e.stopPropagation(); var tr=el.closest('tr'); var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, null, null, tr.dataset.headline); })(event, this)"
+                    onmouseenter="(function(e, el){ e.stopPropagation(); var tr=el.closest('tr'); var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, null, null, tr.dataset.headline, tr.dataset.time); })(event, this)"
                     onmouseleave="(function(e, el){ var tr=el.closest('tr'); if (window._toggledNewsQuoteTr === tr) { var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, tr, tr.dataset.link, tr.dataset.headline); } else { hideNewsQuoteTooltip&&hideNewsQuoteTooltip(); } })(event, this)">
                     <a href="${row.news_link}" target="_blank" class="${headlineColor} hover:text-fin-gold hover:underline transition-all text-xs line-clamp-1">
                         ${headline}
@@ -1140,7 +1141,7 @@ window.extractFixedSentences = function(text, ticker) {
         tip.style.top  = y + 'px';
     }
 
-    window.showNewsQuoteTooltip = function(e, quoteText, sourceName, anchorTr = null, link = null, title = null) {
+    window.showNewsQuoteTooltip = function(e, quoteText, sourceName, anchorTr = null, link = null, title = null, time = null) {
         if (!quoteText) return;
         const tip = document.getElementById('news-quote-tooltip');
         if (!tip) return;
@@ -1191,7 +1192,9 @@ window.extractFixedSentences = function(text, ticker) {
 
         let htmlContent = '';
         if (sourceName) {
-            htmlContent += `<div style="font-size: 10px; color: #9ca3af; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em;">${esc(sourceName)}</div>`;
+            const displayTime = time || (anchorTr && anchorTr.dataset && anchorTr.dataset.time ? anchorTr.dataset.time : null);
+            const displaySource = displayTime ? `${sourceName} ${displayTime}` : sourceName;
+            htmlContent += `<div style="font-size: 10px; color: #9ca3af; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em;">${esc(displaySource)}</div>`;
         }
         if (rawTitle) {
             htmlContent += `<div id="nq-title" style="font-size: 12px; color: #ffd700; font-weight: 600; margin-bottom: 6px; line-height: 1.4;">${esc(rawTitle)}</div>`;
