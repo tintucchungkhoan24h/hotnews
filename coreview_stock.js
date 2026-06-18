@@ -1184,6 +1184,7 @@ window.extractFixedSentences = function(text, ticker) {
                     const vw = window.innerWidth;
                     const vh = window.innerHeight;
                     if (x + tw > vw - margin) x = vw - tw - margin;
+                    if (x < margin) x = margin;
                     if (y + th > vh - margin) y = rect.top - th - margin;
                     tip.style.left = x + 'px';
                     tip.style.top  = y + 'px';
