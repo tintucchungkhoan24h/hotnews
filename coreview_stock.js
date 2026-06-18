@@ -675,6 +675,7 @@ function renderBody() {
                 data-quote="${(row.quote_50_word||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-stock="${(row.single_stock||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-source="${(row.source_name||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
+                data-headline="${(headline||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-link="${(row.news_link||'').replace(/"/g, '&quot;')}"
                 onclick="window.toggleNewsQuoteTooltip&&toggleNewsQuoteTooltip(event, this)">
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPage * state.pageSize) + idx + 1}</td>
@@ -694,8 +695,8 @@ function renderBody() {
                 <td class="px-4 py-4 font-semibold text-xs">${(row.current_close/1000).toFixed(1)}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${(row.current_volume/1000000).toFixed(2)}M</td>
                 <td class="px-4 py-4"
-                    onmouseenter="(function(e, el){ e.stopPropagation(); var tr=el.closest('tr'); var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source); })(event, this)"
-                    onmouseleave="(function(e, el){ var tr=el.closest('tr'); if (window._toggledNewsQuoteTr === tr) { var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, tr); } else { hideNewsQuoteTooltip&&hideNewsQuoteTooltip(); } })(event, this)">
+                    onmouseenter="(function(e, el){ e.stopPropagation(); var tr=el.closest('tr'); var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, null, null, tr.dataset.headline); })(event, this)"
+                    onmouseleave="(function(e, el){ var tr=el.closest('tr'); if (window._toggledNewsQuoteTr === tr) { var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, tr, tr.dataset.link, tr.dataset.headline); } else { hideNewsQuoteTooltip&&hideNewsQuoteTooltip(); } })(event, this)">
                     <a href="${row.news_link}" target="_blank" class="${headlineColor} hover:text-fin-gold hover:underline transition-all text-xs line-clamp-1">
                         ${headline}
                     </a>
@@ -1136,7 +1137,7 @@ window.extractFixedSentences = function(text, ticker) {
         tip.style.top  = y + 'px';
     }
 
-    window.showNewsQuoteTooltip = function(e, quoteText, sourceName, anchorTr = null, link = null) {
+    window.showNewsQuoteTooltip = function(e, quoteText, sourceName, anchorTr = null, link = null, title = null) {
         if (!quoteText) return;
         const tip = document.getElementById('news-quote-tooltip');
         if (!tip) return;
@@ -1154,13 +1155,19 @@ window.extractFixedSentences = function(text, ticker) {
             tip.style.cursor = 'default';
         }
 
+        // Safely escape plain text for innerHTML
+        const esc = (t) => { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; };
+        // Decode HTML entities (e.g. &aacute; → á) so translated headlines render correctly
+        const decodeHtml = (html) => { const ta = document.createElement('textarea'); ta.innerHTML = html; return ta.value; };
+
         let htmlContent = '';
         if (sourceName) {
-            const div = document.createElement('div');
-            div.textContent = sourceName;
-            htmlContent += `<div style="font-size: 10px; color: #9ca3af; font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em;">${div.innerHTML}</div>`;
+            htmlContent += `<div style="font-size: 10px; color: #9ca3af; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em;">${esc(sourceName)}</div>`;
         }
-        htmlContent += `<div>${quoteText}</div>`;
+        if (title) {
+            htmlContent += `<div style="font-size: 12px; color: #ffd700; font-weight: 600; margin-bottom: 6px; line-height: 1.4;">${esc(decodeHtml(title))}</div>`;
+        }
+        htmlContent += `<div style="font-size: 12px; color: #d1d5db; line-height: 1.5;">${quoteText}</div>`;
         
         tip.innerHTML = htmlContent;
 
@@ -1205,10 +1212,11 @@ window.extractFixedSentences = function(text, ticker) {
         } else {
             var q = window.extractFixedSentences && extractFixedSentences(trElement.dataset.quote, trElement.dataset.stock);
             var link = trElement.dataset.link || '';
+            var title = trElement.dataset.headline || '';
             if (q) {
                 // Clear macro tab state when switching to a stock tab row
                 window._toggledMacroTr = null;
-                window.showNewsQuoteTooltip(e, q, trElement.dataset.source, trElement, link);
+                window.showNewsQuoteTooltip(e, q, trElement.dataset.source, trElement, link, title);
                 window._toggledNewsQuoteTr = trElement;
             }
         }

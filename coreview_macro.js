@@ -560,6 +560,7 @@ function renderMacroBody() {
             <tr class="hover:bg-fin-gold/5 transition-colors"
                 data-summary="${(row.summary||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-source="${(row.source_name||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
+                data-headline="${(headline||'').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}"
                 data-link="${(row.news_link||'').replace(/"/g, '&quot;')}"
                 onclick="window.toggleMacroQuoteTooltip&&toggleMacroQuoteTooltip(event, this)">
                 <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPageMacro * state.pageSizeMacro) + idx + 1}</td>
@@ -831,6 +832,7 @@ window.toggleMacroQuoteTooltip = function(e, trElement) {
         const summary = trElement.dataset.summary;
         const source  = trElement.dataset.source;
         const link    = trElement.dataset.link || '';
+        const title   = trElement.dataset.headline || '';
         if (!summary) return;
 
         // Reset any previously toggled stock-tab row
@@ -838,9 +840,6 @@ window.toggleMacroQuoteTooltip = function(e, trElement) {
 
         // Show tooltip anchored to the row itself (no stock-badge, use row rect)
         if (window.showNewsQuoteTooltip) {
-            // Temporarily patch anchorTr so it positions below the row
-            const origFn = window.showNewsQuoteTooltip;
-
             // Build a fake anchorTr with a .stock-badge at the row's top-left
             const rect = trElement.getBoundingClientRect();
             const fakeBadge = {
@@ -856,7 +855,7 @@ window.toggleMacroQuoteTooltip = function(e, trElement) {
                 dataset: trElement.dataset
             };
 
-            window.showNewsQuoteTooltip(e, summary, source, fakeAnchor, link);
+            window.showNewsQuoteTooltip(e, summary, source, fakeAnchor, link, title);
             window._toggledMacroTr = trElement;
         }
     }
