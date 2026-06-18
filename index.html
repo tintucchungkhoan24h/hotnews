@@ -418,6 +418,42 @@
             color: #e5e7eb;
         }
 
+        /* News quote hover tooltip */
+        #news-quote-tooltip {
+            position: fixed;
+            z-index: 99998;
+            background: rgba(10, 25, 47, 0.97);
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            color: #e2e8f0;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.7;
+            padding: 10px 14px;
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+            max-width: min(480px, calc(100vw - 32px));
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+        #news-quote-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Accent bar at top */
+        #news-quote-tooltip::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 2px;
+            background: #ffd700;
+            border-radius: 2px;
+            margin-bottom: 6px;
+        }
+
         /* Tab Navigation Styles */
         .tab-button {
             color: #9ca3af;
@@ -826,6 +862,8 @@
     <!-- End Google Tag Manager (noscript) -->
     <!-- Company name tooltip -->
     <div id="company-tooltip"></div>
+    <!-- News quote hover tooltip -->
+    <div id="news-quote-tooltip"></div>
 
     <!-- ═══ Floating Video Player ═══════════════════════════════════════════ -->
     <div id="videoPlayerContainer" style="

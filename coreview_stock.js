@@ -688,7 +688,9 @@ function renderBody() {
                 <td class="px-4 py-4 text-gray-400 text-xs">${industry || '-'}</td>
                 <td class="px-4 py-4 font-semibold text-xs">${(row.current_close/1000).toFixed(1)}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${(row.current_volume/1000000).toFixed(2)}M</td>
-                <td class="px-4 py-4">
+                <td class="px-4 py-4"
+                    onmouseenter="(function(e){ var q=window.extractFixedSentences&&extractFixedSentences('${(row.quote_50_word||'').replace(/'/g,"&#39;").replace(/\n/g," ")}','${(row.single_stock||'').replace(/'/g,"&#39;")}'); if(q) showNewsQuoteTooltip(e,q); })(event)"
+                    onmouseleave="hideNewsQuoteTooltip&&hideNewsQuoteTooltip()">
                     <a href="${row.news_link}" target="_blank" class="${headlineColor} hover:text-fin-gold hover:underline transition-all text-xs line-clamp-1">
                         ${headline}
                     </a>
@@ -1063,6 +1065,83 @@ async function exportToExcel() {
 })();
 
 // ─── TradingView Chart ─────────────────────────────────────────────────────
+
+// ─── News Quote Tooltip (shared globally) ──────────────────────────────────
+
+/**
+ * Extract up to 2 complete sentences anchored to the first sentence that
+ * mentions `ticker` inside `text` (hotnews.quote_50_word).
+ * Split on ". " followed by an uppercase character (Vietnamese-safe).
+ */
+window.extractFixedSentences = function(text, ticker) {
+    if (!text || !ticker) return '';
+
+    const sentences = text.split(/\.(?=\s+\p{Lu})/u)
+                          .map(s => s.trim())
+                          .filter(s => s.length > 0);
+
+    const tickerRegex = new RegExp(`\\b${ticker}\\b`, 'i');
+    const tickerIndex = sentences.findIndex(s => tickerRegex.test(s));
+
+    if (tickerIndex === -1) return text;   // fallback: return full text
+
+    const result = [sentences[tickerIndex]];
+    if (tickerIndex + 1 < sentences.length) {
+        result.push(sentences[tickerIndex + 1]);
+    }
+
+    return '... ' + result.join('. ') + ' ...';
+};
+
+// Show the news-quote-tooltip next to the hovered headline cell.
+(function() {
+    let _nqHideTimer = null;
+
+    function _nqPosition(e) {
+        const tip = document.getElementById('news-quote-tooltip');
+        if (!tip) return;
+        const margin = 12;
+        const tw = tip.offsetWidth  || 420;
+        const th = tip.offsetHeight || 60;
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+
+        // Place below the mouse, flip above if it clips the bottom
+        let x = (e.clientX ?? vw / 2) - tw / 2;
+        let y = (e.clientY ?? vh / 2) + 18;
+
+        x = Math.max(margin, Math.min(x, vw - tw - margin));
+        if (y + th > vh - margin) {
+            y = (e.clientY ?? vh / 2) - th - 18;
+        }
+        y = Math.max(margin, y);
+
+        tip.style.left = x + 'px';
+        tip.style.top  = y + 'px';
+    }
+
+    window.showNewsQuoteTooltip = function(e, quoteText) {
+        if (!quoteText) return;
+        const tip = document.getElementById('news-quote-tooltip');
+        if (!tip) return;
+
+        clearTimeout(_nqHideTimer);
+        tip.classList.remove('visible');
+        tip.textContent = quoteText;
+
+        requestAnimationFrame(() => {
+            _nqPosition(e);
+            tip.classList.add('visible');
+        });
+    };
+
+    window.hideNewsQuoteTooltip = function() {
+        const tip = document.getElementById('news-quote-tooltip');
+        if (!tip) return;
+        clearTimeout(_nqHideTimer);
+        tip.classList.remove('visible');
+    };
+})();
 
 // ─── Exchange Detection ────────────────────────────────────────────────────
 // Derives TradingView exchange prefix from the com_group_code DB column.
