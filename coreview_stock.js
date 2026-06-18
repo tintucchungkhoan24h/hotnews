@@ -1221,6 +1221,23 @@ window.extractFixedSentences = function(text, ticker) {
         clearTimeout(_nqHideTimer);
         tip.classList.remove('visible');
     };
+
+    // Close popup when clicking outside any table row or the popup itself
+    document.addEventListener('click', function(e) {
+        const tip = document.getElementById('news-quote-tooltip');
+        if (!tip || !tip.classList.contains('visible')) return;
+
+        // Allow clicks on the popup (to open link)
+        if (tip.contains(e.target)) return;
+
+        // Allow clicks on any <tr> (handled by toggle functions)
+        if (e.target.closest('tr')) return;
+
+        // Everything else → close
+        tip.classList.remove('visible');
+        window._toggledNewsQuoteTr = null;
+        window._toggledMacroTr = null;
+    }, true); // capture phase so it fires before row onclick
 })();
 
 // ─── Exchange Detection ────────────────────────────────────────────────────
