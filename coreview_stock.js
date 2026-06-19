@@ -1114,6 +1114,7 @@ window.extractFixedSentences = function(text, ticker) {
 // Show the news-quote-tooltip next to the hovered headline cell.
 (function() {
     let _nqHideTimer = null;
+    let _nqScrollRafId = null;
 
     function _nqPosition(e) {
         const tip = document.getElementById('news-quote-tooltip');
@@ -1140,6 +1141,61 @@ window.extractFixedSentences = function(text, ticker) {
         tip.style.left = x + 'px';
         tip.style.top  = y + 'px';
     }
+
+    // Reposition the tooltip anchored to a row.
+    // For stock rows: uses the .stock-badge element as the anchor point.
+    // For macro rows (no .stock-badge): uses the row's own bounding rect.
+    function _nqRepositionToAnchor(tip, trElement) {
+        if (!tip || !trElement) return;
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const margin = 8;
+        const stockBadge = trElement.querySelector ? trElement.querySelector('.stock-badge') : null;
+        let rect;
+        if (stockBadge) {
+            rect = stockBadge.getBoundingClientRect();
+        } else if (trElement.getBoundingClientRect) {
+            // macro row — anchor below the row itself
+            const rowRect = trElement.getBoundingClientRect();
+            rect = { left: rowRect.left + 8, bottom: rowRect.bottom, top: rowRect.top, right: rowRect.left + 80 };
+        } else {
+            return;
+        }
+        const tw = tip.offsetWidth || 420;
+        const th = tip.offsetHeight || 60;
+        let x = rect.left;
+        let y = rect.bottom + margin;
+        if (x + tw > vw - margin) x = vw - tw - margin;
+        if (x < margin) x = margin;
+        if (y + th > vh - margin) {
+            y = rect.top - th - margin;
+            if (y < margin) y = rect.bottom + margin;
+        }
+        tip.style.left = x + 'px';
+        tip.style.top  = y + 'px';
+    }
+
+    // On scroll: reposition the popup to stay glued to its anchor row
+    function _nqOnScroll() {
+        cancelAnimationFrame(_nqScrollRafId);
+        _nqScrollRafId = requestAnimationFrame(() => {
+            const tip = document.getElementById('news-quote-tooltip');
+            if (!tip || !tip.classList.contains('visible')) return;
+            // Determine the active anchor row (stock or macro tabs)
+            const anchorTr = window._toggledNewsQuoteTr || window._toggledMacroTr || null;
+            if (anchorTr) {
+                _nqRepositionToAnchor(tip, anchorTr);
+            }
+        });
+    }
+
+    // Attach scroll listener once — fires on the window (covers all scrollable containers)
+    window.addEventListener('scroll', _nqOnScroll, { passive: true });
+    // Also cover the inner table-container scroll (horizontal or vertical)
+    document.addEventListener('scroll', _nqOnScroll, { passive: true, capture: true });
+
+    // Expose reposition helper globally so other tab scripts can reuse it
+    window._nqRepositionToAnchor = _nqRepositionToAnchor;
 
     window.showNewsQuoteTooltip = function(e, quoteText, sourceName, anchorTr = null, link = null, title = null, time = null) {
         if (!quoteText) return;
@@ -1235,32 +1291,7 @@ window.extractFixedSentences = function(text, ticker) {
             tip.style.maxWidth = Math.min(480, vw - 32) + 'px';
 
             if (anchorTr) {
-                const stockBadge = anchorTr.querySelector('.stock-badge');
-                if (stockBadge) {
-                    const rect = stockBadge.getBoundingClientRect();
-                    const margin = 8;
-                    let x = rect.left;
-                    let y = rect.bottom + margin;
-                    
-                    const tw = tip.offsetWidth || 420;
-                    const th = tip.offsetHeight || 60;
-                    
-                    if (x + tw > vw - margin) x = vw - tw - margin;
-                    if (x < margin) x = margin;
-                    
-                    if (y + th > vh - margin) {
-                        y = rect.top - th - margin;
-                        // Prevent clipping off the top edge if the popup is taller than the space above
-                        if (y < margin) {
-                            y = rect.bottom + margin;
-                        }
-                    }
-                    
-                    tip.style.left = x + 'px';
-                    tip.style.top  = y + 'px';
-                } else {
-                    _nqPosition(e);
-                }
+                _nqRepositionToAnchor(tip, anchorTr);
             } else {
                 _nqPosition(e);
             }
