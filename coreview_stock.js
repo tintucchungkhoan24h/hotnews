@@ -1140,22 +1140,40 @@ window.extractFixedSentences = function(text, ticker) {
         const margin = 12;
 
         tip.style.maxWidth = Math.min(480, vw - 32) + 'px';
+        
+        // Reset max-height and overflow before measuring to get true height
+        tip.style.maxHeight = '';
+        tip.style.overflowY = 'hidden';
 
         const tw = tip.offsetWidth  || 420;
         const th = tip.offsetHeight || 60;
 
-        // Place below the mouse, flip above if it clips the bottom
         let x = (e.clientX ?? vw / 2) - tw / 2;
-        let y = (e.clientY ?? vh / 2) + 18;
-
         x = Math.max(margin, Math.min(x, vw - tw - margin));
-        if (y + th > vh - margin) {
-            y = (e.clientY ?? vh / 2) - th - 18;
+
+        const clientY = e.clientY ?? vh / 2;
+        const spaceAbove = clientY - margin * 2;
+        const spaceBelow = vh - clientY - margin * 2;
+        
+        let y;
+        let finalMaxHeight;
+
+        if (spaceBelow >= th || spaceBelow > spaceAbove) {
+            // Place below
+            y = clientY + 18;
+            finalMaxHeight = Math.max(100, spaceBelow - 18);
+        } else {
+            // Place above
+            y = clientY - Math.min(th, spaceAbove) - 18;
+            finalMaxHeight = Math.max(100, spaceAbove - 18);
         }
+
         y = Math.max(margin, y);
 
         tip.style.left = x + 'px';
         tip.style.top  = y + 'px';
+        tip.style.maxHeight = finalMaxHeight + 'px';
+        tip.style.overflowY = th > finalMaxHeight ? 'auto' : 'hidden';
     }
 
     // Reposition the tooltip anchored to a row.
@@ -1177,18 +1195,39 @@ window.extractFixedSentences = function(text, ticker) {
         } else {
             return;
         }
+        // Reset max-height and overflow to get true height
+        tip.style.maxHeight = '';
+        tip.style.overflowY = 'hidden';
+        
         const tw = tip.offsetWidth || 420;
         const th = tip.offsetHeight || 60;
+        
         let x = rect.left;
-        let y = rect.bottom + margin;
         if (x + tw > vw - margin) x = vw - tw - margin;
         if (x < margin) x = margin;
-        if (y + th > vh - margin) {
-            y = rect.top - th - margin;
-            if (y < margin) y = rect.bottom + margin;
+
+        const spaceAbove = rect.top - margin * 2;
+        const spaceBelow = vh - rect.bottom - margin * 2;
+        
+        let y;
+        let finalMaxHeight;
+
+        if (spaceBelow >= th || spaceBelow > spaceAbove) {
+            // Place below
+            y = rect.bottom + margin;
+            finalMaxHeight = Math.max(100, spaceBelow);
+        } else {
+            // Place above
+            y = rect.top - Math.min(th, spaceAbove) - margin;
+            finalMaxHeight = Math.max(100, spaceAbove);
         }
+        
+        y = Math.max(margin, y);
+
         tip.style.left = x + 'px';
         tip.style.top  = y + 'px';
+        tip.style.maxHeight = finalMaxHeight + 'px';
+        tip.style.overflowY = th > finalMaxHeight ? 'auto' : 'hidden';
     }
 
     // On scroll: reposition the popup to stay glued to its anchor row

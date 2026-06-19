@@ -438,7 +438,15 @@
             transition: opacity 0.15s ease, transform 0.15s ease;
             word-break: break-word;
             white-space: pre-wrap;
+            max-height: 80vh;
+            overflow-y: auto;
         }
+        
+        /* Custom scrollbar for news quote tooltip */
+        #news-quote-tooltip::-webkit-scrollbar { width: 6px; }
+        #news-quote-tooltip::-webkit-scrollbar-track { background: transparent; }
+        #news-quote-tooltip::-webkit-scrollbar-thumb { background: rgba(255, 215, 0, 0.3); border-radius: 3px; }
+        #news-quote-tooltip::-webkit-scrollbar-thumb:hover { background: rgba(255, 215, 0, 0.6); }
         #news-quote-tooltip.visible {
             opacity: 1;
             transform: translateY(0);
