@@ -1235,7 +1235,7 @@ window.extractFixedSentences = function(text, ticker) {
         cancelAnimationFrame(_nqScrollRafId);
         _nqScrollRafId = requestAnimationFrame(() => {
             const tip = document.getElementById('news-quote-tooltip');
-            if (!tip || !tip.classList.contains('visible')) return;
+            if (!tip || !tip.classList.contains('visible') || tip.dataset.anchorMode !== 'true') return;
             // Determine the active anchor row (stock or macro tabs)
             const anchorTr = window._toggledNewsQuoteTr || window._toggledMacroTr || null;
             if (anchorTr) {
@@ -1261,6 +1261,7 @@ window.extractFixedSentences = function(text, ticker) {
         tip.classList.remove('visible');
         tip.dataset.showTime = Date.now(); // Track when it was shown for mobile logic
         tip.dataset.link = link || (anchorTr ? anchorTr.dataset.link : '');
+        tip.dataset.anchorMode = anchorTr ? 'true' : 'false';
         
         if (anchorTr) {
             tip.style.pointerEvents = 'auto';
