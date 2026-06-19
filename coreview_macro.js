@@ -832,11 +832,15 @@ window.toggleMacroQuoteTooltip = function(e, trElement) {
         window.hideNewsQuoteTooltip && window.hideNewsQuoteTooltip();
         window._toggledMacroTr = null;
     } else {
-        const summary = trElement.dataset.summary;
+        const rawSummary = trElement.dataset.summary;
         const source  = trElement.dataset.source;
         const link    = trElement.dataset.link || '';
         const title   = trElement.dataset.headline || '';
-        if (!summary) return;
+        if (!rawSummary) return;
+        // Decode HTML entities: dataset.summary comes from DB with e.g. &aacute;
+        // After browser decodes the attribute (from &amp;aacute; → &aacute;) it's
+        // still an entity string, not a Unicode char — decodeHtmlEntities fixes that.
+        const summary = window.decodeHtmlEntities ? window.decodeHtmlEntities(rawSummary) : rawSummary;
 
         // Reset any previously toggled stock-tab row
         window._toggledNewsQuoteTr = null;
@@ -866,11 +870,12 @@ window.toggleMacroQuoteTooltip = function(e, trElement) {
 
 window.restoreMacroQuoteTooltip = function(e, trElement) {
     if (!window.showNewsQuoteTooltip || window._toggledMacroTr !== trElement) return;
-    const summary = trElement.dataset.summary;
+    const rawSummary = trElement.dataset.summary;
     const source  = trElement.dataset.source;
     const link    = trElement.dataset.link || '';
     const title   = trElement.dataset.headline || '';
-    if (!summary) return;
+    if (!rawSummary) return;
+    const summary = window.decodeHtmlEntities ? window.decodeHtmlEntities(rawSummary) : rawSummary;
 
     const rect = trElement.getBoundingClientRect();
     const fakeBadge = {

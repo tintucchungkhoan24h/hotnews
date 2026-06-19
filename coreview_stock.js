@@ -1076,12 +1076,28 @@ async function exportToExcel() {
 // ─── News Quote Tooltip (shared globally) ──────────────────────────────────
 
 /**
+ * Decode HTML entities (e.g. &aacute; → á) to proper Unicode.
+ * The DB stores quote_50_word / summary with HTML entities which must be
+ * decoded before display — otherwise they appear as raw text in the popup.
+ */
+window.decodeHtmlEntities = function(str) {
+    if (!str || str.indexOf('&') === -1) return str; // fast-path: no entities
+    const ta = document.createElement('textarea');
+    ta.innerHTML = str;
+    return ta.value;
+};
+
+/**
  * Extract up to 2 complete sentences anchored to the first sentence that
  * mentions `ticker` inside `text` (hotnews.quote_50_word).
  * Split on ". " followed by an uppercase character (Vietnamese-safe).
  */
 window.extractFixedSentences = function(text, ticker) {
     if (!text || !ticker) return '';
+
+    // Decode HTML entities first so the text is clean Unicode
+    // (quote_50_word is stored with entities like &aacute; in the DB)
+    text = window.decodeHtmlEntities(text);
 
     const sentences = text.split(/\.(?=\s+\p{Lu})/u)
                           .map(s => s.trim())
@@ -1224,7 +1240,12 @@ window.extractFixedSentences = function(text, ticker) {
         const decodeHtml = (html) => { const ta = document.createElement('textarea'); ta.innerHTML = html; return ta.value; };
 
         const rawTitle = title ? decodeHtml(title) : '';
-        const plainQuote = quoteText ? (new DOMParser().parseFromString(quoteText, 'text/html')).body.textContent : '';
+        // quoteText may still carry HTML entities if it came from the macro summary path
+        // (macro summary is read from dataset.summary which stores raw DB entities).
+        // decodeHtmlEntities converts e.g. &aacute; → á before display.
+        const plainQuote = quoteText
+            ? window.decodeHtmlEntities((new DOMParser().parseFromString(quoteText, 'text/html')).body.textContent)
+            : '';
         const currentLang = window._appLang || 'vi';
 
         // Helper: find ticker from clicked row (anchorTr) or hovered row
