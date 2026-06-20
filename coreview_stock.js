@@ -782,7 +782,7 @@ function _injectFastNewsRows() {
         quoteRow.className = 'fast-news-quote-row';
         quoteRow.dataset.fastNewsRowFor = stock;
         quoteRow.innerHTML = `
-            <td colspan="${colCount}" style="padding: 0; border-top: none;">
+            <td colspan="5" style="padding: 0; border-top: none; vertical-align: top;">
                 <div class="fast-news-inline-box" id="${uniqueId}">
                     <div class="fast-news-header">
                         <span class="fast-news-source">${source ? _fnqEsc(source) + (time ? ' · ' + _fnqEsc(time) : '') : (time ? _fnqEsc(time) : '')}</span>
@@ -792,6 +792,7 @@ function _injectFastNewsRows() {
                     <div class="fast-news-quote" id="${uniqueId}-quote">${quoteText}</div>
                 </div>
             </td>
+            <td colspan="${colCount - 5}" style="padding: 0; border-top: none;"></td>
         `;
 
         tr.insertAdjacentElement('afterend', quoteRow);

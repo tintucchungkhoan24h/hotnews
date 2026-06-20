@@ -456,6 +456,14 @@
         .fast-news-quote-row {
             background: transparent;
         }
+        /* Override the table's whitespace-nowrap so text wraps naturally */
+        .fast-news-quote-row td,
+        .fast-news-inline-box,
+        .fast-news-inline-box * {
+            white-space: normal !important;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
         .fast-news-inline-box {
             margin: 0 12px 8px 12px;
             padding: 10px 14px;
@@ -464,6 +472,8 @@
             border-top: none;
             border-radius: 0 0 10px 10px;
             position: relative;
+            max-width: 100%;
+            box-sizing: border-box;
         }
         .fast-news-header {
             display: flex;
@@ -487,6 +497,7 @@
             transition: opacity 0.15s;
             padding: 2px 4px;
             border-radius: 4px;
+            flex-shrink: 0;
         }
         .fast-news-link:hover { opacity: 1; background: rgba(251, 191, 36, 0.1); }
         .fast-news-headline {
