@@ -487,10 +487,10 @@ function renderWatchlistHeaders() {
         { id: 'single_stock',          w: 'w-24',  s: true },
         { id: 'price_change_today_pct',w: 'w-24',  s: true },
         { id: 'ma15',                  w: 'w-28',  s: true, dbField: 'pct_ma15' },
-        { id: 'organ_name',            w: 'w-64',  s: true },
-        { id: 'industry',              w: 'w-40',  s: true },
         { id: 'current_close',         w: 'w-24',  s: true },
         { id: 'current_volume',        w: 'w-32',  s: true },
+        { id: 'organ_name',            w: 'w-64',  s: true },
+        { id: 'industry',              w: 'w-40',  s: true },
         { id: 'headline',              w: 'w-auto', s: true }
     ];
     const _lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || DEFAULT_LANG;
@@ -694,10 +694,10 @@ function renderWatchlistBody() {
                 </td>
                 <td class="px-4 py-4 font-bold ${color} text-sm">${pct > 0 ? '+' : ''}${pct.toFixed(2)}%</td>
                 <td class="px-4 py-4 text-xs company-name-cell" onclick="showCompanyTooltip(event, this)" title="${ma15Tooltip}"><div class="flex items-center">${ma15Cell}</div></td>
-                <td class="px-4 py-4 text-gray-200 text-xs truncate max-w-[200px] company-name-cell" onclick="showCompanyTooltip(event, this)" title="${name}">${name || '-'}</td>
-                <td class="px-4 py-4 text-gray-400 text-xs">${industry || '-'}</td>
                 <td class="px-4 py-4 font-semibold text-xs">${(row.current_close/1000).toFixed(1)}</td>
                 <td class="px-4 py-4 text-gray-400 text-xs">${(row.current_volume/1000000).toFixed(2)}M</td>
+                <td class="px-4 py-4 text-gray-200 text-xs truncate max-w-[200px] company-name-cell" onclick="showCompanyTooltip(event, this)" title="${name}">${name || '-'}</td>
+                <td class="px-4 py-4 text-gray-400 text-xs">${industry || '-'}</td>
                 <td class="px-4 py-4"
                     onmouseenter="(function(e, el){ e.stopPropagation(); var tr=el.closest('tr'); var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(!q) q=(typeof state!=='undefined'&&state.lang==='en')?'Updating...':'Đang cập nhật...'; if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, null, null, tr.dataset.headline, tr.dataset.time); })(event, this)"
                     onmouseleave="(function(e, el){ var tr=el.closest('tr'); if (window._toggledNewsQuoteTr === tr) { var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(!q) q=(typeof state!=='undefined'&&state.lang==='en')?'Updating...':'Đang cập nhật...'; if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, tr, tr.dataset.link, tr.dataset.headline); } else { hideNewsQuoteTooltip&&hideNewsQuoteTooltip(); } })(event, this)">
@@ -958,10 +958,10 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
             i18n[lang].cols.single_stock,
             i18n[lang].cols.price_change_today_pct,
             i18n[lang].cols.ma15,
-            i18n[lang].cols.organ_name,
-            i18n[lang].cols.industry,
             i18n[lang].cols.current_close,
             i18n[lang].cols.current_volume,
+            i18n[lang].cols.organ_name,
+            i18n[lang].cols.industry,
             i18n[lang].cols.headline,
             i18n[lang].cols.link
         ];
@@ -979,10 +979,10 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
                 row.single_stock || '-',
                 row.price_change_today_pct != null ? `${row.price_change_today_pct.toFixed(2)}%` : '0.00%',
                 ma15Text,
-                name || '-',
-                industry || '-',
                 row.current_close ? (row.current_close / 1000).toFixed(1) : '-',
                 row.current_volume ? (row.current_volume / 1000000).toFixed(2) + 'M' : '-',
+                name || '-',
+                industry || '-',
                 headline || '-',
                 row.news_link || ''
             ];
