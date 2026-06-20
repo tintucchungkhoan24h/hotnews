@@ -72,6 +72,11 @@ window.injectFastNewsRowsGeneric = function(tbodyId, prefixId) {
 
         tr.insertAdjacentElement('afterend', quoteRow);
 
+        requestAnimationFrame(() => {
+            const box = document.getElementById(uniqueId);
+            if (box) box.classList.add('show');
+        });
+
         const currentLang = window._appLang || (typeof state !== 'undefined' ? state.lang : 'vi');
         if (currentLang !== 'vi' && window.translateText) {
             const plainQuote = quoteText
@@ -113,5 +118,19 @@ window.toggleFastNewsGeneric = function(btnTextId, renderFunction) {
             (i18n[state.lang].hideFastNewsBtn || '❌ Ẩn tóm tắt') : 
             (i18n[state.lang].fastNewsBtn || '⚡ Điểm tin nhanh');
     }
-    if (typeof renderFunction === 'function') renderFunction();
+    if (typeof renderFunction === 'function') {
+        if (window._fastNewsMode) {
+            renderFunction();
+        } else {
+            const boxes = document.querySelectorAll('.fast-news-inline-box.show');
+            if (boxes.length > 0) {
+                boxes.forEach(box => box.classList.remove('show'));
+                setTimeout(() => {
+                    renderFunction();
+                }, 300);
+            } else {
+                renderFunction();
+            }
+        }
+    }
 };
