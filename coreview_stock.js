@@ -131,6 +131,21 @@ function updateStockViewLabels() {
 
     const stockVideoBtnText = document.getElementById('stockVideoBtnText');
     if (stockVideoBtnText) stockVideoBtnText.innerText = i18n[state.lang].watchNewsBtn;
+
+    const fastNewsBtnText = document.getElementById('fastNewsBtnText');
+    if (fastNewsBtnText) fastNewsBtnText.innerText = i18n[state.lang].fastNewsBtn || '⚡ Điểm tin nhanh';
+
+    // Update active styling of fast news button
+    const fastNewsToggle = document.getElementById('fastNewsToggle');
+    if (fastNewsToggle) {
+        if (window._fastNewsMode) {
+            fastNewsToggle.classList.add('border-amber-400', 'bg-amber-500/10', 'text-amber-300');
+            fastNewsToggle.classList.remove('border-gray-700', 'text-white');
+        } else {
+            fastNewsToggle.classList.remove('border-amber-400', 'bg-amber-500/10', 'text-amber-300');
+            fastNewsToggle.classList.add('border-gray-700', 'text-white');
+        }
+    }
 }
 
 // Setup all event listeners for stock view
@@ -183,6 +198,27 @@ function setupStockViewEventListeners() {
             fetchData(); 
         };
     }
+}
+
+// ─── Fast News Toggle ───────────────────────────────────────────────────────
+
+window._fastNewsMode = false;
+
+function toggleFastNews() {
+    window._fastNewsMode = !window._fastNewsMode;
+    // Update button visual state
+    const btn = document.getElementById('fastNewsToggle');
+    if (btn) {
+        if (window._fastNewsMode) {
+            btn.classList.add('border-amber-400', 'bg-amber-500/10', 'text-amber-300');
+            btn.classList.remove('border-gray-700', 'text-white');
+        } else {
+            btn.classList.remove('border-amber-400', 'bg-amber-500/10', 'text-amber-300');
+            btn.classList.add('border-gray-700', 'text-white');
+        }
+    }
+    // Re-render body to show/hide inline quote rows
+    renderBody();
 }
 
 // ─── Data Fetching ─────────────────────────────────────────────────────────
@@ -706,8 +742,98 @@ function renderBody() {
         `;
     }).join('');
 
+    // If fast news mode is active, insert inline quote rows below each data row
+    if (window._fastNewsMode) {
+        _injectFastNewsRows();
+    }
+
     // Bind touch events for mobile row highlight
     bindRowTouchEvents();
+}
+
+// Inject inline fast-news quote rows below each <tr> in the table body
+function _injectFastNewsRows() {
+    const tbody = document.getElementById('tableBody');
+    if (!tbody) return;
+
+    const dataRows = Array.from(tbody.querySelectorAll('tr[data-quote]'));
+    dataRows.forEach((tr) => {
+        const quote = tr.dataset.quote || '';
+        const stock = tr.dataset.stock || '';
+        const headline = tr.dataset.headline || '';
+        const source = tr.dataset.source || '';
+        const time = tr.dataset.time || '';
+        const link = tr.dataset.link || '';
+
+        // Get extracted quote text (same as tooltip)
+        let quoteText = window.extractFixedSentences && extractFixedSentences(quote, stock);
+        if (!quoteText) {
+            quoteText = (typeof state !== 'undefined' && state.lang !== 'vi') ? 'Updating...' : 'Đang cập nhật...';
+        }
+
+        // Decode headline for display
+        const decodeHtml = (html) => { const ta = document.createElement('textarea'); ta.innerHTML = html; return ta.value; };
+        const rawHeadline = decodeHtml(headline);
+
+        const colCount = 10; // matches number of <th> columns
+        const uniqueId = `fnq-${stock}-${tr.rowIndex}`;
+
+        const quoteRow = document.createElement('tr');
+        quoteRow.className = 'fast-news-quote-row';
+        quoteRow.dataset.fastNewsRowFor = stock;
+        quoteRow.innerHTML = `
+            <td colspan="${colCount}" style="padding: 0; border-top: none;">
+                <div class="fast-news-inline-box" id="${uniqueId}">
+                    <div class="fast-news-header">
+                        <span class="fast-news-source">${source ? _fnqEsc(source) + (time ? ' · ' + _fnqEsc(time) : '') : (time ? _fnqEsc(time) : '')}</span>
+                        ${link ? `<a href="${_fnqEsc(link)}" target="_blank" class="fast-news-link" rel="noopener noreferrer">↗</a>` : ''}
+                    </div>
+                    <div class="fast-news-headline" id="${uniqueId}-title">${_fnqEsc(rawHeadline)}</div>
+                    <div class="fast-news-quote" id="${uniqueId}-quote">${quoteText}</div>
+                </div>
+            </td>
+        `;
+
+        tr.insertAdjacentElement('afterend', quoteRow);
+
+        // If non-Vietnamese, trigger async translation
+        const currentLang = window._appLang || (typeof state !== 'undefined' ? state.lang : 'vi');
+        if (currentLang !== 'vi' && window.translateText) {
+            const plainQuote = quoteText
+                ? window.decodeHtmlEntities
+                    ? window.decodeHtmlEntities((new DOMParser().parseFromString(quoteText, 'text/html')).body.textContent)
+                    : quoteText
+                : '';
+
+            const esc = _fnqEsc;
+            const applyHL = (safeHTML) => {
+                if (!stock) return safeHTML;
+                const safeS = stock.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                return safeHTML.replace(new RegExp(`\\b(${safeS})\\b`, 'gi'), '<span style="color:#ffd700;font-weight:bold;">$1</span>');
+            };
+
+            if (rawHeadline) {
+                window.translateText(rawHeadline, currentLang).then(translated => {
+                    const el = document.getElementById(`${uniqueId}-title`);
+                    if (el) el.innerHTML = esc(translated);
+                });
+            }
+            if (plainQuote) {
+                window.translateText(plainQuote, currentLang).then(translated => {
+                    const el = document.getElementById(`${uniqueId}-quote`);
+                    if (el) el.innerHTML = applyHL(esc(translated));
+                });
+            }
+        }
+    });
+}
+
+// Safe HTML escaping helper for fast news rows
+function _fnqEsc(str) {
+    if (!str) return '';
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
 }
 
 // Touch support: highlight stock badge when user taps any cell in a row
