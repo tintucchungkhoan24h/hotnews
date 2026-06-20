@@ -266,6 +266,10 @@ function buildHighFilterQuery() {
         }
     }
 
+    // Filter out records where quote_50_word is empty
+    filters.push('quote_50_word=not.is.null');
+    filters.push('quote_50_word=neq.');
+
     return filters.length > 0 ? '&' + filters.join('&') : '';
 }
 
