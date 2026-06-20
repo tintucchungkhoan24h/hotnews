@@ -437,7 +437,7 @@ function renderMacroHeaders() {
     const tableHeader = document.getElementById('tableHeaderMacro');
     if (tableHeader) {
         tableHeader.innerHTML = cols.map(c => `
-            <th class="px-4 py-4 ${c.sortable ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.sortable ? getSortClassMacro(c.id) : ''}" 
+            <th class="px-2 py-2 ${c.sortable ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.sortable ? getSortClassMacro(c.id) : ''}" 
                 ${c.sortable ? `onclick="handleSortMacro('${c.id}')"` : ''}>
                 <div class="flex items-center">
                     <span>${c.label}</span>
@@ -577,10 +577,10 @@ function renderMacroBody() {
                 data-link="${(row.news_link||'').replace(/"/g, '&quot;')}"
                 data-time="${formatMacroDateTime(row.publish_time)}"
                 onclick="window.toggleMacroQuoteTooltip&&toggleMacroQuoteTooltip(event, this)">
-                <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPageMacro * state.pageSizeMacro) + idx + 1}</td>
-                <td class="px-4 py-4 text-gray-400 text-xs">${formatMacroDateTime(row.publish_time)}</td>
-                <td class="px-4 py-4 text-gray-400 text-xs">${formatSourceName(row.source_name)}</td>
-                <td class="px-4 py-4"
+                <td class="px-2 py-2 text-center text-gray-500 text-xs">${(state.currentPageMacro * state.pageSizeMacro) + idx + 1}</td>
+                <td class="px-2 py-2 text-gray-400 text-xs">${formatMacroDateTime(row.publish_time)}</td>
+                <td class="px-2 py-2 text-gray-400 text-xs">${formatSourceName(row.source_name)}</td>
+                <td class="px-2 py-2"
                     onmouseenter="(function(e, el){ e.stopPropagation(); var tr=el.closest('tr'); var s=tr.dataset.summary; if(s) window.showNewsQuoteTooltip&&window.showNewsQuoteTooltip(e, s, tr.dataset.source, null, null, tr.dataset.headline, tr.dataset.time); })(event, this)"
                     onmouseleave="(function(e, el){ var tr=el.closest('tr'); if (window._toggledMacroTr === tr) { window.restoreMacroQuoteTooltip&&window.restoreMacroQuoteTooltip(e, tr); } else { window.hideNewsQuoteTooltip&&window.hideNewsQuoteTooltip(); } })(event, this)">
                     <a href="${row.news_link || '#'}" target="_blank" class="${headlineColor} hover:text-fin-gold hover:underline transition-all text-xs line-clamp-1">

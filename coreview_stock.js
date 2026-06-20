@@ -499,18 +499,18 @@ async function fetchData() {
 function renderHeaders() {
     const cols = [
         { id: 'index',                 w: 'w-12 text-center', s: false },
-        { id: 'publish_time',          w: 'w-32',  s: true },
-        { id: 'single_stock',          w: 'w-24',  s: true },
-        { id: 'price_change_today_pct',w: 'w-24',  s: true },
-        { id: 'ma15',                  w: 'w-28',  s: true, dbField: 'pct_ma15' },
-        { id: 'current_close',         w: 'w-24',  s: true },
-        { id: 'current_volume',        w: 'w-32',  s: true },
-        { id: 'organ_name',            w: 'w-64',  s: true },
-        { id: 'industry',              w: 'w-40',  s: true },
+        { id: 'publish_time',          w: 'w-20',  s: true },
+        { id: 'single_stock',          w: 'w-20',  s: true },
+        { id: 'price_change_today_pct',w: 'w-20',  s: true },
+        { id: 'ma15',                  w: 'w-24',  s: true, dbField: 'pct_ma15' },
+        { id: 'current_close',         w: 'w-20',  s: true },
+        { id: 'current_volume',        w: 'w-20',  s: true },
+        { id: 'organ_name',            w: 'w-36',  s: true },
+        { id: 'industry',              w: 'w-32',  s: true },
         { id: 'headline',              w: 'w-auto', s: true }
     ];
     document.getElementById('tableHeader').innerHTML = cols.map(c => `
-        <th class="px-4 py-4 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getSortClass(c.id) : ''}" 
+        <th class="px-2 py-2 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getSortClass(c.id) : ''}" 
             ${c.s ? `onclick="handleSort('${c.id}')"` : ''}>
             <div class="flex items-center">
                 <span>${i18n[state.lang].cols[c.id]}</span>
@@ -700,9 +700,9 @@ function renderBody() {
                 data-link="${(row.news_link||'').replace(/"/g, '&quot;')}"
                 data-time="${formatDateTime(row.publish_time)}"
                 onclick="window.toggleNewsQuoteTooltip&&toggleNewsQuoteTooltip(event, this)">
-                <td class="px-4 py-4 text-center text-gray-500 text-xs">${(state.currentPage * state.pageSize) + idx + 1}</td>
-                <td class="px-4 py-4 text-gray-400 text-xs">${formatDateTime(row.publish_time)}</td>
-                <td class="px-4 py-4">
+                <td class="px-2 py-2 text-center text-gray-500 text-xs">${(state.currentPage * state.pageSize) + idx + 1}</td>
+                <td class="px-2 py-2 text-gray-400 text-xs">${formatDateTime(row.publish_time)}</td>
+                <td class="px-2 py-2">
                     <span class="stock-badge" onclick="openTvChart('${row.single_stock || ''}', '${row.com_group_code || ''}')" title="${i18n[state.lang].chartTooltip}">
                         ${row.single_stock || '-'}
                         <svg class="chart-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -710,13 +710,13 @@ function renderBody() {
                         </svg>
                     </span>
                 </td>
-                <td class="px-4 py-4 font-bold ${color} text-sm">${pct > 0 ? '+' : ''}${pct.toFixed(2)}%</td>
-                <td class="px-4 py-4 text-xs company-name-cell" onclick="showCompanyTooltip(event, this)" title="${ma15Tooltip}"><div class="flex items-center">${ma15Cell}</div></td>
-                <td class="px-4 py-4 font-semibold text-xs">${(row.current_close/1000).toFixed(1)}</td>
-                <td class="px-4 py-4 text-gray-400 text-xs">${(row.current_volume/1000000).toFixed(2)}M</td>
-                <td class="px-4 py-4 text-gray-200 text-xs truncate max-w-[200px] company-name-cell" onclick="showCompanyTooltip(event, this)" title="${name}">${name || '-'}</td>
-                <td class="px-4 py-4 text-gray-400 text-xs">${industry || '-'}</td>
-                <td class="px-4 py-4"
+                <td class="px-2 py-2 font-bold ${color} text-sm">${pct > 0 ? '+' : ''}${pct.toFixed(2)}%</td>
+                <td class="px-2 py-2 text-xs company-name-cell" onclick="showCompanyTooltip(event, this)" title="${ma15Tooltip}"><div class="flex items-center">${ma15Cell}</div></td>
+                <td class="px-2 py-2 font-semibold text-xs">${(row.current_close/1000).toFixed(1)}</td>
+                <td class="px-2 py-2 text-gray-400 text-xs">${(row.current_volume/1000000).toFixed(2)}M</td>
+                <td class="px-2 py-2 text-gray-200 text-xs truncate max-w-[200px] company-name-cell" onclick="showCompanyTooltip(event, this)" title="${name}">${name || '-'}</td>
+                <td class="px-2 py-2 text-gray-400 text-xs">${industry || '-'}</td>
+                <td class="px-2 py-2"
                     onmouseenter="(function(e, el){ e.stopPropagation(); var tr=el.closest('tr'); var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(!q) q=(typeof state!=='undefined'&&state.lang==='en')?'Updating...':'Đang cập nhật...'; if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, null, null, tr.dataset.headline, tr.dataset.time); })(event, this)"
                     onmouseleave="(function(e, el){ var tr=el.closest('tr'); if (window._toggledNewsQuoteTr === tr) { var q=window.extractFixedSentences&&extractFixedSentences(tr.dataset.quote, tr.dataset.stock); if(!q) q=(typeof state!=='undefined'&&state.lang==='en')?'Updating...':'Đang cập nhật...'; if(q) showNewsQuoteTooltip(e, q, tr.dataset.source, tr, tr.dataset.link, tr.dataset.headline); } else { hideNewsQuoteTooltip&&hideNewsQuoteTooltip(); } })(event, this)">
                     <a href="${row.news_link}" target="_blank" class="${headlineColor} hover:text-fin-gold hover:underline transition-all text-xs line-clamp-1">
