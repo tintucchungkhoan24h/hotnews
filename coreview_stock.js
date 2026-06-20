@@ -782,8 +782,8 @@ function _injectFastNewsRows() {
         quoteRow.className = 'fast-news-quote-row';
         quoteRow.dataset.fastNewsRowFor = stock;
         quoteRow.innerHTML = `
-            <td colspan="5" style="padding: 0; border-top: none; vertical-align: top;">
-                <div class="fast-news-inline-box" id="${uniqueId}">
+            <td colspan="${colCount}" style="padding: 0; border-top: none; vertical-align: top;">
+                <div class="fast-news-inline-box" id="${uniqueId}" style="position: sticky; left: 0;">
                     <div class="fast-news-header">
                         <span class="fast-news-source">${source ? _fnqEsc(source) + (time ? ' · ' + _fnqEsc(time) : '') : (time ? _fnqEsc(time) : '')}</span>
                         ${link ? `<a href="${_fnqEsc(link)}" target="_blank" class="fast-news-link" rel="noopener noreferrer">↗</a>` : ''}
@@ -792,7 +792,6 @@ function _injectFastNewsRows() {
                     <div class="fast-news-quote" id="${uniqueId}-quote">${quoteText}</div>
                 </div>
             </td>
-            <td colspan="${colCount - 5}" style="padding: 0; border-top: none;"></td>
         `;
 
         tr.insertAdjacentElement('afterend', quoteRow);
@@ -827,7 +826,26 @@ function _injectFastNewsRows() {
             }
         }
     });
+
+    _updateFastNewsWidths();
 }
+
+function _updateFastNewsWidths() {
+    const container = document.querySelector('.table-container');
+    if (!container) return;
+    const boxes = document.querySelectorAll('.fast-news-inline-box');
+    const targetWidth = container.clientWidth - 24; // account for margin 0 12px
+    boxes.forEach(box => {
+        box.style.width = targetWidth + 'px';
+    });
+}
+
+// Listen to resize to update widths
+window.addEventListener('resize', () => {
+    if (window._fastNewsMode) {
+        _updateFastNewsWidths();
+    }
+});
 
 // Safe HTML escaping helper for fast news rows
 function _fnqEsc(str) {
