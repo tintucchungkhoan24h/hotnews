@@ -127,12 +127,25 @@ function updateSpotlightViewLabels() {
     const filterBtnTextSpotlight = document.getElementById('filterBtnTextSpotlight');
     if (filterBtnTextSpotlight) filterBtnTextSpotlight.innerText = i18n[lang].filterBtn;
     
+    const fastNewsBtnTextSpotlight = document.getElementById('fastNewsBtnTextSpotlight');
+    if (fastNewsBtnTextSpotlight) {
+        fastNewsBtnTextSpotlight.innerText = window._fastNewsMode ? 
+            (i18n[lang].hideFastNewsBtn || '❌ Ẩn tóm tắt') : 
+            (i18n[lang].fastNewsBtn || '⚡ Điểm tin nhanh');
+    }
+    
     const loadingTextSpotlight = document.getElementById('loadingTextSpotlight');
     if (loadingTextSpotlight) loadingTextSpotlight.innerText = i18n[lang].loading;
     
     const refreshSpotlightBtn = document.getElementById('refreshSpotlightBtn');
     if (refreshSpotlightBtn) refreshSpotlightBtn.title = i18n[lang].refreshBtn;
 }
+
+window.toggleFastNewsSpotlight = function() {
+    if (window.toggleFastNewsGeneric) {
+        window.toggleFastNewsGeneric('fastNewsBtnTextSpotlight', renderSpotlightBody);
+    }
+};
 
 // Setup all event listeners for stock view
 function setupSpotlightViewEventListeners() {
@@ -706,11 +719,15 @@ function renderSpotlightBody() {
     }).join('');
 
     // Bind touch events for mobile row highlight
-    bindRowTouchEventsSpotlight();
+    bindSpotlightRowTouchEvents();
+
+    if (window._fastNewsMode && window.injectFastNewsRowsGeneric) {
+        window.injectFastNewsRowsGeneric('tableBodySpotlight', 'spotlight');
+    }
 }
 
 // Touch support: highlight stock badge when user taps any cell in a row
-function bindRowTouchEventsSpotlight() {
+function bindSpotlightRowTouchEvents() {
     const tbody = document.getElementById('tableBodySpotlight');
     let lastTouched = null;
     let touchStartY = 0;

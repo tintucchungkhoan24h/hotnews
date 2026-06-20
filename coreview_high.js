@@ -124,7 +124,20 @@ function updateHighViewLabels() {
     
     const refreshStockBtn = document.getElementById('refreshHighBtn');
     if (refreshStockBtn) refreshStockBtn.title = i18n[stateHigh.lang].refreshBtn;
+
+    const fastNewsBtnTextHigh = document.getElementById('fastNewsBtnTextHigh');
+    if (fastNewsBtnTextHigh) {
+        fastNewsBtnTextHigh.innerText = window._fastNewsMode ? 
+            (i18n[stateHigh.lang].hideFastNewsBtn || '❌ Ẩn tóm tắt') : 
+            (i18n[stateHigh.lang].fastNewsBtn || '⚡ Điểm tin nhanh');
+    }
 }
+
+window.toggleFastNewsHigh = function() {
+    if (window.toggleFastNewsGeneric) {
+        window.toggleFastNewsGeneric('fastNewsBtnTextHigh', renderHighBody);
+    }
+};
 
 // Setup all event listeners for stock view
 function setupHighViewEventListeners() {
@@ -688,6 +701,10 @@ function renderHighBody() {
 
     // Bind touch events for mobile row highlight
     bindHighRowTouchEvents();
+
+    if (window._fastNewsMode && window.injectFastNewsRowsGeneric) {
+        window.injectFastNewsRowsGeneric('tableBodyHigh', 'high');
+    }
 }
 
 // Touch support: highlight stock badge when user taps any cell in a row

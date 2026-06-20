@@ -111,7 +111,20 @@ function updateMacroViewLabels() {
 
     const macroVideoBtnText = document.getElementById('macroVideoBtnText');
     if (macroVideoBtnText) macroVideoBtnText.innerText = i18n[state.lang].watchNewsBtn;
+
+    const fastNewsBtnTextMacro = document.getElementById('fastNewsBtnTextMacro');
+    if (fastNewsBtnTextMacro) {
+        fastNewsBtnTextMacro.innerText = window._fastNewsMode ? 
+            (i18n[state.lang].hideFastNewsBtn || '❌ Ẩn tóm tắt') : 
+            (i18n[state.lang].fastNewsBtn || '⚡ Điểm tin nhanh');
+    }
 }
+
+window.toggleFastNewsMacro = function() {
+    if (window.toggleFastNewsGeneric) {
+        window.toggleFastNewsGeneric('fastNewsBtnTextMacro', renderMacroBody);
+    }
+};
 
 // Setup all event listeners for macro view
 function setupMacroViewEventListeners() {
@@ -577,6 +590,10 @@ function renderMacroBody() {
             </tr>
         `;
     }).join('');
+
+    if (window._fastNewsMode && window.injectFastNewsRowsGeneric) {
+        window.injectFastNewsRowsGeneric('tableBodyMacro', 'macro');
+    }
 }
 
 // ─── Pagination ────────────────────────────────────────────────────────────

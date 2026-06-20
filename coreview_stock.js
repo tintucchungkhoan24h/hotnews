@@ -199,19 +199,7 @@ function setupStockViewEventListeners() {
 window._fastNewsMode = false;
 
 function toggleFastNews() {
-    window._fastNewsMode = !window._fastNewsMode;
-    // Update button visual state
-    const btn = document.getElementById('fastNewsToggle');
-    const btnText = document.getElementById('fastNewsBtnText');
-    if (btn) {
-        if (window._fastNewsMode) {
-            if (btnText) btnText.innerText = i18n[state.lang].hideFastNewsBtn || '❌ Ẩn tóm tắt';
-        } else {
-            if (btnText) btnText.innerText = i18n[state.lang].fastNewsBtn || '⚡ Điểm tin nhanh';
-        }
-    }
-    // Re-render body to show/hide inline quote rows
-    renderBody();
+    window.toggleFastNewsGeneric('fastNewsBtnText', renderBody);
 }
 
 // ─── Data Fetching ─────────────────────────────────────────────────────────
@@ -737,101 +725,14 @@ function renderBody() {
 
     // If fast news mode is active, insert inline quote rows below each data row
     if (window._fastNewsMode) {
-        _injectFastNewsRows();
+        window.injectFastNewsRowsGeneric('tableBody', 'stock');
     }
 
     // Bind touch events for mobile row highlight
     bindRowTouchEvents();
 }
 
-// Inject inline fast-news quote rows below each <tr> in the table body
-function _injectFastNewsRows() {
-    const tbody = document.getElementById('tableBody');
-    if (!tbody) return;
-
-    const dataRows = Array.from(tbody.querySelectorAll('tr[data-quote]'));
-    dataRows.forEach((tr) => {
-        const quote = tr.dataset.quote || '';
-        const stock = tr.dataset.stock || '';
-        const headline = tr.dataset.headline || '';
-        const source = tr.dataset.source || '';
-        const time = tr.dataset.time || '';
-        const link = tr.dataset.link || '';
-
-        // Get extracted quote text (same as tooltip)
-        let quoteText = window.extractFixedSentences && extractFixedSentences(quote, stock);
-        if (!quoteText) {
-            quoteText = (typeof state !== 'undefined' && state.lang !== 'vi') ? 'Updating...' : 'Đang cập nhật...';
-        }
-
-        // Decode headline for display
-        const decodeHtml = (html) => { const ta = document.createElement('textarea'); ta.innerHTML = html; return ta.value; };
-        const rawHeadline = decodeHtml(headline);
-
-        const colCount = 10; // matches number of <th> columns
-        const uniqueId = `fnq-${stock}-${tr.rowIndex}`;
-
-        const quoteRow = document.createElement('tr');
-        quoteRow.className = 'fast-news-quote-row';
-        quoteRow.dataset.fastNewsRowFor = stock;
-        quoteRow.innerHTML = `
-            <td colspan="${colCount}" style="padding: 0; border-top: none; vertical-align: top;">
-                <div class="fast-news-inline-box" id="${uniqueId}" style="position: sticky; left: 0;">
-                    <div class="fast-news-header">
-                        <span class="fast-news-source">${source ? _fnqEsc(source) + (time ? ' · ' + _fnqEsc(time) : '') : (time ? _fnqEsc(time) : '')}</span>
-                        ${link ? `<a href="${_fnqEsc(link)}" target="_blank" class="fast-news-link" rel="noopener noreferrer">↗</a>` : ''}
-                    </div>
-                    <div class="fast-news-headline" id="${uniqueId}-title">${_fnqEsc(rawHeadline)}</div>
-                    <div class="fast-news-quote" id="${uniqueId}-quote">${quoteText}</div>
-                </div>
-            </td>
-        `;
-
-        tr.insertAdjacentElement('afterend', quoteRow);
-
-        // If non-Vietnamese, trigger async translation
-        const currentLang = window._appLang || (typeof state !== 'undefined' ? state.lang : 'vi');
-        if (currentLang !== 'vi' && window.translateText) {
-            const plainQuote = quoteText
-                ? window.decodeHtmlEntities
-                    ? window.decodeHtmlEntities((new DOMParser().parseFromString(quoteText, 'text/html')).body.textContent)
-                    : quoteText
-                : '';
-
-            const esc = _fnqEsc;
-            const applyHL = (safeHTML) => {
-                if (!stock) return safeHTML;
-                const safeS = stock.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                return safeHTML.replace(new RegExp(`\\b(${safeS})\\b`, 'gi'), '<span style="color:#ffd700;font-weight:bold;">$1</span>');
-            };
-
-            if (rawHeadline) {
-                window.translateText(rawHeadline, currentLang).then(translated => {
-                    const el = document.getElementById(`${uniqueId}-title`);
-                    if (el) el.innerHTML = esc(translated);
-                });
-            }
-            if (plainQuote) {
-                window.translateText(plainQuote, currentLang).then(translated => {
-                    const el = document.getElementById(`${uniqueId}-quote`);
-                    if (el) el.innerHTML = applyHL(esc(translated));
-                });
-            }
-        }
-    });
-
-    _updateFastNewsWidths();
-}
-
-function _updateFastNewsWidths() {
-    const container = document.querySelector('.table-container');
-    if (!container) return;
-    const boxes = document.querySelectorAll('.fast-news-inline-box');
-    const targetWidth = container.clientWidth - 24; // account for margin 0 12px
-    boxes.forEach(box => {
-        box.style.width = targetWidth + 'px';
-    });
-}
+// Note: _injectFastNewsRows and _updateFastNewsWidths have been extracted to window.injectFastNewsRowsGeneric
 
 // Listen to resize to update widths
 window.addEventListener('resize', () => {
@@ -1575,3 +1476,120 @@ function openTvChart(ticker, comGroupCode) {
     const exchange = detectExchange(comGroupCode);
     window.open(`https://www.tradingview.com/chart/?symbol=${exchange}%3A${symbol}`, '_blank');
 }
+// Expose functions globally for fast news row injection
+window._fnqEsc = function(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+};
+
+window._updateFastNewsWidths = function() {
+    const container = document.querySelector('.table-container');
+    if (!container) return;
+    const boxes = document.querySelectorAll('.fast-news-inline-box');
+    const targetWidth = container.clientWidth - 24; // account for margin 0 12px
+    boxes.forEach(box => {
+        box.style.width = targetWidth + 'px';
+    });
+};
+
+window.injectFastNewsRowsGeneric = function(tbodyId, prefixId) {
+    const tbody = document.getElementById(tbodyId);
+    if (!tbody) return;
+
+    const dataRows = Array.from(tbody.querySelectorAll('tr[data-quote], tr[data-summary]'));
+    dataRows.forEach((tr) => {
+        const quote = tr.dataset.quote || tr.dataset.summary || '';
+        const stock = tr.dataset.stock || '';
+        const headline = tr.dataset.headline || '';
+        const source = tr.dataset.source || '';
+        const time = tr.dataset.time || '';
+        const link = tr.dataset.link || '';
+
+        let quoteText = quote;
+        // extractFixedSentences is in coreview_stock.js, we assume it's global if loaded
+        if (stock && window.extractFixedSentences) {
+            let extracted = window.extractFixedSentences(quote, stock);
+            if (extracted) quoteText = extracted;
+        }
+
+        if (!quoteText) {
+            // Wait, for macro it might be legitimately empty if no summary
+            if (prefixId === 'macro' && !quote) {
+                quoteText = '-';
+            } else {
+                quoteText = (typeof state !== 'undefined' && state.lang !== 'vi') ? 'Updating...' : 'Đang cập nhật...';
+            }
+        }
+
+        const decodeHtml = (html) => { const ta = document.createElement('textarea'); ta.innerHTML = html; return ta.value; };
+        const rawHeadline = decodeHtml(headline);
+
+        const colCount = tr.children.length;
+        const uniqueId = `fnq-${prefixId}-${tr.rowIndex}`;
+
+        const quoteRow = document.createElement('tr');
+        quoteRow.className = 'fast-news-quote-row';
+        if (stock) quoteRow.dataset.fastNewsRowFor = stock;
+        quoteRow.innerHTML = `
+            <td colspan="${colCount}" style="padding: 0; border-top: none; vertical-align: top;">
+                <div class="fast-news-inline-box" id="${uniqueId}" style="position: sticky; left: 0;">
+                    <div class="fast-news-header">
+                        <span class="fast-news-source">${source ? window._fnqEsc(source) + (time ? ' · ' + window._fnqEsc(time) : '') : (time ? window._fnqEsc(time) : '')}</span>
+                        ${link ? `<a target="_blank" href="${window._fnqEsc(link)}" class="fast-news-link" rel="noopener noreferrer">↗</a>` : ''}
+                    </div>
+                    <div class="fast-news-headline" id="${uniqueId}-title">${window._fnqEsc(rawHeadline)}</div>
+                    <div class="fast-news-quote" id="${uniqueId}-quote">${quoteText}</div>
+                </div>
+            </td>
+        `;
+
+        tr.insertAdjacentElement('afterend', quoteRow);
+
+        const currentLang = window._appLang || (typeof state !== 'undefined' ? state.lang : 'vi');
+        if (currentLang !== 'vi' && window.translateText) {
+            const plainQuote = quoteText
+                ? window.decodeHtmlEntities
+                    ? window.decodeHtmlEntities((new DOMParser().parseFromString(quoteText, 'text/html')).body.textContent)
+                    : quoteText
+                : '';
+
+            const esc = window._fnqEsc;
+            const applyHL = (safeHTML) => {
+                if (!stock) return safeHTML;
+                const safeS = stock.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                return safeHTML.replace(new RegExp(`\\b(${safeS})\\b`, 'gi'), '<span style="color:#ffd700;font-weight:bold;">$1</span>');
+            };
+
+            if (rawHeadline) {
+                window.translateText(rawHeadline, currentLang).then(translated => {
+                    const el = document.getElementById(`${uniqueId}-title`);
+                    if (el) el.innerHTML = esc(translated);
+                });
+            }
+            if (plainQuote && plainQuote !== '-') {
+                window.translateText(plainQuote, currentLang).then(translated => {
+                    const el = document.getElementById(`${uniqueId}-quote`);
+                    if (el) el.innerHTML = stock ? applyHL(esc(translated)) : esc(translated);
+                });
+            }
+        }
+    });
+
+    if (window._updateFastNewsWidths) window._updateFastNewsWidths();
+};
+
+window.toggleFastNewsGeneric = function(btnTextId, renderFunction) {
+    window._fastNewsMode = !window._fastNewsMode;
+    const btnText = document.getElementById(btnTextId);
+    if (btnText) {
+        btnText.innerText = window._fastNewsMode ? 
+            (i18n[state.lang].hideFastNewsBtn || '❌ Ẩn tóm tắt') : 
+            (i18n[state.lang].fastNewsBtn || '⚡ Điểm tin nhanh');
+    }
+    if (typeof renderFunction === 'function') renderFunction();
+};
