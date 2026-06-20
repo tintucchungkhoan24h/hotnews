@@ -484,12 +484,12 @@ function renderStableHeaders() {
         { id: 'ma15',                  w: 'w-24',  s: true, dbField: 'pct_ma15' },
         { id: 'current_close',         w: 'w-20',  s: true },
         { id: 'current_volume',        w: 'w-20',  s: true },
-        { id: 'organ_name',            w: 'w-36',  s: true },
-        { id: 'industry',              w: 'w-32',  s: true },
+        { id: 'organ_name',            w: 'w-28',  s: true },
+        { id: 'industry',              w: 'w-20',  s: true },
         { id: 'headline',              w: 'w-auto', s: true }
     ];
     document.getElementById('tableHeaderStable').innerHTML = cols.map(c => `
-        <th class="px-2 py-2 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getStableSortClass(c.id) : ''}" 
+        <th class="px-2 py-4 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getStableSortClass(c.id) : ''}" 
             ${c.s ? `onclick="handleStableSort('${c.id}')"` : ''}>
             <div class="flex items-center">
                 <span>${i18n[stateStable.lang].cols[c.id]}</span>

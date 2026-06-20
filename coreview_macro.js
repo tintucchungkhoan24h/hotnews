@@ -437,7 +437,7 @@ function renderMacroHeaders() {
     const tableHeader = document.getElementById('tableHeaderMacro');
     if (tableHeader) {
         tableHeader.innerHTML = cols.map(c => `
-            <th class="px-2 py-2 ${c.sortable ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.sortable ? getSortClassMacro(c.id) : ''}" 
+            <th class="px-2 py-4 ${c.sortable ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.sortable ? getSortClassMacro(c.id) : ''}" 
                 ${c.sortable ? `onclick="handleSortMacro('${c.id}')"` : ''}>
                 <div class="flex items-center">
                     <span>${c.label}</span>

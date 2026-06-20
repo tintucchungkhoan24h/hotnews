@@ -489,13 +489,13 @@ function renderWatchlistHeaders() {
         { id: 'ma15',                  w: 'w-24',  s: true, dbField: 'pct_ma15' },
         { id: 'current_close',         w: 'w-20',  s: true },
         { id: 'current_volume',        w: 'w-20',  s: true },
-        { id: 'organ_name',            w: 'w-36',  s: true },
-        { id: 'industry',              w: 'w-32',  s: true },
+        { id: 'organ_name',            w: 'w-28',  s: true },
+        { id: 'industry',              w: 'w-20',  s: true },
         { id: 'headline',              w: 'w-auto', s: true }
     ];
     const _lang = (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || DEFAULT_LANG;
     document.getElementById('tableHeaderWatchlist').innerHTML = cols.map(c => `
-        <th class="px-2 py-2 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getSortClassWatchlist(c.id) : ''}" 
+        <th class="px-2 py-4 ${c.s ? 'cursor-pointer hover:bg-gray-700/50' : ''} ${c.w} ${c.s ? getSortClassWatchlist(c.id) : ''}" 
             ${c.s ? `onclick="handleWatchlistSort('${c.id}')"` : ''}>
             <div class="flex items-center">
                 <span>${i18n[_lang].cols[c.id]}</span>
