@@ -139,17 +139,7 @@ function updateStockViewLabels() {
             (i18n[state.lang].fastNewsBtn || '⚡ Điểm tin nhanh');
     }
 
-    // Update active styling of fast news button
-    const fastNewsToggle = document.getElementById('fastNewsToggle');
-    if (fastNewsToggle) {
-        if (window._fastNewsMode) {
-            fastNewsToggle.classList.add('border-amber-400', 'bg-amber-500/10', 'text-amber-300');
-            fastNewsToggle.classList.remove('border-gray-700', 'text-white');
-        } else {
-            fastNewsToggle.classList.remove('border-amber-400', 'bg-amber-500/10', 'text-amber-300');
-            fastNewsToggle.classList.add('border-gray-700', 'text-white');
-        }
-    }
+    // Removed active styling changes for fast news button so it stays the same format
 }
 
 // Setup all event listeners for stock view
@@ -215,12 +205,8 @@ function toggleFastNews() {
     const btnText = document.getElementById('fastNewsBtnText');
     if (btn) {
         if (window._fastNewsMode) {
-            btn.classList.add('border-amber-400', 'bg-amber-500/10', 'text-amber-300');
-            btn.classList.remove('border-gray-700', 'text-white');
             if (btnText) btnText.innerText = i18n[state.lang].hideFastNewsBtn || '❌ Ẩn tóm tắt';
         } else {
-            btn.classList.remove('border-amber-400', 'bg-amber-500/10', 'text-amber-300');
-            btn.classList.add('border-gray-700', 'text-white');
             if (btnText) btnText.innerText = i18n[state.lang].fastNewsBtn || '⚡ Điểm tin nhanh';
         }
     }
