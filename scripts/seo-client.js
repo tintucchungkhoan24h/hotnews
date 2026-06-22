@@ -199,12 +199,16 @@ async function fetchDynamicFeed() {
             const rDate = row.summary_date;
             
             html += `
-            <article class="mb-12" ${isRtl ? 'dir="rtl"' : ''}>
-                <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+            <article ${isRtl ? 'dir="rtl"' : ''}>
+                <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
                   ${article.title}
                 </h1>
-                <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
-                  📅 ${rDate} &nbsp;·&nbsp; ${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()} &nbsp;·&nbsp; ${window.SITE_NAME}
+                <div class="article-meta">
+                  <span class="highlight">📅 ${rDate}</span>
+                  <span>•</span>
+                  <span>${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()}</span>
+                  <span>•</span>
+                  <span>${window.SITE_NAME}</span>
                 </div>
                 <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
                 <div class="digest-body">${article.content || ''}</div>

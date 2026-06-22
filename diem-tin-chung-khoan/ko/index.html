@@ -36,7 +36,7 @@
     body { margin: 0; padding: 0; background: #0a192f; color: #f3f4f6; font-family: 'Inter', system-ui, sans-serif; }
     .avatar-glow { box-shadow: 0 0 15px rgba(255,215,0,0.3); border: 2px solid rgba(255,215,0,0.5); }
     
-        /* Tab bar (mirrors main app) */
+    /* Tab bar (mirrors main app) */
     .tab-bar-wrap { overflow-x: auto; scrollbar-width: none; }
     .tab-bar-wrap::-webkit-scrollbar { display: none; }
     .tab-button { color: #9ca3af; background: transparent; border: none; cursor: pointer; user-select: none; position: relative; border-radius: 10px; margin: 0 1px; }
@@ -47,11 +47,126 @@
     .tab-button.active { color: #0a192f; background: #ffd700; box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3); }
     .tab-button:active { transform: scale(0.98); }
 
-    /* Article content styling */
-    .digest-lead { background: linear-gradient(135deg, rgba(255,215,0,0.08) 0%, rgba(17,34,64,0.6) 100%); border-left: 4px solid #ffd700; padding: 16px 20px; border-radius: 0 12px 12px 0; font-size: 15px; line-height: 1.7; color: #e2e8f0; font-style: italic; margin-bottom: 28px; }
-    .digest-body h2 { font-size: 1.2rem; font-weight: 800; color: #ffd700; margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,215,0,0.2); }
-    .digest-body p { margin: 0 0 14px; line-height: 1.75; color: #d1d5db; font-size: 14px; }
-    .digest-body strong { color: #fbbf24; font-weight: 700; }
+    /* Article content styling - Professional Design */
+    .digest-lead { 
+      background: linear-gradient(135deg, rgba(255,215,0,0.12) 0%, rgba(17,34,64,0.8) 100%); 
+      border-left: 4px solid #ffd700; 
+      padding: 20px 24px; 
+      border-radius: 0 16px 16px 0; 
+      font-size: 16px; 
+      line-height: 1.8; 
+      color: #e2e8f0; 
+      font-style: italic; 
+      margin-bottom: 32px; 
+      position: relative;
+      box-shadow: 0 4px 20px rgba(255,215,0,0.08);
+    }
+    .digest-lead::before {
+      content: '"';
+      position: absolute;
+      left: 12px;
+      top: -8px;
+      font-size: 48px;
+      color: #ffd700;
+      opacity: 0.3;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .digest-body h2 { 
+      font-size: 1.35rem; 
+      font-weight: 800; 
+      color: #ffd700; 
+      margin: 36px 0 16px; 
+      padding-bottom: 12px; 
+      border-bottom: 2px solid rgba(255,215,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .digest-body h2::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #ffd700;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255,215,0,0.5);
+    }
+    .digest-body p { 
+      margin: 0 0 18px; 
+      line-height: 1.85; 
+      color: #d1d5db; 
+      font-size: 15px;
+      text-align: justify;
+    }
+    .digest-body strong { 
+      color: #fbbf24; 
+      font-weight: 700;
+      background: rgba(251,191,36,0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .digest-body a {
+      color: #60a5fa;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(96,165,250,0.3);
+      transition: all 0.2s ease;
+    }
+    .digest-body a:hover {
+      color: #ffd700;
+      border-bottom-color: #ffd700;
+    }
+    
+    /* Enhanced article card styling */
+    article {
+      background: linear-gradient(180deg, rgba(17,34,64,0.5) 0%, rgba(10,25,47,0.3) 100%);
+      border: 1px solid rgba(255,215,0,0.1);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    article:hover {
+      border-color: rgba(255,215,0,0.2);
+      box-shadow: 0 12px 40px rgba(255,215,0,0.1);
+      transform: translateY(-2px);
+    }
+    
+    /* Enhanced title styling */
+    article h1 {
+      background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(255,215,0,0.3);
+      letter-spacing: -0.02em;
+    }
+    
+    /* Enhanced metadata styling */
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      background: rgba(255,215,0,0.05);
+      border: 1px solid rgba(255,215,0,0.15);
+      padding: 10px 16px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .article-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .article-meta span.highlight {
+      color: #ffd700;
+    }
     
     .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; font-size: 13px; font-weight: 600; text-decoration: none; padding: 8px 14px; background: rgba(96,165,250,0.08); border: 1px solid rgba(96,165,250,0.25); border-radius: 8px; margin-bottom: 24px; }
     .back-link:hover { color: #ffd700; border-color: rgba(255,215,0,0.3); }
@@ -250,6 +365,127 @@
     cursor: not-allowed;
 }
 
+/* Article content styling - Professional Design */
+.digest-lead { 
+  background: linear-gradient(135deg, rgba(255,215,0,0.12) 0%, rgba(17,34,64,0.8) 100%); 
+  border-left: 4px solid #ffd700; 
+  padding: 20px 24px; 
+  border-radius: 0 16px 16px 0; 
+  font-size: 16px; 
+  line-height: 1.8; 
+  color: #e2e8f0; 
+  font-style: italic; 
+  margin-bottom: 32px; 
+  position: relative;
+  box-shadow: 0 4px 20px rgba(255,215,0,0.08);
+}
+.digest-lead::before {
+  content: '"';
+  position: absolute;
+  left: 12px;
+  top: -8px;
+  font-size: 48px;
+  color: #ffd700;
+  opacity: 0.3;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+.digest-body h2 { 
+  font-size: 1.35rem; 
+  font-weight: 800; 
+  color: #ffd700; 
+  margin: 36px 0 16px; 
+  padding-bottom: 12px; 
+  border-bottom: 2px solid rgba(255,215,0,0.25);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.digest-body h2::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #ffd700;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255,215,0,0.5);
+}
+.digest-body p { 
+  margin: 0 0 18px; 
+  line-height: 1.85; 
+  color: #d1d5db; 
+  font-size: 15px;
+  text-align: justify;
+}
+.digest-body strong { 
+  color: #fbbf24; 
+  font-weight: 700;
+  background: rgba(251,191,36,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.digest-body a {
+  color: #60a5fa;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(96,165,250,0.3);
+  transition: all 0.2s ease;
+}
+.digest-body a:hover {
+  color: #ffd700;
+  border-bottom-color: #ffd700;
+}
+
+/* Enhanced article card styling */
+article {
+  background: linear-gradient(180deg, rgba(17,34,64,0.5) 0%, rgba(10,25,47,0.3) 100%);
+  border: 1px solid rgba(255,215,0,0.1);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+article:hover {
+  border-color: rgba(255,215,0,0.2);
+  box-shadow: 0 12px 40px rgba(255,215,0,0.1);
+  transform: translateY(-2px);
+}
+
+/* Enhanced title styling */
+article h1 {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(255,215,0,0.3);
+  letter-spacing: -0.02em;
+}
+
+/* Enhanced metadata styling */
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: rgba(255,215,0,0.05);
+  border: 1px solid rgba(255,215,0,0.15);
+  padding: 10px 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+.article-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.article-meta span.highlight {
+  color: #ffd700;
+}
+
 /* Control Bar UI (similar to main app) */
 .filter-controls-bar {
     background: #112240;
@@ -319,37 +555,74 @@
     <div class="flex items-start justify-between gap-3">
         <!-- Logo and Title -->
         <div class="flex items-center gap-3 min-w-0">
-                <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden avatar-glow bg-gray-800 flex-shrink-0 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" onclick="window.location.href='/'" data-title-key="header.refreshTitle">
-                <img src="/new_avatar.png?v1.0" alt="" data-alt-key="brand.logoAlt" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-fin-gold font-bold text-2xl\'>CK</span>'">
+            <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden avatar-glow bg-gray-800 flex-shrink-0 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+                onclick="window.location.href='https://tintucchungkhoan24h.com/'" data-title-key="header.refreshTitle">
+                <img src="/new_avatar.png?v1.0" alt="" data-alt-key="brand.logoAlt" class="w-full h-full object-cover"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-fin-gold font-bold text-2xl\'>CK</span>'">
             </div>
             <div class="min-w-0">
-                <h1 id="main-title" class="text-base sm:text-lg md:text-xl font-black text-fin-gold tracking-tight uppercase leading-tight" data-text-key="title"></h1>
-                <p id="sub-title" class="text-[9px] sm:text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1" data-text-key="subtitle"></p>
-                
+                <h1 id="main-title"
+                    class="text-base sm:text-lg md:text-xl font-black text-fin-gold tracking-tight uppercase leading-tight"
+                    data-text-key="title"></h1>
+                <p id="sub-title"
+                    class="text-[9px] sm:text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1"
+                    data-text-key="subtitle"></p>
+
                 <!-- Social Media Links -->
                 <div class="flex items-center gap-1.5 sm:gap-2 mt-2 flex-wrap">
-                    <a href="https://www.google.com/maps/place/Tin+T%E1%BB%A9c+Ch%E1%BB%A9ng+Kho%C3%A1n+24h/@10.8407755,106.6611751,17z/data=!3m1!4b1!4m6!3m5!1s0xacc5e5958f5365e7:0x8559d8945629116!8m2!3d10.8407755!4d106.6611751!16s%2Fg%2F11z358z_2w?entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-fin-gold rounded-full transition-all hover:scale-110" data-title-key="social.googleMaps">
-                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <a href="https://www.google.com/maps/place/Tin+T%E1%BB%A9c+Ch%E1%BB%A9ng+Kho%C3%A1n+24h/@10.8407755,106.6611751,17z/data=!3m1!4b1!4m6!3m5!1s0xacc5e5958f5365e7:0x8559d8945629116!8m2!3d10.8407755!4d106.6611751!16s%2Fg%2F11z358z_2w?entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank"
+                        class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-fin-gold rounded-full transition-all hover:scale-110"
+                        data-title-key="social.googleMaps">
+                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
                     </a>
-                    <a href="https://www.facebook.com/tintucchungkhoan24h" target="_blank" class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-[#1877f2] rounded-full transition-all hover:scale-110" data-title-key="social.facebook">
-                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    <a href="https://www.facebook.com/tintucchungkhoan24h" target="_blank"
+                        class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-[#1877f2] rounded-full transition-all hover:scale-110"
+                        data-title-key="social.facebook">
+                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
                     </a>
-                    <a href="https://www.tiktok.com/@tintucchungkhoan_24h" target="_blank" class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-black rounded-full transition-all hover:scale-110" data-title-key="social.tiktok">
-                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    <a href="https://www.tiktok.com/@tintucchungkhoan_24h" target="_blank"
+                        class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-black rounded-full transition-all hover:scale-110"
+                        data-title-key="social.tiktok">
+                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                        </svg>
                     </a>
-                    <a href="https://www.youtube.com/@TinT%E1%BB%A9cCh%E1%BB%A9ngKho%C3%A1n24h" target="_blank" class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-[#ff0000] rounded-full transition-all hover:scale-110" data-title-key="social.youtube">
-                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    <a href="https://www.youtube.com/@TinT%E1%BB%A9cCh%E1%BB%A9ngKho%C3%A1n24h" target="_blank"
+                        class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-[#ff0000] rounded-full transition-all hover:scale-110"
+                        data-title-key="social.youtube">
+                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
                     </a>
-                    <a href="https://www.linkedin.com/company/tintucchungkhoan24h/" target="_blank" class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-[#0077b5] rounded-full transition-all hover:scale-110" data-title-key="social.linkedin">
-                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    <a href="https://www.linkedin.com/company/tintucchungkhoan24h/" target="_blank"
+                        class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-[#0077b5] rounded-full transition-all hover:scale-110"
+                        data-title-key="social.linkedin">
+                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
                     </a>
-                    <a href="https://x.com/THIEN_TTCK24H" target="_blank" class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-black rounded-full transition-all hover:scale-110" data-title-key="social.twitter">
-                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    <a href="https://x.com/THIEN_TTCK24H" target="_blank"
+                        class="w-6 h-6 flex items-center justify-center bg-gray-800 hover:bg-black rounded-full transition-all hover:scale-110"
+                        data-title-key="social.twitter">
+                        <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
                     </a>
                 </div>
             </div>
         </div>
-        
+
         <!-- Language Button -->
         <div class="flex-shrink-0 pt-1 relative">
             <button id="langToggle" type="button">
@@ -386,7 +659,6 @@
         </div>
     </div>
 </div>
-
 
     <!-- TAB BAR -->
     <div class="tab-bar-wrap max-w-[1440px] mx-auto mb-6 overflow-x-auto mt-4" style="scrollbar-width:none;-ms-overflow-style:none;">
@@ -453,29 +725,37 @@
     <!-- MAIN ARTICLE FEED -->
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
       
-        <article class="mb-12">
-          <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+        <article>
+          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 6월 22일 VN-Index: Vingroup 급등 속 신중한 유동성
           </h1>
-          <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
-            📅 2026-06-22 &nbsp;·&nbsp; 🇰🇷 KOREAN &nbsp;·&nbsp; Tin Tức Chứng Khoán 24h
+          <div class="article-meta">
+            <span class="highlight">📅 2026-06-22</span>
+            <span>•</span>
+            <span>🇰🇷 KOREAN</span>
+            <span>•</span>
+            <span>Tin Tức Chứng Khoán 24h</span>
           </div>
 
           <div class="digest-lead" >2026년 6월 22일 증시는 VN-Index가 2개월 만에 가장 큰 폭으로 상승하며 활기를 띠었습니다. Vingroup 주식이 지수 상승을 주도했지만, 전반적인 시장 유동성은 여전히 신중한 관망세를 보였습니다.</div>
-          <div class="digest-body"><h2>시장 심리: 지수 상승과 괴리된 체감</h2><p>6월 22일 장은 하노이 인프라 프로젝트 착공이라는 호재와 함께 시작되었습니다. 지수 상승은 주로 <strong>VIC</strong> 상한가, <strong>VHM</strong> 및 <strong>VRE</strong>의 강세 등 Vingroup 종목에 집중되었습니다. 지수�� 올랐지만 하락 종목이 더 많아 투자자들의 신중한 태도를 엿볼 수 있었습니다.</p><h2>자금 흐름의 차별화</h2><p>자금 흐름은 뚜렷한 차별화를 보였습니다. <strong>PVD</strong>, <strong>BSR</strong>, <strong>POW</strong> 등 에너지주는 국제 유가 회복과 함께 상승했습니다. 반면 <strong>FPT</strong>, <strong>MWG</strong>와 같은 기술 및 유통주는 외국인 매도 압력을 받았습니다. 외국인 투자자의 5일 연속 순매도는 시장의 지속적인 성장에 걸림돌이 되고 있습니다.</p><h2>전망 및 제언</h2><p>MBS는 이번 상승이 기술적 반등일 가능성이 높다고 분석했습니다. VN-Index는 1,830-1,845 포인트 구간에서 강한 저항을 받고 있습니다. 기본 시나리오상 시장은 횡보할 것으로 보입니다. 현금 비중을 유지하고 증권, 물류, 제조 등 기본기가 탄탄한 섹터를 조정 시 매수하는 전략을 권장합니다.</p><p>참고 자료: <a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: 시장 횡보 속 자금 유입 종목</a>, <a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index 저항 구간 분석</a></p></div>
+          <div class="digest-body"><h2>시장 심리: 지수 상승과 괴리된 체감</h2><p>6월 22일 장은 하노이 인프라 프로젝트 착공이라는 호재와 함께 시작되었습니다. 지수 상승은 주로 <strong>VIC</strong> 상한가, <strong>VHM</strong> 및 <strong>VRE</strong>의 강세 등 Vingroup 종목에 집중되었습니다. 지수��� 올랐지만 하락 종목이 더 많아 투자자들의 신중한 태도를 엿볼 수 있었습니다.</p><h2>자금 흐름의 차별화</h2><p>자금 흐름은 뚜렷한 차별화를 보였습니다. <strong>PVD</strong>, <strong>BSR</strong>, <strong>POW</strong> 등 에너지주는 국제 유가 회복과 함께 상승했습니다. 반면 <strong>FPT</strong>, <strong>MWG</strong>와 같은 기술 및 유통주는 외국인 매도 압력을 받았습니다. 외국인 투자자의 5일 연속 순매도는 시장의 지속적인 성장에 걸림돌이 되고 있습니다.</p><h2>전망 및 제언</h2><p>MBS는 이번 상승이 기술적 반등일 가능성이 높다고 분석했습니다. VN-Index는 1,830-1,845 포인트 구간에서 강한 저항을 받고 있습니다. 기본 시나리오상 시장은 횡보할 것으로 보입니다. 현금 비중을 유지하고 증권, 물류, 제조 등 기본기가 탄탄한 섹터를 조정 시 매수하는 전략을 권장합니다.</p><p>참고 자료: <a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: 시장 횡보 속 자금 유입 종목</a>, <a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index 저항 구간 분석</a></p></div>
         </article>
         <hr class="border-gray-800 my-8">
       
-        <article class="mb-12">
-          <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+        <article>
+          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 6월 22일 VN-Index: Vingroup 급등 속 신중한 유동성
           </h1>
-          <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
-            📅 2026-06-21 &nbsp;·&nbsp; 🇰🇷 KOREAN &nbsp;·&nbsp; Tin Tức Chứng Khoán 24h
+          <div class="article-meta">
+            <span class="highlight">📅 2026-06-21</span>
+            <span>•</span>
+            <span>🇰🇷 KOREAN</span>
+            <span>•</span>
+            <span>Tin Tức Chứng Khoán 24h</span>
           </div>
 
           <div class="digest-lead" >2026년 6월 22일 증시는 VN-Index가 2개월 만에 가장 큰 폭으로 상승하며 활기를 띠었습니다. Vingroup 주식이 지수 상승을 주도했지만, 전반적인 시장 유동성은 여전히 신중한 관망세를 보였습니다.</div>
-          <div class="digest-body"><h2>시장 심리: 지수 상승과 괴리된 체감</h2><p>6월 22일 장은 하노이 인프라 프로젝트 착공이라는 호재와 함께 시작되었습니다. 지수 상승은 주로 <strong>VIC</strong> 상한가, <strong>VHM</strong> 및 <strong>VRE</strong>의 강세 등 Vingroup 종목에 집중되었습니다. 지수는 올랐지만 하락 종목이 더 많아 투자자들의 신중한 태도를 엿볼 수 있었습니다.</p><h2>자금 흐��의 차별화</h2><p>자금 흐름은 뚜렷한 차별화를 보였습니다. <strong>PVD</strong>, <strong>BSR</strong>, <strong>POW</strong> 등 에너지주는 국제 유가 회복과 함께 상승했습니다. 반면 <strong>FPT</strong>, <strong>MWG</strong>와 같은 기술 및 유통주는 외국인 매도 압력을 받았습니다. 외국인 투자자의 5일 연속 순매도는 시장의 지속적인 성장에 걸림돌이 되고 있습니다.</p><h2>전망 및 제언</h2><p>MBS는 이번 상승이 기술적 반등일 가능성이 높다고 분석했습니다. VN-Index는 1,830-1,845 포인트 구간에서 강한 저항을 받고 있습니다. 기본 시나리오상 시장은 횡보할 것으로 보입니다. 현금 비중을 유지하고 증권, 물류, 제조 등 기본기가 탄탄한 섹터를 조정 시 매수하는 전략을 권장합니다.</p><p>참고 자료: <a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: 시장 횡보 속 자금 유입 종목</a>, <a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index 저항 구간 분석</a></p></div>
+          <div class="digest-body"><h2>시장 심리: 지수 상승과 괴리된 체감</h2><p>6월 22일 장은 하노이 인프라 프로젝트 착공이라는 호재와 함께 시작되었습니다. 지수 상승은 주로 <strong>VIC</strong> 상한가, <strong>VHM</strong> 및 <strong>VRE</strong>의 강세 등 Vingroup 종목에 집중되었습니다. 지수는 올랐지만 하락 종목이 더 많아 투자자들의 신중한 태도를 엿볼 수 있었습니다.</p><h2>자금 흐름의 차별화</h2><p>자금 흐름은 뚜렷한 차별화를 보였습니다. <strong>PVD</strong>, <strong>BSR</strong>, <strong>POW</strong> 등 에너지주는 국제 유가 회복과 함께 상승했습니다. 반면 <strong>FPT</strong>, <strong>MWG</strong>와 같은 기술 및 유통주는 외국인 매도 압력을 받았습니다. 외국인 투자자의 5일 연속 순매도는 시장의 지속적인 성장에 걸림돌이 되고 있습니다.</p><h2>전망 및 제언</h2><p>MBS는 이번 상승이 기술적 반등일 가능성이 높다고 분석했습니다. VN-Index는 1,830-1,845 포인트 구간에서 강한 저항을 받고 있습니다. 기본 시나리오상 시장은 횡보할 것으로 보입니다. 현금 비중을 유지하고 증권, 물류, 제조 등 기본기가 탄탄한 섹터를 조정 시 매수하는 전략을 권장합니다.</p><p>참고 자료: <a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: 시장 횡보 속 자금 유입 종목</a>, <a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index 저항 구간 분석</a></p></div>
         </article>
         <hr class="border-gray-800 my-8">
       
@@ -656,7 +936,7 @@
     window.SUPABASE_URL = 'https://ifjxishcrzndbszmvpef.supabase.co';
     window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmanhpc2hjcnpuZGJzem12cGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNjEwOTcsImV4cCI6MjA5MjkzNzA5N30.0rHs4AWTmRmN34WWdxBM2RsTMu1VQwfKDjve0W2yHEg';
     window.SITE_NAME = 'Tin Tức Chứng Khoán 24h';
-    const langDict = {"title": "24시간 증시 뉴스", "subtitle": "매일 시장 업데이트", "searchPlaceholder": "VHM, VIC, FPT...", "searchPlaceholderMacro": "금, 석유, 인플레이션...", "lblFrom": "시작일", "lblTo": "종료일", "loading": "데이터를 불러오는 중...", "exportBtn": "Excel 내보내기", "exporting": "내보내는 중...", "filterBtn": "필터", "fastNewsBtn": "⚡ 빠른 요약", "hideFastNewsBtn": "🔼 요약 숨기기", "refreshBtn": "데이터 새로고침", "watchNewsBtn": "뉴스 보기", "empty": "일치하는 데이터가 없습니다.", "prev": "이전", "next": "다음", "paging": "{start} - {end} / 총 {total}건", "chartTooltip": "TradingView에서 차트 보기", "excelSheetName": "증시 뉴스", "tabs": {"stock": "종목", "macro": "거시", "stable": "안정 변동성", "high": "고변동성", "watchlist": "⭐ 관심목록", "spotlight": "🚀 주목 종목", "digest": "요약"}, "cols": {"index": "#", "publish_time": "시간", "single_stock": "티커", "price_change_today_pct": "% 변동", "ma15": "MA15", "organ_name": "기업", "industry": "업종", "current_close": "가격", "current_volume": "거래량", "headline": "제목", "source": "출처", "link": "링크", "time": "시간"}, "filter": {"title": "필터", "search": "검색...", "selectAll": "(전체 선택)", "clearAll": "전체 해제", "selectAllBtn": "전체 선택", "apply": "적용", "stockCode": "종목 코드", "ma15": "MA15", "industry": "업종", "source": "출처", "volumeLabel": "거래량", "volumeUnit": "백만", "priceLabel": "가격", "priceUnit": "천동", "priceMinPlaceholder": "최소", "priceMaxPlaceholder": "최대", "volumeMinPlaceholder": "최소", "volumeMaxPlaceholder": "최대", "priceChangeLabel": "% 가격 변화", "priceChangeUnit": "%", "priceChangeMinPlaceholder": "최소", "priceChangeMaxPlaceholder": "최대", "priceChangeDescription": "가격 변화: {min}~{max} %", "volumeDescription": "거래량: {min} – {max}", "ma15Ranges": {"strongAbove": "⏫ MA15 (>5%)", "above": "⬆️ MA15 (1~5%)", "at": "↔️ MA15 (-1~1%)", "below": "⬇️ MA15 (-5~-1%)", "strongBelow": "⏬ MA15 (<-5%)"}}, "ma15Tooltip": {"strongAbove": "MA15 대비 강한 상승", "above": "MA15 위", "at": "MA15 부근", "below": "MA15 아래", "strongBelow": "MA15 대비 강한 하락", "na": "데이터 없음"}, "macro": {"sheetName": "거시 뉴스"}, "stable": {"sheetName": "안정 변동성"}, "high": {"sheetName": "고변동성"}, "spotlight": {"sheetName": "주목 종목"}, "watchlist": {"sheetName": "관심목록"}, "header": {"mainTitle": "24시간 증시 뉴스", "subTitle": "매일 시장 업데이트", "refreshTitle": "페이지 새로고침"}, "footer": {"col1Title": "회사 소개", "col1Desc1": "3S 원칙에 따른 금융 시장 정보: Short(간결) – Sharp(명확) – Straight(직설).", "col1Desc2": "\"투자자가 매일 자금 흐름과 시장 추세를 더 빠르게 파악하도록 돕습니다.\"", "col2Title": "광고 문의", "col2Founder": "Phạm Văn Thiện", "founderName": "Phạm Văn Thiện", "founderLabel": "창립자", "hotlineLabel": "핫라인", "emailLabel": "이메일", "col3Title": "에코시스템", "mapsLabel": "Google 지도", "addressLabel": "본사", "directionsLink": "Google 지도에서 길 찾기 →", "version": "버전 4.0", "updated": "업데이트: 2026-05-08", "copyrightResp": "콘텐츠 책임: Phạm Văn Thiện", "copyrightCopy": "© 2026 24시간 증시 뉴스 — 창립자 Phạm Văn Thiện", "newsTitle": "뉴스", "newsTitle2": "증시 뉴스"}, "video": {"cannotLoad": "동영상을 불러올 수 없습니다.", "close": "닫기", "tabVideoTitle": "동영상 보기", "titleStock": "오늘의 증시 전망", "titleMacro": "거시경제: 지난 24시간 주요 동향"}, "filterPopup": {"title": "필터", "close": "닫기"}, "social": {"googleMaps": "Google 지도", "facebook": "Facebook", "tiktok": "TikTok", "youtube": "YouTube", "linkedin": "LinkedIn", "twitter": "X (Twitter)"}, "sourceNames": {"Investing-ChiBaoKinhTe": "Investing-경제지표", "Investing-Forex": "Investing-외환", "Investing-HangHoa": "Investing-원자재", "Investing-TheGioi": "Investing-세계", "Investing-TinPhoBien": "Investing-인기 뉴스"}, "contact": {"founderLabel": "창립자", "founderName": "Phạm Văn Thiện", "hotlineLabel": "핫라인", "emailLabel": "이메일", "phoneNumber": "0906 411 561", "emailAddress": "admin@tintucchungkhoan24h.com", "address": "29/22 Nguyễn Văn Khối, Phường Thông Tây Hội, Quận Gò Vấp, TP.HCM 71400"}, "brand": {"threeS": "3S", "short": "Short", "sharp": "Sharp", "straight": "Straight", "logoAlt": "24시간 증시 뉴스 로고"}, "datepicker": {"months": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"], "days": ["월", "화", "수", "목", "금", "토", "일"], "inputPlaceholder": "dd/mm/yyyy"}, "notApplicable": "해당 없음", "page": {"documentTitle": "24시간 증시 뉴스", "metaDescription": "매일 시장 업데이트. 베트남 증시를 따라가는 투자자를 위한 종목 분석과 투자 동향."}, "exportFilePrefix": {"stock": "StockMarketNews", "macro": "MacroNews", "stable": "StableVolatility", "high": "HighVolatility", "watchlist": "Watchlist", "spotlight": "Spotlight"}, "exportError": "Excel 내보내기 오류. 다시 시도해 주세요.", "exportErrorWithMessage": "Excel 내보내기 오류: {message}", "exportUnexpectedResponse": "서버 응답 형식이 올바르지 않습니다.", "loadingSummaries": "요약을 불러오는 중...", "noSummaries": "이 날짜 범위의 요약이 없습니다."};
+    const langDict = {"title":"24시간 증시 뉴스","subtitle":"매일 시장 업데이트","searchPlaceholder":"VHM, VIC, FPT...","searchPlaceholderMacro":"금, 석유, 인플레이션...","lblFrom":"시작일","lblTo":"종료일","loading":"데이터를 불러오는 중...","exportBtn":"Excel 내보내기","exporting":"내보내는 중...","filterBtn":"필터","fastNewsBtn":"⚡ 빠른 요약","hideFastNewsBtn":"🔼 요약 숨기기","refreshBtn":"데이터 새로고침","watchNewsBtn":"뉴스 보기","empty":"일치하는 데이터가 없습니다.","prev":"이전","next":"다음","paging":"{start} - {end} / 총 {total}건","chartTooltip":"TradingView에서 차트 보기","excelSheetName":"증시 뉴스","tabs":{"stock":"종목","macro":"거시","stable":"안정 변동성","high":"고변동성","watchlist":"⭐ 관심목록","spotlight":"🚀 주목 종목","digest":"요약"},"cols":{"index":"#","publish_time":"시간","single_stock":"티커","price_change_today_pct":"% 변동","ma15":"MA15","organ_name":"기업","industry":"업종","current_close":"가격","current_volume":"거래량","headline":"제목","source":"출처","link":"링크","time":"시간"},"filter":{"title":"필터","search":"검색...","selectAll":"(전체 선택)","clearAll":"전체 해제","selectAllBtn":"전체 선택","apply":"적용","stockCode":"종목 코드","ma15":"MA15","industry":"업종","source":"출처","volumeLabel":"거래량","volumeUnit":"백만","priceLabel":"가격","priceUnit":"천동","priceMinPlaceholder":"최소","priceMaxPlaceholder":"최대","volumeMinPlaceholder":"최소","volumeMaxPlaceholder":"최대","priceChangeLabel":"% 가격 변화","priceChangeUnit":"%","priceChangeMinPlaceholder":"최소","priceChangeMaxPlaceholder":"최대","priceChangeDescription":"가격 변화: {min}~{max} %","volumeDescription":"거래량: {min} – {max}","ma15Ranges":{"strongAbove":"⏫ MA15 (>5%)","above":"⬆️ MA15 (1~5%)","at":"↔️ MA15 (-1~1%)","below":"⬇️ MA15 (-5~-1%)","strongBelow":"⏬ MA15 (<-5%)"}},"ma15Tooltip":{"strongAbove":"MA15 대비 강한 상승","above":"MA15 위","at":"MA15 부근","below":"MA15 아래","strongBelow":"MA15 대비 강한 하락","na":"데이터 없음"},"macro":{"sheetName":"거시 뉴스"},"stable":{"sheetName":"안정 변동성"},"high":{"sheetName":"고변동성"},"spotlight":{"sheetName":"주목 종목"},"watchlist":{"sheetName":"관심목록"},"header":{"mainTitle":"24시간 증시 뉴스","subTitle":"매일 시장 업데이트","refreshTitle":"페이지 새로고침"},"footer":{"col1Title":"회사 소개","col1Desc1":"3S 원칙에 따른 금융 시장 정보: Short(간결) – Sharp(명확) – Straight(직설).","col1Desc2":"\"투자자가 매일 자금 흐름과 시장 추세를 더 빠르게 파악하도록 돕습니다.\"","col2Title":"광고 문의","col2Founder":"Phạm Văn Thiện","founderName":"Phạm Văn Thiện","founderLabel":"창립자","hotlineLabel":"핫라인","emailLabel":"이메일","col3Title":"에코시스템","mapsLabel":"Google 지도","addressLabel":"본사","directionsLink":"Google 지도에서 길 찾기 →","version":"버전 4.0","updated":"업데이트: 2026-05-08","copyrightResp":"콘텐츠 책임: Phạm Văn Thiện","copyrightCopy":"© 2026 24시간 증시 뉴스 — 창립자 Phạm Văn Thiện","newsTitle":"뉴스","newsTitle2":"증시 뉴스"},"video":{"cannotLoad":"동영상을 불러올 수 없습니다.","close":"닫기","tabVideoTitle":"동영상 보기","titleStock":"오늘의 증시 전망","titleMacro":"거시경제: 지난 24시간 주요 동향"},"filterPopup":{"title":"필터","close":"닫기"},"social":{"googleMaps":"Google 지도","facebook":"Facebook","tiktok":"TikTok","youtube":"YouTube","linkedin":"LinkedIn","twitter":"X (Twitter)"},"sourceNames":{"Investing-ChiBaoKinhTe":"Investing-경제지표","Investing-Forex":"Investing-외환","Investing-HangHoa":"Investing-원자재","Investing-TheGioi":"Investing-세계","Investing-TinPhoBien":"Investing-인기 뉴스"},"contact":{"founderLabel":"창립자","founderName":"Phạm Văn Thiện","hotlineLabel":"핫라인","emailLabel":"이메일","phoneNumber":"0906 411 561","emailAddress":"admin@tintucchungkhoan24h.com","address":"29/22 Nguyễn Văn Khối, Phường Thông Tây Hội, Quận Gò Vấp, TP.HCM 71400"},"brand":{"threeS":"3S","short":"Short","sharp":"Sharp","straight":"Straight","logoAlt":"24시간 증시 뉴스 로고"},"datepicker":{"months":["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],"days":["월","화","수","목","금","토","일"],"inputPlaceholder":"dd/mm/yyyy"},"notApplicable":"해당 없음","page":{"documentTitle":"24시간 증시 뉴스","metaDescription":"매일 시장 업데이트. 베트남 증시를 따라가는 투자자를 위한 종목 분석과 투자 동향."},"exportFilePrefix":{"stock":"StockMarketNews","macro":"MacroNews","stable":"StableVolatility","high":"HighVolatility","watchlist":"Watchlist","spotlight":"Spotlight"},"exportError":"Excel 내보내기 오류. 다시 시도해 주세요.","exportErrorWithMessage":"Excel 내보내기 오류: {message}","exportUnexpectedResponse":"서버 응답 형식이 올바르지 않습니다.","loadingSummaries":"요약을 불러오는 중...","noSummaries":"이 날짜 범위의 요약이 없습니다."};
 
     function applyDict() {
         document.querySelectorAll('[data-text-key]').forEach(el => {
@@ -698,7 +978,7 @@
     }
 
     // Inject dynamic client JS
-// SEO Client Logic
+    // SEO Client Logic
 // Contains Custom DatePicker and Supabase fetching for dynamic feed
 
 const GMT7_OFFSET = 7 * 60; // 7 hours in minutes
@@ -899,12 +1179,16 @@ async function fetchDynamicFeed() {
             const rDate = row.summary_date;
             
             html += `
-            <article class="mb-12" ${isRtl ? 'dir="rtl"' : ''}>
-                <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+            <article ${isRtl ? 'dir="rtl"' : ''}>
+                <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
                   ${article.title}
                 </h1>
-                <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
-                  📅 ${rDate} &nbsp;·&nbsp; ${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()} &nbsp;·&nbsp; ${window.SITE_NAME}
+                <div class="article-meta">
+                  <span class="highlight">📅 ${rDate}</span>
+                  <span>•</span>
+                  <span>${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()}</span>
+                  <span>•</span>
+                  <span>${window.SITE_NAME}</span>
                 </div>
                 <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
                 <div class="digest-body">${article.content || ''}</div>
@@ -988,6 +1272,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-</script>
+  </script>
 </body>
 </html>
