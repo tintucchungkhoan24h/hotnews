@@ -1482,13 +1482,39 @@
                     loadStaticTranslations()
                 ]);
                 await loadScripts();
+                // Parse hash for initial tab and language
+                let initialTab = 'stock';
+                if (window.location.hash) {
+                    const hashParts = window.location.hash.substring(1).split('/');
+                    const validTabs = ['stock', 'macro', 'stable', 'high', 'watchlist', 'spotlight'];
+                    if (hashParts[0] && validTabs.includes(hashParts[0])) {
+                        initialTab = hashParts[0];
+                    }
+                    if (hashParts[1]) {
+                        state.lang = hashParts[1];
+                        window._appLang = hashParts[1];
+                        if (typeof stateStable !== 'undefined') stateStable.lang = hashParts[1];
+                        if (typeof stateHigh !== 'undefined') stateHigh.lang = hashParts[1];
+                        if (typeof stateWatchlist !== 'undefined') stateWatchlist.lang = hashParts[1];
+                        if (typeof stateSpotlight !== 'undefined') stateSpotlight.lang = hashParts[1];
+                    }
+                }
+
                 applyTranslations(state.lang || DEFAULT_LANG);
                 if (typeof updateTabLabels === 'function') updateTabLabels();
                 // Note: setupLanguageToggle will be called after header is loaded (see fetch block)
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', () => loadCoreView('stock'));
+
+                // Store the resolved tab and lang for the second script block
+                // (loadCoreView lives there and may not be defined yet on fast networks)
+                window._initTab = initialTab;
+                window._initLang = state.lang;
+
+                if (typeof loadCoreView === 'function') {
+                    // Second script block already ran — call directly
+                    loadCoreView(initialTab);
                 } else {
-                    loadCoreView('stock');
+                    // Second script block hasn't run yet — set a flag for it to pick up
+                    window._needsInitCoreView = true;
                 }
             } catch (error) {
                 console.error('App initialization failed:', error);
@@ -1496,6 +1522,38 @@
         }
 
         initApp();
+
+        // Listen for dynamic hash changes
+        window.addEventListener('hashchange', () => {
+            if (window.location.hash) {
+                const hashParts = window.location.hash.substring(1).split('/');
+                const validTabs = ['stock', 'macro', 'stable', 'high', 'watchlist', 'spotlight'];
+                
+                // Update language if specified
+                if (hashParts[1] && typeof selectLanguage === 'function') {
+                    selectLanguage(hashParts[1]);
+                } else if (hashParts[1]) {
+                    // Fallback if selectLanguage isn't ready
+                    state.lang = hashParts[1];
+                    window._appLang = hashParts[1];
+                    if (typeof stateStable !== 'undefined') stateStable.lang = hashParts[1];
+                    if (typeof stateHigh !== 'undefined') stateHigh.lang = hashParts[1];
+                    if (typeof stateWatchlist !== 'undefined') stateWatchlist.lang = hashParts[1];
+                    if (typeof stateSpotlight !== 'undefined') stateSpotlight.lang = hashParts[1];
+                    applyTranslations(state.lang);
+                    if (typeof updateTabLabels === 'function') updateTabLabels();
+                }
+
+                // Load the new tab
+                if (hashParts[0] && validTabs.includes(hashParts[0])) {
+                    if (typeof currentTab !== 'undefined' && currentTab !== hashParts[0]) {
+                        loadCoreView(hashParts[0]);
+                    } else if (typeof currentTab === 'undefined') {
+                        loadCoreView(hashParts[0]);
+                    }
+                }
+            }
+        });
 
         // flags are now stored in i18n[lang].lang.flag — no hardcoded object needed
         // ─────────────────────────────────────────────────────────────────────────
@@ -4024,6 +4082,35 @@
         // Track current active tab
         let currentTab = 'stock';
 
+        // ── Hash-based init coordination ──────────────────────────────────────────
+        // initApp() (first script block) stores the resolved tab/lang here, then
+        // checks if loadCoreView is available. If not, it sets _needsInitCoreView=true
+        // and we pick it up here after loadCoreView is defined.
+        // We use setTimeout(0) so that all pending microtasks (initApp re-entry)
+        // have also settled before we call loadCoreView.
+        setTimeout(() => {
+            if (window._needsInitCoreView && typeof loadCoreView === 'function') {
+                const tab  = window._initTab  || 'stock';
+                const lang = window._initLang || DEFAULT_LANG;
+                // Apply the language from hash before loading the view
+                if (lang !== state.lang) {
+                    state.lang = lang;
+                    window._appLang = lang;
+                    if (typeof stateStable    !== 'undefined') stateStable.lang    = lang;
+                    if (typeof stateHigh      !== 'undefined') stateHigh.lang      = lang;
+                    if (typeof stateWatchlist !== 'undefined') stateWatchlist.lang = lang;
+                    if (typeof stateSpotlight !== 'undefined') stateSpotlight.lang = lang;
+                    if (typeof applyTranslations === 'function') applyTranslations(lang);
+                    if (typeof updateTabLabels   === 'function') updateTabLabels();
+                }
+                window._needsInitCoreView = false;
+                loadCoreView(tab);
+            } else if (!window._needsInitCoreView && !window._initTab) {
+                // initApp hasn't finished yet at all — fall back to stock tab
+                // (initApp will call loadCoreView itself when it resumes)
+            }
+        }, 0);
+
         /** Only attach document / toggle listeners once; menu HTML is refreshed separately. */
         let _languageToggleListenersBound = false;
 
@@ -4080,6 +4167,9 @@
                 stateHigh.lang = state.lang;
                 stateWatchlist.lang = state.lang;
                 stateSpotlight.lang = state.lang;
+                
+                // Update URL hash with current tab and new language
+                window.history.replaceState(null, '', `/#${currentTab}/${lang}`);
 
                 const flagMarkup = i18nFlags[state.lang] || i18n[state.lang]?.lang?.flag || '';
                 const flagEl = document.getElementById('langFlag');
@@ -4399,6 +4489,10 @@
                 btn.classList.remove('active');
             });
             document.getElementById(`tab-${tab}`).classList.add('active');
+            
+            // Update URL hash
+            const currentLang = (state && state.lang) ? state.lang : DEFAULT_LANG;
+            window.history.replaceState(null, '', `/#${tab}/${currentLang}`);
             
             // Use CACHE_BUSTER for Safari iOS compatibility
             const cacheBuster = '?v=' + CACHE_BUSTER;
