@@ -29,7 +29,7 @@ const DIGEST_LABEL = { vi: 'Điểm tin', en: 'Digest', ko: '요약', zh: '摘�
 const BACK_LABEL = { vi: '← Phân tích chi tiết', en: '← Full Analysis', ko: '← 전체 분석', zh: '← 完整分析', th: '← วิเคราะห์เต็ม', ar: '← التحليل الكامل', ja: '← 詳細分析' };
 
 const SITE_NAME = 'Tin Tức Chứng Khoán 24h';
-const CANONICAL_BASE = 'https://tintucchungkhoan24h.com';
+const CANONICAL_BASE = '';
 
 // Read i18n data
 const i18nRaw = fs.readFileSync(path.join(ROOT, 'i18n.json'), 'utf8');
