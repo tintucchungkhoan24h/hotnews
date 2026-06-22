@@ -1302,6 +1302,26 @@
         let i18nFlags = {};                 // populated from i18n.json after load
         let i18nLangShort = {};             // populated from i18n.json after load
 
+        // ── Instant tab pre-activation from URL hash ───────────────────────────────
+        // Runs synchronously before any async fetches so the correct tab is already
+        // highlighted when the first paint occurs. This prevents the brief flash of
+        // "stock tab active" when navigating from /diem-tin-chung-khoan/{lang}/.
+        (function preactivateTabFromHash() {
+            var hash = window.location.hash;
+            if (!hash) return;
+            var parts = hash.substring(1).split('/');
+            var validTabs = ['stock', 'macro', 'stable', 'high', 'watchlist', 'spotlight'];
+            if (!parts[0] || validTabs.indexOf(parts[0]) === -1) return;
+            var targetTabId = 'tab-' + parts[0];
+            document.querySelectorAll('.tab-button').forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            var el = document.getElementById(targetTabId);
+            if (el) el.classList.add('active');
+        })();
+        // ──────────────────────────────────────────────────────────────────────────
+
+
         async function loadTranslations() {
             try {
                 const response = await fetch('i18n.json?v=' + CACHE_BUSTER);
