@@ -198,6 +198,15 @@ async function fetchDynamicFeed() {
 
             const rDate = row.summary_date;
             
+            // Format reference links to appear on separate lines with label
+            let formattedContent = article.content || '';
+            formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|数据参考|ข้อมูลอ้างอิง|مصادر البيانات|データ参照|データ出典)[^<]*):\s*([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
+                // Extract all links and put each on a new line
+                const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
+                const formattedLinks = linkMatches.join('<br>');
+                return `<p><strong>${label}:</strong><br>${formattedLinks}</p>`;
+            });
+
             html += `
             <article ${isRtl ? 'dir="rtl"' : ''}>
                 <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -211,7 +220,7 @@ async function fetchDynamicFeed() {
                   <span>${window.SITE_NAME}</span>
                 </div>
                 <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
-                <div class="digest-body">${article.content || ''}</div>
+                <div class="digest-body">${formattedContent}</div>
             </article>
             <hr class="border-gray-800 my-8">
             `;

@@ -203,6 +203,8 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
       text-decoration: none;
       border-bottom: 1px solid rgba(96,165,250,0.3);
       transition: all 0.2s ease;
+      display: inline-block;
+      margin-bottom: 4px;
     }
     .digest-body a:hover {
       color: #ffd700;
@@ -427,7 +429,17 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
 
     <!-- MAIN ARTICLE FEED -->
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
-      ${articlesList.map(item => `
+      ${articlesList.map(item => {
+        // Format reference links to appear on separate lines with label
+        let formattedContent = item.article.content || '';
+        formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|数据参考|ข้อมูลอ้างอิง|مصادر البيانات|データ参照|データ出典)[^<]*):\s*([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
+          // Extract all links and put each on a new line
+          const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
+          const formattedLinks = linkMatches.join('<br>');
+          return `<p><strong>${label}:</strong><br>${formattedLinks}</p>`;
+        });
+        
+        return `
         <article${isRtl ? ' dir="rtl"' : ''}>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ${item.article.title}
@@ -441,10 +453,11 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
           </div>
 
           <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${item.article.lead}</div>
-          <div class="digest-body">${item.article.content || ''}</div>
+          <div class="digest-body">${formattedContent}</div>
         </article>
         <hr class="border-gray-800 my-8">
-      `).join('')}
+      `;
+      }).join('')}
     </main>
 
     <div class="mt-8 mb-4 max-w-[1440px] mx-auto">
