@@ -54,12 +54,93 @@
     .back-link:hover { color: #ffd700; border-color: rgba(255,215,0,0.3); }
 
     /* Lang Menu CSS (copied from index.css for standalone functionality) */
-    .lang-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 0.5rem; background-color: #112240; border: 1px solid #374151; border-radius: 0.5rem; padding: 0.5rem; min-width: 150px; z-index: 50; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5); }
-    .lang-menu.open { display: flex; flex-direction: column; gap: 0.25rem; }
-    .lang-option { display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem; text-align: left; background: transparent; border: none; color: #d1d5db; border-radius: 0.375rem; cursor: pointer; font-size: 0.875rem; }
-    .lang-option:hover { background-color: rgba(255,255,255,0.1); color: #fff; }
-    #langToggle { display: flex; align-items: center; gap: 6px; background: rgba(17,34,64,0.95); border: 1px solid #4b5563; color: white; padding: 8px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; }
-    #langToggle svg { width: 22px; height: 15px; display: block; border-radius: 2px; }
+    .lang-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        min-width: 220px;
+        max-width: min(320px, calc(100vw - 24px));
+        max-height: min(70vh, 360px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        background: rgba(10, 18, 47, 0.98);
+        border: 1px solid #334155;
+        border-radius: 18px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+        backdrop-filter: blur(16px);
+        padding: 8px 0;
+        z-index: 10050;
+        display: none;
+    }
+    .lang-menu.open {
+        display: block;
+    }
+    .lang-option {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: transparent;
+        border: none;
+        color: #f8fafc;
+        padding: 10px 14px;
+        cursor: pointer;
+        font-size: 12px;
+        text-align: left;
+        transition: background 0.15s ease;
+    }
+    .lang-option:hover {
+        background: rgba(255,255,255,0.06);
+    }
+    .lang-option svg {
+        width: 22px;
+        height: 15px;
+        border-radius: 2px;
+        flex-shrink: 0;
+    }
+    .lang-option span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #langToggle {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(17,34,64,0.95);
+        border: 1px solid #4b5563;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        backdrop-filter: blur(10px);
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+    @media (min-width: 640px) {
+        #langToggle {
+            padding: 10px 18px;
+            font-size: 13px;
+            gap: 8px;
+        }
+    }
+    #langToggle:hover {
+        border-color: #ffd700;
+        box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+    }
+    #langToggle:active {
+        transform: scale(0.96);
+    }
+    #langToggle svg {
+        width: 22px;
+        height: 15px;
+        display: block;
+        border-radius: 2px;
+    }
 
     /* Inject dynamic client CSS */
     /* Custom Date Picker */
@@ -282,8 +363,8 @@
           <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"><?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="flag-svg-ko" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.7 38.9" style="enable-background:new 0 0 55.7 38.9" xml:space="preserve"><style type="text/css">#flag-svg-ko .st0{fill:#FEFEFE;stroke:#CCCCCC;stroke-width:0.5;stroke-miterlimit:2.6131;} #flag-svg-ko .st1{fill:#252422;} #flag-svg-ko .st2{fill:none;stroke:#252422;stroke-width:1.6002;} #flag-svg-ko .st3{fill:none;stroke:#FEFEFE;stroke-width:0.7999;} #flag-svg-ko .st4{fill:#C62631;} #flag-svg-ko .st5{fill:#303C70;}</style><g><path class="st0" d="M3.28,38.65h49.13c1.67,0,3.03-1.37,3.03-3.03V3.28c0-1.67-1.36-3.03-3.03-3.03H3.28 c-1.67,0-3.03,1.36-3.03,3.03v32.33C0.25,37.29,1.61,38.65,3.28,38.65L3.28,38.65z"/><path class="st1" d="M12.54,15.01l5.32-7.99L12.54,15.01L12.54,15.01z M10.54,13.68l5.33-7.99L10.54,13.68L10.54,13.68z M8.55,12.35l5.33-7.99L8.55,12.35L8.55,12.35z"/><path class="st2" d="M12.54,15.01l5.32-7.99 M10.54,13.68l5.33-7.99 M8.55,12.35l5.33-7.99"/><path class="st1" d="M41.83,34.54l5.33-7.99L41.83,34.54L41.83,34.54z M39.83,33.21l5.33-7.99L39.83,33.21L39.83,33.21z M37.83,31.88l5.33-7.99L37.83,31.88L37.83,31.88z"/><path class="st2" d="M41.83,34.54l5.33-7.99 M39.83,33.21l5.33-7.99 M37.83,31.88l5.33-7.99"/><line class="st3" x1="39.17" y1="26.99" x2="45.82" y2="31.43"/><path class="st4" d="M19.86,14.13c2.94-4.41,8.9-5.6,13.31-2.66c4.41,2.94,5.6,8.9,2.66,13.31c-2.94,4.41-8.9,5.6-13.31,2.66 C18.11,24.5,16.92,18.54,19.86,14.13L19.86,14.13z"/><path class="st5" d="M19.86,14.13c-1.47,2.21-0.87,5.19,1.33,6.66c2.21,1.47,5.19,0.87,6.66-1.33c1.47-2.21,4.45-2.8,6.66-1.33 c2.21,1.47,2.8,4.45,1.33,6.66c-2.94,4.41-8.9,5.6-13.31,2.66C18.11,24.5,16.92,18.54,19.86,14.13L19.86,14.13z"/><path class="st1" d="M17.86,31.88l-5.32-7.99L17.86,31.88L17.86,31.88z M15.87,33.21l-5.33-7.99L15.87,33.21L15.87,33.21z M13.87,34.54l-5.33-7.99L13.87,34.54L13.87,34.54z"/><path class="st2" d="M17.86,31.88l-5.32-7.99 M15.87,33.21l-5.33-7.99 M13.87,34.54l-5.33-7.99"/><path class="st1" d="M47.15,12.35l-5.33-7.99L47.15,12.35L47.15,12.35z M45.16,13.68l-5.33-7.99L45.16,13.68L45.16,13.68z M43.16,15.01l-5.33-7.99L43.16,15.01L43.16,15.01z"/><path class="st2" d="M47.15,12.35l-5.33-7.99 M45.16,13.68l-5.33-7.99 M43.16,15.01l-5.33-7.99"/><path class="st1" d="M43.49,9.02l2-1.33L43.49,9.02L43.49,9.02z M39.17,11.91l2.33-1.55L39.17,11.91L39.17,11.91z M12.21,29.88 l2-1.33L12.21,29.88L12.21,29.88z"/><path class="st3" d="M43.49,9.02l2-1.33 M39.17,11.91l2.33-1.55 M12.21,29.88l2-1.33"/></g></svg></span>
           <span>한국어 (KR)</span>
       </button><button type="button" class="lang-option" data-lang="zh-TW" onclick="window.location.href='/diem-tin-chung-khoan/zh-TW/'">
-          <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"></span>
-          <span>ZH-TW (ZH-TW)</span>
+          <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 60" shape-rendering="geometricPrecision"><rect width="90" height="60" fill="#FE0000"/><rect width="45" height="30" fill="#000095"/><path fill="#fff" d="M22.500,5.000L23.587,10.943L27.500,6.340L25.470,12.030L31.160,10.000L26.557,13.913L32.500,15.000L26.557,16.087L31.160,20.000L25.470,17.970L27.500,23.660L23.587,19.057L22.500,25.000L21.413,19.057L17.500,23.660L19.530,17.970L13.840,20.000L18.443,16.087L12.500,15.000L18.443,13.913L13.840,10.000L19.530,12.030L17.500,6.340L21.413,10.943Z"/></svg></span>
+          <span>繁體中文 (TW)</span>
       </button><button type="button" class="lang-option" data-lang="th" onclick="window.location.href='/diem-tin-chung-khoan/th/'">
           <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"><?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="flag-svg-th" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.68 38.88" style="enable-background:new 0 0 55.68 38.88" xml:space="preserve"><style type="text/css"><![CDATA[
 #flag-svg-th .st0{fill:#F4F5F8;}
@@ -374,7 +455,7 @@
           </div>
 
           <div class="digest-lead" >Thị trường chứng khoán ngày 22/06/2026 ghi nhận phiên giao dịch đầy hưng phấn khi VN-Index xác lập mức tăng ấn tượng nhất trong 2 tháng qua. Sự bứt phá của nhóm Vingroup đã đóng vai trò trụ cột, dù thanh khoản thị trường vẫn duy trì trạng thái quan sát thận trọng.</div>
-          <div class="digest-body"><h2>Tâm lý thị trường: 'Xanh vỏ đỏ lòng'</h2><p>Phiên giao dịch ngày 22/06/2026 diễn ra trong bối cảnh nhà đầu tư đón nhận thông tin tích cực về việc khởi công 5 dự án hạ tầng lớn tại Hà Nội. Tuy nhiên, đà tăng của VN-Index chủ yếu đến từ s��� dẫn dắt của nhóm Vingroup với <strong>VIC</strong> tăng trần, <strong>VHM</strong> và <strong>VRE</strong> bứt phá mạnh. Thực tế, trạng thái thị trường vẫn mang tính 'xanh vỏ đỏ lòng' khi số lượng mã giảm điểm chiếm ưu thế, phản ánh dòng tiền còn rất thận trọng.</p><h2>Sự phân hóa của dòng tiền</h2><p>Dữ liệu cho thấy dòng tiền có sự phân hóa rõ rệt. Nhóm dầu khí như <strong>PVD</strong>, <strong>BSR</strong>, <strong>POW</strong> ghi nhận mức tăng đồng thuận theo đà phục hồi của giá dầu thế giới. Ngược lại, nhóm công nghệ và bán lẻ như <strong>FPT</strong>, <strong>MWG</strong> chịu áp lực bán ròng mạnh từ khối ngoại. Việc khối ngoại nối dài chuỗi bán ròng 5 phiên liên tiếp, đặc biệt tập trung vào các mã trụ cột, đặt ra thách thức lớn cho xu hướng tăng bền vững.</p><h2>Nhận định và Khuyến nghị</h2><p>MBS đánh giá nhịp tăng vừa qua nhiều khả năng vẫn là hồi kỹ thuật. VN-Index đang đối mặt với vùng kháng cự dày 1.830-1.845 điểm. Trong kịch bản cơ sở, thị trường sẽ tiếp tục xu hướng đi ngang. Nhà đầu tư nên giữ tỷ trọng tiền mặt cao, ưu tiên các ngành có nền tảng cơ bản tốt như chứng khoán, logistics và sản xuất khi có nhịp điều chỉnh về vùng giá hấp dẫn.</p><p>Nguồn dữ liệu tham khảo: <a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: Loạt nhóm cổ phiếu đang âm thầm "hút tiền" giữa lúc VN-Index giằng co</a>, <a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">Phía trước VN-Index là vùng cản khá dày, thị trường sẽ điều chỉnh?</a></p></div>
+          <div class="digest-body"><h2>Tâm lý thị trường: 'Xanh vỏ đỏ lòng'</h2><p>Phiên giao dịch ngày 22/06/2026 diễn ra trong bối cảnh nhà đầu tư đón nhận thông tin tích cực về việc khởi công 5 dự án hạ tầng lớn tại Hà Nội. Tuy nhiên, đà tăng của VN-Index chủ yếu đến từ sự dẫn dắt của nhóm Vingroup với <strong>VIC</strong> tăng trần, <strong>VHM</strong> và <strong>VRE</strong> bứt phá mạnh. Thực tế, trạng thái thị trường vẫn mang tính 'xanh vỏ đỏ lòng' khi số lượng mã giảm điểm chiếm ưu thế, phản ánh dòng tiền còn rất thận trọng.</p><h2>Sự phân hóa của dòng tiền</h2><p>Dữ liệu cho thấy dòng tiền có sự phân hóa rõ rệt. Nhóm dầu khí như <strong>PVD</strong>, <strong>BSR</strong>, <strong>POW</strong> ghi nhận mức tăng đồng thuận theo đà phục hồi của giá dầu thế giới. Ngược lại, nhóm công nghệ và bán lẻ như <strong>FPT</strong>, <strong>MWG</strong> chịu áp lực bán ròng mạnh từ khối ngoại. Việc khối ngoại nối dài chuỗi bán ròng 5 phiên liên tiếp, đặc biệt tập trung vào các mã trụ cột, đặt ra thách thức lớn cho xu hướng tăng bền vững.</p><h2>Nhận định và Khuyến nghị</h2><p>MBS đánh giá nhịp tăng vừa qua nhiều khả năng vẫn là hồi kỹ thuật. VN-Index đang đối mặt với vùng kháng cự dày 1.830-1.845 điểm. Trong kịch bản cơ sở, thị trường sẽ tiếp tục xu hướng đi ngang. Nhà đầu tư nên giữ tỷ trọng tiền mặt cao, ưu tiên các ngành có nền tảng cơ bản tốt như chứng khoán, logistics và sản xuất khi có nhịp điều chỉnh về vùng giá hấp dẫn.</p><p>Nguồn dữ liệu tham khảo: <a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: Loạt nhóm cổ phiếu đang âm thầm "hút tiền" giữa lúc VN-Index giằng co</a>, <a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">Phía trước VN-Index là vùng cản khá dày, thị trường sẽ điều chỉnh?</a></p></div>
         </article>
         <hr class="border-gray-800 my-8">
       

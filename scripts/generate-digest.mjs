@@ -89,9 +89,10 @@ function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clien
   const flagMarkup = I18N_FLAGS[lang] || '';
   const langShort = I18N_LANG_SHORT[lang] || lang.toUpperCase();
   const menuHtml = langs.map(l => {
-      const f = I18N_FLAGS[l] || '';
-      const n = I18N_LANG_NAMES[l] || l.toUpperCase();
-      const s = I18N_LANG_SHORT[l] || l.toUpperCase();
+      const baseLang = l.startsWith('zh') ? 'zh' : l;
+      const f = I18N_FLAGS[baseLang] || '';
+      const n = I18N_LANG_NAMES[baseLang] || l.toUpperCase();
+      const s = I18N_LANG_SHORT[baseLang] || l.toUpperCase();
       return `<button type="button" class="lang-option" data-lang="${l}" onclick="window.location.href='/diem-tin-chung-khoan/${l}/'">
           <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;">${f}</span>
           <span>${n} (${s})</span>
@@ -156,12 +157,93 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     .back-link:hover { color: #ffd700; border-color: rgba(255,215,0,0.3); }
 
     /* Lang Menu CSS (copied from index.css for standalone functionality) */
-    .lang-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 0.5rem; background-color: #112240; border: 1px solid #374151; border-radius: 0.5rem; padding: 0.5rem; min-width: 150px; z-index: 50; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5); }
-    .lang-menu.open { display: flex; flex-direction: column; gap: 0.25rem; }
-    .lang-option { display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem; text-align: left; background: transparent; border: none; color: #d1d5db; border-radius: 0.375rem; cursor: pointer; font-size: 0.875rem; }
-    .lang-option:hover { background-color: rgba(255,255,255,0.1); color: #fff; }
-    #langToggle { display: flex; align-items: center; gap: 6px; background: rgba(17,34,64,0.95); border: 1px solid #4b5563; color: white; padding: 8px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; }
-    #langToggle svg { width: 22px; height: 15px; display: block; border-radius: 2px; }
+    .lang-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        min-width: 220px;
+        max-width: min(320px, calc(100vw - 24px));
+        max-height: min(70vh, 360px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        background: rgba(10, 18, 47, 0.98);
+        border: 1px solid #334155;
+        border-radius: 18px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+        backdrop-filter: blur(16px);
+        padding: 8px 0;
+        z-index: 10050;
+        display: none;
+    }
+    .lang-menu.open {
+        display: block;
+    }
+    .lang-option {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: transparent;
+        border: none;
+        color: #f8fafc;
+        padding: 10px 14px;
+        cursor: pointer;
+        font-size: 12px;
+        text-align: left;
+        transition: background 0.15s ease;
+    }
+    .lang-option:hover {
+        background: rgba(255,255,255,0.06);
+    }
+    .lang-option svg {
+        width: 22px;
+        height: 15px;
+        border-radius: 2px;
+        flex-shrink: 0;
+    }
+    .lang-option span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #langToggle {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(17,34,64,0.95);
+        border: 1px solid #4b5563;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        backdrop-filter: blur(10px);
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+    @media (min-width: 640px) {
+        #langToggle {
+            padding: 10px 18px;
+            font-size: 13px;
+            gap: 8px;
+        }
+    }
+    #langToggle:hover {
+        border-color: #ffd700;
+        box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+    }
+    #langToggle:active {
+        transform: scale(0.96);
+    }
+    #langToggle svg {
+        width: 22px;
+        height: 15px;
+        display: block;
+        border-radius: 2px;
+    }
 
     /* Inject dynamic client CSS */
     ${clientCss}
