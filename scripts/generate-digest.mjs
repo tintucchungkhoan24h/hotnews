@@ -287,35 +287,36 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     </div>
 
     <!-- FILTER CONTROLS BAR -->
-    <div class="filter-controls-bar max-w-[1440px] mx-auto">
-        <div class="filter-date-group">
-            <!-- From Date -->
-            <div class="filter-date-item">
-                <div class="filter-date-label" data-text-key="lblFrom">TỪ NGÀY</div>
-                <div class="datepicker-wrapper">
-                    <input type="text" id="seoFromDate" class="datepicker-input" readonly>
-                    <div id="seoFromDatePopup" class="datepicker-popup"></div>
+    <div class="bg-fin-blue-light/30 p-3 sm:p-4 md:p-5 rounded-2xl border border-gray-800/50 max-w-[1440px] mx-auto mb-6">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- Date Range Filter -->
+            <div class="flex items-center bg-fin-blue border border-gray-700/50 rounded-xl px-3 py-2 shadow-inner w-full sm:w-auto">
+                <div class="flex flex-col flex-1">
+                    <label id="lblFrom" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblFrom">${currentI18n.lblFrom || 'Từ ngày'}</label>
+                    <div class="datepicker-wrapper">
+                        <input type="text" id="seoFromDate" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly placeholder="dd/mm/yyyy">
+                        <div id="seoFromDatePopup" class="datepicker-popup"></div>
+                    </div>
+                </div>
+                <div class="w-[1px] h-7 bg-gray-700 mx-3"></div>
+                <div class="flex flex-col flex-1">
+                    <label id="lblTo" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblTo">${currentI18n.lblTo || 'Đến ngày'}</label>
+                    <div class="datepicker-wrapper">
+                        <input type="text" id="seoToDate" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly placeholder="dd/mm/yyyy">
+                        <div id="seoToDatePopup" class="datepicker-popup"></div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="filter-divider"></div>
-            
-            <!-- To Date -->
-            <div class="filter-date-item">
-                <div class="filter-date-label" data-text-key="lblTo">ĐẾN NGÀY</div>
-                <div class="datepicker-wrapper">
-                    <input type="text" id="seoToDate" class="datepicker-input" readonly>
-                    <div id="seoToDatePopup" class="datepicker-popup"></div>
-                </div>
-            </div>
+
+            <button id="fetchFeedBtn" class="flex-shrink-0 flex items-center justify-center gap-2 px-4 py-2 bg-fin-blue border border-gray-700/50 rounded-xl text-gray-400 hover:text-fin-gold hover:border-fin-gold transition-all hover:scale-105 active:scale-95 sm:ml-auto w-full sm:w-auto" title="${currentI18n.refreshBtn || 'Làm mới dữ liệu'}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+                <span data-text-key="refreshBtn" class="text-sm font-bold">${currentI18n.refreshBtn || 'Làm mới dữ liệu'}</span>
+            </button>
         </div>
-        
-        <button id="fetchFeedBtn" class="fetch-btn" style="margin-left: auto;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.59-9.28l5.67 1.72"/>
-            </svg>
-            <span data-text-key="lblRefresh">Làm mới dữ liệu</span>
-        </button>
     </div>
 
     <!-- MAIN ARTICLE FEED -->
