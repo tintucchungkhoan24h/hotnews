@@ -105,7 +105,7 @@ function generatePage({ article, lang, date, headerHtml, footerHtml, langs }) {
   const currentI18n = I18N[lang] || I18N['en'] || {};
 
   return `<!DOCTYPE html>
-<html lang="${HREFLANG[lang] || lang}"${isRtl ? ' dir="rtl"' : ''}>
+<html lang="${HREFLANG[lang] || lang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -185,7 +185,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     <main id="digest-main">
       <a href="${dashboardUrl}" class="back-link">${BACK_LABEL[lang] || '← Back'}</a>
 
-      <article>
+      <article${isRtl ? ' dir="rtl"' : ''}>
         <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
           ${article.title}
         </h1>
@@ -193,7 +193,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
           📅 ${date} &nbsp;·&nbsp; ${article.langEmoji || ''} ${article.langName || lang.toUpperCase()} &nbsp;·&nbsp; ${SITE_NAME}
         </div>
 
-        <div class="digest-lead">${article.lead}</div>
+        <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
         <div class="digest-body">${article.content || ''}</div>
       </article>
     </main>
