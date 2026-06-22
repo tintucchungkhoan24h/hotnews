@@ -258,13 +258,13 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     <!-- TAB BAR -->
     <div class="bg-fin-blue-light border border-gray-800 rounded-2xl mb-4 overflow-hidden mt-4">
       <div class="tab-bar-wrap flex items-center px-2 py-2 gap-1">
-        <a href="${dashboardUrl}#stock"   class="tab-btn">📊 <span>Chứng khoán</span></a>
-        <a href="${dashboardUrl}#macro"   class="tab-btn">🌐 <span>Vĩ mô</span></a>
-        <a href="${dashboardUrl}#stable"  class="tab-btn">📈 <span>Ổn định</span></a>
-        <a href="${dashboardUrl}#high"    class="tab-btn">🔥 <span>Biến động</span></a>
-        <a href="${dashboardUrl}#watchlist" class="tab-btn">👁 <span>Watchlist</span></a>
-        <a href="${dashboardUrl}#spotlight" class="tab-btn">⭐ <span>Spotlight</span></a>
-        <a href="${canonical}" class="tab-btn active" aria-current="page">📰 <span>${DIGEST_LABEL[lang] || 'Điểm tin'}</span></a>
+        <a href="${dashboardUrl}#stock"   class="tab-btn">📊 <span>${currentI18n.tabs?.stock || 'Chứng khoán'}</span></a>
+        <a href="${dashboardUrl}#macro"   class="tab-btn">🌐 <span>${currentI18n.tabs?.macro || 'Vĩ mô'}</span></a>
+        <a href="${dashboardUrl}#stable"  class="tab-btn">📈 <span>${currentI18n.tabs?.stable || 'Biến động ổn định'}</span></a>
+        <a href="${dashboardUrl}#high"    class="tab-btn">🔥 <span>${currentI18n.tabs?.high || 'Biến động mạnh'}</span></a>
+        <a href="${dashboardUrl}#watchlist" class="tab-btn">⭐ <span>${currentI18n.tabs?.watchlist || 'Watchlist'}</span></a>
+        <a href="${dashboardUrl}#spotlight" class="tab-btn">🚀 <span>${currentI18n.tabs?.spotlight || 'Spotlight'}</span></a>
+        <a href="${canonical}" class="tab-btn active" aria-current="page">📰 <span>${currentI18n.tabs?.digest || 'Điểm tin'}</span></a>
       </div>
     </div>
 

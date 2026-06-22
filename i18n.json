@@ -83,7 +83,8 @@
         "stable": "Biến động ổn định",
         "high": "Biến động mạnh",
         "watchlist": "⭐ Danh sách theo dõi",
-        "spotlight": "🚀 Mã Nổi Bật"
+        "spotlight": "🚀 Mã Nổi Bật",
+        "digest": "Điểm tin"
       },
       "cols": {
         "index": "#",
@@ -294,7 +295,8 @@
         "stable": "Stable Volatility",
         "high": "High Volatility",
         "watchlist": "⭐ Watchlist",
-        "spotlight": "🚀 Spotlight Stocks"
+        "spotlight": "🚀 Spotlight Stocks",
+        "digest": "Digest"
       },
       "cols": {
         "index": "#",
@@ -505,7 +507,8 @@
         "stable": "안정 변동성",
         "high": "고변동성",
         "watchlist": "⭐ 관심목록",
-        "spotlight": "🚀 주목 종목"
+        "spotlight": "🚀 주목 종목",
+        "digest": "요약"
       },
       "cols": {
         "index": "#",
@@ -716,7 +719,8 @@
         "stable": "穩定波動",
         "high": "高波動",
         "watchlist": "⭐ 自選股",
-        "spotlight": "🚀 焦點股"
+        "spotlight": "🚀 焦點股",
+        "digest": "摘要"
       },
       "cols": {
         "index": "#",
@@ -927,7 +931,8 @@
         "stable": "ความผันผวนต่ำ",
         "high": "ความผันผวนสูง",
         "watchlist": "⭐ วอตช์ลิสต์",
-        "spotlight": "🚀 หุ้นเด่น"
+        "spotlight": "🚀 หุ้นเด่น",
+        "digest": "สรุป"
       },
       "cols": {
         "index": "#",
@@ -1136,7 +1141,8 @@
         "stable": "تقلبات مستقرة",
         "high": "تقلبات عالية",
         "watchlist": "⭐ قائمة المتابعة",
-        "spotlight": "🚀 أسهم لافتة"
+        "spotlight": "🚀 أسهم لافتة",
+        "digest": "ملخص"
       },
       "cols": {
         "index": "#",
@@ -1345,7 +1351,8 @@
         "stable": "安定ボラティリティ",
         "high": "高ボラティリティ",
         "watchlist": "⭐ ウォッチリスト",
-        "spotlight": "🚀 注目銘柄"
+        "spotlight": "🚀 注目銘柄",
+        "digest": "ダイジェスト"
       },
       "cols": {
         "index": "#",
