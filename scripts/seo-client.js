@@ -166,7 +166,7 @@ async function fetchDynamicFeed() {
     
     // UI Loading state
     fetchBtn.disabled = true;
-    fetchBtn.innerHTML = `⌛ Loading...`;
+    fetchBtn.style.opacity = '0.5';
     mainEl.innerHTML = `<div class="text-center py-10 text-gray-400">Loading summaries...</div>`;
 
     try {
@@ -220,7 +220,7 @@ async function fetchDynamicFeed() {
         mainEl.innerHTML = `<div class="text-center py-10 text-red-400 font-bold text-lg">Error loading summaries.</div>`;
     } finally {
         fetchBtn.disabled = false;
-        fetchBtn.innerHTML = `Làm mới dữ liệu`; // Fallback text, ideally localized
+        fetchBtn.style.opacity = '1';
     }
 }
 
