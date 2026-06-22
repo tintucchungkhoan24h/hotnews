@@ -1,0 +1,31 @@
+name: Update Sitemap
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC (7:00 AM Vietnam time)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Generate digest pages and update sitemap
+        run: node scripts/generate-digest.mjs
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add sitemap.xml diem-tin-chung-khoan/
+          git diff --staged --quiet || git commit -m "Auto-update sitemap and digest pages [skip ci]"
+          git push

@@ -629,6 +629,20 @@ async function main() {
   fs.writeFileSync(path.join(rootDir, 'index.html'), rootRedirect, 'utf8');
   
   console.log('\n✨ Done! All SEO pages generated.');
+
+  // Auto-update sitemap.xml with current date
+  updateSitemap();
+}
+
+function updateSitemap() {
+  const sitemapPath = path.join(ROOT, 'sitemap.xml');
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+  
+  let sitemap = fs.readFileSync(sitemapPath, 'utf8');
+  sitemap = sitemap.replace(/<lastmod>2026-\d{2}-\d{2}<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
+  
+  fs.writeFileSync(sitemapPath, sitemap, 'utf8');
+  console.log('  📝 Updated: sitemap.xml');
 }
 
 main().catch(err => { console.error('❌ Error:', err.message); process.exit(1); });
