@@ -23,17 +23,18 @@ const ROOT      = path.resolve(__dirname, '..');
 const SUPABASE_URL      = 'https://ifjxishcrzndbszmvpef.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmanhpc2hjcnpuZGJzem12cGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNjEwOTcsImV4cCI6MjA5MjkzNzA5N30.0rHs4AWTmRmN34WWdxBM2RsTMu1VQwfKDjve0W2yHEg';
 
+// Read i18n data
+const i18nRaw = fs.readFileSync(path.join(ROOT, 'i18n.json'), 'utf8');
+const i18nData = JSON.parse(i18nRaw);
+
 // ── hreflang map ─────────────────────────────────────────────────────────────
-const HREFLANG = { vi: 'vi-VN', en: 'en', ko: 'ko', zh: 'zh-Hant', th: 'th', ar: 'ar', ja: 'ja' };
-const DIGEST_LABEL = { vi: 'Điểm tin', en: 'Digest', ko: '요약', zh: '摘要', th: 'สรุป', ar: 'ملخص', ja: 'ダイジェスト' };
-const BACK_LABEL = { vi: '← Phân tích chi tiết', en: '← Full Analysis', ko: '← 전체 분석', zh: '← 完整分析', th: '← วิเคราะห์เต็ม', ar: '← التحليل الكامل', ja: '← 詳細分析' };
+const HREFLANG = i18nData.hreflang;
+const DIGEST_LABEL = i18nData.digestLabel;
+const BACK_LABEL = i18nData.backLabel;
 
 const SITE_NAME = 'Tin Tức Chứng Khoán 24h';
 const CANONICAL_BASE = '';
 
-// Read i18n data
-const i18nRaw = fs.readFileSync(path.join(ROOT, 'i18n.json'), 'utf8');
-const i18nData = JSON.parse(i18nRaw);
 const I18N = i18nData.translations;
 const I18N_FLAGS = i18nData.flags;
 const I18N_LANG_SHORT = i18nData.lang;

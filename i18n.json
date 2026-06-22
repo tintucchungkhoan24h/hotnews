@@ -35,6 +35,33 @@
     "ar": "العربية",
     "ja": "日本語"
   },
+  "hreflang": {
+    "vi": "vi-VN",
+    "en": "en",
+    "ko": "ko",
+    "zh": "zh-Hant",
+    "th": "th",
+    "ar": "ar",
+    "ja": "ja"
+  },
+  "digestLabel": {
+    "vi": "Điểm tin",
+    "en": "Digest",
+    "ko": "요약",
+    "zh": "摘要",
+    "th": "สรุป",
+    "ar": "ملخص",
+    "ja": "ダイジェスト"
+  },
+  "backLabel": {
+    "vi": "← Phân tích chi tiết",
+    "en": "← Full Analysis",
+    "ko": "← 전체 분석",
+    "zh": "← 完整分析",
+    "th": "← วิเคราะห์เต็ม",
+    "ar": "← التحليل الكامل",
+    "ja": "← 詳細分析"
+  },
   "videoFiles": {
     "stock": {
       "vi": "vi-stock.mp4",
