@@ -142,10 +142,13 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     /* Tab bar (mirrors main app) */
     .tab-bar-wrap { overflow-x: auto; scrollbar-width: none; }
     .tab-bar-wrap::-webkit-scrollbar { display: none; }
-    .tab-btn { display: inline-flex; align-items: center; gap: 4px; color: #9ca3af; background: transparent; border: none; padding: 6px 10px; font-size: 11px; font-weight: 700; white-space: nowrap; text-decoration: none; border-radius: 10px; }
-    @media (min-width: 640px) { .tab-btn { padding: 10px 20px; font-size: 14px; } }
-    .tab-btn:hover { color: #fef9c3; background: rgba(255,255,255,0.06); }
-    .tab-btn.active { color: #0a192f; background: #ffd700; }
+    .tab-button { color: #9ca3af; background: transparent; border: none; cursor: pointer; user-select: none; position: relative; border-radius: 10px; margin: 0 1px; }
+    .tab-btn-responsive { padding: 6px 10px; font-size: 11px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 4px; text-decoration: none; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); font-weight: 700; }
+    @media (min-width: 480px) { .tab-btn-responsive { padding: 8px 14px; font-size: 12px; } }
+    @media (min-width: 640px) { .tab-btn-responsive { padding: 10px 20px; font-size: 14px; } }
+    .tab-button:hover { color: #fef9c3; background: rgba(255, 255, 255, 0.06); }
+    .tab-button.active { color: #0a192f; background: #ffd700; box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3); }
+    .tab-button:active { transform: scale(0.98); }
 
     /* Article content styling */
     .digest-lead { background: linear-gradient(135deg, rgba(255,215,0,0.08) 0%, rgba(17,34,64,0.6) 100%); border-left: 4px solid #ffd700; padding: 16px 20px; border-radius: 0 12px 12px 0; font-size: 15px; line-height: 1.7; color: #e2e8f0; font-style: italic; margin-bottom: 28px; }
@@ -256,16 +259,31 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     ${procHeader}
 
     <!-- TAB BAR -->
-    <div class="bg-fin-blue-light border border-gray-800 rounded-2xl mb-4 overflow-hidden mt-4">
-      <div class="tab-bar-wrap flex items-center px-2 py-2 gap-1">
-        <a href="${dashboardUrl}#stock"   class="tab-btn">📊 <span>${currentI18n.tabs?.stock || 'Chứng khoán'}</span></a>
-        <a href="${dashboardUrl}#macro"   class="tab-btn">🌐 <span>${currentI18n.tabs?.macro || 'Vĩ mô'}</span></a>
-        <a href="${dashboardUrl}#stable"  class="tab-btn">📈 <span>${currentI18n.tabs?.stable || 'Biến động ổn định'}</span></a>
-        <a href="${dashboardUrl}#high"    class="tab-btn">🔥 <span>${currentI18n.tabs?.high || 'Biến động mạnh'}</span></a>
-        <a href="${dashboardUrl}#watchlist" class="tab-btn">⭐ <span>${currentI18n.tabs?.watchlist || 'Watchlist'}</span></a>
-        <a href="${dashboardUrl}#spotlight" class="tab-btn">🚀 <span>${currentI18n.tabs?.spotlight || 'Spotlight'}</span></a>
-        <a href="${canonical}" class="tab-btn active" aria-current="page">📰 <span>${currentI18n.tabs?.digest || 'Điểm tin'}</span></a>
-      </div>
+    <div class="tab-bar-wrap mb-6 overflow-x-auto mt-4" style="scrollbar-width:none;-ms-overflow-style:none;">
+        <div class="flex items-center gap-0 bg-fin-blue-light/30 p-1 rounded-xl border border-gray-800/50 w-fit min-w-full sm:min-w-0">
+            <a href="${dashboardUrl}#stock" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.stock || 'Mã CK'}</span>
+            </a>
+            <a href="${dashboardUrl}#macro" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.macro || 'Vĩ Mô'}</span>
+            </a>
+            <a href="${dashboardUrl}#stable" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.stable || 'Biến động ổn định'}</span>
+            </a>
+            <a href="${dashboardUrl}#high" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.high || 'Biến động mạnh'}</span>
+            </a>
+            <a href="${dashboardUrl}#watchlist" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.watchlist || '⭐ Danh sách theo dõi'}</span>
+            </a>
+            <a href="${dashboardUrl}#spotlight" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.spotlight || '🚀 Mã Nổi Bật'}</span>
+            </a>
+            <a href="${canonical}" aria-current="page" class="tab-button active tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="${currentI18n.tabs?.digest || 'Điểm tin'}">
+                <span style="font-size:0.9em;">📰</span>
+                <span class="tab-text">${currentI18n.tabs?.digest || 'Điểm tin'}</span>
+            </a>
+        </div>
     </div>
 
     <!-- FILTER CONTROLS BAR -->
