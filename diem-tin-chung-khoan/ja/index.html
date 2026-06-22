@@ -698,7 +698,7 @@
     }
 
     // Inject dynamic client JS
-    // SEO Client Logic
+// SEO Client Logic
 // Contains Custom DatePicker and Supabase fetching for dynamic feed
 
 const GMT7_OFFSET = 7 * 60; // 7 hours in minutes
@@ -927,19 +927,29 @@ async function fetchDynamicFeed() {
 // ─── Initialization ──────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Default range (last 7 days matches static output)
     const today = getGMT7Date();
     const past7 = new Date(today);
     past7.setDate(today.getDate() - 6);
     
+    const past30 = new Date(today);
+    past30.setDate(today.getDate() - 29);
+    
     stateFromDate = dateToIso(past7);
     stateToDate = dateToIso(today);
+
+    const minDateObj = past30;
+    const maxDateObj = today;
 
     // Init pickers
     const pFrom = createPicker('seoFromDate', (iso) => {
         stateFromDate = iso;
         if (pickers['seoToDate']) {
             pickers['seoToDate'].min = parseISOtoGMT7(iso);
+            if (stateToDate < iso) {
+                stateToDate = iso;
+                pickers['seoToDate'].value = parseISOtoGMT7(iso);
+                pickers['seoToDate'].inputEl.value = isoToDisplay(iso);
+            }
         }
     });
     
@@ -947,17 +957,29 @@ document.addEventListener('DOMContentLoaded', () => {
         stateToDate = iso;
         if (pickers['seoFromDate']) {
             pickers['seoFromDate'].max = parseISOtoGMT7(iso);
+            if (stateFromDate > iso) {
+                stateFromDate = iso;
+                pickers['seoFromDate'].value = parseISOtoGMT7(iso);
+                pickers['seoFromDate'].inputEl.value = isoToDisplay(iso);
+            }
         }
     });
 
     if (pFrom) {
         pFrom.value = past7;
         pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        pFrom.min = minDateObj;
+        pFrom.max = today;
     }
     if (pTo) {
         pTo.value = today;
         pTo.inputEl.value = isoToDisplay(stateToDate);
         pTo.min = past7;
+        pTo.max = maxDateObj;
+    }
+    
+    if (pFrom && pTo) {
+        pFrom.max = pTo.value;
     }
 
     const fetchBtn = document.getElementById('fetchFeedBtn');
@@ -966,6 +988,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-  </script>
+</script>
 </body>
 </html>
