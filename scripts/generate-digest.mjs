@@ -253,13 +253,13 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
   </style>
 </head>
 <body class="bg-fin-blue min-h-screen">
-  <div class="max-w-[1440px] mx-auto px-4 md:px-6 pt-4">
+  <div class="p-4 md:p-6" style="padding-top: 12px;">
 
     <!-- HEADER -->
     ${procHeader}
 
     <!-- TAB BAR -->
-    <div class="tab-bar-wrap mb-6 overflow-x-auto mt-4" style="scrollbar-width:none;-ms-overflow-style:none;">
+    <div class="tab-bar-wrap max-w-[1440px] mx-auto mb-6 overflow-x-auto mt-4" style="scrollbar-width:none;-ms-overflow-style:none;">
         <div class="flex items-center gap-0 bg-fin-blue-light/30 p-1 rounded-xl border border-gray-800/50 w-fit min-w-full sm:min-w-0">
             <a href="${dashboardUrl}#stock" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
                 <span class="tab-text">${currentI18n.tabs?.stock || 'Mã CK'}</span>
@@ -287,7 +287,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     </div>
 
     <!-- FILTER CONTROLS BAR -->
-    <div class="filter-controls-bar">
+    <div class="filter-controls-bar max-w-[1440px] mx-auto">
         <div class="filter-date-group">
             <!-- From Date -->
             <div class="filter-date-item">
@@ -319,7 +319,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     </div>
 
     <!-- MAIN ARTICLE FEED -->
-    <main id="digest-feed">
+    <main id="digest-feed" class="max-w-[1440px] mx-auto">
       ${articlesList.map(item => `
         <article class="mb-12"${isRtl ? ' dir="rtl"' : ''}>
           <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
@@ -336,7 +336,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
       `).join('')}
     </main>
 
-    <div class="mt-8 mb-4">
+    <div class="mt-8 mb-4 max-w-[1440px] mx-auto">
       <a href="${dashboardUrl}" class="back-link">${BACK_LABEL[lang] || '← Back'}</a>
     </div>
 
