@@ -905,7 +905,7 @@ async function fetchDynamicFeed() {
 document.addEventListener('DOMContentLoaded', () => {
     const today = getGMT7Date();
     const past7 = new Date(today);
-    past7.setDate(today.getDate() - 6);
+    past7.setDate(today.getDate() - 7);
     
     const past30 = new Date(today);
     past30.setDate(today.getDate() - 29);
