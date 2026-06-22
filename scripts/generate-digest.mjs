@@ -58,10 +58,9 @@ function readFile(relPath) {
   return fs.readFileSync(path.join(ROOT, relPath), 'utf8');
 }
 
-// ── Fetch latest summary ─────────────────────────────────────────────────────
-async function fetchLatestSummary(dateArg) {
-  let url = `${SUPABASE_URL}/rest/v1/market_summary_stock?order=summary_date.desc&limit=1`;
-  if (dateArg) url += `&summary_date=eq.${dateArg}`;
+// ── Fetch summaries ─────────────────────────────────────────────────────
+async function fetchSummaries() {
+  let url = `${SUPABASE_URL}/rest/v1/market_summary_stock?order=summary_date.desc&limit=7`;
 
   const headers = {
     apikey: SUPABASE_ANON_KEY,
@@ -70,14 +69,17 @@ async function fetchLatestSummary(dateArg) {
 
   const rows = await fetchJson(url, headers);
   if (!rows || rows.length === 0) throw new Error('No rows found in market_summary_stock');
-  return rows[0];
+  return rows;
 }
 
 // ── Generate one HTML page ───────────────────────────────────────────────────
-function generatePage({ article, lang, date, headerHtml, footerHtml, langs }) {
+function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs }) {
   const canonical  = `${CANONICAL_BASE}/diem-tin-chung-khoan/${lang}/`;
   const dashboardUrl = `${CANONICAL_BASE}/`;
   const isRtl      = lang === 'ar';
+  
+  // Use the first article for meta tags (the most recent one)
+  const firstArticle = articlesList[0].article;
   
   // Fix relative image paths in header and footer
   let procHeader = headerHtml.replace(/src="([^"]+)"/g, (match, src) => src.startsWith('http') || src.startsWith('/') ? match : `src="/${src}"`);
@@ -109,14 +111,14 @@ function generatePage({ article, lang, date, headerHtml, footerHtml, langs }) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${article.title} | ${SITE_NAME}</title>
-  <meta name="description" content="${article.lead.replace(/"/g, '&quot;').slice(0, 160)}">
+  <title>${firstArticle.title} | ${SITE_NAME}</title>
+  <meta name="description" content="${firstArticle.lead.replace(/"/g, '&quot;').slice(0, 160)}">
   <link rel="canonical" href="${canonical}">
 ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="${CANONICAL_BASE}/diem-tin-chung-khoan/${l}/">`).join('\n')}
   <link rel="alternate" hreflang="x-default" href="${CANONICAL_BASE}/diem-tin-chung-khoan/vi/">
 
-  <meta property="og:title" content="${article.title}">
-  <meta property="og:description" content="${article.lead.slice(0, 200)}">
+  <meta property="og:title" content="${firstArticle.title}">
+  <meta property="og:description" content="${firstArticle.lead.slice(0, 200)}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="article">
   <meta property="og:image" content="${CANONICAL_BASE}/ava_icon.png">
@@ -160,6 +162,9 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     .lang-option:hover { background-color: rgba(255,255,255,0.1); color: #fff; }
     #langToggle { display: flex; align-items: center; gap: 6px; background: rgba(17,34,64,0.95); border: 1px solid #4b5563; color: white; padding: 8px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; }
     #langToggle svg { width: 22px; height: 15px; display: block; border-radius: 2px; }
+
+    /* Inject dynamic client CSS */
+    ${clientCss}
   </style>
 </head>
 <body class="bg-fin-blue min-h-screen">
@@ -181,21 +186,54 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
       </div>
     </div>
 
-    <!-- MAIN ARTICLE -->
-    <main id="digest-main">
-      <a href="${dashboardUrl}" class="back-link">${BACK_LABEL[lang] || '← Back'}</a>
-
-      <article${isRtl ? ' dir="rtl"' : ''}>
-        <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
-          ${article.title}
-        </h1>
-        <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
-          📅 ${date} &nbsp;·&nbsp; ${article.langEmoji || ''} ${article.langName || lang.toUpperCase()} &nbsp;·&nbsp; ${SITE_NAME}
+    <!-- FILTER CONTROLS BAR -->
+    <div class="filter-controls-bar">
+        <div class="filter-date-group">
+            <!-- From Date -->
+            <div class="filter-date-item">
+                <div class="filter-date-label" data-text-key="lblFrom">TỪ NGÀY</div>
+                <div class="datepicker-wrapper">
+                    <input type="text" id="seoFromDate" class="datepicker-input" readonly>
+                    <div id="seoFromDatePopup" class="datepicker-popup"></div>
+                </div>
+            </div>
+            
+            <div class="filter-divider"></div>
+            
+            <!-- To Date -->
+            <div class="filter-date-item">
+                <div class="filter-date-label" data-text-key="lblTo">ĐẾN NGÀY</div>
+                <div class="datepicker-wrapper">
+                    <input type="text" id="seoToDate" class="datepicker-input" readonly>
+                    <div id="seoToDatePopup" class="datepicker-popup"></div>
+                </div>
+            </div>
         </div>
+        
+        <button id="fetchFeedBtn" class="fetch-btn" style="margin-left: auto;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.59-9.28l5.67 1.72"/>
+            </svg>
+            <span data-text-key="lblRefresh">Làm mới dữ liệu</span>
+        </button>
+    </div>
 
-        <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
-        <div class="digest-body">${article.content || ''}</div>
-      </article>
+    <!-- MAIN ARTICLE FEED -->
+    <main id="digest-feed">
+      ${articlesList.map(item => `
+        <article class="mb-12"${isRtl ? ' dir="rtl"' : ''}>
+          <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+            ${item.article.title}
+          </h1>
+          <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
+            📅 ${item.date} &nbsp;·&nbsp; ${item.article.langEmoji || ''} ${item.article.langName || lang.toUpperCase()} &nbsp;·&nbsp; ${SITE_NAME}
+          </div>
+
+          <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${item.article.lead}</div>
+          <div class="digest-body">${item.article.content || ''}</div>
+        </article>
+        <hr class="border-gray-800 my-8">
+      `).join('')}
     </main>
 
     <div class="mt-8 mb-4">
@@ -211,6 +249,9 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
 
   <!-- Translation injection & Lang Menu JS -->
   <script>
+    window.SUPABASE_URL = '${SUPABASE_URL}';
+    window.SUPABASE_ANON_KEY = '${SUPABASE_ANON_KEY}';
+    window.SITE_NAME = '${SITE_NAME}';
     const langDict = ${JSON.stringify(currentI18n)};
 
     function applyDict() {
@@ -251,6 +292,9 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
             }
         });
     }
+
+    // Inject dynamic client JS
+    ${clientJs}
   </script>
 </body>
 </html>`;
@@ -260,7 +304,8 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
 async function main() {
   const args     = process.argv.slice(2);
   const isSample = args.includes('--sample');
-  let date, articles;
+  let allRows = [];
+  let articles;
 
   if (isSample) {
     console.log('📡 Using SAMPLE_ARTICLES...');
@@ -309,33 +354,50 @@ async function main() {
         content: '<h2>市場心理：外は緑、中は赤</h2><p>2026年6月22日のセッションは、ハノイでの5大インフラプロジェクト起工式の好材料の中で展開されました。ただし、VNインデックスの上昇は主にVingroupグループが牽引 — <strong>VIC</strong>がストップ高、<strong>VHM</strong>と<strong>VRE</strong>も大幅高。実際には下落銘柄数が上昇銘柄数を上回り、資金の慎重さを反映しています。</p><h2>資金フローの分化</h2><p>データは資金フローの明確な分化を示しています。<strong>PVD</strong>、<strong>BSR</strong>、<strong>POW</strong>などのエネルギー株は国際原油価格の回復に連動して一斉に上昇しました。一方、<strong>FPT</strong>、<strong>MWG</strong>などのテック・小売株は外国人の強い売り圧力にさらされました。外国人投資家の5日連続の純売り越しは持続的な上昇への大きな課題です。</p><h2>評価と推奨事項</h2><p>MBS Researchは、最近の上昇は依然として技術的な反発の可能性が高いと評価しています。VNインデックスは1,830〜1,845ポイントの厚い抵抗帯に直面しています。ベースシナリオでは、市場はレンジ相場を継続するでしょう。投資家は高い現金比率を維持し、証券・物流・製造業など基礎体力の良い業種を調整時に優先することを推奨します。</p>'
       }
     ];
-    date = '2026-06-22';
   } else {
     console.log('📡 Fetching latest market_summary_stock…');
-    const row = await fetchLatestSummary(null);
-    date = row.summary_date || new Date().toISOString().slice(0, 10);
-    articles = Array.isArray(row.articles) ? row.articles : JSON.parse(row.articles);
+    allRows = await fetchSummaries();
   }
 
-  console.log(`✅ Got summary for date: ${date} (${articles.length} languages)`);
+  // Handle sample data format
+  if (isSample) {
+    const todayStr = new Date().toISOString().slice(0, 10);
+    allRows = [ { summary_date: todayStr, articles: articles } ];
+  }
+
+  console.log(`✅ Got ${allRows.length} days of summaries`);
 
   const headerHtml = readFile('header.html');
   const footerHtml = readFile('footer.html');
-  const langs = articles.map(a => a.langCode);
+  const clientCss = readFile('scripts/seo-client.css');
+  const clientJs = readFile('scripts/seo-client.js');
 
-  for (const article of articles) {
-    const lang    = article.langCode;
+  let dataByLang = {};
+  let langsSet = new Set();
+
+  for (const row of allRows) {
+    const rDate = row.summary_date;
+    const rArticles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
+    for (const a of rArticles) {
+      if (isSample) {
+        a.langName = I18N_LANG_NAMES[a.langCode];
+        a.langEmoji = ''; 
+      }
+      langsSet.add(a.langCode);
+      if (!dataByLang[a.langCode]) dataByLang[a.langCode] = [];
+      dataByLang[a.langCode].push({ date: rDate, article: a });
+    }
+  }
+
+  const langs = Array.from(langsSet);
+
+  for (const lang of langs) {
+    const articlesList = dataByLang[lang];
     const outDir  = path.join(ROOT, 'diem-tin-chung-khoan', lang);
     const outFile = path.join(outDir, 'index.html');
     fs.mkdirSync(outDir, { recursive: true });
-    
-    // Fallback if sample
-    if(isSample) {
-      article.langName = I18N_LANG_NAMES[lang];
-      article.langEmoji = ''; // can add later if needed
-    }
 
-    const html = generatePage({ article, lang, date, headerHtml, footerHtml, langs });
+    const html = generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs });
     fs.writeFileSync(outFile, html, 'utf8');
     console.log(`  📝 Written: diem-tin-chung-khoan/${lang}/index.html`);
   }

@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VNインデックス2026年6月22日：Vingroupが急騰、流動性は慎重 | Tin Tức Chứng Khoán 24h</title>
-  <meta name="description" content="2026年6月22日のベトナム株式市場は、Vingroupグループを中心に2ヶ月ぶりの最大上昇を記録しましたが、全体的な流動性は依然として慎重な観察状態を維持しています。">
+  <title>2026年6月22日のVN-Index：Vingroupの急騰と慎重な市場動向 | Tin Tức Chứng Khoán 24h</title>
+  <meta name="description" content="2026年6月22日の株式市場は、VN-Indexが2ヶ月ぶりの大幅高を記録するエネルギッシュなセッションとなりました。Vingroup株が指数の主要エンジンとなりましたが、市場全体では流動性に対する慎重な見方が続いています。">
   <link rel="canonical" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/">
   <link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/">
   <link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/">
   <link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/">
-  <link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/">
+  <link rel="alternate" hreflang="zh-TW" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh-TW/">
   <link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/">
   <link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/">
   <link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/">
   <link rel="alternate" hreflang="x-default" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/">
 
-  <meta property="og:title" content="VNインデックス2026年6月22日：Vingroupが急騰、流動性は慎重">
-  <meta property="og:description" content="2026年6月22日のベトナム株式市場は、Vingroupグループを中心に2ヶ月ぶりの最大上昇を記録しましたが、全体的な流動性は依然として慎重な観察状態を維持しています。">
+  <meta property="og:title" content="2026年6月22日のVN-Index：Vingroupの急騰と慎重な市場動向">
+  <meta property="og:description" content="2026年6月22日の株式市場は、VN-Indexが2ヶ月ぶりの大幅高を記録するエネルギッシュなセッションとなりました。Vingroup株が指数の主要エンジンとなりましたが、市場全体では流動性に対する慎重な見方が続いています。">
   <meta property="og:url" content="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://tintucchungkhoan24h.com/ava_icon.png">
@@ -60,6 +60,170 @@
     .lang-option:hover { background-color: rgba(255,255,255,0.1); color: #fff; }
     #langToggle { display: flex; align-items: center; gap: 6px; background: rgba(17,34,64,0.95); border: 1px solid #4b5563; color: white; padding: 8px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; }
     #langToggle svg { width: 22px; height: 15px; display: block; border-radius: 2px; }
+
+    /* Inject dynamic client CSS */
+    /* Custom Date Picker */
+.datepicker-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.datepicker-input {
+    background: transparent;
+    color: white;
+    font-size: 0.75rem;
+    width: 100%;
+    min-width: 90px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    caret-color: transparent;
+    user-select: none;
+}
+.datepicker-input::placeholder { color: #6b7280; }
+.datepicker-popup {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 9999;
+    background: #112240;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    min-width: 240px;
+    max-width: calc(100vw - 32px);
+}
+#toDatePopup {
+    left: auto;
+    right: 0;
+}
+.datepicker-popup.open { display: block; }
+.dp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.dp-nav-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+}
+.dp-nav-btn:hover { background: #1e3a5f; color: #ffd700; }
+.dp-month-year {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffd700;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+.dp-month-year:hover { background: #1e3a5f; }
+.dp-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+.dp-day-name {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #6b7280;
+    padding: 4px 0;
+    text-transform: uppercase;
+}
+.dp-day {
+    text-align: center;
+    font-size: 12px;
+    padding: 6px 2px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #e5e7eb;
+}
+.dp-day:hover:not(.empty):not(.disabled) {
+    background: #1e3a5f;
+    color: #fff;
+}
+.dp-day.selected {
+    background: #ffd700;
+    color: #0a192f;
+    font-weight: 700;
+}
+.dp-day.today {
+    border: 1px solid #ffd700;
+}
+.dp-day.empty {
+    cursor: default;
+}
+.dp-day.disabled {
+    color: #4b5563;
+    cursor: not-allowed;
+}
+
+/* Control Bar UI (similar to main app) */
+.filter-controls-bar {
+    background: #112240;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.filter-date-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.filter-date-item {
+    display: flex;
+    flex-direction: column;
+}
+.filter-date-label {
+    font-size: 10px;
+    color: #9ca3af;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+.filter-divider {
+    width: 1px;
+    height: 24px;
+    background: #374151;
+}
+.fetch-btn {
+    background: #ffd700;
+    color: #0a192f;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.fetch-btn:hover {
+    background: #fef9c3;
+    transform: translateY(-1px);
+}
+.fetch-btn:disabled {
+    background: #374151;
+    color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+}
+
   </style>
 </head>
 <body class="bg-fin-blue min-h-screen">
@@ -117,9 +281,9 @@
       </button><button type="button" class="lang-option" data-lang="ko" onclick="window.location.href='/diem-tin-chung-khoan/ko/'">
           <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"><?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="flag-svg-ko" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.7 38.9" style="enable-background:new 0 0 55.7 38.9" xml:space="preserve"><style type="text/css">#flag-svg-ko .st0{fill:#FEFEFE;stroke:#CCCCCC;stroke-width:0.5;stroke-miterlimit:2.6131;} #flag-svg-ko .st1{fill:#252422;} #flag-svg-ko .st2{fill:none;stroke:#252422;stroke-width:1.6002;} #flag-svg-ko .st3{fill:none;stroke:#FEFEFE;stroke-width:0.7999;} #flag-svg-ko .st4{fill:#C62631;} #flag-svg-ko .st5{fill:#303C70;}</style><g><path class="st0" d="M3.28,38.65h49.13c1.67,0,3.03-1.37,3.03-3.03V3.28c0-1.67-1.36-3.03-3.03-3.03H3.28 c-1.67,0-3.03,1.36-3.03,3.03v32.33C0.25,37.29,1.61,38.65,3.28,38.65L3.28,38.65z"/><path class="st1" d="M12.54,15.01l5.32-7.99L12.54,15.01L12.54,15.01z M10.54,13.68l5.33-7.99L10.54,13.68L10.54,13.68z M8.55,12.35l5.33-7.99L8.55,12.35L8.55,12.35z"/><path class="st2" d="M12.54,15.01l5.32-7.99 M10.54,13.68l5.33-7.99 M8.55,12.35l5.33-7.99"/><path class="st1" d="M41.83,34.54l5.33-7.99L41.83,34.54L41.83,34.54z M39.83,33.21l5.33-7.99L39.83,33.21L39.83,33.21z M37.83,31.88l5.33-7.99L37.83,31.88L37.83,31.88z"/><path class="st2" d="M41.83,34.54l5.33-7.99 M39.83,33.21l5.33-7.99 M37.83,31.88l5.33-7.99"/><line class="st3" x1="39.17" y1="26.99" x2="45.82" y2="31.43"/><path class="st4" d="M19.86,14.13c2.94-4.41,8.9-5.6,13.31-2.66c4.41,2.94,5.6,8.9,2.66,13.31c-2.94,4.41-8.9,5.6-13.31,2.66 C18.11,24.5,16.92,18.54,19.86,14.13L19.86,14.13z"/><path class="st5" d="M19.86,14.13c-1.47,2.21-0.87,5.19,1.33,6.66c2.21,1.47,5.19,0.87,6.66-1.33c1.47-2.21,4.45-2.8,6.66-1.33 c2.21,1.47,2.8,4.45,1.33,6.66c-2.94,4.41-8.9,5.6-13.31,2.66C18.11,24.5,16.92,18.54,19.86,14.13L19.86,14.13z"/><path class="st1" d="M17.86,31.88l-5.32-7.99L17.86,31.88L17.86,31.88z M15.87,33.21l-5.33-7.99L15.87,33.21L15.87,33.21z M13.87,34.54l-5.33-7.99L13.87,34.54L13.87,34.54z"/><path class="st2" d="M17.86,31.88l-5.32-7.99 M15.87,33.21l-5.33-7.99 M13.87,34.54l-5.33-7.99"/><path class="st1" d="M47.15,12.35l-5.33-7.99L47.15,12.35L47.15,12.35z M45.16,13.68l-5.33-7.99L45.16,13.68L45.16,13.68z M43.16,15.01l-5.33-7.99L43.16,15.01L43.16,15.01z"/><path class="st2" d="M47.15,12.35l-5.33-7.99 M45.16,13.68l-5.33-7.99 M43.16,15.01l-5.33-7.99"/><path class="st1" d="M43.49,9.02l2-1.33L43.49,9.02L43.49,9.02z M39.17,11.91l2.33-1.55L39.17,11.91L39.17,11.91z M12.21,29.88 l2-1.33L12.21,29.88L12.21,29.88z"/><path class="st3" d="M43.49,9.02l2-1.33 M39.17,11.91l2.33-1.55 M12.21,29.88l2-1.33"/></g></svg></span>
           <span>한국어 (KR)</span>
-      </button><button type="button" class="lang-option" data-lang="zh" onclick="window.location.href='/diem-tin-chung-khoan/zh/'">
-          <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 60" shape-rendering="geometricPrecision"><rect width="90" height="60" fill="#FE0000"/><rect width="45" height="30" fill="#000095"/><path fill="#fff" d="M22.500,5.000L23.587,10.943L27.500,6.340L25.470,12.030L31.160,10.000L26.557,13.913L32.500,15.000L26.557,16.087L31.160,20.000L25.470,17.970L27.500,23.660L23.587,19.057L22.500,25.000L21.413,19.057L17.500,23.660L19.530,17.970L13.840,20.000L18.443,16.087L12.500,15.000L18.443,13.913L13.840,10.000L19.530,12.030L17.500,6.340L21.413,10.943Z"/></svg></span>
-          <span>繁體中文 (TW)</span>
+      </button><button type="button" class="lang-option" data-lang="zh-TW" onclick="window.location.href='/diem-tin-chung-khoan/zh-TW/'">
+          <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"></span>
+          <span>ZH-TW (ZH-TW)</span>
       </button><button type="button" class="lang-option" data-lang="th" onclick="window.location.href='/diem-tin-chung-khoan/th/'">
           <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"><?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="flag-svg-th" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.68 38.88" style="enable-background:new 0 0 55.68 38.88" xml:space="preserve"><style type="text/css"><![CDATA[
 #flag-svg-th .st0{fill:#F4F5F8;}
@@ -153,21 +317,67 @@
       </div>
     </div>
 
-    <!-- MAIN ARTICLE -->
-    <main id="digest-main">
-      <a href="https://tintucchungkhoan24h.com/" class="back-link">← 詳細分析</a>
-
-      <article>
-        <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
-          VNインデックス2026年6月22日：Vingroupが急騰、流動性は慎重
-        </h1>
-        <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
-          📅 2026-06-22 &nbsp;·&nbsp;  日本語 &nbsp;·&nbsp; Tin Tức Chứng Khoán 24h
+    <!-- FILTER CONTROLS BAR -->
+    <div class="filter-controls-bar">
+        <div class="filter-date-group">
+            <!-- From Date -->
+            <div class="filter-date-item">
+                <div class="filter-date-label" data-text-key="lblFrom">TỪ NGÀY</div>
+                <div class="datepicker-wrapper">
+                    <input type="text" id="seoFromDate" class="datepicker-input" readonly>
+                    <div id="seoFromDatePopup" class="datepicker-popup"></div>
+                </div>
+            </div>
+            
+            <div class="filter-divider"></div>
+            
+            <!-- To Date -->
+            <div class="filter-date-item">
+                <div class="filter-date-label" data-text-key="lblTo">ĐẾN NGÀY</div>
+                <div class="datepicker-wrapper">
+                    <input type="text" id="seoToDate" class="datepicker-input" readonly>
+                    <div id="seoToDatePopup" class="datepicker-popup"></div>
+                </div>
+            </div>
         </div>
+        
+        <button id="fetchFeedBtn" class="fetch-btn" style="margin-left: auto;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.59-9.28l5.67 1.72"/>
+            </svg>
+            <span data-text-key="lblRefresh">Làm mới dữ liệu</span>
+        </button>
+    </div>
 
-        <div class="digest-lead" >2026年6月22日のベトナム株式市場は、Vingroupグループを中心に2ヶ月ぶりの最大上昇を記録しましたが、全体的な流動性は依然として慎重な観察状態を維持しています。</div>
-        <div class="digest-body"><h2>市場心理：外は緑、中は赤</h2><p>2026年6月22日のセッションは、ハノイでの5大インフラプロジェクト起工式の好材料の中で展開されました。ただし、VNインデックスの上昇は主にVingroupグループが牽引 — <strong>VIC</strong>がストップ高、<strong>VHM</strong>と<strong>VRE</strong>も大幅高。実際には下落銘柄数が上昇銘柄数を上回り、資金の慎重さを反映しています。</p><h2>資金フローの分化</h2><p>データは資金フローの明確な分化を示しています。<strong>PVD</strong>、<strong>BSR</strong>、<strong>POW</strong>などのエネルギー株は国際原油価格の回復に連動して一斉に上昇しました。一方、<strong>FPT</strong>、<strong>MWG</strong>などのテック・小売株は外国人の強い売り圧力にさらされました。外国人投資家の5日連続の純売り越しは持続的な上昇への大きな課題です。</p><h2>評価と推奨事項</h2><p>MBS Researchは、最近の上昇は依然として技術的な反発の可能性が高いと評価しています。VNインデックスは1,830〜1,845ポイントの厚い抵抗帯に直面しています。ベースシナリオでは、市場はレンジ相場を継続するでしょう。投資家は高い現金比率を維持し、証券・物流・製造業など基礎体力の良い業種を調整時に優先することを推奨します。</p></div>
-      </article>
+    <!-- MAIN ARTICLE FEED -->
+    <main id="digest-feed">
+      
+        <article class="mb-12">
+          <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+            2026年6月22日のVN-Index：Vingroupの急騰と慎重な市場動向
+          </h1>
+          <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
+            📅 2026-06-22 &nbsp;·&nbsp; 🇯🇵 JAPANESE &nbsp;·&nbsp; Tin Tức Chứng Khoán 24h
+          </div>
+
+          <div class="digest-lead" >2026年6月22日の株式市場は、VN-Indexが2ヶ月ぶりの大幅高を記録するエネルギッシュなセッションとなりました。Vingroup株が指数の主要エンジンとなりましたが、市場全体では流動性に対する慎重な見方が続いています。</div>
+          <div class="digest-body"><h2>市場心理：指数上昇と個別の乖離</h2><p>6月22日の取引は、ハノイのインフラプロジェクト着工というポジティブなニュースに支えられました。VN-Indexの上昇は主に <strong>VIC</strong> のストップ高や <strong>VHM</strong>、<strong>VRE</strong> の大幅高など、Vingroup銘柄に集中しました。指数は上昇したものの、下落銘柄数が依然として多く、投資家の慎重な姿勢が浮き彫りとなりました。</p><h2>資金フローの二極化</h2><p>資金フローには明確な二極化が見られます。<strong>PVD</strong>、<strong>BSR</strong>、<strong>POW</strong> などのエネルギー関連株は、国際原油価格の回復に追随して上昇しました。対照的に、<strong>FPT</strong> や <strong>MWG</strong> などのハイテク・小売株は外国人投資家からの売り圧力に直面しました。外国人投資家による5日連続の売り越しが、市場の持続的な成長に対するリスク要因となっています。</p><h2>今後の展望と推奨</h2><p>MBSは、今回の急騰を技術的なリバウンドである可能性が高いと分析しています。VN-Indexは1,830〜1,845ポイントの厚い抵抗帯に直面しています。基本シナリオでは、市場は横ばい推移が予想されます。投資家には高い現金比率を維持し、調整局面において証券、物流、製造業などファンダメンタルズの強いセクターに優先的に投資することを推奨します。</p><p>参考文献：<a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS：市場の膠着状態の中で資金を集める銘柄</a>, <a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Indexの抵抗帯分析</a></p></div>
+        </article>
+        <hr class="border-gray-800 my-8">
+      
+        <article class="mb-12">
+          <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+            2026年6月22日のVN-Index：Vingroupの急騰と慎重な市場動向
+          </h1>
+          <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
+            📅 2026-06-21 &nbsp;·&nbsp; 🇯🇵 JAPANESE &nbsp;·&nbsp; Tin Tức Chứng Khoán 24h
+          </div>
+
+          <div class="digest-lead" >2026年6月22日の株式市場は、VN-Indexが2ヶ月ぶりの大幅高を記録するエネルギッシュなセッションとなりました。Vingroup株が指数の主要エンジンとなりましたが、市場全体では流動性に対する慎重な見方が続いています。</div>
+          <div class="digest-body"><h2>市場心理：指数上昇と個別の乖離</h2><p>6月22日の取引は、ハノイのインフラプロジェクト着工というポジティブなニュースに支えられました。VN-Indexの上昇は主に <strong>VIC</strong> のストップ高や <strong>VHM</strong>、<strong>VRE</strong> の大幅高など、Vingroup銘柄に集中しました。指数は上昇したものの、下落銘柄数が依然として多く、投資家の慎重な姿勢が浮き彫りとなりました。</p><h2>資金フローの二極化</h2><p>資金フローには明確な二極化が見られます。<strong>PVD</strong>、<strong>BSR</strong>、<strong>POW</strong> などのエネルギー関連株は、国際原油価格の回復に追随して上昇しました。対照的に、<strong>FPT</strong> や <strong>MWG</strong> などのハイテク・小売株は外国人投資家からの売り圧力に直面しました。外国人投資家による5日連続の売り越しが、市場の持続的な成長に対するリスク要因となっています。</p><h2>今後の展望と推奨</h2><p>MBSは、今回の急騰を技術的なリバウンドである可能性が高いと分析しています。VN-Indexは1,830〜1,845ポイントの厚い抵抗帯に直面しています。基本シナリオでは、市場は横ばい推移が予想されます。投資家には高い現金比率を維持し、調整局面において証券、物流、製造業などファンダメンタルズの強いセクターに優先的に投資することを推奨します。</p><p>参考文献：<a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS：市場の膠着状態の中で資金を集める銘柄</a>, <a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Indexの抵抗帯分析</a></p></div>
+        </article>
+        <hr class="border-gray-800 my-8">
+      
     </main>
 
     <div class="mt-8 mb-4">
@@ -342,6 +552,9 @@
 
   <!-- Translation injection & Lang Menu JS -->
   <script>
+    window.SUPABASE_URL = 'https://ifjxishcrzndbszmvpef.supabase.co';
+    window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmanhpc2hjcnpuZGJzem12cGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNjEwOTcsImV4cCI6MjA5MjkzNzA5N30.0rHs4AWTmRmN34WWdxBM2RsTMu1VQwfKDjve0W2yHEg';
+    window.SITE_NAME = 'Tin Tức Chứng Khoán 24h';
     const langDict = {"title":"株式市場ニュース24時間","subtitle":"毎日のマーケットアップデート","searchPlaceholder":"VHM, VIC, FPT...","searchPlaceholderMacro":"金, 石油, インフレ...","lblFrom":"開始日","lblTo":"終了日","loading":"データを読み込み中...","exportBtn":"Excelに出力","exporting":"出力中...","filterBtn":"絞り込み","fastNewsBtn":"⚡ クイック要約","hideFastNewsBtn":"🔼 要約を非表示","refreshBtn":"データを更新","watchNewsBtn":"ニュースを見る","empty":"該当するデータがありません。","prev":"前へ","next":"次へ","paging":"{start} - {end} / 全{total}件","chartTooltip":"TradingViewでチャートを見る","excelSheetName":"株式市場ニュース","tabs":{"stock":"銘柄","macro":"マクロ","stable":"安定ボラティリティ","high":"高ボラティリティ","watchlist":"⭐ ウォッチリスト","spotlight":"🚀 注目銘柄"},"cols":{"index":"#","publish_time":"時刻","single_stock":"銘柄","price_change_today_pct":"% 変化","ma15":"MA15","organ_name":"企業名","industry":"業種","current_close":"価格","current_volume":"出来高","headline":"見出し","source":"ソース","link":"リンク","time":"時刻"},"filter":{"title":"フィルター","search":"検索...","selectAll":"（すべて選択）","clearAll":"すべて解除","selectAllBtn":"すべて選択","apply":"適用","stockCode":"銘柄コード","ma15":"MA15","industry":"業種","source":"ソース","volumeLabel":"出来高","volumeUnit":"百万","priceLabel":"価格","priceUnit":"千ドン","volumeMinPlaceholder":"最小","volumeMaxPlaceholder":"最大","priceChangeLabel":"% 価格変化","priceChangeUnit":"%","priceChangeMinPlaceholder":"最小","priceChangeMaxPlaceholder":"最大","priceChangeDescription":"価格変化: {min}〜{max} %","volumeDescription":"出来高: {min} – {max}","ma15Ranges":{"strongAbove":"⏫ MA15 (>5%)","above":"⬆️ MA15 (1〜5%)","at":"↔️ MA15 (-1〜1%)","below":"⬇️ MA15 (-5〜-1%)","strongBelow":"⏬ MA15 (<-5%)"}},"ma15Tooltip":{"strongAbove":"MA15を大きく上回る上昇","above":"MA15ラインの上","at":"MA15ライン付近","below":"MA15ラインの下","strongBelow":"MA15を大きく下回る下落","na":"データがありません"},"macro":{"sheetName":"マクロニュース"},"stable":{"sheetName":"安定ボラティリティ"},"high":{"sheetName":"高ボラティリティ"},"spotlight":{"sheetName":"注目銘柄"},"watchlist":{"sheetName":"ウォッチリスト"},"header":{"mainTitle":"株式市場ニュース24時間","subTitle":"毎日のマーケットアップデート","refreshTitle":"ページを更新"},"footer":{"col1Title":"私たちについて","col1Desc1":"3S（Short・Sharp・Straight）の原則に基づく金融市場情報をお届けします。","col1Desc2":"「投資家の皆さまが資金の流れと市場トレンドを毎日いち早く把握できるように。」","col2Title":"広告・お問い合わせ","col2Founder":"Phạm Văn Thiện","founderName":"Phạm Văn Thiện","founderLabel":"創設者","hotlineLabel":"ホットライン","emailLabel":"メール","col3Title":"エコシステム","mapsLabel":"Googleマップ","addressLabel":"本社","directionsLink":"Googleマップで経路を表示 →","version":"バージョン 4.0","updated":"更新：2026-05-08","copyrightResp":"コンテンツ責任者：Phạm Văn Thiện","copyrightCopy":"© 2026 株式市場ニュース24時間 — 創設者 Phạm Văn Thiện","newsTitle":"ニュース","newsTitle2":"株式市場ニュース"},"video":{"cannotLoad":"動画を読み込めません。","close":"閉じる","tabVideoTitle":"動画を見る","titleStock":"本日の株式市場概要","titleMacro":"マクロ経済：過去24時間の主な動き"},"filterPopup":{"title":"フィルター","close":"閉じる"},"social":{"googleMaps":"Googleマップ","facebook":"Facebook","tiktok":"TikTok","youtube":"YouTube","linkedin":"LinkedIn","twitter":"X（Twitter）"},"sourceNames":{"Investing-ChiBaoKinhTe":"Investing-経済指標","Investing-Forex":"Investing-外国為替","Investing-HangHoa":"Investing-商品","Investing-TheGioi":"Investing-国際ニュース","Investing-TinPhoBien":"Investing-人気ニュース"},"contact":{"founderLabel":"創設者","founderName":"Phạm Văn Thiện","hotlineLabel":"ホットライン","emailLabel":"メール","phoneNumber":"0906 411 561","emailAddress":"admin@tintucchungkhoan24h.com","address":"29/22 Nguyễn Văn Khối, Phường Thông Tây Hội, Quận Gò Vấp, TP.HCM 71400"},"brand":{"threeS":"3S","short":"Short","sharp":"Sharp","straight":"Straight","logoAlt":"株式市場ニュース24時間のロゴ"},"datepicker":{"months":["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"days":["月","火","水","木","金","土","日"],"inputPlaceholder":"dd/mm/yyyy"},"notApplicable":"該当なし","page":{"documentTitle":"株式市場ニュース24時間","metaDescription":"毎日の市場アップデート。ベトナム市場をフォローする投資家向けの銘柄分析と投資トレンド。"},"exportFilePrefix":{"stock":"StockMarketNews","macro":"MacroNews","stable":"StableVolatility","high":"HighVolatility","watchlist":"Watchlist","spotlight":"Spotlight"},"exportError":"Excelファイルの出力に失敗しました。もう一度お試しください。","exportErrorWithMessage":"Excelファイルの出力に失敗しました：{message}","exportUnexpectedResponse":"サーバーからの応答形式が正しくありません。"};
 
     function applyDict() {
@@ -382,6 +595,276 @@
             }
         });
     }
+
+    // Inject dynamic client JS
+    // SEO Client Logic
+// Contains Custom DatePicker and Supabase fetching for dynamic feed
+
+const GMT7_OFFSET = 7 * 60; // 7 hours in minutes
+
+function getGMT7Date() {
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const gmt7 = new Date(utc + (GMT7_OFFSET * 60000));
+    gmt7.setHours(0, 0, 0, 0);
+    return gmt7;
+}
+
+function createGMT7Date(year, month, day) {
+    return new Date(Date.UTC(year, month, day, -7, 0, 0));
+}
+
+function parseISOtoGMT7(iso) {
+    if (!iso) return null;
+    const [y, m, d] = iso.split('-').map(Number);
+    return createGMT7Date(y, m - 1, d);
+}
+
+function isoToDisplay(iso) {
+    if (!iso) return '';
+    const [y, m, d] = iso.split('-');
+    return `${d}/${m}/${y}`;
+}
+
+function dateToIso(d) {
+    if (!d) return '';
+    const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    const gmt7 = new Date(utc + (GMT7_OFFSET * 60000));
+    const y = gmt7.getFullYear();
+    const m = String(gmt7.getMonth() + 1).padStart(2, '0');
+    const day = String(gmt7.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+}
+
+const pickers = {};
+
+function createPicker(id, onChange) {
+    const inputEl = document.getElementById(id);
+    const popupEl = document.getElementById(id + 'Popup');
+    if (!inputEl || !popupEl) return null;
+
+    const today = getGMT7Date();
+    const picker = { 
+        inputEl, popupEl, value: null, 
+        viewYear: today.getFullYear(), viewMonth: today.getMonth(), 
+        mode: 'day', min: null, max: null, onChange 
+    };
+    pickers[id] = picker;
+
+    inputEl.addEventListener('click', (e) => { e.stopPropagation(); togglePicker(id); });
+    inputEl.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePicker(id); });
+    popupEl.addEventListener('click', (e) => e.stopPropagation());
+    return picker;
+}
+
+function togglePicker(id) {
+    const picker = pickers[id];
+    const isOpen = picker.popupEl.classList.contains('open');
+    Object.keys(pickers).forEach(k => closePicker(k));
+    if (!isOpen) {
+        picker.mode = 'day';
+        renderPicker(id);
+        picker.popupEl.classList.add('open');
+    }
+}
+
+function closePicker(id) {
+    if (pickers[id]) pickers[id].popupEl.classList.remove('open');
+}
+
+document.addEventListener('click', () => {
+    Object.keys(pickers).forEach(k => closePicker(k));
+});
+
+function renderPicker(id) {
+    const picker = pickers[id];
+    const loc = langDict.datepicker || {
+        months: ["1","2","3","4","5","6","7","8","9","10","11","12"],
+        days: ["Mo","Tu","We","Th","Fr","Sa","Su"]
+    };
+    
+    const { viewYear, viewMonth, value, min, max } = picker;
+    const today = getGMT7Date();
+    const firstDay = createGMT7Date(viewYear, viewMonth, 1);
+    let startDow = firstDay.getDay(); 
+    startDow = (startDow === 0) ? 6 : startDow - 1; 
+
+    const daysInMonth = new Date(Date.UTC(viewYear, viewMonth + 1, 0, -7)).getDate();
+    const todayIso = dateToIso(today);
+    const valIso = value ? dateToIso(value) : null;
+    const minIso = min ? dateToIso(min) : null;
+    const maxIso = max ? dateToIso(max) : null;
+
+    let html = '';
+    if (picker.mode === 'day') {
+        html += `<div class="dp-header">
+            <button class="dp-nav-btn" onclick="navPicker('${id}', -1)">❮</button>
+            <div class="dp-month-year" onclick="setPickerMode('${id}','month')">${loc.months[viewMonth]} ${viewYear}</div>
+            <button class="dp-nav-btn" onclick="navPicker('${id}', 1)">❯</button>
+        </div>
+        <div class="dp-grid">`;
+        loc.days.forEach(d => { html += `<div class="dp-day-name">${d}</div>`; });
+        for (let i = 0; i < startDow; i++) { html += `<div class="dp-day empty"></div>`; }
+        
+        for (let d = 1; d <= daysInMonth; d++) {
+            const currentIso = dateToIso(createGMT7Date(viewYear, viewMonth, d));
+            let classes = ['dp-day'];
+            if (currentIso === todayIso) classes.push('today');
+            if (currentIso === valIso) classes.push('selected');
+            
+            let disabled = false;
+            if (minIso && currentIso < minIso) disabled = true;
+            if (maxIso && currentIso > maxIso) disabled = true;
+            if (disabled) classes.push('disabled');
+
+            if (disabled) {
+                html += `<div class="${classes.join(' ')}">${d}</div>`;
+            } else {
+                html += `<div class="${classes.join(' ')}" onclick="selectDate('${id}', ${d})">${d}</div>`;
+            }
+        }
+        html += `</div>`;
+    }
+    picker.popupEl.innerHTML = html;
+}
+
+function navPicker(id, dir) {
+    const p = pickers[id];
+    p.viewMonth += dir;
+    if (p.viewMonth < 0) { p.viewMonth = 11; p.viewYear--; }
+    else if (p.viewMonth > 11) { p.viewMonth = 0; p.viewYear++; }
+    renderPicker(id);
+}
+
+function selectDate(id, day) {
+    const p = pickers[id];
+    p.value = createGMT7Date(p.viewYear, p.viewMonth, day);
+    p.inputEl.value = isoToDisplay(dateToIso(p.value));
+    closePicker(id);
+    if (p.onChange) p.onChange(dateToIso(p.value));
+}
+
+function setPickerMode(id, mode) {
+    const p = pickers[id];
+    p.mode = mode;
+    // For simplicity in SEO client, we only implement 'day' mode
+    p.mode = 'day';
+    renderPicker(id);
+}
+
+// ─── Dynamic Fetching ────────────────────────────────────────────────────────
+
+let stateFromDate = '';
+let stateToDate = '';
+
+async function fetchDynamicFeed() {
+    const mainEl = document.getElementById('digest-feed');
+    const fetchBtn = document.getElementById('fetchFeedBtn');
+    
+    if (!stateFromDate || !stateToDate) return;
+    
+    // UI Loading state
+    fetchBtn.disabled = true;
+    fetchBtn.innerHTML = `⌛ Loading...`;
+    mainEl.innerHTML = `<div class="text-center py-10 text-gray-400">Loading summaries...</div>`;
+
+    try {
+        const url = `${window.SUPABASE_URL}/rest/v1/market_summary_stock?select=*&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc`;
+        const res = await fetch(url, {
+            headers: {
+                'apikey': window.SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${window.SUPABASE_ANON_KEY}`
+            }
+        });
+        
+        if (!res.ok) throw new Error('Failed to fetch data');
+        const rows = await res.json();
+        
+        if (!rows || rows.length === 0) {
+            mainEl.innerHTML = `<div class="text-center py-10 text-gray-400 font-bold text-lg">No summaries found for this date range.</div>`;
+            return;
+        }
+
+        let html = '';
+        const currentLang = document.documentElement.lang || 'vi';
+        const isRtl = currentLang === 'ar';
+
+        for (const row of rows) {
+            const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
+            const article = articles.find(a => a.langCode === currentLang) || articles[0];
+            
+            if (!article) continue;
+
+            const rDate = row.summary_date;
+            
+            html += `
+            <article class="mb-12" ${isRtl ? 'dir="rtl"' : ''}>
+                <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+                  ${article.title}
+                </h1>
+                <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
+                  📅 ${rDate} &nbsp;·&nbsp; ${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()} &nbsp;·&nbsp; ${window.SITE_NAME}
+                </div>
+                <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
+                <div class="digest-body">${article.content || ''}</div>
+            </article>
+            <hr class="border-gray-800 my-8">
+            `;
+        }
+
+        mainEl.innerHTML = html;
+
+    } catch (e) {
+        console.error(e);
+        mainEl.innerHTML = `<div class="text-center py-10 text-red-400 font-bold text-lg">Error loading summaries.</div>`;
+    } finally {
+        fetchBtn.disabled = false;
+        fetchBtn.innerHTML = `Làm mới dữ liệu`; // Fallback text, ideally localized
+    }
+}
+
+// ─── Initialization ──────────────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Default range (last 7 days matches static output)
+    const today = getGMT7Date();
+    const past7 = new Date(today);
+    past7.setDate(today.getDate() - 6);
+    
+    stateFromDate = dateToIso(past7);
+    stateToDate = dateToIso(today);
+
+    // Init pickers
+    const pFrom = createPicker('seoFromDate', (iso) => {
+        stateFromDate = iso;
+        if (pickers['seoToDate']) {
+            pickers['seoToDate'].min = parseISOtoGMT7(iso);
+        }
+    });
+    
+    const pTo = createPicker('seoToDate', (iso) => {
+        stateToDate = iso;
+        if (pickers['seoFromDate']) {
+            pickers['seoFromDate'].max = parseISOtoGMT7(iso);
+        }
+    });
+
+    if (pFrom) {
+        pFrom.value = past7;
+        pFrom.inputEl.value = isoToDisplay(stateFromDate);
+    }
+    if (pTo) {
+        pTo.value = today;
+        pTo.inputEl.value = isoToDisplay(stateToDate);
+        pTo.min = past7;
+    }
+
+    const fetchBtn = document.getElementById('fetchFeedBtn');
+    if (fetchBtn) {
+        fetchBtn.addEventListener('click', fetchDynamicFeed);
+    }
+});
+
   </script>
 </body>
 </html>

@@ -60,6 +60,170 @@
     .lang-option:hover { background-color: rgba(255,255,255,0.1); color: #fff; }
     #langToggle { display: flex; align-items: center; gap: 6px; background: rgba(17,34,64,0.95); border: 1px solid #4b5563; color: white; padding: 8px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; }
     #langToggle svg { width: 22px; height: 15px; display: block; border-radius: 2px; }
+
+    /* Inject dynamic client CSS */
+    /* Custom Date Picker */
+.datepicker-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.datepicker-input {
+    background: transparent;
+    color: white;
+    font-size: 0.75rem;
+    width: 100%;
+    min-width: 90px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    caret-color: transparent;
+    user-select: none;
+}
+.datepicker-input::placeholder { color: #6b7280; }
+.datepicker-popup {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 9999;
+    background: #112240;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    min-width: 240px;
+    max-width: calc(100vw - 32px);
+}
+#toDatePopup {
+    left: auto;
+    right: 0;
+}
+.datepicker-popup.open { display: block; }
+.dp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.dp-nav-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+}
+.dp-nav-btn:hover { background: #1e3a5f; color: #ffd700; }
+.dp-month-year {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffd700;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+.dp-month-year:hover { background: #1e3a5f; }
+.dp-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+.dp-day-name {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #6b7280;
+    padding: 4px 0;
+    text-transform: uppercase;
+}
+.dp-day {
+    text-align: center;
+    font-size: 12px;
+    padding: 6px 2px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #e5e7eb;
+}
+.dp-day:hover:not(.empty):not(.disabled) {
+    background: #1e3a5f;
+    color: #fff;
+}
+.dp-day.selected {
+    background: #ffd700;
+    color: #0a192f;
+    font-weight: 700;
+}
+.dp-day.today {
+    border: 1px solid #ffd700;
+}
+.dp-day.empty {
+    cursor: default;
+}
+.dp-day.disabled {
+    color: #4b5563;
+    cursor: not-allowed;
+}
+
+/* Control Bar UI (similar to main app) */
+.filter-controls-bar {
+    background: #112240;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.filter-date-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.filter-date-item {
+    display: flex;
+    flex-direction: column;
+}
+.filter-date-label {
+    font-size: 10px;
+    color: #9ca3af;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+.filter-divider {
+    width: 1px;
+    height: 24px;
+    background: #374151;
+}
+.fetch-btn {
+    background: #ffd700;
+    color: #0a192f;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.fetch-btn:hover {
+    background: #fef9c3;
+    transform: translateY(-1px);
+}
+.fetch-btn:disabled {
+    background: #374151;
+    color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+}
+
   </style>
 </head>
 <body class="bg-fin-blue min-h-screen">
@@ -153,21 +317,54 @@
       </div>
     </div>
 
-    <!-- MAIN ARTICLE -->
-    <main id="digest-main">
-      <a href="https://tintucchungkhoan24h.com/" class="back-link">← 完整分析</a>
-
-      <article>
-        <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
-          VN指數2026年6月22日：Vingroup板塊爆發，流動性謹慎
-        </h1>
-        <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
-          📅 2026-06-22 &nbsp;·&nbsp;  繁體中文 &nbsp;·&nbsp; Tin Tức Chứng Khoán 24h
+    <!-- FILTER CONTROLS BAR -->
+    <div class="filter-controls-bar">
+        <div class="filter-date-group">
+            <!-- From Date -->
+            <div class="filter-date-item">
+                <div class="filter-date-label" data-text-key="lblFrom">TỪ NGÀY</div>
+                <div class="datepicker-wrapper">
+                    <input type="text" id="seoFromDate" class="datepicker-input" readonly>
+                    <div id="seoFromDatePopup" class="datepicker-popup"></div>
+                </div>
+            </div>
+            
+            <div class="filter-divider"></div>
+            
+            <!-- To Date -->
+            <div class="filter-date-item">
+                <div class="filter-date-label" data-text-key="lblTo">ĐẾN NGÀY</div>
+                <div class="datepicker-wrapper">
+                    <input type="text" id="seoToDate" class="datepicker-input" readonly>
+                    <div id="seoToDatePopup" class="datepicker-popup"></div>
+                </div>
+            </div>
         </div>
+        
+        <button id="fetchFeedBtn" class="fetch-btn" style="margin-left: auto;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.59-9.28l5.67 1.72"/>
+            </svg>
+            <span data-text-key="lblRefresh">Làm mới dữ liệu</span>
+        </button>
+    </div>
 
-        <div class="digest-lead" >2026年6月22日越南股市創下兩個月來最佳表現，VN指數在Vingroup概念股帶動下強勢上漲，但整體流動性仍保持謹慎觀望態勢。</div>
-        <div class="digest-body"><h2>市場情緒：表面繁榮</h2><p>2026年6月22日的交易在河內五大基礎設施項目奠基的利好消息背景下展開。然而，VN指數的漲勢主要由Vingroup股票主導——<strong>VIC</strong>觸及漲停板，<strong>VHM</strong>和<strong>VRE</strong>強勢突破。實際上，下跌股票數量多於上漲股票，反映資金流入依然謹慎。</p><h2>資金流向分化</h2><p>數據顯示資金流向出現明顯分化。<strong>PVD</strong>、<strong>BSR</strong>、<strong>POW</strong>等能源股跟隨國際油價回升而集體上漲。相反，<strong>FPT</strong>、<strong>MWG</strong>等科技和零售股承受外資強力賣壓。外資連續5日凈賣出，尤其集中在藍籌股，對持續上漲構成重大挑戰。</p><h2>評估與建議</h2><p>MBS研究認為近期反彈很可能仍是技術性回升。VN指數面臨1830-1845點的強阻力區。基準情景下，市場將繼續橫盤整理。建議投資者保持較高現金比例，在回調至吸引人價位時優先佈局基本面良好的證券、物流和製造業等板塊。</p></div>
-      </article>
+    <!-- MAIN ARTICLE FEED -->
+    <main id="digest-feed">
+      
+        <article class="mb-12">
+          <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+            VN指數2026年6月22日：Vingroup板塊爆發，流動性謹慎
+          </h1>
+          <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
+            📅 2026-06-22 &nbsp;·&nbsp;  繁體中文 &nbsp;·&nbsp; Tin Tức Chứng Khoán 24h
+          </div>
+
+          <div class="digest-lead" >2026年6月22日越南股市創下兩個月來最佳表現，VN指數在Vingroup概念股帶動下強勢上漲，但整體流動性仍保持謹慎觀望態勢。</div>
+          <div class="digest-body"><h2>市場情緒：表面繁榮</h2><p>2026年6月22日的交易在河內五大基礎設施項目奠基的利好消息背景下展開。然而，VN指數的漲勢主要由Vingroup股票主導——<strong>VIC</strong>觸及漲停板，<strong>VHM</strong>和<strong>VRE</strong>強勢突破。實際上，下跌股票數量多於上漲股票，反映資金流入依然謹慎。</p><h2>資金流向分化</h2><p>數據顯示資金流向出現明顯分化。<strong>PVD</strong>、<strong>BSR</strong>、<strong>POW</strong>等能源股跟隨國際油價回升而集體上漲。相反，<strong>FPT</strong>、<strong>MWG</strong>等科技和零售股承受外資強力賣壓。外資連續5日凈賣出，尤其集中在藍籌股，對持續上漲構成重大挑戰。</p><h2>評估與建議</h2><p>MBS研究認為近期反彈很可能仍是技術性回升。VN指數面臨1830-1845點的強阻力區。基準情景下，市場將繼續橫盤整理。建議投資者保持較高現金比例，在回調至吸引人價位時優先佈局基本面良好的證券、物流和製造業等板塊。</p></div>
+        </article>
+        <hr class="border-gray-800 my-8">
+      
     </main>
 
     <div class="mt-8 mb-4">
@@ -342,6 +539,9 @@
 
   <!-- Translation injection & Lang Menu JS -->
   <script>
+    window.SUPABASE_URL = 'https://ifjxishcrzndbszmvpef.supabase.co';
+    window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmanhpc2hjcnpuZGJzem12cGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNjEwOTcsImV4cCI6MjA5MjkzNzA5N30.0rHs4AWTmRmN34WWdxBM2RsTMu1VQwfKDjve0W2yHEg';
+    window.SITE_NAME = 'Tin Tức Chứng Khoán 24h';
     const langDict = {"title":"24小時股市新聞","subtitle":"每日市場更新","searchPlaceholder":"VHM, VIC, FPT...","searchPlaceholderMacro":"黃金, 石油, 通膨...","lblFrom":"開始日期","lblTo":"結束日期","loading":"載入資料中...","exportBtn":"匯出 Excel","exporting":"匯出中...","filterBtn":"篩選","fastNewsBtn":"⚡ 快速摘要","hideFastNewsBtn":"🔼 隐藏摘要","refreshBtn":"重新整理資料","watchNewsBtn":"觀看新聞","empty":"沒有符合的資料。","prev":"上一頁","next":"下一頁","paging":"顯示第 {start} - {end} 筆，共 {total} 筆","chartTooltip":"在 TradingView 查看圖表","excelSheetName":"股市新聞","tabs":{"stock":"個股","macro":"總經","stable":"穩定波動","high":"高波動","watchlist":"⭐ 自選股","spotlight":"🚀 焦點股"},"cols":{"index":"#","publish_time":"時間","single_stock":"代號","price_change_today_pct":"% 漲跌","ma15":"MA15","organ_name":"公司","industry":"產業","current_close":"價格","current_volume":"成交量","headline":"標題","source":"來源","link":"連結","time":"時間"},"filter":{"title":"篩選","search":"搜尋...","selectAll":"（全選）","clearAll":"全部清除","selectAllBtn":"全選","apply":"套用","stockCode":"股票代號","ma15":"MA15","industry":"產業","source":"來源","volumeLabel":"成交量","volumeUnit":"百萬","priceLabel":"價格","priceUnit":"千越盾","priceMinPlaceholder":"最少","priceMaxPlaceholder":"最多","volumeMinPlaceholder":"最少","volumeMaxPlaceholder":"最多","priceChangeLabel":"% 價格變動","priceChangeUnit":"%","priceChangeMinPlaceholder":"最少","priceChangeMaxPlaceholder":"最多","priceChangeDescription":"價格變動: {min} 至 {max} %","volumeDescription":"成交量: {min} – {max}","ma15Ranges":{"strongAbove":"⏫ MA15 (>5%)","above":"⬆️ MA15 (1 至 5%)","at":"↔️ MA15 (-1 至 1%)","below":"⬇️ MA15 (-5 至 -1%)","strongBelow":"⏬ MA15 (<-5%)"}},"ma15Tooltip":{"strongAbove":"相對 MA15 強勢上漲","above":"在 MA15 之上","at":"貼近 MA15","below":"在 MA15 之下","strongBelow":"相對 MA15 弱勢下跌","na":"無資料"},"macro":{"sheetName":"總經新聞"},"stable":{"sheetName":"穩定波動"},"high":{"sheetName":"高波動"},"spotlight":{"sheetName":"焦點股"},"watchlist":{"sheetName":"自選股"},"header":{"mainTitle":"24小時股市新聞","subTitle":"每日市場更新","refreshTitle":"重新整理頁面"},"footer":{"col1Title":"關於我們","col1Desc1":"依 3S 原則提供金融市場資訊：Short（精簡）– Sharp（犀利）– Straight（直白）。","col1Desc2":"「協助投資者更快掌握資金流向與市場趨勢。」","col2Title":"廣告合作","col2Founder":"Phạm Văn Thiện","founderName":"Phạm Văn Thiện","founderLabel":"創辦人","hotlineLabel":"客服專線","emailLabel":"電子郵件","col3Title":"生態系連結","mapsLabel":"Google 地圖","addressLabel":"總部地址","directionsLink":"在 Google 地圖開啟路線 →","version":"版本 4.0","updated":"更新：2026/05/08","copyrightResp":"內容負責人：Phạm Văn Thiện","copyrightCopy":"© 2026 24小時股市新聞 — 創辦人 Phạm Văn Thiện","newsTitle":"新聞","newsTitle2":"股市新聞"},"video":{"cannotLoad":"無法載入影片。","close":"關閉","tabVideoTitle":"觀看影片","titleStock":"今日股市總覽","titleMacro":"總體經濟：過去 24 小時重點"},"filterPopup":{"title":"篩選","close":"關閉"},"social":{"googleMaps":"Google 地圖","facebook":"Facebook","tiktok":"TikTok","youtube":"YouTube","linkedin":"LinkedIn","twitter":"X（Twitter）"},"sourceNames":{"Investing-ChiBaoKinhTe":"Investing-經濟指標","Investing-Forex":"Investing-外匯","Investing-HangHoa":"Investing-大宗商品","Investing-TheGioi":"Investing-國際","Investing-TinPhoBien":"Investing-熱門新聞"},"contact":{"founderLabel":"創辦人","founderName":"Phạm Văn Thiện","hotlineLabel":"客服專線","emailLabel":"電子郵件","phoneNumber":"0906 411 561","emailAddress":"admin@tintucchungkhoan24h.com","address":"29/22 Nguyễn Văn Khối, Phường Thông Tây Hội, Quận Gò Vấp, TP.HCM 71400"},"brand":{"threeS":"3S","short":"Short","sharp":"Sharp","straight":"Straight","logoAlt":"24小時股市新聞標誌"},"datepicker":{"months":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],"days":["一","二","三","四","五","六","日"],"inputPlaceholder":"dd/mm/yyyy"},"notApplicable":"不適用","page":{"documentTitle":"24小時股市新聞","metaDescription":"每日市場更新。股票分析與投資趨勢，服務關注越南市場的投資人。"},"exportFilePrefix":{"stock":"StockMarketNews","macro":"MacroNews","stable":"StableVolatility","high":"HighVolatility","watchlist":"Watchlist","spotlight":"Spotlight"},"exportError":"匯出 Excel 時發生錯誤，請再試一次。","exportErrorWithMessage":"匯出 Excel 時發生錯誤：{message}","exportUnexpectedResponse":"伺服器回傳的資料格式不正確。"};
 
     function applyDict() {
@@ -382,6 +582,276 @@
             }
         });
     }
+
+    // Inject dynamic client JS
+    // SEO Client Logic
+// Contains Custom DatePicker and Supabase fetching for dynamic feed
+
+const GMT7_OFFSET = 7 * 60; // 7 hours in minutes
+
+function getGMT7Date() {
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const gmt7 = new Date(utc + (GMT7_OFFSET * 60000));
+    gmt7.setHours(0, 0, 0, 0);
+    return gmt7;
+}
+
+function createGMT7Date(year, month, day) {
+    return new Date(Date.UTC(year, month, day, -7, 0, 0));
+}
+
+function parseISOtoGMT7(iso) {
+    if (!iso) return null;
+    const [y, m, d] = iso.split('-').map(Number);
+    return createGMT7Date(y, m - 1, d);
+}
+
+function isoToDisplay(iso) {
+    if (!iso) return '';
+    const [y, m, d] = iso.split('-');
+    return `${d}/${m}/${y}`;
+}
+
+function dateToIso(d) {
+    if (!d) return '';
+    const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    const gmt7 = new Date(utc + (GMT7_OFFSET * 60000));
+    const y = gmt7.getFullYear();
+    const m = String(gmt7.getMonth() + 1).padStart(2, '0');
+    const day = String(gmt7.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+}
+
+const pickers = {};
+
+function createPicker(id, onChange) {
+    const inputEl = document.getElementById(id);
+    const popupEl = document.getElementById(id + 'Popup');
+    if (!inputEl || !popupEl) return null;
+
+    const today = getGMT7Date();
+    const picker = { 
+        inputEl, popupEl, value: null, 
+        viewYear: today.getFullYear(), viewMonth: today.getMonth(), 
+        mode: 'day', min: null, max: null, onChange 
+    };
+    pickers[id] = picker;
+
+    inputEl.addEventListener('click', (e) => { e.stopPropagation(); togglePicker(id); });
+    inputEl.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePicker(id); });
+    popupEl.addEventListener('click', (e) => e.stopPropagation());
+    return picker;
+}
+
+function togglePicker(id) {
+    const picker = pickers[id];
+    const isOpen = picker.popupEl.classList.contains('open');
+    Object.keys(pickers).forEach(k => closePicker(k));
+    if (!isOpen) {
+        picker.mode = 'day';
+        renderPicker(id);
+        picker.popupEl.classList.add('open');
+    }
+}
+
+function closePicker(id) {
+    if (pickers[id]) pickers[id].popupEl.classList.remove('open');
+}
+
+document.addEventListener('click', () => {
+    Object.keys(pickers).forEach(k => closePicker(k));
+});
+
+function renderPicker(id) {
+    const picker = pickers[id];
+    const loc = langDict.datepicker || {
+        months: ["1","2","3","4","5","6","7","8","9","10","11","12"],
+        days: ["Mo","Tu","We","Th","Fr","Sa","Su"]
+    };
+    
+    const { viewYear, viewMonth, value, min, max } = picker;
+    const today = getGMT7Date();
+    const firstDay = createGMT7Date(viewYear, viewMonth, 1);
+    let startDow = firstDay.getDay(); 
+    startDow = (startDow === 0) ? 6 : startDow - 1; 
+
+    const daysInMonth = new Date(Date.UTC(viewYear, viewMonth + 1, 0, -7)).getDate();
+    const todayIso = dateToIso(today);
+    const valIso = value ? dateToIso(value) : null;
+    const minIso = min ? dateToIso(min) : null;
+    const maxIso = max ? dateToIso(max) : null;
+
+    let html = '';
+    if (picker.mode === 'day') {
+        html += `<div class="dp-header">
+            <button class="dp-nav-btn" onclick="navPicker('${id}', -1)">❮</button>
+            <div class="dp-month-year" onclick="setPickerMode('${id}','month')">${loc.months[viewMonth]} ${viewYear}</div>
+            <button class="dp-nav-btn" onclick="navPicker('${id}', 1)">❯</button>
+        </div>
+        <div class="dp-grid">`;
+        loc.days.forEach(d => { html += `<div class="dp-day-name">${d}</div>`; });
+        for (let i = 0; i < startDow; i++) { html += `<div class="dp-day empty"></div>`; }
+        
+        for (let d = 1; d <= daysInMonth; d++) {
+            const currentIso = dateToIso(createGMT7Date(viewYear, viewMonth, d));
+            let classes = ['dp-day'];
+            if (currentIso === todayIso) classes.push('today');
+            if (currentIso === valIso) classes.push('selected');
+            
+            let disabled = false;
+            if (minIso && currentIso < minIso) disabled = true;
+            if (maxIso && currentIso > maxIso) disabled = true;
+            if (disabled) classes.push('disabled');
+
+            if (disabled) {
+                html += `<div class="${classes.join(' ')}">${d}</div>`;
+            } else {
+                html += `<div class="${classes.join(' ')}" onclick="selectDate('${id}', ${d})">${d}</div>`;
+            }
+        }
+        html += `</div>`;
+    }
+    picker.popupEl.innerHTML = html;
+}
+
+function navPicker(id, dir) {
+    const p = pickers[id];
+    p.viewMonth += dir;
+    if (p.viewMonth < 0) { p.viewMonth = 11; p.viewYear--; }
+    else if (p.viewMonth > 11) { p.viewMonth = 0; p.viewYear++; }
+    renderPicker(id);
+}
+
+function selectDate(id, day) {
+    const p = pickers[id];
+    p.value = createGMT7Date(p.viewYear, p.viewMonth, day);
+    p.inputEl.value = isoToDisplay(dateToIso(p.value));
+    closePicker(id);
+    if (p.onChange) p.onChange(dateToIso(p.value));
+}
+
+function setPickerMode(id, mode) {
+    const p = pickers[id];
+    p.mode = mode;
+    // For simplicity in SEO client, we only implement 'day' mode
+    p.mode = 'day';
+    renderPicker(id);
+}
+
+// ─── Dynamic Fetching ────────────────────────────────────────────────────────
+
+let stateFromDate = '';
+let stateToDate = '';
+
+async function fetchDynamicFeed() {
+    const mainEl = document.getElementById('digest-feed');
+    const fetchBtn = document.getElementById('fetchFeedBtn');
+    
+    if (!stateFromDate || !stateToDate) return;
+    
+    // UI Loading state
+    fetchBtn.disabled = true;
+    fetchBtn.innerHTML = `⌛ Loading...`;
+    mainEl.innerHTML = `<div class="text-center py-10 text-gray-400">Loading summaries...</div>`;
+
+    try {
+        const url = `${window.SUPABASE_URL}/rest/v1/market_summary_stock?select=*&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc`;
+        const res = await fetch(url, {
+            headers: {
+                'apikey': window.SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${window.SUPABASE_ANON_KEY}`
+            }
+        });
+        
+        if (!res.ok) throw new Error('Failed to fetch data');
+        const rows = await res.json();
+        
+        if (!rows || rows.length === 0) {
+            mainEl.innerHTML = `<div class="text-center py-10 text-gray-400 font-bold text-lg">No summaries found for this date range.</div>`;
+            return;
+        }
+
+        let html = '';
+        const currentLang = document.documentElement.lang || 'vi';
+        const isRtl = currentLang === 'ar';
+
+        for (const row of rows) {
+            const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
+            const article = articles.find(a => a.langCode === currentLang) || articles[0];
+            
+            if (!article) continue;
+
+            const rDate = row.summary_date;
+            
+            html += `
+            <article class="mb-12" ${isRtl ? 'dir="rtl"' : ''}>
+                <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+                  ${article.title}
+                </h1>
+                <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
+                  📅 ${rDate} &nbsp;·&nbsp; ${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()} &nbsp;·&nbsp; ${window.SITE_NAME}
+                </div>
+                <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
+                <div class="digest-body">${article.content || ''}</div>
+            </article>
+            <hr class="border-gray-800 my-8">
+            `;
+        }
+
+        mainEl.innerHTML = html;
+
+    } catch (e) {
+        console.error(e);
+        mainEl.innerHTML = `<div class="text-center py-10 text-red-400 font-bold text-lg">Error loading summaries.</div>`;
+    } finally {
+        fetchBtn.disabled = false;
+        fetchBtn.innerHTML = `Làm mới dữ liệu`; // Fallback text, ideally localized
+    }
+}
+
+// ─── Initialization ──────────────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Default range (last 7 days matches static output)
+    const today = getGMT7Date();
+    const past7 = new Date(today);
+    past7.setDate(today.getDate() - 6);
+    
+    stateFromDate = dateToIso(past7);
+    stateToDate = dateToIso(today);
+
+    // Init pickers
+    const pFrom = createPicker('seoFromDate', (iso) => {
+        stateFromDate = iso;
+        if (pickers['seoToDate']) {
+            pickers['seoToDate'].min = parseISOtoGMT7(iso);
+        }
+    });
+    
+    const pTo = createPicker('seoToDate', (iso) => {
+        stateToDate = iso;
+        if (pickers['seoFromDate']) {
+            pickers['seoFromDate'].max = parseISOtoGMT7(iso);
+        }
+    });
+
+    if (pFrom) {
+        pFrom.value = past7;
+        pFrom.inputEl.value = isoToDisplay(stateFromDate);
+    }
+    if (pTo) {
+        pTo.value = today;
+        pTo.inputEl.value = isoToDisplay(stateToDate);
+        pTo.min = past7;
+    }
+
+    const fetchBtn = document.getElementById('fetchFeedBtn');
+    if (fetchBtn) {
+        fetchBtn.addEventListener('click', fetchDynamicFeed);
+    }
+});
+
   </script>
 </body>
 </html>

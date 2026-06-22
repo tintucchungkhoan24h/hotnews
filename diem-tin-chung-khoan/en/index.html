@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VN-Index June 22, 2026: Vingroup Stocks Surge, Cautious Liquidity | Tin Tức Chứng Khoán 24h</title>
-  <meta name="description" content="Vietnam's stock market on June 22, 2026 recorded its most impressive session in two months as VN-Index surged, led by the Vingroup cluster, even as overall liqu">
+  <title>VN-Index June 22, 2026: Vingroup leads rally amid cautious liquidity | Tin Tức Chứng Khoán 24h</title>
+  <meta name="description" content="The stock market on June 22, 2026, witnessed a robust trading session as the VN-Index posted its strongest gain in two months. Vingroup stocks served as the pri">
   <link rel="canonical" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/">
   <link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/">
   <link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/">
   <link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/">
-  <link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/">
+  <link rel="alternate" hreflang="zh-TW" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh-TW/">
   <link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/">
   <link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/">
   <link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/">
   <link rel="alternate" hreflang="x-default" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/">
 
-  <meta property="og:title" content="VN-Index June 22, 2026: Vingroup Stocks Surge, Cautious Liquidity">
-  <meta property="og:description" content="Vietnam's stock market on June 22, 2026 recorded its most impressive session in two months as VN-Index surged, led by the Vingroup cluster, even as overall liquidity remained cautiously subdued.">
+  <meta property="og:title" content="VN-Index June 22, 2026: Vingroup leads rally amid cautious liquidity">
+  <meta property="og:description" content="The stock market on June 22, 2026, witnessed a robust trading session as the VN-Index posted its strongest gain in two months. Vingroup stocks served as the primary engine for this rally, despite a ca">
   <meta property="og:url" content="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://tintucchungkhoan24h.com/ava_icon.png">
@@ -60,6 +60,170 @@
     .lang-option:hover { background-color: rgba(255,255,255,0.1); color: #fff; }
     #langToggle { display: flex; align-items: center; gap: 6px; background: rgba(17,34,64,0.95); border: 1px solid #4b5563; color: white; padding: 8px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; }
     #langToggle svg { width: 22px; height: 15px; display: block; border-radius: 2px; }
+
+    /* Inject dynamic client CSS */
+    /* Custom Date Picker */
+.datepicker-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.datepicker-input {
+    background: transparent;
+    color: white;
+    font-size: 0.75rem;
+    width: 100%;
+    min-width: 90px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    caret-color: transparent;
+    user-select: none;
+}
+.datepicker-input::placeholder { color: #6b7280; }
+.datepicker-popup {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 9999;
+    background: #112240;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    min-width: 240px;
+    max-width: calc(100vw - 32px);
+}
+#toDatePopup {
+    left: auto;
+    right: 0;
+}
+.datepicker-popup.open { display: block; }
+.dp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.dp-nav-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+}
+.dp-nav-btn:hover { background: #1e3a5f; color: #ffd700; }
+.dp-month-year {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffd700;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+.dp-month-year:hover { background: #1e3a5f; }
+.dp-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+.dp-day-name {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #6b7280;
+    padding: 4px 0;
+    text-transform: uppercase;
+}
+.dp-day {
+    text-align: center;
+    font-size: 12px;
+    padding: 6px 2px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #e5e7eb;
+}
+.dp-day:hover:not(.empty):not(.disabled) {
+    background: #1e3a5f;
+    color: #fff;
+}
+.dp-day.selected {
+    background: #ffd700;
+    color: #0a192f;
+    font-weight: 700;
+}
+.dp-day.today {
+    border: 1px solid #ffd700;
+}
+.dp-day.empty {
+    cursor: default;
+}
+.dp-day.disabled {
+    color: #4b5563;
+    cursor: not-allowed;
+}
+
+/* Control Bar UI (similar to main app) */
+.filter-controls-bar {
+    background: #112240;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.filter-date-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.filter-date-item {
+    display: flex;
+    flex-direction: column;
+}
+.filter-date-label {
+    font-size: 10px;
+    color: #9ca3af;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+.filter-divider {
+    width: 1px;
+    height: 24px;
+    background: #374151;
+}
+.fetch-btn {
+    background: #ffd700;
+    color: #0a192f;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.fetch-btn:hover {
+    background: #fef9c3;
+    transform: translateY(-1px);
+}
+.fetch-btn:disabled {
+    background: #374151;
+    color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+}
+
   </style>
 </head>
 <body class="bg-fin-blue min-h-screen">
@@ -117,9 +281,9 @@
       </button><button type="button" class="lang-option" data-lang="ko" onclick="window.location.href='/diem-tin-chung-khoan/ko/'">
           <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"><?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="flag-svg-ko" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.7 38.9" style="enable-background:new 0 0 55.7 38.9" xml:space="preserve"><style type="text/css">#flag-svg-ko .st0{fill:#FEFEFE;stroke:#CCCCCC;stroke-width:0.5;stroke-miterlimit:2.6131;} #flag-svg-ko .st1{fill:#252422;} #flag-svg-ko .st2{fill:none;stroke:#252422;stroke-width:1.6002;} #flag-svg-ko .st3{fill:none;stroke:#FEFEFE;stroke-width:0.7999;} #flag-svg-ko .st4{fill:#C62631;} #flag-svg-ko .st5{fill:#303C70;}</style><g><path class="st0" d="M3.28,38.65h49.13c1.67,0,3.03-1.37,3.03-3.03V3.28c0-1.67-1.36-3.03-3.03-3.03H3.28 c-1.67,0-3.03,1.36-3.03,3.03v32.33C0.25,37.29,1.61,38.65,3.28,38.65L3.28,38.65z"/><path class="st1" d="M12.54,15.01l5.32-7.99L12.54,15.01L12.54,15.01z M10.54,13.68l5.33-7.99L10.54,13.68L10.54,13.68z M8.55,12.35l5.33-7.99L8.55,12.35L8.55,12.35z"/><path class="st2" d="M12.54,15.01l5.32-7.99 M10.54,13.68l5.33-7.99 M8.55,12.35l5.33-7.99"/><path class="st1" d="M41.83,34.54l5.33-7.99L41.83,34.54L41.83,34.54z M39.83,33.21l5.33-7.99L39.83,33.21L39.83,33.21z M37.83,31.88l5.33-7.99L37.83,31.88L37.83,31.88z"/><path class="st2" d="M41.83,34.54l5.33-7.99 M39.83,33.21l5.33-7.99 M37.83,31.88l5.33-7.99"/><line class="st3" x1="39.17" y1="26.99" x2="45.82" y2="31.43"/><path class="st4" d="M19.86,14.13c2.94-4.41,8.9-5.6,13.31-2.66c4.41,2.94,5.6,8.9,2.66,13.31c-2.94,4.41-8.9,5.6-13.31,2.66 C18.11,24.5,16.92,18.54,19.86,14.13L19.86,14.13z"/><path class="st5" d="M19.86,14.13c-1.47,2.21-0.87,5.19,1.33,6.66c2.21,1.47,5.19,0.87,6.66-1.33c1.47-2.21,4.45-2.8,6.66-1.33 c2.21,1.47,2.8,4.45,1.33,6.66c-2.94,4.41-8.9,5.6-13.31,2.66C18.11,24.5,16.92,18.54,19.86,14.13L19.86,14.13z"/><path class="st1" d="M17.86,31.88l-5.32-7.99L17.86,31.88L17.86,31.88z M15.87,33.21l-5.33-7.99L15.87,33.21L15.87,33.21z M13.87,34.54l-5.33-7.99L13.87,34.54L13.87,34.54z"/><path class="st2" d="M17.86,31.88l-5.32-7.99 M15.87,33.21l-5.33-7.99 M13.87,34.54l-5.33-7.99"/><path class="st1" d="M47.15,12.35l-5.33-7.99L47.15,12.35L47.15,12.35z M45.16,13.68l-5.33-7.99L45.16,13.68L45.16,13.68z M43.16,15.01l-5.33-7.99L43.16,15.01L43.16,15.01z"/><path class="st2" d="M47.15,12.35l-5.33-7.99 M45.16,13.68l-5.33-7.99 M43.16,15.01l-5.33-7.99"/><path class="st1" d="M43.49,9.02l2-1.33L43.49,9.02L43.49,9.02z M39.17,11.91l2.33-1.55L39.17,11.91L39.17,11.91z M12.21,29.88 l2-1.33L12.21,29.88L12.21,29.88z"/><path class="st3" d="M43.49,9.02l2-1.33 M39.17,11.91l2.33-1.55 M12.21,29.88l2-1.33"/></g></svg></span>
           <span>한국어 (KR)</span>
-      </button><button type="button" class="lang-option" data-lang="zh" onclick="window.location.href='/diem-tin-chung-khoan/zh/'">
-          <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 60" shape-rendering="geometricPrecision"><rect width="90" height="60" fill="#FE0000"/><rect width="45" height="30" fill="#000095"/><path fill="#fff" d="M22.500,5.000L23.587,10.943L27.500,6.340L25.470,12.030L31.160,10.000L26.557,13.913L32.500,15.000L26.557,16.087L31.160,20.000L25.470,17.970L27.500,23.660L23.587,19.057L22.500,25.000L21.413,19.057L17.500,23.660L19.530,17.970L13.840,20.000L18.443,16.087L12.500,15.000L18.443,13.913L13.840,10.000L19.530,12.030L17.500,6.340L21.413,10.943Z"/></svg></span>
-          <span>繁體中文 (TW)</span>
+      </button><button type="button" class="lang-option" data-lang="zh-TW" onclick="window.location.href='/diem-tin-chung-khoan/zh-TW/'">
+          <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"></span>
+          <span>ZH-TW (ZH-TW)</span>
       </button><button type="button" class="lang-option" data-lang="th" onclick="window.location.href='/diem-tin-chung-khoan/th/'">
           <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;"><?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="flag-svg-th" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.68 38.88" style="enable-background:new 0 0 55.68 38.88" xml:space="preserve"><style type="text/css"><![CDATA[
 #flag-svg-th .st0{fill:#F4F5F8;}
@@ -153,21 +317,67 @@
       </div>
     </div>
 
-    <!-- MAIN ARTICLE -->
-    <main id="digest-main">
-      <a href="https://tintucchungkhoan24h.com/" class="back-link">← Full Analysis</a>
-
-      <article>
-        <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
-          VN-Index June 22, 2026: Vingroup Stocks Surge, Cautious Liquidity
-        </h1>
-        <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
-          📅 2026-06-22 &nbsp;·&nbsp;  English &nbsp;·&nbsp; Tin Tức Chứng Khoán 24h
+    <!-- FILTER CONTROLS BAR -->
+    <div class="filter-controls-bar">
+        <div class="filter-date-group">
+            <!-- From Date -->
+            <div class="filter-date-item">
+                <div class="filter-date-label" data-text-key="lblFrom">TỪ NGÀY</div>
+                <div class="datepicker-wrapper">
+                    <input type="text" id="seoFromDate" class="datepicker-input" readonly>
+                    <div id="seoFromDatePopup" class="datepicker-popup"></div>
+                </div>
+            </div>
+            
+            <div class="filter-divider"></div>
+            
+            <!-- To Date -->
+            <div class="filter-date-item">
+                <div class="filter-date-label" data-text-key="lblTo">ĐẾN NGÀY</div>
+                <div class="datepicker-wrapper">
+                    <input type="text" id="seoToDate" class="datepicker-input" readonly>
+                    <div id="seoToDatePopup" class="datepicker-popup"></div>
+                </div>
+            </div>
         </div>
+        
+        <button id="fetchFeedBtn" class="fetch-btn" style="margin-left: auto;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.59-9.28l5.67 1.72"/>
+            </svg>
+            <span data-text-key="lblRefresh">Làm mới dữ liệu</span>
+        </button>
+    </div>
 
-        <div class="digest-lead" >Vietnam's stock market on June 22, 2026 recorded its most impressive session in two months as VN-Index surged, led by the Vingroup cluster, even as overall liquidity remained cautiously subdued.</div>
-        <div class="digest-body"><h2>Market Sentiment: Green on the Surface</h2><p>The session on June 22, 2026 unfolded amid positive news of five major infrastructure project groundbreakings in Hanoi. However, VN-Index gains were driven primarily by Vingroup stocks — <strong>VIC</strong> hit the ceiling price, while <strong>VHM</strong> and <strong>VRE</strong> surged strongly. In reality, more stocks declined than advanced, reflecting cautious money flows beneath the green index figure.</p><h2>Money Flow Divergence</h2><p>Data shows clear divergence in money flow. Energy stocks like <strong>PVD</strong>, <strong>BSR</strong>, and <strong>POW</strong> gained in tandem with recovering global oil prices. In contrast, tech and retail names like <strong>FPT</strong> and <strong>MWG</strong> faced heavy foreign selling. Foreign investors extended their net selling streak to 5 consecutive sessions, concentrated on large-cap stocks — a significant challenge to a sustainable uptrend.</p><h2>Assessment & Recommendations</h2><p>MBS Research believes the recent uptick is likely still a technical bounce. VN-Index faces a dense resistance zone at 1,830–1,845 points. In the base scenario, the market will continue sideways consolidation. Investors should maintain high cash positions and prioritize fundamentally sound sectors such as securities, logistics, and manufacturing when prices pull back to attractive levels.</p></div>
-      </article>
+    <!-- MAIN ARTICLE FEED -->
+    <main id="digest-feed">
+      
+        <article class="mb-12">
+          <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+            VN-Index June 22, 2026: Vingroup leads rally amid cautious liquidity
+          </h1>
+          <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
+            📅 2026-06-22 &nbsp;·&nbsp; 🇺🇸 ENGLISH &nbsp;·&nbsp; Tin Tức Chứng Khoán 24h
+          </div>
+
+          <div class="digest-lead" >The stock market on June 22, 2026, witnessed a robust trading session as the VN-Index posted its strongest gain in two months. Vingroup stocks served as the primary engine for this rally, despite a cautious approach from investors regarding overall liquidity.</div>
+          <div class="digest-body"><h2>Market Sentiment: Divergence Amid Gains</h2><p>The June 22, 2026 session was influenced by the groundbreaking ceremony of five major infrastructure projects in Hanoi. However, the VN-Index rally was largely concentrated in the Vingroup ecosystem, with <strong>VIC</strong> hitting its daily limit, while <strong>VHM</strong> and <strong>VRE</strong> also saw significant gains. Despite the index climbing, market breadth remained weak as a majority of stocks declined, highlighting persistent investor caution.</p><h2>Capital Flow Divergence</h2><p>Capital flow showed a clear divergence. The energy sector, including <strong>PVD</strong>, <strong>BSR</strong>, and <strong>POW</strong>, trended upward following global oil price recovery. In contrast, tech and retail stocks like <strong>FPT</strong> and <strong>MWG</strong> faced heavy foreign selling. Foreign investors have continued their five-day selling streak, focusing on key pillars, which poses a risk to sustainable growth.</p><h2>Outlook and Recommendations</h2><p>MBS analysts suggest this rally is likely a technical rebound. The VN-Index faces thick resistance in the 1,830-1,845 range. In the base case, the market will likely consolidate. Investors are advised to maintain high cash levels and prioritize sectors with strong fundamentals such as securities, logistics, and manufacturing during pullbacks.</p><p>Data references: <a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: Stocks quietly attracting capital</a>, <a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index resistance analysis</a></p></div>
+        </article>
+        <hr class="border-gray-800 my-8">
+      
+        <article class="mb-12">
+          <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+            VN-Index June 22, 2026: Vingroup leads rally amid cautious liquidity
+          </h1>
+          <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
+            📅 2026-06-21 &nbsp;·&nbsp; 🇺🇸 ENGLISH &nbsp;·&nbsp; Tin Tức Chứng Khoán 24h
+          </div>
+
+          <div class="digest-lead" >The stock market on June 22, 2026, witnessed a robust trading session as the VN-Index posted its strongest gain in two months. Vingroup stocks served as the primary engine for this rally, despite a cautious approach from investors regarding overall liquidity.</div>
+          <div class="digest-body"><h2>Market Sentiment: Divergence Amid Gains</h2><p>The June 22, 2026 session was influenced by the groundbreaking ceremony of five major infrastructure projects in Hanoi. However, the VN-Index rally was largely concentrated in the Vingroup ecosystem, with <strong>VIC</strong> hitting its daily limit, while <strong>VHM</strong> and <strong>VRE</strong> also saw significant gains. Despite the index climbing, market breadth remained weak as a majority of stocks declined, highlighting persistent investor caution.</p><h2>Capital Flow Divergence</h2><p>Capital flow showed a clear divergence. The energy sector, including <strong>PVD</strong>, <strong>BSR</strong>, and <strong>POW</strong>, trended upward following global oil price recovery. In contrast, tech and retail stocks like <strong>FPT</strong> and <strong>MWG</strong> faced heavy foreign selling. Foreign investors have continued their five-day selling streak, focusing on key pillars, which poses a risk to sustainable growth.</p><h2>Outlook and Recommendations</h2><p>MBS analysts suggest this rally is likely a technical rebound. The VN-Index faces thick resistance in the 1,830-1,845 range. In the base case, the market will likely consolidate. Investors are advised to maintain high cash levels and prioritize sectors with strong fundamentals such as securities, logistics, and manufacturing during pullbacks.</p><p>Data references: <a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: Stocks quietly attracting capital</a>, <a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index resistance analysis</a></p></div>
+        </article>
+        <hr class="border-gray-800 my-8">
+      
     </main>
 
     <div class="mt-8 mb-4">
@@ -342,6 +552,9 @@
 
   <!-- Translation injection & Lang Menu JS -->
   <script>
+    window.SUPABASE_URL = 'https://ifjxishcrzndbszmvpef.supabase.co';
+    window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmanhpc2hjcnpuZGJzem12cGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNjEwOTcsImV4cCI6MjA5MjkzNzA5N30.0rHs4AWTmRmN34WWdxBM2RsTMu1VQwfKDjve0W2yHEg';
+    window.SITE_NAME = 'Tin Tức Chứng Khoán 24h';
     const langDict = {"title":"24H STOCK MARKET NEWS","subtitle":"Daily Market Updates","searchPlaceholder":"VHM, VIC, FPT...","searchPlaceholderMacro":"Gold, oil, inflation...","lblFrom":"From date","lblTo":"To date","loading":"Loading data...","exportBtn":"Export Excel","exporting":"Exporting...","filterBtn":"Filter","fastNewsBtn":"⚡ Quick Brief","hideFastNewsBtn":"🔼 Hide Brief","refreshBtn":"Refresh data","watchNewsBtn":"Watch news","empty":"No matching records found.","prev":"Prev","next":"Next","paging":"Showing {start} - {end} of {total}","chartTooltip":"View chart on TradingView","excelSheetName":"Stock Market News","tabs":{"stock":"Stock","macro":"Macro","stable":"Stable Volatility","high":"High Volatility","watchlist":"⭐ Watchlist","spotlight":"🚀 Spotlight Stocks"},"cols":{"index":"#","publish_time":"Time","single_stock":"Ticker","price_change_today_pct":"% Chg","ma15":"MA15","organ_name":"Company","industry":"Industry","current_close":"Price","current_volume":"Volume","headline":"Headline","source":"Source","link":"Link","time":"Time"},"filter":{"title":"Filters","search":"Search...","selectAll":"(Select All)","clearAll":"Clear All","selectAllBtn":"Select All","apply":"Apply Filters","stockCode":"Stock Code","ma15":"MA15","industry":"Industry","source":"Source","volumeLabel":"Volume","volumeUnit":"Million","priceLabel":"Price","priceUnit":"thousand VND","priceMinPlaceholder":"Min","priceMaxPlaceholder":"Max","volumeMinPlaceholder":"Min","volumeMaxPlaceholder":"Max","priceChangeLabel":"% Price Change","priceChangeUnit":"%","priceChangeMinPlaceholder":"Min","priceChangeMaxPlaceholder":"Max","priceChangeDescription":"Price Change: {min} to {max} %","volumeDescription":"Volume: {min} – {max}","ma15Ranges":{"strongAbove":"⏫ MA15 (>5%)","above":"⬆️ MA15 (1 to 5%)","at":"↔️ MA15 (-1 to 1%)","below":"⬇️ MA15 (-5 to -1%)","strongBelow":"⏬ MA15 (<-5%)"}},"ma15Tooltip":{"strongAbove":"Strong increase above MA15","above":"Above MA15 line","at":"At MA15 line","below":"Below MA15 line","strongBelow":"Strong decrease below MA15","na":"No data available"},"macro":{"sheetName":"Macro News"},"stable":{"sheetName":"Stable Volatility"},"high":{"sheetName":"High Volatility"},"spotlight":{"sheetName":"Spotlight Stocks"},"watchlist":{"sheetName":"Watchlist"},"header":{"mainTitle":"24H STOCK MARKET NEWS","subTitle":"Daily Market Updates","refreshTitle":"Refresh page"},"footer":{"col1Title":"About Us","col1Desc1":"Delivering financial market insights based on the 3S principle: Short – Sharp – Straight.","col1Desc2":"\"Helping investors track money flow and market trends faster every day.\"","col2Title":"Advertising Contact","col2Founder":"Phạm Văn Thiện","founderName":"Phạm Văn Thiện","founderLabel":"Founder","hotlineLabel":"Hotline","emailLabel":"Email","col3Title":"Our Ecosystem","mapsLabel":"Google Maps","addressLabel":"Headquarters","directionsLink":"Get directions on Google Maps →","version":"Version 4.0","updated":"Updated: 08/05/2026","copyrightResp":"Content responsible: Phạm Văn Thiện","copyrightCopy":"© 2026 24H Stock Market News — Founder Phạm Văn Thiện","newsTitle":"NEWS","newsTitle2":"STOCK MARKET NEWS"},"video":{"cannotLoad":"Video cannot be loaded.","close":"Close","tabVideoTitle":"Watch video","titleStock":"Today's Stock Market Overview","titleMacro":"Macroeconomics: Key Developments Over the Past 24 Hours"},"filterPopup":{"title":"Filters","close":"Close"},"social":{"googleMaps":"Google Maps","facebook":"Facebook","tiktok":"TikTok","youtube":"YouTube","linkedin":"LinkedIn","twitter":"X (Twitter)"},"sourceNames":{"Investing-ChiBaoKinhTe":"Investing-Economic Indicators","Investing-Forex":"Investing-Forex","Investing-HangHoa":"Investing-Commodities","Investing-TheGioi":"Investing-World News","Investing-TinPhoBien":"Investing-Popular News"},"contact":{"founderLabel":"Founder","founderName":"Phạm Văn Thiện","hotlineLabel":"Hotline","emailLabel":"Email","phoneNumber":"0906 411 561","emailAddress":"admin@tintucchungkhoan24h.com","address":"29/22 Nguyễn Văn Khối, Phường Thông Tây Hội, Quận Gò Vấp, TP.HCM 71400"},"brand":{"threeS":"3S","short":"Short","sharp":"Sharp","straight":"Straight","logoAlt":"24H Stock Market News logo"},"datepicker":{"months":["January","February","March","April","May","June","July","August","September","October","November","December"],"days":["Mo","Tu","We","Th","Fr","Sa","Su"],"inputPlaceholder":"dd/mm/yyyy"},"notApplicable":"N/A","page":{"documentTitle":"24H Stock Market News","metaDescription":"Daily market updates. Stock analysis and investment trends. For investors following the Vietnamese market."},"exportFilePrefix":{"stock":"StockMarketNews","macro":"MacroNews","stable":"StableVolatility","high":"HighVolatility","watchlist":"Watchlist","spotlight":"Spotlight"},"exportError":"Error exporting Excel file. Please try again.","exportErrorWithMessage":"Error exporting Excel file: {message}","exportUnexpectedResponse":"Unexpected response format from server."};
 
     function applyDict() {
@@ -382,6 +595,276 @@
             }
         });
     }
+
+    // Inject dynamic client JS
+    // SEO Client Logic
+// Contains Custom DatePicker and Supabase fetching for dynamic feed
+
+const GMT7_OFFSET = 7 * 60; // 7 hours in minutes
+
+function getGMT7Date() {
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const gmt7 = new Date(utc + (GMT7_OFFSET * 60000));
+    gmt7.setHours(0, 0, 0, 0);
+    return gmt7;
+}
+
+function createGMT7Date(year, month, day) {
+    return new Date(Date.UTC(year, month, day, -7, 0, 0));
+}
+
+function parseISOtoGMT7(iso) {
+    if (!iso) return null;
+    const [y, m, d] = iso.split('-').map(Number);
+    return createGMT7Date(y, m - 1, d);
+}
+
+function isoToDisplay(iso) {
+    if (!iso) return '';
+    const [y, m, d] = iso.split('-');
+    return `${d}/${m}/${y}`;
+}
+
+function dateToIso(d) {
+    if (!d) return '';
+    const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    const gmt7 = new Date(utc + (GMT7_OFFSET * 60000));
+    const y = gmt7.getFullYear();
+    const m = String(gmt7.getMonth() + 1).padStart(2, '0');
+    const day = String(gmt7.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+}
+
+const pickers = {};
+
+function createPicker(id, onChange) {
+    const inputEl = document.getElementById(id);
+    const popupEl = document.getElementById(id + 'Popup');
+    if (!inputEl || !popupEl) return null;
+
+    const today = getGMT7Date();
+    const picker = { 
+        inputEl, popupEl, value: null, 
+        viewYear: today.getFullYear(), viewMonth: today.getMonth(), 
+        mode: 'day', min: null, max: null, onChange 
+    };
+    pickers[id] = picker;
+
+    inputEl.addEventListener('click', (e) => { e.stopPropagation(); togglePicker(id); });
+    inputEl.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePicker(id); });
+    popupEl.addEventListener('click', (e) => e.stopPropagation());
+    return picker;
+}
+
+function togglePicker(id) {
+    const picker = pickers[id];
+    const isOpen = picker.popupEl.classList.contains('open');
+    Object.keys(pickers).forEach(k => closePicker(k));
+    if (!isOpen) {
+        picker.mode = 'day';
+        renderPicker(id);
+        picker.popupEl.classList.add('open');
+    }
+}
+
+function closePicker(id) {
+    if (pickers[id]) pickers[id].popupEl.classList.remove('open');
+}
+
+document.addEventListener('click', () => {
+    Object.keys(pickers).forEach(k => closePicker(k));
+});
+
+function renderPicker(id) {
+    const picker = pickers[id];
+    const loc = langDict.datepicker || {
+        months: ["1","2","3","4","5","6","7","8","9","10","11","12"],
+        days: ["Mo","Tu","We","Th","Fr","Sa","Su"]
+    };
+    
+    const { viewYear, viewMonth, value, min, max } = picker;
+    const today = getGMT7Date();
+    const firstDay = createGMT7Date(viewYear, viewMonth, 1);
+    let startDow = firstDay.getDay(); 
+    startDow = (startDow === 0) ? 6 : startDow - 1; 
+
+    const daysInMonth = new Date(Date.UTC(viewYear, viewMonth + 1, 0, -7)).getDate();
+    const todayIso = dateToIso(today);
+    const valIso = value ? dateToIso(value) : null;
+    const minIso = min ? dateToIso(min) : null;
+    const maxIso = max ? dateToIso(max) : null;
+
+    let html = '';
+    if (picker.mode === 'day') {
+        html += `<div class="dp-header">
+            <button class="dp-nav-btn" onclick="navPicker('${id}', -1)">❮</button>
+            <div class="dp-month-year" onclick="setPickerMode('${id}','month')">${loc.months[viewMonth]} ${viewYear}</div>
+            <button class="dp-nav-btn" onclick="navPicker('${id}', 1)">❯</button>
+        </div>
+        <div class="dp-grid">`;
+        loc.days.forEach(d => { html += `<div class="dp-day-name">${d}</div>`; });
+        for (let i = 0; i < startDow; i++) { html += `<div class="dp-day empty"></div>`; }
+        
+        for (let d = 1; d <= daysInMonth; d++) {
+            const currentIso = dateToIso(createGMT7Date(viewYear, viewMonth, d));
+            let classes = ['dp-day'];
+            if (currentIso === todayIso) classes.push('today');
+            if (currentIso === valIso) classes.push('selected');
+            
+            let disabled = false;
+            if (minIso && currentIso < minIso) disabled = true;
+            if (maxIso && currentIso > maxIso) disabled = true;
+            if (disabled) classes.push('disabled');
+
+            if (disabled) {
+                html += `<div class="${classes.join(' ')}">${d}</div>`;
+            } else {
+                html += `<div class="${classes.join(' ')}" onclick="selectDate('${id}', ${d})">${d}</div>`;
+            }
+        }
+        html += `</div>`;
+    }
+    picker.popupEl.innerHTML = html;
+}
+
+function navPicker(id, dir) {
+    const p = pickers[id];
+    p.viewMonth += dir;
+    if (p.viewMonth < 0) { p.viewMonth = 11; p.viewYear--; }
+    else if (p.viewMonth > 11) { p.viewMonth = 0; p.viewYear++; }
+    renderPicker(id);
+}
+
+function selectDate(id, day) {
+    const p = pickers[id];
+    p.value = createGMT7Date(p.viewYear, p.viewMonth, day);
+    p.inputEl.value = isoToDisplay(dateToIso(p.value));
+    closePicker(id);
+    if (p.onChange) p.onChange(dateToIso(p.value));
+}
+
+function setPickerMode(id, mode) {
+    const p = pickers[id];
+    p.mode = mode;
+    // For simplicity in SEO client, we only implement 'day' mode
+    p.mode = 'day';
+    renderPicker(id);
+}
+
+// ─── Dynamic Fetching ────────────────────────────────────────────────────────
+
+let stateFromDate = '';
+let stateToDate = '';
+
+async function fetchDynamicFeed() {
+    const mainEl = document.getElementById('digest-feed');
+    const fetchBtn = document.getElementById('fetchFeedBtn');
+    
+    if (!stateFromDate || !stateToDate) return;
+    
+    // UI Loading state
+    fetchBtn.disabled = true;
+    fetchBtn.innerHTML = `⌛ Loading...`;
+    mainEl.innerHTML = `<div class="text-center py-10 text-gray-400">Loading summaries...</div>`;
+
+    try {
+        const url = `${window.SUPABASE_URL}/rest/v1/market_summary_stock?select=*&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc`;
+        const res = await fetch(url, {
+            headers: {
+                'apikey': window.SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${window.SUPABASE_ANON_KEY}`
+            }
+        });
+        
+        if (!res.ok) throw new Error('Failed to fetch data');
+        const rows = await res.json();
+        
+        if (!rows || rows.length === 0) {
+            mainEl.innerHTML = `<div class="text-center py-10 text-gray-400 font-bold text-lg">No summaries found for this date range.</div>`;
+            return;
+        }
+
+        let html = '';
+        const currentLang = document.documentElement.lang || 'vi';
+        const isRtl = currentLang === 'ar';
+
+        for (const row of rows) {
+            const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
+            const article = articles.find(a => a.langCode === currentLang) || articles[0];
+            
+            if (!article) continue;
+
+            const rDate = row.summary_date;
+            
+            html += `
+            <article class="mb-12" ${isRtl ? 'dir="rtl"' : ''}>
+                <h1 class="text-2xl md:text-3xl font-black text-fin-gold leading-tight mb-4">
+                  ${article.title}
+                </h1>
+                <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-5">
+                  📅 ${rDate} &nbsp;·&nbsp; ${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()} &nbsp;·&nbsp; ${window.SITE_NAME}
+                </div>
+                <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
+                <div class="digest-body">${article.content || ''}</div>
+            </article>
+            <hr class="border-gray-800 my-8">
+            `;
+        }
+
+        mainEl.innerHTML = html;
+
+    } catch (e) {
+        console.error(e);
+        mainEl.innerHTML = `<div class="text-center py-10 text-red-400 font-bold text-lg">Error loading summaries.</div>`;
+    } finally {
+        fetchBtn.disabled = false;
+        fetchBtn.innerHTML = `Làm mới dữ liệu`; // Fallback text, ideally localized
+    }
+}
+
+// ─── Initialization ──────────────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Default range (last 7 days matches static output)
+    const today = getGMT7Date();
+    const past7 = new Date(today);
+    past7.setDate(today.getDate() - 6);
+    
+    stateFromDate = dateToIso(past7);
+    stateToDate = dateToIso(today);
+
+    // Init pickers
+    const pFrom = createPicker('seoFromDate', (iso) => {
+        stateFromDate = iso;
+        if (pickers['seoToDate']) {
+            pickers['seoToDate'].min = parseISOtoGMT7(iso);
+        }
+    });
+    
+    const pTo = createPicker('seoToDate', (iso) => {
+        stateToDate = iso;
+        if (pickers['seoFromDate']) {
+            pickers['seoFromDate'].max = parseISOtoGMT7(iso);
+        }
+    });
+
+    if (pFrom) {
+        pFrom.value = past7;
+        pFrom.inputEl.value = isoToDisplay(stateFromDate);
+    }
+    if (pTo) {
+        pTo.value = today;
+        pTo.inputEl.value = isoToDisplay(stateToDate);
+        pTo.min = past7;
+    }
+
+    const fetchBtn = document.getElementById('fetchFeedBtn');
+    if (fetchBtn) {
+        fetchBtn.addEventListener('click', fetchDynamicFeed);
+    }
+});
+
   </script>
 </body>
 </html>
