@@ -1045,6 +1045,10 @@
             <button id="tab-spotlight" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0">
                 <span class="tab-text" data-text-key="tabs.spotlight"></span>
             </button>
+            <a id="tab-digest" href="/diem-tin-chung-khoan/vi/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="Điểm tin chứng khoán">
+                <span style="font-size:0.9em;">📰</span>
+                <span class="tab-text" data-text-key="tabs.digest"></span>
+            </a>
         </div>
     </div>
 
@@ -4500,7 +4504,7 @@
         
         // Function to update tab labels
         function updateTabLabels() {
-            const tabs = document.querySelectorAll('.tab-button .tab-text');
+            const tabs = document.querySelectorAll('.tab-button .tab-text, #tab-digest .tab-text');
             // Update tab labels
             if (tabs[0]) tabs[0].innerText = i18n[state.lang].tabs.stock;
             if (tabs[1]) tabs[1].innerText = i18n[state.lang].tabs.macro;
@@ -4508,6 +4512,10 @@
             if (tabs[3]) tabs[3].innerText = i18n[state.lang].tabs.high;
             if (tabs[4]) tabs[4].innerText = i18n[state.lang].tabs.watchlist;
             if (tabs[5]) tabs[5].innerText = i18n[state.lang].tabs.spotlight;
+            if (tabs[6]) tabs[6].innerText = i18n[state.lang].tabs.digest || 'Điểm tin';
+            // Update digest link href to match current language
+            const digestTab = document.getElementById('tab-digest');
+            if (digestTab) digestTab.href = '/diem-tin-chung-khoan/' + (state.lang || 'vi') + '/';
         }
         
         // Tab click handlers are enabled after DOM content loads.
@@ -4520,6 +4528,12 @@
             document.getElementById('tab-high').addEventListener('click', () => loadCoreView('high'));
             document.getElementById('tab-watchlist').addEventListener('click', () => loadCoreView('watchlist'));
             document.getElementById('tab-spotlight').addEventListener('click', () => loadCoreView('spotlight'));
+            // Digest tab: navigate to the language-specific static SEO page
+            document.getElementById('tab-digest').addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = (state && state.lang) ? state.lang : DEFAULT_LANG;
+                window.location.href = '/diem-tin-chung-khoan/' + lang + '/';
+            });
         });
         
         // Load footer component

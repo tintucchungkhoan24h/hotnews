@@ -1,8 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage / Dashboard -->
   <url>
     <loc>https://tintucchungkhoan24h.com/</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Điểm tin – Vietnamese (primary) -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/"/>
+    <xhtml:link rel="alternate" hreflang="ko"    href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/"/>
+    <xhtml:link rel="alternate" hreflang="th"    href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/"/>
+    <xhtml:link rel="alternate" hreflang="ar"    href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja"    href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/"/>
+  </url>
+
+  <!-- Điểm tin – English -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Điểm tin – Korean -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Điểm tin – Chinese -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Điểm tin – Thai -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Điểm tin – Arabic -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Điểm tin – Japanese -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

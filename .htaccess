@@ -4,20 +4,31 @@ AddCharset UTF-8 .html
     Header set Content-Type "text/html; charset=UTF-8"
 </FilesMatch>
 
-# Aggressive cache control for Safari iOS
+# ── URL Routing ───────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect bare /diem-tin-chung-khoan/ → Vietnamese version
+    RewriteRule ^diem-tin-chung-khoan/?$ /diem-tin-chung-khoan/vi/ [R=302,L]
+
+    # Serve static SEO pages for /diem-tin-chung-khoan/{lang}/
+    RewriteRule ^diem-tin-chung-khoan/([a-z]{2,3})/?$ /diem-tin-chung-khoan/$1/index.html [L]
+</IfModule>
+
+# ── Cache Control ─────────────────────────────────────────────────────────────
 <IfModule mod_headers.c>
-    # Prevent caching of HTML files
+    # Prevent caching of HTML files (including SEO static pages)
     <FilesMatch "\.(html|htm)$">
         Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0, post-check=0, pre-check=0"
         Header set Pragma "no-cache"
         Header set Expires "0"
     </FilesMatch>
-    
+
     # Cache JS and CSS with version control (1 year)
     <FilesMatch "\.(js|css)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
-    
+
     # Prevent caching of images that might change
     <FilesMatch "\.(jpg|jpeg|png|gif|svg|ico)$">
         Header set Cache-Control "public, max-age=86400"
