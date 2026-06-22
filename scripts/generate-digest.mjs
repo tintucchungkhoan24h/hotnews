@@ -460,10 +460,6 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
       }).join('')}
     </main>
 
-    <div class="mt-8 mb-4 max-w-[1440px] mx-auto">
-      <a href="${dashboardUrl}" class="back-link">${BACK_LABEL[lang] || '← Back'}</a>
-    </div>
-
   </div>
 
   <!-- FOOTER -->
