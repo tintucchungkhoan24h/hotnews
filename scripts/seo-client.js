@@ -167,7 +167,7 @@ async function fetchDynamicFeed() {
     // UI Loading state
     fetchBtn.disabled = true;
     fetchBtn.style.opacity = '0.5';
-    mainEl.innerHTML = `<div class="text-center py-10 text-gray-400">Loading summaries...</div>`;
+    mainEl.innerHTML = `<div class="text-center py-10 text-gray-400">${langDict.loadingSummaries || 'Loading summaries...'}</div>`;
 
     try {
         const url = `${window.SUPABASE_URL}/rest/v1/market_summary_stock?select=*&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc`;
@@ -182,7 +182,7 @@ async function fetchDynamicFeed() {
         const rows = await res.json();
         
         if (!rows || rows.length === 0) {
-            mainEl.innerHTML = `<div class="text-center py-10 text-gray-400 font-bold text-lg">No summaries found for this date range.</div>`;
+            mainEl.innerHTML = `<div class="text-center py-10 text-gray-400 font-bold text-lg">${langDict.noSummaries || 'No summaries found for this date range.'}</div>`;
             return;
         }
 
