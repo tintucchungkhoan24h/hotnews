@@ -387,11 +387,11 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
                 <span class="tab-text">${currentI18n.tabs?.spotlight || '🚀 Mã Nổi Bật'}</span>
             </a>
             <a href="${CANONICAL_BASE}/diem-tin-chung-khoan/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
-                <span style="font-size:0.9em;">📰</span>
+                <span style="font-size:0.9em;">📊</span>
                 <span class="tab-text">${currentI18n.tabs?.digest || 'Điểm tin'}</span>
             </a>
             <a href="${canonical}" aria-current="page" class="tab-button active tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="${currentI18n.tabs?.macroFocus || 'Tập trung Vĩ Mô'}">
-                <span style="font-size:0.9em;">📊</span>
+                <span style="font-size:0.9em;">🌎</span>
                 <span class="tab-text">${currentI18n.tabs?.macroFocus || 'Tập trung Vĩ Mô'}</span>
             </a>
         </div>
