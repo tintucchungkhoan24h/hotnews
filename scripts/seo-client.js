@@ -313,6 +313,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             console.log('Auto-fetching dynamic feed...');
             fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
-        }, 1000);
+        }, 10);
     }
 });
