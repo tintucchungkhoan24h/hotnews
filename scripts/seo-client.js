@@ -309,5 +309,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const fetchBtn = document.getElementById('fetchFeedBtn');
     if (fetchBtn) {
         fetchBtn.addEventListener('click', fetchDynamicFeed);
+        // Auto-fetch on page load after everything is initialized
+        setTimeout(() => {
+            console.log('Auto-fetching dynamic feed...');
+            fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
+        }, 1000);
     }
 });

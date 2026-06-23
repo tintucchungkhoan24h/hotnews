@@ -131,6 +131,55 @@
       background-clip: text;
       text-shadow: 0 0 30px rgba(255,215,0,0.3);
       letter-spacing: -0.02em;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    article h2 {
+      background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(255,215,0,0.2);
+      letter-spacing: -0.01em;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    article h3 {
+      color: #ffd700;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    article h4 {
+      color: #fbbf24;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    article h5 {
+      color: #f59e0b;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 0.75rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    article h6 {
+      color: #d97706;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
     }
     
     /* Enhanced metadata styling */
@@ -1278,6 +1327,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const fetchBtn = document.getElementById('fetchFeedBtn');
     if (fetchBtn) {
         fetchBtn.addEventListener('click', fetchDynamicFeed);
+        // Auto-fetch on page load after everything is initialized
+        setTimeout(() => {
+            console.log('Auto-fetching dynamic feed...');
+            fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
+        }, 1000);
     }
 });
 
