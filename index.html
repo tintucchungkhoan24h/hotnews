@@ -1049,7 +1049,7 @@
                 <span style="font-size:0.9em;">📰</span>
                 <span class="tab-text" data-text-key="tabs.digest"></span>
             </a>
-            <a id="tab-macroFocus" href="/diem-tin-vi-mo/vi/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="Tập trung Vĩ Mô">
+            <a id="tab-macroFocus" href="/diem-tin-vi-mo/vi/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="Tiêu điểm Vĩ mô">
                 <span style="font-size:0.9em;">📊</span>
                 <span class="tab-text" data-text-key="tabs.macroFocus"></span>
             </a>
@@ -4631,7 +4631,7 @@
             if (tabs[4]) tabs[4].innerText = i18n[state.lang].tabs.watchlist;
             if (tabs[5]) tabs[5].innerText = i18n[state.lang].tabs.spotlight;
             if (tabs[6]) tabs[6].innerText = i18n[state.lang].tabs.digest || 'Điểm tin';
-            if (tabs[7]) tabs[7].innerText = i18n[state.lang].tabs.macroFocus || 'Tập trung Vĩ Mô';
+            if (tabs[7]) tabs[7].innerText = i18n[state.lang].tabs.macroFocus || 'Tiêu điểm Vĩ mô';
             // Update digest link href to match current language
             const digestTab = document.getElementById('tab-digest');
             if (digestTab) digestTab.href = '/diem-tin-chung-khoan/' + (state.lang || 'vi') + '/';
