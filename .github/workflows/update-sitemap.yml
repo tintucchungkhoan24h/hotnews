@@ -23,7 +23,9 @@ jobs:
           node-version: '24'
           
       - name: Generate digest pages and update sitemap
-        run: node scripts/generate-digest.mjs
+        run: |
+          node scripts/generate-digest.mjs
+          node scripts/generate-digest-macro.mjs
         
       - name: Commit and push changes
         env:
@@ -31,6 +33,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add sitemap.xml diem-tin-chung-khoan/
+          git add sitemap.xml diem-tin-chung-khoan/ diem-tin-vi-mo/
           git diff --staged --quiet || git commit -m "Auto-update sitemap and digest pages [skip ci]"
           git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }}
