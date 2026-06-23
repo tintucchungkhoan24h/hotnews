@@ -1201,6 +1201,62 @@ async function fetchDynamicFeed() {
             let formattedContent = article.content || '';
             // Convert h3 to h2 to match stock digest format
             formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
+            // First, fix all instances of double single quotes in rel attribute globally
+            formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+            // Fix <a> tags with broken href where URL is split into separate attributes
+            // General pattern: href="" followed by multiple ="" attributes that form the URL
+            // This handles cases like: href="" https:="" cafef.vn="" path.chn''=""
+            formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+((?:https?:=""\s+)?[^=]+=""\s+[^=]+=""\s+[^=]+=""(?:\s+[^=]+=""*)*)([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, urlParts, afterHref, text) => {
+              // Extract all the URL parts from the ="" attributes
+              const parts = urlParts.match(/([^=]+)=""/g) || [];
+              const url = parts.map(p => p.replace(/=""$/, '').replace(/''$/, '').replace(/""$/, '').trim()).join('');
+              const allAttrs = (beforeHref + ' ' + afterHref).trim();
+              return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+            });
+            // Fix <a> tags with href="" and URL split into multiple ="" attributes (4 parts)
+            formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+https:=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, domain, path1, path2, path3, afterHref, text) => {
+              const url = `https://${domain}${path1}${path2}${path3}`.replace(/''$/g, '').replace(/""$/g, '').trim();
+              const allAttrs = (beforeHref + ' ' + afterHref).trim();
+              return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+            });
+            // Fix <a> tags with href="" and URL split into multiple ="" attributes (5 parts)
+            formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+https:=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, domain, path1, path2, path3, path4, afterHref, text) => {
+              const url = `https://${domain}${path1}${path2}${path3}${path4}`.replace(/''$/g, '').replace(/""$/g, '').trim();
+              const allAttrs = (beforeHref + ' ' + afterHref).trim();
+              return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+            });
+            // Fix <a> tags with href wrapped in double single quotes (''url'')
+            formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=''([^'']+)''([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+              const allAttrs = (beforeHref + ' ' + afterHref).trim();
+              return `<a href="${hrefValue}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+            });
+            // First, fix <a> tags with comma-separated URLs in href attribute
+            formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=['"]([^'"]*?)['"]([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+              if (hrefValue.includes(',')) {
+                const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
+                const allAttrs = (beforeHref + ' ' + afterHref).trim();
+                return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
+              }
+              return match;
+            });
+            // Handle the specific case with double single quotes (''href='')
+            formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=''([^'']*?)''([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+              if (hrefValue.includes(',')) {
+                const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
+                const allAttrs = (beforeHref + ' ' + afterHref).trim();
+                return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
+              }
+              return match;
+            });
+            // Handle the case with double double quotes (""href="")
+            formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""([^"]*?)""([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+              if (hrefValue.includes(',')) {
+                const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
+                const allAttrs = (beforeHref + ' ' + afterHref).trim();
+                return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
+              }
+              return match;
+            });
             // Handle reference links in <p> tags format
             formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|数据参考|參考資料|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|データ参照|データ出典|参考文献)[^<]*[:：]\s*)([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
                 // Extract all links and put each on a new line
