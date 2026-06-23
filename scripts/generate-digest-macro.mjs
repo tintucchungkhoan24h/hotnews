@@ -451,7 +451,10 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
           return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
         });
         // Handle inline reference links format (comma-separated)
-        formattedContent = formattedContent.replace(/(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|数据参考|參考資料|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|データ参照|データ出典|参考文献)[:：]\s*((?:<a[^>]*>.*?<\/a>(?:\s*,\s*)?)+)/gi, (match, links) => {
+        formattedContent = formattedContent.replace(/(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|참고 자료 출처|数据参考|參考資料|參考資料來源|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|مصدر البيانات المرجعية|データ参照|データ出典|参考文献|参考データソース|Reference data source)[:：]\s*((?:<a[^>]*>.*?<\/a>(?:\s*,\s*)?)+)/gi, (match, links) => {
+          // Extract the label from the match
+          const labelMatch = match.match(/(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|참고 자료 출처|数据参考|參考資料|參考資料來源|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|مصدر البيانات المرجعية|データ参照|データ出典|参考文献|参考データソース|Reference data source)[:：]/i);
+          const label = labelMatch ? labelMatch[0] : 'Nguồn dữ liệu tham khảo:';
           // Extract all links and put each on a new line
           const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
           const formattedLinks = linkMatches.map(link => {
@@ -461,7 +464,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
             }
             return link;
           }).join('<br>');
-          return `<p><strong>Nguồn dữ liệu tham khảo: </strong><br>${formattedLinks}</p>`;
+          return `<p><strong>${label} </strong><br>${formattedLinks}</p>`;
         });
         
         return `
