@@ -432,11 +432,11 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
       ${articlesList.map(item => {
         // Format reference links to appear on separate lines with label
         let formattedContent = item.article.content || '';
-        formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|数据参考|ข้อมูลอ้างอิง|مصادر البيانات|データ参照|データ出典)[^<]*):\s*([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
+        formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|数据参考|參考資料|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|データ参照|データ出典|参考文献)[^<]*[:：]\s*)([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
           // Extract all links and put each on a new line
           const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
           const formattedLinks = linkMatches.join('<br>');
-          return `<p><strong>${label}:</strong><br>${formattedLinks}</p>`;
+          return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
         });
         
         return `
