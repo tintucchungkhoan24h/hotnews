@@ -724,7 +724,7 @@ article h1 {
           </div>
 
           <div class="digest-lead" >2026年6月23日，越南金融市場面臨劇烈分化。雖然外資湧入金融科技獨角獸，但匯率壓力和貨幣政策調整正創造不可預測的暗流。</div>
-          <div class="digest-body"><h3>宏觀格局：錯綜複雜</h3><p>在全球經濟受美伊談判及聯準會(FED)謹慎立場影響下，越南市場見證了重大的資金流向轉變。<strong>MoMo</strong>成功吸引外資顯示了對數位生態系統的信心，而收益率高達9%的銀行債券正吸引尋求避險資產的投資人。</p><h3>資金流��何方？</h3><p>資金正從投機性資產轉向具有透明治理結構與長期成長敘事的企業。自7月1日起，將中長期貸款的短期資金上限提高至40%，這是一項關鍵政策，旨在協助銀行緩解流動性壓力，並在國際波動中維持成長動能。</p><h3>投資策略：市場震盪還是買入機會？</h3><p>從專家觀點來看，當前的市場波動是資產重新定價的自然結果。對於個人投資人而言，針對財務基礎穩健的股票進行定期定額投資是最佳策略。與其追逐短期投機波段，不如專注於零售與金融等第二季獲利領先的產業。</p><p><strong>市場情緒：</strong>現在是觀察與選擇的黃金時期。市場修正提供了積累優質資產的機會，而非因外資淨賣出而恐慌。</p>參考資料來源: <a href='https://cafef.vn/ky-lan-fintech-momo-hut-nha-dau-tu-ngoai-sau-cu-dao-chieu-loi-nhuan-347-ty-dong-188260623111342109.chn'>MoMo吸引外資</a>, <a href='https://dantri.com.vn/kinh-doanh/chinh-thuc-noi-tran-von-ngan-han-cho-vay-trung-dai-han-tu-17-20260622212738762.htm'>貸款上限調整</a>, <a href='https://dantri.com.vn/kinh-doanh/lai-trai-phieu-ngan-hang-len-9nam-vuot-xa-muc-gui-tiet-kiem-20260622122515554.htm'>銀行債券收益率</a></div>
+          <div class="digest-body"><h2>宏觀格局：錯綜複雜</h2><p>在全球經濟受美伊談判及聯準會(FED)謹慎立場影響下，越南市場見證了重大的資金流向轉變。<strong>MoMo</strong>成功吸引外資顯示了對數位生態系統的信心，而收益率高達9%的銀行債券正吸引尋求避險資產的投資人。</p><h2>資金流��何方？</h2><p>資金正從投機性資產轉向具有透明治理結構與長期成長敘事的企業。自7月1日起，將中長期貸款的短期資金上限提高至40%，這是一項關鍵政策，旨在協助銀行緩解流動性壓力，並在國際波動中維持成長動能。</p><h2>投資策略：市場震盪還是買入機會？</h2><p>從專家觀點來看，當前的市場波動是資產重新定價的自然結果。對於個人投資人而言，針對財務基礎穩健的股票進行定期定額投資是最佳策略。與其追逐短期投機波段，不如專注於零售與金融等第二季獲利領先的產業。</p><p><strong>市場情緒：</strong>現在是觀察與選擇的黃金時期。市場修正提供了積累優質資產的機會，而非因外資淨賣出而恐慌。</p>參考資料來源: <a href='https://cafef.vn/ky-lan-fintech-momo-hut-nha-dau-tu-ngoai-sau-cu-dao-chieu-loi-nhuan-347-ty-dong-188260623111342109.chn'>MoMo吸引外資</a>, <a href='https://dantri.com.vn/kinh-doanh/chinh-thuc-noi-tran-von-ngan-han-cho-vay-trung-dai-han-tu-17-20260622212738762.htm'>貸款上限調整</a>, <a href='https://dantri.com.vn/kinh-doanh/lai-trai-phieu-ngan-hang-len-9nam-vuot-xa-muc-gui-tiet-kiem-20260622122515554.htm'>銀行債券收益率</a></div>
         </article>
         <hr class="border-gray-800 my-8">
       
@@ -1150,6 +1150,8 @@ async function fetchDynamicFeed() {
             
             // Format reference links to appear on separate lines with label
             let formattedContent = article.content || '';
+            // Convert h3 to h2 to match stock digest format
+            formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
             formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|数据参考|參考資料|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|データ参照|データ出典|参考文献)[^<]*[:：]\s*)([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
                 // Extract all links and put each on a new line
                 const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
