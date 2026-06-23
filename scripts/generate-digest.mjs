@@ -90,10 +90,9 @@ function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clien
   const flagMarkup = I18N_FLAGS[lang] || '';
   const langShort = I18N_LANG_SHORT[lang] || lang.toUpperCase();
   const menuHtml = langs.map(l => {
-      const baseLang = l.startsWith('zh') ? 'zh' : l;
-      const f = I18N_FLAGS[baseLang] || '';
-      const n = I18N_LANG_NAMES[baseLang] || l.toUpperCase();
-      const s = I18N_LANG_SHORT[baseLang] || l.toUpperCase();
+      const f = I18N_FLAGS[l] || '';
+      const n = I18N_LANG_NAMES[l] || l.toUpperCase();
+      const s = I18N_LANG_SHORT[l] || l.toUpperCase();
       return `<button type="button" class="lang-option" data-lang="${l}" onclick="window.location.href='/diem-tin-chung-khoan/${l}/'">
           <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;">${f}</span>
           <span>${n} (${s})</span>
@@ -603,9 +602,11 @@ async function main() {
         a.langName = I18N_LANG_NAMES[a.langCode];
         a.langEmoji = ''; 
       }
-      langsSet.add(a.langCode);
-      if (!dataByLang[a.langCode]) dataByLang[a.langCode] = [];
-      dataByLang[a.langCode].push({ date: rDate, article: a });
+      // Map zh-TW to zh for directory consistency
+      const langCode = a.langCode === 'zh-TW' ? 'zh' : a.langCode;
+      langsSet.add(langCode);
+      if (!dataByLang[langCode]) dataByLang[langCode] = [];
+      dataByLang[langCode].push({ date: rDate, article: a });
     }
   }
 
