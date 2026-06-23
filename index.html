@@ -1049,6 +1049,10 @@
                 <span style="font-size:0.9em;">📰</span>
                 <span class="tab-text" data-text-key="tabs.digest"></span>
             </a>
+            <a id="tab-macroFocus" href="/diem-tin-vi-mo/vi/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="Tập trung Vĩ Mô">
+                <span style="font-size:0.9em;">📊</span>
+                <span class="tab-text" data-text-key="tabs.macroFocus"></span>
+            </a>
         </div>
     </div>
 
@@ -4618,7 +4622,7 @@
         
         // Function to update tab labels
         function updateTabLabels() {
-            const tabs = document.querySelectorAll('.tab-button .tab-text, #tab-digest .tab-text');
+            const tabs = document.querySelectorAll('.tab-button .tab-text, #tab-digest .tab-text, #tab-macroFocus .tab-text');
             // Update tab labels
             if (tabs[0]) tabs[0].innerText = i18n[state.lang].tabs.stock;
             if (tabs[1]) tabs[1].innerText = i18n[state.lang].tabs.macro;
@@ -4627,9 +4631,13 @@
             if (tabs[4]) tabs[4].innerText = i18n[state.lang].tabs.watchlist;
             if (tabs[5]) tabs[5].innerText = i18n[state.lang].tabs.spotlight;
             if (tabs[6]) tabs[6].innerText = i18n[state.lang].tabs.digest || 'Điểm tin';
+            if (tabs[7]) tabs[7].innerText = i18n[state.lang].tabs.macroFocus || 'Tập trung Vĩ Mô';
             // Update digest link href to match current language
             const digestTab = document.getElementById('tab-digest');
             if (digestTab) digestTab.href = '/diem-tin-chung-khoan/' + (state.lang || 'vi') + '/';
+            // Update macroFocus link href to match current language
+            const macroFocusTab = document.getElementById('tab-macroFocus');
+            if (macroFocusTab) macroFocusTab.href = '/diem-tin-vi-mo/' + (state.lang || 'vi') + '/';
         }
         
         // Tab click handlers are enabled after DOM content loads.
