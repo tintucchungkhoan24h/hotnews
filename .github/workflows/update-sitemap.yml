@@ -1,6 +1,8 @@
 name: Update Sitemap
+
 permissions:
   contents: write
+
 on:
   schedule:
     # Run daily at 00:00 UTC (7:00 AM Vietnam time)
@@ -13,12 +15,12 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5  # <--- Upgraded to v5 to clear the warning
+        uses: actions/checkout@v5
         with:
           persist-credentials: true
           
       - name: Setup Node.js
-        uses: actions/setup-node@v5  # <--- Upgraded to v5 to clear the warning
+        uses: actions/setup-node@v5
         with:
           node-version: '24'
           
@@ -36,3 +38,13 @@ jobs:
           git add sitemap.xml diem-tin-chung-khoan/ diem-tin-vi-mo/
           git diff --staged --quiet || git commit -m "Auto-update sitemap and digest pages [skip ci]"
           git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }}
+
+      # --- TỰ ĐỘNG KÍCH HOẠT GOOGLE INDEXING API ---
+      - name: Create Service Account Key File
+        run: |
+          echo '${{ secrets.GCP_INDEXING_SERVICE_ACCOUNT_KEY }}' > service_account.json
+
+      - name: Install Google APIs client and Ping Google
+        run: |
+          npm install googleapis
+          node scripts/ping-google-index.mjs
