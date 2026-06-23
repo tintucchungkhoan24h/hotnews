@@ -720,7 +720,7 @@ article h1 {
           </div>
 
           <div class="digest-lead" >2026年6月22日，VN-Index創下兩個月以來最大單日漲幅，市場交易氣氛熱絡。Vingroup集團股票成為領漲火車頭，但市場整體流動性仍維持審慎觀察。</div>
-          <div class="digest-body"><h2>市場情緒：指數上漲與個股分化</h2><p>6月22日的行情受河內基礎設施專案動工消息提振。指數強勁上漲主要歸功於 <strong>VIC</strong> 觸及漲停，以及 <strong>VHM</strong> 和 <strong>VRE</strong> 的強勢表現。然而，市場呈現「指數漲、個股跌」的現象，大多數股票下跌，反映投資者對整體市場走勢仍抱持謹慎態度。</p><h2>資金流向分化</h2><p>資金流向呈現明顯差異。能源類股如 <strong>PVD</strong>、 <strong>BSR</strong>、 <strong>POW</strong> 隨國際油價回升而上漲。相反地，科技與零售類股如 <strong>FPT</strong> 和 <strong>MWG</strong> 面臨外資賣壓。外資連續五個交易日賣超，且主要集中在權值股，這對市場的持續上漲構成挑戰。</p><h2>市場展望與建議</h2><p>MBS分析認為，本次漲幅更傾向於技術性反彈。VN-Index正面臨 1,830-1,845 點的沉重壓力區。基本情境預測市場將維持盤整。建議投資���保持高現金比重，並在調整時優先佈局證券、物流及製造業等基本面強勁的板塊。</p><p><strong>參考資料：</strong><br><a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS：市場震盪中的資金吸納板塊</a><br><a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index壓力區分析</a></p></div>
+          <div class="digest-body"><h2>市場情緒：指數上漲與個股分化</h2><p>6月22日的行情受河內基礎設施專案動工消息提振。指數強勁上漲主要歸功於 <strong>VIC</strong> 觸及漲停，以及 <strong>VHM</strong> 和 <strong>VRE</strong> 的強勢表現。然而，市場呈現「指數漲、個股跌」的現象，大多數股票下跌，反映投資者對整體市場走勢仍抱持謹慎態度。</p><h2>資金流向分化</h2><p>資金流向呈現明顯差異。能源類股如 <strong>PVD</strong>、 <strong>BSR</strong>、 <strong>POW</strong> 隨國際油價回升而上漲。相反地，科技與零售類股如 <strong>FPT</strong> 和 <strong>MWG</strong> 面臨外資賣壓。外資連續五個交易日賣超，且主要集中在權值股，這對市場的持續上漲構成挑戰。</p><h2>市場展望與建議</h2><p>MBS分析認為，本次漲幅更傾向於技術性反彈。VN-Index正面臨 1,830-1,845 點的沉重壓力區。基本情境預測市場將維持盤整。建議投資���保持高現金比重，並在調整時優先佈局證券、物流及製造業等基本面強勁的板塊。</p><p><strong>參考資料：</strong><br><a target="_blank" rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS：市場震盪中的資金吸納板塊</a><br><a target="_blank" rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index壓力區分析</a></p></div>
         </article>
         <hr class="border-gray-800 my-8">
       
@@ -1149,7 +1149,13 @@ async function fetchDynamicFeed() {
             formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|数据参考|參考資料|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|データ参照|データ出典|参考文献)[^<]*[:：]\s*)([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
                 // Extract all links and put each on a new line
                 const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
-                const formattedLinks = linkMatches.join('<br>');
+                const formattedLinks = linkMatches.map(link => {
+                    // Add target="_blank" if not already present
+                    if (!link.includes('target=')) {
+                        return link.replace('<a', '<a target="_blank"');
+                    }
+                    return link;
+                }).join('<br>');
                 return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
             });
 
