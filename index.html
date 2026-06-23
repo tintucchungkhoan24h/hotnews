@@ -4656,6 +4656,12 @@
                 const lang = (state && state.lang) ? state.lang : DEFAULT_LANG;
                 window.location.href = '/diem-tin-chung-khoan/' + lang + '/';
             });
+            // Macro Focus tab: navigate to the language-specific static SEO page
+            document.getElementById('tab-macroFocus').addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = (state && state.lang) ? state.lang : DEFAULT_LANG;
+                window.location.href = '/diem-tin-vi-mo/' + lang + '/';
+            });
         });
         
         // Load footer component

@@ -385,7 +385,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
             <a href="${dashboardUrl}#spotlight/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
                 <span class="tab-text">${currentI18n.tabs?.spotlight || '🚀 Mã Nổi Bật'}</span>
             </a>
-            <a href="${dashboardUrl}#digest/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+            <a href="${CANONICAL_BASE}/diem-tin-chung-khoan/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
                 <span style="font-size:0.9em;">📰</span>
                 <span class="tab-text">${currentI18n.tabs?.digest || 'Điểm tin'}</span>
             </a>
@@ -599,7 +599,7 @@ async function main() {
   const headerHtml = readFile('header.html');
   const footerHtml = readFile('footer.html');
   const clientCss = readFile('scripts/seo-client.css');
-  const clientJs = readFile('scripts/seo-client.js');
+  const clientJs = readFile('scripts/seo-client-macro.js');
 
   let dataByLang = {};
   let langsSet = new Set();
