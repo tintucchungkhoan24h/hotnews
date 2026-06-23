@@ -45,13 +45,13 @@
     "ja": "ja"
   },
   "digestLabel": {
-    "vi": "Điểm tin",
-    "en": "Digest",
-    "ko": "요약",
-    "zh": "摘要",
-    "th": "สรุป",
-    "ar": "ملخص",
-    "ja": "ダイジェスト"
+    "vi": "Điểm tin CK",
+    "en": "Stock Digest",
+    "ko": "주식 요약",
+    "zh": "股市摘要",
+    "th": "สรุปหุ้น",
+    "ar": "ملخص الأسهم",
+    "ja": "株式ダイジェスト"
   },
   "backLabel": {
     "vi": "← Phân tích chi tiết",
@@ -111,7 +111,8 @@
         "high": "Biến động mạnh",
         "watchlist": "⭐ Danh sách theo dõi",
         "spotlight": "🚀 Mã Nổi Bật",
-        "digest": "Điểm tin"
+        "digest": "Điểm tin CK",
+        "macroFocus": "Tiêu điểm Vĩ mô"
       },
       "cols": {
         "index": "#",
@@ -325,7 +326,8 @@
         "high": "High Volatility",
         "watchlist": "⭐ Watchlist",
         "spotlight": "🚀 Spotlight Stocks",
-        "digest": "Digest"
+        "digest": "Stock Digest",
+        "macroFocus": "Macro Focus"
       },
       "cols": {
         "index": "#",
@@ -539,7 +541,8 @@
         "high": "고변동성",
         "watchlist": "⭐ 관심목록",
         "spotlight": "🚀 주목 종목",
-        "digest": "요약"
+        "digest": "주식 요약",
+        "macroFocus": "거시경제 포커스"
       },
       "cols": {
         "index": "#",
@@ -753,7 +756,8 @@
         "high": "高波動",
         "watchlist": "⭐ 自選股",
         "spotlight": "🚀 焦點股",
-        "digest": "摘要"
+        "digest": "股市摘要",
+        "macroFocus": "宏觀經濟焦點"
       },
       "cols": {
         "index": "#",
@@ -967,7 +971,8 @@
         "high": "ความผันผวนสูง",
         "watchlist": "⭐ วอตช์ลิสต์",
         "spotlight": "🚀 หุ้นเด่น",
-        "digest": "สรุป"
+        "digest": "สรุปหุ้น",
+        "macroFocus": "โฟกัสเศรษฐกิจมหภาค"
       },
       "cols": {
         "index": "#",
@@ -1179,7 +1184,8 @@
         "high": "تقلبات عالية",
         "watchlist": "⭐ قائمة المتابعة",
         "spotlight": "🚀 أسهم لافتة",
-        "digest": "ملخص"
+        "digest": "ملخص الأسهم",
+        "macroFocus": "تركيز الاقتصاد الكلي"
       },
       "cols": {
         "index": "#",
@@ -1391,7 +1397,8 @@
         "high": "高ボラティリティ",
         "watchlist": "⭐ ウォッチリスト",
         "spotlight": "🚀 注目銘柄",
-        "digest": "ダイジェスト"
+        "digest": "株式ダイジェスト",
+        "macroFocus": "マクロフォーカス"
       },
       "cols": {
         "index": "#",

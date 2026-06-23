@@ -1,13 +1,13 @@
 /**
- * generate-digest.mjs
+ * generate-digest-macro.mjs
  * ─────────────────────────────────────────────────────────────────────────────
- * Fetches the latest row from the Supabase `market_summary_stock` table,
+ * Fetches the latest row from the Supabase `market_summary_macro` table,
  * reads header.html + footer.html, and generates 7 static SEO pages:
- *   diem-tin-chung-khoan/{langCode}/index.html
+ *   diem-tin-vi-mo/{langCode}/index.html
  *
  * Usage:
- *   node scripts/generate-digest.mjs
- *   node scripts/generate-digest.mjs --sample
+ *   node scripts/generate-digest-macro.mjs
+ *   node scripts/generate-digest-macro.mjs --sample
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
@@ -62,7 +62,7 @@ function readFile(relPath) {
 
 // ── Fetch summaries ─────────────────────────────────────────────────────
 async function fetchSummaries() {
-  let url = `${SUPABASE_URL}/rest/v1/market_summary_stock?order=summary_date.desc&limit=7`;
+  let url = `${SUPABASE_URL}/rest/v1/market_summary_macro?order=summary_date.desc&limit=7`;
 
   const headers = {
     apikey: SUPABASE_ANON_KEY,
@@ -70,13 +70,13 @@ async function fetchSummaries() {
   };
 
   const rows = await fetchJson(url, headers);
-  if (!rows || rows.length === 0) throw new Error('No rows found in market_summary_stock');
+  if (!rows || rows.length === 0) throw new Error('No rows found in market_summary_macro');
   return rows;
 }
 
 // ── Generate one HTML page ───────────────────────────────────────────────────
 function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs }) {
-  const canonical  = `${CANONICAL_BASE}/diem-tin-chung-khoan/${lang}/`;
+  const canonical  = `${CANONICAL_BASE}/diem-tin-vi-mo/${lang}/`;
   const dashboardUrl = `${CANONICAL_BASE}/`;
   const isRtl      = lang === 'ar';
   
@@ -94,7 +94,7 @@ function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clien
       const f = I18N_FLAGS[l] || '';
       const n = I18N_LANG_NAMES[l] || l.toUpperCase();
       const s = I18N_LANG_SHORT[l] || l.toUpperCase();
-      return `<button type="button" class="lang-option" data-lang="${l}" onclick="window.location.href='/diem-tin-chung-khoan/${l}/'">
+      return `<button type="button" class="lang-option" data-lang="${l}" onclick="window.location.href='/diem-tin-vi-mo/${l}/'">
           <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;">${f}</span>
           <span>${n} (${s})</span>
       </button>`;
@@ -116,8 +116,8 @@ function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clien
   <title>${firstArticle.title} | ${SITE_NAME}</title>
   <meta name="description" content="${firstArticle.lead.replace(/"/g, '&quot;').slice(0, 160)}">
   <link rel="canonical" href="${canonical}">
-${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="${CANONICAL_BASE}/diem-tin-chung-khoan/${l}/">`).join('\n')}
-  <link rel="alternate" hreflang="x-default" href="${CANONICAL_BASE}/diem-tin-chung-khoan/vi/">
+${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="${CANONICAL_BASE}/diem-tin-vi-mo/${l}/">`).join('\n')}
+  <link rel="alternate" hreflang="x-default" href="${CANONICAL_BASE}/diem-tin-vi-mo/vi/">
 
   <meta property="og:title" content="${firstArticle.title}">
   <meta property="og:description" content="${firstArticle.lead.slice(0, 200)}">
@@ -386,13 +386,13 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
             <a href="${dashboardUrl}#spotlight/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
                 <span class="tab-text">${currentI18n.tabs?.spotlight || '🚀 Mã Nổi Bật'}</span>
             </a>
-            <a href="${canonical}" aria-current="page" class="tab-button active tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="${currentI18n.tabs?.digest || 'Điểm tin'}">
+            <a href="${CANONICAL_BASE}/diem-tin-chung-khoan/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
                 <span style="font-size:0.9em;">📰</span>
                 <span class="tab-text">${currentI18n.tabs?.digest || 'Điểm tin'}</span>
             </a>
-            <a href="${CANONICAL_BASE}/diem-tin-vi-mo/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="${currentI18n.tabs?.macroFocus || 'Tiêu điểm Vĩ mô'}">
+            <a href="${canonical}" aria-current="page" class="tab-button active tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="${currentI18n.tabs?.macroFocus || 'Tập trung Vĩ Mô'}">
                 <span style="font-size:0.9em;">📊</span>
-                <span class="tab-text">${currentI18n.tabs?.macroFocus || 'Tiêu điểm Vĩ mô'}</span>
+                <span class="tab-text">${currentI18n.tabs?.macroFocus || 'Tập trung Vĩ Mô'}</span>
             </a>
         </div>
     </div>
@@ -436,6 +436,9 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
       ${articlesList.map(item => {
         // Format reference links to appear on separate lines with label
         let formattedContent = item.article.content || '';
+        // Convert h3 to h2 to match stock digest format
+        formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
+        // Handle reference links in <p> tags format
         formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|数据参考|參考資料|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|データ参照|データ出典|参考文献)[^<]*[:：]\s*)([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
           // Extract all links and put each on a new line
           const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
@@ -447,6 +450,22 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
             return link;
           }).join('<br>');
           return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
+        });
+        // Handle inline reference links format (comma-separated)
+        formattedContent = formattedContent.replace(/(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|참고 자료 출처|数据参考|參考資料|參考資料來源|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|مصدر البيانات المرجعية|データ参照|データ出典|参考文献|参考データソース|Reference data source)[:：]\s*((?:<a[^>]*>.*?<\/a>(?:\s*,\s*)?)+)/gi, (match, links) => {
+          // Extract the label from the match
+          const labelMatch = match.match(/(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|참고 자료 출처|数据参考|參考資料|參考資料來源|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|مصدر البيانات المرجعية|データ参照|データ出典|参考文献|参考データソース|Reference data source)[:：]/i);
+          const label = labelMatch ? labelMatch[0] : 'Nguồn dữ liệu tham khảo:';
+          // Extract all links and put each on a new line
+          const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
+          const formattedLinks = linkMatches.map(link => {
+            // Add target="_blank" if not already present
+            if (!link.includes('target=')) {
+              return link.replace('<a', '<a target="_blank"');
+            }
+            return link;
+          }).join('<br>');
+          return `<p><strong>${label} </strong><br>${formattedLinks}</p>`;
         });
         
         return `
@@ -538,54 +557,54 @@ async function main() {
   let articles;
 
   if (isSample) {
-    console.log('📡 Using SAMPLE_ARTICLES...');
-    // Hardcoded sample data
+    console.log('📡 Using SAMPLE_ARTICLES for macro...');
+    // Hardcoded sample data for macro
     articles = [
       {
         langCode: 'vi', langName: 'VIETNAMESE', langEmoji: '🇻🇳',
-        title: 'VN-Index ngày 22/06/2026: Nhóm Vingroup bứt phá, thanh khoản thận trọng',
-        lead: 'Thị trường chứng khoán ngày 22/06/2026 ghi nhận phiên giao dịch đầy hưng phấn khi VN-Index xác lập mức tăng ấn tượng nhất trong 2 tháng qua. Sự bứt phá của nhóm Vingroup đã đóng vai trò trụ cột, dù thanh khoản thị trường vẫn duy trì trạng thái quan sát thận trọng.',
-        content: '<h2>Tâm lý thị trường: \'Xanh vỏ đỏ lòng\'</h2><p>Phiên giao dịch ngày 22/06/2026 diễn ra trong bối cảnh nhà đầu tư đón nhận thông tin tích cực về việc khởi công 5 dự án hạ tầng lớn tại Hà Nội. Tuy nhiên, đà tăng của VN-Index chủ yếu đến từ sự dẫn dắt của nhóm Vingroup với <strong>VIC</strong> tăng trần, <strong>VHM</strong> và <strong>VRE</strong> bứt phá mạnh. Thực tế, trạng thái thị trường vẫn mang tính \'xanh vỏ đỏ lòng\' khi số lượng mã giảm điểm chiếm ưu thế, phản ánh dòng tiền còn rất thận trọng.</p><h2>Sự phân hóa của dòng tiền</h2><p>Dữ liệu cho thấy dòng tiền có sự phân hóa rõ rệt. Nhóm dầu khí như <strong>PVD</strong>, <strong>BSR</strong>, <strong>POW</strong> ghi nhận mức tăng đồng thuận theo đà phục hồi của giá dầu thế giới. Ngược lại, nhóm công nghệ và bán lẻ như <strong>FPT</strong>, <strong>MWG</strong> chịu áp lực bán ròng mạnh từ khối ngoại. Việc khối ngoại nối dài chuỗi bán ròng 5 phiên liên tiếp, đặc biệt tập trung vào các mã trụ cột, đặt ra thách thức lớn cho xu hướng tăng bền vững.</p><h2>Nhận định và Khuyến nghị</h2><p>MBS đánh giá nhịp tăng vừa qua nhiều khả năng vẫn là hồi kỹ thuật. VN-Index đang đối mặt với vùng kháng cự dày 1.830-1.845 điểm. Trong kịch bản cơ sở, thị trường sẽ tiếp tục xu hướng đi ngang. Nhà đầu tư nên giữ tỷ trọng tiền mặt cao, ưu tiên các ngành có nền tảng cơ bản tốt như chứng khoán, logistics và sản xuất khi có nhịp điều chỉnh về vùng giá hấp dẫn.</p><p>Nguồn dữ liệu tham khảo: <a rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: Loạt nhóm cổ phiếu đang âm thầm "hút tiền" giữa lúc VN-Index giằng co</a>, <a rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">Phía trước VN-Index là vùng cản khá dày, thị trường sẽ điều chỉnh?</a></p>'
+        title: 'Cập nhật kinh tế vĩ mô tuần 22/06/2026: Giá dầu hồi phục, lạm phát ổn định',
+        lead: 'Tuần qua, thị trường kinh tế vĩ mô ghi nhận nhiều diễn biến tích cực với giá dầu thế giới phục hồi nhẹ sau chuỗi giảm sâu. Lạm phát tại các nền kinh tế lớn tiếp tục ổn định, tạo động lực cho các quyết định chính sách tiền tệ trong thời gian tới.',
+        content: '<h2>Giá dầu thế giới</h2><p>Giá dầu Brent tăng 2.3% lên mức 78.5 USD/thùng trong tuần qua, phản ánh kỳ vọng về nhu cầu năng lượng phục hồi mùa hè. Tổ chức các nước xuất khẩu dầu mỏ (OPEC+) duy trì chính sách sản xuất hiện tại, hỗ trợ giá dầu ở mức cân bằng.</p><h2>Lạm phát và Chính sách tiền tệ</h2><p>Chỉ số giá tiêu dùng (CPI) của Mỹ tăng 0.2% trong tháng 5, thấp hơn dự kiến 0.3%, cho thấy lạm phát đang được kiểm soát hiệu quả. Cục Dự trữ Liên bang Mỹ (Fed) có thể duy trì lãi suất cao trong thời gian dài hơn để đảm bảo lạm phát quay về mục tiêu 2%.</p><h2>Kinh tế Châu Á</h2><p>Kinh tế Trung Quốc tiếp tục phục hồi với PMI sản xuất đạt 51.2 điểm, vượt mức 50 điểm ngưỡng tăng trưởng. Ngân hàng Nhân dân Trung Quốc (PBOC) duy trì chính sách tiền tệ nới lỏng để hỗ trợ tăng trưởng kinh tế.</p>'
       },
       {
         langCode: 'en', langName: 'ENGLISH', langEmoji: '🇺🇸',
-        title: 'VN-Index June 22, 2026: Vingroup Stocks Surge, Cautious Liquidity',
-        lead: 'Vietnam\'s stock market on June 22, 2026 recorded its most impressive session in two months as VN-Index surged, led by the Vingroup cluster, even as overall liquidity remained cautiously subdued.',
-        content: '<h2>Market Sentiment: Green on the Surface</h2><p>The session on June 22, 2026 unfolded amid positive news of five major infrastructure project groundbreakings in Hanoi. However, VN-Index gains were driven primarily by Vingroup stocks — <strong>VIC</strong> hit the ceiling price, while <strong>VHM</strong> and <strong>VRE</strong> surged strongly. In reality, more stocks declined than advanced, reflecting cautious money flows beneath the green index figure.</p><h2>Money Flow Divergence</h2><p>Data shows clear divergence in money flow. Energy stocks like <strong>PVD</strong>, <strong>BSR</strong>, and <strong>POW</strong> gained in tandem with recovering global oil prices. In contrast, tech and retail names like <strong>FPT</strong> and <strong>MWG</strong> faced heavy foreign selling. Foreign investors extended their net selling streak to 5 consecutive sessions, concentrated on large-cap stocks — a significant challenge to a sustainable uptrend.</p><h2>Assessment & Recommendations</h2><p>MBS Research believes the recent uptick is likely still a technical bounce. VN-Index faces a dense resistance zone at 1,830–1,845 points. In the base scenario, the market will continue sideways consolidation. Investors should maintain high cash positions and prioritize fundamentally sound sectors such as securities, logistics, and manufacturing when prices pull back to attractive levels.</p>'
+        title: 'Macro Economic Update Week 22/06/2026: Oil Recovery, Stable Inflation',
+        lead: 'The past week saw positive macroeconomic developments with global oil prices recovering slightly after a deep decline. Inflation in major economies continues to stabilize, setting the stage for monetary policy decisions ahead.',
+        content: '<h2>Global Oil Prices</h2><p>Brent crude rose 2.3% to $78.5 per barrel this week, reflecting expectations for energy demand recovery this summer. OPEC+ maintained current production policies, supporting oil prices at balanced levels.</p><h2>Inflation and Monetary Policy</h2><p>The US Consumer Price Index (CPI) increased 0.2% in May, below the expected 0.3%, indicating effective inflation control. The Federal Reserve may maintain higher interest rates longer to ensure inflation returns to the 2% target.</p><h2>Asian Economy</h2><p>China\'s economy continues to recover with manufacturing PMI reaching 51.2 points, above the 50-point growth threshold. The People\'s Bank of China (PBOC) maintains accommodative monetary policy to support economic growth.</p>'
       },
       {
         langCode: 'ko', langName: 'KOREAN', langEmoji: '🇰🇷',
-        title: 'VN-지수 2026년 6월 22일: 빈그룹 급등, 신중한 유동성',
-        lead: '2026년 6월 22일 베트남 증시는 빈그룹 주도로 VN-지수가 2개월 만에 최고의 상승세를 기록했으나 전반적인 유동성은 여전히 조심스러운 분위기를 보였습니다.',
-        content: '<h2>시장 심리: 겉은 초록, 속은 빨강</h2><p>2026년 6월 22일 장은 하노이의 5대 인프라 프로젝트 착공 소식 속에 전개되었습니다. 그러나 VN-지수 상승은 주로 빈그룹 주식들이 견인했습니다 — <strong>VIC</strong>는 상한가, <strong>VHM</strong>과 <strong>VRE</strong>도 강세를 보였습니다. 실제로는 하락 종목 수가 상승 종목 수를 앞서며 투자 심리의 신중함을 반영했습니다.</p><h2>자금 흐름 분화</h2><p>데이터에 따르면 자금 흐름이 뚜렷하게 분화되고 있습니다. <strong>PVD</strong>, <strong>BSR</strong>, <strong>POW</strong> 등 에너지 종목들은 국제 유가 회복에 힘입어 동반 상승했습니다. 반면 <strong>FPT</strong>, <strong>MWG</strong> 등 기술·유통주는 외국인 순매도 압박을 받았습니다. 외국인 투자자들의 5일 연속 순매도는 지속 상승에 대한 큰 도전 과제입니다.</p><h2>평가 및 추천</h2><p>MBS 리서치는 최근 반등이 기술적 회복 가능성이 높다고 분석합니다. VN-지수는 1,830~1,845포인트의 강한 저항대에 직면해 있습니다. 기본 시나리오에서 시장은 박스권 흐름을 이어갈 것입니다. 투자자들은 높은 현금 비중을 유지하고 증권, 물류, 제조업 등 기초 체력이 좋은 업종을 매력적인 가격대에서 매수하는 전략이 권장됩니다.</p>'
+        title: '2026년 6월 22일 주 거시경제 업데이트: 유가 회복, 물가 안정',
+        lead: '지난 주에는 유가가 급락 후 약간 회복되는 등 긍정적인 거시경제 지표가 관찰되었습니다. 주요 경제의 인플레이션은 계속 안정되어 향후 통화 정책 결정의 기반을 마련했습니다.',
+        content: '<h2>국제 유가</h2><p>브렌트 유가는 주간 2.3% 상승하여 배럴당 78.5달러를 기록했으며, 이는 여름철 에너지 수요 회복에 대한 기대를 반영합니다. OPEC+는 현재 생산 정책을 유지하여 유가를 균형 수준으로 지원하고 있습니다.</p><h2>인플레이션 및 통화 정책</h2><p>미국 소비자물가지수(CPI)는 5월에 0.2% 상승하여 예상치 0.3%를 하회했으며, 이는 효과적인 인플레이션 통제를 나타냅니다. 연방준비제도이사회(Fed)는 인플레이션이 2% 목표로 복귀하는 것을 보장하기 위해 더 오랫동안 높은 금리를 유지할 수 있습니다.</p><h2>아시아 경제</h2><p>중국 경제는 제조업 PMI가 51.2포인트에 도달하여 성장 임계값인 50포인트를 초과하며 회복을 지속하고 있습니다. 중국 인민은행(PBOC)은 경제 성장을 지원하기 위해 완화적인 통화 정책을 유지하고 있습니다.</p>'
       },
       {
         langCode: 'zh', langName: 'CHINESE', langEmoji: '🇹🇼',
-        title: 'VN指數2026年6月22日：Vingroup板塊爆發，流動性謹慎',
-        lead: '2026年6月22日越南股市創下兩個月來最佳表現，VN指數在Vingroup概念股帶動下強勢上漲，但整體流動性仍保持謹慎觀望態勢。',
-        content: '<h2>市場情緒：表面繁榮</h2><p>2026年6月22日的交易在河內五大基礎設施項目奠基的利好消息背景下展開。然而，VN指數的漲勢主要由Vingroup股票主導——<strong>VIC</strong>觸及漲停板，<strong>VHM</strong>和<strong>VRE</strong>強勢突破。實際上，下跌股票數量多於上漲股票，反映資金流入依然謹慎。</p><h2>資金流向分化</h2><p>數據顯示資金流向出現明顯分化。<strong>PVD</strong>、<strong>BSR</strong>、<strong>POW</strong>等能源股跟隨國際油價回升而集體上漲。相反，<strong>FPT</strong>、<strong>MWG</strong>等科技和零售股承受外資強力賣壓。外資連續5日凈賣出，尤其集中在藍籌股，對持續上漲構成重大挑戰。</p><h2>評估與建議</h2><p>MBS研究認為近期反彈很可能仍是技術性回升。VN指數面臨1830-1845點的強阻力區。基準情景下，市場將繼續橫盤整理。建議投資者保持較高現金比例，在回調至吸引人價位時優先佈局基本面良好的證券、物流和製造業等板塊。</p>'
+        title: '2026年6月22日宏觀經濟更新：油價回升，通脹穩定',
+        lead: '過去一周，宏觀經濟出現積極發展，全球油價在深度下跌後略有回升。主要經濟體的通脹繼續穩定，為未來貨幣政策決定奠定基礎。',
+        content: '<h2>全球油價</h2><p>布倫特原油本周上漲2.3%至每桶78.5美元，反映了對夏季能源需求恢復的預期。OPEC+維持當前生產政策，支持油價處於平衡水平。</p><h2>通脹與貨幣政策</h2><p>美國消費者物價指數(CPI)5月上漲0.2%，低於預期的0.3%，表明通脹得到有效控制。美聯儲可能維持較高利率更長時間，以確保通脹回到2%目標。</p><h2>亞洲經濟</h2><p>中國經濟繼續復甦，製造業PMI達到51.2點，高於50點增長閾值。中國人民銀行(PBOC)維持寬鬆貨幣政策以支持經濟增長。</p>'
       },
       {
         langCode: 'th', langName: 'THAI', langEmoji: '🇹🇭',
-        title: 'VN-Index วันที่ 22 มิ.ย. 2569: Vingroup พุ่งแรง สภาพคล่องยังระมัดระวัง',
-        lead: 'ตลาดหุ้นเวียดนามวันที่ 22 มิถุนายน 2569 บันทึกการซื้อขายที่คึกคักที่สุดในรอบ 2 เดือน โดย VN-Index พุ่งสูงขึ้นนำโดยกลุ่ม Vingroup แม้สภาพคล่องโดยรวมยังคงระมัดระวัง',
-        content: '<h2>บรรยากาศตลาด: เขียวข้างนอก แดงข้างใน</h2><p>การซื้อขายวันที่ 22 มิถุนายน 2569 เกิดขึ้นท่ามกลางข่าวดีเรื่องการเริ่มต้นก่อสร้างโครงสร้างพื้นฐาน 5 โครงการใหญ่ในกรุงฮานอย อย่างไรก็ตาม การขึ้นของ VN-Index ส่วนใหญ่มาจากการนำโดยกลุ่ม Vingroup — <strong>VIC</strong> ขึ้น ceiling price, <strong>VHM</strong> และ <strong>VRE</strong> พุ่งแรง ความจริงแล้วจำนวนหุ้นที่ลดลงมากกว่าที่ขึ้น สะท้อนว่าเงินทุนยังระมัดระวัง</p><h2>การแยกตัวของกระแสเงิน</h2><p>ข้อมูลแสดงให้เห็นการแยกตัวของกระแสเงินอย่างชัดเจน กลุ่มพลังงานอย่าง <strong>PVD</strong>, <strong>BSR</strong>, <strong>POW</strong> ขึ้นพร้อมกันตามราคาน้ำมันโลกที่ฟื้นตัว ในทางตรงข้าม หุ้นเทคโนโลยีและค้าปลีกอย่าง <strong>FPT</strong>, <strong>MWG</strong> เผชิญแรงขายจากต่างชาติอย่างหนัก การขายสุทธิของต่างชาติที่ต่อเนื่อง 5 วันติดต่อกันเป็นความท้าทายสำคัญ</p><h2>การประเมินและคำแนะนำ</h2><p>MBS Research ประเมินว่าการขึ้นล่าสุดน่าจะยังเป็นการฟื้นตัวทางเทคนิค VN-Index เผชิญแนวต้านหนาแน่นที่ 1,830-1,845 จุด ในสถานการณ์พื้นฐาน ตลาดจะยังคงแกว่งตัวในกรอบ ควรรักษาสัดส่วนเงินสดสูงและให้ความสำคัญกับอุตสาหกรรมที่มีพื้นฐานดี</p>'
+        title: 'อัปเดตเศรษฐกิจมหภาคสัปดาห์ 22/06/2569: ราคาน้ำมันฟื้นตัว เงินเฟ้อเสถียร',
+        lead: 'สัปดาห์ที่แล้วมีการพัฒนาเศรษฐกิจมหภาคในเชิงบวก โดยราคาน้ำมันโลกฟื้นตัวเล็กน้อยหลังจากการลดลงอย่างมาก เงินเฟ้อในเศรษฐกิจหลักยังคงเสถียร',
+        content: '<h2>ราคาน้ำมันโลก</h2><p>น้ำมันดิบเบรนต์เพิ่มขึ้น 2.3% เป็น 78.5 ดอลลาร์ต่อบาร์เรลในสัปดาห์นี้ สะท้อนความคาดหวังว่าความต้องการพลังงานจะฟื้นตัวในช่วงฤดูร้อน OPEC+ รักษานโยบายการผลิตปัจจุบัน</p><h2>เงินเฟ้อและนโยบายการเงิน</h2><p>ดัชนีราคาผู้บริโภคของสหรัฐ (CPI) เพิ่มขึ้น 0.2% ในเดือนพฤษภาคม ต่ำกว่าที่คาดไว้ 0.3% แสดงให้เห็นว่าเงินเฟ้อได้รับการควบคุมอย่างมีประสิทธิภาพ</p><h2>เศรษฐกิจเอเชีย</h2><p>เศรษฐกิจจีนฟื้นตัวต่อเนื่องโดย PMI ภาคการผลิตถึง 51.2 จุด เหนือระดับ 50 จุด</p>'
       },
       {
         langCode: 'ar', langName: 'ARABIC', langEmoji: '🇸🇦',
-        title: 'مؤشر VN في 22 يونيو 2026: صعود مجموعة Vingroup، سيولة حذرة',
-        lead: 'سجّل سوق الأسهم الفيتنامي في 22 يونيو 2026 جلسة استثنائية، إذ حقق مؤشر VN أقوى ارتفاع له في شهرين بقيادة مجموعة Vingroup، في حين بقيت السيولة الإجمالية في وضع الترقب الحذر.',
-        content: '<h2>مزاج السوق: أخضر من الخارج، أحمر من الداخل</h2><p>جاءت جلسة 22 يونيو 2026 في ظل أنباء إيجابية عن انطلاق أعمال بناء 5 مشاريع بنية تحتية كبرى في هانوي. غير أن صعود المؤشر جاء مدفوعاً بشكل رئيسي بأسهم Vingroup — <strong>VIC</strong> وصل إلى الحد الأقصى، فيما ارتفع <strong>VHM</strong> و<strong>VRE</strong> بقوة. في الواقع، عدد الأسهم المتراجعة فاق المرتفعة، عاكساً حذر السيولة.</p><h2>تباين تدفقات الأموال</h2><p>تُظهر البيانات تبايناً واضحاً في تدفقات الأموال. ارتفعت أسهم الطاقة مثل <strong>PVD</strong> و<strong>BSR</strong> و<strong>POW</strong> بالتزامن مع انتعاش أسعار النفط العالمية. في المقابل، تعرّضت أسهم التكنولوجيا والتجزئة مثل <strong>FPT</strong> و<strong>MWG</strong> لضغط بيع أجنبي قوي. تمديد المستثمرين الأجانب سلسلة بيعهم الصافي إلى 5 جلسات متتالية يُشكّل تحدياً كبيراً.</p><h2>التقييم والتوصيات</h2><p>يقدّر MBS Research أن الارتفاع الأخير يبقى على الأرجح ارتداداً فنياً. يواجه مؤشر VN منطقة مقاومة كثيفة بين 1,830 و1,845 نقطة. في السيناريو الأساسي، سيستمر السوق في التداول الأفقي. يُنصح المستثمرون بالحفاظ على نسبة نقدية مرتفعة.</p>'
+        title: 'تحديث الاقتصاد الكلي الأسبوع 22/06/2026: تعافي أسعار النفط، استقرار التضخم',
+        lead: 'شهد الأسبوع الماضي تطورات اقتصادية كلية إيجابية مع تعافي أسعار النفط العالمية قليلاً بعد انخفاض حاد. يستمر التضخم في الاقتصادات الكبرى في الاستقرار',
+        content: '<h2>أسعار النفط العالمية</h2><p>ارتفع خام برنت 2.3% إلى 78.5 دولار للبرميل هذا الأسبوع، مما يعكس توقعات تعافي الطلب على الطاقة هذا الصيف. حافظت أوبك+ على سياسات الإنتاج الحالية</p><h2>التضخم والسياسة النقدية</h2><p>ارتفع مؤشر أسعار المستهلكين الأمريكي (CPI) بنسبة 0.2% في مايو، أقل من المتوقع 0.3%، مما يشير إلى السيطرة الفعالة على التضخم</p><h2>اقتصاد آسيا</h2><p>يستمر اقتصاد الصين في التعافي مع وصول مؤشر مديري المشتريات في التصنيع إلى 51.2 نقطة</p>'
       },
       {
         langCode: 'ja', langName: 'JAPANESE', langEmoji: '🇯🇵',
-        title: 'VNインデックス2026年6月22日：Vingroupが急騰、流動性は慎重',
-        lead: '2026年6月22日のベトナム株式市場は、Vingroupグループを中心に2ヶ月ぶりの最大上昇を記録しましたが、全体的な流動性は依然として慎重な観察状態を維持しています。',
-        content: '<h2>市場心理：外は緑、中は赤</h2><p>2026年6月22日のセッションは、ハノイでの5大インフラプロジェクト起工式の好材料の中で展開されました。ただし、VNインデックスの上昇は主にVingroupグループが牽引 — <strong>VIC</strong>がストップ高、<strong>VHM</strong>と<strong>VRE</strong>も大幅高。実際には下落銘柄数が上昇銘柄数を上回り、資金の慎重さを反映しています。</p><h2>資金フローの分化</h2><p>データは資金フローの明確な分化を示しています。<strong>PVD</strong>、<strong>BSR</strong>、<strong>POW</strong>などのエネルギー株は国際原油価格の回復に連動して一斉に上昇しました。一方、<strong>FPT</strong>、<strong>MWG</strong>などのテック・小売株は外国人の強い売り圧力にさらされました。外国人投資家の5日連続の純売り越しは持続的な上昇への大きな課題です。</p><h2>評価と推奨事項</h2><p>MBS Researchは、最近の上昇は依然として技術的な反発の可能性が高いと評価しています。VNインデックスは1,830〜1,845ポイントの厚い抵抗帯に直面しています。ベースシナリオでは、市場はレンジ相場を継続するでしょう。投資家は高い現金比率を維持し、証券・物流・製造業など基礎体力の良い業種を調整時に優先することを推奨します。</p>'
+        title: '2026年6月22日マクロ経済更新：原油価格回復、インフレ安定',
+        lead: '先週はマクロ経済の好展開が見られ、原油価格が急落後に小幅回復しました。主要国のインフレは引き続き安定しています',
+        content: '<h2>世界の原油価格</h2><p>ブレント原油は今週2.3%上昇し、バレル当たり78.5ドルとなりました。これは夏季のエネルギー需要回復への期待を反映しています。OPEC+は現在の生産政策を維持しています</p><h2>インフレと金融政策</h2><p>米国の消費者物価指数（CPI）は5月に0.2%上昇し、予想の0.3%を下回りました。これはインフレが効果的に管理されていることを示しています</p><h2>アジア経済</h2><p>中国経済は引き続き回復しており、製造業PMIは51.2ポイントに達しました</p>'
       }
     ];
   } else {
-    console.log('📡 Fetching latest market_summary_stock…');
+    console.log('📡 Fetching latest market_summary_macro…');
     allRows = await fetchSummaries();
   }
 
@@ -600,7 +619,7 @@ async function main() {
   const headerHtml = readFile('header.html');
   const footerHtml = readFile('footer.html');
   const clientCss = readFile('scripts/seo-client.css');
-  const clientJs = readFile('scripts/seo-client.js');
+  const clientJs = readFile('scripts/seo-client-macro.js');
 
   let dataByLang = {};
   let langsSet = new Set();
@@ -625,36 +644,22 @@ async function main() {
 
   for (const lang of langs) {
     const articlesList = dataByLang[lang];
-    const outDir  = path.join(ROOT, 'diem-tin-chung-khoan', lang);
+    const outDir  = path.join(ROOT, 'diem-tin-vi-mo', lang);
     const outFile = path.join(outDir, 'index.html');
     fs.mkdirSync(outDir, { recursive: true });
 
     const html = generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs });
     fs.writeFileSync(outFile, html, 'utf8');
-    console.log(`  📝 Written: diem-tin-chung-khoan/${lang}/index.html`);
+    console.log(`  📝 Written: diem-tin-vi-mo/${lang}/index.html`);
   }
 
   // Write root redirect page
-  const rootRedirect = `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=/diem-tin-chung-khoan/vi/"><title>Redirecting…</title></head><body><p>Redirecting to <a href="/diem-tin-chung-khoan/vi/">Vietnamese</a>…</p></body></html>`;
-  const rootDir = path.join(ROOT, 'diem-tin-chung-khoan');
+  const rootRedirect = `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=/diem-tin-vi-mo/vi/"><title>Redirecting…</title></head><body><p>Redirecting to <a href="/diem-tin-vi-mo/vi/">Vietnamese</a>…</p></body></html>`;
+  const rootDir = path.join(ROOT, 'diem-tin-vi-mo');
   fs.mkdirSync(rootDir, { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'index.html'), rootRedirect, 'utf8');
   
-  console.log('\n✨ Done! All SEO pages generated.');
-
-  // Auto-update sitemap.xml with current date
-  updateSitemap();
-}
-
-function updateSitemap() {
-  const sitemapPath = path.join(ROOT, 'sitemap.xml');
-  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
-  
-  let sitemap = fs.readFileSync(sitemapPath, 'utf8');
-  sitemap = sitemap.replace(/<lastmod>2026-\d{2}-\d{2}<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
-  
-  fs.writeFileSync(sitemapPath, sitemap, 'utf8');
-  console.log('  📝 Updated: sitemap.xml');
+  console.log('\n✨ Done! All macro SEO pages generated.');
 }
 
 main().catch(err => { console.error('❌ Error:', err.message); process.exit(1); });
