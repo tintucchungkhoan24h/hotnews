@@ -1128,8 +1128,13 @@ async function fetchDynamicFeed() {
         }
 
         let html = '';
-        const currentLang = document.documentElement.lang || 'vi';
+        let currentLang = document.documentElement.lang || 'vi';
         const isRtl = currentLang === 'ar';
+        
+        // Map zh-Hant to zh-TW for article lookup
+        if (currentLang === 'zh-Hant') {
+            currentLang = 'zh-TW';
+        }
 
         for (const row of rows) {
             const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
