@@ -44,9 +44,10 @@ const I18N_LANG_NAMES = i18nData.langNames;
 function fetchJson(url, headers) {
   return new Promise((resolve, reject) => {
     const req = https.get(url, { headers }, (res) => {
-      let body = '';
-      res.on('data', chunk => body += chunk);
+      const chunks = [];
+      res.on('data', chunk => chunks.push(chunk));
       res.on('end', () => {
+        const body = Buffer.concat(chunks).toString('utf8');
         try { resolve(JSON.parse(body)); }
         catch (e) { reject(new Error('JSON parse error: ' + body.slice(0, 200))); }
       });
