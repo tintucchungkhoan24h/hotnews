@@ -724,7 +724,7 @@ article h1 {
           </div>
 
           <div class="digest-lead" >2026年6月23日、ベトナム金融市場は大きな二極化に直面しています。フィンテックユニコーンへの海外資本流入の一方で、為替圧力や金融政策の調整が予測困難な潮流を生んでいます。</div>
-          <div class="digest-body"><h2>マクロ経済の展望：混迷する市場</h2><p>米イラン交渉や連邦準備制度（FED）の慎重な姿勢という世界経済の波の中で、ベトナム市場は資金フローの大きな転換を迎えています。<strong>MoMo</strong>が海外投資家を惹きつけたことはデジタルエコシステムへの信頼を示し、9%の利回りを誇る銀行債券は安全資産を求める投資家の注目を集めています。</p><h2>資金はどこへ流れているのか？</h2><p>資本は現在、投機的な資産から、透明なガバナンスと長期的な成長ストーリーを持つ企業へと移動しています。7月1日から中長期融資の短期資金上限を40%に引き上げたことは、銀行の流動性圧力を緩和し、世界的な変動の中でも成長の勢いを維持するための重要な政策的措置です。</p><h2>投資戦略：市場の揺らぎか、買いの好機か？</h2><p>専門家の視点から見ると、現在の市場変動は資産の再評価に伴う自然な結果です。個人投資家にとって、強固な財務基盤を持つ株式への定期積立投資は最適な戦略となりつつあります。短期的な投機トレンドを追うのではなく、小売や金融といった第2四半期の収益主導セクターに集中してください。</p><p><strong>市場心理：</strong>今は観察と選別のゴールデンタイムです。市場の調整局面は、外国人の純売りにパニックになるのではなく、質の高い資産を蓄積する絶好の機会です。</p>参考データソース: <a href='https://cafef.vn/ky-lan-fintech-momo-hut-nha-dau-tu-ngoai-sau-cu-dao-chieu-loi-nhuan-347-ty-dong-188260623111342109.chn'>MoMoが海外資本を誘致</a>, <a href='https://dantri.com.vn/kinh-doanh/chinh-thuc-noi-tran-von-ngan-han-cho-vay-trung-dai-han-tu-17-20260622212738762.htm'>融資上限の調整</a>, <a href='https://dantri.com.vn/kinh-doanh/lai-trai-phieu-ngan-hang-len-9nam-vuot-xa-muc-gui-tiet-kiem-20260622122515554.htm'>銀行債券利回り</a></div>
+          <div class="digest-body"><h2>マクロ経済の展望：混迷する市場</h2><p>米イラン交渉や連邦準備制度（FED）の慎重な姿勢という世界経済の波の中��、ベトナム市場は資金フローの大きな転換を迎えています。<strong>MoMo</strong>が海外投資家を惹きつけたことはデジタルエコシステムへの信頼を示し、9%の利回りを誇る銀行債券は安全資産を求める投資家の注目を集めています。</p><h2>資金はどこへ流れているのか？</h2><p>資本は現在、投機的な資産から、透明なガバナンスと長期的な成長ストーリーを持つ企業へと移動しています。7月1日から中長期融資の短期資金上限を40%に引き上げたことは、銀行の流動性圧力を緩和し、世界的な変動の中でも成長の勢いを維持するための重要な政策的措置です。</p><h2>投資戦略：市場の揺らぎか、買いの好機か？</h2><p>専門家の視点から見ると、現在の市場変動は資産の再評価に伴う自然な結果です。個人投資家にとって、強固な財務基盤を持つ株式への定期積立投資は最適な戦略となりつつあります。短期的な投機トレンドを追うのではなく、小売や金融といった第2四半期の収益主導セクターに集中してください。</p><p><strong>市場心理：</strong>今は観察と選別のゴールデンタイムです。市場の調整局面は、外国人の純売りに��ニックになるのではなく、質の高い資産を蓄積する絶好の機会です。</p>参考データソース: <a href='https://cafef.vn/ky-lan-fintech-momo-hut-nha-dau-tu-ngoai-sau-cu-dao-chieu-loi-nhuan-347-ty-dong-188260623111342109.chn'>MoMoが海外資本を誘致</a>, <a href='https://dantri.com.vn/kinh-doanh/chinh-thuc-noi-tran-von-ngan-han-cho-vay-trung-dai-han-tu-17-20260622212738762.htm'>融資上限の調整</a>, <a href='https://dantri.com.vn/kinh-doanh/lai-trai-phieu-ngan-hang-len-9nam-vuot-xa-muc-gui-tiet-kiem-20260622122515554.htm'>銀行債券利回り</a></div>
         </article>
         <hr class="border-gray-800 my-8">
       
@@ -1152,6 +1152,7 @@ async function fetchDynamicFeed() {
             let formattedContent = article.content || '';
             // Convert h3 to h2 to match stock digest format
             formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
+            // Handle reference links in <p> tags format
             formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|数据参考|參考資料|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|データ参照|データ出典|参考文献)[^<]*[:：]\s*)([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
                 // Extract all links and put each on a new line
                 const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
@@ -1163,6 +1164,19 @@ async function fetchDynamicFeed() {
                     return link;
                 }).join('<br>');
                 return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
+            });
+            // Handle inline reference links format (comma-separated)
+            formattedContent = formattedContent.replace(/(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|数据参考|參考資料|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|データ参照|データ出典|参考文献)[:：]\s*((?:<a[^>]*>.*?<\/a>(?:\s*,\s*)?)+)/gi, (match, links) => {
+                // Extract all links and put each on a new line
+                const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
+                const formattedLinks = linkMatches.map(link => {
+                    // Add target="_blank" if not already present
+                    if (!link.includes('target=')) {
+                        return link.replace('<a', '<a target="_blank"');
+                    }
+                    return link;
+                }).join('<br>');
+                return `<p><strong>Nguồn dữ liệu tham khảo: </strong><br>${formattedLinks}</p>`;
             });
 
             html += `
