@@ -74,4 +74,68 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Điểm tin vĩ mô – Vietnamese (primary) -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/"/>
+    <xhtml:link rel="alternate" hreflang="en"    href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/"/>
+    <xhtml:link rel="alternate" hreflang="ko"    href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/"/>
+    <xhtml:link rel="alternate" hreflang="th"    href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/"/>
+    <xhtml:link rel="alternate" hreflang="ar"    href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja"    href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/"/>
+  </url>
+
+  <!-- Điểm tin vĩ mô – English -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Điểm tin vĩ mô – Korean -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Điểm tin vĩ mô – Chinese -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Điểm tin vĩ mô – Thai -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Điểm tin vĩ mô – Arabic -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Điểm tin vĩ mô – Japanese -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
