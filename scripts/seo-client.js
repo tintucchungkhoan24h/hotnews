@@ -258,18 +258,8 @@ async function fetchDynamicFeed() {
               }
               return match;
             });
-            formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|数据参考|參考資料|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|データ参照|データ出典|参考文献)[^<]*[:：]\s*)([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
-                // Extract all links and put each on a new line
-                const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
-                const formattedLinks = linkMatches.map(link => {
-                    // Add target="_blank" if not already present
-                    if (!link.includes('target=')) {
-                        return link.replace('<a', '<a target="_blank"');
-                    }
-                    return link;
-                }).join('<br>');
-                return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
-            });
+            formattedContent = normalizeReferenceLinks(formattedContent);
+            formattedContent = highlightStockCodes(formattedContent);
 
             html += `
             <article ${isRtl ? 'dir="rtl"' : ''}>
