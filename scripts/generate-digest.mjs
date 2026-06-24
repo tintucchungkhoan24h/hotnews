@@ -153,60 +153,74 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     .tab-button.active { color: #0a192f; background: #ffd700; box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3); }
     .tab-button:active { transform: scale(0.98); }
 
-    /* Article content styling - Professional Design */
+    /* Article content styling - see seo-client.css (injected below) */
     .digest-lead { 
       background: linear-gradient(135deg, rgba(255,215,0,0.12) 0%, rgba(17,34,64,0.8) 100%); 
       border-left: 4px solid #ffd700; 
-      padding: 20px 24px; 
-      border-radius: 0 16px 16px 0; 
-      font-size: 16px; 
-      line-height: 1.8; 
+      padding: 16px 20px; 
+      border-radius: 0 14px 14px 0; 
+      font-size: 15px; 
+      line-height: 1.65; 
       color: #e2e8f0; 
       font-style: italic; 
-      margin-bottom: 32px; 
+      margin-bottom: 24px; 
       position: relative;
       box-shadow: 0 4px 20px rgba(255,215,0,0.08);
     }
     .digest-body h2 { 
-      font-size: 1.35rem; 
+      font-size: 1.25rem; 
       font-weight: 800; 
       color: #ffd700; 
-      margin: 36px 0 16px; 
-      padding-bottom: 12px; 
+      margin: 28px 0 12px; 
+      padding-bottom: 10px; 
       border-bottom: 2px solid rgba(255,215,0,0.25);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      line-height: 1.35;
     }
+    .digest-body h2:first-child { margin-top: 0; }
     .digest-body h2::before {
       content: '';
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       background: #ffd700;
       border-radius: 50%;
       box-shadow: 0 0 10px rgba(255,215,0,0.5);
+      flex-shrink: 0;
     }
+    .digest-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffd700;
+      margin: 20px 0 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,215,0,0.2);
+      line-height: 1.35;
+    }
+    .digest-body h3:first-child { margin-top: 0; }
     .digest-body p { 
-      margin: 0 0 18px; 
-      line-height: 1.85; 
+      margin: 0 0 14px; 
+      line-height: 1.7; 
       color: #d1d5db; 
       font-size: 15px;
-      text-align: justify;
+      text-align: left;
     }
     .digest-body strong { 
       color: #fbbf24; 
       font-weight: 700;
-      background: rgba(251,191,36,0.1);
-      padding: 2px 6px;
-      border-radius: 4px;
+      background: transparent;
+      padding: 0 1px;
+      border-radius: 0;
     }
     .digest-body a {
       color: #60a5fa;
       text-decoration: none;
       border-bottom: 1px solid rgba(96,165,250,0.3);
       transition: all 0.2s ease;
-      display: inline-block;
-      margin-bottom: 4px;
+      display: inline;
+      margin-bottom: 0;
+      line-height: inherit;
     }
     .digest-body a:hover {
       color: #ffd700;
@@ -217,9 +231,9 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     article {
       background: linear-gradient(180deg, rgba(17,34,64,0.5) 0%, rgba(10,25,47,0.3) 100%);
       border: 1px solid rgba(255,215,0,0.1);
-      border-radius: 20px;
-      padding: 32px;
-      margin-bottom: 32px;
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 28px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
     }
@@ -237,10 +251,10 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
       background-clip: text;
       text-shadow: 0 0 30px rgba(255,215,0,0.3);
       letter-spacing: -0.02em;
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      line-height: 1.2;
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 0.875rem;
+      line-height: 1.3;
     }
     article h2 {
       background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
