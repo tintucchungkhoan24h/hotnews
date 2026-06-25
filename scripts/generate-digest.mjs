@@ -1056,13 +1056,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
                 </button>
             </div>
             
-            <div class="ml-auto flex items-center gap-3">
-              <a href="${hubUrl}" class="back-link" style="margin-bottom:0;">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-                Về trang tổng hợp
-              </a>
-              <span class="permanent-link-badge hidden sm:inline-flex">🔗 Liên kết vĩnh viễn</span>
-            </div>
+
         </div>
     </div>
 
