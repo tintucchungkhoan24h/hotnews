@@ -688,7 +688,8 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
       let toastTimer = null;
 
       window.copyArticleLink = function(btn) {
-        const spokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        const rawSpokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        const spokeUrl = (() => { try { const u = new URL(rawSpokeUrl); return window.location.origin + u.pathname; } catch(e) { return rawSpokeUrl; } })();
         navigator.clipboard.writeText(spokeUrl).then(() => {
           btn.classList.add('copied');
           const label = btn.querySelector('.btn-label');
@@ -1138,7 +1139,8 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
       let toastTimer = null;
 
       window.copyArticleLink = function(btn) {
-        const spokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        const rawSpokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        const spokeUrl = (() => { try { const u = new URL(rawSpokeUrl); return window.location.origin + u.pathname; } catch(e) { return rawSpokeUrl; } })();
         navigator.clipboard.writeText(spokeUrl).then(() => {
           btn.classList.add('copied');
           const label = btn.querySelector('.btn-label');
