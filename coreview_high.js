@@ -464,9 +464,9 @@ async function fetchHighData() {
         stateHigh.totalCount = 0;
     } finally {
         document.getElementById('loadingStateHigh').classList.add('hidden');
-        await prefetchHeadlineTranslations(stateHigh.data, stateHigh.lang);
-        renderHighBody();
-        renderHighPaginationUI();
+        renderHighBody()
+        renderHighPaginationUI()
+        prefetchHeadlineTranslations(stateHigh.data, stateHigh.lang).then(() => { renderHighBody() });
     }
 }
 

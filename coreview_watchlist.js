@@ -472,9 +472,9 @@ async function fetchWatchlistData() {
         stateWatchlist.totalCount = 0;
     } finally {
         document.getElementById('loadingStateWatchlist').classList.add('hidden');
-        await prefetchHeadlineTranslations(stateWatchlist.data, (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || DEFAULT_LANG);
-        renderWatchlistBody();
-        renderWatchlistPaginationUI();
+        renderWatchlistBody()
+        renderWatchlistPaginationUI()
+        prefetchHeadlineTranslations(stateWatchlist.data, (typeof state !== 'undefined' ? state.lang : null) || stateWatchlist.lang || DEFAULT_LANG).then(() => { renderWatchlistBody() });
     }
 }
 

@@ -488,9 +488,9 @@ async function fetchData() {
         state.totalCount = 0;
     } finally {
         document.getElementById('loadingState').classList.add('hidden');
-        await prefetchHeadlineTranslations(state.data, state.lang);
-        renderBody();
-        renderPaginationUI();
+        renderBody()
+        renderPaginationUI()
+        prefetchHeadlineTranslations(state.data, state.lang).then(() => { renderBody() });
     }
 }
 

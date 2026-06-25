@@ -418,9 +418,9 @@ async function fetchMacroData() {
         state.totalCountMacro = 0;
     } finally {
         if (loadingState) loadingState.classList.add('hidden');
-        await prefetchHeadlineTranslations(state.dataMacro, state.lang);
-        renderMacroBody();
-        renderMacroPaginationUI();
+        renderMacroBody()
+        renderMacroPaginationUI()
+        prefetchHeadlineTranslations(state.dataMacro, state.lang).then(() => { renderMacroBody() });
     }
 }
 

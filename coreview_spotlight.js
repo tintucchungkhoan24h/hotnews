@@ -485,9 +485,9 @@ async function fetchSpotlightData() {
         stateSpotlight.totalCount = 0;
     } finally {
         document.getElementById('loadingStateSpotlight').classList.add('hidden');
-        await prefetchHeadlineTranslations(stateSpotlight.data, (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || DEFAULT_LANG);
-        renderSpotlightBody();
-        renderSpotlightPaginationUI();
+        renderSpotlightBody()
+        renderSpotlightPaginationUI()
+        prefetchHeadlineTranslations(stateSpotlight.data, (typeof state !== 'undefined' ? state.lang : null) || stateSpotlight.lang || DEFAULT_LANG).then(() => { renderSpotlightBody() });
     }
 }
 

@@ -467,9 +467,9 @@ async function fetchStableData() {
         stateStable.totalCount = 0;
     } finally {
         document.getElementById('loadingStateStable').classList.add('hidden');
-        await prefetchHeadlineTranslations(stateStable.data, stateStable.lang);
-        renderStableBody();
-        renderStablePaginationUI();
+        renderStableBody()
+        renderStablePaginationUI()
+        prefetchHeadlineTranslations(stateStable.data, stateStable.lang).then(() => { renderStableBody() });
     }
 }
 
