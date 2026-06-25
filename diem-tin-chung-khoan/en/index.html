@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Market Update 24/06/2026: VIC, LPB Surge, VN-Index Nears 1880 | Tin Tức Chứng Khoán 24h</title>
-  <meta name="description" content="The trading session on June 24, 2026, saw a surge in major stocks as VIC and LPB broke out, pushing the VN-Index toward the 1,880 mark. Liquidity remained robus">
+  <title>VN-Index June 22, 2026: Vingroup Stocks Surge, Cautious Liquidity | Tin Tức Chứng Khoán 24h</title>
+  <meta name="description" content="Vietnam's stock market on June 22, 2026 recorded its most impressive session in two months as VN-Index surged, led by the Vingroup cluster, even as overall liqu">
   <link rel="canonical" href="/diem-tin-chung-khoan/en/">
   <link rel="alternate" hreflang="vi-VN" href="/diem-tin-chung-khoan/vi/">
   <link rel="alternate" hreflang="en" href="/diem-tin-chung-khoan/en/">
@@ -15,8 +15,8 @@
   <link rel="alternate" hreflang="ja" href="/diem-tin-chung-khoan/ja/">
   <link rel="alternate" hreflang="x-default" href="/diem-tin-chung-khoan/vi/">
 
-  <meta property="og:title" content="Market Update 24/06/2026: VIC, LPB Surge, VN-Index Nears 1880">
-  <meta property="og:description" content="The trading session on June 24, 2026, saw a surge in major stocks as VIC and LPB broke out, pushing the VN-Index toward the 1,880 mark. Liquidity remained robust despite significant net selling from f">
+  <meta property="og:title" content="VN-Index June 22, 2026: Vingroup Stocks Surge, Cautious Liquidity">
+  <meta property="og:description" content="Vietnam's stock market on June 22, 2026 recorded its most impressive session in two months as VN-Index surged, led by the Vingroup cluster, even as overall liquidity remained cautiously subdued.">
   <meta property="og:url" content="/diem-tin-chung-khoan/en/">
   <meta property="og:type" content="article">
   <meta property="og:image" content="/ava_icon.png">
@@ -661,6 +661,257 @@ article h1 {
     transform: none;
 }
 
+/* ── Copy Article Link Button ───────────────────────────────────────────────── */
+.copy-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  background: rgba(255,215,0,0.08);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 10px;
+  color: #ffd700;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  user-select: none;
+  outline: none;
+}
+.copy-link-btn:hover {
+  background: rgba(255,215,0,0.16);
+  border-color: rgba(255,215,0,0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255,215,0,0.15);
+}
+.copy-link-btn:active {
+  transform: scale(0.96);
+}
+.copy-link-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.copy-link-btn.copied {
+  background: rgba(34,197,94,0.12);
+  border-color: rgba(34,197,94,0.5);
+  color: #4ade80;
+}
+.copy-link-btn.copied svg {
+  transform: scale(1.1);
+}
+
+/* Article action bar that houses the copy button */
+.article-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+/* ── Toast Notification ─────────────────────────────────────────────────────── */
+.copy-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(10,25,47,0.97);
+  border: 1px solid rgba(74,222,128,0.5);
+  border-radius: 12px;
+  padding: 12px 22px;
+  color: #4ade80;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,222,128,0.15);
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
+}
+.copy-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.copy-toast svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Archive Section ─────────────────────────────────────────────────────────── */
+.archive-section {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 2px solid rgba(255,215,0,0.15);
+}
+.archive-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.archive-section-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffd700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.archive-section-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, #ffd700 0%, #f59e0b 100%);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.archive-count-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255,215,0,0.15);
+  border: 1px solid rgba(255,215,0,0.3);
+  color: #ffd700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.archive-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: rgba(17,34,64,0.4);
+  border: 1px solid rgba(255,215,0,0.08);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.archive-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #ffd700 0%, rgba(255,215,0,0.2) 100%);
+  border-radius: 0 2px 2px 0;
+}
+.archive-card:hover {
+  background: rgba(255,215,0,0.07);
+  border-color: rgba(255,215,0,0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,215,0,0.08);
+  text-decoration: none;
+}
+.archive-card-date {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+.archive-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.archive-card:hover .archive-card-title {
+  color: #ffd700;
+}
+.archive-card-arrow {
+  font-size: 11px;
+  color: #60a5fa;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.archive-card:hover .archive-card-arrow {
+  opacity: 1;
+}
+
+/* Spoke page indicator badge (shown on hub page for "today's" article) */
+.spoke-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #0a192f;
+  background: linear-gradient(135deg, #ffd700 0%, #f59e0b 100%);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.3);
+}
+
+/* Permanent link indicator on spoke pages */
+.permanent-link-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  border: 1px solid rgba(74,222,128,0.3);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+  .copy-toast {
+    width: calc(100vw - 32px);
+    left: 16px;
+    transform: translateY(20px);
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+  .copy-toast.visible {
+    transform: translateY(0);
+  }
+  .archive-section {
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+}
+
   </style>
 </head>
 <body class="bg-fin-blue min-h-screen">
@@ -846,56 +1097,34 @@ article h1 {
     <!-- MAIN ARTICLE FEED -->
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
       
-        <article>
+        <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/">
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            Market Update 24/06/2026: VIC, LPB Surge, VN-Index Nears 1880
+            VN-Index June 22, 2026: Vingroup Stocks Surge, Cautious Liquidity
           </h1>
           <div class="article-meta">
-            <span class="highlight">📅 2026-06-24</span>
+            <span class="highlight">📅 25/06/2026</span>
             <span>•</span>
-            <span>🇺🇸 ENGLISH</span>
+            <span> English</span>
             <span>•</span>
             <span>Tin Tức Chứng Khoán 24h</span>
+            <span class="spoke-badge">★ Hôm nay</span>
+          </div>
+          <div class="article-actions">
+            <button class="copy-link-btn" data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/" onclick="copyArticleLink(this)" title="Sao chép đường dẫn bài viết">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+              </svg>
+              <span class="btn-label">Sao chép link</span>
+            </button>
           </div>
 
-          <div class="digest-lead" >The trading session on June 24, 2026, saw a surge in major stocks as VIC and LPB broke out, pushing the VN-Index toward the 1,880 mark. Liquidity remained robust despite significant net selling from foreign investors.</div>
-          <div class="digest-body"><h2>Macro Analysis & Market Sentiment</h2><p>The decision to raise the short-term capital ratio for medium-to-long-term loans to 40% has provided a significant boost to investor sentiment, particularly in the banking sector. Expectations for lower capital costs and credit expansion have drawn liquidity toward large-cap stocks. However, market sentiment remains fragmented as smart money prioritizes companies with unique narratives rather than a broad market rally.</p><h3>Sector Movements & Stock Performance</h3><p>Vingroup stocks, led by <strong>VIC</strong> and <strong>VHM</strong>, along with <strong>LPB</strong>, became the highlight of the session, hitting the ceiling price and acting as the primary engine for the index. Conversely, mid-cap real estate stocks such as <strong>NVL</strong> and <strong>DXG</strong>, and oil stocks including <strong>BSR</strong>, <strong>PVD</strong>, and <strong>PVS</strong>, faced heavy profit-taking pressure. Foreign investors continued their net selling spree of over 600 billion <strong>VND</strong>, focusing on <strong>HPG</strong> and <strong>TCB</strong>, though domestic liquidity remained patient in absorbing supply in key stocks.</p><h3>Outlook & Recommendations</h3><p>The market is approaching the stiff 1,900-point resistance level. The short-term trend remains characterized by volatility and high divergence. Investors should remain cautious, prioritize risk management for stocks that have rallied sharply, and focus on companies with strong fundamentals or significant catalysts.</p><p><strong>Reference data source: </strong><br><a target="_blank" href="https://vneconomy.vn/blog-chung-khoan-dong-tien-rat-kien-nhan.htm" rel="nofollow">Stock Blog: Patient Capital Flow</a><br><a target="_blank" href="https://vnexpress.net/vn-index-tien-gan-dinh-lich-su-5089448.html" rel="nofollow">VN-Index approaches historical peak</a></p></div>
+          <div class="digest-lead" >Vietnam's stock market on June 22, 2026 recorded its most impressive session in two months as VN-Index surged, led by the Vingroup cluster, even as overall liquidity remained cautiously subdued.</div>
+          <div class="digest-body"><h2>Market Sentiment: Green on the Surface</h2><p>The session on June 22, 2026 unfolded amid positive news of five major infrastructure project groundbreakings in Hanoi. However, VN-Index gains were driven primarily by Vingroup stocks — <strong>VIC</strong> hit the ceiling price, while <strong>VHM</strong> and <strong>VRE</strong> surged strongly. In reality, more stocks declined than advanced, reflecting cautious money flows beneath the green index figure.</p><h2>Money Flow Divergence</h2><p>Data shows clear divergence in money flow. Energy stocks like <strong>PVD</strong>, <strong>BSR</strong>, and <strong>POW</strong> gained in tandem with recovering global oil prices. In contrast, tech and retail names like <strong>FPT</strong> and <strong>MWG</strong> faced heavy foreign selling. Foreign investors extended their net selling streak to 5 consecutive sessions, concentrated on large-cap stocks — a significant challenge to a sustainable uptrend.</p><h2>Assessment & Recommendations</h2><p>MBS Research believes the recent uptick is likely still a technical bounce. VN-Index faces a dense resistance zone at 1,830–1,845 points. In the base scenario, the market will continue sideways consolidation. Investors should maintain high cash positions and prioritize fundamentally sound sectors such as securities, logistics, and manufacturing when prices pull back to attractive levels.</p></div>
         </article>
         <hr class="border-gray-800 my-8">
       
-        <article>
-          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            VN-Index June 23: LPB Hits Limit Up, VIC Leads Foreign Buying Surge
-          </h1>
-          <div class="article-meta">
-            <span class="highlight">📅 2026-06-23</span>
-            <span>•</span>
-            <span>🇺🇸 ENGLISH</span>
-            <span>•</span>
-            <span>Tin Tức Chứng Khoán 24h</span>
-          </div>
 
-          <div class="digest-lead" >The trading session on June 23, 2026, saw the VN-Index rally impressively, driven by large-cap stocks. Market liquidity surged past 30 trillion VND, signaling a strong upward momentum.</div>
-          <div class="digest-body"><h2>Macro Analysis & Market Sentiment</h2><p>The relaxation of the short-term capital ratio to 40% provided a significant boost to market sentiment, particularly for the banking sector. The entry of billionaire Pham Nhat Vuong into LPBank acted as a powerful catalyst, concentrating cash flow into pillar stocks and deepening market divergence.</p><h3>Sector Movements & Stock Performance</h3><p>Capital flow shifted dramatically as <strong>VIC</strong> and <strong>LPB</strong> hit the limit up, pulling the index higher. <strong>TCB</strong> also broke out, contrasting with the stagnant performance of mid-cap real estate stocks like <strong>NVL</strong>, <strong>DXG</strong>, and oil and gas tickers <strong>BSR</strong>, <strong>PVD</strong>, <strong>PVS</strong>. Profit-taking pressure persists in these stocks, while foreign investors executed massive net buying in <strong>VIC</strong> via block trades, contrasting with net selling in <strong>HPG</strong> and <strong>TCB</strong>.</p><h3>Outlook & Recommendations</h3><p>The market is approaching the critical resistance level of 1,900 points. Despite positive liquidity improvements, investors should remain cautious, closely monitoring foreign institutional activities and exchange rate movements to avoid short-term volatility.</p><p><strong>Reference data source: </strong><br><a target="_blank" href="https://cafef.vn/phien-23-6-mot-co-phieu-bluechips-duoc-khoi-ngoai-mua-rong-dot-bien-2700-ty-dong-188260623153801896.chn" rel="nofollow">June 23 Session: A blue-chip stock sees massive foreign net buying of 2.7 trillion VND</a><br><a target="_blank" href="https://vneconomy.vn/khong-loai-tru-kich-ban-etf-fubon-ban-rong-cho-den-tan-thang-9-suc-ep-len-30-co-phieu-trong-danh-muc.htm" rel="nofollow">Scenario of Fubon ETF net selling until September cannot be ruled out</a></p></div>
-        </article>
-        <hr class="border-gray-800 my-8">
-      
-        <article>
-          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            VN-Index June 22, 2026: Vingroup leads rally amid cautious liquidity
-          </h1>
-          <div class="article-meta">
-            <span class="highlight">📅 2026-06-22</span>
-            <span>•</span>
-            <span>🇺🇸 ENGLISH</span>
-            <span>•</span>
-            <span>Tin Tức Chứng Khoán 24h</span>
-          </div>
-
-          <div class="digest-lead" >The stock market on June 22, 2026, witnessed a robust trading session as the VN-Index posted its strongest gain in two months. Vingroup stocks served as the primary engine for this rally, despite a cautious approach from investors regarding overall liquidity.</div>
-          <div class="digest-body"><h2>Market Sentiment: Divergence Amid Gains</h2><p>The June 22, 2026 session was influenced by the groundbreaking ceremony of five major infrastructure projects in Hanoi. However, the VN-Index rally was largely concentrated in the Vingroup ecosystem, with <strong>VIC</strong> hitting its daily limit, while <strong>VHM</strong> and <strong>VRE</strong> also saw significant gains. Despite the index climbing, market breadth remained weak as a majority of stocks declined, highlighting persistent investor caution.</p><h2>Capital Flow Divergence</h2><p>Capital flow showed a clear divergence. The energy sector, including <strong>PVD</strong>, <strong>BSR</strong>, and <strong>POW</strong>, trended upward following global oil price recovery. In contrast, tech and retail stocks like <strong>FPT</strong> and <strong>MWG</strong> faced heavy foreign selling. Foreign investors have continued their five-day selling streak, focusing on key pillars, which poses a risk to sustainable growth.</p><h2>Outlook and Recommendations</h2><p>MBS analysts suggest this rally is likely a technical rebound. The VN-Index faces thick resistance in the 1,830-1,845 range. In the base case, the market will likely consolidate. Investors are advised to maintain high cash levels and prioritize sectors with strong fundamentals such as securities, logistics, and manufacturing during pullbacks.</p><p><strong>Data references: </strong><br><a target="_blank" rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: Stocks quietly attracting capital</a><br><a target="_blank" rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index resistance analysis</a></p></div>
-        </article>
-        <hr class="border-gray-800 my-8">
       
     </main>
 
@@ -1485,8 +1714,13 @@ async function fetchDynamicFeed() {
             formattedContent = normalizeReferenceLinks(formattedContent);
             formattedContent = highlightStockCodes(formattedContent);
 
+            let itemSpokeUrl = article.article_url || null;
+            let absoluteSpokeUrl = itemSpokeUrl 
+                ? (itemSpokeUrl.startsWith('http') ? itemSpokeUrl : `${window.location.origin}${itemSpokeUrl.startsWith('/') ? '' : '/'}${itemSpokeUrl}`)
+                : `${window.location.origin}/diem-tin-chung-khoan/${currentLang}/`;
+
             html += `
-            <article ${isRtl ? 'dir="rtl"' : ''}>
+            <article ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
                 <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
                   ${article.title}
                 </h1>
@@ -1496,6 +1730,15 @@ async function fetchDynamicFeed() {
                   <span>${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()}</span>
                   <span>•</span>
                   <span>${window.SITE_NAME}</span>
+                </div>
+                <div class="article-actions">
+                  <button class="copy-link-btn" data-spoke-url="${absoluteSpokeUrl}" onclick="copyArticleLink(this)" title="Sao chép đường dẫn bài viết">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+                    </svg>
+                    <span class="btn-label">Sao chép link</span>
+                  </button>
                 </div>
                 <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
                 <div class="digest-body">${formattedContent}</div>
@@ -1557,14 +1800,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (pFrom) {
-        pFrom.value = past7;
-        pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
+            const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
+            pFrom.value = spokeDate;
+            stateFromDate = dateToIso(spokeDate);
+            pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        } else {
+            pFrom.value = past7;
+            pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        }
         pFrom.min = minDateObj;
         pFrom.max = today;
     }
     if (pTo) {
-        pTo.value = today;
-        pTo.inputEl.value = isoToDisplay(stateToDate);
+        if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
+            const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
+            pTo.value = spokeDate;
+            stateToDate = dateToIso(spokeDate);
+            pTo.inputEl.value = isoToDisplay(stateToDate);
+        } else {
+            pTo.value = today;
+            pTo.inputEl.value = isoToDisplay(stateToDate);
+        }
         pTo.min = past7;
         pTo.max = maxDateObj;
     }
@@ -1577,13 +1834,52 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fetchBtn) {
         fetchBtn.addEventListener('click', fetchDynamicFeed);
         // Auto-fetch on page load after everything is initialized
-        setTimeout(() => {
-            console.log('Auto-fetching dynamic feed...');
-            fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
-        }, 10);
+        if (!window.IS_SPOKE_PAGE) {
+            setTimeout(() => {
+                console.log('Auto-fetching dynamic feed...');
+                fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
+            }, 10);
+        }
     }
 });
 
+
+    // ── Copy Article Link Logic ─────────────────────────────────────────────────────
+    (function() {
+      const toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Đã sao chép liên kết!</span>';
+      document.body.appendChild(toast);
+      let toastTimer = null;
+
+      window.copyArticleLink = function(btn) {
+        const spokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        navigator.clipboard.writeText(spokeUrl).then(() => {
+          btn.classList.add('copied');
+          const label = btn.querySelector('.btn-label');
+          if (label) label.textContent = 'Đã sao chép!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Sao chép link';
+          }, 2000);
+          clearTimeout(toastTimer);
+          toast.classList.add('visible');
+          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+        }).catch(() => {
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = spokeUrl;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            toast.classList.add('visible');
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+          } catch(e) { console.warn('Copy failed', e); }
+        });
+      };
+    })();
   </script>
 </body>
 </html>

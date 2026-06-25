@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026年MSCI升格落空：外資賣超800億資金將流向何方？ | Tin Tức Chứng Khoán 24h</title>
-  <meta name="description" content="截至2026年6月25日，越南金融市場迎來一盆冷水，MSCI正式宣布維持越南為前沿市場等級，未能進入升格觀察名單。此決定正值今年以來外資已悄然淨賣超近80兆越南盾，且美元指數攀升至13個月高點使匯率承壓。然而，在這幅看似黯淡的景象背後，結構性的資金轉移正為內資創造新的機遇。">
+  <title>2026年6月22日宏觀經濟更新：油價回升，通脹穩定 | Tin Tức Chứng Khoán 24h</title>
+  <meta name="description" content="過去一周，宏觀經濟出現積極發展，全球油價在深度下跌後略有回升。">
   <link rel="canonical" href="/diem-tin-vi-mo/zh/">
   <link rel="alternate" hreflang="vi-VN" href="/diem-tin-vi-mo/vi/">
   <link rel="alternate" hreflang="en" href="/diem-tin-vi-mo/en/">
@@ -15,8 +15,8 @@
   <link rel="alternate" hreflang="ja" href="/diem-tin-vi-mo/ja/">
   <link rel="alternate" hreflang="x-default" href="/diem-tin-vi-mo/vi/">
 
-  <meta property="og:title" content="2026年MSCI升格落空：外資賣超800億資金將流向何方？">
-  <meta property="og:description" content="截至2026年6月25日，越南金融市場迎來一盆冷水，MSCI正式宣布維持越南為前沿市場等級，未能進入升格觀察名單。此決定正值今年以來外資已悄然淨賣超近80兆越南盾，且美元指數攀升至13個月高點使匯率承壓。然而，在這幅看似黯淡的景象背後，結構性的資金轉移正為內資創造新的機遇。">
+  <meta property="og:title" content="2026年6月22日宏觀經濟更新：油價回升，通脹穩定">
+  <meta property="og:description" content="過去一周，宏觀經濟出現積極發展，全球油價在深度下跌後略有回升。">
   <meta property="og:url" content="/diem-tin-vi-mo/zh/">
   <meta property="og:type" content="article">
   <meta property="og:image" content="/ava_icon.png">
@@ -661,6 +661,257 @@ article h1 {
     transform: none;
 }
 
+/* ── Copy Article Link Button ───────────────────────────────────────────────── */
+.copy-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  background: rgba(255,215,0,0.08);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 10px;
+  color: #ffd700;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  user-select: none;
+  outline: none;
+}
+.copy-link-btn:hover {
+  background: rgba(255,215,0,0.16);
+  border-color: rgba(255,215,0,0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255,215,0,0.15);
+}
+.copy-link-btn:active {
+  transform: scale(0.96);
+}
+.copy-link-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.copy-link-btn.copied {
+  background: rgba(34,197,94,0.12);
+  border-color: rgba(34,197,94,0.5);
+  color: #4ade80;
+}
+.copy-link-btn.copied svg {
+  transform: scale(1.1);
+}
+
+/* Article action bar that houses the copy button */
+.article-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+/* ── Toast Notification ─────────────────────────────────────────────────────── */
+.copy-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(10,25,47,0.97);
+  border: 1px solid rgba(74,222,128,0.5);
+  border-radius: 12px;
+  padding: 12px 22px;
+  color: #4ade80;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,222,128,0.15);
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
+}
+.copy-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.copy-toast svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Archive Section ─────────────────────────────────────────────────────────── */
+.archive-section {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 2px solid rgba(255,215,0,0.15);
+}
+.archive-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.archive-section-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffd700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.archive-section-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, #ffd700 0%, #f59e0b 100%);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.archive-count-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255,215,0,0.15);
+  border: 1px solid rgba(255,215,0,0.3);
+  color: #ffd700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.archive-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: rgba(17,34,64,0.4);
+  border: 1px solid rgba(255,215,0,0.08);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.archive-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #ffd700 0%, rgba(255,215,0,0.2) 100%);
+  border-radius: 0 2px 2px 0;
+}
+.archive-card:hover {
+  background: rgba(255,215,0,0.07);
+  border-color: rgba(255,215,0,0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,215,0,0.08);
+  text-decoration: none;
+}
+.archive-card-date {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+.archive-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.archive-card:hover .archive-card-title {
+  color: #ffd700;
+}
+.archive-card-arrow {
+  font-size: 11px;
+  color: #60a5fa;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.archive-card:hover .archive-card-arrow {
+  opacity: 1;
+}
+
+/* Spoke page indicator badge (shown on hub page for "today's" article) */
+.spoke-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #0a192f;
+  background: linear-gradient(135deg, #ffd700 0%, #f59e0b 100%);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.3);
+}
+
+/* Permanent link indicator on spoke pages */
+.permanent-link-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  border: 1px solid rgba(74,222,128,0.3);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+  .copy-toast {
+    width: calc(100vw - 32px);
+    left: 16px;
+    transform: translateY(20px);
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+  .copy-toast.visible {
+    transform: translateY(0);
+  }
+  .archive-section {
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+}
+
   </style>
 </head>
 <body class="bg-fin-blue min-h-screen">
@@ -846,56 +1097,34 @@ article h1 {
     <!-- MAIN ARTICLE FEED -->
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
       
-        <article>
+        <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026">
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            2026年MSCI升格落空：外資賣超800億資金將流向何方？
+            2026年6月22日宏觀經濟更新：油價回升，通脹穩定
           </h1>
           <div class="article-meta">
-            <span class="highlight">📅 2026-06-25</span>
+            <span class="highlight">📅 25/06/2026</span>
             <span>•</span>
-            <span>🇹🇼 CHINESE (TRADITIONAL)</span>
+            <span> 繁體中文</span>
             <span>•</span>
             <span>Tin Tức Chứng Khoán 24h</span>
+            <span class="spoke-badge">★ Hôm nay</span>
+          </div>
+          <div class="article-actions">
+            <button class="copy-link-btn" data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026" onclick="copyArticleLink(this)" title="Sao chép đương dẫn bài viết">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+              </svg>
+              <span class="btn-label">Sao chép link</span>
+            </button>
           </div>
 
-          <div class="digest-lead" >截至2026年6月25日，越南金融市場迎來一盆冷水，MSCI正式宣布維持越南為前沿市場等級，未能進入升格觀察名單。此決定正值今年以來外資已悄然淨賣超近80兆越南盾，且美元指數攀升至13個月高點使匯率承壓。然而，在這幅看似黯淡的景象背後，結構性的資金轉移正為內資創造新的機遇。</div>
-          <div class="digest-body"><h2>慢性瓶頸阻礙升格 伴隨創紀錄的外資撤離潮</h2><p>MSCI的決定雖在大型金融機構的預期之中，但仍對散戶投資者的市場信心造成重創。外資持股限制（Room限制）、英文資訊揭露不足以及中央結算系統（CCP）等慢性制度瓶頸，依然是無法逾越的技術障礙。未能進入新興市場觀察名單，意味著被動型外資基金（passive funds）短期內無法對胡志明證券交易所（HOSE）進行大規模配置。</p><p>這一失望情緒與今年以來外資創紀錄的近80兆越南盾淨賣超產生共振。隨著美聯儲（Fed）維持鷹派立場，美元創下13個月新高，越南盾與美元之間的負利差迫使外資基金將資產重新配置到更安全的市場。這種持續賣超的狀態不僅對VN指數造成直接壓力，也使美元兌越南盾匯率持續緊張，迫使越南國家銀行不得不動用外匯存底進行干預。</p><h2>短期市場信心震盪 還是逢低吸籌的黃金機會？</h2><p>從實戰宏觀角度來看，此消息將在6月底的剩餘交易日中引發強烈的<strong>市場信心震盪</strong>。對外資極為敏感的大權值股，特別是銀行和房地產板塊，將面臨技術性修正壓力。此外，全球金價跌破每盎司4,000美元關卡，也促使部分國內投機資金撤離傳統資產以尋求避險。</p><p>然而，對於中長期投資者而言，這正是<strong>堅定信心分批布局</strong>的良機。今年以來流出的外資大多屬於對全球波動敏感的短期投機資金。當市場回調至強支撐區（如50日均線）時，許多行業龍頭股的P/E估值將變得極具吸引力。此外，年底前按照FTSE Russell標準升格的路線圖仍運作正常，這有望將外資結構優化為穩定度更高的被動型資金。</p><p><strong>參考資料來源: </strong><br><a target="_blank" href="https://vnbusiness.vn//viet-nam-tiep-tuc-o-lai-phong-cho-msci.html" rel="nofollow">越南繼續留在MSCI升格等待區</a><br><a target="_blank" href="https://cafef.vn/mot-the-luc-ban-rong-gan-80000-ty-dong-co-phieu-viet-nam-tu-dau-nam-chuyen-gi-dang-xay-ra-188260623223155283.chn" rel="nofollow">年初以來賣超近80兆越南盾股票的勢力，究竟發生了什麼事？</a><br><a target="_blank" href="https://vnexpress.net/viet-nam-khong-vao-danh-sach-theo-doi-nang-hang-cua-msci-5089220.html" rel="nofollow">越南未列入MSCI升格觀察名單</a></p></div>
+          <div class="digest-lead" >過去一周，宏觀經濟出現積極發展，全球油價在深度下跌後略有回升。</div>
+          <div class="digest-body"><h2>全球油價</h2><p>布倫特原油本周上漲2.3%至每桶78.5美元。</p></div>
         </article>
         <hr class="border-gray-800 my-8">
       
-        <article>
-          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            6月24日金融市場：資金流向與投資策略
-          </h1>
-          <div class="article-meta">
-            <span class="highlight">📅 2026-06-24</span>
-            <span>•</span>
-            <span>🇹🇼 CHINESE (TRADITIONAL)</span>
-            <span>•</span>
-            <span>Tin Tức Chứng Khoán 24h</span>
-          </div>
 
-          <div class="digest-lead" >2026年6月24日，越南金融市場面臨外資淨賣出與全球匯率波動的壓力。在投機資本保持謹慎的同時，綠色能源項目與數位基礎設施正成為新的增長支柱。</div>
-          <div class="digest-body"><h2>外資與市場升級</h2><p>年初至今近80兆越南盾的外資淨賣出，顯示外國投資者正在宏觀不確定性中進行資產組合調整。越南未能進入2026年MSCI觀察名單是一個挫折，但也突顯了在限制外資持股比例及CCP結算機制方面進行結構性改革的必要性。然而，從短期投機資金轉向穩定的ETF被動資本，仍是市場長期的催化劑。</p><h2>綠色經濟與數位轉型</h2><p>在傳統資金流動放緩之際，綠色能源項目（如和發集團的6000億越南盾風電投資及VinEnergo在菲律賓的5GW能源合作）突顯了策略性轉向。政府對綠色項目提供的2%利率補貼是重要的金融槓桿，幫助企業克服信用障礙。這不僅是趨勢，更是融入全球供應鏈的必然要求。</p><h2>投資者心理：震盪還是機會？</h2><p>市場目前因聯準會升息擔憂及匯率壓力而處於「心理震盪期」。對於長期投資者而言，這是累積那些透過AI和數位轉型優化運營的優質資產的最佳時機。請避免跟風心理，專注於具有政策支持的行業。</p><p><strong>參考資料來源: </strong><br><a target="_blank" href='https://tuoitre.vn/canh-bao-chien-dich-phat-tan-ma-doc-quy-mo-lon-qua-whatsapp-100260623152230603.htm'>WhatsApp惡意軟體警報</a><br><a target="_blank" href='https://tuoitre.vn/viet-nam-kho-vao-watch-list-msci-trong-ky-danh-gia-nam-2026-100260623171321885.htm'>MSCI市場更新</a><br><a target="_blank" href='https://tuoitre.vn/ho-kinh-doanh-sap-duoc-ho-tro-lai-suat-2-khi-dau-tu-du-an-xanh-100260623165341005.htm'>綠色信貸政策</a></p></div>
-        </article>
-        <hr class="border-gray-800 my-8">
-      
-        <article>
-          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            6月23日金融市場：宏觀波動與投資機會
-          </h1>
-          <div class="article-meta">
-            <span class="highlight">📅 2026-06-23</span>
-            <span>•</span>
-            <span>🇹🇼 CHINESE (TRADITIONAL)</span>
-            <span>•</span>
-            <span>Tin Tức Chứng Khoán 24h</span>
-          </div>
-
-          <div class="digest-lead" >2026年6月23日，越南金融市場面臨劇烈分化。雖然外資湧入金融科技獨角獸，但匯率壓力和貨幣政策調整正創造不可預測的暗流。</div>
-          <div class="digest-body"><h2>宏觀格局：錯綜複雜</h2><p>在全球經濟受美伊談判及聯準會(FED)謹慎立場影響下，越南市場見證了重大的資金流向轉變。<strong>MoMo</strong>成功吸引外資顯示了對數位生態系統的信心，而收益率高達9%的銀行債券正吸引尋求避險資產的投資人。</p><h2>資金流向何方？</h2><p>資金正從投機性資產轉向具有透明治理結構與長期成長敘事的企業。自7月1日起，將中長期貸款的短期資金上限提高至40%，這是一項關鍵政策，旨在協助銀行緩解流動性壓力，並在國際波動中維持成長動能。</p><h2>投資策略：市場震盪還是買入機會？</h2><p>從專家觀點來看，當前的市場波動是資產重新定價的自然結果。對於個人投資人而言，針對財務基礎穩健的股票進行定期定額投資是最佳策略。與其追逐短期投機波段，不如專注於零售與金融等第二季獲利領先的產業。</p><p><strong>市場情緒：</strong>現在是觀察與選擇的黃金時期。市場修正提供了積累優質資產的機會，而非因外資淨賣出而恐慌。</p><p><strong>參考資料來源: </strong><br><a target="_blank" href='https://cafef.vn/ky-lan-fintech-momo-hut-nha-dau-tu-ngoai-sau-cu-dao-chieu-loi-nhuan-347-ty-dong-188260623111342109.chn'>MoMo吸引外資</a><br><a target="_blank" href='https://dantri.com.vn/kinh-doanh/chinh-thuc-noi-tran-von-ngan-han-cho-vay-trung-dai-han-tu-17-20260622212738762.htm'>貸款上限調整</a><br><a target="_blank" href='https://dantri.com.vn/kinh-doanh/lai-trai-phieu-ngan-hang-len-9nam-vuot-xa-muc-gui-tiet-kiem-20260622122515554.htm'>銀行債券收益率</a></p></div>
-        </article>
-        <hr class="border-gray-800 my-8">
       
     </main>
 
@@ -1407,8 +1636,13 @@ async function fetchDynamicFeed() {
                 return `<p><strong>${label} </strong><br>${formattedLinks}</p>`;
             });
 
+            let itemSpokeUrl = article.article_url || null;
+            let absoluteSpokeUrl = itemSpokeUrl 
+                ? (itemSpokeUrl.startsWith('http') ? itemSpokeUrl : `${window.location.origin}${itemSpokeUrl.startsWith('/') ? '' : '/'}${itemSpokeUrl}`)
+                : `${window.location.origin}/diem-tin-vi-mo/${currentLang}/`;
+
             html += `
-            <article ${isRtl ? 'dir="rtl"' : ''}>
+            <article ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
                 <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
                   ${article.title}
                 </h1>
@@ -1418,6 +1652,15 @@ async function fetchDynamicFeed() {
                   <span>${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()}</span>
                   <span>•</span>
                   <span>${window.SITE_NAME}</span>
+                </div>
+                <div class="article-actions">
+                  <button class="copy-link-btn" data-spoke-url="${absoluteSpokeUrl}" onclick="copyArticleLink(this)" title="Sao chép đường dẫn bài viết">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+                    </svg>
+                    <span class="btn-label">Sao chép link</span>
+                  </button>
                 </div>
                 <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
                 <div class="digest-body">${formattedContent}</div>
@@ -1479,14 +1722,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (pFrom) {
-        pFrom.value = past7;
-        pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
+            const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
+            pFrom.value = spokeDate;
+            stateFromDate = dateToIso(spokeDate);
+            pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        } else {
+            pFrom.value = past7;
+            pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        }
         pFrom.min = minDateObj;
         pFrom.max = today;
     }
     if (pTo) {
-        pTo.value = today;
-        pTo.inputEl.value = isoToDisplay(stateToDate);
+        if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
+            const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
+            pTo.value = spokeDate;
+            stateToDate = dateToIso(spokeDate);
+            pTo.inputEl.value = isoToDisplay(stateToDate);
+        } else {
+            pTo.value = today;
+            pTo.inputEl.value = isoToDisplay(stateToDate);
+        }
         pTo.min = past7;
         pTo.max = maxDateObj;
     }
@@ -1499,13 +1756,57 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fetchBtn) {
         fetchBtn.addEventListener('click', fetchDynamicFeed);
         // Auto-fetch on page load after everything is initialized
-        setTimeout(() => {
-            console.log('Auto-fetching dynamic feed...');
-            fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
-        }, 10);
+        if (!window.IS_SPOKE_PAGE) {
+            setTimeout(() => {
+                console.log('Auto-fetching dynamic feed...');
+                fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
+            }, 10);
+        }
     }
 });
 
+
+    // ── Copy Article Link Logic ─────────────────────────────────────────────────────
+    (function() {
+      // Create toast element once
+      const toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Đã sao chép liên kết!</span>';
+      document.body.appendChild(toast);
+      let toastTimer = null;
+
+      window.copyArticleLink = function(btn) {
+        // Resolve spoke URL: use data-spoke-url attribute
+        const spokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        navigator.clipboard.writeText(spokeUrl).then(() => {
+          // Button feedback
+          btn.classList.add('copied');
+          const label = btn.querySelector('.btn-label');
+          if (label) label.textContent = 'Đã sao chép!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Sao chép link';
+          }, 2000);
+          // Toast feedback
+          clearTimeout(toastTimer);
+          toast.classList.add('visible');
+          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+        }).catch(() => {
+          // Fallback: textarea trick
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = spokeUrl;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            toast.classList.add('visible');
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+          } catch(e) { console.warn('Copy failed', e); }
+        });
+      };
+    })();
   </script>
 </body>
 </html>

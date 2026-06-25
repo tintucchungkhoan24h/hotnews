@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026年6月24日市場：VIC、LPB大漲，VN-Index逼近1880點 | Tin Tức Chứng Khoán 24h</title>
-  <meta name="description" content="2026年6月24日交易日，隨著VIC與LPB同步強勢上漲，推動VN-Index指數逼近1,880點。儘管外資持續賣超，市場流動性依然保持強勁。">
+  <title>VN指數2026年6月22日：Vingroup板塊爆發，流動性謹慎 | Tin Tức Chứng Khoán 24h</title>
+  <meta name="description" content="2026年6月22日越南股市創下兩個月來最佳表現，VN指數在Vingroup概念股帶動下強勢上漲，但整體流動性仍保持謹慎觀望態勢。">
   <link rel="canonical" href="/diem-tin-chung-khoan/zh/">
   <link rel="alternate" hreflang="vi-VN" href="/diem-tin-chung-khoan/vi/">
   <link rel="alternate" hreflang="en" href="/diem-tin-chung-khoan/en/">
@@ -15,8 +15,8 @@
   <link rel="alternate" hreflang="ja" href="/diem-tin-chung-khoan/ja/">
   <link rel="alternate" hreflang="x-default" href="/diem-tin-chung-khoan/vi/">
 
-  <meta property="og:title" content="2026年6月24日市場：VIC、LPB大漲，VN-Index逼近1880點">
-  <meta property="og:description" content="2026年6月24日交易日，隨著VIC與LPB同步強勢上漲，推動VN-Index指數逼近1,880點。儘管外資持續賣超，市場流動性依然保持強勁。">
+  <meta property="og:title" content="VN指數2026年6月22日：Vingroup板塊爆發，流動性謹慎">
+  <meta property="og:description" content="2026年6月22日越南股市創下兩個月來最佳表現，VN指數在Vingroup概念股帶動下強勢上漲，但整體流動性仍保持謹慎觀望態勢。">
   <meta property="og:url" content="/diem-tin-chung-khoan/zh/">
   <meta property="og:type" content="article">
   <meta property="og:image" content="/ava_icon.png">
@@ -661,6 +661,257 @@ article h1 {
     transform: none;
 }
 
+/* ── Copy Article Link Button ───────────────────────────────────────────────── */
+.copy-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  background: rgba(255,215,0,0.08);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 10px;
+  color: #ffd700;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  user-select: none;
+  outline: none;
+}
+.copy-link-btn:hover {
+  background: rgba(255,215,0,0.16);
+  border-color: rgba(255,215,0,0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255,215,0,0.15);
+}
+.copy-link-btn:active {
+  transform: scale(0.96);
+}
+.copy-link-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.copy-link-btn.copied {
+  background: rgba(34,197,94,0.12);
+  border-color: rgba(34,197,94,0.5);
+  color: #4ade80;
+}
+.copy-link-btn.copied svg {
+  transform: scale(1.1);
+}
+
+/* Article action bar that houses the copy button */
+.article-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+/* ── Toast Notification ─────────────────────────────────────────────────────── */
+.copy-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(10,25,47,0.97);
+  border: 1px solid rgba(74,222,128,0.5);
+  border-radius: 12px;
+  padding: 12px 22px;
+  color: #4ade80;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,222,128,0.15);
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
+}
+.copy-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.copy-toast svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Archive Section ─────────────────────────────────────────────────────────── */
+.archive-section {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 2px solid rgba(255,215,0,0.15);
+}
+.archive-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.archive-section-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffd700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.archive-section-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, #ffd700 0%, #f59e0b 100%);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.archive-count-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255,215,0,0.15);
+  border: 1px solid rgba(255,215,0,0.3);
+  color: #ffd700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.archive-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: rgba(17,34,64,0.4);
+  border: 1px solid rgba(255,215,0,0.08);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.archive-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #ffd700 0%, rgba(255,215,0,0.2) 100%);
+  border-radius: 0 2px 2px 0;
+}
+.archive-card:hover {
+  background: rgba(255,215,0,0.07);
+  border-color: rgba(255,215,0,0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,215,0,0.08);
+  text-decoration: none;
+}
+.archive-card-date {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+.archive-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.archive-card:hover .archive-card-title {
+  color: #ffd700;
+}
+.archive-card-arrow {
+  font-size: 11px;
+  color: #60a5fa;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.archive-card:hover .archive-card-arrow {
+  opacity: 1;
+}
+
+/* Spoke page indicator badge (shown on hub page for "today's" article) */
+.spoke-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #0a192f;
+  background: linear-gradient(135deg, #ffd700 0%, #f59e0b 100%);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.3);
+}
+
+/* Permanent link indicator on spoke pages */
+.permanent-link-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  border: 1px solid rgba(74,222,128,0.3);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+  .copy-toast {
+    width: calc(100vw - 32px);
+    left: 16px;
+    transform: translateY(20px);
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+  .copy-toast.visible {
+    transform: translateY(0);
+  }
+  .archive-section {
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+}
+
   </style>
 </head>
 <body class="bg-fin-blue min-h-screen">
@@ -846,56 +1097,34 @@ article h1 {
     <!-- MAIN ARTICLE FEED -->
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
       
-        <article>
+        <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/">
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            2026年6月24日市場：VIC、LPB大漲，VN-Index逼近1880點
+            VN指數2026年6月22日：Vingroup板塊爆發，流動性謹慎
           </h1>
           <div class="article-meta">
-            <span class="highlight">📅 2026-06-24</span>
+            <span class="highlight">📅 25/06/2026</span>
             <span>•</span>
-            <span>🇹🇼 CHINESE (TRADITIONAL)</span>
+            <span> 繁體中文</span>
             <span>•</span>
             <span>Tin Tức Chứng Khoán 24h</span>
+            <span class="spoke-badge">★ Hôm nay</span>
+          </div>
+          <div class="article-actions">
+            <button class="copy-link-btn" data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/" onclick="copyArticleLink(this)" title="Sao chép đường dẫn bài viết">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+              </svg>
+              <span class="btn-label">Sao chép link</span>
+            </button>
           </div>
 
-          <div class="digest-lead" >2026年6月24日交易日，隨著VIC與LPB同步強勢上漲，推動VN-Index指數逼近1,880點。儘管外資持續賣超，市場流動性依然保持強勁。</div>
-          <div class="digest-body"><h2>宏觀分析與市場情緒</h2><p>將短期資金用於中長期貸款的比例上調至40%的消息，為投資者情緒注入了強心針，特別是銀行股板塊。對廉價資金與信貸擴張的預期，使流動性高度集中於大型股。與此同時，市場情緒依然存在分化，聰明錢更傾向於投資具有獨特題材的企業，而非市場普漲。</p><h3>行業動態與個股表現</h3><p>以<strong>VIC</strong>和<strong>VHM</strong>為首的Vingroup系股票以及<strong>LPB</strong>成為當日焦點，同步觸及漲停板，成為推升指數的主要動力。相反，中型房地產股如<strong>NVL</strong>、<strong>DXG</strong>以及石油股<strong>BSR</strong>、<strong>PVD</strong>、<strong>PVS</strong>則面臨較大的獲利了結壓力。外資持續賣超超過6000億盾，主要拋售<strong>HPG</strong>和<strong>TCB</strong>，但國內資金展現了極大的耐心，持續吸收主要個股的賣壓。</p><h3>趨勢展望與投資建議</h3><p>市場正面臨1,900點的強大阻力位。短期趨勢預計將持續震盪與高度分化。投資者應保持謹慎，優先考慮對漲幅過大的板塊進行風險管理，並聚焦於具備良好基本面或強勁利多消息支撐的個股。</p><p><strong>參考資料來源: </strong><br><a target="_blank" href="https://vneconomy.vn/blog-chung-khoan-dong-tien-rat-kien-nhan.htm" rel="nofollow">證券部落格：極具耐心的資金流</a><br><a target="_blank" href="https://vnexpress.net/vn-index-tien-gan-dinh-lich-su-5089448.html" rel="nofollow">VN-Index逼近歷史高點</a></p></div>
+          <div class="digest-lead" >2026年6月22日越南股市創下兩個月來最佳表現，VN指數在Vingroup概念股帶動下強勢上漲，但整體流動性仍保持謹慎觀望態勢。</div>
+          <div class="digest-body"><h2>市場情緒：表面繁榮</h2><p>2026年6月22日的交易在河內五大基礎設施項目奠基的利好消息背景下展開。然而，VN指數的漲勢主要由Vingroup股票主導——<strong>VIC</strong>觸及漲停板，<strong>VHM</strong>和<strong>VRE</strong>強勢突破。實際上，下跌股票數量多於上漲股票，反映資金流入依然謹慎。</p><h2>資金流向分化</h2><p>數據顯示資金流向出現明顯分化。<strong>PVD</strong>、<strong>BSR</strong>、<strong>POW</strong>等能源股跟隨國際油價回升而集體上漲。相反，<strong>FPT</strong>、<strong>MWG</strong>等科技和零售股承受外資強力賣壓。外資連續5日凈賣出，尤其集中在藍籌股，對持續上漲構成重大挑戰。</p><h2>評估與建議</h2><p><strong>MBS</strong>研究認為近期反彈很可能仍是技術性回升。VN指數面臨1830-1845點的強阻力區。基準情景下，市場將繼續橫盤整理。建議投資者保持較高現金比例，在回調至吸引人價位時優先佈局基本面良好的證券、物流和製造業等板塊。</p></div>
         </article>
         <hr class="border-gray-800 my-8">
       
-        <article>
-          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            越南指數 6/23：LPB 漲停，VIC 引領外資大舉買入
-          </h1>
-          <div class="article-meta">
-            <span class="highlight">📅 2026-06-23</span>
-            <span>•</span>
-            <span>🇹🇼 CHINESE (TRADITIONAL)</span>
-            <span>•</span>
-            <span>Tin Tức Chứng Khoán 24h</span>
-          </div>
 
-          <div class="digest-lead" >2026年6月23日的交易時段中，越南指數在權值股的領漲下表現亮眼。市場流動性突破30萬億越南盾，鞏固了強勁的上漲勢頭。</div>
-          <div class="digest-body"><h2>宏觀分析與市場情緒</h2><p>短期資本比率放寬至40%的消息為銀行業帶來了顯著的市場信心提振。億萬富翁范日旺入股LPBank不僅是市場焦點，更成為資金湧向權值股的催化劑，加劇了市場的分化。</p><h3>行業動態與個股表現</h3><p>資金流向發生劇烈轉變，<strong>VIC</strong>和<strong>LPB</strong>強勢漲停，成為指數上漲的引擎。<strong>TCB</strong>表現亮眼，與<strong>NVL</strong>、<strong>DXG</strong>等中型地產股以及<strong>BSR</strong>、<strong>PVD</strong>、<strong>PVS</strong>等油氣股的疲軟走勢形成鮮明對比。這些股票面臨獲利了結壓力，而外資則透過大宗交易大量買入<strong>VIC</strong>，這與其在<strong>HPG</strong>和<strong>TCB</strong>上的淨賣出趨勢截然不同。</p><h3>趨勢展望與投資建議</h3><p>目前市場正逼近1,900點的關鍵阻力位。儘管流動性有所改善，但投資人應保持謹慎，密切觀察外資動向及匯率變化，以應對潛在的短期震盪。</p><p><strong>參考資料來源: </strong><br><a target="_blank" href="https://cafef.vn/phien-23-6-mot-co-phieu-bluechips-duoc-khoi-ngoai-mua-rong-dot-bien-2700-ty-dong-188260623153801896.chn" rel="nofollow">6月23日行情：外資在藍籌股上進行了2.7萬億越南盾的大規模淨買入</a><br><a target="_blank" href="https://vneconomy.vn/khong-loai-tru-kich-ban-etf-fubon-ban-rong-cho-den-tan-thang-9-suc-ep-len-30-co-phieu-trong-danh-muc.htm" rel="nofollow">不排除 Fubon ETF 持續淨賣出至九月的可能性</a></p></div>
-        </article>
-        <hr class="border-gray-800 my-8">
-      
-        <article>
-          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            2026年6月22日 VN-Index：Vingroup領漲，市場流動性保持審慎
-          </h1>
-          <div class="article-meta">
-            <span class="highlight">📅 2026-06-22</span>
-            <span>•</span>
-            <span>🇹🇼 CHINESE (TRADITIONAL)</span>
-            <span>•</span>
-            <span>Tin Tức Chứng Khoán 24h</span>
-          </div>
-
-          <div class="digest-lead" >2026年6月22日，VN-Index創下兩個月以來最大單日漲幅，市場交易氣氛熱絡。Vingroup集團股票成為領漲火車頭，但市場整體流動性仍維持審慎觀察。</div>
-          <div class="digest-body"><h2>市場情緒：指數上漲與個股分化</h2><p>6月22日的行情受河內基礎設施專案動工消息提振。指數強勁上漲主要歸功於 <strong>VIC</strong> 觸及漲停，以及 <strong>VHM</strong> 和 <strong>VRE</strong> 的強勢表現。然而，市場呈現「指數漲、個股跌」的現象，大多數股票下跌，反映投資者對整體市場走勢仍抱持謹慎態度。</p><h2>資金流向分化</h2><p>資金流向呈現明顯差異。能源類股如 <strong>PVD</strong>、 <strong>BSR</strong>、 <strong>POW</strong> 隨國際油價回升而上漲。相反地，科技與零售類股如 <strong>FPT</strong> 和 <strong>MWG</strong> 面臨外資賣壓。外資連續五個交易日賣超，且主要集中在權值股，這對市場的持續上漲構成挑戰。</p><h2>市場展望與建議</h2><p><strong>MBS</strong>分析認為，本次漲幅更傾向於技術性反彈。VN-Index正面臨 1,830-1,845 點的沉重壓力區。基本情境預測市場將維持盤整。建議投資者保持高現金比重，並在調整時優先佈局證券、物流及製造業等基本面強勁的板塊。</p><p><strong>參考資料：</strong><br><a target="_blank" rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS：市場震盪中的資金吸納板塊</a><br><a target="_blank" rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index壓力區分析</a></p></div>
-        </article>
-        <hr class="border-gray-800 my-8">
       
     </main>
 
@@ -1485,8 +1714,13 @@ async function fetchDynamicFeed() {
             formattedContent = normalizeReferenceLinks(formattedContent);
             formattedContent = highlightStockCodes(formattedContent);
 
+            let itemSpokeUrl = article.article_url || null;
+            let absoluteSpokeUrl = itemSpokeUrl 
+                ? (itemSpokeUrl.startsWith('http') ? itemSpokeUrl : `${window.location.origin}${itemSpokeUrl.startsWith('/') ? '' : '/'}${itemSpokeUrl}`)
+                : `${window.location.origin}/diem-tin-chung-khoan/${currentLang}/`;
+
             html += `
-            <article ${isRtl ? 'dir="rtl"' : ''}>
+            <article ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
                 <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
                   ${article.title}
                 </h1>
@@ -1496,6 +1730,15 @@ async function fetchDynamicFeed() {
                   <span>${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()}</span>
                   <span>•</span>
                   <span>${window.SITE_NAME}</span>
+                </div>
+                <div class="article-actions">
+                  <button class="copy-link-btn" data-spoke-url="${absoluteSpokeUrl}" onclick="copyArticleLink(this)" title="Sao chép đường dẫn bài viết">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+                    </svg>
+                    <span class="btn-label">Sao chép link</span>
+                  </button>
                 </div>
                 <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
                 <div class="digest-body">${formattedContent}</div>
@@ -1557,14 +1800,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (pFrom) {
-        pFrom.value = past7;
-        pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
+            const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
+            pFrom.value = spokeDate;
+            stateFromDate = dateToIso(spokeDate);
+            pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        } else {
+            pFrom.value = past7;
+            pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        }
         pFrom.min = minDateObj;
         pFrom.max = today;
     }
     if (pTo) {
-        pTo.value = today;
-        pTo.inputEl.value = isoToDisplay(stateToDate);
+        if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
+            const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
+            pTo.value = spokeDate;
+            stateToDate = dateToIso(spokeDate);
+            pTo.inputEl.value = isoToDisplay(stateToDate);
+        } else {
+            pTo.value = today;
+            pTo.inputEl.value = isoToDisplay(stateToDate);
+        }
         pTo.min = past7;
         pTo.max = maxDateObj;
     }
@@ -1577,13 +1834,52 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fetchBtn) {
         fetchBtn.addEventListener('click', fetchDynamicFeed);
         // Auto-fetch on page load after everything is initialized
-        setTimeout(() => {
-            console.log('Auto-fetching dynamic feed...');
-            fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
-        }, 10);
+        if (!window.IS_SPOKE_PAGE) {
+            setTimeout(() => {
+                console.log('Auto-fetching dynamic feed...');
+                fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
+            }, 10);
+        }
     }
 });
 
+
+    // ── Copy Article Link Logic ─────────────────────────────────────────────────────
+    (function() {
+      const toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Đã sao chép liên kết!</span>';
+      document.body.appendChild(toast);
+      let toastTimer = null;
+
+      window.copyArticleLink = function(btn) {
+        const spokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        navigator.clipboard.writeText(spokeUrl).then(() => {
+          btn.classList.add('copied');
+          const label = btn.querySelector('.btn-label');
+          if (label) label.textContent = 'Đã sao chép!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Sao chép link';
+          }, 2000);
+          clearTimeout(toastTimer);
+          toast.classList.add('visible');
+          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+        }).catch(() => {
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = spokeUrl;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            toast.classList.add('visible');
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+          } catch(e) { console.warn('Copy failed', e); }
+        });
+      };
+    })();
   </script>
 </body>
 </html>

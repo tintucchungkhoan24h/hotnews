@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MSCI Upgrade Fails in 2026: Where Will the 80T VND Flow Go? | Tin Tức Chứng Khoán 24h</title>
-  <meta name="description" content="As of June 25, 2026, Vietnam''s financial market received a cold splash as MSCI officially announced that Vietnam remains a Frontier Market, missing the upgrade">
+  <title>Macro Economic Update Week 22/06/2026: Oil Recovery, Stable Inflation | Tin Tức Chứng Khoán 24h</title>
+  <meta name="description" content="The past week saw positive macroeconomic developments with global oil prices recovering slightly after a deep decline.">
   <link rel="canonical" href="/diem-tin-vi-mo/en/">
   <link rel="alternate" hreflang="vi-VN" href="/diem-tin-vi-mo/vi/">
   <link rel="alternate" hreflang="en" href="/diem-tin-vi-mo/en/">
@@ -15,8 +15,8 @@
   <link rel="alternate" hreflang="ja" href="/diem-tin-vi-mo/ja/">
   <link rel="alternate" hreflang="x-default" href="/diem-tin-vi-mo/vi/">
 
-  <meta property="og:title" content="MSCI Upgrade Fails in 2026: Where Will the 80T VND Flow Go?">
-  <meta property="og:description" content="As of June 25, 2026, Vietnam''s financial market received a cold splash as MSCI officially announced that Vietnam remains a Frontier Market, missing the upgrade Watch List. This decision comes as fore">
+  <meta property="og:title" content="Macro Economic Update Week 22/06/2026: Oil Recovery, Stable Inflation">
+  <meta property="og:description" content="The past week saw positive macroeconomic developments with global oil prices recovering slightly after a deep decline.">
   <meta property="og:url" content="/diem-tin-vi-mo/en/">
   <meta property="og:type" content="article">
   <meta property="og:image" content="/ava_icon.png">
@@ -661,6 +661,257 @@ article h1 {
     transform: none;
 }
 
+/* ── Copy Article Link Button ───────────────────────────────────────────────── */
+.copy-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  background: rgba(255,215,0,0.08);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 10px;
+  color: #ffd700;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  user-select: none;
+  outline: none;
+}
+.copy-link-btn:hover {
+  background: rgba(255,215,0,0.16);
+  border-color: rgba(255,215,0,0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255,215,0,0.15);
+}
+.copy-link-btn:active {
+  transform: scale(0.96);
+}
+.copy-link-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.copy-link-btn.copied {
+  background: rgba(34,197,94,0.12);
+  border-color: rgba(34,197,94,0.5);
+  color: #4ade80;
+}
+.copy-link-btn.copied svg {
+  transform: scale(1.1);
+}
+
+/* Article action bar that houses the copy button */
+.article-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+/* ── Toast Notification ─────────────────────────────────────────────────────── */
+.copy-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(10,25,47,0.97);
+  border: 1px solid rgba(74,222,128,0.5);
+  border-radius: 12px;
+  padding: 12px 22px;
+  color: #4ade80;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,222,128,0.15);
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
+}
+.copy-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.copy-toast svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Archive Section ─────────────────────────────────────────────────────────── */
+.archive-section {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 2px solid rgba(255,215,0,0.15);
+}
+.archive-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.archive-section-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffd700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.archive-section-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, #ffd700 0%, #f59e0b 100%);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.archive-count-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255,215,0,0.15);
+  border: 1px solid rgba(255,215,0,0.3);
+  color: #ffd700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.archive-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: rgba(17,34,64,0.4);
+  border: 1px solid rgba(255,215,0,0.08);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.archive-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #ffd700 0%, rgba(255,215,0,0.2) 100%);
+  border-radius: 0 2px 2px 0;
+}
+.archive-card:hover {
+  background: rgba(255,215,0,0.07);
+  border-color: rgba(255,215,0,0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,215,0,0.08);
+  text-decoration: none;
+}
+.archive-card-date {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+.archive-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.archive-card:hover .archive-card-title {
+  color: #ffd700;
+}
+.archive-card-arrow {
+  font-size: 11px;
+  color: #60a5fa;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.archive-card:hover .archive-card-arrow {
+  opacity: 1;
+}
+
+/* Spoke page indicator badge (shown on hub page for "today's" article) */
+.spoke-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #0a192f;
+  background: linear-gradient(135deg, #ffd700 0%, #f59e0b 100%);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.3);
+}
+
+/* Permanent link indicator on spoke pages */
+.permanent-link-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  border: 1px solid rgba(74,222,128,0.3);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+  .copy-toast {
+    width: calc(100vw - 32px);
+    left: 16px;
+    transform: translateY(20px);
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+  .copy-toast.visible {
+    transform: translateY(0);
+  }
+  .archive-section {
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+}
+
   </style>
 </head>
 <body class="bg-fin-blue min-h-screen">
@@ -846,56 +1097,34 @@ article h1 {
     <!-- MAIN ARTICLE FEED -->
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
       
-        <article>
+        <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026">
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            MSCI Upgrade Fails in 2026: Where Will the 80T VND Flow Go?
+            Macro Economic Update Week 22/06/2026: Oil Recovery, Stable Inflation
           </h1>
           <div class="article-meta">
-            <span class="highlight">📅 2026-06-25</span>
+            <span class="highlight">📅 25/06/2026</span>
             <span>•</span>
-            <span>🇺🇸 ENGLISH</span>
+            <span> English</span>
             <span>•</span>
             <span>Tin Tức Chứng Khoán 24h</span>
+            <span class="spoke-badge">★ Hôm nay</span>
+          </div>
+          <div class="article-actions">
+            <button class="copy-link-btn" data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026" onclick="copyArticleLink(this)" title="Sao chép đương dẫn bài viết">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+              </svg>
+              <span class="btn-label">Sao chép link</span>
+            </button>
           </div>
 
-          <div class="digest-lead" >As of June 25, 2026, Vietnam''s financial market received a cold splash as MSCI officially announced that Vietnam remains a Frontier Market, missing the upgrade Watch List. This decision comes as foreign investors have quietly net sold nearly 80 trillion VND since the beginning of the year, coupled with intense exchange rate pressure as the USD hits a 13-month high. However, behind this gloomy picture lies a structural shift that opens up opportunities for domestic capital.</div>
-          <div class="digest-body"><h2>Chronic Bottlenecks Block Upgrade Amid Record Foreign Capital Flight</h2><p>MSCI''s decision was not unexpected by major financial institutions, yet it still dealt a heavy blow to the sentiment of individual investors. Chronic bottlenecks such as foreign ownership limits (FOL), English information disclosure, and the Central Counterparty (CCP) clearing system remain unresolved technical barriers. Missing out on the Emerging Markets watch list means passive foreign funds cannot trigger massive capital inflows into the HOSE.</p><p>This disappointment resonates with a record net selling wave of nearly 80 trillion VND by foreign investors since early 2026. With the Fed maintaining its hawkish stance and the USD setting a new 13-month high, the negative interest rate differential between VND and USD has forced foreign funds to restructure their portfolios toward safer havens. This net selling state not only exerts direct pressure on the VN-Index but also keeps the USD/VND exchange rate under constant stress, forcing the State Bank of Vietnam to utilize foreign exchange reserves to intervene.</p><h2>Short-term Sentiment Volatility or a Golden Buying Opportunity?</h2><p>From a practical macroeconomic perspective, this news will trigger strong <strong>sentiment volatility</strong> in the final trading sessions of June. Large-cap stocks, especially banking and real estate, which are highly sensitive to foreign capital, will face technical correction pressures. Additionally, the sharp plunge of global gold prices below $4,000/oz has prompted a segment of domestic speculative capital to flee traditional asset channels in search of safety.</p><p>However, for medium- and long-term investors, this is the right time to <strong>confidently accumulate</strong>. The nature of foreign capital since the beginning of the year has been largely short-term speculative, highly sensitive to global fluctuations. As the market corrects to solid support zones (such as the SMA 50-day line), the P/E valuations of many industry leaders will become extremely attractive. Furthermore, the upgrade roadmap under FTSE Russell standards by the end of the year remains on track, promising to shift the quality of foreign capital to highly stable passive inflows.</p><p><strong>Reference data sources: </strong><br><a target="_blank" href="https://vnbusiness.vn//viet-nam-tiep-tuc-o-lai-phong-cho-msci.html" rel="nofollow">Vietnam remains in MSCI upgrade waiting room</a><br><a target="_blank" href="https://cafef.vn/mot-the-luc-ban-rong-gan-80000-ty-dong-co-phieu-viet-nam-tu-dau-nam-chuyen-gi-dang-xay-ra-188260623223155283.chn" rel="nofollow">A force net sells nearly 80,000 billion VND of Vietnamese stocks since the beginning of the year, what is happening?</a><br><a target="_blank" href="https://vnexpress.net/viet-nam-khong-vao-danh-sach-theo-doi-nang-hang-cua-msci-5089220.html" rel="nofollow">Vietnam fails to enter MSCI upgrade watch list</a></p></div>
+          <div class="digest-lead" >The past week saw positive macroeconomic developments with global oil prices recovering slightly after a deep decline.</div>
+          <div class="digest-body"><h2>Global Oil Prices</h2><p>Brent crude rose 2.3% to $78.5 per barrel this week.</p><h2>Inflation and Monetary Policy</h2><p>The US CPI increased 0.2% in May, below the expected 0.3%.</p></div>
         </article>
         <hr class="border-gray-800 my-8">
       
-        <article>
-          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            Financial Market June 24: Capital Flow and Investment Strategy
-          </h1>
-          <div class="article-meta">
-            <span class="highlight">📅 2026-06-24</span>
-            <span>•</span>
-            <span>🇺🇸 ENGLISH</span>
-            <span>•</span>
-            <span>Tin Tức Chứng Khoán 24h</span>
-          </div>
 
-          <div class="digest-lead" >On June 24, 2026, Vietnam financial markets faced pressure from foreign net selling and global exchange rate volatility. While speculative capital remains cautious, green energy projects and digital infrastructure are emerging as new growth pillars.</div>
-          <div class="digest-body"><h2>Foreign Capital and Market Upgrading</h2><p>The net selling of nearly 80 trillion VND year-to-date indicates that foreign investors are restructuring portfolios amid macro uncertainties. Vietnam's difficulty in joining the MSCI Watch List in 2026 is a setback, yet it highlights the need for structural reforms in foreign ownership limits and CCP clearing mechanisms. However, the shift from short-term speculative flows to stable ETF passive capital remains a long-term catalyst.</p><h2>Green Economy and Digital Transformation</h2><p>As traditional capital flows moderate, green energy projects—such as Hoa Phat's 600 billion VND wind power investment and VinEnergo's 5GW energy partnership in the Philippines—highlight a strategic pivot. The government's 2% interest rate support for green projects serves as a financial lever, helping businesses overcome credit hurdles. This is not just a trend but a necessity for global supply chain integration.</p><h2>Investor Sentiment: Shakeout or Opportunity?</h2><p>The market is currently experiencing 'sentiment-driven volatility' due to Fed rate concerns and exchange rate pressures. For investors with a long-term horizon, this is a prime opportunity to accumulate quality assets that have optimized operations through AI and digital transformation. Avoid herd mentality; focus on policy-backed sectors.</p><p><strong>Reference data source: </strong><br><a target="_blank" href='https://tuoitre.vn/canh-bao-chien-dich-phat-tan-ma-doc-quy-mo-lon-qua-whatsapp-100260623152230603.htm'>WhatsApp Malware Alert</a><br><a target="_blank" href='https://tuoitre.vn/viet-nam-kho-vao-watch-list-msci-trong-ky-danh-gia-nam-2026-100260623171321885.htm'>MSCI Market Update</a><br><a target="_blank" href='https://tuoitre.vn/ho-kinh-doanh-sap-duoc-ho-tro-lai-suat-2-khi-dau-tu-du-an-xanh-100260623165341005.htm'>Green Credit Policy</a></p></div>
-        </article>
-        <hr class="border-gray-800 my-8">
-      
-        <article>
-          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            Financial Market June 23: Macro Volatility and Investment Opportunities
-          </h1>
-          <div class="article-meta">
-            <span class="highlight">📅 2026-06-23</span>
-            <span>•</span>
-            <span>🇺🇸 ENGLISH</span>
-            <span>•</span>
-            <span>Tin Tức Chứng Khoán 24h</span>
-          </div>
-
-          <div class="digest-lead" >On June 23, 2026, Vietnam's financial market faces significant polarization. While foreign capital flows into fintech unicorns, exchange rate pressures and monetary policy adjustments are creating unpredictable undercurrents.</div>
-          <div class="digest-body"><h2>Macro Landscape: A Mixed Picture</h2><p>Amidst global economic impacts from US-Iran negotiations and the FED's cautious stance, Vietnam's market is witnessing a significant shift in capital flows. <strong>MoMo</strong> attracting foreign investors signals confidence in the digital ecosystem, while bank bond waves with yields up to 9% are drawing significant attention from investors seeking safe-haven assets.</p><h2>Where is the Money Flowing?</h2><p>Capital is currently shifting away from speculative assets toward businesses with transparent governance and long-term growth narratives. The increase of the short-term capital cap for medium-to-long-term lending to 40% starting July 1 is a critical policy move, helping banks alleviate liquidity pressure and maintaining growth momentum despite global fluctuations.</p><h2>Investment Strategy: Market Shakeout or Buying Opportunity?</h2><p>From an expert perspective, the current market volatility is a natural consequence of asset repricing. For individual investors, dollar-cost averaging into stocks with healthy financial foundations is becoming an optimal strategy. Instead of chasing speculative trends, focus on Q2 profit-leading sectors such as retail and finance.</p><p><strong>Market Sentiment:</strong> Now is the golden time for observation and selection. Market corrections are opportunities to accumulate quality assets rather than panicking over foreign net-selling.</p><p><strong>Reference data source: </strong><br><a target="_blank" href='https://cafef.vn/ky-lan-fintech-momo-hut-nha-dau-tu-ngoai-sau-cu-dao-chieu-loi-nhuan-347-ty-dong-188260623111342109.chn'>MoMo attracts foreign capital</a><br><a target="_blank" href='https://dantri.com.vn/kinh-doanh/chinh-thuc-noi-tran-von-ngan-han-cho-vay-trung-dai-han-tu-17-20260622212738762.htm'>Lending cap adjustment</a><br><a target="_blank" href='https://dantri.com.vn/kinh-doanh/lai-trai-phieu-ngan-hang-len-9nam-vuot-xa-muc-gui-tiet-kiem-20260622122515554.htm'>Bank bond yields</a></p></div>
-        </article>
-        <hr class="border-gray-800 my-8">
       
     </main>
 
@@ -1407,8 +1636,13 @@ async function fetchDynamicFeed() {
                 return `<p><strong>${label} </strong><br>${formattedLinks}</p>`;
             });
 
+            let itemSpokeUrl = article.article_url || null;
+            let absoluteSpokeUrl = itemSpokeUrl 
+                ? (itemSpokeUrl.startsWith('http') ? itemSpokeUrl : `${window.location.origin}${itemSpokeUrl.startsWith('/') ? '' : '/'}${itemSpokeUrl}`)
+                : `${window.location.origin}/diem-tin-vi-mo/${currentLang}/`;
+
             html += `
-            <article ${isRtl ? 'dir="rtl"' : ''}>
+            <article ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
                 <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
                   ${article.title}
                 </h1>
@@ -1418,6 +1652,15 @@ async function fetchDynamicFeed() {
                   <span>${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()}</span>
                   <span>•</span>
                   <span>${window.SITE_NAME}</span>
+                </div>
+                <div class="article-actions">
+                  <button class="copy-link-btn" data-spoke-url="${absoluteSpokeUrl}" onclick="copyArticleLink(this)" title="Sao chép đường dẫn bài viết">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+                    </svg>
+                    <span class="btn-label">Sao chép link</span>
+                  </button>
                 </div>
                 <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
                 <div class="digest-body">${formattedContent}</div>
@@ -1479,14 +1722,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (pFrom) {
-        pFrom.value = past7;
-        pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
+            const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
+            pFrom.value = spokeDate;
+            stateFromDate = dateToIso(spokeDate);
+            pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        } else {
+            pFrom.value = past7;
+            pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        }
         pFrom.min = minDateObj;
         pFrom.max = today;
     }
     if (pTo) {
-        pTo.value = today;
-        pTo.inputEl.value = isoToDisplay(stateToDate);
+        if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
+            const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
+            pTo.value = spokeDate;
+            stateToDate = dateToIso(spokeDate);
+            pTo.inputEl.value = isoToDisplay(stateToDate);
+        } else {
+            pTo.value = today;
+            pTo.inputEl.value = isoToDisplay(stateToDate);
+        }
         pTo.min = past7;
         pTo.max = maxDateObj;
     }
@@ -1499,13 +1756,57 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fetchBtn) {
         fetchBtn.addEventListener('click', fetchDynamicFeed);
         // Auto-fetch on page load after everything is initialized
-        setTimeout(() => {
-            console.log('Auto-fetching dynamic feed...');
-            fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
-        }, 10);
+        if (!window.IS_SPOKE_PAGE) {
+            setTimeout(() => {
+                console.log('Auto-fetching dynamic feed...');
+                fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
+            }, 10);
+        }
     }
 });
 
+
+    // ── Copy Article Link Logic ─────────────────────────────────────────────────────
+    (function() {
+      // Create toast element once
+      const toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Đã sao chép liên kết!</span>';
+      document.body.appendChild(toast);
+      let toastTimer = null;
+
+      window.copyArticleLink = function(btn) {
+        // Resolve spoke URL: use data-spoke-url attribute
+        const spokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        navigator.clipboard.writeText(spokeUrl).then(() => {
+          // Button feedback
+          btn.classList.add('copied');
+          const label = btn.querySelector('.btn-label');
+          if (label) label.textContent = 'Đã sao chép!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Sao chép link';
+          }, 2000);
+          // Toast feedback
+          clearTimeout(toastTimer);
+          toast.classList.add('visible');
+          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+        }).catch(() => {
+          // Fallback: textarea trick
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = spokeUrl;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            toast.classList.add('visible');
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+          } catch(e) { console.warn('Copy failed', e); }
+        });
+      };
+    })();
   </script>
 </body>
 </html>

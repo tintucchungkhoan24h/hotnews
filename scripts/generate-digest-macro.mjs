@@ -15,6 +15,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import https from 'https';
+import { extractSlugFromUrl, slugifyTitle, isoToHuman } from './slug-utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT      = path.resolve(__dirname, '..');
@@ -34,6 +35,7 @@ const BACK_LABEL = i18nData.backLabel;
 
 const SITE_NAME = 'Tin Tức Chứng Khoán 24h';
 const CANONICAL_BASE = '';
+const SITE_BASE = 'https://tintucchungkhoan24h.com';
 
 const I18N = i18nData.translations;
 const I18N_FLAGS = i18nData.flags;
@@ -62,7 +64,8 @@ function readFile(relPath) {
 
 // ── Fetch summaries ─────────────────────────────────────────────────────
 async function fetchSummaries() {
-  let url = `${SUPABASE_URL}/rest/v1/market_summary_macro?order=summary_date.desc&limit=7`;
+  // Fetch 30 rows to fully populate the hub archive section
+  let url = `${SUPABASE_URL}/rest/v1/market_summary_macro?order=summary_date.desc&limit=30`;
 
   const headers = {
     apikey: SUPABASE_ANON_KEY,
@@ -74,8 +77,8 @@ async function fetchSummaries() {
   return rows;
 }
 
-// ── Generate one HTML page ───────────────────────────────────────────────────
-function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs }) {
+// ── Generate one HTML page (Hub) ─────────────────────────────────────────────────────
+function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs, archiveItems, latestSpokeUrl }) {
   const canonical  = `${CANONICAL_BASE}/diem-tin-vi-mo/${lang}/`;
   const dashboardUrl = `${CANONICAL_BASE}/`;
   const isRtl      = lang === 'ar';
@@ -593,17 +596,34 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
           return `<p><strong>${label} </strong><br>${formattedLinks}</p>`;
         });
         
+        
+        const itemSpokeUrl = item.article.article_url || null;
+        const absoluteSpokeUrl = itemSpokeUrl
+          ? (itemSpokeUrl.startsWith('http') ? itemSpokeUrl : `${SITE_BASE}${itemSpokeUrl.startsWith('/') ? '' : '/'}${itemSpokeUrl}`)
+          : `${SITE_BASE}/diem-tin-vi-mo/${lang}/`;
+        const isLatest = (item === articlesList[0]);
+        
         return `
-        <article${isRtl ? ' dir="rtl"' : ''}>
+        <article${isRtl ? ' dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ${item.article.title}
           </h1>
           <div class="article-meta">
-            <span class="highlight">📅 ${item.date}</span>
+            <span class="highlight">📅 ${isoToHuman(item.date)}</span>
             <span>•</span>
             <span>${item.article.langEmoji || ''} ${item.article.langName || lang.toUpperCase()}</span>
             <span>•</span>
             <span>${SITE_NAME}</span>
+            ${isLatest ? '<span class="spoke-badge">★ Hôm nay</span>' : ''}
+          </div>
+          <div class="article-actions">
+            <button class="copy-link-btn" data-spoke-url="${absoluteSpokeUrl}" onclick="copyArticleLink(this)" title="Sao chép đương dẫn bài viết">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+              </svg>
+              <span class="btn-label">Sao chép link</span>
+            </button>
           </div>
 
           <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${item.article.lead}</div>
@@ -612,6 +632,23 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
         <hr class="border-gray-800 my-8">
       `;
       }).join('')}
+
+      ${archiveItems && archiveItems.length > 1 ? `
+      <!-- ARCHIVE SECTION: Past Spoke Pages -->
+      <section class="archive-section max-w-[1440px] mx-auto" aria-label="Bài viết cũ">
+        <div class="archive-section-header">
+          <h2 class="archive-section-title">Kho lưu trữ bài viết</h2>
+          <span class="archive-count-badge">${archiveItems.length - 1} bài</span>
+        </div>
+        <div class="archive-grid">
+          ${archiveItems.slice(1).map(item => `
+          <a href="${item.spokeAbsoluteUrl}" class="archive-card" title="${item.title.replace(/"/g, '&quot;')}">
+            <span class="archive-card-date">📅 ${isoToHuman(item.date)}</span>
+            <span class="archive-card-title">${item.title}</span>
+            <span class="archive-card-arrow">→ Xem bài viết</span>
+          </a>`).join('')}
+        </div>
+      </section>` : ''}
     </main>
 
   </div>
@@ -669,9 +706,357 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
 
     // Inject dynamic client JS
     ${clientJs}
+
+    // ── Copy Article Link Logic ─────────────────────────────────────────────────────
+    (function() {
+      // Create toast element once
+      const toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>\u0110\u00e3 sao ch\u00e9p li\u00ean k\u1ebft!</span>';
+      document.body.appendChild(toast);
+      let toastTimer = null;
+
+      window.copyArticleLink = function(btn) {
+        // Resolve spoke URL: use data-spoke-url attribute
+        const spokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        navigator.clipboard.writeText(spokeUrl).then(() => {
+          // Button feedback
+          btn.classList.add('copied');
+          const label = btn.querySelector('.btn-label');
+          if (label) label.textContent = '\u0110\u00e3 sao ch\u00e9p!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Sao ch\u00e9p link';
+          }, 2000);
+          // Toast feedback
+          clearTimeout(toastTimer);
+          toast.classList.add('visible');
+          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+        }).catch(() => {
+          // Fallback: textarea trick
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = spokeUrl;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            toast.classList.add('visible');
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+          } catch(e) { console.warn('Copy failed', e); }
+        });
+      };
+    })();
   </script>
 </body>
 </html>`;
+}
+
+// ── Generate one Spoke Page (permanent, never overwritten) ─────────────────────
+function generateSpokePage({ article, date, lang, spokeSlug, headerHtml, footerHtml, langs, clientCss, clientJs }) {
+  const canonical    = `${CANONICAL_BASE}/diem-tin-vi-mo/${lang}/${spokeSlug}/`;
+  const absoluteUrl  = `${SITE_BASE}/diem-tin-vi-mo/${lang}/${spokeSlug}/`;
+  const hubUrl       = `${CANONICAL_BASE}/diem-tin-vi-mo/${lang}/`;
+  const dashboardUrl = `${CANONICAL_BASE}/`;
+  const isRtl        = lang === 'ar';
+
+  let procHeader = headerHtml.replace(/src="([^"]+)"/g, (match, src) => src.startsWith('http') || src.startsWith('/') ? match : `src="/${src}"`);
+  let procFooter = footerHtml.replace(/src="([^"]+)"/g, (match, src) => src.startsWith('http') || src.startsWith('/') ? match : `src="/${src}"`);
+
+  const flagMarkup = I18N_FLAGS[lang] || '';
+  const langShort  = I18N_LANG_SHORT[lang] || lang.toUpperCase();
+  const menuHtml   = langs.map(l => {
+    const f = I18N_FLAGS[l] || '';
+    const n = I18N_LANG_NAMES[l] || l.toUpperCase();
+    const s = I18N_LANG_SHORT[l] || l.toUpperCase();
+    return `<button type="button" class="lang-option" data-lang="${l}" onclick="window.location.href='/diem-tin-vi-mo/${l}/'">
+        <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;">${f}</span>
+        <span>${n} (${s})</span>
+    </button>`;
+  }).join('');
+
+  procHeader = procHeader.replace('<span id="langFlag"></span>', `<span id="langFlag">${flagMarkup}</span>`);
+  procHeader = procHeader.replace(/<span id="langText"([^>]*)><\/span>/, `<span id="langText"$1>${langShort}</span>`);
+  procHeader = procHeader.replace('<div id="langMenu" class="lang-menu" aria-hidden="true"></div>', `<div id="langMenu" class="lang-menu" aria-hidden="true">${menuHtml}</div>`);
+
+  const currentI18n = I18N[lang] || I18N['en'] || {};
+  const descText    = (article.lead || '').replace(/"/g, '&quot;').slice(0, 155);
+
+  // Format content (same pipeline as hub)
+  let formattedContent = article.content || '';
+  formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
+  formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+
+  return `<!DOCTYPE html>
+<html lang="${HREFLANG[lang] || lang}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${article.title} | ${SITE_NAME}</title>
+  <meta name="description" content="${descText}">
+  <link rel="canonical" href="${absoluteUrl}">
+${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="${SITE_BASE}/diem-tin-vi-mo/${l}/">`).join('\n')}
+  <link rel="alternate" hreflang="x-default" href="${SITE_BASE}/diem-tin-vi-mo/vi/">
+
+  <meta property="og:title" content="${article.title.replace(/"/g, '&quot;')}">
+  <meta property="og:description" content="${descText}">
+  <meta property="og:url" content="${absoluteUrl}">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="${SITE_BASE}/ava_icon.png">
+  <meta property="article:published_time" content="${date}T00:00:00+07:00">
+
+  <link rel="icon" type="image/png" sizes="48x48" href="/ava_icon.png">
+  <link rel="stylesheet" href="/index.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { 'fin-blue': '#0a192f', 'fin-blue-light': '#112240', 'fin-gold': '#ffd700' } } }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { overflow-y: scroll; }
+    body { margin: 0; padding: 0; background: #0a192f; color: #f3f4f6; font-family: 'Inter', system-ui, sans-serif; }
+    .avatar-glow { box-shadow: 0 0 15px rgba(255,215,0,0.3); border: 2px solid rgba(255,215,0,0.5); }
+    .tab-bar-wrap { overflow-x: auto; scrollbar-width: none; }
+    .tab-bar-wrap::-webkit-scrollbar { display: none; }
+    .tab-button { color: #9ca3af; background: transparent; border: none; cursor: pointer; user-select: none; position: relative; border-radius: 10px; margin: 0 1px; }
+    .tab-btn-responsive { padding: 6px 10px; font-size: 11px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 4px; text-decoration: none; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); font-weight: 700; }
+    @media (min-width: 480px) { .tab-btn-responsive { padding: 8px 14px; font-size: 12px; } }
+    @media (min-width: 640px) { .tab-btn-responsive { padding: 10px 20px; font-size: 14px; } }
+    .tab-button:hover { color: #fef9c3; background: rgba(255, 255, 255, 0.06); }
+    .tab-button.active { color: #0a192f; background: #ffd700; box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3); }
+    .tab-button:active { transform: scale(0.98); }
+    article { background: linear-gradient(180deg, rgba(17,34,64,0.5) 0%, rgba(10,25,47,0.3) 100%); border: 1px solid rgba(255,215,0,0.1); border-radius: 18px; padding: 28px; margin-bottom: 28px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+    article h1 { background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.02em; font-size: 1.75rem; font-weight: 800; margin-bottom: 0.875rem; line-height: 1.3; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; font-size: 13px; font-weight: 600; text-decoration: none; padding: 8px 14px; background: rgba(96,165,250,0.08); border: 1px solid rgba(96,165,250,0.25); border-radius: 8px; margin-bottom: 24px; transition: all 0.2s; }
+    .back-link:hover { color: #ffd700; border-color: rgba(255,215,0,0.3); }
+    .lang-menu { position: absolute; top: calc(100% + 8px); right: 0; min-width: 220px; max-width: min(320px, calc(100vw - 24px)); max-height: min(70vh, 360px); overflow-x: hidden; overflow-y: auto; background: rgba(10, 18, 47, 0.98); border: 1px solid #334155; border-radius: 18px; box-shadow: 0 20px 60px rgba(0,0,0,0.55); backdrop-filter: blur(16px); padding: 8px 0; z-index: 10050; display: none; }
+    .lang-menu.open { display: block; }
+    .lang-option { width: 100%; display: flex; align-items: center; gap: 10px; background: transparent; border: none; color: #f8fafc; padding: 10px 14px; cursor: pointer; font-size: 12px; text-align: left; transition: background 0.15s ease; }
+    .lang-option:hover { background: rgba(255,255,255,0.06); }
+    #langToggle { display: flex; align-items: center; gap: 6px; background: rgba(17,34,64,0.95); border: 1px solid #4b5563; color: white; padding: 8px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; box-shadow: 0 10px 40px rgba(0,0,0,0.3); backdrop-filter: blur(10px); transition: all 0.2s ease; white-space: nowrap; }
+    #langToggle:hover { border-color: #ffd700; box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2); }
+    ${clientCss}
+  </style>
+</head>
+<body class="bg-fin-blue min-h-screen">
+  <div class="p-4 md:p-6" style="padding-top: 12px;">
+
+    <!-- HEADER -->
+    ${procHeader}
+
+    <!-- TAB BAR -->
+    <div class="tab-bar-wrap max-w-[1440px] mx-auto mb-6 overflow-x-auto mt-4" style="scrollbar-width:none;-ms-overflow-style:none;">
+        <div class="flex items-center gap-0 bg-fin-blue-light/30 p-1 rounded-xl border border-gray-800/50 w-fit min-w-full sm:min-w-0">
+            <a href="${dashboardUrl}#stock/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.stock || 'Mã CK'}</span>
+            </a>
+            <a href="${dashboardUrl}#macro/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.macro || 'Vĩ Mô'}</span>
+            </a>
+            <a href="${dashboardUrl}#stable/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.stable || 'Biến động ổn định'}</span>
+            </a>
+            <a href="${dashboardUrl}#high/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.high || 'Biến động mạnh'}</span>
+            </a>
+            <a href="${dashboardUrl}#watchlist/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.watchlist || '⭐ Danh sách theo dõi'}</span>
+            </a>
+            <a href="${dashboardUrl}#spotlight/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.spotlight || '🚀 Mã Nổi Bật'}</span>
+            </a>
+            <a href="${CANONICAL_BASE}/diem-tin-chung-khoan/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span style="font-size:0.9em;">📊</span>
+                <span class="tab-text">${currentI18n.tabs?.digest || 'Điểm tin CK'}</span>
+            </a>
+            <a href="${hubUrl}" aria-current="page" class="tab-button active tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="${currentI18n.tabs?.macroFocus || 'Tiêu điểm Vĩ mô'}">
+                <span style="font-size:0.9em;">🌎</span>
+                <span class="tab-text">${currentI18n.tabs?.macroFocus || 'Tiêu điểm Vĩ mô'}</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FILTER CONTROLS BAR -->
+    <div class="bg-fin-blue-light/30 p-3 sm:p-4 md:p-5 rounded-2xl border border-gray-800/50 max-w-[1440px] mx-auto mb-6">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <!-- Date Range Filter -->
+                <div class="flex items-center bg-fin-blue border border-gray-700/50 rounded-xl px-3 py-2 shadow-inner flex-1 sm:flex-none">
+                    <div class="flex flex-col flex-1">
+                        <label id="lblFrom" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblFrom">${currentI18n.lblFrom || 'Từ ngày'}</label>
+                        <div class="datepicker-wrapper">
+                            <input type="text" id="seoFromDate" value="${isoToHuman(date)}" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly placeholder="dd/mm/yyyy">
+                            <div id="seoFromDatePopup" class="datepicker-popup"></div>
+                        </div>
+                    </div>
+                    <div class="w-[1px] h-7 bg-gray-700 mx-3"></div>
+                    <div class="flex flex-col flex-1">
+                        <label id="lblTo" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblTo">${currentI18n.lblTo || 'Đến ngày'}</label>
+                        <div class="datepicker-wrapper">
+                            <input type="text" id="seoToDate" value="${isoToHuman(date)}" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly placeholder="dd/mm/yyyy">
+                            <div id="seoToDatePopup" class="datepicker-popup"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="fetchFeedBtn" class="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-fin-blue border border-gray-700/50 rounded-xl text-gray-400 hover:text-fin-gold hover:border-fin-gold transition-all hover:scale-110 active:scale-95" title="${currentI18n.refreshBtn || 'Làm mới dữ liệu'}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 4 23 10 17 10"></polyline>
+                        <polyline points="1 20 1 14 7 14"></polyline>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="ml-auto flex items-center gap-3">
+              <a href="${hubUrl}" class="back-link" style="margin-bottom:0;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                Về trang tổng hợp
+              </a>
+              <span class="permanent-link-badge hidden sm:inline-flex">🔗 Liên kết vĩnh viễn</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SPOKE ARTICLE -->
+    <main id="digest-feed" class="max-w-[1440px] mx-auto">
+      <article${isRtl ? ' dir="rtl"' : ''} data-spoke-url="${absoluteUrl}">
+        <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">${article.title}</h1>
+        <div class="article-meta">
+          <span class="highlight">📅 ${isoToHuman(date)}</span>
+          <span>•</span>
+          <span>${article.langEmoji || ''} ${article.langName || lang.toUpperCase()}</span>
+          <span>•</span>
+          <span>${SITE_NAME}</span>
+        </div>
+        <div class="article-actions">
+          <button class="copy-link-btn" data-spoke-url="${absoluteUrl}" onclick="copyArticleLink(this)" title="Sao chép đường dẫn bài viết">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+            </svg>
+            <span class="btn-label">Sao chép link</span>
+          </button>
+        </div>
+        <div class="digest-lead"${isRtl ? ' style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
+        <div class="digest-body">${formattedContent}</div>
+      </article>
+    </main>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-container">
+    ${procFooter}
+  </div>
+
+  <script>
+    window.SUPABASE_URL = '${SUPABASE_URL}';
+    window.SUPABASE_ANON_KEY = '${SUPABASE_ANON_KEY}';
+    window.SITE_NAME = '${SITE_NAME}';
+    const langDict = ${JSON.stringify(currentI18n)};
+
+    function applyDict() {
+        document.querySelectorAll('[data-text-key]').forEach(el => {
+            const keys = el.getAttribute('data-text-key').split('.');
+            let val = langDict;
+            for (const k of keys) val = val?.[k];
+            if (val) el.textContent = val;
+        });
+    }
+    applyDict();
+
+    const langToggle = document.getElementById('langToggle');
+    const langMenu = document.getElementById('langMenu');
+    if (langToggle && langMenu) {
+        langToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langMenu.classList.toggle('open');
+            langMenu.setAttribute('aria-hidden', langMenu.classList.contains('open') ? 'false' : 'true');
+        });
+        document.addEventListener('click', (e) => {
+            if (!langToggle.contains(e.target) && !langMenu.contains(e.target)) {
+                langMenu.classList.remove('open');
+                langMenu.setAttribute('aria-hidden', 'true');
+            }
+        });
+    }
+
+    // Copy Article Link Logic
+    (function() {
+      const toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Đã sao chép liên kết!</span>';
+      document.body.appendChild(toast);
+      let toastTimer = null;
+
+      window.copyArticleLink = function(btn) {
+        const spokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        navigator.clipboard.writeText(spokeUrl).then(() => {
+          btn.classList.add('copied');
+          const label = btn.querySelector('.btn-label');
+          if (label) label.textContent = 'Đã sao chép!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Sao chép link';
+          }, 2000);
+          clearTimeout(toastTimer);
+          toast.classList.add('visible');
+          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+        }).catch(() => {
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = spokeUrl;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            toast.classList.add('visible');
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+          } catch(e) { console.warn('Copy failed', e); }
+        });
+      };
+    })();
+  </script>
+  <script>window.IS_SPOKE_PAGE = true; window.SPOKE_ARTICLE_DATE = "${date}";</script>
+  <script>${clientJs}</script>
+</body>
+</html>`;
+}
+
+// ── Update sitemap with new spoke URLs ────────────────────────────────────────
+function updateSitemapWithSpokes(newSpokeEntries) {
+  if (!newSpokeEntries || newSpokeEntries.length === 0) return;
+  const sitemapPath = path.join(ROOT, 'sitemap.xml');
+  let sitemap = fs.readFileSync(sitemapPath, 'utf8');
+  const today = new Date().toISOString().split('T')[0];
+
+  // Update lastmod on existing hub entries
+  sitemap = sitemap.replace(/<lastmod>2026-\d{2}-\d{2}<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
+
+  let addedCount = 0;
+  for (const entry of newSpokeEntries) {
+    // Only add if this URL is not already present
+    if (sitemap.includes(entry.url)) continue;
+    const urlBlock = `
+  <!-- Spoke: ${entry.label} -->
+  <url>
+    <loc>${entry.url}</loc>
+    <lastmod>${entry.date}</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+    sitemap = sitemap.replace('</urlset>', urlBlock + '\n\n</urlset>');
+    addedCount++;
+  }
+
+  fs.writeFileSync(sitemapPath, sitemap, 'utf8');
+  console.log(`  📝 Updated sitemap.xml (${addedCount} new spoke URL(s) added)`);
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
@@ -689,43 +1074,50 @@ async function main() {
         langCode: 'vi', langName: 'VIETNAMESE', langEmoji: '🇻🇳',
         title: 'Cập nhật kinh tế vĩ mô tuần 22/06/2026: Giá dầu hồi phục, lạm phát ổn định',
         lead: 'Tuần qua, thị trường kinh tế vĩ mô ghi nhận nhiều diễn biến tích cực với giá dầu thế giới phục hồi nhẹ sau chuỗi giảm sâu. Lạm phát tại các nền kinh tế lớn tiếp tục ổn định, tạo động lực cho các quyết định chính sách tiền tệ trong thời gian tới.',
-        content: '<h2>Giá dầu thế giới</h2><p>Giá dầu Brent tăng 2.3% lên mức 78.5 USD/thùng trong tuần qua, phản ánh kỳ vọng về nhu cầu năng lượng phục hồi mùa hè. Tổ chức các nước xuất khẩu dầu mỏ (OPEC+) duy trì chính sách sản xuất hiện tại, hỗ trợ giá dầu ở mức cân bằng.</p><h2>Lạm phát và Chính sách tiền tệ</h2><p>Chỉ số giá tiêu dùng (CPI) của Mỹ tăng 0.2% trong tháng 5, thấp hơn dự kiến 0.3%, cho thấy lạm phát đang được kiểm soát hiệu quả. Cục Dự trữ Liên bang Mỹ (Fed) có thể duy trì lãi suất cao trong thời gian dài hơn để đảm bảo lạm phát quay về mục tiêu 2%.</p><h2>Kinh tế Châu Á</h2><p>Kinh tế Trung Quốc tiếp tục phục hồi với PMI sản xuất đạt 51.2 điểm, vượt mức 50 điểm ngưỡng tăng trưởng. Ngân hàng Nhân dân Trung Quốc (PBOC) duy trì chính sách tiền tệ nới lỏng để hỗ trợ tăng trưởng kinh tế.</p>'
+        content: '<h2>Giá dầu thế giới</h2><p>Giá dầu Brent tăng 2.3% lên mức 78.5 USD/thùng trong tuần qua, phản ánh kỳ vọng về nhu cầu năng lượng phục hồi mùa hè.</p><h2>Lạm phát và Chính sách tiền tệ</h2><p>Chỉ số giá tiêu dùng (CPI) của Mỹ tăng 0.2% trong tháng 5, thấp hơn dự kiến 0.3%, cho thấy lạm phát đang được kiểm soát hiệu quả.</p>',
+        article_url: '/diem-tin-vi-mo/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026'
       },
       {
         langCode: 'en', langName: 'ENGLISH', langEmoji: '🇺🇸',
         title: 'Macro Economic Update Week 22/06/2026: Oil Recovery, Stable Inflation',
-        lead: 'The past week saw positive macroeconomic developments with global oil prices recovering slightly after a deep decline. Inflation in major economies continues to stabilize, setting the stage for monetary policy decisions ahead.',
-        content: '<h2>Global Oil Prices</h2><p>Brent crude rose 2.3% to $78.5 per barrel this week, reflecting expectations for energy demand recovery this summer. OPEC+ maintained current production policies, supporting oil prices at balanced levels.</p><h2>Inflation and Monetary Policy</h2><p>The US Consumer Price Index (CPI) increased 0.2% in May, below the expected 0.3%, indicating effective inflation control. The Federal Reserve may maintain higher interest rates longer to ensure inflation returns to the 2% target.</p><h2>Asian Economy</h2><p>China\'s economy continues to recover with manufacturing PMI reaching 51.2 points, above the 50-point growth threshold. The People\'s Bank of China (PBOC) maintains accommodative monetary policy to support economic growth.</p>'
+        lead: 'The past week saw positive macroeconomic developments with global oil prices recovering slightly after a deep decline.',
+        content: '<h2>Global Oil Prices</h2><p>Brent crude rose 2.3% to $78.5 per barrel this week.</p><h2>Inflation and Monetary Policy</h2><p>The US CPI increased 0.2% in May, below the expected 0.3%.</p>',
+        article_url: '/diem-tin-vi-mo/en/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026'
       },
       {
         langCode: 'ko', langName: 'KOREAN', langEmoji: '🇰🇷',
         title: '2026년 6월 22일 주 거시경제 업데이트: 유가 회복, 물가 안정',
-        lead: '지난 주에는 유가가 급락 후 약간 회복되는 등 긍정적인 거시경제 지표가 관찰되었습니다. 주요 경제의 인플레이션은 계속 안정되어 향후 통화 정책 결정의 기반을 마련했습니다.',
-        content: '<h2>국제 유가</h2><p>브렌트 유가는 주간 2.3% 상승하여 배럴당 78.5달러를 기록했으며, 이는 여름철 에너지 수요 회복에 대한 기대를 반영합니다. OPEC+는 현재 생산 정책을 유지하여 유가를 균형 수준으로 지원하고 있습니다.</p><h2>인플레이션 및 통화 정책</h2><p>미국 소비자물가지수(CPI)는 5월에 0.2% 상승하여 예상치 0.3%를 하회했으며, 이는 효과적인 인플레이션 통제를 나타냅니다. 연방준비제도이사회(Fed)는 인플레이션이 2% 목표로 복귀하는 것을 보장하기 위해 더 오랫동안 높은 금리를 유지할 수 있습니다.</p><h2>아시아 경제</h2><p>중국 경제는 제조업 PMI가 51.2포인트에 도달하여 성장 임계값인 50포인트를 초과하며 회복을 지속하고 있습니다. 중국 인민은행(PBOC)은 경제 성장을 지원하기 위해 완화적인 통화 정책을 유지하고 있습니다.</p>'
+        lead: '지난 주에는 유가가 급락 후 약간 회복되는 등 긍정적인 거시경제 지표가 관찰되었습니다.',
+        content: '<h2>국제 유가</h2><p>브렌트 유가는 주간 2.3% 상승하여 배럴당 78.5달러를 기록했습니다.</p>',
+        article_url: '/diem-tin-vi-mo/ko/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026'
       },
       {
         langCode: 'zh', langName: 'CHINESE', langEmoji: '🇹🇼',
         title: '2026年6月22日宏觀經濟更新：油價回升，通脹穩定',
-        lead: '過去一周，宏觀經濟出現積極發展，全球油價在深度下跌後略有回升。主要經濟體的通脹繼續穩定，為未來貨幣政策決定奠定基礎。',
-        content: '<h2>全球油價</h2><p>布倫特原油本周上漲2.3%至每桶78.5美元，反映了對夏季能源需求恢復的預期。OPEC+維持當前生產政策，支持油價處於平衡水平。</p><h2>通脹與貨幣政策</h2><p>美國消費者物價指數(CPI)5月上漲0.2%，低於預期的0.3%，表明通脹得到有效控制。美聯儲可能維持較高利率更長時間，以確保通脹回到2%目標。</p><h2>亞洲經濟</h2><p>中國經濟繼續復甦，製造業PMI達到51.2點，高於50點增長閾值。中國人民銀行(PBOC)維持寬鬆貨幣政策以支持經濟增長。</p>'
+        lead: '過去一周，宏觀經濟出現積極發展，全球油價在深度下跌後略有回升。',
+        content: '<h2>全球油價</h2><p>布倫特原油本周上漲2.3%至每桶78.5美元。</p>',
+        article_url: '/diem-tin-vi-mo/zh/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026'
       },
       {
         langCode: 'th', langName: 'THAI', langEmoji: '🇹🇭',
         title: 'อัปเดตเศรษฐกิจมหภาคสัปดาห์ 22/06/2569: ราคาน้ำมันฟื้นตัว เงินเฟ้อเสถียร',
-        lead: 'สัปดาห์ที่แล้วมีการพัฒนาเศรษฐกิจมหภาคในเชิงบวก โดยราคาน้ำมันโลกฟื้นตัวเล็กน้อยหลังจากการลดลงอย่างมาก เงินเฟ้อในเศรษฐกิจหลักยังคงเสถียร',
-        content: '<h2>ราคาน้ำมันโลก</h2><p>น้ำมันดิบเบรนต์เพิ่มขึ้น 2.3% เป็น 78.5 ดอลลาร์ต่อบาร์เรลในสัปดาห์นี้ สะท้อนความคาดหวังว่าความต้องการพลังงานจะฟื้นตัวในช่วงฤดูร้อน OPEC+ รักษานโยบายการผลิตปัจจุบัน</p><h2>เงินเฟ้อและนโยบายการเงิน</h2><p>ดัชนีราคาผู้บริโภคของสหรัฐ (CPI) เพิ่มขึ้น 0.2% ในเดือนพฤษภาคม ต่ำกว่าที่คาดไว้ 0.3% แสดงให้เห็นว่าเงินเฟ้อได้รับการควบคุมอย่างมีประสิทธิภาพ</p><h2>เศรษฐกิจเอเชีย</h2><p>เศรษฐกิจจีนฟื้นตัวต่อเนื่องโดย PMI ภาคการผลิตถึง 51.2 จุด เหนือระดับ 50 จุด</p>'
+        lead: 'สัปดาห์ที่แล้วมีการพัฒนาเศรษฐกิจมหภาคในเชิงบวก',
+        content: '<h2>ราคาน้ำมันโลก</h2><p>น้ำมันดิบเบรนต์เพิ่มขึ้น 2.3% เป็น 78.5 ดอลลาร์ต่อบาร์เรล</p>',
+        article_url: '/diem-tin-vi-mo/th/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026'
       },
       {
         langCode: 'ar', langName: 'ARABIC', langEmoji: '🇸🇦',
         title: 'تحديث الاقتصاد الكلي الأسبوع 22/06/2026: تعافي أسعار النفط، استقرار التضخم',
-        lead: 'شهد الأسبوع الماضي تطورات اقتصادية كلية إيجابية مع تعافي أسعار النفط العالمية قليلاً بعد انخفاض حاد. يستمر التضخم في الاقتصادات الكبرى في الاستقرار',
-        content: '<h2>أسعار النفط العالمية</h2><p>ارتفع خام برنت 2.3% إلى 78.5 دولار للبرميل هذا الأسبوع، مما يعكس توقعات تعافي الطلب على الطاقة هذا الصيف. حافظت أوبك+ على سياسات الإنتاج الحالية</p><h2>التضخم والسياسة النقدية</h2><p>ارتفع مؤشر أسعار المستهلكين الأمريكي (CPI) بنسبة 0.2% في مايو، أقل من المتوقع 0.3%، مما يشير إلى السيطرة الفعالة على التضخم</p><h2>اقتصاد آسيا</h2><p>يستمر اقتصاد الصين في التعافي مع وصول مؤشر مديري المشتريات في التصنيع إلى 51.2 نقطة</p>'
+        lead: 'شهد الأسبوع الماضي تطورات اقتصادية كلية إيجابية مع تعافي أسعار النفط العالمية.',
+        content: '<h2>أسعار النفط العالمية</h2><p>ارتفع خام برنت 2.3% إلى 78.5 دولار للبرميل.</p>',
+        article_url: '/diem-tin-vi-mo/ar/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026'
       },
       {
         langCode: 'ja', langName: 'JAPANESE', langEmoji: '🇯🇵',
         title: '2026年6月22日マクロ経済更新：原油価格回復、インフレ安定',
-        lead: '先週はマクロ経済の好展開が見られ、原油価格が急落後に小幅回復しました。主要国のインフレは引き続き安定しています',
-        content: '<h2>世界の原油価格</h2><p>ブレント原油は今週2.3%上昇し、バレル当たり78.5ドルとなりました。これは夏季のエネルギー需要回復への期待を反映しています。OPEC+は現在の生産政策を維持しています</p><h2>インフレと金融政策</h2><p>米国の消費者物価指数（CPI）は5月に0.2%上昇し、予想の0.3%を下回りました。これはインフレが効果的に管理されていることを示しています</p><h2>アジア経済</h2><p>中国経済は引き続き回復しており、製造業PMIは51.2ポイントに達しました</p>'
+        lead: '先週はマクロ経済の好展開が見られ、原油価格が急落後に小幅回復しました。',
+        content: '<h2>世界の原油価格</h2><p>ブレント原油は今週2.3%上昇し、バレル当たり78.5ドルとなりました。</p>',
+        article_url: '/diem-tin-vi-mo/ja/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026'
       }
     ];
   } else {
@@ -743,21 +1135,20 @@ async function main() {
 
   const headerHtml = readFile('header.html');
   const footerHtml = readFile('footer.html');
-  const clientCss = readFile('scripts/seo-client.css');
-  const clientJs = readFile('scripts/seo-client-macro.js');
+  const clientCss  = readFile('scripts/seo-client.css');
+  const clientJs   = readFile('scripts/seo-client-macro.js');
 
   let dataByLang = {};
-  let langsSet = new Set();
+  let langsSet   = new Set();
 
   for (const row of allRows) {
-    const rDate = row.summary_date;
+    const rDate    = row.summary_date;
     const rArticles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
     for (const a of rArticles) {
       if (isSample) {
-        a.langName = I18N_LANG_NAMES[a.langCode];
-        a.langEmoji = ''; 
+        a.langName  = I18N_LANG_NAMES[a.langCode];
+        a.langEmoji = '';
       }
-      // Map zh-TW to zh for directory consistency
       const langCode = a.langCode === 'zh-TW' ? 'zh' : a.langCode;
       langsSet.add(langCode);
       if (!dataByLang[langCode]) dataByLang[langCode] = [];
@@ -766,25 +1157,85 @@ async function main() {
   }
 
   const langs = Array.from(langsSet);
+  const newSpokeEntries = []; // Collect newly-written spoke URLs for sitemap + ping
 
   for (const lang of langs) {
     const articlesList = dataByLang[lang];
-    const outDir  = path.join(ROOT, 'diem-tin-vi-mo', lang);
-    const outFile = path.join(outDir, 'index.html');
-    fs.mkdirSync(outDir, { recursive: true });
+    const hubDir  = path.join(ROOT, 'diem-tin-vi-mo', lang);
+    fs.mkdirSync(hubDir, { recursive: true });
 
-    const html = generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs });
-    fs.writeFileSync(outFile, html, 'utf8');
-    console.log(`  📝 Written: diem-tin-vi-mo/${lang}/index.html`);
+    // ── Build archive items (all rows for this lang) ─────────────────────────
+    const archiveItems = articlesList.map(item => {
+      const artUrl  = item.article.article_url || null;
+      const slug    = artUrl ? (extractSlugFromUrl(artUrl) || slugifyTitle(item.article.title, item.date))
+                             : slugifyTitle(item.article.title, item.date);
+      const absUrl  = `${SITE_BASE}/diem-tin-vi-mo/${lang}/${slug}/`;
+      return {
+        date:             item.date,
+        title:            item.article.title,
+        spokeSlug:        slug,
+        spokeAbsoluteUrl: absUrl,
+      };
+    });
+
+    // ── Write Spoke Pages (skip if already exists) ───────────────────────────
+    for (const item of archiveItems) {
+      const spokeDir  = path.join(ROOT, 'diem-tin-vi-mo', lang, item.spokeSlug);
+      const spokeFile = path.join(spokeDir, 'index.html');
+      if (fs.existsSync(spokeFile)) {
+        console.log(`  ⏭  Skipped (exists): diem-tin-vi-mo/${lang}/${item.spokeSlug}/`);
+        continue;
+      }
+      fs.mkdirSync(spokeDir, { recursive: true });
+      const spokeHtml = generateSpokePage({
+        article:    articlesList.find(i => i.date === item.date)?.article,
+        date:       item.date,
+        lang,
+        spokeSlug:  item.spokeSlug,
+        headerHtml, footerHtml, langs, clientCss, clientJs,
+      });
+      fs.writeFileSync(spokeFile, spokeHtml, 'utf8');
+      console.log(`  📝 Written spoke: diem-tin-vi-mo/${lang}/${item.spokeSlug}/index.html`);
+      // Only add Vi spoke URLs to Google ping list (primary language)
+      if (lang === 'vi') {
+        newSpokeEntries.push({
+          url:   item.spokeAbsoluteUrl,
+          date:  item.date,
+          label: item.title.slice(0, 60),
+        });
+      }
+    }
+
+    // ── Write Hub Page (always updated) ─────────────────────────────────────
+    const hubFile = path.join(hubDir, 'index.html');
+    const hubHtml = generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs, archiveItems });
+    fs.writeFileSync(hubFile, hubHtml, 'utf8');
+    console.log(`  📝 Written hub: diem-tin-vi-mo/${lang}/index.html`);
   }
 
-  // Write root redirect page
+  // ── Root redirect page ─────────────────────────────────────────────────────
   const rootRedirect = `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=/diem-tin-vi-mo/vi/"><title>Redirecting…</title></head><body><p>Redirecting to <a href="/diem-tin-vi-mo/vi/">Vietnamese</a>…</p></body></html>`;
   const rootDir = path.join(ROOT, 'diem-tin-vi-mo');
   fs.mkdirSync(rootDir, { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'index.html'), rootRedirect, 'utf8');
-  
-  console.log('\n✨ Done! All macro SEO pages generated.');
+
+  // ── Update sitemap with new spoke URLs ────────────────────────────────────
+  updateSitemapWithSpokes(newSpokeEntries);
+
+  // ── Write new spoke URLs to shared file for Google ping ───────────────────
+  if (newSpokeEntries.length > 0) {
+    const pingFilePath = path.join(ROOT, 'spoke_urls_macro.json');
+    const existingPing = fs.existsSync(pingFilePath)
+      ? JSON.parse(fs.readFileSync(pingFilePath, 'utf8'))
+      : [];
+    const merged = [...new Set([...existingPing, ...newSpokeEntries.map(e => e.url)])];
+    fs.writeFileSync(pingFilePath, JSON.stringify(merged, null, 2), 'utf8');
+    console.log(`  📝 Wrote ${newSpokeEntries.length} new spoke URL(s) to spoke_urls_macro.json`);
+  }
+
+  console.log('\n✨ Done! All macro SEO pages (hub + spokes) generated.');
 }
 
 main().catch(err => { console.error('❌ Error:', err.message); process.exit(1); });
+
+

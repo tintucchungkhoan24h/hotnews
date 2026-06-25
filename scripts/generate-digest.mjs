@@ -17,6 +17,7 @@ import { fileURLToPath } from 'url';
 import https from 'https';
 import { normalizeReferenceLinks } from './format-reference-links.js';
 import { highlightStockCodes } from './format-stock-codes.js';
+import { extractSlugFromUrl, slugifyTitle, isoToHuman } from './slug-utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT      = path.resolve(__dirname, '..');
@@ -36,6 +37,7 @@ const BACK_LABEL = i18nData.backLabel;
 
 const SITE_NAME = 'Tin Tức Chứng Khoán 24h';
 const CANONICAL_BASE = '';
+const SITE_BASE = 'https://tintucchungkhoan24h.com';
 
 const I18N = i18nData.translations;
 const I18N_FLAGS = i18nData.flags;
@@ -64,7 +66,8 @@ function readFile(relPath) {
 
 // ── Fetch summaries ─────────────────────────────────────────────────────
 async function fetchSummaries() {
-  let url = `${SUPABASE_URL}/rest/v1/market_summary_stock?order=summary_date.desc&limit=7`;
+  // Fetch 30 rows to fully populate the hub archive section
+  let url = `${SUPABASE_URL}/rest/v1/market_summary_stock?order=summary_date.desc&limit=30`;
 
   const headers = {
     apikey: SUPABASE_ANON_KEY,
@@ -76,8 +79,8 @@ async function fetchSummaries() {
   return rows;
 }
 
-// ── Generate one HTML page ───────────────────────────────────────────────────
-function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs }) {
+// ── Generate one HTML page (Hub) ─────────────────────────────────────────────────────
+function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs, archiveItems }) {
   const canonical  = `${CANONICAL_BASE}/diem-tin-chung-khoan/${lang}/`;
   const dashboardUrl = `${CANONICAL_BASE}/`;
   const isRtl      = lang === 'ar';
@@ -566,17 +569,33 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
         formattedContent = normalizeReferenceLinks(formattedContent);
         formattedContent = highlightStockCodes(formattedContent);
         
+        const itemSpokeUrl = item.article.article_url || null;
+        const absoluteSpokeUrl = itemSpokeUrl
+          ? (itemSpokeUrl.startsWith('http') ? itemSpokeUrl : `${SITE_BASE}${itemSpokeUrl.startsWith('/') ? '' : '/'}${itemSpokeUrl}`)
+          : `${SITE_BASE}/diem-tin-chung-khoan/${lang}/`;
+        const isLatest = (item === articlesList[0]);
+        
         return `
-        <article${isRtl ? ' dir="rtl"' : ''}>
+        <article${isRtl ? ' dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ${item.article.title}
           </h1>
           <div class="article-meta">
-            <span class="highlight">📅 ${item.date}</span>
+            <span class="highlight">📅 ${isoToHuman(item.date)}</span>
             <span>•</span>
             <span>${item.article.langEmoji || ''} ${item.article.langName || lang.toUpperCase()}</span>
             <span>•</span>
             <span>${SITE_NAME}</span>
+            ${isLatest ? '<span class="spoke-badge">★ Hôm nay</span>' : ''}
+          </div>
+          <div class="article-actions">
+            <button class="copy-link-btn" data-spoke-url="${absoluteSpokeUrl}" onclick="copyArticleLink(this)" title="Sao chép đường dẫn bài viết">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+              </svg>
+              <span class="btn-label">Sao chép link</span>
+            </button>
           </div>
 
           <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${item.article.lead}</div>
@@ -585,6 +604,23 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
         <hr class="border-gray-800 my-8">
       `;
       }).join('')}
+
+      ${archiveItems && archiveItems.length > 1 ? `
+      <!-- ARCHIVE SECTION: Past Spoke Pages -->
+      <section class="archive-section max-w-[1440px] mx-auto" aria-label="Bài viết cũ">
+        <div class="archive-section-header">
+          <h2 class="archive-section-title">Kho lưu trữ điểm tin</h2>
+          <span class="archive-count-badge">${archiveItems.length - 1} bài</span>
+        </div>
+        <div class="archive-grid">
+          ${archiveItems.slice(1).map(item => `
+          <a href="${item.spokeAbsoluteUrl}" class="archive-card" title="${item.title.replace(/"/g, '&quot;')}">
+            <span class="archive-card-date">📅 ${isoToHuman(item.date)}</span>
+            <span class="archive-card-title">${item.title}</span>
+            <span class="archive-card-arrow">→ Xem bài viết</span>
+          </a>`).join('')}
+        </div>
+      </section>` : ''}
     </main>
 
   </div>
@@ -642,6 +678,43 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
 
     // Inject dynamic client JS
     ${clientJs}
+
+    // ── Copy Article Link Logic ─────────────────────────────────────────────────────
+    (function() {
+      const toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>\u0110\u00e3 sao ch\u00e9p li\u00ean k\u1ebft!</span>';
+      document.body.appendChild(toast);
+      let toastTimer = null;
+
+      window.copyArticleLink = function(btn) {
+        const spokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        navigator.clipboard.writeText(spokeUrl).then(() => {
+          btn.classList.add('copied');
+          const label = btn.querySelector('.btn-label');
+          if (label) label.textContent = '\u0110\u00e3 sao ch\u00e9p!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Sao ch\u00e9p link';
+          }, 2000);
+          clearTimeout(toastTimer);
+          toast.classList.add('visible');
+          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+        }).catch(() => {
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = spokeUrl;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            toast.classList.add('visible');
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+          } catch(e) { console.warn('Copy failed', e); }
+        });
+      };
+    })();
   </script>
 </body>
 </html>`;
@@ -741,39 +814,399 @@ async function main() {
   }
 
   const langs = Array.from(langsSet);
+  const newSpokeEntries = []; // Collect newly-written spoke URLs for sitemap + ping
 
   for (const lang of langs) {
     const articlesList = dataByLang[lang];
-    const outDir  = path.join(ROOT, 'diem-tin-chung-khoan', lang);
-    const outFile = path.join(outDir, 'index.html');
-    fs.mkdirSync(outDir, { recursive: true });
+    const hubDir  = path.join(ROOT, 'diem-tin-chung-khoan', lang);
+    fs.mkdirSync(hubDir, { recursive: true });
 
-    const html = generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs });
-    fs.writeFileSync(outFile, html, 'utf8');
-    console.log(`  📝 Written: diem-tin-chung-khoan/${lang}/index.html`);
+    // ── Build archive items (all rows for this lang) ─────────────────────────
+    const archiveItems = articlesList.map(item => {
+      const artUrl  = item.article.article_url || null;
+      const slug    = artUrl ? (extractSlugFromUrl(artUrl) || slugifyTitle(item.article.title, item.date))
+                             : slugifyTitle(item.article.title, item.date);
+      const absUrl  = `${SITE_BASE}/diem-tin-chung-khoan/${lang}/${slug}/`;
+      return {
+        date:             item.date,
+        title:            item.article.title,
+        spokeSlug:        slug,
+        spokeAbsoluteUrl: absUrl,
+      };
+    });
+
+    // ── Write Spoke Pages (skip if already exists) ───────────────────────────
+    for (const item of archiveItems) {
+      const spokeDir  = path.join(ROOT, 'diem-tin-chung-khoan', lang, item.spokeSlug);
+      const spokeFile = path.join(spokeDir, 'index.html');
+      if (fs.existsSync(spokeFile)) {
+        console.log(`  ⏭  Skipped (exists): diem-tin-chung-khoan/${lang}/${item.spokeSlug}/`);
+        continue;
+      }
+      fs.mkdirSync(spokeDir, { recursive: true });
+      const spokeArticle = articlesList.find(i => i.date === item.date)?.article;
+      if (!spokeArticle) continue;
+      const spokeHtml = generateSpokePage({
+        article:    spokeArticle,
+        date:       item.date,
+        lang,
+        spokeSlug:  item.spokeSlug,
+        headerHtml, footerHtml, langs, clientCss, clientJs,
+      });
+      fs.writeFileSync(spokeFile, spokeHtml, 'utf8');
+      console.log(`  📝 Written spoke: diem-tin-chung-khoan/${lang}/${item.spokeSlug}/index.html`);
+      // Only add Vi spoke URLs to Google ping list (primary language)
+      if (lang === 'vi') {
+        newSpokeEntries.push({
+          url:   item.spokeAbsoluteUrl,
+          date:  item.date,
+          label: item.title.slice(0, 60),
+        });
+      }
+    }
+
+    // ── Write Hub Page (always updated) ─────────────────────────────────────
+    const hubFile = path.join(hubDir, 'index.html');
+    const hubHtml = generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs, archiveItems });
+    fs.writeFileSync(hubFile, hubHtml, 'utf8');
+    console.log(`  📝 Written hub: diem-tin-chung-khoan/${lang}/index.html`);
   }
 
-  // Write root redirect page
+  // ── Root redirect page ─────────────────────────────────────────────────────
   const rootRedirect = `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=/diem-tin-chung-khoan/vi/"><title>Redirecting…</title></head><body><p>Redirecting to <a href="/diem-tin-chung-khoan/vi/">Vietnamese</a>…</p></body></html>`;
   const rootDir = path.join(ROOT, 'diem-tin-chung-khoan');
   fs.mkdirSync(rootDir, { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'index.html'), rootRedirect, 'utf8');
-  
-  console.log('\n✨ Done! All SEO pages generated.');
 
-  // Auto-update sitemap.xml with current date
-  updateSitemap();
+  // ── Update sitemap with new spoke URLs ────────────────────────────────────
+  updateSitemapWithSpokes(newSpokeEntries);
+
+  // ── Write new spoke URLs to shared file for Google ping ───────────────────
+  if (newSpokeEntries.length > 0) {
+    const pingFilePath = path.join(ROOT, 'spoke_urls_stock.json');
+    const existingPing = fs.existsSync(pingFilePath)
+      ? JSON.parse(fs.readFileSync(pingFilePath, 'utf8'))
+      : [];
+    const merged = [...new Set([...existingPing, ...newSpokeEntries.map(e => e.url)])];
+    fs.writeFileSync(pingFilePath, JSON.stringify(merged, null, 2), 'utf8');
+    console.log(`  📝 Wrote ${newSpokeEntries.length} new spoke URL(s) to spoke_urls_stock.json`);
+  }
+
+  console.log('\n✨ Done! All stock SEO pages (hub + spokes) generated.');
 }
 
-function updateSitemap() {
+// ── Generate one Spoke Page (permanent, never overwritten) ─────────────────────
+function generateSpokePage({ article, date, lang, spokeSlug, headerHtml, footerHtml, langs, clientCss, clientJs }) {
+  const canonical    = `${CANONICAL_BASE}/diem-tin-chung-khoan/${lang}/${spokeSlug}/`;
+  const absoluteUrl  = `${SITE_BASE}/diem-tin-chung-khoan/${lang}/${spokeSlug}/`;
+  const hubUrl       = `${CANONICAL_BASE}/diem-tin-chung-khoan/${lang}/`;
+  const dashboardUrl = `${CANONICAL_BASE}/`;
+  const isRtl        = lang === 'ar';
+
+  let procHeader = headerHtml.replace(/src="([^"]+)"/g, (match, src) => src.startsWith('http') || src.startsWith('/') ? match : `src="/${src}"`);
+  let procFooter = footerHtml.replace(/src="([^"]+)"/g, (match, src) => src.startsWith('http') || src.startsWith('/') ? match : `src="/${src}"`);
+
+  const flagMarkup = I18N_FLAGS[lang] || '';
+  const langShort  = I18N_LANG_SHORT[lang] || lang.toUpperCase();
+  const menuHtml   = langs.map(l => {
+    const f = I18N_FLAGS[l] || '';
+    const n = I18N_LANG_NAMES[l] || l.toUpperCase();
+    const s = I18N_LANG_SHORT[l] || l.toUpperCase();
+    return `<button type="button" class="lang-option" data-lang="${l}" onclick="window.location.href='/diem-tin-chung-khoan/${l}/'">
+        <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;">${f}</span>
+        <span>${n} (${s})</span>
+    </button>`;
+  }).join('');
+
+  procHeader = procHeader.replace('<span id="langFlag"></span>', `<span id="langFlag">${flagMarkup}</span>`);
+  procHeader = procHeader.replace(/<span id="langText"([^>]*)><\/span>/, `<span id="langText"$1>${langShort}</span>`);
+  procHeader = procHeader.replace('<div id="langMenu" class="lang-menu" aria-hidden="true"></div>', `<div id="langMenu" class="lang-menu" aria-hidden="true">${menuHtml}</div>`);
+
+  const currentI18n = I18N[lang] || I18N['en'] || {};
+  const descText    = (article.lead || '').replace(/"/g, '&quot;').slice(0, 155);
+
+  // Format content
+  let formattedContent = article.content || '';
+  formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+  formattedContent = normalizeReferenceLinks(formattedContent);
+  formattedContent = highlightStockCodes(formattedContent);
+
+  return `<!DOCTYPE html>
+<html lang="${HREFLANG[lang] || lang}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${article.title} | ${SITE_NAME}</title>
+  <meta name="description" content="${descText}">
+  <link rel="canonical" href="${absoluteUrl}">
+${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="${SITE_BASE}/diem-tin-chung-khoan/${l}/">`).join('\n')}
+  <link rel="alternate" hreflang="x-default" href="${SITE_BASE}/diem-tin-chung-khoan/vi/">
+
+  <meta property="og:title" content="${article.title.replace(/"/g, '&quot;')}">
+  <meta property="og:description" content="${descText}">
+  <meta property="og:url" content="${absoluteUrl}">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="${SITE_BASE}/ava_icon.png">
+  <meta property="article:published_time" content="${date}T00:00:00+07:00">
+
+  <link rel="icon" type="image/png" sizes="48x48" href="/ava_icon.png">
+  <link rel="stylesheet" href="/index.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { 'fin-blue': '#0a192f', 'fin-blue-light': '#112240', 'fin-gold': '#ffd700' } } }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { overflow-y: scroll; }
+    body { margin: 0; padding: 0; background: #0a192f; color: #f3f4f6; font-family: 'Inter', system-ui, sans-serif; }
+    .avatar-glow { box-shadow: 0 0 15px rgba(255,215,0,0.3); border: 2px solid rgba(255,215,0,0.5); }
+    .tab-bar-wrap { overflow-x: auto; scrollbar-width: none; }
+    .tab-bar-wrap::-webkit-scrollbar { display: none; }
+    .tab-button { color: #9ca3af; background: transparent; border: none; cursor: pointer; user-select: none; position: relative; border-radius: 10px; margin: 0 1px; }
+    .tab-btn-responsive { padding: 6px 10px; font-size: 11px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 4px; text-decoration: none; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); font-weight: 700; }
+    @media (min-width: 480px) { .tab-btn-responsive { padding: 8px 14px; font-size: 12px; } }
+    @media (min-width: 640px) { .tab-btn-responsive { padding: 10px 20px; font-size: 14px; } }
+    .tab-button:hover { color: #fef9c3; background: rgba(255, 255, 255, 0.06); }
+    .tab-button.active { color: #0a192f; background: #ffd700; box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3); }
+    .tab-button:active { transform: scale(0.98); }
+    article { background: linear-gradient(180deg, rgba(17,34,64,0.5) 0%, rgba(10,25,47,0.3) 100%); border: 1px solid rgba(255,215,0,0.1); border-radius: 18px; padding: 28px; margin-bottom: 28px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+    article h1 { background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.02em; font-size: 1.75rem; font-weight: 800; margin-bottom: 0.875rem; line-height: 1.3; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; font-size: 13px; font-weight: 600; text-decoration: none; padding: 8px 14px; background: rgba(96,165,250,0.08); border: 1px solid rgba(96,165,250,0.25); border-radius: 8px; margin-bottom: 24px; transition: all 0.2s; }
+    .back-link:hover { color: #ffd700; border-color: rgba(255,215,0,0.3); }
+    .lang-menu { position: absolute; top: calc(100% + 8px); right: 0; min-width: 220px; max-width: min(320px, calc(100vw - 24px)); max-height: min(70vh, 360px); overflow-x: hidden; overflow-y: auto; background: rgba(10, 18, 47, 0.98); border: 1px solid #334155; border-radius: 18px; box-shadow: 0 20px 60px rgba(0,0,0,0.55); backdrop-filter: blur(16px); padding: 8px 0; z-index: 10050; display: none; }
+    .lang-menu.open { display: block; }
+    .lang-option { width: 100%; display: flex; align-items: center; gap: 10px; background: transparent; border: none; color: #f8fafc; padding: 10px 14px; cursor: pointer; font-size: 12px; text-align: left; transition: background 0.15s ease; }
+    .lang-option:hover { background: rgba(255,255,255,0.06); }
+    #langToggle { display: flex; align-items: center; gap: 6px; background: rgba(17,34,64,0.95); border: 1px solid #4b5563; color: white; padding: 8px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; box-shadow: 0 10px 40px rgba(0,0,0,0.3); backdrop-filter: blur(10px); transition: all 0.2s ease; white-space: nowrap; }
+    #langToggle:hover { border-color: #ffd700; box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2); }
+    ${clientCss}
+  </style>
+</head>
+<body class="bg-fin-blue min-h-screen">
+  <div class="p-4 md:p-6" style="padding-top: 12px;">
+
+    <!-- HEADER -->
+    ${procHeader}
+
+    <!-- TAB BAR -->
+    <div class="tab-bar-wrap max-w-[1440px] mx-auto mb-6 overflow-x-auto mt-4" style="scrollbar-width:none;-ms-overflow-style:none;">
+        <div class="flex items-center gap-0 bg-fin-blue-light/30 p-1 rounded-xl border border-gray-800/50 w-fit min-w-full sm:min-w-0">
+            <a href="${dashboardUrl}#stock/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.stock || 'Mã CK'}</span>
+            </a>
+            <a href="${dashboardUrl}#macro/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.macro || 'Vĩ Mô'}</span>
+            </a>
+            <a href="${dashboardUrl}#stable/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.stable || 'Biến động ổn định'}</span>
+            </a>
+            <a href="${dashboardUrl}#high/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.high || 'Biến động mạnh'}</span>
+            </a>
+            <a href="${dashboardUrl}#watchlist/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.watchlist || '⭐ Danh sách theo dõi'}</span>
+            </a>
+            <a href="${dashboardUrl}#spotlight/${lang}" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span class="tab-text">${currentI18n.tabs?.spotlight || '🚀 Mã Nổi Bật'}</span>
+            </a>
+            <a href="${hubUrl}" aria-current="page" class="tab-button active tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="${currentI18n.tabs?.digest || 'Điểm tin CK'}">
+                <span style="font-size:0.9em;">📊</span>
+                <span class="tab-text">${currentI18n.tabs?.digest || 'Điểm tin CK'}</span>
+            </a>
+            <a href="${CANONICAL_BASE}/diem-tin-vi-mo/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;" title="${currentI18n.tabs?.macroFocus || 'Tiêu điểm Vĩ mô'}">
+                <span style="font-size:0.9em;">🌎</span>
+                <span class="tab-text">${currentI18n.tabs?.macroFocus || 'Tiêu điểm Vĩ mô'}</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FILTER CONTROLS BAR -->
+    <div class="bg-fin-blue-light/30 p-3 sm:p-4 md:p-5 rounded-2xl border border-gray-800/50 max-w-[1440px] mx-auto mb-6">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <!-- Date Range Filter -->
+                <div class="flex items-center bg-fin-blue border border-gray-700/50 rounded-xl px-3 py-2 shadow-inner flex-1 sm:flex-none">
+                    <div class="flex flex-col flex-1">
+                        <label id="lblFrom" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblFrom">${currentI18n.lblFrom || 'Từ ngày'}</label>
+                        <div class="datepicker-wrapper">
+                            <input type="text" id="seoFromDate" value="${isoToHuman(date)}" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly placeholder="dd/mm/yyyy">
+                            <div id="seoFromDatePopup" class="datepicker-popup"></div>
+                        </div>
+                    </div>
+                    <div class="w-[1px] h-7 bg-gray-700 mx-3"></div>
+                    <div class="flex flex-col flex-1">
+                        <label id="lblTo" class="text-[9px] uppercase text-gray-500 font-bold mb-0.5" data-text-key="lblTo">${currentI18n.lblTo || 'Đến ngày'}</label>
+                        <div class="datepicker-wrapper">
+                            <input type="text" id="seoToDate" value="${isoToHuman(date)}" class="datepicker-input" data-placeholder-key="datepicker.inputPlaceholder" readonly placeholder="dd/mm/yyyy">
+                            <div id="seoToDatePopup" class="datepicker-popup"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="fetchFeedBtn" class="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-fin-blue border border-gray-700/50 rounded-xl text-gray-400 hover:text-fin-gold hover:border-fin-gold transition-all hover:scale-110 active:scale-95" title="${currentI18n.refreshBtn || 'Làm mới dữ liệu'}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 4 23 10 17 10"></polyline>
+                        <polyline points="1 20 1 14 7 14"></polyline>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="ml-auto flex items-center gap-3">
+              <a href="${hubUrl}" class="back-link" style="margin-bottom:0;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                Về trang tổng hợp
+              </a>
+              <span class="permanent-link-badge hidden sm:inline-flex">🔗 Liên kết vĩnh viễn</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SPOKE ARTICLE -->
+    <main id="digest-feed" class="max-w-[1440px] mx-auto">
+      <article${isRtl ? ' dir="rtl"' : ''} data-spoke-url="${absoluteUrl}">
+        <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">${article.title}</h1>
+        <div class="article-meta">
+          <span class="highlight">📅 ${isoToHuman(date)}</span>
+          <span>•</span>
+          <span>${article.langEmoji || ''} ${article.langName || lang.toUpperCase()}</span>
+          <span>•</span>
+          <span>${SITE_NAME}</span>
+        </div>
+        <div class="article-actions">
+          <button class="copy-link-btn" data-spoke-url="${absoluteUrl}" onclick="copyArticleLink(this)" title="Sao chép đường dẫn bài viết">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+            </svg>
+            <span class="btn-label">Sao chép link</span>
+          </button>
+        </div>
+        <div class="digest-lead"${isRtl ? ' style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
+        <div class="digest-body">${formattedContent}</div>
+      </article>
+    </main>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-container">
+    ${procFooter}
+  </div>
+
+  <script>
+    window.SUPABASE_URL = '${SUPABASE_URL}';
+    window.SUPABASE_ANON_KEY = '${SUPABASE_ANON_KEY}';
+    window.SITE_NAME = '${SITE_NAME}';
+    const langDict = ${JSON.stringify(currentI18n)};
+
+    function applyDict() {
+        document.querySelectorAll('[data-text-key]').forEach(el => {
+            const keys = el.getAttribute('data-text-key').split('.');
+            let val = langDict;
+            for (const k of keys) val = val?.[k];
+            if (val) el.textContent = val;
+        });
+    }
+    applyDict();
+
+    const langToggle = document.getElementById('langToggle');
+    const langMenu = document.getElementById('langMenu');
+    if (langToggle && langMenu) {
+        langToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langMenu.classList.toggle('open');
+            langMenu.setAttribute('aria-hidden', langMenu.classList.contains('open') ? 'false' : 'true');
+        });
+        document.addEventListener('click', (e) => {
+            if (!langToggle.contains(e.target) && !langMenu.contains(e.target)) {
+                langMenu.classList.remove('open');
+                langMenu.setAttribute('aria-hidden', 'true');
+            }
+        });
+    }
+
+    // Copy Article Link Logic
+    (function() {
+      const toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Đã sao chép liên kết!</span>';
+      document.body.appendChild(toast);
+      let toastTimer = null;
+
+      window.copyArticleLink = function(btn) {
+        const spokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        navigator.clipboard.writeText(spokeUrl).then(() => {
+          btn.classList.add('copied');
+          const label = btn.querySelector('.btn-label');
+          if (label) label.textContent = 'Đã sao chép!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Sao chép link';
+          }, 2000);
+          clearTimeout(toastTimer);
+          toast.classList.add('visible');
+          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+        }).catch(() => {
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = spokeUrl;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            toast.classList.add('visible');
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+          } catch(e) { console.warn('Copy failed', e); }
+        });
+      };
+    })();
+  </script>
+  <script>window.IS_SPOKE_PAGE = true; window.SPOKE_ARTICLE_DATE = "${date}";</script>
+  <script>${clientJs}</script>
+</body>
+</html>`;
+}
+
+// ── Update sitemap with new spoke URLs ────────────────────────────────────────
+function updateSitemapWithSpokes(newSpokeEntries) {
+  if (!newSpokeEntries || newSpokeEntries.length === 0) {
+    // Still update lastmod dates on existing entries
+    const sitemapPath = path.join(ROOT, 'sitemap.xml');
+    const today = new Date().toISOString().split('T')[0];
+    let sitemap = fs.readFileSync(sitemapPath, 'utf8');
+    sitemap = sitemap.replace(/<lastmod>2026-\d{2}-\d{2}<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
+    fs.writeFileSync(sitemapPath, sitemap, 'utf8');
+    console.log('  📝 Updated: sitemap.xml (lastmod only)');
+    return;
+  }
   const sitemapPath = path.join(ROOT, 'sitemap.xml');
-  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
-  
   let sitemap = fs.readFileSync(sitemapPath, 'utf8');
+  const today = new Date().toISOString().split('T')[0];
+
   sitemap = sitemap.replace(/<lastmod>2026-\d{2}-\d{2}<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
-  
+
+  let addedCount = 0;
+  for (const entry of newSpokeEntries) {
+    if (sitemap.includes(entry.url)) continue;
+    const urlBlock = `
+  <!-- Spoke: ${entry.label} -->
+  <url>
+    <loc>${entry.url}</loc>
+    <lastmod>${entry.date}</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+    sitemap = sitemap.replace('</urlset>', urlBlock + '\n\n</urlset>');
+    addedCount++;
+  }
+
   fs.writeFileSync(sitemapPath, sitemap, 'utf8');
-  console.log('  📝 Updated: sitemap.xml');
+  console.log(`  📝 Updated sitemap.xml (${addedCount} new spoke URL(s) added)`);
 }
 
 main().catch(err => { console.error('❌ Error:', err.message); process.exit(1); });

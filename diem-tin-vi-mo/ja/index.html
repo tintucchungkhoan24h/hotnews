@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026年MSCI格上げ見送り：80兆ドンの外資売り越し資金はどこへ？ | Tin Tức Chứng Khoán 24h</title>
-  <meta name="description" content="2026年6月25日現在、ベトナム金融市場は、MSCIがフロンティア・マーケット分類の維持を発表し、格上げ監視銘柄（ウォッチリスト）入りを見送ったことで冷や水を浴びせられました。この決定は、年初から外資が約80兆ドンを密かに売り越す中、米ドルが13ヶ月ぶりの高値を更新して為替圧力が強まる中で下されました。しかし、この一">
+  <title>2026年6月22日マクロ経済更新：原油価格回復、インフレ安定 | Tin Tức Chứng Khoán 24h</title>
+  <meta name="description" content="先週はマクロ経済の好展開が見られ、原油価格が急落後に小幅回復しました。">
   <link rel="canonical" href="/diem-tin-vi-mo/ja/">
   <link rel="alternate" hreflang="vi-VN" href="/diem-tin-vi-mo/vi/">
   <link rel="alternate" hreflang="en" href="/diem-tin-vi-mo/en/">
@@ -15,8 +15,8 @@
   <link rel="alternate" hreflang="ja" href="/diem-tin-vi-mo/ja/">
   <link rel="alternate" hreflang="x-default" href="/diem-tin-vi-mo/vi/">
 
-  <meta property="og:title" content="2026年MSCI格上げ見送り：80兆ドンの外資売り越し資金はどこへ？">
-  <meta property="og:description" content="2026年6月25日現在、ベトナム金融市場は、MSCIがフロンティア・マーケット分類の維持を発表し、格上げ監視銘柄（ウォッチリスト）入りを見送ったことで冷や水を浴びせられました。この決定は、年初から外資が約80兆ドンを密かに売り越す中、米ドルが13ヶ月ぶりの高値を更新して為替圧力が強まる中で下されました。しかし、この一見暗いニュースの裏には、国内資金にチャンスをもたらす構造的な変化が隠されています">
+  <meta property="og:title" content="2026年6月22日マクロ経済更新：原油価格回復、インフレ安定">
+  <meta property="og:description" content="先週はマクロ経済の好展開が見られ、原油価格が急落後に小幅回復しました。">
   <meta property="og:url" content="/diem-tin-vi-mo/ja/">
   <meta property="og:type" content="article">
   <meta property="og:image" content="/ava_icon.png">
@@ -661,6 +661,257 @@ article h1 {
     transform: none;
 }
 
+/* ── Copy Article Link Button ───────────────────────────────────────────────── */
+.copy-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  background: rgba(255,215,0,0.08);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 10px;
+  color: #ffd700;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  user-select: none;
+  outline: none;
+}
+.copy-link-btn:hover {
+  background: rgba(255,215,0,0.16);
+  border-color: rgba(255,215,0,0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255,215,0,0.15);
+}
+.copy-link-btn:active {
+  transform: scale(0.96);
+}
+.copy-link-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.copy-link-btn.copied {
+  background: rgba(34,197,94,0.12);
+  border-color: rgba(34,197,94,0.5);
+  color: #4ade80;
+}
+.copy-link-btn.copied svg {
+  transform: scale(1.1);
+}
+
+/* Article action bar that houses the copy button */
+.article-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+/* ── Toast Notification ─────────────────────────────────────────────────────── */
+.copy-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(10,25,47,0.97);
+  border: 1px solid rgba(74,222,128,0.5);
+  border-radius: 12px;
+  padding: 12px 22px;
+  color: #4ade80;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,222,128,0.15);
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
+}
+.copy-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.copy-toast svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Archive Section ─────────────────────────────────────────────────────────── */
+.archive-section {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 2px solid rgba(255,215,0,0.15);
+}
+.archive-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.archive-section-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffd700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.archive-section-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, #ffd700 0%, #f59e0b 100%);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.archive-count-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255,215,0,0.15);
+  border: 1px solid rgba(255,215,0,0.3);
+  color: #ffd700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.archive-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: rgba(17,34,64,0.4);
+  border: 1px solid rgba(255,215,0,0.08);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.archive-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #ffd700 0%, rgba(255,215,0,0.2) 100%);
+  border-radius: 0 2px 2px 0;
+}
+.archive-card:hover {
+  background: rgba(255,215,0,0.07);
+  border-color: rgba(255,215,0,0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,215,0,0.08);
+  text-decoration: none;
+}
+.archive-card-date {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+.archive-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.archive-card:hover .archive-card-title {
+  color: #ffd700;
+}
+.archive-card-arrow {
+  font-size: 11px;
+  color: #60a5fa;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.archive-card:hover .archive-card-arrow {
+  opacity: 1;
+}
+
+/* Spoke page indicator badge (shown on hub page for "today's" article) */
+.spoke-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #0a192f;
+  background: linear-gradient(135deg, #ffd700 0%, #f59e0b 100%);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.3);
+}
+
+/* Permanent link indicator on spoke pages */
+.permanent-link-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  border: 1px solid rgba(74,222,128,0.3);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+  .copy-toast {
+    width: calc(100vw - 32px);
+    left: 16px;
+    transform: translateY(20px);
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+  .copy-toast.visible {
+    transform: translateY(0);
+  }
+  .archive-section {
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+}
+
   </style>
 </head>
 <body class="bg-fin-blue min-h-screen">
@@ -846,56 +1097,34 @@ article h1 {
     <!-- MAIN ARTICLE FEED -->
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
       
-        <article>
+        <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026">
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            2026年MSCI格上げ見送り：80兆ドンの外資売り越し資金はどこへ？
+            2026年6月22日マクロ経済更新：原油価格回復、インフレ安定
           </h1>
           <div class="article-meta">
-            <span class="highlight">📅 2026-06-25</span>
+            <span class="highlight">📅 25/06/2026</span>
             <span>•</span>
-            <span>🇯🇵 JAPANESE</span>
+            <span> 日本語</span>
             <span>•</span>
             <span>Tin Tức Chứng Khoán 24h</span>
+            <span class="spoke-badge">★ Hôm nay</span>
+          </div>
+          <div class="article-actions">
+            <button class="copy-link-btn" data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026" onclick="copyArticleLink(this)" title="Sao chép đương dẫn bài viết">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+              </svg>
+              <span class="btn-label">Sao chép link</span>
+            </button>
           </div>
 
-          <div class="digest-lead" >2026年6月25日現在、ベトナム金融市場は、MSCIがフロンティア・マーケット分類の維持を発表し、格上げ監視銘柄（ウォッチリスト）入りを見送ったことで冷や水を浴びせられました。この決定は、年初から外資が約80兆ドンを密かに売り越す中、米ドルが13ヶ月ぶりの高値を更新して為替圧力が強まる中で下されました。しかし、この一見暗いニュースの裏には、国内資金にチャンスをもたらす構造的な変化が隠されています。</div>
-          <div class="digest-body"><h2>格上げを阻む慢性的なボトルネックと記録的な外資流出圧力</h2><p>MSCIの決定は大手金融機関の予想通りであったものの、個人投資家のマインドに冷や水を浴びせました。外国人保有制限（ルーム枠）、英語による情報開示、中央清算機関（CCP）制度の導入といった慢性的な制度的ボトルネックが、依然として技術的な障壁として残されています。新興国市場ウォッチリストへの入りを逃したことで、パッシブ外資ファンド（passive funds）によるホーチミン証券取引所（HOSE）への大規模な資金流入は当面期待できなくなりました。</p><p>この失望感は、年初から続く約80兆ドンに達する記録的な外資売り越しと共鳴しています。米連邦準備制度理事会（Fed）がタカ派姿勢を維持し、米ドルが13ヶ月ぶりの高値を更新する中、ベトナムドン（VND）と米ドルのマイナスの金利差を背景に、外資ファンドはポートフォリオをより安全な市場へと再構築せざるを得なくなっています。この売り越し状態はVN指数に直接的な下落圧力をかけるだけでなく、米ドル/ドン為替レートを常に緊張状態に置き、ベトナム国家銀行に外貨準備高を用いた市場介入を強いています。</p><h2>一時的なマインドの揺らぎか、それとも絶好の買い場か？</h2><p>実践的なマクロ経済の観点から見ると、このニュースは6月末の残り取引セッションにおいて強い<strong>心理的動揺（ボラティリティ）</strong>を引き起こすでしょう。外資に敏感な大型株、特に銀行や不動産セクターは技術的な調整圧力に直面するとみられます。さらに、世界の金価格が1オンス＝4,000ドルを大幅に割り込んで急落したことも、国内の投機資金の一部が安全を求めて伝統的な資産市場から流出する動きを促しています。</p><p>しかし、中長期投資家にとっては、今こそ<strong>確信を持って押し目買い</strong>を入れる絶好の機会です。年初から流出した外資の多くは、世界の変動に敏感な短期の投機的資金です。市場が強力な支持線（50日移動平均線など）まで調整されたとき、多くの業界トップ企業のP/Eバリュエーションは非常に魅力的な水準まで低下します。さらに、年末までに予定されているFTSEラッセル（FTSE Russell）基準による格上げロードマップは順調に進行しており、これは将来的に外資の質を安定性の高いパッシブ資金へと転換させる契機となるでしょう。</p><p><p><strong>参考データソース: </strong><br><a target="_blank" href="https://vnbusiness.vn//viet-nam-tiep-tuc-o-lai-phong-cho-msci.html" rel="nofollow">ベトナム、MSCI格上げ待機室に引き続き留まる</a><br><a target="_blank" href="https://cafef.vn/mot-the-luc-ban-rong-gan-80000-ty-dong-co-phieu-viet-nam-tu-dau-nam-chuyen-gi-dang-xay-ra-188260623223155283.chn" rel="nofollow">年初からベトナム株を約80兆ドン売り越した勢力、一体何が起きているのか？</a><br><a target="_blank" href="https://vnexpress.net/viet-nam-khong-vao-danh-sach-theo-doi-nang-hang-cua-msci-5089220.html" rel="nofollow">ベトナム、MSCI格上げ監視銘柄入りを逃す</a></p></p></div>
+          <div class="digest-lead" >先週はマクロ経済の好展開が見られ、原油価格が急落後に小幅回復しました。</div>
+          <div class="digest-body"><h2>世界の原油価格</h2><p>ブレント原油は今週2.3%上昇し、バレル当たり78.5ドルとなりました。</p></div>
         </article>
         <hr class="border-gray-800 my-8">
       
-        <article>
-          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            6月24日金融市場：資本フローと投資戦略
-          </h1>
-          <div class="article-meta">
-            <span class="highlight">📅 2026-06-24</span>
-            <span>•</span>
-            <span>🇯🇵 JAPANESE</span>
-            <span>•</span>
-            <span>Tin Tức Chứng Khoán 24h</span>
-          </div>
 
-          <div class="digest-lead" >2026年6月24日、ベトナム金融市場は外国人投資家による売り越しと世界的な為替変動の圧力に直面しました。投機的資本は慎重な姿勢を保っていますが、グリーンエネルギープロジェクトとデジタルインフラが新たな成長の柱として浮上しています。</div>
-          <div class="digest-body"><h2>外国資本と市場の格上げ</h2><p>年初から80兆ドン規模に達する外国人売り越しは、マクロ経済の不確実性の中で投資家がポートフォリオを再構築していることを示しています。ベトナムが2026年のMSCI監視リストに入らなかったことは残念ですが、これは外国人所有制限やCCP決済メカニズムの構造改革の必要性を浮き彫りにしています。しかし、短期的な投機資金から安定したETFパッシブ資本へのシフトは、長期的な触媒であり続けます。</p><h2>グリーン経済とデジタル変革</h2><p>伝統的な資本フローが鈍化する中、Hoa Phatの6000億ドン規模の風力発電投資や、VinEnergoのフィリピンでの5GWエネルギーパートナーシップは、戦略的な転換を示しています。グリーンプロジェクトに対する2%の金利支援政策は、企業が信用障壁を克服するのを助ける金融レバレッジです。これは単なるトレンドではなく、世界的なサプライチェーン統合のための必須条件です。</p><h2>投資家心理：揺らぎか、機会か？</h2><p>市場は現在、FRBの金利懸念と為替圧力により「心理的な揺らぎ」を経験しています。長期的な視点を持つ投資家にとって、AIとデジタル変革を通じて運用を最適化した優良資産を確保する絶好の機会です。群集心理を避け、政策支援を受けているセクターに集中してください。</p><p><strong>参考データソース: </strong><br><a target="_blank" href='https://tuoitre.vn/canh-bao-chien-dich-phat-tan-ma-doc-quy-mo-lon-qua-whatsapp-100260623152230603.htm'>WhatsAppマルウェア警告</a><br><a target="_blank" href='https://tuoitre.vn/viet-nam-kho-vao-watch-list-msci-trong-ky-danh-gia-nam-2026-100260623171321885.htm'>MSCI市場アップデート</a><br><a target="_blank" href='https://tuoitre.vn/ho-kinh-doanh-sap-duoc-ho-tro-lai-suat-2-khi-dau-tu-du-an-xanh-100260623165341005.htm'>グリーンクレジット政策</a></p></div>
-        </article>
-        <hr class="border-gray-800 my-8">
-      
-        <article>
-          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            6月23日金融市場：マクロ経済の変動と投資機会
-          </h1>
-          <div class="article-meta">
-            <span class="highlight">📅 2026-06-23</span>
-            <span>•</span>
-            <span>🇯🇵 JAPANESE</span>
-            <span>•</span>
-            <span>Tin Tức Chứng Khoán 24h</span>
-          </div>
-
-          <div class="digest-lead" >2026年6月23日、ベトナム金融市場は大きな二極化に直面しています。フィンテックユニコーンへの海外資本流入の一方で、為替圧力や金融政策の調整が予測困難な潮流を生んでいます。</div>
-          <div class="digest-body"><h2>マクロ経済の展望：混迷する市場</h2><p>米イラン交渉や連邦準備制度（FED）の慎重な姿勢という世界経済の波の中で、ベトナム市場は資金フローの大きな転換を迎えています。<strong>MoMo</strong>が海外投資家を惹きつけたことはデジタルエコシステムへの信頼を示し、9%の利回りを誇る銀行債券は安全資産を求める投資家の注目を集めています。</p><h2>資金はどこへ流れているのか？</h2><p>資本は現在、投機的な資産から、透明なガバナンスと長期的な成長ストーリーを持つ企業へと移動しています。7月1日から中長期融資の短期資金上限を40%に引き上げたことは、銀行の流動性圧力を緩和し、世界的な変動の中でも成長の勢いを維持するための重要な政策的措置です。</p><h2>投資戦略：市場の揺らぎか、買いの好機か？</h2><p>専門家の視点から見ると、現在の市場変動は資産の再評価に伴う自然な結果です。個人投資家にとって、強固な財務基盤を持つ株式への定期積立投資は最適な戦略となりつつあります。短期的な投機トレンドを追うのではなく、小売や金融といった第2四半期の収益主導セクターに集中してください。</p><p><strong>市場心理：</strong>今は観察と選別のゴールデンタイムです。市場の調整局面は、外国人の純売りにパニックになるのではなく、質の高い資産を蓄積する絶好の機会です。</p><p><strong>参考データソース: </strong><br><a target="_blank" href='https://cafef.vn/ky-lan-fintech-momo-hut-nha-dau-tu-ngoai-sau-cu-dao-chieu-loi-nhuan-347-ty-dong-188260623111342109.chn'>MoMoが海外資本を誘致</a><br><a target="_blank" href='https://dantri.com.vn/kinh-doanh/chinh-thuc-noi-tran-von-ngan-han-cho-vay-trung-dai-han-tu-17-20260622212738762.htm'>融資上限の調整</a><br><a target="_blank" href='https://dantri.com.vn/kinh-doanh/lai-trai-phieu-ngan-hang-len-9nam-vuot-xa-muc-gui-tiet-kiem-20260622122515554.htm'>銀行債券利回り</a></p></div>
-        </article>
-        <hr class="border-gray-800 my-8">
       
     </main>
 
@@ -1407,8 +1636,13 @@ async function fetchDynamicFeed() {
                 return `<p><strong>${label} </strong><br>${formattedLinks}</p>`;
             });
 
+            let itemSpokeUrl = article.article_url || null;
+            let absoluteSpokeUrl = itemSpokeUrl 
+                ? (itemSpokeUrl.startsWith('http') ? itemSpokeUrl : `${window.location.origin}${itemSpokeUrl.startsWith('/') ? '' : '/'}${itemSpokeUrl}`)
+                : `${window.location.origin}/diem-tin-vi-mo/${currentLang}/`;
+
             html += `
-            <article ${isRtl ? 'dir="rtl"' : ''}>
+            <article ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
                 <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
                   ${article.title}
                 </h1>
@@ -1418,6 +1652,15 @@ async function fetchDynamicFeed() {
                   <span>${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()}</span>
                   <span>•</span>
                   <span>${window.SITE_NAME}</span>
+                </div>
+                <div class="article-actions">
+                  <button class="copy-link-btn" data-spoke-url="${absoluteSpokeUrl}" onclick="copyArticleLink(this)" title="Sao chép đường dẫn bài viết">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+                    </svg>
+                    <span class="btn-label">Sao chép link</span>
+                  </button>
                 </div>
                 <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
                 <div class="digest-body">${formattedContent}</div>
@@ -1479,14 +1722,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (pFrom) {
-        pFrom.value = past7;
-        pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
+            const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
+            pFrom.value = spokeDate;
+            stateFromDate = dateToIso(spokeDate);
+            pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        } else {
+            pFrom.value = past7;
+            pFrom.inputEl.value = isoToDisplay(stateFromDate);
+        }
         pFrom.min = minDateObj;
         pFrom.max = today;
     }
     if (pTo) {
-        pTo.value = today;
-        pTo.inputEl.value = isoToDisplay(stateToDate);
+        if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
+            const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
+            pTo.value = spokeDate;
+            stateToDate = dateToIso(spokeDate);
+            pTo.inputEl.value = isoToDisplay(stateToDate);
+        } else {
+            pTo.value = today;
+            pTo.inputEl.value = isoToDisplay(stateToDate);
+        }
         pTo.min = past7;
         pTo.max = maxDateObj;
     }
@@ -1499,13 +1756,57 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fetchBtn) {
         fetchBtn.addEventListener('click', fetchDynamicFeed);
         // Auto-fetch on page load after everything is initialized
-        setTimeout(() => {
-            console.log('Auto-fetching dynamic feed...');
-            fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
-        }, 10);
+        if (!window.IS_SPOKE_PAGE) {
+            setTimeout(() => {
+                console.log('Auto-fetching dynamic feed...');
+                fetchDynamicFeed().catch(err => console.error('Auto-fetch error:', err));
+            }, 10);
+        }
     }
 });
 
+
+    // ── Copy Article Link Logic ─────────────────────────────────────────────────────
+    (function() {
+      // Create toast element once
+      const toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Đã sao chép liên kết!</span>';
+      document.body.appendChild(toast);
+      let toastTimer = null;
+
+      window.copyArticleLink = function(btn) {
+        // Resolve spoke URL: use data-spoke-url attribute
+        const spokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
+        navigator.clipboard.writeText(spokeUrl).then(() => {
+          // Button feedback
+          btn.classList.add('copied');
+          const label = btn.querySelector('.btn-label');
+          if (label) label.textContent = 'Đã sao chép!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Sao chép link';
+          }, 2000);
+          // Toast feedback
+          clearTimeout(toastTimer);
+          toast.classList.add('visible');
+          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+        }).catch(() => {
+          // Fallback: textarea trick
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = spokeUrl;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            toast.classList.add('visible');
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+          } catch(e) { console.warn('Copy failed', e); }
+        });
+      };
+    })();
   </script>
 </body>
 </html>

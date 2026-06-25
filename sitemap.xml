@@ -138,4 +138,49 @@
     <priority>0.8</priority>
   </url>
 
+
+  <!-- Spoke: Chưa được MSCI nâng hạng: Chứng khoán Việt Nam nên ứng phó r -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+  <!-- Spoke: Thị trường tài chính 24/6: Dòng tiền phân hóa, cơ hội sau ru -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/thi-truong-tai-chinh-246-dong-tien-phan-hoa-co-hoi-sau-rung-lac-24-06-2026/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+  <!-- Spoke: Thị trường tài chính 23/6: Vĩ mô rung lắc, cơ hội nào cho nh -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/thi-truong-tai-chinh-236-vi-mo-rung-lac-co-hoi-nao-cho-nha-dau-tu-23-06-2026/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+  <!-- Spoke: Cập nhật kinh tế vĩ mô tuần 22/06/2026: Giá dầu hồi phục, lạ -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+  <!-- Spoke: VN-Index ngày 22/06/2026: Nhóm Vingroup bứt phá, thanh khoản -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-ngay-22062026-nhom-vingroup-but-pha-thanh-khoan-than-trong-25-06-2026/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
