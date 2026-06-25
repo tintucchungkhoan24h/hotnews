@@ -1286,6 +1286,13 @@
         // DEFAULT_LANG — read synchronously from i18n.json before any state is initialized
         const DEFAULT_LANG = (() => {
             try {
+                // Try reading from cookie first
+                let cookieLang = null;
+                const match = document.cookie.match(/(?:^|;)\s*selectedLanguage\s*=\s*([^;]+)/);
+                if (match && match[1]) {
+                    cookieLang = match[1];
+                }
+
                 const xhr = new XMLHttpRequest();
                 xhr.open('GET', 'i18n.json', false); // synchronous
                 xhr.send();
@@ -1296,8 +1303,18 @@
                 if (data.videoFiles && typeof data.videoFiles === 'object') {
                     i18nVideoFiles = data.videoFiles;
                 }
+
+                // If cookieLang exists and is in supported languages, use it
+                if (cookieLang && data.languages && data.languages.includes(cookieLang)) {
+                    return cookieLang;
+                }
+
                 return (data.languages && data.languages[0]) || 'vi';
             } catch (e) {
+                const match = document.cookie.match(/(?:^|;)\s*selectedLanguage\s*=\s*([^;]+)/);
+                if (match && match[1]) {
+                    return match[1];
+                }
                 return 'vi';
             }
         })();
@@ -4218,6 +4235,12 @@
 
             async function selectLanguage(lang) {
                 if (!lang || state.lang === lang) return;
+                
+                // Save to cookie (valid for 365 days)
+                const d = new Date();
+                d.setTime(d.getTime() + (365*24*60*60*1000));
+                document.cookie = `selectedLanguage=${lang};expires=${d.toUTCString()};path=/`;
+
                 state.lang = lang;
                 window._appLang = lang; // keep global in sync for dynamically-loaded scripts
                 stateStable.lang = state.lang;
