@@ -1630,6 +1630,9 @@
             }
         }
 
+        window.organTranslationCache = Object.create(null);
+        window.industryTranslationCache = Object.create(null);
+
         /**
          * Look up a company name translation.
          * Uses the ticker (single_stock) as key; falls back to organ_name if not found.
@@ -1639,7 +1642,15 @@
          */
         function getTranslatedOrgan(ticker, organName, lang) {
             if (!organName) return '';
-            if (lang === DEFAULT_LANG) return organName;
+            if (lang === 'vi') return organName;
+            
+            // 1st Priority: window.translateText cache
+            const cacheKey = `${lang}_${organName}`;
+            if (window.organTranslationCache[cacheKey]) {
+                return window.organTranslationCache[cacheKey];
+            }
+            
+            // 2nd Priority: Current logic fallback
             const entry = ticker ? companyMap[ticker] : null;
             return (entry && entry[lang]) || organName;
         }
@@ -1652,7 +1663,15 @@
          */
         function getTranslatedIndustry(industryVn, lang) {
             if (!industryVn) return '';
-            if (lang === DEFAULT_LANG) return industryVn;
+            if (lang === 'vi') return industryVn;
+            
+            // 1st Priority: window.translateText cache
+            const cacheKey = `${lang}_${industryVn}`;
+            if (window.industryTranslationCache[cacheKey]) {
+                return window.industryTranslationCache[cacheKey];
+            }
+            
+            // 2nd Priority: Current logic fallback
             const entry = industryByVi[industryVn];
             return (entry && entry[lang]) || industryVn;
         }
@@ -1746,6 +1765,46 @@
                     window.headlineTranslationCache[key] = null;
                 }
             });
+
+            // --- Company Name Translation ---
+            const uniqueOrgans = [...new Set(rows.map(r => r.organ_name).filter(Boolean))];
+            const missingOrgans = uniqueOrgans.filter(org => !( (`${lang}_${org}`) in window.organTranslationCache ));
+            if (missingOrgans.length > 0) {
+                console.log(`[OrganTrans] Prefetching ${missingOrgans.length} company names via window.translateText`);
+                const organPromises = missingOrgans.map(async (org) => {
+                    try {
+                        const translated = await window.translateText(org, lang);
+                        if (translated && translated !== org) {
+                            window.organTranslationCache[`${lang}_${org}`] = translated;
+                        } else {
+                            window.organTranslationCache[`${lang}_${org}`] = null; // Mark attempted
+                        }
+                    } catch (e) {
+                        window.organTranslationCache[`${lang}_${org}`] = null;
+                    }
+                });
+                await Promise.all(organPromises);
+            }
+
+            // --- Industry Name Translation ---
+            const uniqueIndustries = [...new Set(rows.map(r => r.industry_vn).filter(Boolean))];
+            const missingIndustries = uniqueIndustries.filter(ind => !( (`${lang}_${ind}`) in window.industryTranslationCache ));
+            if (missingIndustries.length > 0) {
+                console.log(`[IndustryTrans] Prefetching ${missingIndustries.length} industries via window.translateText`);
+                const industryPromises = missingIndustries.map(async (ind) => {
+                    try {
+                        const translated = await window.translateText(ind, lang);
+                        if (translated && translated !== ind) {
+                            window.industryTranslationCache[`${lang}_${ind}`] = translated;
+                        } else {
+                            window.industryTranslationCache[`${lang}_${ind}`] = null; // Mark attempted
+                        }
+                    } catch (e) {
+                        window.industryTranslationCache[`${lang}_${ind}`] = null;
+                    }
+                });
+                await Promise.all(industryPromises);
+            }
         };
 
         /**
