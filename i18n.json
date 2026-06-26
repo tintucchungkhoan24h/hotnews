@@ -298,7 +298,11 @@
       "copyLink": "Sao chép link",
       "copyLinkSuccess": "Đã sao chép đường dẫn!",
       "loadingSummaries": "Đang tải bản tin...",
-      "noSummaries": "Không có bản tin nào trong khoảng thời gian này."
+      "noSummaries": "Không có bản tin nào trong khoảng thời gian này.",
+      "todayBadge": "★ Hôm nay",
+      "archiveTitle": "Kho lưu trữ điểm tin",
+      "archiveCount": "{count} bài",
+      "archiveViewArticle": "→ Xem bài viết"
     },
     "en": {
       "title": "24H STOCK MARKET NEWS",
@@ -515,7 +519,11 @@
       "copyLink": "Copy link",
       "copyLinkSuccess": "Link copied!",
       "loadingSummaries": "Loading summaries...",
-      "noSummaries": "No summaries found for this date range."
+      "noSummaries": "No summaries found for this date range.",
+      "todayBadge": "★ Today",
+      "archiveTitle": "News Archive",
+      "archiveCount": "{count} articles",
+      "archiveViewArticle": "→ View article"
     },
     "ko": {
       "title": "24시간 증시 뉴스",
@@ -732,7 +740,11 @@
       "copyLink": "링크 복사",
       "copyLinkSuccess": "링크가 복사되었습니다!",
       "loadingSummaries": "요약을 불러오는 중...",
-      "noSummaries": "이 날짜 범위의 요약이 없습니다."
+      "noSummaries": "이 날짜 범위의 요약이 없습니다.",
+      "todayBadge": "★ 오늘",
+      "archiveTitle": "뉴스 아카이브",
+      "archiveCount": "{count}개 기사",
+      "archiveViewArticle": "→ 기사 보기"
     },
     "zh": {
       "title": "24小時股市新聞",
@@ -949,7 +961,11 @@
       "copyLink": "複製連結",
       "copyLinkSuccess": "連結已複製!",
       "loadingSummaries": "正在加载摘要...",
-      "noSummaries": "未找到该日期范围的摘要。"
+      "noSummaries": "未找到该日期范围的摘要。",
+      "todayBadge": "★ 今天",
+      "archiveTitle": "新聞存檔",
+      "archiveCount": "{count} 篇文章",
+      "archiveViewArticle": "→ 查看文章"
     },
     "th": {
       "title": "ข่าวหุ้น 24 ชั่วโมง",
@@ -1164,7 +1180,11 @@
       "copyLink": "คัดลอกลิงก์",
       "copyLinkSuccess": "คัดลอกลิงก์แล้ว!",
       "loadingSummaries": "กำลังโหลดบทสรุป...",
-      "noSummaries": "ไม่พบบทสรุปสำหรับช่วงวันทีนี้"
+      "noSummaries": "ไม่พบบทสรุปสำหรับช่วงวันทีนี้",
+      "todayBadge": "★ วันนี้",
+      "archiveTitle": "คลังข่าว",
+      "archiveCount": "{count} บทความ",
+      "archiveViewArticle": "→ ดูบทความ"
     },
     "ar": {
       "title": "أخبار سوق الأسهم على مدار 24 ساعة",
@@ -1379,7 +1399,11 @@
       "copyLink": "نسخ الرابط",
       "copyLinkSuccess": "تم نسخ الرابط!",
       "loadingSummaries": "جاري تحميل الملخصات...",
-      "noSummaries": "لم يتم العثور على ملخصات لهذا النطاق الزمني."
+      "noSummaries": "لم يتم العثور على ملخصات لهذا النطاق الزمني.",
+      "todayBadge": "★ اليوم",
+      "archiveTitle": "أرشيف الأخبار",
+      "archiveCount": "{count} مقال",
+      "archiveViewArticle": "→ عرض المقال"
     },
     "ja": {
       "title": "株式市場ニュース24時間",
@@ -1594,7 +1618,11 @@
       "copyLink": "リンクをコピー",
       "copyLinkSuccess": "リンクをコピーしました!",
       "loadingSummaries": "サマリーを読み込み中...",
-      "noSummaries": "この日付範囲のサマリーは見つかりませんでした。"
+      "noSummaries": "この日付範囲のサマリーは見つかりませんでした。",
+      "todayBadge": "★ 今日",
+      "archiveTitle": "ニュースアーカイブ",
+      "archiveCount": "{count} 記事",
+      "archiveViewArticle": "→ 記事を見る"
     }
   }
 }
