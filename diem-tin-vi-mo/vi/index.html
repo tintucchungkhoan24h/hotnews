@@ -2068,7 +2068,7 @@ document.addEventListener('DOMContentLoaded', () => {
       function showCopySuccess(btn) {
         btn.classList.add('copied');
         const label = btn.querySelector('.btn-label');
-        if (label) label.textContent = '{{COPY_LINK_SUCCESS}}';
+        if (label) label.textContent = 'Đã sao chép đường dẫn!';
         setTimeout(() => {
           btn.classList.remove('copied');
           if (label) label.textContent = 'Sao chép link';

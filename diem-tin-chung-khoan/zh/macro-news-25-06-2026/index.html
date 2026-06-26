@@ -1222,7 +1222,7 @@ article h1 {
       function showCopySuccess(btn) {
         btn.classList.add('copied');
         const label = btn.querySelector('.btn-label');
-        if (label) label.textContent = '{{COPY_LINK_SUCCESS}}';
+        if (label) label.textContent = '連結已複製!';
         setTimeout(() => {
           btn.classList.remove('copied');
           if (label) label.textContent = '複製連結';

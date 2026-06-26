@@ -1222,7 +1222,7 @@ article h1 {
       function showCopySuccess(btn) {
         btn.classList.add('copied');
         const label = btn.querySelector('.btn-label');
-        if (label) label.textContent = '{{COPY_LINK_SUCCESS}}';
+        if (label) label.textContent = '링크가 복사되었습니다!';
         setTimeout(() => {
           btn.classList.remove('copied');
           if (label) label.textContent = '링크 복사';

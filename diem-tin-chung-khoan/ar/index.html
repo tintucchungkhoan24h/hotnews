@@ -2091,7 +2091,7 @@ document.addEventListener('DOMContentLoaded', () => {
       function showCopySuccess(btn) {
         btn.classList.add('copied');
         const label = btn.querySelector('.btn-label');
-        if (label) label.textContent = '{{COPY_LINK_SUCCESS}}';
+        if (label) label.textContent = 'تم نسخ الرابط!';
         setTimeout(() => {
           btn.classList.remove('copied');
           if (label) label.textContent = 'نسخ الرابط';
