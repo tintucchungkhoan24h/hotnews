@@ -817,13 +817,11 @@ async function main() {
   const langs = Array.from(langsSet);
   const newSpokeEntries = []; // Collect newly-written spoke URLs for sitemap + ping
 
+  // ── FIRST PASS: Compute all slugs for all langs so we can cross-link ────────
+  const allArchiveItems = {}; // { lang: [...items] }
   for (const lang of langs) {
     const articlesList = dataByLang[lang];
-    const hubDir  = path.join(ROOT, 'diem-tin-chung-khoan', lang);
-    fs.mkdirSync(hubDir, { recursive: true });
-
-    // ── Build archive items (all rows for this lang) ─────────────────────────
-    const archiveItems = articlesList.map(item => {
+    allArchiveItems[lang] = articlesList.map(item => {
       const artUrl  = item.article.article_url || null;
       const slug    = artUrl ? (extractSlugFromUrl(artUrl) || slugifyTitle(item.article.title, item.date))
                              : slugifyTitle(item.article.title, item.date);
@@ -835,6 +833,23 @@ async function main() {
         spokeAbsoluteUrl: absUrl,
       };
     });
+  }
+
+  // Build peerSlugs: { date: { lang: slug } } for spoke-to-spoke cross-language links
+  const peerSlugs = {};
+  for (const [lang, items] of Object.entries(allArchiveItems)) {
+    for (const item of items) {
+      if (!peerSlugs[item.date]) peerSlugs[item.date] = {};
+      peerSlugs[item.date][lang] = item.spokeSlug;
+    }
+  }
+
+  // ── SECOND PASS: Write all pages ─────────────────────────────────────────────
+  for (const lang of langs) {
+    const articlesList = dataByLang[lang];
+    const archiveItems = allArchiveItems[lang];
+    const hubDir  = path.join(ROOT, 'diem-tin-chung-khoan', lang);
+    fs.mkdirSync(hubDir, { recursive: true });
 
     // ── Write Spoke Pages (skip if already exists) ───────────────────────────
     for (const item of archiveItems) {
@@ -853,6 +868,7 @@ async function main() {
         lang,
         spokeSlug:  item.spokeSlug,
         headerHtml, footerHtml, langs, clientCss, clientJs,
+        peerSlugs,
       });
       fs.writeFileSync(spokeFile, spokeHtml, 'utf8');
       console.log(`  📝 Written spoke: diem-tin-chung-khoan/${lang}/${item.spokeSlug}/index.html`);
@@ -929,6 +945,50 @@ function generateSpokePage({ article, date, lang, spokeSlug, headerHtml, footerH
   // Format content
   let formattedContent = article.content || '';
   formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+  formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+((?:https?:=""\s+)?[^=]+=""\s+[^=]+=""\s+[^=]+=""(?:\s+[^=]+=""*)*)([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, urlParts, afterHref, text) => {
+    const parts = urlParts.match(/([^=]+)=""/g) || [];
+    const url = parts.map(p => p.replace(/=""$/, '').replace(/''$/, '').replace(/""$/, '').trim()).join('');
+    const allAttrs = (beforeHref + ' ' + afterHref).trim();
+    return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+  });
+  formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+https:=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, domain, path1, path2, path3, afterHref, text) => {
+    const url = `https://${domain}${path1}${path2}${path3}`.replace(/''$/g, '').replace(/""$/g, '').trim();
+    const allAttrs = (beforeHref + ' ' + afterHref).trim();
+    return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+  });
+  formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+https:=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, domain, path1, path2, path3, path4, afterHref, text) => {
+    const url = `https://${domain}${path1}${path2}${path3}${path4}`.replace(/''$/g, '').replace(/""$/g, '').trim();
+    const allAttrs = (beforeHref + ' ' + afterHref).trim();
+    return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+  });
+  formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=''([^'']+)''([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+    const allAttrs = (beforeHref + ' ' + afterHref).trim();
+    return `<a href="${hrefValue}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+  });
+  formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=['"]([^'"]*?)['"]([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+    if (hrefValue.includes(',')) {
+      const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
+      const allAttrs = (beforeHref + ' ' + afterHref).trim();
+      return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
+    }
+    return match;
+  });
+  formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=''([^'']*?)''([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+    if (hrefValue.includes(',')) {
+      const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
+      const allAttrs = (beforeHref + ' ' + afterHref).trim();
+      return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
+    }
+    return match;
+  });
+  formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""([^"]*?)""([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+    if (hrefValue.includes(',')) {
+      const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
+      const allAttrs = (beforeHref + ' ' + afterHref).trim();
+      return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
+    }
+    return match;
+  });
   formattedContent = normalizeReferenceLinks(formattedContent);
   formattedContent = highlightStockCodes(formattedContent);
 
