@@ -28,11 +28,21 @@ function parseSpokeUrl(url) {
   const match = url.match(new RegExp(`${SITE_BASE}/(diem-tin-[^/]+)/([^/]+)/(.+)/`));
   if (!match) return null;
   
+  // Extract publication date from slug (DD-MM-YYYY format)
+  const dateMatch = match[3].match(/(\d{2}-\d{2}-\d{4})/);
+  let pubDate = null;
+  if (dateMatch) {
+    // Convert DD-MM-YYYY to YYYY-MM-DD for sitemap
+    const [day, month, year] = dateMatch[1].split('-');
+    pubDate = `${year}-${month}-${day}`;
+  }
+  
   return {
     type: match[1], // diem-tin-chung-khoan or diem-tin-vi-mo
     lang: match[2], // vi, en, ko, etc.
     slug: match[3], // 24-06-2026 or descriptive slug
     url: url,
+    pubDate: pubDate, // Publication date in YYYY-MM-DD format for sitemap
   };
 }
 
@@ -161,10 +171,11 @@ function generateSitemap() {
     if (!parsed) continue;
     
     const title = parsed.slug;
+    const lastmod = parsed.pubDate || today; // Use publication date if available, otherwise today
     sitemap += `  <!-- Spoke: ${title} -->
   <url>
     <loc>${url}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>`;
     
@@ -215,10 +226,11 @@ function generateSitemap() {
     if (!parsed) continue;
     
     const title = parsed.slug;
+    const lastmod = parsed.pubDate || today; // Use publication date if available, otherwise today
     sitemap += `  <!-- Spoke: ${title} -->
   <url>
     <loc>${url}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>`;
     
