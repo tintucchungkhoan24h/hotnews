@@ -1774,14 +1774,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const past7 = new Date(today);
     past7.setDate(today.getDate() - 7);
     
-    const past30 = new Date(today);
-    past30.setDate(today.getDate() - 29);
+    // Remove 30-day limit - allow unlimited past date selection
+    const minDateObj = new Date('2020-01-01');
+    const maxDateObj = today;
     
     stateFromDate = dateToIso(past7);
     stateToDate = dateToIso(today);
-
-    const minDateObj = past30;
-    const maxDateObj = today;
 
     // Init pickers
     const pFrom = createPicker('seoFromDate', (iso) => {
