@@ -768,14 +768,12 @@ async function main() {
       });
       fs.writeFileSync(spokeFile, spokeHtml, 'utf8');
       console.log(`  📝 Written spoke: diem-tin-chung-khoan/${lang}/${item.spokeSlug}/index.html`);
-      // Only add Vi spoke URLs to Google ping list (primary language)
-      if (lang === 'vi') {
-        newSpokeEntries.push({
-          url:   item.spokeAbsoluteUrl,
-          date:  item.date,
-          label: item.title.slice(0, 60),
-        });
-      }
+      // Add all language spoke URLs to sitemap
+      newSpokeEntries.push({
+        url:   item.spokeAbsoluteUrl,
+        date:  item.date,
+        label: item.title.slice(0, 60),
+      });
     }
 
     // ── Write Hub Page (always updated) ─────────────────────────────────────
