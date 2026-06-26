@@ -1269,12 +1269,12 @@ article h1 {
             <span class="archive-card-title">MSCI Upgrade Delay: How Should Vietnamese Stock Market Respond?</span>
             <span class="archive-card-arrow">→ Xem bài viết</span>
           </a>
-          <a href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/financial-market-june-24-capital-flow-and-investment-strategy-24-06-2026/" class="archive-card" title="Financial Market June 24: Capital Flow and Investment Strategy">
+          <a href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/24-06-2026" class="archive-card" title="Financial Market June 24: Capital Flow and Investment Strategy">
             <span class="archive-card-date">📅 24/06/2026</span>
             <span class="archive-card-title">Financial Market June 24: Capital Flow and Investment Strategy</span>
             <span class="archive-card-arrow">→ Xem bài viết</span>
           </a>
-          <a href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/financial-market-june-23-macro-volatility-and-investment-opportunities-23-06-2026/" class="archive-card" title="Financial Market June 23: Macro Volatility and Investment Opportunities">
+          <a href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/23-06-2026" class="archive-card" title="Financial Market June 23: Macro Volatility and Investment Opportunities">
             <span class="archive-card-date">📅 23/06/2026</span>
             <span class="archive-card-title">Financial Market June 23: Macro Volatility and Investment Opportunities</span>
             <span class="archive-card-arrow">→ Xem bài viết</span>
@@ -1633,18 +1633,40 @@ function isoToPathSegment(iso) {
     return `${d}-${m}-${y}`;
 }
 
+function normalizePathLang(lang) {
+    if (!lang) return 'vi';
+    if (lang === 'zh-TW') return 'zh';
+    return String(lang).split('-')[0] || 'vi';
+}
+
 function getCurrentPathLang() {
     const sectionMatch = window.location.pathname.match(/\/diem-tin-vi-mo\/([^/]+)/);
-    if (sectionMatch && sectionMatch[1]) return sectionMatch[1] === "zh-TW" ? "zh" : sectionMatch[1];
-    const docLang = (document.documentElement.lang || "vi").split("-")[0];
-    return docLang === "zh" ? "zh" : docLang;
+    if (sectionMatch && sectionMatch[1]) return normalizePathLang(sectionMatch[1]);
+    return normalizePathLang(document.documentElement.lang || 'vi');
 }
 
 function getArticleForLang(articles, pathLang) {
-    const lookupLang = pathLang === "zh" ? "zh-TW" : pathLang;
+    const lookupLang = pathLang === 'zh' ? 'zh-TW' : pathLang;
     return articles.find(a => a.langCode === lookupLang)
-        || articles.find(a => (a.langCode === "zh-TW" ? "zh" : a.langCode) === pathLang)
+        || articles.find(a => (a.langCode === 'zh-TW' ? 'zh' : a.langCode) === pathLang)
         || articles[0];
+}
+
+function isUsableArticleUrl(url) {
+    return typeof url === 'string'
+        && url.trim() !== ''
+        && !['undefined', 'null'].includes(url.trim().toLowerCase());
+}
+
+function buildArticleSpokeUrl(articleUrl, lang, dateIso) {
+    const normalizedLang = normalizePathLang(lang);
+    const trimmedUrl = isUsableArticleUrl(articleUrl) ? articleUrl.trim() : '';
+    if (trimmedUrl) {
+        return trimmedUrl.startsWith('http')
+            ? trimmedUrl
+            : `${window.location.origin}${trimmedUrl.startsWith('/') ? '' : '/'}${trimmedUrl}`;
+    }
+    return `${window.location.origin}/diem-tin-vi-mo/${normalizedLang}/${isoToPathSegment(dateIso)}`;
 }
 
 function dateToIso(d) {
@@ -1909,10 +1931,7 @@ async function fetchDynamicFeed() {
             });
             formattedContent = normalizeReferenceLinks(formattedContent);
 
-            let itemSpokeUrl = article.article_url || null;
-            let absoluteSpokeUrl = itemSpokeUrl 
-                ? (itemSpokeUrl.startsWith('http') ? itemSpokeUrl : `${window.location.origin}${itemSpokeUrl.startsWith('/') ? '' : '/'}${itemSpokeUrl}`)
-                : `${window.location.origin}/diem-tin-vi-mo/${currentLang}/${isoToPathSegment(rDate)}`;
+            let absoluteSpokeUrl = buildArticleSpokeUrl(article.article_url, currentLang, rDate);
 
             html += `
             <article ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
