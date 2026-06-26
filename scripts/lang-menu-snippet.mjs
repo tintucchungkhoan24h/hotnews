@@ -140,6 +140,12 @@ export const LANG_MENU_SCRIPT = `
         const btn = e.target.closest('.lang-option');
         if (!btn) return;
         const lang = btn.getAttribute('data-lang');
+        
+        // Save to cookie (valid for 365 days) - same as main index.html
+        const d = new Date();
+        d.setTime(d.getTime() + (365*24*60*60*1000));
+        document.cookie = \`selectedLanguage=\${lang};expires=\${d.toUTCString()};path=/\`;
+        
         let href = btn.getAttribute('data-href');
         if (!href && window.SPOKE_LANG_URLS && lang) href = window.SPOKE_LANG_URLS[lang];
         if (!href) {
