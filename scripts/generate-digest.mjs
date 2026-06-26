@@ -46,6 +46,41 @@ const I18N_FLAGS = i18nData.flags;
 const I18N_LANG_SHORT = i18nData.lang;
 const I18N_LANG_NAMES = i18nData.langNames;
 
+// ── Language list for hreflang ─────────────────────────────────────────────────
+const LANGS = ['vi', 'en', 'ko', 'zh', 'th', 'ar', 'ja'];
+
+// ── Helper: Generate on-page hreflang tags ─────────────────────────────────────
+function generateHreflangTags(type, currentLang, slug, peerSlugs = {}) {
+  let tags = '';
+  
+  // If peerSlugs is provided, use it for precise slug mapping
+  if (Object.keys(peerSlugs).length > 0) {
+    for (const lang of LANGS) {
+      const peerSlug = peerSlugs[lang];
+      if (peerSlug) {
+        const url = `${SITE_BASE}/${type}/${lang}/${peerSlug}/`;
+        const hreflangValue = HREFLANG[lang] || lang;
+        tags += `  <link rel="alternate" hreflang="${hreflangValue}" href="${url}" />\n`;
+      }
+    }
+    // x-default should point to Vietnamese version
+    const viSlug = peerSlugs['vi'];
+    if (viSlug) {
+      tags += `  <link rel="alternate" hreflang="x-default" href="${SITE_BASE}/${type}/vi/${viSlug}/" />\n`;
+    }
+  } else {
+    // Fallback: use the same slug for all languages
+    for (const lang of LANGS) {
+      const url = `${SITE_BASE}/${type}/${lang}/${slug}/`;
+      const hreflangValue = HREFLANG[lang] || lang;
+      tags += `  <link rel="alternate" hreflang="${hreflangValue}" href="${url}" />\n`;
+    }
+    tags += `  <link rel="alternate" hreflang="x-default" href="${SITE_BASE}/${type}/vi/${slug}/" />\n`;
+  }
+  
+  return tags;
+}
+
 // ── Helpers ──────────────────────────────────────────────────────────────────
 function fetchJson(url, headers) {
   return new Promise((resolve, reject) => {
@@ -889,6 +924,9 @@ function generateSpokePage({ article, date, lang, spokeSlug, headerHtml, footerH
   const currentI18n = I18N[lang] || I18N['en'] || {};
   const descText    = (article.lead || '').replace(/"/g, '&quot;').slice(0, 155);
 
+  // Generate on-page hreflang tags for this spoke page
+  const hreflangTags = generateHreflangTags('diem-tin-chung-khoan', lang, spokeSlug, peerSlugs[peerKey] || {});
+
   // Format content
   let formattedContent = article.content || '';
   formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
@@ -947,8 +985,7 @@ function generateSpokePage({ article, date, lang, spokeSlug, headerHtml, footerH
   <title>${article.title} | ${SITE_NAME}</title>
   <meta name="description" content="${descText}">
   <link rel="canonical" href="${absoluteUrl}">
-${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="${SITE_BASE}/diem-tin-chung-khoan/${l}/">`).join('\n')}
-  <link rel="alternate" hreflang="x-default" href="${SITE_BASE}/diem-tin-chung-khoan/vi/">
+${hreflangTags}
 
   <meta property="og:title" content="${article.title.replace(/"/g, '&quot;')}">
   <meta property="og:description" content="${descText}">
