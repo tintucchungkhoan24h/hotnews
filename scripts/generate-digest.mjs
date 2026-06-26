@@ -1124,21 +1124,28 @@ ${COPY_LINK_SCRIPT.replace(/{{COPY_LINK}}/g, currentI18n.copyLink || 'Copy link'
 
 // ── Update sitemap with new spoke URLs ────────────────────────────────────────
 function updateSitemapWithSpokes(newSpokeEntries) {
-  if (!newSpokeEntries || newSpokeEntries.length === 0) {
-    // Still update lastmod dates on existing entries
-    const sitemapPath = path.join(ROOT, 'sitemap.xml');
-    const today = new Date().toISOString().split('T')[0];
-    let sitemap = fs.readFileSync(sitemapPath, 'utf8');
-    sitemap = sitemap.replace(/<lastmod>2026-\d{2}-\d{2}<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
-    fs.writeFileSync(sitemapPath, sitemap, 'utf8');
-    console.log('  📝 Updated: sitemap.xml (lastmod only)');
-    return;
-  }
   const sitemapPath = path.join(ROOT, 'sitemap.xml');
   let sitemap = fs.readFileSync(sitemapPath, 'utf8');
   const today = new Date().toISOString().split('T')[0];
 
-  sitemap = sitemap.replace(/<lastmod>2026-\d{2}-\d{2}<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
+  // Only update lastmod for homepage and hub pages, NOT for spoke pages
+  // 1. Update homepage (root domain)
+  sitemap = sitemap.replace(
+    /(<loc>https:\/\/tintucchungkhoan24h\.com\/<\/loc>\s*)<lastmod>[^<]+<\/lastmod>/g,
+    `$1<lastmod>${today}</lastmod>`
+  );
+
+  // 2. Update hub pages (2 directory levels: /diem-tin-xxx/lang/)
+  sitemap = sitemap.replace(
+    /(<loc>https:\/\/tintucchungkhoan24h\.com\/diem-tin-[^\/]+\/[^\/]+\/<\/loc>\s*)<lastmod>[^<]+<\/lastmod>/g,
+    `$1<lastmod>${today}</lastmod>`
+  );
+
+  if (!newSpokeEntries || newSpokeEntries.length === 0) {
+    fs.writeFileSync(sitemapPath, sitemap, 'utf8');
+    console.log('  📝 Updated: sitemap.xml (lastmod only)');
+    return;
+  }
 
   let addedCount = 0;
   for (const entry of newSpokeEntries) {

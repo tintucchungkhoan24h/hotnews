@@ -907,8 +907,18 @@ function updateSitemapWithSpokes(newSpokeEntries) {
   let sitemap = fs.readFileSync(sitemapPath, 'utf8');
   const today = new Date().toISOString().split('T')[0];
 
-  // Update lastmod on existing hub entries
-  sitemap = sitemap.replace(/<lastmod>2026-\d{2}-\d{2}<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
+  // Only update lastmod for homepage and hub pages, NOT for spoke pages
+  // 1. Update homepage (root domain)
+  sitemap = sitemap.replace(
+    /(<loc>https:\/\/tintucchungkhoan24h\.com\/<\/loc>\s*)<lastmod>[^<]+<\/lastmod>/g,
+    `$1<lastmod>${today}</lastmod>`
+  );
+
+  // 2. Update hub pages (2 directory levels: /diem-tin-xxx/lang/)
+  sitemap = sitemap.replace(
+    /(<loc>https:\/\/tintucchungkhoan24h\.com\/diem-tin-[^\/]+\/[^\/]+\/<\/loc>\s*)<lastmod>[^<]+<\/lastmod>/g,
+    `$1<lastmod>${today}</lastmod>`
+  );
 
   if (!newSpokeEntries || newSpokeEntries.length === 0) {
     fs.writeFileSync(sitemapPath, sitemap, 'utf8');
