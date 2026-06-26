@@ -10,23 +10,23 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Điểm tin – Vietnamese (primary) -->
+  <!-- Điểm tin – VI (primary) -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/"/>
-    <xhtml:link rel="alternate" hreflang="en"    href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/"/>
-    <xhtml:link rel="alternate" hreflang="ko"    href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/"/>
-    <xhtml:link rel="alternate" hreflang="th"    href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/"/>
-    <xhtml:link rel="alternate" hreflang="ar"    href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/"/>
-    <xhtml:link rel="alternate" hreflang="ja"    href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/"/>
   </url>
 
-  <!-- Điểm tin – English -->
+  <!-- Điểm tin – EN -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -34,7 +34,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Điểm tin – Korean -->
+  <!-- Điểm tin – KO -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -42,7 +42,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Điểm tin – Chinese -->
+  <!-- Điểm tin – ZH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -50,7 +50,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Điểm tin – Thai -->
+  <!-- Điểm tin – TH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -58,7 +58,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Điểm tin – Arabic -->
+  <!-- Điểm tin – AR -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -66,7 +66,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Điểm tin – Japanese -->
+  <!-- Điểm tin – JA -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -74,23 +74,23 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Điểm tin vĩ mô – Vietnamese (primary) -->
+  <!-- Điểm tin vĩ mô – VI (primary) -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/"/>
-    <xhtml:link rel="alternate" hreflang="en"    href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/"/>
-    <xhtml:link rel="alternate" hreflang="ko"    href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/"/>
-    <xhtml:link rel="alternate" hreflang="th"    href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/"/>
-    <xhtml:link rel="alternate" hreflang="ar"    href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/"/>
-    <xhtml:link rel="alternate" hreflang="ja"    href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/"/>
   </url>
 
-  <!-- Điểm tin vĩ mô – English -->
+  <!-- Điểm tin vĩ mô – EN -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -98,7 +98,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Điểm tin vĩ mô – Korean -->
+  <!-- Điểm tin vĩ mô – KO -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -106,7 +106,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Điểm tin vĩ mô – Chinese -->
+  <!-- Điểm tin vĩ mô – ZH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -114,7 +114,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Điểm tin vĩ mô – Thai -->
+  <!-- Điểm tin vĩ mô – TH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -122,7 +122,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Điểm tin vĩ mô – Arabic -->
+  <!-- Điểm tin vĩ mô – AR -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -130,7 +130,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Điểm tin vĩ mô – Japanese -->
+  <!-- Điểm tin vĩ mô – JA -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/</loc>
     <lastmod>2026-06-26</lastmod>
@@ -138,571 +138,943 @@
     <priority>0.8</priority>
   </url>
 
-
-  <!-- Spoke: Chưa được MSCI nâng hạng: Chứng khoán Việt Nam nên ứng phó r -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: Thị trường tài chính 24/6: Dòng tiền phân hóa, cơ hội sau ru -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/thi-truong-tai-chinh-246-dong-tien-phan-hoa-co-hoi-sau-rung-lac-24-06-2026/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: Thị trường tài chính 23/6: Vĩ mô rung lắc, cơ hội nào cho nh -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/thi-truong-tai-chinh-236-vi-mo-rung-lac-co-hoi-nao-cho-nha-dau-tu-23-06-2026/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: Cập nhật kinh tế vĩ mô tuần 22/06/2026: Giá dầu hồi phục, lạ -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: VN-Index ngày 22/06/2026: Nhóm Vingroup bứt phá, thanh khoản -->
+  <!-- Spoke: vn-index-ngay-22062026-nhom-vingroup-but-pha-thanh-khoan-than-trong-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-ngay-22062026-nhom-vingroup-but-pha-thanh-khoan-than-trong-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-ngay-22062026-nhom-vingroup-but-pha-thanh-khoan-than-trong-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/june-25-2026-vn-index-drops-nearly-15-points-vic-sees-massive-net-buying-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: Phiên 25/06/2026: VN-Index giảm gần 15 điểm, VIC gom ròng độ -->
+  <!-- Spoke: phien-25062026-vn-index-giam-gan-15-diem-vic-gom-rong-dot-bien-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-25062026-vn-index-giam-gan-15-diem-vic-gom-rong-dot-bien-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-25062026-vn-index-giam-gan-15-diem-vic-gom-rong-dot-bien-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/june-25-2026-vn-index-drops-nearly-15-points-vic-sees-massive-net-buying-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: Thị trường 24/06/2026: VIC, LPB bùng nổ, VN-Index tiến sát m -->
+  <!-- Spoke: thi-truong-24062026-vic-lpb-bung-no-vn-index-tien-sat-moc-1880-24-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-24062026-vic-lpb-bung-no-vn-index-tien-sat-moc-1880-24-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-24062026-vic-lpb-bung-no-vn-index-tien-sat-moc-1880-24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/24-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: VN-Index 23/06: LPB trần, VIC dẫn sóng ngoại gom ròng đột bi -->
+  <!-- Spoke: vn-index-2306-lpb-tran-vic-dan-song-ngoai-gom-rong-dot-bien-2700-ty-23-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-2306-lpb-tran-vic-dan-song-ngoai-gom-rong-dot-bien-2700-ty-23-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-2306-lpb-tran-vic-dan-song-ngoai-gom-rong-dot-bien-2700-ty-23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/23-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: VN-Index ngày 22/06/2026: Nhóm Vingroup bứt phá, thanh khoản -->
+  <!-- Spoke: vn-index-ngay-22062026-nhom-vingroup-but-pha-thanh-khoan-than-trong-22-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-ngay-22062026-nhom-vingroup-but-pha-thanh-khoan-than-trong-22-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-ngay-22062026-nhom-vingroup-but-pha-thanh-khoan-than-trong-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/22-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: Vĩ mô 26/06: Áp lực tỷ giá hạ nhiệt, dòng tiền chọn lọc cơ h -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2606-ap-luc-ty-gia-ha-nhiet-dong-tien-chon-loc-co-hoi-moi-25-06-2026/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: Thị trường 24/06/2026: VIC, LPB bùng nổ, VN-Index tiến sát m -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: VN-Index 23/06: LPB trần, VIC dẫn sóng ngoại gom ròng đột bi -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: VN-Index ngày 22/06/2026: Nhóm Vingroup bứt phá, thanh khoản -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/22-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: Thị trường tài chính 24/6: Dòng tiền phân hóa, cơ hội sau ru -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: Thị trường tài chính 23/6: Vĩ mô rung lắc, cơ hội nào cho nh -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: June 25, 2026: VN-Index Drops Nearly 15 Points, VIC Sees Mas -->
+  <!-- Spoke: june-25-2026-vn-index-drops-nearly-15-points-vic-sees-massive-net-buying-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/june-25-2026-vn-index-drops-nearly-15-points-vic-sees-massive-net-buying-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-25062026-vn-index-giam-gan-15-diem-vic-gom-rong-dot-bien-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/june-25-2026-vn-index-drops-nearly-15-points-vic-sees-massive-net-buying-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: Market Update 24/06/2026: VIC, LPB Surge, VN-Index Nears 188 -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: VN-Index June 23: LPB Hits Limit Up, VIC Leads Foreign Buyin -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: VN-Index June 22, 2026: Vingroup leads rally amid cautious l -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/22-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 2026년 6월 25일: VN-지수 15포인트 가까이 하락, VIC 외국인 순매수 급증 -->
+  <!-- Spoke: macro-news-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-25062026-vn-index-giam-gan-15-diem-vic-gom-rong-dot-bien-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/june-25-2026-vn-index-drops-nearly-15-points-vic-sees-massive-net-buying-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: 2026년 6월 24일 시장: VIC, LPB 급등, VN-Index 1880 근접 -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: VN-Index 6월 23일: LPB 상한가, VIC 외국인 매수세 주도 -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 2026년 6월 22일 VN-Index: Vingroup 급등 속 신중한 유동성 -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/22-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 2026年6月25日：VN-Index下跌近15點，外資大舉掃貨VIC -->
+  <!-- Spoke: macro-news-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-25062026-vn-index-giam-gan-15-diem-vic-gom-rong-dot-bien-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/june-25-2026-vn-index-drops-nearly-15-points-vic-sees-massive-net-buying-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: 2026年6月24日市場：VIC、LPB大漲，VN-Index逼近1880點 -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 越南指數 6/23：LPB 漲停，VIC 引領外資大舉買入 -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 2026年6月22日 VN-Index：Vingroup領漲，市場流動性保持審慎 -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/22-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 25 มิ.ย. 2026: VN-Index ร่วงเกือบ 15 จุด ต่างชาติลุยซื้อบิ๊ก -->
+  <!-- Spoke: macro-news-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-25062026-vn-index-giam-gan-15-diem-vic-gom-rong-dot-bien-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/june-25-2026-vn-index-drops-nearly-15-points-vic-sees-massive-net-buying-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: ตลาดหุ้น 24/06/2026: VIC และ LPB พุ่งแรง ดัน VN-Index เข้าใก -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: VN-Index 23 มิ.ย.: LPB ซิลลิ่ง, VIC นำทัพต่างชาติเข้าซื้อ 2. -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: VN-Index 22 มิ.ย. 2026: Vingroup ดันดัชนีพุ่ง ท่ามกลางสภาพคล -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/22-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 25 يونيو 2026: تراجع مؤشر VN-Index بقرابة 15 نقطة، وشراء صاف -->
+  <!-- Spoke: macro-news-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-25062026-vn-index-giam-gan-15-diem-vic-gom-rong-dot-bien-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/june-25-2026-vn-index-drops-nearly-15-points-vic-sees-massive-net-buying-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: سوق الأسهم 24/06/2026: صعود قوي لـ VIC و LPB، ومؤشر VN-Index -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: مؤشر VN-Index في 23 يونيو: LPB يسجل الحد الأقصى، وVIC يقود م -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: مؤشر VN-Index في 22 يونيو 2026: صعود مجموعة Vingroup وسط حذر -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/22-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 2026年6月25日：VN指数が約15ポイント下落、外資がVICを異例の買い越し -->
+  <!-- Spoke: macro-news-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-25062026-vn-index-giam-gan-15-diem-vic-gom-rong-dot-bien-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/june-25-2026-vn-index-drops-nearly-15-points-vic-sees-massive-net-buying-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: 2026年6月24日市場：VIC、LPBが急騰、VN-Indexは1880に接近 -->
+  <!-- Spoke: 24-06-2026 -->
   <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/24-06-2026</loc>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/24-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: VN指数 6月23日：LPBストップ高、VICが外国勢の大量買いを牽引 -->
+  <!-- Spoke: 23-06-2026 -->
   <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/23-06-2026</loc>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/23-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/23-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: 2026年6月22日のVN-Index：Vingroupの急騰と慎重な市場動向 -->
+  <!-- Spoke: 22-06-2026 -->
   <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/22-06-2026</loc>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/22-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/22-06-2026/"/>
   </url>
 
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/24-06-2026/"/>
+  </url>
 
-  <!-- Spoke: Macro June 26: Exchange Rate Pressure Eases, Capital Selects -->
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/22-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/22-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/22-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/22-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/22-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/22-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/22-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/22-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/22-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/22-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/22-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/22-06-2026/"/>
+  </url>
+
+  <!-- Spoke: chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/msci-upgrade-delay-how-should-vietnamese-stock-market-respond-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/msci-25-06-2026/"/>
+  </url>
+
+  <!-- Spoke: thi-truong-tai-chinh-246-dong-tien-phan-hoa-co-hoi-sau-rung-lac-24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/thi-truong-tai-chinh-246-dong-tien-phan-hoa-co-hoi-sau-rung-lac-24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/thi-truong-tai-chinh-246-dong-tien-phan-hoa-co-hoi-sau-rung-lac-24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: thi-truong-tai-chinh-236-vi-mo-rung-lac-co-hoi-nao-cho-nha-dau-tu-23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/thi-truong-tai-chinh-236-vi-mo-rung-lac-co-hoi-nao-cho-nha-dau-tu-23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/thi-truong-tai-chinh-236-vi-mo-rung-lac-co-hoi-nao-cho-nha-dau-tu-23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+  </url>
+
+  <!-- Spoke: vi-mo-2606-ap-luc-ty-gia-ha-nhiet-dong-tien-chon-loc-co-hoi-moi-25-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2606-ap-luc-ty-gia-ha-nhiet-dong-tien-chon-loc-co-hoi-moi-25-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2606-ap-luc-ty-gia-ha-nhiet-dong-tien-chon-loc-co-hoi-moi-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-june-26-exchange-rate-pressure-eases-capital-selects-new-sectors-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-25-06-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-june-26-exchange-rate-pressure-eases-capital-selects-new-sectors-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-june-26-exchange-rate-pressure-eases-capital-selects-new-sectors-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2606-ap-luc-ty-gia-ha-nhiet-dong-tien-chon-loc-co-hoi-moi-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-june-26-exchange-rate-pressure-eases-capital-selects-new-sectors-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: MSCI Upgrade Delay: How Should Vietnamese Stock Market Respo -->
+  <!-- Spoke: msci-upgrade-delay-how-should-vietnamese-stock-market-respond-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/msci-upgrade-delay-how-should-vietnamese-stock-market-respond-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/msci-upgrade-delay-how-should-vietnamese-stock-market-respond-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/msci-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: Financial Market June 24: Capital Flow and Investment Strate -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: Financial Market June 23: Macro Volatility and Investment Op -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 거시경제 6/26: 환율 압박 완화, 스마트 머니의 새로운 선택 -->
+  <!-- Spoke: macro-news-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-news-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2606-ap-luc-ty-gia-ha-nhiet-dong-tien-chon-loc-co-hoi-moi-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-june-26-exchange-rate-pressure-eases-capital-selects-new-sectors-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: MSCI 승격 보류: 베트남 주식시장, 어떻게 대응해야 하나? -->
+  <!-- Spoke: msci-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/msci-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/msci-upgrade-delay-how-should-vietnamese-stock-market-respond-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/msci-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: 6월 24일 금융 시장: 자본 흐름과 투자 전략 -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 6월 23일 금융시장: 거시경제 변동성과 투자 기회 -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 宏觀 6/26：匯率壓力放緩，資金轉向佈局優勢板塊 -->
+  <!-- Spoke: macro-news-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2606-ap-luc-ty-gia-ha-nhiet-dong-tien-chon-loc-co-hoi-moi-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-june-26-exchange-rate-pressure-eases-capital-selects-new-sectors-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: 未獲 MSCI 升格：越南股市該如何應對？ -->
+  <!-- Spoke: msci-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/msci-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/msci-upgrade-delay-how-should-vietnamese-stock-market-respond-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/msci-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: 6月24日金融市場：資金流向與投資策略 -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: 6月23日金融市場：宏觀波動與投資機會 -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: มหภาค 26 มิ.ย.: แรงกดดันค่าเงินผ่อนคลาย เม็ดเงินไหลเข้ากลุ่ม -->
+  <!-- Spoke: macro-news-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2606-ap-luc-ty-gia-ha-nhiet-dong-tien-chon-loc-co-hoi-moi-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-june-26-exchange-rate-pressure-eases-capital-selects-new-sectors-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: เวียดนามชวดอัปเกรด MSCI: ตลาดหุ้นเวียดนามควรปรับกลยุทธ์อย่าง -->
+  <!-- Spoke: msci-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/msci-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/msci-upgrade-delay-how-should-vietnamese-stock-market-respond-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/msci-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: ตลาดการเงิน 24 มิ.ย.: กระแสเงินทุนและกลยุทธ์การลงทุน -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: ตลาดการเงิน 23 มิ.ย.: ความผันผวนของเศรษฐกิจมหภาคและโอกาสการล -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: الاقتصاد الكلي 26 يونيو: تراجع ضغوط الصرف الأجنبي والسيولة ت -->
+  <!-- Spoke: macro-news-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-news-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2606-ap-luc-ty-gia-ha-nhiet-dong-tien-chon-loc-co-hoi-moi-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-june-26-exchange-rate-pressure-eases-capital-selects-new-sectors-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: تأجيل ترقية MSCI: كيف ينبغي للبورصة الفيتنامية الاستجابة؟ -->
+  <!-- Spoke: msci-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/msci-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/msci-upgrade-delay-how-should-vietnamese-stock-market-respond-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/msci-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: السوق المالية 24 يونيو: تدفقات رأس المال واستراتيجيات الاستث -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/24-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: السوق المالية 23 يونيو: تقلبات الاقتصاد الكلي وفرص الاستثمار -->
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/23-06-2026</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-
-  <!-- Spoke: マクロ経済 6/26：為替圧力が緩和、スマートマネーは有望セクターへシフト -->
+  <!-- Spoke: macro-news-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2606-ap-luc-ty-gia-ha-nhiet-dong-tien-chon-loc-co-hoi-moi-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-june-26-exchange-rate-pressure-eases-capital-selects-new-sectors-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-news-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: MSCI昇格見送り：ベトナム株式市場はどう対応すべきか？ -->
+  <!-- Spoke: msci-25-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/msci-25-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/msci-upgrade-delay-how-should-vietnamese-stock-market-respond-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/msci-25-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/msci-25-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: 6月24日金融市場：資本フローと投資戦略 -->
+  <!-- Spoke: 24-06-2026 -->
   <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/24-06-2026</loc>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/24-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/24-06-2026/"/>
   </url>
 
-
-  <!-- Spoke: 6月23日金融市場：マクロ経済の変動と投資機会 -->
+  <!-- Spoke: 23-06-2026 -->
   <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/23-06-2026</loc>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/23-06-2026/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/23-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 24-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/24-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/24-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/24-06-2026/"/>
+  </url>
+
+  <!-- Spoke: 23-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/23-06-2026/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/23-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/23-06-2026/"/>
   </url>
 
 </urlset>

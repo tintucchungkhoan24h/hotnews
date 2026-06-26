@@ -701,7 +701,7 @@ async function main() {
       const hasArticleUrl = isUsableArticleUrl(artUrl);
       const dateSlug = parseDateToDDMMYYYY(item.date);
       if (!hasArticleUrl) {
-        const absUrl = `${SITE_BASE}/diem-tin-chung-khoan/${lang}/${dateSlug}`;
+        const absUrl = `${SITE_BASE}/diem-tin-chung-khoan/${lang}/${dateSlug}/`;
         return {
           date:             item.date,
           key:              item.key,
@@ -768,11 +768,18 @@ async function main() {
       });
       fs.writeFileSync(spokeFile, spokeHtml, 'utf8');
       console.log(`  📝 Written spoke: diem-tin-chung-khoan/${lang}/${item.spokeSlug}/index.html`);
-      // Add all language spoke URLs to sitemap
+      // Add all language spoke URLs to sitemap with peer URLs for hreflang
+      const peerUrls = {};
+      if (peerSlugs[item.key]) {
+        for (const [peerLang, peerSlug] of Object.entries(peerSlugs[item.key])) {
+          peerUrls[peerLang] = `${SITE_BASE}/diem-tin-chung-khoan/${peerLang}/${peerSlug}/`;
+        }
+      }
       newSpokeEntries.push({
         url:   item.spokeAbsoluteUrl,
         date:  item.date,
         label: item.title.slice(0, 60),
+        peerUrls: peerUrls,
       });
     }
 
@@ -792,13 +799,25 @@ async function main() {
   // ── Update sitemap with new spoke URLs ────────────────────────────────────
   updateSitemapWithSpokes(newSpokeEntries);
 
+  // ── Write peer URL mapping for sitemap regeneration ───────────────────────
+  const peerUrlMapping = {};
+  for (const [rowKey, langSlugs] of Object.entries(peerSlugs)) {
+    peerUrlMapping[rowKey] = {};
+    for (const [lang, slug] of Object.entries(langSlugs)) {
+      peerUrlMapping[rowKey][lang] = `${SITE_BASE}/diem-tin-chung-khoan/${lang}/${slug}/`;
+    }
+  }
+  fs.writeFileSync(path.join(ROOT, 'spoke_peer_urls_stock.json'), JSON.stringify(peerUrlMapping, null, 2), 'utf8');
+
   // ── Write new spoke URLs to shared file for Google ping ───────────────────
   if (newSpokeEntries.length > 0) {
     const pingFilePath = path.join(ROOT, 'spoke_urls_stock.json');
     const existingPing = fs.existsSync(pingFilePath)
       ? JSON.parse(fs.readFileSync(pingFilePath, 'utf8'))
       : [];
-    const merged = [...new Set([...existingPing, ...newSpokeEntries.map(e => e.url)])];
+    // Filter out old URLs without trailing slashes
+    const existingPingClean = existingPing.filter(url => url.endsWith('/'));
+    const merged = [...new Set([...existingPingClean, ...newSpokeEntries.map(e => e.url)])];
     fs.writeFileSync(pingFilePath, JSON.stringify(merged, null, 2), 'utf8');
     console.log(`  📝 Wrote ${newSpokeEntries.length} new spoke URL(s) to spoke_urls_stock.json`);
   }
@@ -1094,6 +1113,16 @@ function updateSitemapWithSpokes(newSpokeEntries) {
   let addedCount = 0;
   for (const entry of newSpokeEntries) {
     if (sitemap.includes(entry.url)) continue;
+    
+    // Build hreflang tags for all language variants of this spoke
+    let hreflangTags = '';
+    if (entry.peerUrls) {
+      for (const [langCode, url] of Object.entries(entry.peerUrls)) {
+        const hreflangValue = HREFLANG[langCode] || langCode;
+        hreflangTags += `    <xhtml:link rel="alternate" hreflang="${hreflangValue}" href="${url}"/>\n`;
+      }
+    }
+    
     const urlBlock = `
   <!-- Spoke: ${entry.label} -->
   <url>
@@ -1101,7 +1130,7 @@ function updateSitemapWithSpokes(newSpokeEntries) {
     <lastmod>${entry.date}</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-  </url>`;
+${hreflangTags}  </url>`;
     sitemap = sitemap.replace('</urlset>', urlBlock + '\n\n</urlset>');
     addedCount++;
   }
