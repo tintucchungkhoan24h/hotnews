@@ -295,6 +295,8 @@
       "exportError": "Lỗi khi xuất file Excel. Vui lòng thử lại.",
       "exportErrorWithMessage": "Lỗi khi xuất file Excel: {message}",
       "exportUnexpectedResponse": "Định dạng dữ liệu trả về không hợp lệ từ máy chủ.",
+      "copyLink": "Sao chép link",
+      "copyLinkSuccess": "Đã sao chép đường dẫn!",
       "loadingSummaries": "Đang tải bản tin...",
       "noSummaries": "Không có bản tin nào trong khoảng thời gian này."
     },
@@ -510,6 +512,8 @@
       "exportError": "Error exporting Excel file. Please try again.",
       "exportErrorWithMessage": "Error exporting Excel file: {message}",
       "exportUnexpectedResponse": "Unexpected response format from server.",
+      "copyLink": "Copy link",
+      "copyLinkSuccess": "Link copied!",
       "loadingSummaries": "Loading summaries...",
       "noSummaries": "No summaries found for this date range."
     },
@@ -725,6 +729,8 @@
       "exportError": "Excel 내보내기 오류. 다시 시도해 주세요.",
       "exportErrorWithMessage": "Excel 내보내기 오류: {message}",
       "exportUnexpectedResponse": "서버 응답 형식이 올바르지 않습니다.",
+      "copyLink": "링크 복사",
+      "copyLinkSuccess": "링크가 복사되었습니다!",
       "loadingSummaries": "요약을 불러오는 중...",
       "noSummaries": "이 날짜 범위의 요약이 없습니다."
     },
@@ -940,6 +946,8 @@
       "exportError": "匯出 Excel 時發生錯誤，請再試一次。",
       "exportErrorWithMessage": "匯出 Excel 時發生錯誤：{message}",
       "exportUnexpectedResponse": "伺服器回傳的資料格式不正確。",
+      "copyLink": "複製連結",
+      "copyLinkSuccess": "連結已複製!",
       "loadingSummaries": "正在加载摘要...",
       "noSummaries": "未找到该日期范围的摘要。"
     },
@@ -1153,6 +1161,8 @@
       "exportError": "ส่งออก Excel ไม่สำเร็จ โปรดลองอีกครั้ง",
       "exportErrorWithMessage": "ส่งออก Excel ไม่สำเร็จ: {message}",
       "exportUnexpectedResponse": "รูปแบบข้อมูลจากเซิร์ฟเวอร์ไม่ถูกต้อง",
+      "copyLink": "คัดลอกลิงก์",
+      "copyLinkSuccess": "คัดลอกลิงก์แล้ว!",
       "loadingSummaries": "กำลังโหลดบทสรุป...",
       "noSummaries": "ไม่พบบทสรุปสำหรับช่วงวันทีนี้"
     },
@@ -1366,6 +1376,8 @@
       "exportError": "خطأ في تصدير ملف Excel. يرجى المحاولة مرة أخرى.",
       "exportErrorWithMessage": "خطأ في تصدير ملف Excel: {message}",
       "exportUnexpectedResponse": "تنسيق استجابة غير متوقع من الخادم.",
+      "copyLink": "نسخ الرابط",
+      "copyLinkSuccess": "تم نسخ الرابط!",
       "loadingSummaries": "جاري تحميل الملخصات...",
       "noSummaries": "لم يتم العثور على ملخصات لهذا النطاق الزمني."
     },
@@ -1579,6 +1591,8 @@
       "exportError": "Excelファイルの出力に失敗しました。もう一度お試しください。",
       "exportErrorWithMessage": "Excelファイルの出力に失敗しました：{message}",
       "exportUnexpectedResponse": "サーバーからの応答形式が正しくありません。",
+      "copyLink": "リンクをコピー",
+      "copyLinkSuccess": "リンクをコピーしました!",
       "loadingSummaries": "サマリーを読み込み中...",
       "noSummaries": "この日付範囲のサマリーは見つかりませんでした。"
     }

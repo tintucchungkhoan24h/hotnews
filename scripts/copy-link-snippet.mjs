@@ -7,17 +7,17 @@ export const COPY_LINK_SCRIPT = `
     (function() {
       const toast = document.createElement('div');
       toast.className = 'copy-toast';
-      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Đã sao chép liên kết!</span>';
+      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>{{COPY_LINK_SUCCESS}}</span>';
       document.body.appendChild(toast);
       let toastTimer = null;
 
       function showCopySuccess(btn) {
         btn.classList.add('copied');
         const label = btn.querySelector('.btn-label');
-        if (label) label.textContent = 'Đã sao chép!';
+        if (label) label.textContent = '{{COPY_LINK_SUCCESS}}';
         setTimeout(() => {
           btn.classList.remove('copied');
-          if (label) label.textContent = 'Sao chép link';
+          if (label) label.textContent = '{{COPY_LINK}}';
         }, 2000);
         clearTimeout(toastTimer);
         toast.offsetHeight;

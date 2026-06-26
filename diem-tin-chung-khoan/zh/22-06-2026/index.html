@@ -984,7 +984,7 @@ article h1 {
               <rect x="9" y="9" width="13" height="13" rx="2"/>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
             </svg>
-            <span class="btn-label">Sao chép link</span>
+            <span class="btn-label">複製連結</span>
           </button>
         </div>
         <div class="digest-lead">2026年6月22日，VN-Index創下兩個月以來最大單日漲幅，市場交易氣氛熱絡。Vingroup集團股票成為領漲火車頭，但市場整體流動性仍維持審慎觀察。</div>
@@ -1215,17 +1215,17 @@ article h1 {
     (function() {
       const toast = document.createElement('div');
       toast.className = 'copy-toast';
-      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Đã sao chép liên kết!</span>';
+      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>連結已複製!</span>';
       document.body.appendChild(toast);
       let toastTimer = null;
 
       function showCopySuccess(btn) {
         btn.classList.add('copied');
         const label = btn.querySelector('.btn-label');
-        if (label) label.textContent = 'Đã sao chép!';
+        if (label) label.textContent = '連結已複製!';
         setTimeout(() => {
           btn.classList.remove('copied');
-          if (label) label.textContent = 'Sao chép link';
+          if (label) label.textContent = '複製連結';
         }, 2000);
         clearTimeout(toastTimer);
         toast.offsetHeight;
@@ -1741,7 +1741,7 @@ async function fetchDynamicFeed() {
                       <rect x="9" y="9" width="13" height="13" rx="2"/>
                       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
                     </svg>
-                    <span class="btn-label">Sao chép link</span>
+                    <span class="btn-label">複製連結</span>
                   </button>
                 </div>
                 <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>

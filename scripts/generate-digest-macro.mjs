@@ -618,7 +618,7 @@ ${LANG_MENU_SCRIPT}
     // Inject dynamic client JS
     ${clientJs}
 
-${COPY_LINK_SCRIPT}
+${COPY_LINK_SCRIPT.replace('{{COPY_LINK}}', currentI18n.copyLink || 'Copy link').replace('{{COPY_LINK_SUCCESS}}', currentI18n.copyLinkSuccess || 'Link copied!')}
   </script>
 </body>
 </html>`;
@@ -893,7 +893,7 @@ ${LANG_MENU_CSS}
 
 ${LANG_MENU_SCRIPT}
 
-${COPY_LINK_SCRIPT}
+${COPY_LINK_SCRIPT.replace('{{COPY_LINK}}', currentI18n.copyLink || 'Copy link').replace('{{COPY_LINK_SUCCESS}}', currentI18n.copyLinkSuccess || 'Link copied!')}
   </script>
   <script>window.IS_SPOKE_PAGE = true; window.SPOKE_ARTICLE_DATE = "${date}";</script>
   <script>${clientJs}</script>
