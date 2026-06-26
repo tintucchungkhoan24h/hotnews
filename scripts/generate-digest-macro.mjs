@@ -1154,27 +1154,57 @@ async function main() {
   // ── Update sitemap with new spoke URLs ────────────────────────────────────
   updateSitemapWithSpokes(newSpokeEntries);
 
-  // ── Write peer URL mapping for sitemap regeneration ───────────────────────
-  const peerUrlMapping = {};
+  // ── Write peer URL mapping for sitemap regeneration (split by year) ─────────────
+  const peerUrlMappingByYear = {};
   for (const [rowKey, langSlugs] of Object.entries(peerSlugs)) {
-    peerUrlMapping[rowKey] = {};
+    // Extract year from rowKey (format: YYYY-MM-DD#index)
+    const yearMatch = rowKey.match(/^(\d{4})/);
+    const year = yearMatch ? yearMatch[1] : 'unknown';
+    
+    if (!peerUrlMappingByYear[year]) {
+      peerUrlMappingByYear[year] = {};
+    }
+    
+    peerUrlMappingByYear[year][rowKey] = {};
     for (const [lang, slug] of Object.entries(langSlugs)) {
-      peerUrlMapping[rowKey][lang] = `${SITE_BASE}/diem-tin-vi-mo/${lang}/${slug}/`;
+      peerUrlMappingByYear[year][rowKey][lang] = `${SITE_BASE}/diem-tin-vi-mo/${lang}/${slug}/`;
     }
   }
-  fs.writeFileSync(path.join(ROOT, 'spoke_peer_urls_macro.json'), JSON.stringify(peerUrlMapping, null, 2), 'utf8');
+  
+  // Write each year's peer mapping to a separate file
+  for (const [year, mapping] of Object.entries(peerUrlMappingByYear)) {
+    const filePath = path.join(ROOT, `spoke_peer_urls_macro_${year}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(mapping, null, 2), 'utf8');
+    console.log(`  📝 Wrote peer mapping for year ${year} to spoke_peer_urls_macro_${year}.json`);
+  }
 
-  // ── Write new spoke URLs to shared file for Google ping ───────────────────
+  // ── Write new spoke URLs to shared file for Google ping (split by year) ───────
   if (newSpokeEntries.length > 0) {
-    const pingFilePath = path.join(ROOT, 'spoke_urls_macro.json');
-    const existingPing = fs.existsSync(pingFilePath)
-      ? JSON.parse(fs.readFileSync(pingFilePath, 'utf8'))
-      : [];
-    // Filter out old URLs without trailing slashes
-    const existingPingClean = existingPing.filter(url => url.endsWith('/'));
-    const merged = [...new Set([...existingPingClean, ...newSpokeEntries.map(e => e.url)])];
-    fs.writeFileSync(pingFilePath, JSON.stringify(merged, null, 2), 'utf8');
-    console.log(`  📝 Wrote ${newSpokeEntries.length} new spoke URL(s) to spoke_urls_macro.json`);
+    const urlsByYear = {};
+    
+    for (const entry of newSpokeEntries) {
+      // Extract year from URL slug (DD-MM-YYYY format)
+      const dateMatch = entry.url.match(/(\d{2}-\d{2}-(\d{4}))/);
+      const year = dateMatch ? dateMatch[2] : 'unknown';
+      
+      if (!urlsByYear[year]) {
+        urlsByYear[year] = [];
+      }
+      urlsByYear[year].push(entry.url);
+    }
+    
+    // Merge with existing files and write
+    for (const [year, newUrls] of Object.entries(urlsByYear)) {
+      const pingFilePath = path.join(ROOT, `spoke_urls_macro_${year}.json`);
+      const existingPing = fs.existsSync(pingFilePath)
+        ? JSON.parse(fs.readFileSync(pingFilePath, 'utf8'))
+        : [];
+      // Filter out old URLs without trailing slashes
+      const existingPingClean = existingPing.filter(url => url.endsWith('/'));
+      const merged = [...new Set([...existingPingClean, ...newUrls])];
+      fs.writeFileSync(pingFilePath, JSON.stringify(merged, null, 2), 'utf8');
+      console.log(`  📝 Wrote ${newUrls.length} new spoke URL(s) to spoke_urls_macro_${year}.json`);
+    }
   }
 
   console.log('\n✨ Done! All macro SEO pages (hub + spokes) generated.');

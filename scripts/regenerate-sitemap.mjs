@@ -79,27 +79,66 @@ function groupSpokesByContent(spokeUrls) {
 function generateSitemap() {
   const today = new Date().toISOString().split('T')[0];
   
-  // Read spoke URLs from JSON files
-  const stockUrlsPath = path.join(ROOT, 'spoke_urls_stock.json');
-  const macroUrlsPath = path.join(ROOT, 'spoke_urls_macro.json');
+  // Read spoke URLs from year-split JSON files
+  const stockUrls = [];
+  const macroUrls = [];
+  const stockPeerMapping = {};
+  const macroPeerMapping = {};
   
-  const stockUrls = fs.existsSync(stockUrlsPath) 
-    ? JSON.parse(fs.readFileSync(stockUrlsPath, 'utf8'))
-    : [];
-  const macroUrls = fs.existsSync(macroUrlsPath)
-    ? JSON.parse(fs.readFileSync(macroUrlsPath, 'utf8'))
-    : [];
+  // Find all year-split files for stock
+  const stockUrlFiles = fs.readdirSync(ROOT).filter(f => f.match(/^spoke_urls_stock_\d{4}\.json$/));
+  const stockPeerFiles = fs.readdirSync(ROOT).filter(f => f.match(/^spoke_peer_urls_stock_\d{4}\.json$/));
   
-  // Read peer URL mapping files
-  const stockPeerPath = path.join(ROOT, 'spoke_peer_urls_stock.json');
-  const macroPeerPath = path.join(ROOT, 'spoke_peer_urls_macro.json');
+  for (const file of stockUrlFiles) {
+    const filePath = path.join(ROOT, file);
+    const urls = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    stockUrls.push(...urls);
+  }
   
-  const stockPeerMapping = fs.existsSync(stockPeerPath)
-    ? JSON.parse(fs.readFileSync(stockPeerPath, 'utf8'))
-    : {};
-  const macroPeerMapping = fs.existsSync(macroPeerPath)
-    ? JSON.parse(fs.readFileSync(macroPeerPath, 'utf8'))
-    : {};
+  for (const file of stockPeerFiles) {
+    const filePath = path.join(ROOT, file);
+    const mapping = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    Object.assign(stockPeerMapping, mapping);
+  }
+  
+  // Find all year-split files for macro
+  const macroUrlFiles = fs.readdirSync(ROOT).filter(f => f.match(/^spoke_urls_macro_\d{4}\.json$/));
+  const macroPeerFiles = fs.readdirSync(ROOT).filter(f => f.match(/^spoke_peer_urls_macro_\d{4}\.json$/));
+  
+  for (const file of macroUrlFiles) {
+    const filePath = path.join(ROOT, file);
+    const urls = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    macroUrls.push(...urls);
+  }
+  
+  for (const file of macroPeerFiles) {
+    const filePath = path.join(ROOT, file);
+    const mapping = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    Object.assign(macroPeerMapping, mapping);
+  }
+  
+  // Also try to read legacy single files for backward compatibility
+  const legacyStockUrlsPath = path.join(ROOT, 'spoke_urls_stock.json');
+  const legacyMacroUrlsPath = path.join(ROOT, 'spoke_urls_macro.json');
+  const legacyStockPeerPath = path.join(ROOT, 'spoke_peer_urls_stock.json');
+  const legacyMacroPeerPath = path.join(ROOT, 'spoke_peer_urls_macro.json');
+  
+  if (fs.existsSync(legacyStockUrlsPath)) {
+    const urls = JSON.parse(fs.readFileSync(legacyStockUrlsPath, 'utf8'));
+    stockUrls.push(...urls);
+  }
+  if (fs.existsSync(legacyMacroUrlsPath)) {
+    const urls = JSON.parse(fs.readFileSync(legacyMacroUrlsPath, 'utf8'));
+    macroUrls.push(...urls);
+  }
+  if (fs.existsSync(legacyStockPeerPath)) {
+    const mapping = JSON.parse(fs.readFileSync(legacyStockPeerPath, 'utf8'));
+    Object.assign(stockPeerMapping, mapping);
+  }
+  if (fs.existsSync(legacyMacroPeerPath)) {
+    const mapping = JSON.parse(fs.readFileSync(legacyMacroPeerPath, 'utf8'));
+    Object.assign(macroPeerMapping, mapping);
+  }
   
   // Filter URLs to only include those with trailing slashes (new format)
   const stockUrlsClean = stockUrls.filter(url => url.endsWith('/'));
