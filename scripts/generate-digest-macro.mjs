@@ -903,13 +903,18 @@ ${COPY_LINK_SCRIPT.replace('{{COPY_LINK}}', currentI18n.copyLink || 'Copy link')
 
 // ── Update sitemap with new spoke URLs ────────────────────────────────────────
 function updateSitemapWithSpokes(newSpokeEntries) {
-  if (!newSpokeEntries || newSpokeEntries.length === 0) return;
   const sitemapPath = path.join(ROOT, 'sitemap.xml');
   let sitemap = fs.readFileSync(sitemapPath, 'utf8');
   const today = new Date().toISOString().split('T')[0];
 
   // Update lastmod on existing hub entries
   sitemap = sitemap.replace(/<lastmod>2026-\d{2}-\d{2}<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
+
+  if (!newSpokeEntries || newSpokeEntries.length === 0) {
+    fs.writeFileSync(sitemapPath, sitemap, 'utf8');
+    console.log('  📝 Updated: sitemap.xml (lastmod only)');
+    return;
+  }
 
   let addedCount = 0;
   for (const entry of newSpokeEntries) {
