@@ -27,6 +27,48 @@ function isoToDisplay(iso) {
     return `${d}/${m}/${y}`;
 }
 
+function isoToPathSegment(iso) {
+    if (!iso) return '00-00-0000';
+    const [y, m, d] = iso.split('-');
+    return `${d}-${m}-${y}`;
+}
+
+function normalizePathLang(lang) {
+    if (!lang) return 'vi';
+    if (lang === 'zh-TW') return 'zh';
+    return String(lang).split('-')[0] || 'vi';
+}
+
+function getCurrentPathLang() {
+    const sectionMatch = window.location.pathname.match(/\/diem-tin-vi-mo\/([^/]+)/);
+    if (sectionMatch && sectionMatch[1]) return normalizePathLang(sectionMatch[1]);
+    return normalizePathLang(document.documentElement.lang || 'vi');
+}
+
+function getArticleForLang(articles, pathLang) {
+    const lookupLang = pathLang === 'zh' ? 'zh-TW' : pathLang;
+    return articles.find(a => a.langCode === lookupLang)
+        || articles.find(a => (a.langCode === 'zh-TW' ? 'zh' : a.langCode) === pathLang)
+        || articles[0];
+}
+
+function isUsableArticleUrl(url) {
+    return typeof url === 'string'
+        && url.trim() !== ''
+        && !['undefined', 'null'].includes(url.trim().toLowerCase());
+}
+
+function buildArticleSpokeUrl(articleUrl, lang, dateIso) {
+    const normalizedLang = normalizePathLang(lang);
+    const trimmedUrl = isUsableArticleUrl(articleUrl) ? articleUrl.trim() : '';
+    if (trimmedUrl) {
+        return trimmedUrl.startsWith('http')
+            ? trimmedUrl
+            : `${window.location.origin}${trimmedUrl.startsWith('/') ? '' : '/'}${trimmedUrl}`;
+    }
+    return `${window.location.origin}/diem-tin-vi-mo/${normalizedLang}/${isoToPathSegment(dateIso)}`;
+}
+
 function dateToIso(d) {
     if (!d) return '';
     const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
@@ -187,17 +229,12 @@ async function fetchDynamicFeed() {
         }
 
         let html = '';
-        let currentLang = document.documentElement.lang || 'vi';
+        let currentLang = getCurrentPathLang();
         const isRtl = currentLang === 'ar';
-        
-        // Map zh-Hant to zh-TW for article lookup
-        if (currentLang === 'zh-Hant') {
-            currentLang = 'zh-TW';
-        }
 
         for (const row of rows) {
             const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
-            const article = articles.find(a => a.langCode === currentLang) || articles[0];
+            const article = getArticleForLang(articles, currentLang);
             
             if (!article) continue;
 
@@ -294,10 +331,7 @@ async function fetchDynamicFeed() {
             });
             formattedContent = normalizeReferenceLinks(formattedContent);
 
-            let itemSpokeUrl = article.article_url || null;
-            let absoluteSpokeUrl = itemSpokeUrl 
-                ? (itemSpokeUrl.startsWith('http') ? itemSpokeUrl : `${window.location.origin}${itemSpokeUrl.startsWith('/') ? '' : '/'}${itemSpokeUrl}`)
-                : `${window.location.origin}/diem-tin-vi-mo/${currentLang}/`;
+            let absoluteSpokeUrl = buildArticleSpokeUrl(article.article_url, currentLang, rDate);
 
             html += `
             <article ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">

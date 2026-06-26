@@ -1200,7 +1200,7 @@ article h1 {
         </article>
         <hr class="border-gray-800 my-8">
       
-        <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/">
+        <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026">
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             6월 24일 금융 시장: 자본 흐름과 투자 전략
           </h1>
@@ -1213,7 +1213,7 @@ article h1 {
             
           </div>
           <div class="article-actions">
-            <button class="copy-link-btn" data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/" onclick="copyArticleLink(this)" title="Sao chép đương dẫn bài viết">
+            <button class="copy-link-btn" data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/24-06-2026" onclick="copyArticleLink(this)" title="Sao chép đương dẫn bài viết">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="9" y="9" width="13" height="13" rx="2"/>
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
@@ -1227,7 +1227,7 @@ article h1 {
         </article>
         <hr class="border-gray-800 my-8">
       
-        <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/">
+        <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026">
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             6월 23일 금융시장: 거시경제 변동성과 투자 기회
           </h1>
@@ -1240,7 +1240,7 @@ article h1 {
             
           </div>
           <div class="article-actions">
-            <button class="copy-link-btn" data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/" onclick="copyArticleLink(this)" title="Sao chép đương dẫn bài viết">
+            <button class="copy-link-btn" data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/23-06-2026" onclick="copyArticleLink(this)" title="Sao chép đương dẫn bài viết">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="9" y="9" width="13" height="13" rx="2"/>
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
@@ -1627,6 +1627,26 @@ function isoToDisplay(iso) {
     return `${d}/${m}/${y}`;
 }
 
+function isoToPathSegment(iso) {
+    if (!iso) return '00-00-0000';
+    const [y, m, d] = iso.split('-');
+    return `${d}-${m}-${y}`;
+}
+
+function getCurrentPathLang() {
+    const sectionMatch = window.location.pathname.match(/\/diem-tin-vi-mo\/([^/]+)/);
+    if (sectionMatch && sectionMatch[1]) return sectionMatch[1] === "zh-TW" ? "zh" : sectionMatch[1];
+    const docLang = (document.documentElement.lang || "vi").split("-")[0];
+    return docLang === "zh" ? "zh" : docLang;
+}
+
+function getArticleForLang(articles, pathLang) {
+    const lookupLang = pathLang === "zh" ? "zh-TW" : pathLang;
+    return articles.find(a => a.langCode === lookupLang)
+        || articles.find(a => (a.langCode === "zh-TW" ? "zh" : a.langCode) === pathLang)
+        || articles[0];
+}
+
 function dateToIso(d) {
     if (!d) return '';
     const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
@@ -1787,17 +1807,12 @@ async function fetchDynamicFeed() {
         }
 
         let html = '';
-        let currentLang = document.documentElement.lang || 'vi';
+        let currentLang = getCurrentPathLang();
         const isRtl = currentLang === 'ar';
-        
-        // Map zh-Hant to zh-TW for article lookup
-        if (currentLang === 'zh-Hant') {
-            currentLang = 'zh-TW';
-        }
 
         for (const row of rows) {
             const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
-            const article = articles.find(a => a.langCode === currentLang) || articles[0];
+            const article = getArticleForLang(articles, currentLang);
             
             if (!article) continue;
 
@@ -1897,7 +1912,7 @@ async function fetchDynamicFeed() {
             let itemSpokeUrl = article.article_url || null;
             let absoluteSpokeUrl = itemSpokeUrl 
                 ? (itemSpokeUrl.startsWith('http') ? itemSpokeUrl : `${window.location.origin}${itemSpokeUrl.startsWith('/') ? '' : '/'}${itemSpokeUrl}`)
-                : `${window.location.origin}/diem-tin-vi-mo/${currentLang}/`;
+                : `${window.location.origin}/diem-tin-vi-mo/${currentLang}/${isoToPathSegment(rDate)}`;
 
             html += `
             <article ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">

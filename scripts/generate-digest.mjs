@@ -17,7 +17,7 @@ import { fileURLToPath } from 'url';
 import https from 'https';
 import { normalizeReferenceLinks } from './format-reference-links.js';
 import { highlightStockCodes } from './format-stock-codes.js';
-import { extractSlugFromUrl, slugifyTitle, isoToHuman } from './slug-utils.mjs';
+import { extractSlugFromUrl, slugifyTitle, isoToHuman, parseDateToDDMMYYYY } from './slug-utils.mjs';
 import { COPY_LINK_SCRIPT } from './copy-link-snippet.mjs';
 import { LANG_MENU_SCRIPT, LANG_MENU_CSS, buildLangMenuHtmlFromMeta } from './lang-menu-snippet.mjs';
 
@@ -64,6 +64,20 @@ function fetchJson(url, headers) {
 
 function readFile(relPath) {
   return fs.readFileSync(path.join(ROOT, relPath), 'utf8');
+}
+
+function isUsableArticleUrl(url) {
+  return typeof url === 'string'
+    && url.trim() !== ''
+    && !['undefined', 'null'].includes(url.trim().toLowerCase());
+}
+
+function absoluteArticleUrl(articleUrl, fallbackUrl) {
+  const trimmedUrl = isUsableArticleUrl(articleUrl) ? articleUrl.trim() : '';
+  if (!trimmedUrl) return fallbackUrl;
+  return trimmedUrl.startsWith('http')
+    ? trimmedUrl
+    : `${SITE_BASE}${trimmedUrl.startsWith('/') ? '' : '/'}${trimmedUrl}`;
 }
 
 // ── Fetch summaries ─────────────────────────────────────────────────────
@@ -481,10 +495,8 @@ ${LANG_MENU_CSS}
         formattedContent = normalizeReferenceLinks(formattedContent);
         formattedContent = highlightStockCodes(formattedContent);
         
-        const itemSpokeUrl = item.article.article_url || null;
-        const absoluteSpokeUrl = itemSpokeUrl
-          ? (itemSpokeUrl.startsWith('http') ? itemSpokeUrl : `${SITE_BASE}${itemSpokeUrl.startsWith('/') ? '' : '/'}${itemSpokeUrl}`)
-          : `${SITE_BASE}/diem-tin-chung-khoan/${lang}/`;
+        const fallbackSpokeUrl = `${SITE_BASE}/diem-tin-chung-khoan/${lang}/${parseDateToDDMMYYYY(item.date)}`;
+        const absoluteSpokeUrl = absoluteArticleUrl(item.article.article_url, fallbackSpokeUrl);
         const isLatest = (item === articlesList[0]);
         
         return `
@@ -686,10 +698,21 @@ async function main() {
     const usedSlugs = new Map();
     allArchiveItems[lang] = articlesList.map(item => {
       const artUrl  = item.article.article_url || null;
-      const baseSlug = artUrl ? (extractSlugFromUrl(artUrl) || slugifyTitle(item.article.title, item.date))
-                              : slugifyTitle(item.article.title, item.date);
-      const fallbackSlug = slugifyTitle(item.article.title, item.date);
+      const hasArticleUrl = isUsableArticleUrl(artUrl);
+      const dateSlug = parseDateToDDMMYYYY(item.date);
+      if (!hasArticleUrl) {
+        const absUrl = `${SITE_BASE}/diem-tin-chung-khoan/${lang}/${dateSlug}`;
+        return {
+          date:             item.date,
+          key:              item.key,
+          title:            item.article.title,
+          spokeSlug:        dateSlug,
+          spokeAbsoluteUrl: absUrl,
+        };
+      }
+      const baseSlug = extractSlugFromUrl(artUrl) || dateSlug;
       const baseCount = usedSlugs.get(baseSlug) || 0;
+      const fallbackSlug = slugifyTitle(item.article.title, item.date);
       let slug = baseCount === 0 ? baseSlug : fallbackSlug;
       if (usedSlugs.has(slug)) {
         slug = `${slug}-${(usedSlugs.get(slug) || 0) + 1}`;
