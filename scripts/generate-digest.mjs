@@ -19,6 +19,7 @@ import { normalizeReferenceLinks } from './format-reference-links.js';
 import { highlightStockCodes } from './format-stock-codes.js';
 import { extractSlugFromUrl, slugifyTitle, isoToHuman } from './slug-utils.mjs';
 import { COPY_LINK_SCRIPT } from './copy-link-snippet.mjs';
+import { LANG_MENU_SCRIPT, LANG_MENU_CSS, buildLangMenuHtmlFromMeta } from './lang-menu-snippet.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT      = path.resolve(__dirname, '..');
@@ -96,15 +97,12 @@ function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clien
   // Build Language Menu HTML
   const flagMarkup = I18N_FLAGS[lang] || '';
   const langShort = I18N_LANG_SHORT[lang] || lang.toUpperCase();
-  const menuHtml = langs.map(l => {
-      const f = I18N_FLAGS[l] || '';
-      const n = I18N_LANG_NAMES[l] || l.toUpperCase();
-      const s = I18N_LANG_SHORT[l] || l.toUpperCase();
-      return `<button type="button" class="lang-option" data-lang="${l}" onclick="window.location.href='/diem-tin-chung-khoan/${l}/'">
-          <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;">${f}</span>
-          <span>${n} (${s})</span>
-      </button>`;
-  }).join('');
+  const menuHtml = buildLangMenuHtmlFromMeta(langs, {
+    flags: I18N_FLAGS,
+    names: I18N_LANG_NAMES,
+    shorts: I18N_LANG_SHORT,
+    hrefForLang: (l) => `/diem-tin-chung-khoan/${l}/`,
+  });
 
   // Inject into header
   procHeader = procHeader.replace('<span id="langFlag"></span>', `<span id="langFlag">${flagMarkup}</span>`);
@@ -335,94 +333,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; font-size: 13px; font-weight: 600; text-decoration: none; padding: 8px 14px; background: rgba(96,165,250,0.08); border: 1px solid rgba(96,165,250,0.25); border-radius: 8px; margin-bottom: 24px; }
     .back-link:hover { color: #ffd700; border-color: rgba(255,215,0,0.3); }
 
-    /* Lang Menu CSS (copied from index.css for standalone functionality) */
-    .lang-menu {
-        position: absolute;
-        top: calc(100% + 8px);
-        right: 0;
-        min-width: 220px;
-        max-width: min(320px, calc(100vw - 24px));
-        max-height: min(70vh, 360px);
-        overflow-x: hidden;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        background: rgba(10, 18, 47, 0.98);
-        border: 1px solid #334155;
-        border-radius: 18px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.55);
-        backdrop-filter: blur(16px);
-        padding: 8px 0;
-        z-index: 10050;
-        display: none;
-    }
-    .lang-menu.open {
-        display: block;
-    }
-    .lang-option {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background: transparent;
-        border: none;
-        color: #f8fafc;
-        padding: 10px 14px;
-        cursor: pointer;
-        font-size: 12px;
-        text-align: left;
-        transition: background 0.15s ease;
-    }
-    .lang-option:hover {
-        background: rgba(255,255,255,0.06);
-    }
-    .lang-option svg {
-        width: 22px;
-        height: 15px;
-        border-radius: 2px;
-        flex-shrink: 0;
-    }
-    .lang-option span {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    #langToggle {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        background: rgba(17,34,64,0.95);
-        border: 1px solid #4b5563;
-        color: white;
-        padding: 8px 12px;
-        border-radius: 12px;
-        font-size: 12px;
-        font-weight: 700;
-        cursor: pointer;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        backdrop-filter: blur(10px);
-        transition: all 0.2s ease;
-        white-space: nowrap;
-    }
-    @media (min-width: 640px) {
-        #langToggle {
-            padding: 10px 18px;
-            font-size: 13px;
-            gap: 8px;
-        }
-    }
-    #langToggle:hover {
-        border-color: #ffd700;
-        box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
-    }
-    #langToggle:active {
-        transform: scale(0.96);
-    }
-    #langToggle svg {
-        width: 22px;
-        height: 15px;
-        display: block;
-        border-radius: 2px;
-    }
+${LANG_MENU_CSS}
 
     /* Inject dynamic client CSS */
     ${clientCss}
@@ -660,22 +571,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     }
     applyDict();
 
-    // Language dropdown toggle
-    const langToggle = document.getElementById('langToggle');
-    const langMenu = document.getElementById('langMenu');
-    if (langToggle && langMenu) {
-        langToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langMenu.classList.toggle('open');
-            langMenu.setAttribute('aria-hidden', langMenu.classList.contains('open') ? 'false' : 'true');
-        });
-        document.addEventListener('click', (e) => {
-            if (!langToggle.contains(e.target) && !langMenu.contains(e.target)) {
-                langMenu.classList.remove('open');
-                langMenu.setAttribute('aria-hidden', 'true');
-            }
-        });
-    }
+${LANG_MENU_SCRIPT}
 
     // Inject dynamic client JS
     ${clientJs}
@@ -763,8 +659,9 @@ async function main() {
   let dataByLang = {};
   let langsSet = new Set();
 
-  for (const row of allRows) {
+  for (const [rowIndex, row] of allRows.entries()) {
     const rDate = row.summary_date;
+    const rowKey = `${rDate}#${rowIndex}`;
     const rArticles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
     for (const a of rArticles) {
       if (isSample) {
@@ -775,7 +672,7 @@ async function main() {
       const langCode = a.langCode === 'zh-TW' ? 'zh' : a.langCode;
       langsSet.add(langCode);
       if (!dataByLang[langCode]) dataByLang[langCode] = [];
-      dataByLang[langCode].push({ date: rDate, article: a });
+      dataByLang[langCode].push({ date: rDate, key: rowKey, article: a });
     }
   }
 
@@ -786,13 +683,27 @@ async function main() {
   const allArchiveItems = {}; // { lang: [...items] }
   for (const lang of langs) {
     const articlesList = dataByLang[lang];
+    const usedSlugs = new Map();
     allArchiveItems[lang] = articlesList.map(item => {
       const artUrl  = item.article.article_url || null;
-      const slug    = artUrl ? (extractSlugFromUrl(artUrl) || slugifyTitle(item.article.title, item.date))
-                             : slugifyTitle(item.article.title, item.date);
+      const baseSlug = artUrl ? (extractSlugFromUrl(artUrl) || slugifyTitle(item.article.title, item.date))
+                              : slugifyTitle(item.article.title, item.date);
+      const fallbackSlug = slugifyTitle(item.article.title, item.date);
+      const baseCount = usedSlugs.get(baseSlug) || 0;
+      let slug = baseCount === 0 ? baseSlug : fallbackSlug;
+      if (usedSlugs.has(slug)) {
+        slug = `${slug}-${(usedSlugs.get(slug) || 0) + 1}`;
+      }
+      if (slug === baseSlug) {
+        usedSlugs.set(baseSlug, baseCount + 1);
+      } else {
+        usedSlugs.set(baseSlug, baseCount + 1);
+        usedSlugs.set(slug, (usedSlugs.get(slug) || 0) + 1);
+      }
       const absUrl  = `${SITE_BASE}/diem-tin-chung-khoan/${lang}/${slug}/`;
       return {
         date:             item.date,
+        key:              item.key,
         title:            item.article.title,
         spokeSlug:        slug,
         spokeAbsoluteUrl: absUrl,
@@ -800,12 +711,12 @@ async function main() {
     });
   }
 
-  // Build peerSlugs: { date: { lang: slug } } for spoke-to-spoke cross-language links
+  // Build peerSlugs: { rowKey: { lang: slug } } for spoke-to-spoke cross-language links
   const peerSlugs = {};
   for (const [lang, items] of Object.entries(allArchiveItems)) {
     for (const item of items) {
-      if (!peerSlugs[item.date]) peerSlugs[item.date] = {};
-      peerSlugs[item.date][lang] = item.spokeSlug;
+      if (!peerSlugs[item.key]) peerSlugs[item.key] = {};
+      peerSlugs[item.key][lang] = item.spokeSlug;
     }
   }
 
@@ -816,16 +727,12 @@ async function main() {
     const hubDir  = path.join(ROOT, 'diem-tin-chung-khoan', lang);
     fs.mkdirSync(hubDir, { recursive: true });
 
-    // ── Write Spoke Pages (skip if already exists) ───────────────────────────
+    // ── Write Spoke Pages (refresh from article_url data each run) ───────────
     for (const item of archiveItems) {
       const spokeDir  = path.join(ROOT, 'diem-tin-chung-khoan', lang, item.spokeSlug);
       const spokeFile = path.join(spokeDir, 'index.html');
-      if (fs.existsSync(spokeFile)) {
-        console.log(`  ⏭  Skipped (exists): diem-tin-chung-khoan/${lang}/${item.spokeSlug}/`);
-        continue;
-      }
       fs.mkdirSync(spokeDir, { recursive: true });
-      const spokeArticle = articlesList.find(i => i.date === item.date)?.article;
+      const spokeArticle = articlesList.find(i => i.key === item.key)?.article;
       if (!spokeArticle) continue;
       const spokeHtml = generateSpokePage({
         article:    spokeArticle,
@@ -834,6 +741,7 @@ async function main() {
         spokeSlug:  item.spokeSlug,
         headerHtml, footerHtml, langs, clientCss, clientJs,
         peerSlugs,
+        peerKey:    item.key,
       });
       fs.writeFileSync(spokeFile, spokeHtml, 'utf8');
       console.log(`  📝 Written spoke: diem-tin-chung-khoan/${lang}/${item.spokeSlug}/index.html`);
@@ -878,7 +786,7 @@ async function main() {
 }
 
 // ── Generate one Spoke Page (permanent, never overwritten) ─────────────────────
-function generateSpokePage({ article, date, lang, spokeSlug, headerHtml, footerHtml, langs, clientCss, clientJs }) {
+function generateSpokePage({ article, date, lang, spokeSlug, headerHtml, footerHtml, langs, clientCss, clientJs, peerSlugs = {}, peerKey = date }) {
   const canonical    = `${CANONICAL_BASE}/diem-tin-chung-khoan/${lang}/${spokeSlug}/`;
   const absoluteUrl  = `${SITE_BASE}/diem-tin-chung-khoan/${lang}/${spokeSlug}/`;
   const hubUrl       = `${CANONICAL_BASE}/diem-tin-chung-khoan/${lang}/`;
@@ -890,15 +798,19 @@ function generateSpokePage({ article, date, lang, spokeSlug, headerHtml, footerH
 
   const flagMarkup = I18N_FLAGS[lang] || '';
   const langShort  = I18N_LANG_SHORT[lang] || lang.toUpperCase();
-  const menuHtml   = langs.map(l => {
-    const f = I18N_FLAGS[l] || '';
-    const n = I18N_LANG_NAMES[l] || l.toUpperCase();
-    const s = I18N_LANG_SHORT[l] || l.toUpperCase();
-    return `<button type="button" class="lang-option" data-lang="${l}" onclick="window.location.href='/diem-tin-chung-khoan/${l}/'">
-        <span style="display: inline-block; width: 22px; height: 15px; overflow: hidden; border-radius: 2px;">${f}</span>
-        <span>${n} (${s})</span>
-    </button>`;
-  }).join('');
+  const spokeLangUrls = {};
+  for (const l of langs) {
+    const peer = peerSlugs[peerKey]?.[l];
+    spokeLangUrls[l] = peer
+      ? `/diem-tin-chung-khoan/${l}/${peer}/`
+      : `/diem-tin-chung-khoan/${l}/`;
+  }
+  const menuHtml = buildLangMenuHtmlFromMeta(langs, {
+    flags: I18N_FLAGS,
+    names: I18N_LANG_NAMES,
+    shorts: I18N_LANG_SHORT,
+    hrefForLang: (l) => spokeLangUrls[l],
+  });
 
   procHeader = procHeader.replace('<span id="langFlag"></span>', `<span id="langFlag">${flagMarkup}</span>`);
   procHeader = procHeader.replace(/<span id="langText"([^>]*)><\/span>/, `<span id="langText"$1>${langShort}</span>`);
@@ -1002,12 +914,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     article h1 { background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.02em; font-size: 1.75rem; font-weight: 800; margin-bottom: 0.875rem; line-height: 1.3; }
     .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; font-size: 13px; font-weight: 600; text-decoration: none; padding: 8px 14px; background: rgba(96,165,250,0.08); border: 1px solid rgba(96,165,250,0.25); border-radius: 8px; margin-bottom: 24px; transition: all 0.2s; }
     .back-link:hover { color: #ffd700; border-color: rgba(255,215,0,0.3); }
-    .lang-menu { position: absolute; top: calc(100% + 8px); right: 0; min-width: 220px; max-width: min(320px, calc(100vw - 24px)); max-height: min(70vh, 360px); overflow-x: hidden; overflow-y: auto; background: rgba(10, 18, 47, 0.98); border: 1px solid #334155; border-radius: 18px; box-shadow: 0 20px 60px rgba(0,0,0,0.55); backdrop-filter: blur(16px); padding: 8px 0; z-index: 10050; display: none; }
-    .lang-menu.open { display: block; }
-    .lang-option { width: 100%; display: flex; align-items: center; gap: 10px; background: transparent; border: none; color: #f8fafc; padding: 10px 14px; cursor: pointer; font-size: 12px; text-align: left; transition: background 0.15s ease; }
-    .lang-option:hover { background: rgba(255,255,255,0.06); }
-    #langToggle { display: flex; align-items: center; gap: 6px; background: rgba(17,34,64,0.95); border: 1px solid #4b5563; color: white; padding: 8px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; box-shadow: 0 10px 40px rgba(0,0,0,0.3); backdrop-filter: blur(10px); transition: all 0.2s ease; white-space: nowrap; }
-    #langToggle:hover { border-color: #ffd700; box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2); }
+${LANG_MENU_CSS}
     ${clientCss}
   </style>
 </head>
@@ -1133,21 +1040,9 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     }
     applyDict();
 
-    const langToggle = document.getElementById('langToggle');
-    const langMenu = document.getElementById('langMenu');
-    if (langToggle && langMenu) {
-        langToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langMenu.classList.toggle('open');
-            langMenu.setAttribute('aria-hidden', langMenu.classList.contains('open') ? 'false' : 'true');
-        });
-        document.addEventListener('click', (e) => {
-            if (!langToggle.contains(e.target) && !langMenu.contains(e.target)) {
-                langMenu.classList.remove('open');
-                langMenu.setAttribute('aria-hidden', 'true');
-            }
-        });
-    }
+    window.SPOKE_LANG_URLS = ${JSON.stringify(spokeLangUrls)};
+
+${LANG_MENU_SCRIPT}
 
 ${COPY_LINK_SCRIPT}
   </script>

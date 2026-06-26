@@ -272,7 +272,7 @@ async function fetchDynamicFeed() {
                   ${article.title}
                 </h1>
                 <div class="article-meta">
-                  <span class="highlight">📅 ${rDate}</span>
+                  <span class="highlight">📅 ${isoToDisplay(rDate)}</span>
                   <span>•</span>
                   <span>${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()}</span>
                   <span>•</span>

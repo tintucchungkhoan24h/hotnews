@@ -1,4 +1,34 @@
-const REF_LABELS = 'Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|참고 자료 출처|数据参考|參考資料|參考資料來源|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|مصدر البيانات المرجعية|データ参照|データ出典|参考文献|参考データソース|Reference data sources|Reference data source';
+const REF_LABELS = [
+  'Nguồn dữ liệu tham khảo',
+  'Nguồn tham khảo',
+  'Tài liệu tham khảo',
+  'Data references',
+  'Data reference',
+  'Reference data sources',
+  'Reference data source',
+  'References',
+  'Sources',
+  '데이터 참고',
+  '참고 자료 출처',
+  '참고 자료',
+  '数据参考来源',
+  '数据参考',
+  '参考资料来源',
+  '参考资料',
+  '參考資料來源',
+  '參考資料',
+  'ข้อมูลอ้างอิง',
+  'แหล่งข้อมูลอ้างอิง',
+  'مصادر البيانات المرجعية',
+  'مصدر البيانات المرجعية',
+  'مصادر البيانات',
+  'مصدر البيانات',
+  'المراجع',
+  'データ参照',
+  'データ出典',
+  '参考データソース',
+  '参考文献',
+].join('|');
 
 function extractReferenceSection(html) {
   if (!html) return null;
@@ -24,7 +54,8 @@ function extractReferenceSection(html) {
 function stripReferenceSection(html) {
   return html
     .replace(new RegExp(`<p><strong>[^<]*(?:${REF_LABELS})[^<]*</strong><br>(?:<a[^>]*>.*?</a>(?:<br>)?)*</p>`, 'gi'), '')
-    .replace(new RegExp(`<p>[^<]*(?:${REF_LABELS})[^<]*[:：][^<]*(?:<a[^>]*>.*?</a>[^<]*)*</p>`, 'gi'), '');
+    .replace(new RegExp(`<p>[^<]*(?:${REF_LABELS})[^<]*[:：][^<]*(?:<a[^>]*>.*?</a>[^<]*)*</p>`, 'gi'), '')
+    .replace(new RegExp(`(?:${REF_LABELS})[:：]\\s*(?:<a[^>]*>.*?</a>(?:\\s*,\\s*)?)+`, 'gi'), '');
 }
 
 function sanitizeReferenceLink(link) {
