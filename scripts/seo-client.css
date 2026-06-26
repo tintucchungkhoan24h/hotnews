@@ -388,6 +388,26 @@ article h1 {
   transform: scale(1.1);
 }
 
+/* Mobile-specific: ensure copied animation works on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .copy-link-btn:active {
+    transform: scale(0.96);
+  }
+  .copy-link-btn.copied {
+    transform: scale(1.05);
+    animation: copied-pulse 0.3s ease-out;
+  }
+  .copy-link-btn.copied svg {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes copied-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 /* Article action bar that houses the copy button */
 .article-actions {
   display: flex;
@@ -423,6 +443,34 @@ article h1 {
 .copy-toast.visible {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+/* iOS Safari-specific fixes for toast notification */
+@supports (-webkit-touch-callout: none) {
+  .copy-toast {
+    -webkit-transform: translateX(-50%) translateY(20px);
+    transform: translateX(-50%) translateY(20px);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .copy-toast.visible {
+    -webkit-transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Additional mobile toast fixes */
+@media (max-width: 640px) {
+  .copy-toast {
+    width: calc(100vw - 32px);
+    left: 16px;
+    transform: translateX(-50%) translateY(20px);
+    text-align: center;
+    justify-content: center;
+  }
+  .copy-toast.visible {
+    transform: translateX(-50%) translateY(0);
+  }
 }
 .copy-toast svg {
   width: 16px;

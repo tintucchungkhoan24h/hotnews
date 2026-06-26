@@ -16,6 +16,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import https from 'https';
 import { extractSlugFromUrl, slugifyTitle, isoToHuman } from './slug-utils.mjs';
+import { COPY_LINK_SCRIPT } from './copy-link-snippet.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT      = path.resolve(__dirname, '..');
@@ -707,48 +708,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
     // Inject dynamic client JS
     ${clientJs}
 
-    // ── Copy Article Link Logic ─────────────────────────────────────────────────────
-    (function() {
-      // Create toast element once
-      const toast = document.createElement('div');
-      toast.className = 'copy-toast';
-      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>\u0110\u00e3 sao ch\u00e9p li\u00ean k\u1ebft!</span>';
-      document.body.appendChild(toast);
-      let toastTimer = null;
-
-      window.copyArticleLink = function(btn) {
-        // Resolve spoke URL: use data-spoke-url attribute
-        const rawSpokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
-        const spokeUrl = (() => { try { const u = new URL(rawSpokeUrl); return window.location.origin + u.pathname; } catch(e) { return rawSpokeUrl; } })();
-        navigator.clipboard.writeText(spokeUrl).then(() => {
-          // Button feedback
-          btn.classList.add('copied');
-          const label = btn.querySelector('.btn-label');
-          if (label) label.textContent = '\u0110\u00e3 sao ch\u00e9p!';
-          setTimeout(() => {
-            btn.classList.remove('copied');
-            if (label) label.textContent = 'Sao ch\u00e9p link';
-          }, 2000);
-          // Toast feedback
-          clearTimeout(toastTimer);
-          toast.classList.add('visible');
-          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
-        }).catch(() => {
-          // Fallback: textarea trick
-          try {
-            const ta = document.createElement('textarea');
-            ta.value = spokeUrl;
-            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            toast.classList.add('visible');
-            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
-          } catch(e) { console.warn('Copy failed', e); }
-        });
-      };
-    })();
+${COPY_LINK_SCRIPT}
   </script>
 </body>
 </html>`;
@@ -1035,43 +995,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
         });
     }
 
-    // Copy Article Link Logic
-    (function() {
-      const toast = document.createElement('div');
-      toast.className = 'copy-toast';
-      toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Đã sao chép liên kết!</span>';
-      document.body.appendChild(toast);
-      let toastTimer = null;
-
-      window.copyArticleLink = function(btn) {
-        const rawSpokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
-        const spokeUrl = (() => { try { const u = new URL(rawSpokeUrl); return window.location.origin + u.pathname; } catch(e) { return rawSpokeUrl; } })();
-        navigator.clipboard.writeText(spokeUrl).then(() => {
-          btn.classList.add('copied');
-          const label = btn.querySelector('.btn-label');
-          if (label) label.textContent = 'Đã sao chép!';
-          setTimeout(() => {
-            btn.classList.remove('copied');
-            if (label) label.textContent = 'Sao chép link';
-          }, 2000);
-          clearTimeout(toastTimer);
-          toast.classList.add('visible');
-          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
-        }).catch(() => {
-          try {
-            const ta = document.createElement('textarea');
-            ta.value = spokeUrl;
-            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            toast.classList.add('visible');
-            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
-          } catch(e) { console.warn('Copy failed', e); }
-        });
-      };
-    })();
+${COPY_LINK_SCRIPT}
   </script>
   <script>window.IS_SPOKE_PAGE = true; window.SPOKE_ARTICLE_DATE = "${date}";</script>
   <script>${clientJs}</script>

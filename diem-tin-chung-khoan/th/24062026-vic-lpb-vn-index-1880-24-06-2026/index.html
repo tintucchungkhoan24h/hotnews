@@ -1064,7 +1064,8 @@ article h1 {
         });
     }
 
-    // Copy Article Link Logic
+
+    // ── Copy Article Link Logic ─────────────────────────────────────────────────────
     (function() {
       const toast = document.createElement('div');
       toast.className = 'copy-toast';
@@ -1072,33 +1073,62 @@ article h1 {
       document.body.appendChild(toast);
       let toastTimer = null;
 
+      function showCopySuccess(btn) {
+        btn.classList.add('copied');
+        const label = btn.querySelector('.btn-label');
+        if (label) label.textContent = 'Đã sao chép!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          if (label) label.textContent = 'Sao chép link';
+        }, 2000);
+        clearTimeout(toastTimer);
+        toast.offsetHeight;
+        toast.classList.add('visible');
+        toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+      }
+
+      function fallbackCopyText(text) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0;';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ta.setSelectionRange(0, text.length);
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        if (!ok) throw new Error('execCommand copy failed');
+      }
+
+      function copyText(text, btn) {
+        const onSuccess = () => showCopySuccess(btn);
+        const onFallback = () => {
+          try {
+            fallbackCopyText(text);
+            onSuccess();
+          } catch (e) {
+            console.warn('Copy failed', e);
+          }
+        };
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          navigator.clipboard.writeText(text).then(onSuccess).catch(onFallback);
+          return;
+        }
+        onFallback();
+      }
+
       window.copyArticleLink = function(btn) {
         const rawSpokeUrl = btn.getAttribute('data-spoke-url') || window.location.href;
-        const spokeUrl = (() => { try { const u = new URL(rawSpokeUrl); return window.location.origin + u.pathname; } catch(e) { return rawSpokeUrl; } })();
-        navigator.clipboard.writeText(spokeUrl).then(() => {
-          btn.classList.add('copied');
-          const label = btn.querySelector('.btn-label');
-          if (label) label.textContent = 'Đã sao chép!';
-          setTimeout(() => {
-            btn.classList.remove('copied');
-            if (label) label.textContent = 'Sao chép link';
-          }, 2000);
-          clearTimeout(toastTimer);
-          toast.classList.add('visible');
-          toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
-        }).catch(() => {
+        const spokeUrl = (() => {
           try {
-            const ta = document.createElement('textarea');
-            ta.value = spokeUrl;
-            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            toast.classList.add('visible');
-            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
-          } catch(e) { console.warn('Copy failed', e); }
-        });
+            const u = new URL(rawSpokeUrl);
+            return window.location.origin + u.pathname;
+          } catch (e) {
+            return rawSpokeUrl;
+          }
+        })();
+        copyText(spokeUrl, btn);
       };
     })();
   </script>
