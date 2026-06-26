@@ -28,6 +28,7 @@ jobs:
         run: |
           node scripts/generate-digest.mjs
           node scripts/generate-digest-macro.mjs
+          node scripts/regenerate-sitemap.mjs
         
       - name: Commit and push changes
         env:
