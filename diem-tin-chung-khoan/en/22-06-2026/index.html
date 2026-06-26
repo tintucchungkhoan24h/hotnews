@@ -989,7 +989,7 @@ article h1 {
           </button>
         </div>
         <div class="digest-lead">The stock market on June 22, 2026, witnessed a robust trading session as the VN-Index posted its strongest gain in two months. Vingroup stocks served as the primary engine for this rally, despite a cautious approach from investors regarding overall liquidity.</div>
-        <div class="digest-body"><h2>Market Sentiment: Divergence Amid Gains</h2><p>The June 22, 2026 session was influenced by the groundbreaking ceremony of five major infrastructure projects in Hanoi. However, the VN-Index rally was largely concentrated in the Vingroup ecosystem, with <strong>VIC</strong> hitting its daily limit, while <strong>VHM</strong> and <strong>VRE</strong> also saw significant gains. Despite the index climbing, market breadth remained weak as a majority of stocks declined, highlighting persistent investor caution.</p><h2>Capital Flow Divergence</h2><p>Capital flow showed a clear divergence. The energy sector, including <strong>PVD</strong>, <strong>BSR</strong>, and <strong>POW</strong>, trended upward following global oil price recovery. In contrast, tech and retail stocks like <strong>FPT</strong> and <strong>MWG</strong> faced heavy foreign selling. Foreign investors have continued their five-day selling streak, focusing on key pillars, which poses a risk to sustainable growth.</p><h2>Outlook and Recommendations</h2><p>MBS analysts suggest this rally is likely a technical rebound. The VN-Index faces thick resistance in the 1,830-1,845 range. In the base case, the market will likely consolidate. Investors are advised to maintain high cash levels and prioritize sectors with strong fundamentals such as securities, logistics, and manufacturing during pullbacks.</p><p><strong>Data references: </strong><br><a target="_blank" rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: Stocks quietly attracting capital</a><br><a target="_blank" rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index resistance analysis</a></p></div>
+        <div class="digest-body"><h2>Market Sentiment: Divergence Amid Gains</h2><p>The June 22, 2026 session was influenced by the groundbreaking ceremony of five major infrastructure projects in Hanoi. However, the VN-Index rally was largely concentrated in the Vingroup ecosystem, with <strong>VIC</strong> hitting its daily limit, while <strong>VHM</strong> and <strong>VRE</strong> also saw significant gains. Despite the index climbing, market breadth remained weak as a majority of stocks declined, highlighting persistent investor caution.</p><h2>Capital Flow Divergence</h2><p>Capital flow showed a clear divergence. The energy sector, including <strong>PVD</strong>, <strong>BSR</strong>, and <strong>POW</strong>, trended upward following global oil price recovery. In contrast, tech and retail stocks like <strong>FPT</strong> and <strong>MWG</strong> faced heavy foreign selling. Foreign investors have continued their five-day selling streak, focusing on key pillars, which poses a risk to sustainable growth.</p><h2>Outlook and Recommendations</h2><p>MBS analysts suggest this rally is likely a technical rebound. The VN-Index faces thick resistance in the 1,830-1,845 range. In the base case, the market will likely consolidate. Investors are advised to maintain high cash levels and prioritize sectors with strong fundamentals such as securities, logistics, and manufacturing during pullbacks.</p><p><strong>Data references:</strong><br><a target="_blank" rel="nofollow" href="https://cafef.vn/mbs-loat-nhom-co-phieu-dang-am-tham-hut-tien-giua-luc-vn-index-giang-co-188260622112634886.chn">MBS: Stocks quietly attracting capital</a><br><a target="_blank" rel="nofollow" href="https://vneconomy.vn/phia-truoc-vn-index-la-vung-can-kha-day-thi-truong-se-dieu-chinh.htm">VN-Index resistance analysis</a></p></div>
       </article>
     </main>
 
@@ -1319,9 +1319,44 @@ article h1 {
   '参考文献',
 ].join('|');
 
+function sanitizeReferenceLink(link) {
+  return link
+    .replace(/rel=''nofollow''/g, 'rel="nofollow"')
+    .replace(/href=''([^'']+)''/g, 'href="$1"');
+}
+
+function formatReferenceBlock(label, linksHtml) {
+  const linkMatches = linksHtml.match(/<a[^>]*>.*?<\/a>/g) || [];
+  const formattedLinks = linkMatches.map(link => {
+    let fixed = sanitizeReferenceLink(link);
+    if (!fixed.includes('target=')) fixed = fixed.replace('<a', '<a target="_blank"');
+    return fixed;
+  }).join('<br>');
+  return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
+}
+
 function extractReferenceSection(html) {
   if (!html) return null;
 
+  // NEW: Pattern-based detection - find <p> tags with multiple <a> tags (reference links)
+  // This works regardless of the label text/language
+  const structuralMatch = html.match(/<p>([^<]*[:：]\s*)((?:<a[^>]*>.*?<\/a>(?:\s*,\s*)?){2,})\s*<\/p>/i);
+  if (structuralMatch) {
+    // Extract label (everything before the colon)
+    const label = structuralMatch[1].trim();
+    const links = structuralMatch[2];
+    return { label, links };
+  }
+
+  // NEW: Pattern with <strong> tag and <br> separators
+  const structuralStrongMatch = html.match(/<p><strong>([^<]*[:：]\s*)<\/strong><br>((?:<a[^>]*>.*?<\/a>(?:<br>)?){2,})<\/p>/i);
+  if (structuralStrongMatch) {
+    const label = structuralStrongMatch[1].trim();
+    const links = structuralStrongMatch[2];
+    return { label, links };
+  }
+
+  // FALLBACK: Keyword-based detection (for backward compatibility)
   const formattedMatch = html.match(
     new RegExp(`<p><strong>((?:${REF_LABELS})[^<]*[:：]\\s*)</strong><br>((?:<a[^>]*>.*?</a>(?:<br>)?)+)</p>`, 'i')
   );
@@ -1341,26 +1376,16 @@ function extractReferenceSection(html) {
 }
 
 function stripReferenceSection(html) {
-  return html
+  // NEW: Strip structural patterns (p tags with multiple a tags and colon)
+  let result = html
+    .replace(/<p><strong>[^<]*[:：]\s*<\/strong><br>(?:<a[^>]*>.*?<\/a>(?:<br>)?){2,}<\/p>/gi, '')
+    .replace(/<p>[^<]*[:：]\s*(?:<a[^>]*>.*?<\/a>(?:\s*,\s*)?){2,}\s*<\/p>/gi, '');
+
+  // FALLBACK: Strip keyword-based patterns (for backward compatibility)
+  return result
     .replace(new RegExp(`<p><strong>[^<]*(?:${REF_LABELS})[^<]*</strong><br>(?:<a[^>]*>.*?</a>(?:<br>)?)*</p>`, 'gi'), '')
     .replace(new RegExp(`<p>[^<]*(?:${REF_LABELS})[^<]*[:：][^<]*(?:<a[^>]*>.*?</a>[^<]*)*</p>`, 'gi'), '')
     .replace(new RegExp(`(?:${REF_LABELS})[:：]\\s*(?:<a[^>]*>.*?</a>(?:\\s*,\\s*)?)+`, 'gi'), '');
-}
-
-function sanitizeReferenceLink(link) {
-  return link
-    .replace(/rel=''nofollow''/g, 'rel="nofollow"')
-    .replace(/href=''([^'']+)''/g, 'href="$1"');
-}
-
-function formatReferenceBlock(label, linksHtml) {
-  const linkMatches = linksHtml.match(/<a[^>]*>.*?<\/a>/g) || [];
-  const formattedLinks = linkMatches.map(link => {
-    let fixed = sanitizeReferenceLink(link);
-    if (!fixed.includes('target=')) fixed = fixed.replace('<a', '<a target="_blank"');
-    return fixed;
-  }).join('<br>');
-  return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
 }
 
 function normalizeReferenceLinks(content) {
