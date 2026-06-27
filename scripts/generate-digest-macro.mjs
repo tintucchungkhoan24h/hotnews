@@ -774,7 +774,7 @@ ${hreflangTags}
   <meta property="og:description" content="${descText}">
   <meta property="og:url" content="${absoluteUrl}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="${SITE_BASE}/ava_icon.png">
+  <meta property="og:image" content="${article.article_photo_url || SITE_BASE + '/ava_icon.png'}">
   <meta property="article:published_time" content="${date}T00:00:00+07:00">
 
   <link rel="icon" type="image/png" sizes="48x48" href="/ava_icon.png">
