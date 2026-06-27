@@ -1754,6 +1754,10 @@ async function fetchDynamicFeed() {
                     <span class="btn-label">${langDict.copyLink || 'Copy link'}</span>
                   </button>
                 </div>
+                ${article.article_photo_url ? `
+                <div class="article-photo" style="margin-bottom: 24px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); max-width: 800px; margin-left: auto; margin-right: auto;">
+                  <img src="${article.article_photo_url}" alt="${article.title.replace(/"/g, '&quot;')}" style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 500px;">
+                </div>` : ''}
                 <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
                 <div class="digest-body">${formattedContent}</div>
             </article>
