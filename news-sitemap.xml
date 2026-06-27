@@ -31,7 +31,7 @@
         <news:language>ko</news:language>
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VIC와 VHM의 주도로 최근 세션에서 강력한 회복세를 보인 VN-Index</news:title>
+      <news:title>VN-Index 직전 거래일 강한 반등: VIC와 VHM 시장 주도</news:title>
     </news:news>
   </url>
   <url>
@@ -42,7 +42,7 @@
         <news:language>zh-Hant</news:language>
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 在最近一次交易中強勁反彈，VIC 與 VHM 領漲</news:title>
+      <news:title>VN-Index於最新交易日強勁反彈：VIC與VHM領漲市場</news:title>
     </news:news>
   </url>
   <url>
@@ -53,7 +53,7 @@
         <news:language>th</news:language>
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>ดัชนี VN-Index ฟื้นตัวอย่างแข็งแกร่งในรอบล่าสุด โดยได้รับแรงหนุนจาก VIC และ VHM</news:title>
+      <news:title>VN-Index ฟื้นตัวแข็งแกร่งในเซสชันล่าสุด: VIC และ VHM นำตลาด</news:title>
     </news:news>
   </url>
   <url>
@@ -64,7 +64,7 @@
         <news:language>ar</news:language>
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>مؤشر VN-Index يشهد تعافياً قوياً في الجلسة الأخيرة بقيادة VIC و VHM</news:title>
+      <news:title>مؤشر VN-Index يتعافى بقوة في الجلسة الأخيرة: VIC وVHM يقودان السوق</news:title>
     </news:news>
   </url>
   <url>
@@ -75,7 +75,18 @@
         <news:language>ja</news:language>
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Indexは直近セッションで強気回復、VICとVHMが牽引</news:title>
+      <news:title>VN-Indexが直近セッションで大幅反発：VICとVHMが市場を牽引</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-hoi-phuc-manh-phien-gan-nhat-vic-va-vhm-dan-dat-thi-truong-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index hồi phục mạnh phiên gần nhất: VIC và VHM dẫn dắt thị trường</news:title>
     </news:news>
   </url>
   <url>
@@ -90,6 +101,17 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-recovers-strongly-in-the-latest-session-vic-and-vhm-lead-the-market-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index recovers strongly in the latest session: VIC and VHM lead the market</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-sees-strong-recovery-in-latest-session-led-by-vic-and-vhm-27-06-2026/</loc>
     <news:news>
       <news:publication>
@@ -98,6 +120,61 @@
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
       <news:title>VN-Index Sees Strong Recovery in Latest Session Led by VIC and VHM</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vic-vhm-vn-index-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>VIC와 VHM의 주도로 최근 세션에서 강력한 회복세를 보인 VN-Index</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-vic-vhm-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 在最近一次交易中強勁反彈，VIC 與 VHM 領漲</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-vic-vhm-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>ดัชนี VN-Index ฟื้นตัวอย่างแข็งแกร่งในรอบล่าสุด โดยได้รับแรงหนุนจาก VIC และ VHM</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-vic-vhm-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>مؤشر VN-Index يشهد تعافياً قوياً في الجلسة الأخيرة بقيادة VIC و VHM</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-indexvicvhm-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Indexは直近セッションで強気回復、VICとVHMが牽引</news:title>
     </news:news>
   </url>
   <url>
@@ -175,160 +252,6 @@
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
       <news:title>ベトナム125兆ドン納税猶予：為替嵐の中の財政シールド発動</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-26062026-phuc-hoi-gan-9-diem-nho-luc-day-ho-vingroup-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 26/06/2026: Phục hồi gần 9 điểm nhờ lực đẩy họ Vingroup</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-june-26-2026-recovery-of-9-points-led-by-vingroup-group-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index June 26, 2026: Recovery of 9 Points Led by Vingroup Group</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>VN-지수 2026년 6월 26일: 빈그룹 주도하에 약 9포인트 회복</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 2026年6月26日：受 Vingroup 推動回升近 9 點</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 26 มิ.ย. 2026: ฟื้นตัวเกือบ 9 จุด ด้วยแรงหนุนจากกลุ่ม Vingroup</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>مؤشر VN-Index في 26/06/2026: يتعافى قرابة 9 نقاط بفضل دفع مجموعة Vingroup</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>VN指数 2026年6月26日：ビングループの牽引により約9ポイント回復</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-the-gioi-ha-nhiet-co-hoi-vang-cho-chung-khoan-viet-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>Vĩ mô thế giới hạ nhiệt: Cơ hội vàng cho chứng khoán Việt?</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/global-macro-eases-a-golden-opportunity-for-vietnamese-stocks-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>Global Macro Eases: A Golden Opportunity for Vietnamese Stocks?</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-news-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>글로벌 거시경제 완화: 베트남 주식시장의 황금빛 기회인가?</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>全球宏觀降溫：越南股市迎來黃金布局契機？</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>มาโครโลกผ่อนคลาย: โอกาสทองของตลาดหุ้นเวียดนาม?</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-news-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>هدوء الماكرو العالمي: فرصة ذهبية للأسهم الفيتنامية؟</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-26-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T17:00:00.000Z</news:publication_date>
-      <news:title>世界マクロの緩和：ベトナム株にとっての黄金の機会か？</news:title>
     </news:news>
   </url>
 </urlset>
