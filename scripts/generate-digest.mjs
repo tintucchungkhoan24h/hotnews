@@ -172,11 +172,20 @@ function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clien
 ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="${CANONICAL_BASE}/diem-tin-chung-khoan/${l}/">`).join('\n')}
   <link rel="alternate" hreflang="x-default" href="${CANONICAL_BASE}/diem-tin-chung-khoan/vi/">
 
-  <meta property="og:title" content="${firstArticle.title}">
-  <meta property="og:description" content="${firstArticle.lead.slice(0, 200)}">
+  <meta property="og:title" content="${firstArticle.title.replace(/"/g, '&quot;')}">
+  <meta property="og:description" content="${firstArticle.lead.replace(/"/g, '&quot;').slice(0, 200)}">
   <meta property="og:url" content="${canonical}">
-  <meta property="og:type" content="article">
-  <meta property="og:image" content="${CANONICAL_BASE}/ava_icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="${SITE_NAME}">
+  <meta property="og:image" content="${firstArticle.article_photo_url || CANONICAL_BASE + '/ava_icon.png'}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card Tags (fallback for many platforms including Zalo) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${firstArticle.title.replace(/"/g, '&quot;')}">
+  <meta name="twitter:description" content="${firstArticle.lead.replace(/"/g, '&quot;').slice(0, 200)}">
+  <meta name="twitter:image" content="${firstArticle.article_photo_url || CANONICAL_BASE + '/ava_icon.png'}">
 
   <link rel="icon" type="image/png" sizes="48x48" href="/ava_icon.png">
   <link rel="stylesheet" href="/index.css">
@@ -995,8 +1004,17 @@ ${hreflangTags}
   <meta property="og:description" content="${descText}">
   <meta property="og:url" content="${absoluteUrl}">
   <meta property="og:type" content="article">
+  <meta property="og:site_name" content="${SITE_NAME}">
   <meta property="og:image" content="${article.article_photo_url || SITE_BASE + '/ava_icon.png'}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="article:published_time" content="${date}T00:00:00+07:00">
+
+  <!-- Twitter Card Tags (fallback for many platforms including Zalo) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${article.title.replace(/"/g, '&quot;')}">
+  <meta name="twitter:description" content="${descText}">
+  <meta name="twitter:image" content="${article.article_photo_url || SITE_BASE + '/ava_icon.png'}">
 
   <link rel="icon" type="image/png" sizes="48x48" href="/ava_icon.png">
   <link rel="stylesheet" href="/index.css">
