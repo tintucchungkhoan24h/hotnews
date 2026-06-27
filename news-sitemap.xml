@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-tien-sat-moc-1900-diem-phan-hoa-manh-truoc-ap-luc-von-ngoai-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index tiến sát mốc 1.900 điểm: Phân hóa mạnh trước áp lực vốn ngoại</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-nears-1900-points-market-divergence-amid-foreign-capital-pressure-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index Nears 1,900 Points: Market Divergence Amid Foreign Capital Pressure</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 1,900 포인트 임박: 외인 압박 속 시장 차별화 심화</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 逼近 1,900 點：外資壓力下的市場分化與機遇</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index เข้าใกล้ 1,900 จุด: ตลาดแบ่งแยกชัดเจนท่ามกลางแรงกดดันจากทุนต่างชาติ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>مؤشر VN-Index يقترب من 1900 نقطة: تباين السوق وسط ضغوط رأس المال الأجنبي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-27-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
+      <news:title>VN指数1,900ポイントへ接近：外資圧力下での市場分化</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-26062026-phuc-hoi-gan-9-diem-nho-luc-day-ho-vingroup-26-06-2026/</loc>
     <news:news>
       <news:publication>
