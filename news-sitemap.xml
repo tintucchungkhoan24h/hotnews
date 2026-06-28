@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-phien-gan-nhat-ap-luc-tich-luy-va-xu-the-dong-tien-28-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-27T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index phiên gần nhất: Áp lực tích lũy và xu thế dòng tiền</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-latest-session-accumulation-pressure-and-cash-flow-trend-28-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-27T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index Latest Session: Accumulation Pressure and Cash Flow Trend</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-28-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-27T17:00:00.000Z</news:publication_date>
+      <news:title>직전 거래일 VN지수: 누적 압박 및 자금 흐름 추세</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-28-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-27T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 甫收盤：積累壓力與資金流動趨勢</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-28-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-27T17:00:00.000Z</news:publication_date>
+      <news:title>ดัชนี VN-Index ล่าสุด: แรงกดดันจากการสะสมกำลังและแนวโน้มกระแสเงินทุน</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-28-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-27T17:00:00.000Z</news:publication_date>
+      <news:title>مؤشر VN-Index في الجلسة الأخيرة: ضغوط التجميع واتجاه تدفق السيولة</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-28-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-27T17:00:00.000Z</news:publication_date>
+      <news:title>直近のVN指数：もみ合いの圧力と資金流動の動向</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-tien-sat-moc-1900-diem-phan-hoa-manh-truoc-ap-luc-von-ngoai-27-06-2026/</loc>
     <news:news>
       <news:publication>
@@ -31,7 +108,7 @@
         <news:language>ko</news:language>
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 직전 거래일 강한 반등: VIC와 VHM 시장 주도</news:title>
+      <news:title>VIC와 VHM의 주도로 최근 세션에서 강력한 회복세를 보인 VN-Index</news:title>
     </news:news>
   </url>
   <url>
@@ -42,7 +119,7 @@
         <news:language>zh-Hant</news:language>
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index於最新交易日強勁反彈：VIC與VHM領漲市場</news:title>
+      <news:title>VN-Index 在最近一次交易中強勁反彈，VIC 與 VHM 領漲</news:title>
     </news:news>
   </url>
   <url>
@@ -53,7 +130,7 @@
         <news:language>th</news:language>
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index ฟื้นตัวแข็งแกร่งในเซสชันล่าสุด: VIC และ VHM นำตลาด</news:title>
+      <news:title>ดัชนี VN-Index ฟื้นตัวอย่างแข็งแกร่งในรอบล่าสุด โดยได้รับแรงหนุนจาก VIC และ VHM</news:title>
     </news:news>
   </url>
   <url>
@@ -64,7 +141,7 @@
         <news:language>ar</news:language>
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>مؤشر VN-Index يتعافى بقوة في الجلسة الأخيرة: VIC وVHM يقودان السوق</news:title>
+      <news:title>مؤشر VN-Index يشهد تعافياً قوياً في الجلسة الأخيرة بقيادة VIC و VHM</news:title>
     </news:news>
   </url>
   <url>
@@ -75,18 +152,7 @@
         <news:language>ja</news:language>
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Indexが直近セッションで大幅反発：VICとVHMが市場を牽引</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-hoi-phuc-manh-phien-gan-nhat-vic-va-vhm-dan-dat-thi-truong-27-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index hồi phục mạnh phiên gần nhất: VIC và VHM dẫn dắt thị trường</news:title>
+      <news:title>VN-Indexは直近セッションで強気回復、VICとVHMが牽引</news:title>
     </news:news>
   </url>
   <url>
@@ -101,17 +167,6 @@
     </news:news>
   </url>
   <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-recovers-strongly-in-the-latest-session-vic-and-vhm-lead-the-market-27-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index recovers strongly in the latest session: VIC and VHM lead the market</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-sees-strong-recovery-in-latest-session-led-by-vic-and-vhm-27-06-2026/</loc>
     <news:news>
       <news:publication>
@@ -120,61 +175,6 @@
       </news:publication>
       <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
       <news:title>VN-Index Sees Strong Recovery in Latest Session Led by VIC and VHM</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vic-vhm-vn-index-27-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VIC와 VHM의 주도로 최근 세션에서 강력한 회복세를 보인 VN-Index</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-vic-vhm-27-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 在最近一次交易中強勁反彈，VIC 與 VHM 領漲</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-vic-vhm-27-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>ดัชนี VN-Index ฟื้นตัวอย่างแข็งแกร่งในรอบล่าสุด โดยได้รับแรงหนุนจาก VIC และ VHM</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-vic-vhm-27-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>مؤشر VN-Index يشهد تعافياً قوياً في الجلسة الأخيرة بقيادة VIC و VHM</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-indexvicvhm-27-06-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-26T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Indexは直近セッションで強気回復、VICとVHMが牽引</news:title>
     </news:news>
   </url>
   <url>
