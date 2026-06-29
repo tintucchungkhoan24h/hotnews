@@ -428,7 +428,7 @@ ${LANG_MENU_CSS}
                 <span class="tab-text">${currentI18n.tabs?.digest || 'Điểm tin'}</span>
             </a>
             <a href="${CANONICAL_BASE}/world-news/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
-                <span style="font-size:0.9em;">🌎</span>
+                <span style="font-size:0.9em;">🇻🇳</span>
                 <span class="tab-text">${currentI18n.tabs?.macroFocus || 'Tập trung Vĩ Mô'}</span>
             </a>
             <a href="${canonical}" aria-current="page" class="tab-button active tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="${currentI18n.tabs?.worldNews || 'World News'}">
@@ -862,7 +862,7 @@ ${LANG_MENU_CSS}
                 <span class="tab-text">${currentI18n.tabs?.digest || 'Điểm tin CK'}</span>
             </a>
             <a href="${CANONICAL_BASE}/world-news/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
-                <span style="font-size:0.9em;">🌎</span>
+                <span style="font-size:0.9em;">🇻🇳</span>
                 <span class="tab-text">${currentI18n.tabs?.macroFocus || 'Tiêu điểm Vĩ mô'}</span>
             </a>
             <a href="${hubUrl}" aria-current="page" class="tab-button active tab-btn-responsive font-bold transition-all flex-shrink-0 inline-flex items-center gap-1 no-underline" style="text-decoration:none;" title="${currentI18n.tabs?.worldNews || 'World News'}">
