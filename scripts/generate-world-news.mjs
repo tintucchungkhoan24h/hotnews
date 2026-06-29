@@ -113,15 +113,35 @@ function absoluteArticleUrl(articleUrl, fallbackUrl) {
     /^(https?:\/\/[^/]+)?\/diem-tin-vi-mo\//,
     (_match, origin = '') => `${origin}/world-news/`
   );
-  return normalizedUrl.startsWith('http')
+  const absoluteUrl = normalizedUrl.startsWith('http')
     ? normalizedUrl
     : `${SITE_BASE}${normalizedUrl.startsWith('/') ? '' : '/'}${normalizedUrl}`;
+  return absoluteUrl.endsWith('/') ? absoluteUrl : `${absoluteUrl}/`;
 }
 
 function buildWorldNewsClientJs() {
   return readFile('scripts/seo-client-macro.js')
     .replaceAll('market_summary_macro', 'market_summary_macro_world')
-    .replaceAll('/diem-tin-vi-mo/', '/world-news/');
+    .replaceAll('/diem-tin-vi-mo/', '/world-news/')
+    .replace(
+      `    if (trimmedUrl) {
+        return trimmedUrl.startsWith('http')
+            ? trimmedUrl
+            : \`\${window.location.origin}\${trimmedUrl.startsWith('/') ? '' : '/'}\${trimmedUrl}\`;
+    }`,
+      [
+        `    if (trimmedUrl) {`,
+        `        const normalizedUrl = trimmedUrl.replace(`,
+        `            /^(https?:\\/\\/[^/]+)?\\/(?:diem-tin-vi-mo|world-news)\\//,`,
+        `            (_match, origin = '') => \`\${origin}/world-news/\``,
+        `        );`,
+        `        const absoluteUrl = normalizedUrl.startsWith('http')`,
+        `            ? normalizedUrl`,
+        `            : \`\${window.location.origin}\${normalizedUrl.startsWith('/') ? '' : '/'}\${normalizedUrl}\`;`,
+        `        return absoluteUrl.endsWith('/') ? absoluteUrl : \`\${absoluteUrl}/\`;`,
+        `    }`
+      ].join('\n')
+    );
 }
 
 // ── Fetch summaries ─────────────────────────────────────────────────────

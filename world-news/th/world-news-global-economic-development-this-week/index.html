@@ -1480,9 +1480,14 @@ function buildArticleSpokeUrl(articleUrl, lang, dateIso) {
     const normalizedLang = normalizePathLang(lang);
     const trimmedUrl = isUsableArticleUrl(articleUrl) ? articleUrl.trim() : '';
     if (trimmedUrl) {
-        return trimmedUrl.startsWith('http')
-            ? trimmedUrl
-            : `${window.location.origin}${trimmedUrl.startsWith('/') ? '' : '/'}${trimmedUrl}`;
+        const normalizedUrl = trimmedUrl.replace(
+            /^(https?:\/\/[^/]+)?\/(?:diem-tin-vi-mo|world-news)\//,
+            (_match, origin = "") => `${origin}/world-news/`
+        );
+        const absoluteUrl = normalizedUrl.startsWith("http")
+            ? normalizedUrl
+            : `${window.location.origin}${normalizedUrl.startsWith("/") ? "" : "/"}${normalizedUrl}`;
+        return absoluteUrl.endsWith("/") ? absoluteUrl : `${absoluteUrl}/`;
     }
     return `${window.location.origin}/world-news/${normalizedLang}/${isoToPathSegment(dateIso)}`;
 }
