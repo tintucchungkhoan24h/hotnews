@@ -138,6 +138,70 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- World News – VI (primary) -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tintucchungkhoan24h.com/world-news/vi/"/>
+  </url>
+
+  <!-- World News – EN -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- World News – KO -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- World News – ZH -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- World News – TH -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- World News – AR -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- World News – JA -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Spoke: 24-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/</loc>
@@ -901,6 +965,111 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-28-06-2026/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-28-06-2026/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-28-06-2026/"/>
+  </url>
+
+  <!-- Spoke: phien-giao-dich-ngay-29062026-vn-index-rung-lac-dong-tien-phan-hoa-manh-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-giao-dich-ngay-29062026-vn-index-rung-lac-dong-tien-phan-hoa-manh-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-giao-dich-ngay-29062026-vn-index-rung-lac-dong-tien-phan-hoa-manh-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/trading-session-june-29-2026-vn-index-fluctuates-cash-flow-diverges-strongly-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke: trading-session-june-29-2026-vn-index-fluctuates-cash-flow-diverges-strongly-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/trading-session-june-29-2026-vn-index-fluctuates-cash-flow-diverges-strongly-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-giao-dich-ngay-29062026-vn-index-rung-lac-dong-tien-phan-hoa-manh-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/trading-session-june-29-2026-vn-index-fluctuates-cash-flow-diverges-strongly-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-news-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-giao-dich-ngay-29062026-vn-index-rung-lac-dong-tien-phan-hoa-manh-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/trading-session-june-29-2026-vn-index-fluctuates-cash-flow-diverges-strongly-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-news-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-giao-dich-ngay-29062026-vn-index-rung-lac-dong-tien-phan-hoa-manh-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/trading-session-june-29-2026-vn-index-fluctuates-cash-flow-diverges-strongly-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-news-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-giao-dich-ngay-29062026-vn-index-rung-lac-dong-tien-phan-hoa-manh-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/trading-session-june-29-2026-vn-index-fluctuates-cash-flow-diverges-strongly-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-news-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-giao-dich-ngay-29062026-vn-index-rung-lac-dong-tien-phan-hoa-manh-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/trading-session-june-29-2026-vn-index-fluctuates-cash-flow-diverges-strongly-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-news-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-giao-dich-ngay-29062026-vn-index-rung-lac-dong-tien-phan-hoa-manh-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/trading-session-june-29-2026-vn-index-fluctuates-cash-flow-diverges-strongly-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-29-06-2026/"/>
   </url>
 
   <!-- Spoke: chua-duoc-msci-nang-hang-chung-khoan-viet-nam-nen-ung-pho-ra-sao-25-06-2026 -->
@@ -1741,6 +1910,216 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/125-27-06-2026/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/5-27-06-2026/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/125-27-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-economic-outlook-june-29-2026-ai-capital-and-inflation-risks-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): global-economic-outlook-june-29-2026-ai-capital-and-inflation-risks-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-economic-outlook-june-29-2026-ai-capital-and-inflation-risks-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-economic-outlook-june-29-2026-ai-capital-and-inflation-risks-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): macro-news-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/chuyn-dch-cng-ngh-ton-cu-ai-chip-a-chnh-tr-nh-hnh-li-th-trng/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-tech-shift-ai-chips-geopolitics-reshape-markets/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): macro-news-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/chuyn-dch-cng-ngh-ton-cu-ai-chip-a-chnh-tr-nh-hnh-li-th-trng/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-tech-shift-ai-chips-geopolitics-reshape-markets/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): macro-news-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/chuyn-dch-cng-ngh-ton-cu-ai-chip-a-chnh-tr-nh-hnh-li-th-trng/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-tech-shift-ai-chips-geopolitics-reshape-markets/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): macro-news-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/chuyn-dch-cng-ngh-ton-cu-ai-chip-a-chnh-tr-nh-hnh-li-th-trng/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-tech-shift-ai-chips-geopolitics-reshape-markets/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): macro-news-29-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/chuyn-dch-cng-ngh-ton-cu-ai-chip-a-chnh-tr-nh-hnh-li-th-trng/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-tech-shift-ai-chips-geopolitics-reshape-markets/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/cap-nhat-kinh-te-vi-mo-tuan-22-06-2026-gia-dau-hoi-phuc-lam-phat-on-dinh-22-06-2026/"/>
   </url>
 
 </urlset>
