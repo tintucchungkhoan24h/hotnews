@@ -112,7 +112,8 @@
         "watchlist": "⭐ Danh sách theo dõi",
         "spotlight": "🚀 Mã Nổi Bật",
         "digest": "Điểm tin CK",
-        "macroFocus": "Tiêu điểm Vĩ mô"
+        "macroFocus": "Tiêu điểm Vĩ mô",
+        "worldNews": "Tin tức thế giới"
       },
       "cols": {
         "index": "#",
@@ -333,7 +334,8 @@
         "watchlist": "⭐ Watchlist",
         "spotlight": "🚀 Spotlight Stocks",
         "digest": "Stock Digest",
-        "macroFocus": "Macro Focus"
+        "macroFocus": "Macro Focus",
+        "worldNews": "World News"
       },
       "cols": {
         "index": "#",
@@ -554,7 +556,8 @@
         "watchlist": "⭐ 관심목록",
         "spotlight": "🚀 주목 종목",
         "digest": "주식 요약",
-        "macroFocus": "거시경제 포커스"
+        "macroFocus": "거시경제 포커스",
+        "worldNews": "세계 뉴스"
       },
       "cols": {
         "index": "#",
@@ -775,7 +778,8 @@
         "watchlist": "⭐ 自選股",
         "spotlight": "🚀 焦點股",
         "digest": "股市摘要",
-        "macroFocus": "宏觀經濟焦點"
+        "macroFocus": "宏觀經濟焦點",
+        "worldNews": "世界新聞"
       },
       "cols": {
         "index": "#",
@@ -990,13 +994,14 @@
       "excelSheetName": "ข่าวตลาดหุ้น",
       "tabs": {
         "stock": "หุ้น",
-        "macro": "เศรษฐกิจมหภาค",
-        "stable": "ความผันผวนต่ำ",
+        "macro": "มหภาค",
+        "stable": "ความผันผวนคงที่",
         "high": "ความผันผวนสูง",
-        "watchlist": "⭐ วอตช์ลิสต์",
-        "spotlight": "🚀 หุ้นเด่น",
+        "watchlist": "⭐ รายการเฝ้าดู",
+        "spotlight": "🚀 หุ้นโดเด่น",
         "digest": "สรุปหุ้น",
-        "macroFocus": "โฟกัสเศรษฐกิจมหภาค"
+        "macroFocus": "โฟกัสเศรษฐกิจมหภาค",
+        "worldNews": "ข่าวโลก"
       },
       "cols": {
         "index": "#",
@@ -1215,7 +1220,8 @@
         "watchlist": "⭐ قائمة المتابعة",
         "spotlight": "🚀 أسهم لافتة",
         "digest": "ملخص الأسهم",
-        "macroFocus": "تركيز الاقتصاد الكلي"
+        "macroFocus": "تركيز الاقتصاد الكلي",
+        "worldNews": "أخبار العالم"
       },
       "cols": {
         "index": "#",
@@ -1434,7 +1440,8 @@
         "watchlist": "⭐ ウォッチリスト",
         "spotlight": "🚀 注目銘柄",
         "digest": "株式ダイジェスト",
-        "macroFocus": "マクロフォーカス"
+        "macroFocus": "マクロフォーカス",
+        "worldNews": "ワールドニュース"
       },
       "cols": {
         "index": "#",

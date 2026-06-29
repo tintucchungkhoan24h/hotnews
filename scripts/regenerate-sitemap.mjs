@@ -24,8 +24,8 @@ const i18nData = JSON.parse(i18nRaw);
 const HREFLANG = i18nData.hreflang;
 
 function parseSpokeUrl(url) {
-  // Parse URL: https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/
-  const match = url.match(new RegExp(`${SITE_BASE}/(diem-tin-[^/]+)/([^/]+)/(.+)/`));
+  // Parse URL: https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/ or /world-news/vi/.../
+  const match = url.match(new RegExp(`${SITE_BASE}/(diem-tin-[^/]+|world-news)/([^/]+)/(.+)/`));
   if (!match) return null;
   
   // Extract publication date from slug (DD-MM-YYYY format)
@@ -82,8 +82,10 @@ function generateSitemap() {
   // Read spoke URLs from year-split JSON files
   const stockUrls = [];
   const macroUrls = [];
+  const worldNewsUrls = [];
   const stockPeerMapping = {};
   const macroPeerMapping = {};
+  const worldNewsPeerMapping = {};
   
   // Find all year-split files for stock
   const stockUrlFiles = fs.readdirSync(ROOT).filter(f => f.match(/^spoke_urls_stock_\d{4}\.json$/));
@@ -116,6 +118,22 @@ function generateSitemap() {
     const mapping = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     Object.assign(macroPeerMapping, mapping);
   }
+
+  // Find all year-split files for world news
+  const worldNewsUrlFiles = fs.readdirSync(ROOT).filter(f => f.match(/^spoke_urls_world_news_\d{4}\.json$/));
+  const worldNewsPeerFiles = fs.readdirSync(ROOT).filter(f => f.match(/^spoke_peer_urls_world_news_\d{4}\.json$/));
+  
+  for (const file of worldNewsUrlFiles) {
+    const filePath = path.join(ROOT, file);
+    const urls = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    worldNewsUrls.push(...urls);
+  }
+  
+  for (const file of worldNewsPeerFiles) {
+    const filePath = path.join(ROOT, file);
+    const mapping = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    Object.assign(worldNewsPeerMapping, mapping);
+  }
   
   // Also try to read legacy single files for backward compatibility
   const legacyStockUrlsPath = path.join(ROOT, 'spoke_urls_stock.json');
@@ -139,14 +157,28 @@ function generateSitemap() {
     const mapping = JSON.parse(fs.readFileSync(legacyMacroPeerPath, 'utf8'));
     Object.assign(macroPeerMapping, mapping);
   }
+
+  const legacyWorldNewsUrlsPath = path.join(ROOT, 'spoke_urls_world_news.json');
+  const legacyWorldNewsPeerPath = path.join(ROOT, 'spoke_peer_urls_world_news.json');
+  
+  if (fs.existsSync(legacyWorldNewsUrlsPath)) {
+    const urls = JSON.parse(fs.readFileSync(legacyWorldNewsUrlsPath, 'utf8'));
+    worldNewsUrls.push(...urls);
+  }
+  if (fs.existsSync(legacyWorldNewsPeerPath)) {
+    const mapping = JSON.parse(fs.readFileSync(legacyWorldNewsPeerPath, 'utf8'));
+    Object.assign(worldNewsPeerMapping, mapping);
+  }
   
   // Filter URLs to only include those with trailing slashes (new format)
   const stockUrlsClean = stockUrls.filter(url => url.endsWith('/'));
   const macroUrlsClean = macroUrls.filter(url => url.endsWith('/'));
+  const worldNewsUrlsClean = worldNewsUrls.filter(url => url.endsWith('/'));
   
   // Extract unique languages from URLs
   const stockLangs = [...new Set(stockUrlsClean.map(url => parseSpokeUrl(url)?.lang).filter(Boolean))];
   const macroLangs = [...new Set(macroUrlsClean.map(url => parseSpokeUrl(url)?.lang).filter(Boolean))];
+  const worldNewsLangs = [...new Set(worldNewsUrlsClean.map(url => parseSpokeUrl(url)?.lang).filter(Boolean))];
   
   let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -199,6 +231,27 @@ function generateSitemap() {
         sitemap += `\n    <xhtml:link rel="alternate" hreflang="${hreflangValue}" href="${SITE_BASE}/diem-tin-vi-mo/${l}/"/>`;
       }
       sitemap += `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_BASE}/diem-tin-vi-mo/vi/"/>`;
+    }
+    
+    sitemap += `\n  </url>\n\n`;
+  }
+
+  // Add hub pages for world news digest
+  for (const lang of worldNewsLangs) {
+    const isPrimary = lang === 'vi';
+    sitemap += `  <!-- World News – ${lang.toUpperCase()}${isPrimary ? ' (primary)' : ''} -->
+  <url>
+    <loc>${SITE_BASE}/world-news/${lang}/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>${isPrimary ? '0.9' : '0.8'}</priority>`;
+    
+    if (isPrimary) {
+      for (const l of worldNewsLangs) {
+        const hreflangValue = HREFLANG[l] || l;
+        sitemap += `\n    <xhtml:link rel="alternate" hreflang="${hreflangValue}" href="${SITE_BASE}/world-news/${l}/"/>`;
+      }
+      sitemap += `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_BASE}/world-news/vi/"/>`;
     }
     
     sitemap += `\n  </url>\n\n`;
@@ -315,14 +368,72 @@ function generateSitemap() {
     sitemap += `\n  </url>\n\n`;
   }
   
+  // Add world news spoke pages with hreflang tags using peer mapping
+  for (const url of worldNewsUrlsClean) {
+    const parsed = parseSpokeUrl(url);
+    if (!parsed) continue;
+    
+    const title = parsed.slug;
+    const lastmod = parsed.pubDate || today; // Use publication date if available, otherwise today
+    sitemap += `  <!-- Spoke (World News): ${title} -->
+  <url>
+    <loc>${url}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>`;
+    
+    // Find peer URLs by matching the slug in the peer mapping
+    let foundPeers = false;
+    for (const [rowKey, peerUrls] of Object.entries(worldNewsPeerMapping)) {
+      if (peerUrls[parsed.lang] === url) {
+        // This is the correct peer group
+        for (const [lang, peerUrl] of Object.entries(peerUrls)) {
+          const hreflangValue = HREFLANG[lang] || lang;
+          sitemap += `\n    <xhtml:link rel="alternate" hreflang="${hreflangValue}" href="${peerUrl}"/>`;
+        }
+        foundPeers = true;
+        break;
+      }
+    }
+    
+    // If not found in peer mapping, try to match by date
+    if (!foundPeers) {
+      const dateMatch = parsed.slug.match(/(\d{2}-\d{2}-\d{4})/);
+      if (dateMatch) {
+        const dateKey = dateMatch[1];
+        // Find all URLs with the same date, but only one per language
+        const datePeers = worldNewsUrlsClean.filter(u => {
+          const p = parseSpokeUrl(u);
+          return p && p.slug.includes(dateKey);
+        });
+        // Deduplicate by language
+        const langMap = {};
+        for (const peerUrl of datePeers) {
+          const peerParsed = parseSpokeUrl(peerUrl);
+          if (peerParsed && !langMap[peerParsed.lang]) {
+            langMap[peerParsed.lang] = peerUrl;
+          }
+        }
+        for (const [lang, peerUrl] of Object.entries(langMap)) {
+          const hreflangValue = HREFLANG[lang] || lang;
+          sitemap += `\n    <xhtml:link rel="alternate" hreflang="${hreflangValue}" href="${peerUrl}"/>`;
+        }
+      }
+    }
+    
+    sitemap += `\n  </url>\n\n`;
+  }
+  
   sitemap += '</urlset>\n';
   
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap, 'utf8');
   console.log('✅ Sitemap regenerated successfully');
   console.log(`   - ${stockUrlsClean.length} stock spoke pages`);
   console.log(`   - ${macroUrlsClean.length} macro spoke pages`);
+  console.log(`   - ${worldNewsUrlsClean.length} world news spoke pages`);
   console.log(`   - ${stockLangs.length} stock hub pages`);
   console.log(`   - ${macroLangs.length} macro hub pages`);
+  console.log(`   - ${worldNewsLangs.length} world news hub pages`);
 }
 
 generateSitemap();
