@@ -19,8 +19,8 @@ const LANG_MAP = {
 };
 
 function parseSpokeUrl(url) {
-  // Parse URL: https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/
-  const match = url.match(new RegExp(`${SITE_BASE}/(diem-tin-[^/]+)/([^/]+)/(.+)/`));
+  // Parse URL: https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026/ or /world-news/vi/.../
+  const match = url.match(new RegExp(`${SITE_BASE}/(diem-tin-[^/]+|world-news)/([^/]+)/(.+)/`));
   if (!match) return null;
   
   // Extract publication date from slug (DD-MM-YYYY format)
@@ -79,6 +79,14 @@ function generateNewsSitemap() {
   // Macro URLs
   const macroUrlFiles = fs.readdirSync(ROOT).filter(f => f.match(/^spoke_urls_macro_\d{4}\.json$/));
   for (const file of macroUrlFiles) {
+    const filePath = path.join(ROOT, file);
+    const urls = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    allUrls.push(...urls);
+  }
+
+  // World News URLs
+  const worldNewsUrlFiles = fs.readdirSync(ROOT).filter(f => f.match(/^spoke_urls_world_news_\d{4}\.json$/));
+  for (const file of worldNewsUrlFiles) {
     const filePath = path.join(ROOT, file);
     const urls = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     allUrls.push(...urls);

@@ -432,6 +432,10 @@ ${LANG_MENU_CSS}
                 <span style="font-size:0.9em;">🌎</span>
                 <span class="tab-text">${currentI18n.tabs?.macroFocus || 'Tiêu điểm Vĩ mô'}</span>
             </a>
+            <a href="${CANONICAL_BASE}/world-news/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span style="font-size:0.9em;">🌍</span>
+                <span class="tab-text">${currentI18n.tabs?.worldNews || 'World News'}</span>
+            </a>
         </div>
     </div>
 
@@ -1081,6 +1085,10 @@ ${LANG_MENU_CSS}
             <a href="${CANONICAL_BASE}/diem-tin-vi-mo/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;" title="${currentI18n.tabs?.macroFocus || 'Tiêu điểm Vĩ mô'}">
                 <span style="font-size:0.9em;">🌎</span>
                 <span class="tab-text">${currentI18n.tabs?.macroFocus || 'Tiêu điểm Vĩ mô'}</span>
+            </a>
+            <a href="${CANONICAL_BASE}/world-news/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+                <span style="font-size:0.9em;">🌍</span>
+                <span class="tab-text">${currentI18n.tabs?.worldNews || 'World News'}</span>
             </a>
         </div>
     </div>
