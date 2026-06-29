@@ -939,7 +939,7 @@ article h1 {
                 <span style="font-size:0.9em;">📊</span>
                 <span class="tab-text">สรุปหุ้น</span>
             </a>
-            <a href="/world-news/th/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+            <a href="/diem-tin-vi-mo/th/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
                 <span style="font-size:0.9em;">🇻🇳</span>
                 <span class="tab-text">โฟกัสเศรษฐกิจมหภาค</span>
             </a>
@@ -1487,7 +1487,7 @@ function buildArticleSpokeUrl(articleUrl, lang, dateIso) {
             ? trimmedUrl
             : `${window.location.origin}${trimmedUrl.startsWith('/') ? '' : '/'}${trimmedUrl}`;
     }
-    return `${window.location.origin}/diem-tin-vi-mo/${normalizedLang}/${isoToPathSegment(dateIso)}`;
+    return `${window.location.origin}/world-news/${normalizedLang}/${isoToPathSegment(dateIso)}`;
 }
 
 function dateToIso(d) {

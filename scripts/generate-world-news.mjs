@@ -109,9 +109,19 @@ function isUsableArticleUrl(url) {
 function absoluteArticleUrl(articleUrl, fallbackUrl) {
   const trimmedUrl = isUsableArticleUrl(articleUrl) ? articleUrl.trim() : '';
   if (!trimmedUrl) return fallbackUrl;
-  return trimmedUrl.startsWith('http')
-    ? trimmedUrl
-    : `${SITE_BASE}${trimmedUrl.startsWith('/') ? '' : '/'}${trimmedUrl}`;
+  const normalizedUrl = trimmedUrl.replace(
+    /^(https?:\/\/[^/]+)?\/diem-tin-vi-mo\//,
+    (_match, origin = '') => `${origin}/world-news/`
+  );
+  return normalizedUrl.startsWith('http')
+    ? normalizedUrl
+    : `${SITE_BASE}${normalizedUrl.startsWith('/') ? '' : '/'}${normalizedUrl}`;
+}
+
+function buildWorldNewsClientJs() {
+  return readFile('scripts/seo-client-macro.js')
+    .replaceAll('market_summary_macro', 'market_summary_macro_world')
+    .replaceAll('/diem-tin-vi-mo/', '/world-news/');
 }
 
 // ── Fetch summaries ─────────────────────────────────────────────────────
@@ -427,7 +437,7 @@ ${LANG_MENU_CSS}
                 <span style="font-size:0.9em;">📊</span>
                 <span class="tab-text">${currentI18n.tabs?.digest || 'Điểm tin'}</span>
             </a>
-            <a href="${CANONICAL_BASE}/world-news/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+            <a href="${CANONICAL_BASE}/diem-tin-vi-mo/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
                 <span style="font-size:0.9em;">🇻🇳</span>
                 <span class="tab-text">${currentI18n.tabs?.macroFocus || 'Tập trung Vĩ Mô'}</span>
             </a>
@@ -861,7 +871,7 @@ ${LANG_MENU_CSS}
                 <span style="font-size:0.9em;">📊</span>
                 <span class="tab-text">${currentI18n.tabs?.digest || 'Điểm tin CK'}</span>
             </a>
-            <a href="${CANONICAL_BASE}/world-news/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+            <a href="${CANONICAL_BASE}/diem-tin-vi-mo/${lang}/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
                 <span style="font-size:0.9em;">🇻🇳</span>
                 <span class="tab-text">${currentI18n.tabs?.macroFocus || 'Tiêu điểm Vĩ mô'}</span>
             </a>
@@ -1105,8 +1115,7 @@ async function main() {
   const footerHtml = readFile('footer.html');
   const clientCss  = readFile('scripts/seo-client.css');
   const formatRefJs = readFile('scripts/format-reference-links.js').replace(/export /g, '');
-  const clientJs   = formatRefJs + '\n' + readFile('scripts/seo-client-macro.js')
-    .replaceAll('market_summary_macro', 'market_summary_macro_world');
+  const clientJs   = formatRefJs + '\n' + buildWorldNewsClientJs();
 
   let dataByLang = {};
   let langsSet   = new Set();
