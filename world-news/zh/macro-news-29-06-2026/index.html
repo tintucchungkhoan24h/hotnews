@@ -6,14 +6,14 @@
   <title>2026年6月29日全球經濟簡報：AI資本與通膨風險 | Tin Tức Chứng Khoán 24h</title>
   <meta name="description" content="截至2026年6月29日，全球經濟正處於AI驅動增長與宏觀經濟逆風的十字路口。隨著地緣政治緊張局勢緩解，全球投資者該如何調整投資組合？">
   <link rel="canonical" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/">
-  <link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/"/>
-  <link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-economic-outlook-june-29-2026-ai-capital-and-inflation-risks-29-06-2026/"/>
-  <link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/"/>
-  <link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/"/>
-  <link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/"/>
-  <link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/"/>
-  <link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/"/>
-  <link rel="alternate" hreflang="x-default" href="https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/"/>
+  <link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/" />
+  <link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-economic-outlook-june-29-2026-ai-capital-and-inflation-risks-29-06-2026/" />
+  <link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/" />
+  <link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/" />
+  <link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/" />
+  <link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/" />
+  <link rel="alternate" hreflang="x-default" href="https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/" />
 
 
   <meta property="og:title" content="2026年6月29日全球經濟簡報：AI資本與通膨風險">
@@ -934,7 +934,7 @@ article h1 {
                 <span style="font-size:0.9em;">📊</span>
                 <span class="tab-text">股市摘要</span>
             </a>
-            <a href="/diem-tin-vi-mo/zh/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+            <a href="/world-news/zh/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
                 <span style="font-size:0.9em;">🌎</span>
                 <span class="tab-text">宏觀經濟焦點</span>
             </a>
@@ -1628,7 +1628,7 @@ async function fetchDynamicFeed() {
     mainEl.innerHTML = `<div class="text-center py-10 text-gray-400">${langDict.loadingSummaries || 'Loading summaries...'}</div>`;
 
     try {
-        const url = `${window.SUPABASE_URL}/rest/v1/market_summary_macro?select=*&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc`;
+        const url = `${window.SUPABASE_URL}/rest/v1/market_summary_macro_world?select=*&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc`;
         const res = await fetch(url, {
             headers: {
                 'apikey': window.SUPABASE_ANON_KEY,

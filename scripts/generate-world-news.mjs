@@ -1105,7 +1105,8 @@ async function main() {
   const footerHtml = readFile('footer.html');
   const clientCss  = readFile('scripts/seo-client.css');
   const formatRefJs = readFile('scripts/format-reference-links.js').replace(/export /g, '');
-  const clientJs   = formatRefJs + '\n' + readFile('scripts/seo-client-macro.js');
+  const clientJs   = formatRefJs + '\n' + readFile('scripts/seo-client-macro.js')
+    .replaceAll('market_summary_macro', 'market_summary_macro_world');
 
   let dataByLang = {};
   let langsSet   = new Set();

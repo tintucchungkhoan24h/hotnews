@@ -1630,7 +1630,7 @@ async function fetchDynamicFeed() {
     mainEl.innerHTML = `<div class="text-center py-10 text-gray-400">${langDict.loadingSummaries || 'Loading summaries...'}</div>`;
 
     try {
-        const url = `${window.SUPABASE_URL}/rest/v1/market_summary_macro?select=*&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc`;
+        const url = `${window.SUPABASE_URL}/rest/v1/market_summary_macro_world?select=*&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc`;
         const res = await fetch(url, {
             headers: {
                 'apikey': window.SUPABASE_ANON_KEY,

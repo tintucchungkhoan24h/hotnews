@@ -6,14 +6,14 @@
   <title>نظرة على الاقتصاد العالمي 29 يونيو 2026: رأس مال الذكاء الاصطناعي ومخاطر التضخم | Tin Tức Chứng Khoán 24h</title>
   <meta name="description" content="اعتبارًا من 29 يونيو 2026، يقف الاقتصاد العالمي عند مفترق طرق حيث يلتقي النمو المدفوع بالذكاء الاصطناعي برياح الاقتصاد الكلي المعاكسة. مع انحسار التوترات ا">
   <link rel="canonical" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/">
-  <link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/"/>
-  <link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-economic-outlook-june-29-2026-ai-capital-and-inflation-risks-29-06-2026/"/>
-  <link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/"/>
-  <link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/"/>
-  <link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/"/>
-  <link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/"/>
-  <link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/"/>
-  <link rel="alternate" hreflang="x-default" href="https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/"/>
+  <link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/" />
+  <link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-economic-outlook-june-29-2026-ai-capital-and-inflation-risks-29-06-2026/" />
+  <link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/macro-news-29-06-2026/" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/macro-news-29-06-2026/" />
+  <link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/" />
+  <link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/macro-news-29-06-2026/" />
+  <link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/macro-news-29-06-2026/" />
+  <link rel="alternate" hreflang="x-default" href="https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/" />
 
 
   <meta property="og:title" content="نظرة على الاقتصاد العالمي 29 يونيو 2026: رأس مال الذكاء الاصطناعي ومخاطر التضخم">
@@ -934,7 +934,7 @@ article h1 {
                 <span style="font-size:0.9em;">📊</span>
                 <span class="tab-text">ملخص الأسهم</span>
             </a>
-            <a href="/diem-tin-vi-mo/ar/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
+            <a href="/world-news/ar/" class="tab-button tab-btn-responsive font-bold transition-all flex-shrink-0" style="text-decoration:none;">
                 <span style="font-size:0.9em;">🌎</span>
                 <span class="tab-text">تركيز الاقتصاد الكلي</span>
             </a>
@@ -1628,7 +1628,7 @@ async function fetchDynamicFeed() {
     mainEl.innerHTML = `<div class="text-center py-10 text-gray-400">${langDict.loadingSummaries || 'Loading summaries...'}</div>`;
 
     try {
-        const url = `${window.SUPABASE_URL}/rest/v1/market_summary_macro?select=*&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc`;
+        const url = `${window.SUPABASE_URL}/rest/v1/market_summary_macro_world?select=*&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc`;
         const res = await fetch(url, {
             headers: {
                 'apikey': window.SUPABASE_ANON_KEY,
