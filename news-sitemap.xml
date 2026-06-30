@@ -79,14 +79,14 @@
     </news:news>
   </url>
   <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/giam-thue-xang-dau-den-309-la-chan-vi-mo-kich-hoat-dong-tien-2026-30-06-2026/</loc>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-ngay-1-7-giam-thue-xang-dau-va-mach-ngam-dong-von-ngoai-30-06-2026/</loc>
     <news:news>
       <news:publication>
         <news:name>Tin Tức Chứng Khoán 24h</news:name>
         <news:language>vi</news:language>
       </news:publication>
       <news:publication_date>2026-06-29T17:00:00.000Z</news:publication_date>
-      <news:title>Giảm Thuế Xăng Dầu Đến 30/9: Lá Chắn Vĩ Mô Kích Hoạt Dòng Tiền 2026</news:title>
+      <news:title>Vĩ Mô Ngày 1-7: Giảm Thuế Xăng Dầu Và Mạch Ngầm Dòng Vốn Ngoại</news:title>
     </news:news>
   </url>
   <url>
@@ -98,6 +98,17 @@
       </news:publication>
       <news:publication_date>2026-06-29T17:00:00.000Z</news:publication_date>
       <news:title>Đồng USD Đạt Đỉnh, Fed Đổi &apos;Luật Chơi&apos;: Chứng Khoán Việt Nam Ra Sao?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-analysis-july-1-fuel-tax-cuts-and-the-undercurrents-of-foreign-capital-30-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-29T17:00:00.000Z</news:publication_date>
+      <news:title>Macro Analysis July 1: Fuel Tax Cuts and the Undercurrents of Foreign Capital</news:title>
     </news:news>
   </url>
   <url>
@@ -119,11 +130,33 @@
         <news:language>ko</news:language>
       </news:publication>
       <news:publication_date>2026-06-29T17:00:00.000Z</news:publication_date>
+      <news:title>7월 1일 거시경제 분석: 유류세 인하와 외국인 자본의 흐름</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/-30-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-29T17:00:00.000Z</news:publication_date>
       <news:title>미 달러화 고공행진과 연준의 &apos;룰 변경&apos;: 베트남 증시의 운명은?</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-30-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-29T17:00:00.000Z</news:publication_date>
+      <news:title>7月1日宏觀分析：燃油稅減免與外資流向的暗流</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/-30-06-2026/</loc>
     <news:news>
       <news:publication>
         <news:name>Tin Tức Chứng Khoán 24h</news:name>
@@ -141,6 +174,17 @@
         <news:language>th</news:language>
       </news:publication>
       <news:publication_date>2026-06-29T17:00:00.000Z</news:publication_date>
+      <news:title>วิเคราะห์มหภาค 1 กรกฎาคม: การลดภาษีน้ำมันและกระแสเงินทุนต่างชาติ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/-30-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-29T17:00:00.000Z</news:publication_date>
       <news:title>ดอลลาร์พุ่งชนเพดาน เฟดเปลี่ยน &apos;กติกา&apos;: หุ้นเวียดนามจะไปทางไหน?</news:title>
     </news:news>
   </url>
@@ -152,11 +196,33 @@
         <news:language>ar</news:language>
       </news:publication>
       <news:publication_date>2026-06-29T17:00:00.000Z</news:publication_date>
+      <news:title>التحليل الاقتصادي الكلي في 1 يوليو: تخفيضات ضرائب الوقود وتيارات رأس المال الأجنبي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/-30-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-29T17:00:00.000Z</news:publication_date>
       <news:title>الدولار الأمريكي يبلغ ذروته والاحتياطي الفيدرالي يغير قواعد اللعبة: ماذا ينتظر البورصة الفيتنامية؟</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-30-06-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-29T17:00:00.000Z</news:publication_date>
+      <news:title>7月1日のマクロ経済分析：燃料税減税と外国資本の伏流</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/frb-30-06-2026/</loc>
     <news:news>
       <news:publication>
         <news:name>Tin Tức Chứng Khoán 24h</news:name>
