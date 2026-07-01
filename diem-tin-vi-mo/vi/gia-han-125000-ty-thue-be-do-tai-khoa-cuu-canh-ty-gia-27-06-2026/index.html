@@ -1835,10 +1835,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
             const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
             pFrom.value = spokeDate;
+            pFrom.viewYear  = spokeDate.getFullYear();
+            pFrom.viewMonth = spokeDate.getMonth();
             stateFromDate = dateToIso(spokeDate);
             pFrom.inputEl.value = isoToDisplay(stateFromDate);
         } else {
             pFrom.value = past7;
+            pFrom.viewYear  = past7.getFullYear();
+            pFrom.viewMonth = past7.getMonth();
             pFrom.inputEl.value = isoToDisplay(stateFromDate);
         }
         pFrom.min = minDateObj;
@@ -1848,10 +1852,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
             const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
             pTo.value = spokeDate;
+            pTo.viewYear  = spokeDate.getFullYear();
+            pTo.viewMonth = spokeDate.getMonth();
             stateToDate = dateToIso(spokeDate);
             pTo.inputEl.value = isoToDisplay(stateToDate);
         } else {
             pTo.value = today;
+            pTo.viewYear  = today.getFullYear();
+            pTo.viewMonth = today.getMonth();
             pTo.inputEl.value = isoToDisplay(stateToDate);
         }
         pTo.min = past7;
