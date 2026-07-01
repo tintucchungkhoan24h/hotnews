@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://tintucchungkhoan24h.com/sitemap.xml
+Sitemap: https://tintucchungkhoan24h.com/news-sitemap.xml
