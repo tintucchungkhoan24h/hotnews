@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-but-pha-manh-me-phien-giao-dich-ngay-01072026-nho-nhom-ngan-hang-01-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-30T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index bứt phá mạnh mẽ phiên giao dịch ngày 01/07/2026 nhờ nhóm ngân hàng</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-strongly-breaks-out-on-july-1-2026-trading-session-thanks-to-banking-group-01-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-30T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index Strongly Breaks Out on July 1, 2026 Trading Session Thanks to Banking Group</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-01-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-30T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index, 은행주 덕분에 2026년 7월 1일 거래 세션에서 강력한 돌파</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/macro-news-01-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-30T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 因銀行板塊帶動，在 2026 年 7 月 1 日交易時段強勢突破</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/macro-news-01-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-30T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index พุ่งแรงในการซื้อขายวันที่ 1 กรกฎาคม 2569 ด้วยแรงหนุนจากกลุ่มธนาคาร</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/macro-news-01-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-30T17:00:00.000Z</news:publication_date>
+      <news:title>مؤشر VN-Index يخترق بقوة في جلسة تداول 01/07/2026 بفضل المجموعة المصرفية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-01-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-30T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index、銀行セクターに牽引され2026年7月1日取引セッションで力強くブレイクアウト</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-vi-mo-nua-cuoi-2026-diem-tua-chinh-sach-va-ap-luc-ty-gia-01-07-2026/</loc>
     <news:news>
       <news:publication>
