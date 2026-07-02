@@ -29,8 +29,9 @@ function parseSpokeUrl(url) {
   if (!match) return null;
   
   // Extract publication date from slug (DD-MM-YYYY format)
+  // Falls back to today's date if no date pattern found in slug
   const dateMatch = match[3].match(/(\d{2}-\d{2}-\d{4})/);
-  let pubDate = null;
+  let pubDate = new Date().toISOString().split('T')[0]; // default: today (YYYY-MM-DD)
   if (dateMatch) {
     // Convert DD-MM-YYYY to YYYY-MM-DD for sitemap
     const [day, month, year] = dateMatch[1].split('-');
