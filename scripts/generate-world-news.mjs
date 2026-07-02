@@ -1266,11 +1266,12 @@ async function main() {
   updateSitemapWithSpokes(newSpokeEntries);
 
   // ── Write peer URL mapping for sitemap regeneration (split by year) ─────────────
+  const currentYear = new Date().getFullYear().toString();
   const peerUrlMappingByYear = {};
   for (const [rowKey, langSlugs] of Object.entries(peerSlugs)) {
     // Extract year from rowKey (format: YYYY-MM-DD#index)
     const yearMatch = rowKey.match(/^(\d{4})/);
-    const year = yearMatch ? yearMatch[1] : 'unknown';
+    const year = yearMatch ? yearMatch[1] : currentYear;
     
     if (!peerUrlMappingByYear[year]) {
       peerUrlMappingByYear[year] = {};
@@ -1294,9 +1295,9 @@ async function main() {
     const urlsByYear = {};
     
     for (const entry of newSpokeEntries) {
-      // Extract year from URL slug (DD-MM-YYYY format)
+      // Extract year from URL slug (DD-MM-YYYY format), fallback to current year
       const dateMatch = entry.url.match(/(\d{2}-\d{2}-(\d{4}))/);
-      const year = dateMatch ? dateMatch[2] : 'unknown';
+      const year = dateMatch ? dateMatch[2] : currentYear;
       
       if (!urlsByYear[year]) {
         urlsByYear[year] = [];
