@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/s-thay-i-chnh-sch-diu-hu-ca-fed-chi-tiu-ai-v-lo-ngi-chin-tranh-thc-y-ri-ro-tng-li-sut-02-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-01T17:00:00.000Z</news:publication_date>
+      <news:title>Sự thay đổi chính sách diều hâu của Fed: Chi tiêu AI và lo ngại chiến tranh thúc đẩy rủi ro tăng lãi suất</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/fed-hawkish-shift-ai-spending-and-war-fears-fuel-rate-hike-risk-02-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-01T17:00:00.000Z</news:publication_date>
+      <news:title>Fed Hawkish Shift: AI Spending and War Fears Fuel Rate Hike Risk</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/fed-ai--02-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-01T17:00:00.000Z</news:publication_date>
+      <news:title>Fed의 매파적 전환: AI 지출 및 전쟁 우려가 금리 인상 위험 촉발</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/ai--02-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-01T17:00:00.000Z</news:publication_date>
+      <news:title>聯準會鷹派轉向：AI 支出與戰爭擔憂加劇升息風險</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/-fed-ai--02-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-01T17:00:00.000Z</news:publication_date>
+      <news:title>การเปลี่ยนท่าทีเหยี่ยวของ Fed: การใช้จ่าย AI และความกังวลเรื่องสงครามหนุนความเสี่ยงการขึ้นอัตราดอกเบี้ย</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/--02-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-01T17:00:00.000Z</news:publication_date>
+      <news:title>تحول الاحتياطي الفيدرالي نحو التشدد: الإنفاق على الذكاء الاصطناعي ومخاوف الحرب تزيد من مخاطر رفع سعر الفائدة</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/frbai-02-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-01T17:00:00.000Z</news:publication_date>
+      <news:title>FRBのタカ派シフト：AI投資と戦争への懸念が利上げリスクを増幅</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-but-pha-manh-me-phien-01072026-nhom-ngan-hang-dan-song-01-07-2026/</loc>
     <news:news>
       <news:publication>
