@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-huong-moc-2000-diem-dong-tien-tim-ve-nhom-nganh-nao-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index hướng mốc 2.000 điểm: Dòng tiền tìm về nhóm ngành nào?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vn-index-towards-2000-points-which-sectors-are-attracting-capital-flows-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index towards 2,000 points: Which sectors are attracting capital flows?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-news-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 2,000포인트 향해: 자금은 어떤 산업으로 유입되고 있는가?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index劍指2,000點：資金流向哪些產業板塊？</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index มุ่งสู่ 2,000 จุด: กระแสเงินทุนไหลเข้าสู่กลุ่มอุตสาหกรรมใด?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-news-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>مؤشر VN-Index يتجه نحو 2000 نقطة: إلى أي قطاعات تتدفق الأموال؟</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Indexが2,000ポイントへ向かう：資金はどの産業セクターに流れるのか？</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-giam-nhe-phien-02072026-dong-tien-cho-doi-co-hoi-moi-02-07-2026/</loc>
     <news:news>
       <news:publication>
