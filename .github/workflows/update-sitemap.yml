@@ -15,14 +15,14 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           persist-credentials: true
           
       - name: Setup Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '22'
           
       - name: Generate digest pages and update sitemap
         run: |
@@ -38,7 +38,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add sitemap.xml news-sitemap.xml diem-tin-chung-khoan/ diem-tin-vi-mo/ world-news/
+          git add sitemap.xml news-sitemap.xml diem-tin-chung-khoan/ diem-tin-vi-mo/ world-news/ spoke_urls_*.json spoke_peer_urls_*.json
           git diff --staged --quiet || git commit -m "Auto-update sitemap and digest pages"
           git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }}
 
