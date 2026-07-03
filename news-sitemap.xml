@@ -31,7 +31,7 @@
         <news:language>ko</news:language>
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
-      <news:title>2026년 7월 3일 거래 세션에서 VN-Index 강한 분화 보여</news:title>
+      <news:title>2026년 7월 3일 VN-Index 심한 변동성: PNJ 하한가로 압력 가중</news:title>
     </news:news>
   </url>
   <url>
@@ -42,7 +42,7 @@
         <news:language>zh-Hant</news:language>
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 在 2026 年 7 月 3 日交易時段中表現出強勁分化</news:title>
+      <news:title>2026年7月3日VN-Index劇烈震盪：PNJ跌停板造成壓力</news:title>
     </news:news>
   </url>
   <url>
@@ -53,7 +53,7 @@
         <news:language>th</news:language>
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index แสดงการแบ่งแยกที่แข็งแกร่งในการซื้อขายวันที่ 3 กรกฎาคม 2026</news:title>
+      <news:title>VN-Index ผันผวนรุนแรงเมื่อวันที่ 3 กรกฎาคม 2026: PNJ ลดลงถึงราคาฟลอร์ สร้างแรงกดดัน</news:title>
     </news:news>
   </url>
   <url>
@@ -64,11 +64,88 @@
         <news:language>ar</news:language>
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
-      <news:title>مؤشر VN-Index يُظهر تباينًا قويًا في جلسة تداول 3 يوليو 2026</news:title>
+      <news:title>مؤشر VN-Index يتذبذب بقوة في جلسة 03/07/2026: سهم PNJ يهبط للحد الأدنى ويشكل ضغطاً</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/macro-news-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>2026年7月3日のVN-Index、PNJがストップ安で急落し圧力強まる</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-rung-lac-manh-phien-03072026-pnj-giam-san-gay-ap-luc-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index rung lắc mạnh phiên 03/07/2026: PNJ giảm sàn gây áp lực</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-shakes-strongly-on-july-3-2026-pnj-hits-floor-price-exerting-pressure-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index Shakes Strongly on July 3, 2026: PNJ Hits Floor Price, Exerting Pressure</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/2026-7-3-vn-index-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>2026년 7월 3일 거래 세션에서 VN-Index 강한 분화 보여</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-2026-7-3-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 在 2026 年 7 月 3 日交易時段中表現出強勁分化</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-3-2026-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index แสดงการแบ่งแยกที่แข็งแกร่งในการซื้อขายวันที่ 3 กรกฎาคม 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-3-2026-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>مؤشر VN-Index يُظهر تباينًا قويًا في جلسة تداول 3 يوليو 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index202673-03-07-2026/</loc>
     <news:news>
       <news:publication>
         <news:name>Tin Tức Chứng Khoán 24h</news:name>
