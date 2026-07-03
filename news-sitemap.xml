@@ -185,7 +185,7 @@
         <news:language>ko</news:language>
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
-      <news:title>베트남 경제 거시 등급 상향: 자본은 어디로 흐를까?</news:title>
+      <news:title>글로벌 거시경제 변동: 스마트 자금은 어디로 흐를까?</news:title>
     </news:news>
   </url>
   <url>
@@ -196,7 +196,7 @@
         <news:language>zh-Hant</news:language>
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
-      <news:title>越南經濟宏觀升級：資金將流向何方？</news:title>
+      <news:title>全球宏觀變動：聰明錢將流向何方？</news:title>
     </news:news>
   </url>
   <url>
@@ -207,7 +207,7 @@
         <news:language>th</news:language>
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
-      <news:title>เศรษฐกิจเวียดนามยกระดับมาโคร: กระแสเงินจะไหลไปไหน?</news:title>
+      <news:title>ภาพรวมเศรษฐกิจมหภาคโลกผันผวน: กระแสเงินอัจฉริยะจะไหลไปที่ใด?</news:title>
     </news:news>
   </url>
   <url>
@@ -218,7 +218,7 @@
         <news:language>ar</news:language>
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
-      <news:title>اقتصاد فيتنام يرتفع في التصنيف الكلي: أين ستتدفق الأموال؟</news:title>
+      <news:title>تقلبات الاقتصاد الكلي العالمي: إلى أين ستتدفق الأموال الذكية؟</news:title>
     </news:news>
   </url>
   <url>
@@ -229,7 +229,7 @@
         <news:language>ja</news:language>
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
-      <news:title>ベトナム経済のマクロ格上げ：資金はどこへ流れるのか？</news:title>
+      <news:title>世界のマクロ経済変動：スマートマネーはどこへ向かうのか？</news:title>
     </news:news>
   </url>
   <url>
@@ -307,6 +307,83 @@
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
       <news:title>VN-Indexが2,000ポイントへ向かう：資金はどの産業セクターに流れるのか？</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-the-gioi-bien-dong-dong-tien-thong-minh-se-chay-ve-dau-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>Vĩ mô thế giới biến động: Dòng tiền thông minh sẽ chảy về đâu?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/global-macro-volatility-where-will-smart-money-flow-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>Global Macro Volatility: Where Will Smart Money Flow?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>베트남 경제 거시 등급 상향: 자본은 어디로 흐를까?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>越南經濟宏觀升級：資金將流向何方？</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>เศรษฐกิจเวียดนามยกระดับมาโคร: กระแสเงินจะไหลไปไหน?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>اقتصاد فيتنام يرتفع في التصنيف الكلي: أين ستتدفق الأموال؟</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>ベトナム経済のマクロ格上げ：資金はどこへ流れるのか？</news:title>
     </news:news>
   </url>
   <url>
