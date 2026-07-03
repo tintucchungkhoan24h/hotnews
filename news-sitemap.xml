@@ -130,7 +130,7 @@
         <news:language>th</news:language>
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
-      <news:title>ความกังวลเรื่องการขึ้นดอกเบี้ยของ Fed คลายลง หลังรายงานการจ้างงานเดือนมิถุนายนทำให้ตลาดเย็นตัว</news:title>
+      <news:title>การคาดการณ์อัตราดอกเบี้ย Fed พลิกผันกระแสเงินทุนทั่วโลก: โอกาสของเวียดนาม?</news:title>
     </news:news>
   </url>
   <url>
@@ -141,7 +141,7 @@
         <news:language>ar</news:language>
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
-      <news:title>مخاوف رفع سعر الفائدة من قبل الاحتياطي الفيدرالي تتراجع مع تهدئة تقرير الوظائف لشهر يونيو للأسواق</news:title>
+      <news:title>رهانات أسعار الفائدة الفيدرالية تُحوّل تدفقات رأس المال العالمية: فرصة لفيتنام؟</news:title>
     </news:news>
   </url>
   <url>
@@ -153,6 +153,83 @@
       </news:publication>
       <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
       <news:title>6月の雇用統計で市場が冷え込み、FRBの利上げ懸念が和らぐ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/cc-li-sut-fed-xoay-chuyn-dng-vn-ton-cu-c-hi-cho-vit-nam-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>Cược lãi suất Fed xoay chuyển dòng vốn toàn cầu: Cơ hội cho Việt Nam?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/fed-rate-bets-pivot-global-capital-flows-opportunity-for-vietnam-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>Fed Rate Bets Pivot Global Capital Flows: Opportunity for Vietnam?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/--03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>연준 금리 전망이 글로벌 자본 흐름을 바꾸다: 베트남에 기회인가?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>聯準會利率預期轉變全球資本流動：越南的機會？</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/fed-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>ความกังวลเรื่องการขึ้นดอกเบี้ยของ Fed คลายลง หลังรายงานการจ้างงานเดือนมิถุนายนทำให้ตลาดเย็นตัว</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>مخاوف رفع سعر الفائدة من قبل الاحتياطي الفيدرالي تتراجع مع تهدئة تقرير الوظائف لشهر يونيو للأسواق</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/frb-03-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-02T17:00:00.000Z</news:publication_date>
+      <news:title>FRB金利予想の転換が世界的な資金フローを動かす：ベトナムにとっての機会か？</news:title>
     </news:news>
   </url>
   <url>
