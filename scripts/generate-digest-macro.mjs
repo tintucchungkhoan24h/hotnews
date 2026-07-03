@@ -159,20 +159,23 @@ function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clien
 
   // Get current language translation dictionary
   const currentI18n = I18N[lang] || I18N['en'] || {};
+  // Static hub page title & description (not article-specific)
+  const hubTitle = (currentI18n.video?.titleMacro || currentI18n.tabs?.macroFocus || 'Macro Focus') + ' | ' + SITE_NAME;
+  const hubDesc = (currentI18n.subtitle || 'Daily Market Updates') + ' – ' + SITE_NAME;
 
   return `<!DOCTYPE html>
 <html lang="${HREFLANG[lang] || lang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${firstArticle.title} | ${SITE_NAME}</title>
-  <meta name="description" content="${firstArticle.lead.replace(/"/g, '&quot;').slice(0, 160)}">
+  <title>${hubTitle}</title>
+  <meta name="description" content="${hubDesc.replace(/"/g, '&quot;')}">
   <link rel="canonical" href="${canonical}">
 ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="${CANONICAL_BASE}/diem-tin-vi-mo/${l}/">`).join('\n')}
   <link rel="alternate" hreflang="x-default" href="${CANONICAL_BASE}/diem-tin-vi-mo/vi/">
 
-  <meta property="og:title" content="${firstArticle.title.replace(/"/g, '&quot;')}">
-  <meta property="og:description" content="${firstArticle.lead.replace(/"/g, '&quot;').slice(0, 200)}">
+  <meta property="og:title" content="${hubTitle.replace(/"/g, '&quot;')}">
+  <meta property="og:description" content="${hubDesc.replace(/"/g, '&quot;')}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="${SITE_NAME}">
@@ -182,8 +185,8 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
 
   <!-- Twitter Card Tags (fallback for many platforms including Zalo) -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${firstArticle.title.replace(/"/g, '&quot;')}">
-  <meta name="twitter:description" content="${firstArticle.lead.replace(/"/g, '&quot;').slice(0, 200)}">
+  <meta name="twitter:title" content="${hubTitle.replace(/"/g, '&quot;')}">
+  <meta name="twitter:description" content="${hubDesc.replace(/"/g, '&quot;')}">
   <meta name="twitter:image" content="${firstArticle.article_photo_url || CANONICAL_BASE + '/ava_icon.png'}">
 
   <link rel="icon" type="image/png" sizes="48x48" href="/ava_icon.png">
