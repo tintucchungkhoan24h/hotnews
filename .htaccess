@@ -8,8 +8,14 @@ AddCharset UTF-8 .html
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Redirect bare /diem-tin-chung-khoan/ → Vietnamese version
-    RewriteRule ^diem-tin-chung-khoan/?$ /diem-tin-chung-khoan/vi/ [R=302,L]
+    # Redirect bare /diem-tin-chung-khoan/ → Vietnamese version (301 permanent)
+    RewriteRule ^diem-tin-chung-khoan/?$ /diem-tin-chung-khoan/vi/ [R=301,L]
+
+    # Redirect bare /diem-tin-vi-mo/ → Vietnamese version (301 permanent)
+    RewriteRule ^diem-tin-vi-mo/?$ /diem-tin-vi-mo/vi/ [R=301,L]
+
+    # Redirect bare /world-news/ → Vietnamese version (301 permanent)
+    RewriteRule ^world-news/?$ /world-news/vi/ [R=301,L]
 
     # Serve static SEO pages for /diem-tin-chung-khoan/{lang}/
     RewriteRule ^diem-tin-chung-khoan/([a-z]{2,3})/?$ /diem-tin-chung-khoan/$1/index.html [L]
