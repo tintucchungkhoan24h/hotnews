@@ -16,7 +16,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import https from 'https';
 import { normalizeReferenceLinks } from './format-reference-links.js';
-import { extractSlugFromUrl, slugifyTitle, isoToHuman, parseDateToDDMMYYYY } from './slug-utils.mjs';
+import { extractSlugFromUrl, slugifyTitle, isoToHuman, isoToHumanWithTime, parseDateToDDMMYYYY } from './slug-utils.mjs';
 import { COPY_LINK_SCRIPT } from './copy-link-snippet.mjs';
 import { LANG_MENU_SCRIPT, LANG_MENU_CSS, buildLangMenuHtmlFromMeta } from './lang-menu-snippet.mjs';
 
@@ -147,7 +147,7 @@ function buildWorldNewsClientJs() {
 // ── Fetch summaries ─────────────────────────────────────────────────────
 async function fetchSummaries() {
   // Fetch 30 rows to fully populate the hub archive section
-  let url = `${SUPABASE_URL}/rest/v1/market_summary_macro_world?order=summary_date.desc&limit=30`;
+  let url = `${SUPABASE_URL}/rest/v1/market_summary_macro_world?order=summary_date.desc,created_at.desc&limit=30&select=summary_date,created_at,articles`;
 
   const headers = {
     apikey: SUPABASE_ANON_KEY,
@@ -620,7 +620,7 @@ ${LANG_MENU_CSS}
             ${item.article.title}
           </h1>
           <div class="article-meta">
-            <span class="highlight">📅 ${isoToHuman(item.date)}</span>
+            <span class="highlight">📅 ${isoToHumanWithTime(item.date, item.createdAt)}</span>
             <span>•</span>
             <span>${item.article.langEmoji || ''} ${item.article.langName || lang.toUpperCase()}</span>
             <span>•</span>
@@ -658,7 +658,7 @@ ${LANG_MENU_CSS}
         <div class="archive-grid">
           ${archiveItems.slice(1).map(item => `
           <a href="${item.spokeAbsoluteUrl}" class="archive-card" title="${item.title.replace(/"/g, '&quot;')}">
-            <span class="archive-card-date">📅 ${isoToHuman(item.date)}</span>
+            <span class="archive-card-date">📅 ${isoToHumanWithTime(item.date, item.createdAt)}</span>
             <span class="archive-card-title">${item.title}</span>
             <span class="archive-card-arrow">${currentI18n.archiveViewArticle || '→ View article'}</span>
           </a>`).join('')}
@@ -714,7 +714,7 @@ ${COPY_LINK_SCRIPT.replace(/{{COPY_LINK}}/g, currentI18n.copyLink || 'Copy link'
 }
 
 // ── Generate one Spoke Page (permanent, never overwritten) ─────────────────────
-function generateSpokePage({ article, date, lang, spokeSlug, headerHtml, footerHtml, langs, clientCss, clientJs, peerSlugs, peerKey = date }) {
+function generateSpokePage({ article, date, createdAt, lang, spokeSlug, headerHtml, footerHtml, langs, clientCss, clientJs, peerSlugs, peerKey = date }) {
   const canonical    = `${CANONICAL_BASE}/world-news/${lang}/${spokeSlug}/`;
   const absoluteUrl  = `${SITE_BASE}/world-news/${lang}/${spokeSlug}/`;
   const hubUrl       = `${CANONICAL_BASE}/world-news/${lang}/`;
@@ -952,7 +952,7 @@ ${LANG_MENU_CSS}
       <article${isRtl ? ' dir="rtl"' : ''} data-spoke-url="${absoluteUrl}">
         <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">${article.title}</h1>
         <div class="article-meta">
-          <span class="highlight">📅 ${isoToHuman(date)}</span>
+          <span class="highlight">📅 ${isoToHumanWithTime(date, createdAt)}</span>
           <span>•</span>
           <span>${article.langEmoji || ''} ${article.langName || lang.toUpperCase()}</span>
           <span>•</span>
@@ -1151,6 +1151,7 @@ async function main() {
 
   for (const [rowIndex, row] of allRows.entries()) {
     const rDate    = row.summary_date;
+    const rCreatedAt = row.created_at || null;
     const rowKey   = `${rDate}#${rowIndex}`;
     const rArticles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
     for (const a of rArticles) {
@@ -1161,8 +1162,17 @@ async function main() {
       const langCode = a.langCode === 'zh-TW' ? 'zh' : a.langCode;
       langsSet.add(langCode);
       if (!dataByLang[langCode]) dataByLang[langCode] = [];
-      dataByLang[langCode].push({ date: rDate, key: rowKey, article: a });
+      dataByLang[langCode].push({ date: rDate, createdAt: rCreatedAt, key: rowKey, article: a });
     }
+  }
+
+  // Sort each language's articles by createdAt desc (then by date desc as fallback)
+  for (const lang of Object.keys(dataByLang)) {
+    dataByLang[lang].sort((a, b) => {
+      const tA = a.createdAt ? new Date(a.createdAt).getTime() : new Date(a.date).getTime();
+      const tB = b.createdAt ? new Date(b.createdAt).getTime() : new Date(b.date).getTime();
+      return tB - tA;
+    });
   }
 
   const langs = Array.from(langsSet);
@@ -1181,6 +1191,7 @@ async function main() {
         const absUrl = `${SITE_BASE}/world-news/${lang}/${dateSlug}/`;
         return {
           date:             item.date,
+          createdAt:        item.createdAt,
           key:              item.key,
           title:            item.article.title,
           spokeSlug:        dateSlug,
@@ -1203,6 +1214,7 @@ async function main() {
       const absUrl  = `${SITE_BASE}/world-news/${lang}/${slug}/`;
       return {
         date:             item.date,
+        createdAt:        item.createdAt,
         key:              item.key,
         title:            item.article.title,
         spokeSlug:        slug,
@@ -1235,6 +1247,7 @@ async function main() {
       const spokeHtml = generateSpokePage({
         article:    articlesList.find(i => i.key === item.key)?.article,
         date:       item.date,
+        createdAt:  item.createdAt,
         lang,
         spokeSlug:  item.spokeSlug,
         headerHtml, footerHtml, langs, clientCss, clientJs,

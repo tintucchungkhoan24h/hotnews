@@ -991,7 +991,7 @@ article h1 {
       <article data-spoke-url="https://tintucchungkhoan24h.com/world-news/th/macro-news-29-06-2026/">
         <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">การเปลี่ยนแปลงเทคโนโลยีระดับโลก: AI, ชิป และภูมิรัฐศาสตร์ ปรับโฉมตลาด</h1>
         <div class="article-meta">
-          <span class="highlight">📅 29/06/2026</span>
+          <span class="highlight">📅 29/06/2026 19:09</span>
           <span>•</span>
           <span>🇹🇭 THAI</span>
           <span>•</span>
@@ -1450,6 +1450,21 @@ function isoToDisplay(iso) {
     return `${d}/${m}/${y}`;
 }
 
+function isoToDisplayWithTime(iso, isoDatetime) {
+    if (!iso) return '';
+    const [y, m, d] = iso.split('-');
+    const datePart = `${d}/${m}/${y}`;
+    if (isoDatetime) {
+        // Parse HH:mm directly from the string — no Date() to avoid timezone conversion
+        // Handles: "2026-07-04 18:32:42.775201" or "2026-07-04T18:32:42.775201+00"
+        const timeMatch = String(isoDatetime).match(/[T\s](\d{2}):(\d{2})/);
+        if (timeMatch) {
+            return `${datePart} ${timeMatch[1]}:${timeMatch[2]}`;
+        }
+    }
+    return `${datePart} 00:00`;
+}
+
 function isoToPathSegment(iso) {
     if (!iso) return '00-00-0000';
     const [y, m, d] = iso.split('-');
@@ -1640,7 +1655,7 @@ async function fetchDynamicFeed() {
     mainEl.innerHTML = `<div class="text-center py-10 text-gray-400">${langDict.loadingSummaries || 'Loading summaries...'}</div>`;
 
     try {
-        const url = `${window.SUPABASE_URL}/rest/v1/market_summary_macro_world?select=*&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc`;
+        const url = `${window.SUPABASE_URL}/rest/v1/market_summary_macro_world?select=summary_date,created_at,articles&summary_date=gte.${stateFromDate}&summary_date=lte.${stateToDate}&order=summary_date.desc,created_at.desc`;
         const res = await fetch(url, {
             headers: {
                 'apikey': window.SUPABASE_ANON_KEY,
@@ -1667,6 +1682,7 @@ async function fetchDynamicFeed() {
             if (!article) continue;
 
             const rDate = row.summary_date;
+            const rCreatedAt = row.created_at || null;
             
             // Format reference links to appear on separate lines with label
             let formattedContent = article.content || '';
@@ -1767,7 +1783,7 @@ async function fetchDynamicFeed() {
                   ${article.title}
                 </h1>
                 <div class="article-meta">
-                  <span class="highlight">📅 ${isoToDisplay(rDate)}</span>
+                  <span class="highlight">📅 ${isoToDisplayWithTime(rDate, rCreatedAt)}</span>
                   <span>•</span>
                   <span>${article.langEmoji || ''} ${article.langName || currentLang.toUpperCase()}</span>
                   <span>•</span>

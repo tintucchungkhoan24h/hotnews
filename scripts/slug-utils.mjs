@@ -104,3 +104,28 @@ export function isoToHuman(isoDate) {
   const [y, m, d] = isoDate.split('-');
   return `${d}/${m}/${y}`;
 }
+
+/**
+ * Converts an ISO datetime string (YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DD HH:mm:ss+HH)
+ * or a plain date (YYYY-MM-DD) to "DD/MM/YYYY HH:mm".
+ * When a separate isoDate + isoDatetime are supplied, isoDatetime provides the time.
+ *
+ * @param {string} isoDate     - YYYY-MM-DD (always required for the date part)
+ * @param {string} [isoDatetime] - full ISO datetime string for the time part (optional)
+ */
+export function isoToHumanWithTime(isoDate, isoDatetime) {
+  if (!isoDate) return '';
+  const [y, m, d] = isoDate.split('-');
+  const datePart = `${d}/${m}/${y}`;
+
+  if (isoDatetime) {
+    // Parse HH:mm directly from the string — no Date() to avoid timezone conversion
+    // Handles: "2026-07-04 18:32:42.775201" or "2026-07-04T18:32:42.775201+00"
+    const timeMatch = String(isoDatetime).match(/[T\s](\d{2}):(\d{2})/);
+    if (timeMatch) {
+      return `${datePart} ${timeMatch[1]}:${timeMatch[2]}`;
+    }
+  }
+
+  return `${datePart} 00:00`;
+}
