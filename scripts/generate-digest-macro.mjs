@@ -551,8 +551,10 @@ ${LANG_MENU_CSS}
           const formattedLinks = linkMatches.map(link => {
             // Add target="_blank" if not already present
             if (!link.includes('target=')) {
-              return link.replace('<a', '<a target="_blank"');
+              link = link.replace('<a', '<a target="_blank"');
             }
+            // Strip leading/trailing [ ] brackets from anchor text
+            link = link.replace(/(<a[^>]*>)\s*\[([^\]]*)\]\s*(<\/a>)/, '$1$2$3');
             return link;
           }).join('<br>');
           return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
@@ -567,8 +569,10 @@ ${LANG_MENU_CSS}
           const formattedLinks = linkMatches.map(link => {
             // Add target="_blank" if not already present
             if (!link.includes('target=')) {
-              return link.replace('<a', '<a target="_blank"');
+              link = link.replace('<a', '<a target="_blank"');
             }
+            // Strip leading/trailing [ ] brackets from anchor text
+            link = link.replace(/(<a[^>]*>)\s*\[([^\]]*)\]\s*(<\/a>)/, '$1$2$3');
             return link;
           }).join('<br>');
           return `<p><strong>${label} </strong><br>${formattedLinks}</p>`;
@@ -768,8 +772,10 @@ function generateSpokePage({ article, date, lang, spokeSlug, headerHtml, footerH
     const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
     const formattedLinks = linkMatches.map(link => {
       if (!link.includes('target=')) {
-        return link.replace('<a', '<a target="_blank"');
+        link = link.replace('<a', '<a target="_blank"');
       }
+      // Strip leading/trailing [ ] brackets from anchor text
+      link = link.replace(/(<a[^>]*>)\s*\[([^\]]*)\]\s*(<\/a>)/, '$1$2$3');
       return link;
     }).join('<br>');
     return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
