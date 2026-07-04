@@ -1349,6 +1349,8 @@ function formatReferenceBlock(label, linksHtml) {
   const formattedLinks = linkMatches.map(link => {
     let fixed = sanitizeReferenceLink(link);
     if (!fixed.includes('target=')) fixed = fixed.replace('<a', '<a target="_blank"');
+    // Strip leading/trailing [ ] brackets from anchor text
+    fixed = fixed.replace(/(<a[^>]*>)\s*\[([^\]]*)\]\s*(<\/a>)/, '$1$2$3');
     return fixed;
   }).join('<br>');
   return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
