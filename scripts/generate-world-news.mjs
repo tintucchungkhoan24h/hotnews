@@ -514,6 +514,12 @@ ${LANG_MENU_CSS}
         formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
         // First, fix all instances of double single quotes in rel attribute globally
         formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+        // Fix <a> tags where attributes/text are wrapped in double-double-quotes: href=""url"" rel=""nofollow"">""Text""
+        formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
+          const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
+          const fixedText = text.replace(/^""([\s\S]*?)""$/, '$1').trim();
+          return `<a ${fixedAttrs}>${fixedText}</a>`;
+        });
         // Fix <a> tags with broken href where URL is split into separate attributes
         // General pattern: href="" followed by multiple ="" attributes that form the URL
         // This handles cases like: href="" https:="" cafef.vn="" path.chn''=""
@@ -754,6 +760,12 @@ function generateSpokePage({ article, date, createdAt, lang, spokeSlug, headerHt
   let formattedContent = article.content || '';
   formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
   formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+  // Fix <a> tags where attributes/text are wrapped in double-double-quotes: href=""url"" rel=""nofollow"">""Text""
+  formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
+    const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
+    const fixedText = text.replace(/^""([\s\S]*?)""$/, '$1').trim();
+    return `<a ${fixedAttrs}>${fixedText}</a>`;
+  });
   formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+((?:https?:=""\s+)?[^=]+=""\s+[^=]+=""\s+[^=]+=""(?:\s+[^=]+=""*)*)([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, urlParts, afterHref, text) => {
     const parts = urlParts.match(/([^=]+)=""/g) || [];
     const url = parts.map(p => p.replace(/=""$/, '').replace(/''$/, '').replace(/""$/, '').trim()).join('');

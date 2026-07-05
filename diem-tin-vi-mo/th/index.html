@@ -2673,9 +2673,15 @@ async function fetchDynamicFeed() {
             formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
             // First, fix all instances of double single quotes in rel attribute globally
             formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
-            // Fix <a> tags with broken href where URL is split into separate attributes
-            // General pattern: href="" followed by multiple ="" attributes that form the URL
-            // This handles cases like: href="" https:="" cafef.vn="" path.chn''=""
+            // Fix <a> tags where attribute values are wrapped in double-double-quotes (""value"")
+            // and anchor text is wrapped in ""text"" — e.g. href=""https://..."" rel=""nofollow"">""Text""</a>
+            formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
+              // Fix each attribute: attr=""value"" → attr="value"
+              const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
+              // Strip leading/trailing "" from anchor text
+              const fixedText = text.replace(/^""([\s\S]*?)""$/, '$1').trim();
+              return `<a ${fixedAttrs}>${fixedText}</a>`;
+            });
             formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+((?:https?:=""\s+)?[^=]+=""\s+[^=]+=""\s+[^=]+=""(?:\s+[^=]+=""*)*)([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, urlParts, afterHref, text) => {
               // Extract all the URL parts from the ="" attributes
               const parts = urlParts.match(/([^=]+)=""/g) || [];

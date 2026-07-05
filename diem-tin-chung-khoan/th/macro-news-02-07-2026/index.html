@@ -1739,6 +1739,15 @@ async function fetchDynamicFeed() {
             let formattedContent = article.content || '';
             // First, fix all instances of double single quotes in rel attribute globally
             formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+            // Fix <a> tags where attribute values are wrapped in double-double-quotes (""value"")
+            // and anchor text is wrapped in ""text"" — e.g. href=""https://..."" rel=""nofollow"">""Text""</a>
+            formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
+              // Fix each attribute: attr=""value"" → attr="value"
+              const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
+              // Strip leading/trailing "" from anchor text
+              const fixedText = text.replace(/^""([\s\S]*?)""$/, '$1').trim();
+              return `<a ${fixedAttrs}>${fixedText}</a>`;
+            });
             // Fix <a> tags with broken href where URL is split into separate attributes
             // Pattern: href="" https:="" domain.com="" path="" 
             formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+https:=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, domain, path1, path2, afterHref, text) => {
