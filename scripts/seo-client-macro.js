@@ -267,8 +267,8 @@ async function fetchDynamicFeed() {
             formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
               // Fix each attribute: attr=""value"" → attr="value"
               const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
-              // Strip leading/trailing "" from anchor text
-              const fixedText = text.replace(/^""([\s\S]*?)""$/, '$1').trim();
+              // Strip leading/trailing " or "" from anchor text
+              const fixedText = text.replace(/^"+([^]*?)"+$/, '$1').trim();
               return `<a ${fixedAttrs}>${fixedText}</a>`;
             });
             formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+((?:https?:=""\s+)?[^=]+=""\s+[^=]+=""\s+[^=]+=""(?:\s+[^=]+=""*)*)([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, urlParts, afterHref, text) => {

@@ -517,7 +517,7 @@ ${LANG_MENU_CSS}
         // Fix <a> tags where attributes/text are wrapped in double-double-quotes: href=""url"" rel=""nofollow"">""Text""
         formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
           const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
-          const fixedText = text.replace(/^""([\s\S]*?)""$/, '$1').trim();
+          const fixedText = text.replace(/^"+([^]*?)"+$/, '$1').trim();
           return `<a ${fixedAttrs}>${fixedText}</a>`;
         });
         // Fix <a> tags with broken href where URL is split into separate attributes
@@ -763,7 +763,7 @@ function generateSpokePage({ article, date, createdAt, lang, spokeSlug, headerHt
   // Fix <a> tags where attributes/text are wrapped in double-double-quotes: href=""url"" rel=""nofollow"">""Text""
   formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
     const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
-    const fixedText = text.replace(/^""([\s\S]*?)""$/, '$1').trim();
+    const fixedText = text.replace(/^"+([^]*?)"+$/, '$1').trim();
     return `<a ${fixedAttrs}>${fixedText}</a>`;
   });
   formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+((?:https?:=""\s+)?[^=]+=""\s+[^=]+=""\s+[^=]+=""(?:\s+[^=]+=""*)*)([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, urlParts, afterHref, text) => {
