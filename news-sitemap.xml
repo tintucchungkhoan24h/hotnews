@@ -262,7 +262,7 @@
         <news:language>ko</news:language>
       </news:publication>
       <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
-      <news:title>오늘 가장 뜨거운 5대 주식: DGC, FPT, HPG, PNJ, VHM 강한 변동성 압력에 직면</news:title>
+      <news:title>오늘의 가장 뜨거운 주식 5가지: DGC, FPT, HPG, PNJ, VHM, 강한 변동성 압력에 직면</news:title>
     </news:news>
   </url>
   <url>
@@ -273,7 +273,7 @@
         <news:language>zh-Hant</news:language>
       </news:publication>
       <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
-      <news:title>今日五大熱門股：DGC、FPT、HPG、PNJ、VHM 面臨劇烈波動壓力</news:title>
+      <news:title>今日最熱門五檔股票：DGC、FPT、HPG、PNJ、VHM面臨強大震盪壓力</news:title>
     </news:news>
   </url>
   <url>
@@ -284,7 +284,7 @@
         <news:language>th</news:language>
       </news:publication>
       <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
-      <news:title>5 หุ้นร้อนประจำวัน: DGC, FPT, HPG, PNJ, VHM เผชิญแรงกดดันจากการผันผวนอย่างรุนแรง</news:title>
+      <news:title>5 หุ้นร้อนที่สุดในวันนี้: DGC, FPT, HPG, PNJ, VHM เผชิญแรงกดดันจากการผันผวนอย่างรุนแรง</news:title>
     </news:news>
   </url>
   <url>
@@ -295,7 +295,7 @@
         <news:language>ar</news:language>
       </news:publication>
       <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
-      <news:title>أكثر 5 أسهم سخونة اليوم: DGC, FPT, HPG, PNJ, VHM تحت ضغط تقلبات قوية</news:title>
+      <news:title>أهم 5 أسهم اليوم: DGC، FPT، HPG، PNJ، VHM تواجه ضغط تقلبات قوي</news:title>
     </news:news>
   </url>
   <url>
@@ -306,7 +306,7 @@
         <news:language>ja</news:language>
       </news:publication>
       <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
-      <news:title>本日の注目株トップ5：DGC、FPT、HPG、PNJ、VHMが強い変動圧力に直面</news:title>
+      <news:title>今日の最も注目される5銘柄：DGC、FPT、HPG、PNJ、VHMが強い変動圧力に直面</news:title>
     </news:news>
   </url>
   <url>
@@ -384,6 +384,83 @@
       </news:publication>
       <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
       <news:title>VN-Index、直近セッションで証券セクターが牽引し力強く突破</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-dgc-fpt-hpg-pnj-vhm-chiu-ap-luc-rung-lac--05-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
+      <news:title>Top 5 mã cổ phiếu nóng nhất trong ngày: DGC, FPT, HPG, PNJ, VHM chịu áp lực rung lắc mạnh</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/top-5-hottest-stocks-today-dgc-fpt-hpg-pnj-vhm-under-strong-volatility-pressure-05-07-2026-2/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
+      <news:title>Top 5 Hottest Stocks Today: DGC, FPT, HPG, PNJ, VHM Under Strong Volatility Pressure</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/5-dgc-fpt-hpg-pnj-vhm-05-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
+      <news:title>오늘 가장 뜨거운 5대 주식: DGC, FPT, HPG, PNJ, VHM 강한 변동성 압력에 직면</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/dgcfpthpgpnjvhm-05-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
+      <news:title>今日五大熱門股：DGC、FPT、HPG、PNJ、VHM 面臨劇烈波動壓力</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/5-dgc-fpt-hpg-pnj-vhm-05-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
+      <news:title>5 หุ้นร้อนประจำวัน: DGC, FPT, HPG, PNJ, VHM เผชิญแรงกดดันจากการผันผวนอย่างรุนแรง</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/5-dgc-fpt-hpg-pnj-vhm-05-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
+      <news:title>أكثر 5 أسهم سخونة اليوم: DGC, FPT, HPG, PNJ, VHM تحت ضغط تقلبات قوية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/5dgcfpthpgpnjvhm-05-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-04T17:00:00.000Z</news:publication_date>
+      <news:title>本日の注目株トップ5：DGC、FPT、HPG、PNJ、VHMが強い変動圧力に直面</news:title>
     </news:news>
   </url>
   <url>
