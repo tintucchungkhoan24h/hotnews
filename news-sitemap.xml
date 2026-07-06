@@ -464,83 +464,6 @@
     </news:news>
   </url>
   <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/macro-news-06-07-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
-      <news:title>No Title</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-news-06-07-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
-      <news:title>No Title</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-news-06-07-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
-      <news:title>No Title</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-news-06-07-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
-      <news:title>No Title</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-06-07-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
-      <news:title>No Title</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-news-06-07-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
-      <news:title>No Title</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-06-07-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
-      <news:title>No Title</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-giang-co-khoi-ngoai-xa-rong-dong-tien-ne-tranh-rui-ro-06-07-2026/</loc>
     <news:news>
       <news:publication>
@@ -1000,6 +923,83 @@
       </news:publication>
       <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
       <news:title>FRBタカ派転換とホルムズ危機が新興市場を揺るがす</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/fed-doi-huong-dat-cuoc-lai-suat-khi-dia-chinh-tri-toan-cau-cong-nghe-ai-khuay-dong-thi-truong-06-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
+      <news:title>Fed đổi hướng đặt cược lãi suất khi Địa chính trị toàn cầu &amp; Công nghệ AI khuấy động thị trường</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/fed-rate-bets-pivot-as-global-geopolitics-ai-tech-shake-markets-06-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
+      <news:title>Fed Rate Bets Pivot as Global Geopolitics &amp; AI Tech Shake Markets</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/fed-rate-bets-pivot-as-global-geopolitics-ai-tech-shake-markets-06-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 지정학 및 AI 기술이 시장을 뒤흔들면서 Fed 금리 인상 베팅 전환</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/fed-rate-bets-pivot-as-global-geopolitics-ai-tech-shake-markets-06-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
+      <news:title>全球地緣政治與AI科技震撼市場，聯準會升息預期轉向</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/fed-rate-bets-pivot-as-global-geopolitics-ai-tech-shake-markets-06-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
+      <news:title>การคาดการณ์อัตราดอกเบี้ยของเฟดเปลี่ยนไปเมื่อภูมิรัฐศาสตร์โลกและเทคโนโลยี AI เขย่าตลาด</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/fed-rate-bets-pivot-as-global-geopolitics-ai-tech-shake-markets-06-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
+      <news:title>رهانات بنك الاحتياطي الفيدرالي على أسعار الفائدة تتحول مع اهتزاز الأسواق بفعل الجغرافيا السياسية العالمية وتقنيات الذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/fed-rate-bets-pivot-as-global-geopolitics-ai-tech-shake-markets-06-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-05T17:00:00.000Z</news:publication_date>
+      <news:title>世界の地政学とAIテクノロジーが市場を揺るがす中、FRBの金利予測が転換</news:title>
     </news:news>
   </url>
   <url>
