@@ -1339,7 +1339,31 @@ article h1 {
 function sanitizeReferenceLink(link) {
   return link
     .replace(/rel=''nofollow''/g, 'rel="nofollow"')
-    .replace(/href=''([^'']+)''/g, 'href="$1"');
+    .replace(/href=''([^'']+)''/g, 'href="$1"')
+    // Fix: href="https://url' rel='nofollow'[other attrs]" → href="https://url" rel="nofollow"
+    .replace(/href="(https?:\/\/[^"']+)'([^"]*)"/g, (_m, url, rest) => {
+      // Extract any valid HTML attributes embedded in rest (e.g. rel='nofollow' target='_blank')
+      const attrs = (rest.match(/\s+[\w-]+='[^']*'/g) || [])
+        .map(a => a.trim().replace(/='([^']*)'/, '="$1"'))
+        .join(' ');
+      return `href="${url}"${attrs ? ' ' + attrs : ''}`;
+    });
+}
+
+/**
+ * Fix malformed anchor tags in arbitrary HTML content.
+ * Handles the pattern: href="https://url.htm' rel='nofollow'"
+ * which browsers render as a broken URL containing ' rel='nofollow'.
+ */
+function fixMalformedAnchorHrefs(html) {
+  if (!html) return html;
+  // Fix: href="https://url'[extra single-quoted attrs]" → href="https://url" [attrs normalized]
+  return html.replace(/href="(https?:\/\/[^"']+)'([^"]*)"/g, (_m, url, rest) => {
+    const attrs = (rest.match(/\s+[\w-]+='[^']*'/g) || [])
+      .map(a => a.trim().replace(/='([^']*)'/, '="$1"'))
+      .join(' ');
+    return `href="${url}"${attrs ? ' ' + attrs : ''}`;
+  });
 }
 
 function formatReferenceBlock(label, linksHtml) {

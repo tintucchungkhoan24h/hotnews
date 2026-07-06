@@ -15,7 +15,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import https from 'https';
-import { normalizeReferenceLinks } from './format-reference-links.js';
+import { normalizeReferenceLinks, fixMalformedAnchorHrefs } from './format-reference-links.js';
 import { extractSlugFromUrl, slugifyTitle, isoToHuman, isoToHumanWithTime, parseDateToDDMMYYYY } from './slug-utils.mjs';
 import { COPY_LINK_SCRIPT } from './copy-link-snippet.mjs';
 import { LANG_MENU_SCRIPT, LANG_MENU_CSS, buildLangMenuHtmlFromMeta } from './lang-menu-snippet.mjs';
@@ -514,6 +514,8 @@ ${LANG_MENU_CSS}
         formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
         // First, fix all instances of double single quotes in rel attribute globally
         formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+        // Fix: href="https://url' rel='nofollow'" → href="https://url" rel="nofollow"
+        formattedContent = fixMalformedAnchorHrefs(formattedContent);
         // Fix <a> tags where attributes/text are wrapped in double-double-quotes: href=""url"" rel=""nofollow"">""Text""
         formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
           const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
@@ -760,6 +762,8 @@ function generateSpokePage({ article, date, createdAt, lang, spokeSlug, headerHt
   let formattedContent = article.content || '';
   formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
   formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+  // Fix: href="https://url' rel='nofollow'" → href="https://url" rel="nofollow"
+  formattedContent = fixMalformedAnchorHrefs(formattedContent);
   // Fix <a> tags where attributes/text are wrapped in double-double-quotes: href=""url"" rel=""nofollow"">""Text""
   formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
     const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
