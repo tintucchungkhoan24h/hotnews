@@ -15,7 +15,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import https from 'https';
-import { normalizeReferenceLinks } from './format-reference-links.js';
+import { normalizeReferenceLinks, fixMalformedAnchorHrefs } from './format-reference-links.js';
 import { highlightStockCodes } from './format-stock-codes.js';
 import { extractSlugFromUrl, slugifyTitle, isoToHuman, isoToHumanWithTime, parseDateToDDMMYYYY } from './slug-utils.mjs';
 import { COPY_LINK_SCRIPT } from './copy-link-snippet.mjs';
@@ -483,6 +483,8 @@ ${LANG_MENU_CSS}
         let formattedContent = item.article.content || '';
         // First, fix all instances of double single quotes in rel attribute globally
         formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+        // Fix: href="https://url' rel='nofollow'" → href="https://url" rel="nofollow"
+        formattedContent = fixMalformedAnchorHrefs(formattedContent);
         // Fix <a> tags where attributes/text are wrapped in double-double-quotes: href=""url"" rel=""nofollow"">""Text""
         formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
           const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
@@ -969,6 +971,8 @@ function generateSpokePage({ article, date, createdAt, lang, spokeSlug, headerHt
   // Format content
   let formattedContent = article.content || '';
   formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+  // Fix: href="https://url' rel='nofollow'" → href="https://url" rel="nofollow"
+  formattedContent = fixMalformedAnchorHrefs(formattedContent);
   // Fix <a> tags where attributes/text are wrapped in double-double-quotes: href=""url"" rel=""nofollow"">""Text""
   formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
     const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
