@@ -317,13 +317,32 @@ function paginationGoto(page) {
     rectBefore = container.getBoundingClientRect();
   }
 
+  let isShortPage = false;
+  if (allArticleRows.length > 0) {
+    const remaining = allArticleRows.length - (page - 1) * ARTICLES_PER_PAGE;
+    isShortPage = remaining > 0 && remaining < ARTICLES_PER_PAGE;
+  } else {
+    const items = document.querySelectorAll('#digest-feed .digest-item');
+    const remaining = items.length - (page - 1) * ARTICLES_PER_PAGE;
+    isShortPage = remaining > 0 && remaining < ARTICLES_PER_PAGE;
+  }
+
   if (allArticleRows.length > 0) {
     renderDynamicPage(page);
   } else {
     renderStaticPage(page);
   }
 
-  if (container && rectBefore) {
+  if (isShortPage) {
+    const footer = document.querySelector('footer, #footer-container');
+    if (footer) {
+      const footerRect = footer.getBoundingClientRect();
+      const scrollTarget = window.scrollY + footerRect.top - window.innerHeight + 100;
+      window.scrollTo({ top: scrollTarget, behavior: 'auto' });
+    } else {
+      window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+    }
+  } else if (container && rectBefore) {
     const rectAfter = container.getBoundingClientRect();
     window.scrollBy(0, rectAfter.top - rectBefore.top);
   }
