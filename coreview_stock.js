@@ -159,7 +159,7 @@ function setupStockViewEventListeners() {
     if (firstBtn) {
         firstBtn.onclick = () => { 
             state.currentPage = 0; 
-            fetchData(); 
+            fetchData().then(handlePaginationScroll); 
         };
     }
 
@@ -167,7 +167,7 @@ function setupStockViewEventListeners() {
     if (prevBtn) {
         prevBtn.onclick = () => { 
             state.currentPage--; 
-            fetchData(); 
+            fetchData().then(handlePaginationScroll); 
         };
     }
 
@@ -175,7 +175,7 @@ function setupStockViewEventListeners() {
     if (nextBtn) {
         nextBtn.onclick = () => { 
             state.currentPage++; 
-            fetchData(); 
+            fetchData().then(handlePaginationScroll); 
         };
     }
 
@@ -189,7 +189,7 @@ function setupStockViewEventListeners() {
             console.log('Page size:', state.pageSize);
             console.log('Calculated last page:', lastPage);
             state.currentPage = lastPage; 
-            fetchData(); 
+            fetchData().then(handlePaginationScroll); 
         };
     }
 }
@@ -860,7 +860,7 @@ function renderPaginationUI() {
         pageBtn.innerText = i + 1;
         pageBtn.onclick = () => {
             state.currentPage = i;
-            fetchData();
+            fetchData().then(handlePaginationScroll);
         };
         pageNumbersContainer.appendChild(pageBtn);
     }
@@ -869,6 +869,21 @@ function renderPaginationUI() {
     document.getElementById('prevBtn').disabled = state.currentPage === 0;
     document.getElementById('nextBtn').disabled = end >= state.totalCount;
     document.getElementById('lastBtn').disabled = end >= state.totalCount;
+}
+
+function handlePaginationScroll() {
+    const remaining = state.totalCount - (state.currentPage * state.pageSize);
+    const isShortPage = remaining > 0 && remaining < state.pageSize;
+    if (isShortPage) {
+        const footer = document.querySelector('footer, #footer-container');
+        if (footer) {
+            const footerRect = footer.getBoundingClientRect();
+            const scrollTarget = window.scrollY + footerRect.top - window.innerHeight + 100;
+            window.scrollTo({ top: scrollTarget, behavior: 'auto' });
+        } else {
+            window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+        }
+    }
 }
 
 // ─── Excel Export ──────────────────────────────────────────────────────────
