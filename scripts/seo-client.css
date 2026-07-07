@@ -721,9 +721,13 @@ article {
 
 .article-chevron {
   position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.25s ease;
   color: #ffd700;
   font-size: 20px;
@@ -748,11 +752,12 @@ article.collapsed .digest-body {
 }
 
 article.collapsed .article-chevron {
-  transform: translateX(-50%) rotate(0deg); /* Keep pointing down when collapsed */
+  transform: rotate(0deg); /* Keep pointing down when collapsed */
 }
 
 article.expanded .article-chevron {
-  transform: translateX(-50%) rotate(180deg); /* Point up when expanded */
+  transform: rotate(180deg); /* Point up when expanded */
+  bottom: -10px; /* Adjust position since padding is smaller */
 }
 
 article.expanded {
