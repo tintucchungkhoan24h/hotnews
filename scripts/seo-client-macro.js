@@ -264,6 +264,75 @@ function updateToggleAllButton() {
   }
 }
 
+// ─── Pagination ──────────────────────────────────────────────────────────────
+
+const ARTICLES_PER_PAGE = 10;
+let paginationCurrentPage = 1;
+let allArticleRows = []; // stores all fetched rows for dynamic pagination
+
+function renderPaginationWidget(total, current) {
+  const container = document.getElementById('paginationContainer');
+  if (!container) return;
+  if (total <= ARTICLES_PER_PAGE) { container.innerHTML = ''; return; }
+
+  const totalPages = Math.ceil(total / ARTICLES_PER_PAGE);
+  const start = (current - 1) * ARTICLES_PER_PAGE + 1;
+  const end = Math.min(current * ARTICLES_PER_PAGE, total);
+
+  const prevLabel = (langDict && langDict.prev) ? langDict.prev : 'Trước';
+  const nextLabel = (langDict && langDict.next) ? langDict.next : 'Sau';
+  const showingTpl = (langDict && langDict.paging)
+    ? langDict.paging
+    : 'Hiển thị {start} - {end} trên tổng {total}';
+  const showingText = showingTpl.replace('{start}', start).replace('{end}', end).replace('{total}', total);
+
+  let pageNums = '';
+  let sp = Math.max(1, current - 2);
+  let ep = Math.min(totalPages, sp + 4);
+  if (ep - sp < 4) sp = Math.max(1, ep - 4);
+  for (let p = sp; p <= ep; p++) {
+    const active = p === current;
+    pageNums += `<button onclick="paginationGoto(${p})" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-lg text-xs font-bold transition-all ${active ? 'bg-fin-gold text-fin-blue border border-fin-gold' : 'bg-gray-800 text-white border border-gray-700 hover:bg-gray-700'}">${p}</button>`;
+  }
+
+  container.innerHTML = `<div class="p-3 sm:p-5 border-t border-gray-800 bg-gray-800/20 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div class="text-xs text-gray-500 font-medium">${showingText}</div>
+      <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center">
+        <button onclick="paginationGoto(1)" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm"${current===1?' disabled':''}>«</button>
+        <button onclick="paginationGoto(${current-1})" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all"${current===1?' disabled':''}>${prevLabel}</button>
+        <div class="flex gap-1.5 sm:gap-2">${pageNums}</div>
+        <button onclick="paginationGoto(${current+1})" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all"${current===totalPages?' disabled':''}>${nextLabel}</button>
+        <button onclick="paginationGoto(${totalPages})" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm"${current===totalPages?' disabled':''}>»</button>
+      </div>
+    </div>`;
+}
+
+function paginationGoto(page) {
+  if (page < 1) return;
+  paginationCurrentPage = page;
+  if (allArticleRows.length > 0) {
+    renderDynamicPage(page);
+  } else {
+    renderStaticPage(page);
+  }
+}
+
+function renderStaticPage(page) {
+  const items = document.querySelectorAll('#digest-feed .digest-item');
+  if (!items.length) return;
+  const start = (page - 1) * ARTICLES_PER_PAGE;
+  const end = start + ARTICLES_PER_PAGE;
+  items.forEach((item, i) => { item.style.display = (i >= start && i < end) ? '' : 'none'; });
+  renderPaginationWidget(items.length, page);
+}
+
+function initStaticPagination() {
+  if (window.IS_SPOKE_PAGE) return;
+  const items = document.querySelectorAll('#digest-feed .digest-item');
+  if (!items.length || items.length <= ARTICLES_PER_PAGE) return;
+  renderStaticPage(1);
+}
+
 // ─── Dynamic Fetching ────────────────────────────────────────────────────────
 
 let stateFromDate = '';
@@ -294,135 +363,135 @@ async function fetchDynamicFeed() {
     
     if (!rows || rows.length === 0) {
       mainEl.innerHTML = `<div class="text-center py-10 text-gray-400 font-bold text-lg">${langDict.noSummaries || 'No summaries found for this date range.'}</div>`;
+      allArticleRows = [];
+      renderPaginationWidget(0, 1);
       return;
     }
 
-    let html = '';
-    let currentLang = getCurrentPathLang();
-    const isRtl = currentLang === 'ar';
+    allArticleRows = rows;
+    paginationCurrentPage = 1;
+    renderDynamicPage(1);
 
-    // Add summary toolbar
-    html += `
+  } catch (e) {
+    console.error(e);
+    mainEl.innerHTML = `<div class="text-center py-10 text-red-400 font-bold text-lg">Error loading summaries.</div>`;
+  } finally {
+    fetchBtn.disabled = false;
+    fetchBtn.style.opacity = '1';
+  }
+}
+
+function renderDynamicPage(page) {
+  const mainEl = document.getElementById('digest-feed');
+  if (!mainEl || !allArticleRows.length) return;
+
+  let currentLang = getCurrentPathLang();
+  const isRtl = currentLang === 'ar';
+  const start = (page - 1) * ARTICLES_PER_PAGE;
+  const end = start + ARTICLES_PER_PAGE;
+  const pageRows = allArticleRows.slice(start, end);
+
+  let html = `
     <div class="summary-toolbar">
       <div class="summary-toolbar-left">
-        <span class="articles-count">📰 <span id="articlesCount">${rows.length}</span> ${langDict.articles || 'Articles'}</span>
+        <span class="articles-count">📰 <span id="articlesCount">${allArticleRows.length}</span> ${langDict.articles || 'Articles'}</span>
       </div>
       <button id="toggleAllBtn" class="toggle-all-btn" onclick="toggleAllArticles()">
         ${langDict.expandAll || 'Expand All'} ▼
       </button>
     </div>`;
 
-    for (let i = 0; i < rows.length; i++) {
-      const row = rows[i];
-      const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
-      const article = getArticleForLang(articles, currentLang);
-      
-      if (!article) continue;
+  for (let i = 0; i < pageRows.length; i++) {
+    const row = pageRows[i];
+    const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
+    const article = getArticleForLang(articles, currentLang);
+    
+    if (!article) continue;
 
-      const rDate = row.summary_date;
-      const rCreatedAt = row.created_at || null;
-      const articleNumber = i + 1;
-      
-      // Format reference links to appear on separate lines with label
-      let formattedContent = article.content || '';
-      // Convert h3 to h2 to match stock digest format
-      formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
-      // First, fix all instances of double single quotes in rel attribute globally
-      formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
-      // Fix <a> tags where attribute values are wrapped in double-double-quotes (""value"")
-      // and anchor text is wrapped in ""text"" — e.g. href=""https://..."" rel=""nofollow"">""Text""</a>
-      formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
-        // Fix each attribute: attr=""value"" → attr="value"
-        const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
-        // Strip leading/trailing " or "" from anchor text
-        const fixedText = text.replace(/^"+([^]*?)"+$/g, '$1').trim();
-        return `<a ${fixedAttrs}>${fixedText}</a>`;
-      });
-      formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+((?:https?:=""\s+)?[^=]+=""\s+[^=]+=""\s+[^=]+=""(?:\s+[^=]+=""*)*)([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, urlParts, afterHref, text) => {
-        // Extract all the URL parts from the ="" attributes
-        const parts = urlParts.match(/([^=]+)=""/g) || [];
-        const url = parts.map(p => p.replace(/=""$/, '').replace(/''$/, '').replace(/""$/, '').trim()).join('');
+    const rDate = row.summary_date;
+    const rCreatedAt = row.created_at || null;
+    const articleNumber = start + i + 1;
+    
+    // Format reference links to appear on separate lines with label
+    let formattedContent = article.content || '';
+    // Convert h3 to h2 to match stock digest format
+    formattedContent = formattedContent.replace(/<h3>/g, '<h2>').replace(/<\/h3>/g, '</h2>');
+    // First, fix all instances of double single quotes in rel attribute globally
+    formattedContent = formattedContent.replace(/rel=''nofollow''/g, 'rel="nofollow"');
+    // Fix <a> tags where attribute values are wrapped in double-double-quotes
+    formattedContent = formattedContent.replace(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi, (match, attrs, text) => {
+      const fixedAttrs = attrs.replace(/(\w[\w-]*)=""([^"]*)""/g, '$1="$2"');
+      const fixedText = text.replace(/^"+([^]*?)"+$/g, '$1').trim();
+      return `<a ${fixedAttrs}>${fixedText}</a>`;
+    });
+    formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+((?:https?:=""\s+)?[^=]+=""\s+[^=]+=""\s+[^=]+=""(?:\s+[^=]+=""*)*)([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, urlParts, afterHref, text) => {
+      const parts = urlParts.match(/([^=]+)=""/g) || [];
+      const url = parts.map(p => p.replace(/=""$/, '').replace(/''$/, '').replace(/""$/, '').trim()).join('');
+      const allAttrs = (beforeHref + ' ' + afterHref).trim();
+      return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+    });
+    formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+https:=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, domain, path1, path2, path3, afterHref, text) => {
+      const url = `https://${domain}${path1}${path2}${path3}`.replace(/''$/g, '').replace(/""$/g, '').trim();
+      const allAttrs = (beforeHref + ' ' + afterHref).trim();
+      return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+    });
+    formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+https:=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, domain, path1, path2, path3, path4, afterHref, text) => {
+      const url = `https://${domain}${path1}${path2}${path3}${path4}`.replace(/''$/g, '').replace(/""$/g, '').trim();
+      const allAttrs = (beforeHref + ' ' + afterHref).trim();
+      return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+    });
+    formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=''([^'']+)''([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+      const allAttrs = (beforeHref + ' ' + afterHref).trim();
+      return `<a href="${hrefValue}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
+    });
+    formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=['"]([^'"]*?)['"]([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+      if (hrefValue.includes(',')) {
+        const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
         const allAttrs = (beforeHref + ' ' + afterHref).trim();
-        return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
-      });
-      // Fix <a> tags with href="" and URL split into multiple ="" attributes (4 parts)
-      formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+https:=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, domain, path1, path2, path3, afterHref, text) => {
-        const url = `https://${domain}${path1}${path2}${path3}`.replace(/''$/g, '').replace(/""$/g, '').trim();
+        return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
+      }
+      return match;
+    });
+    formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=''([^'']*?)''([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+      if (hrefValue.includes(',')) {
+        const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
         const allAttrs = (beforeHref + ' ' + afterHref).trim();
-        return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
-      });
-      // Fix <a> tags with href="" and URL split into multiple ="" attributes (5 parts)
-      formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""\s+https:=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^=]+)=""\s+([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, domain, path1, path2, path3, path4, afterHref, text) => {
-        const url = `https://${domain}${path1}${path2}${path3}${path4}`.replace(/''$/g, '').replace(/""$/g, '').trim();
+        return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
+      }
+      return match;
+    });
+    formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""([^"]*?)""([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
+      if (hrefValue.includes(',')) {
+        const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
         const allAttrs = (beforeHref + ' ' + afterHref).trim();
-        return `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
-      });
-      // Fix <a> tags with href wrapped in double single quotes (''url'')
-      formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=''([^'']+)''([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
-        const allAttrs = (beforeHref + ' ' + afterHref).trim();
-        return `<a href="${hrefValue}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`;
-      });
-      // First, fix <a> tags with comma-separated URLs in href attribute
-      formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=['"]([^'"]*?)['"]([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
-        if (hrefValue.includes(',')) {
-          const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
-          const allAttrs = (beforeHref + ' ' + afterHref).trim();
-          return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
-        }
-        return match;
-      });
-      // Handle the specific case with double single quotes (''href='')
-      formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=''([^'']*?)''([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
-        if (hrefValue.includes(',')) {
-          const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
-          const allAttrs = (beforeHref + ' ' + afterHref).trim();
-          return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
-        }
-        return match;
-      });
-      // Handle the case with double double quotes (""href="")
-      formattedContent = formattedContent.replace(/<a\s+([^>]*?)href=""([^"]*?)""([^>]*?)>([^<]*?)<\/a>/gi, (match, beforeHref, hrefValue, afterHref, text) => {
-        if (hrefValue.includes(',')) {
-          const urls = hrefValue.split(',').map(u => u.trim()).filter(u => u);
-          const allAttrs = (beforeHref + ' ' + afterHref).trim();
-          return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
-        }
-        return match;
-      });
-      // Handle reference links in <p> tags format
-      formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|数据参考|參考資料|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|データ参照|データ出典|参考文献|Reference data sources|Reference data source)[^<]*[:：]\s*)([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
-        // Extract all links and put each on a new line
-        const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
-        const formattedLinks = linkMatches.map(link => {
-          // Add target="_blank" if not already present
-          if (!link.includes('target=')) {
-            return link.replace('<a', '<a target="_blank"');
-          }
-          return link;
-        }).join('<br>');
-        return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
-      });
-      // Handle inline reference links format (comma-separated)
-      formattedContent = formattedContent.replace(/(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|참고 자료 출처|数据参考|參考資料|參考資料來源|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|مصدر البيانات المرجعية|データ参照|データ出典|参考文献|参考データソース|Reference data sources|Reference data source)[:：]\s*((?:<a[^>]*>.*?<\/a>(?:\s*,\s*)?)+)/gi, (match, links) => {
-        // Extract the label from the match
-        const labelMatch = match.match(/(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|참고 자료 출처|数据参考|參考資料|參考資料來源|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|مصدر البيانات المرجعية|データ参照|データ出典|参考文献|参考データソース|Reference data sources|Reference data source)[:：]/i);
-        const label = labelMatch ? labelMatch[0] : 'Nguồn dữ liệu tham khảo:';
-        // Extract all links and put each on a new line
-        const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
-        const formattedLinks = linkMatches.map(link => {
-          // Add target="_blank" if not already present
-          if (!link.includes('target=')) {
-            return link.replace('<a', '<a target="_blank"');
-          }
-          return link;
-        }).join('<br>');
-        return `<p><strong>${label} </strong><br>${formattedLinks}</p>`;
-      });
-      formattedContent = normalizeReferenceLinks(formattedContent);
+        return urls.map(url => `<a href="${url}"${allAttrs ? ' ' + allAttrs : ''}>${text}</a>`).join('<br>');
+      }
+      return match;
+    });
+    formattedContent = formattedContent.replace(/<p>([^<]*?(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|数据参考|參考資料|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|データ参照|データ出典|参考文献|Reference data sources|Reference data source)[^<]*[:::]\s*)([^<]*(?:<a[^>]*>.*?<\/a>[^<]*)*)<\/p>/gi, (match, label, links) => {
+      const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
+      const formattedLinks = linkMatches.map(link => {
+        if (!link.includes('target=')) return link.replace('<a', '<a target="_blank"');
+        return link;
+      }).join('<br>');
+      return `<p><strong>${label}</strong><br>${formattedLinks}</p>`;
+    });
+    formattedContent = formattedContent.replace(/(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|참고 자료 출체|数据参考|參考資料|參考資料來源|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|مصدر البيانات المرجعية|データ参照|データ出典|參考文献|参考データソース|Reference data sources|Reference data source)[:::]\s*((?:<a[^>]*>.*?<\/a>(?:\s*,\s*)?)+)/gi, (match, links) => {
+      const labelMatch = match.match(/(?:Nguồn dữ liệu tham khảo|Data references|데이터 참고|참고 자료|참고 자료 출체|数据参考|參考資料|參考資料來源|ข้อมูลอ้างอิง|แหล่งข้อมูลอ้างอิง|مصادر البيانات|المراجع|مصدر البيانات المرجعية|データ参照|データ出典|參考文献|参考データソース|Reference data sources|Reference data source)[:::]/i);
+      const label = labelMatch ? labelMatch[0] : 'Nguồn dữ liệu tham khảo:';
+      const linkMatches = links.match(/<a[^>]*>.*?<\/a>/g) || [];
+      const formattedLinks = linkMatches.map(link => {
+        if (!link.includes('target=')) return link.replace('<a', '<a target="_blank"');
+        return link;
+      }).join('<br>');
+      return `<p><strong>${label} </strong><br>${formattedLinks}</p>`;
+    });
+    formattedContent = normalizeReferenceLinks(formattedContent);
 
-      let absoluteSpokeUrl = buildArticleSpokeUrl(article.article_url, currentLang, rDate);
+    let absoluteSpokeUrl = buildArticleSpokeUrl(article.article_url, currentLang, rDate);
 
-      html += `
+    html += `
+      <div class="digest-item">
       <article class="collapsed" ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
         <div class="article-number">${articleNumber}</div>
         <div class="article-header">
@@ -457,33 +526,28 @@ async function fetchDynamicFeed() {
         <span class="article-chevron">▼</span>
       </article>
       <hr class="border-gray-800 my-8">
+      </div>
       `;
-    }
-
-    mainEl.innerHTML = html;
-
-    // Attach click event listeners to article headers and chevrons
-    document.querySelectorAll('#digest-feed article').forEach(article => {
-      const header = article.querySelector('.article-header');
-      const chevron = article.querySelector('.article-chevron');
-      
-      const handleToggle = (e) => {
-        // Don't toggle if clicking copy button
-        if (e.target.closest('.copy-link-btn')) return;
-        toggleArticle(article);
-      };
-      
-      if (header) header.addEventListener('click', handleToggle);
-      if (chevron) chevron.addEventListener('click', handleToggle);
-    });
-
-  } catch (e) {
-    console.error(e);
-    mainEl.innerHTML = `<div class="text-center py-10 text-red-400 font-bold text-lg">Error loading summaries.</div>`;
-  } finally {
-    fetchBtn.disabled = false;
-    fetchBtn.style.opacity = '1';
   }
+
+  mainEl.innerHTML = html;
+
+  // Attach click event listeners to article headers and chevrons
+  document.querySelectorAll('#digest-feed article').forEach(article => {
+    const header = article.querySelector('.article-header');
+    const chevron = article.querySelector('.article-chevron');
+    
+    const handleToggle = (e) => {
+      // Don't toggle if clicking copy button
+      if (e.target.closest('.copy-link-btn')) return;
+      toggleArticle(article);
+    };
+    
+    if (header) header.addEventListener('click', handleToggle);
+    if (chevron) chevron.addEventListener('click', handleToggle);
+  });
+
+  renderPaginationWidget(allArticleRows.length, page);
 }
 
 // ─── Initialization ──────────────────────────────────────────────────────────
@@ -575,6 +639,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 10);
     }
   }
+
+  // Initialize static pagination (for SSG articles before dynamic fetch kicks in)
+  initStaticPagination();
 });
 
 // ─── Scroll To Top/Bottom Functions ───────────────────────────────────────────

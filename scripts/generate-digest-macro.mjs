@@ -603,6 +603,7 @@ ${LANG_MENU_CSS}
         const isLatest = (item === articlesList[0]);
         
         return `
+      <div class="digest-item">
       <article class="collapsed"${isRtl ? ' dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
         <div class="article-number">${articleNumber}</div>
         <div class="article-header">
@@ -638,6 +639,7 @@ ${LANG_MENU_CSS}
         <span class="article-chevron">▼</span>
       </article>
       <hr class="border-gray-800 my-8">
+      </div>
       `;
       }).join('')}
 
@@ -658,6 +660,8 @@ ${LANG_MENU_CSS}
         </div>
       </section>` : ''}
     </main>
+
+    <div id="paginationContainer" class="max-w-[1440px] mx-auto mt-2"></div>
 
   </div>
 
@@ -976,6 +980,8 @@ ${LANG_MENU_CSS}
         <div class="digest-body">${formattedContent}</div>
       </article>
     </main>
+
+    <div id="paginationContainer" class="max-w-[1440px] mx-auto mt-2"></div>
 
   </div>
 
