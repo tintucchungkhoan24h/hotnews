@@ -1011,6 +1011,8 @@ ${LANG_MENU_CSS}
       </article>
     </main>
 
+    <div id="paginationContainer" class="max-w-[1440px] mx-auto mt-2"></div>
+
   </div>
 
   <!-- FOOTER -->
