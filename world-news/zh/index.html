@@ -1134,6 +1134,57 @@ article.expanded .digest-body {
   }
 }
 
+/* Scroll To Top/Bottom Buttons */
+.scroll-buttons-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+}
+
+.scroll-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #112240;
+  border: 1px solid #374151;
+  color: #ffd700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-btn:hover {
+  background: #1e3a5f;
+  border-color: #ffd700;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.2);
+}
+
+.scroll-btn:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 640px) {
+  .scroll-buttons-container {
+    bottom: 16px;
+    right: 16px;
+    gap: 8px;
+  }
+  .scroll-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
   </style>
 </head>
 <body class="bg-fin-blue min-h-screen">
@@ -3440,6 +3491,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+// ─── Scroll To Top/Bottom Functions ───────────────────────────────────────────
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function scrollToBottom() {
+  const footer = document.querySelector('footer, #footer-container') || document.body.lastElementChild;
+  const scrollTarget = footer ? footer.offsetTop - 100 : document.body.scrollHeight - 100;
+  window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+}
+
+// Add scroll buttons to DOM
+(function() {
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check if buttons already exist to avoid duplicates
+    if (document.querySelector('.scroll-buttons-container')) return;
+    
+    const scrollButtonsContainer = document.createElement('div');
+    scrollButtonsContainer.className = 'scroll-buttons-container';
+    
+    const scrollTopBtn = document.createElement('button');
+    scrollTopBtn.className = 'scroll-btn';
+    scrollTopBtn.innerHTML = '↑';
+    scrollTopBtn.addEventListener('click', scrollToTop);
+    scrollTopBtn.setAttribute('title', 'Scroll to top');
+    
+    const scrollBottomBtn = document.createElement('button');
+    scrollBottomBtn.className = 'scroll-btn';
+    scrollBottomBtn.innerHTML = '↓';
+    scrollBottomBtn.addEventListener('click', scrollToBottom);
+    scrollBottomBtn.setAttribute('title', 'Scroll to bottom');
+    
+    scrollButtonsContainer.appendChild(scrollTopBtn);
+    scrollButtonsContainer.appendChild(scrollBottomBtn);
+    document.body.appendChild(scrollButtonsContainer);
+  });
+})();
 
 
 
