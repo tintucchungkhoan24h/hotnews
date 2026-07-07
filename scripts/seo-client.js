@@ -315,6 +315,7 @@ function paginationGoto(page) {
   } else {
     renderStaticPage(page);
   }
+  setTimeout(() => scrollToBottom(), 50);
 }
 
 function renderStaticPage(page) {
