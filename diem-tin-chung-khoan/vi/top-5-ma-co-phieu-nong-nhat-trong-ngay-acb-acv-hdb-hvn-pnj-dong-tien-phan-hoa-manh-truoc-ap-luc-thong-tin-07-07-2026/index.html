@@ -1959,11 +1959,11 @@ function updateToggleAllButton() {
     return;
   }
 
-  const allExpanded = Array.from(articles).every(article => article.classList.contains('expanded'));
-  if (allExpanded) {
-    toggleBtn.textContent = (langDict.collapseAll || 'Collapse All') + ' ▲';
-  } else {
+  const allCollapsed = Array.from(articles).every(article => article.classList.contains('collapsed'));
+  if (allCollapsed) {
     toggleBtn.textContent = (langDict.expandAll || 'Expand All') + ' ▼';
+  } else {
+    toggleBtn.textContent = (langDict.collapseAll || 'Collapse All') + ' ▲';
   }
 }
 
