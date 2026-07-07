@@ -2962,12 +2962,23 @@ function setPickerMode(id, mode) {
 // Toggle article expansion
 function toggleArticle(articleEl) {
   const isCollapsed = articleEl.classList.contains('collapsed');
+  const articleRect = articleEl.getBoundingClientRect();
+  const scrollTopBefore = window.scrollY;
+  
   if (isCollapsed) {
+    // Save the current scroll position related to this article
+    articleEl._savedScrollPosition = scrollTopBefore;
     articleEl.classList.remove('collapsed');
     articleEl.classList.add('expanded');
   } else {
     articleEl.classList.remove('expanded');
     articleEl.classList.add('collapsed');
+    // Restore the scroll position after a short delay to let the layout update
+    setTimeout(() => {
+      if (articleEl._savedScrollPosition !== undefined) {
+        window.scrollTo({ top: articleEl._savedScrollPosition, behavior: 'smooth' });
+      }
+    }, 50);
   }
   updateToggleAllButton();
 }
