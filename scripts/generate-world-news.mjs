@@ -507,7 +507,17 @@ ${LANG_MENU_CSS}
 
     <!-- MAIN ARTICLE FEED -->
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
-      ${articlesList.map(item => {
+      <!-- Summary Toolbar -->
+      <div class="summary-toolbar">
+        <div class="summary-toolbar-left">
+          <span class="articles-count">📊 <span id="articlesCount">${articlesList.length}</span> ${currentI18n.articles || 'Articles'}</span>
+        </div>
+        <button id="toggleAllBtn" class="toggle-all-btn" onclick="toggleAllArticles()">
+          ${currentI18n.expandAll || 'Expand All'} ▼
+        </button>
+      </div>
+
+      ${articlesList.map((item, index) => {
         // Format reference links to appear on separate lines with label
         let formattedContent = item.article.content || '';
         // Convert h3 to h2 to match stock digest format
@@ -617,42 +627,47 @@ ${LANG_MENU_CSS}
         });
         formattedContent = normalizeReferenceLinks(formattedContent);
         
-        
+        const articleNumber = index + 1;
         const fallbackSpokeUrl = `${SITE_BASE}/world-news/${lang}/${parseDateToDDMMYYYY(item.date)}`;
         const absoluteSpokeUrl = absoluteArticleUrl(item.article.article_url, fallbackSpokeUrl);
         const isLatest = (item === articlesList[0]);
         
         return `
-        <article${isRtl ? ' dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
-          <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
-            ${item.article.title}
-          </h1>
-          <div class="article-meta">
-            <span class="highlight">📅 ${isoToHumanWithTime(item.date, item.createdAt)}</span>
-            <span>•</span>
-            <span>${item.article.langEmoji || ''} ${item.article.langName || lang.toUpperCase()}</span>
-            <span>•</span>
-            <span>${SITE_NAME}</span>
-            ${isLatest ? `<span class="spoke-badge">${currentI18n.todayBadge || '★ Today'}</span>` : ''}
+      <article class="collapsed"${isRtl ? ' dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
+        <div class="article-number">${articleNumber}</div>
+        <div class="article-header">
+          <div class="article-header-left">
+            <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
+              ${item.article.title}
+            </h1>
+            <div class="article-meta">
+              <span class="highlight">📅 ${isoToHumanWithTime(item.date, item.createdAt)}</span>
+              <span>•</span>
+              <span>${item.article.langEmoji || ''} ${item.article.langName || lang.toUpperCase()}</span>
+              <span>•</span>
+              <span>${SITE_NAME}</span>
+              ${isLatest ? `<span class="spoke-badge">${currentI18n.todayBadge || '★ Today'}</span>` : ''}
+            </div>
+            <div class="article-actions">
+              <button class="copy-link-btn" data-spoke-url="${absoluteSpokeUrl}" onclick="copyArticleLink(this)" title="${currentI18n.copyLink || 'Copy link'}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
+                </svg>
+                <span class="btn-label">${currentI18n.copyLink || 'Copy link'}</span>
+              </button>
+            </div>
+            <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${item.article.lead}</div>
           </div>
-          <div class="article-actions">
-            <button class="copy-link-btn" data-spoke-url="${absoluteSpokeUrl}" onclick="copyArticleLink(this)" title="${currentI18n.copyLink || 'Copy link'}">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2"/>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 0 2 2v1"/>
-              </svg>
-              <span class="btn-label">${currentI18n.copyLink || 'Copy link'}</span>
-            </button>
-          </div>
-          ${item.article.article_photo_url ? `
-          <div class="article-photo" style="margin-bottom: 24px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); max-width: 800px; margin-left: auto; margin-right: auto;">
-            <img src="${item.article.article_photo_url}" alt="${item.article.title.replace(/"/g, '&quot;')}" style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 500px;">
-          </div>` : ''}
-
-          <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${item.article.lead}</div>
-          <div class="digest-body">${formattedContent}</div>
-        </article>
-        <hr class="border-gray-800 my-8">
+        </div>
+        ${item.article.article_photo_url ? `
+        <div class="article-photo" style="margin-bottom: 24px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); max-width: 800px; margin-left: auto; margin-right: auto;">
+          <img src="${item.article.article_photo_url}" alt="${item.article.title.replace(/"/g, '&quot;')}" style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 500px;">
+        </div>` : ''}
+        <div class="digest-body">${formattedContent}</div>
+        <span class="article-chevron">▼</span>
+      </article>
+      <hr class="border-gray-800 my-8">
       `;
       }).join('')}
 

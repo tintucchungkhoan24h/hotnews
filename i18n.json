@@ -303,7 +303,10 @@
       "todayBadge": "★ Hôm nay",
       "archiveTitle": "Kho lưu trữ điểm tin",
       "archiveCount": "{count} bài",
-      "archiveViewArticle": "→ Xem bài viết"
+      "archiveViewArticle": "→ Xem bài viết",
+      "articles": "Bài viết",
+      "expandAll": "Mở rộng tất cả",
+      "collapseAll": "Thu gọn tất cả"
     },
     "en": {
       "title": "24H STOCK MARKET NEWS",
@@ -525,7 +528,10 @@
       "todayBadge": "★ Today",
       "archiveTitle": "News Archive",
       "archiveCount": "{count} articles",
-      "archiveViewArticle": "→ View article"
+      "archiveViewArticle": "→ View article",
+      "articles": "Articles",
+      "expandAll": "Expand All",
+      "collapseAll": "Collapse All"
     },
     "ko": {
       "title": "24시간 증시 뉴스",
@@ -747,7 +753,10 @@
       "todayBadge": "★ 오늘",
       "archiveTitle": "뉴스 아카이브",
       "archiveCount": "{count}개 기사",
-      "archiveViewArticle": "→ 기사 보기"
+      "archiveViewArticle": "→ 기사 보기",
+      "articles": "기사",
+      "expandAll": "모두 펼치기",
+      "collapseAll": "모두 접기"
     },
     "zh": {
       "title": "24小時股市新聞",
@@ -969,7 +978,10 @@
       "todayBadge": "★ 今天",
       "archiveTitle": "新聞存檔",
       "archiveCount": "{count} 篇文章",
-      "archiveViewArticle": "→ 查看文章"
+      "archiveViewArticle": "→ 查看文章",
+      "articles": "文章",
+      "expandAll": "展開全部",
+      "collapseAll": "收起全部"
     },
     "th": {
       "title": "ข่าวหุ้น 24 ชั่วโมง",
@@ -1189,7 +1201,10 @@
       "todayBadge": "★ วันนี้",
       "archiveTitle": "คลังข่าว",
       "archiveCount": "{count} บทความ",
-      "archiveViewArticle": "→ ดูบทความ"
+      "archiveViewArticle": "→ ดูบทความ",
+      "articles": "บทความ",
+      "expandAll": "เปิดทั้งหมด",
+      "collapseAll": "ย่อทั้งหมด"
     },
     "ar": {
       "title": "أخبار سوق الأسهم على مدار 24 ساعة",
@@ -1409,7 +1424,10 @@
       "todayBadge": "★ اليوم",
       "archiveTitle": "أرشيف الأخبار",
       "archiveCount": "{count} مقال",
-      "archiveViewArticle": "→ عرض المقال"
+      "archiveViewArticle": "→ عرض المقال",
+      "articles": "مقالات",
+      "expandAll": "توسيع الكل",
+      "collapseAll": "طي الكل"
     },
     "ja": {
       "title": "株式市場ニュース24時間",
@@ -1629,7 +1647,10 @@
       "todayBadge": "★ 今日",
       "archiveTitle": "ニュースアーカイブ",
       "archiveCount": "{count} 記事",
-      "archiveViewArticle": "→ 記事を見る"
+      "archiveViewArticle": "→ 記事を見る",
+      "articles": "記事",
+      "expandAll": "すべて展開",
+      "collapseAll": "すべて折りたたむ"
     }
   }
 }
