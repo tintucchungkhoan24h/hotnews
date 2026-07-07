@@ -310,12 +310,23 @@ function renderPaginationWidget(total, current) {
 function paginationGoto(page) {
   if (page < 1) return;
   paginationCurrentPage = page;
+  
+  const container = document.getElementById('paginationContainer');
+  let rectBefore = null;
+  if (container) {
+    rectBefore = container.getBoundingClientRect();
+  }
+  
   if (allArticleRows.length > 0) {
     renderDynamicPage(page);
   } else {
     renderStaticPage(page);
   }
-  setTimeout(() => scrollToBottom(), 50);
+  
+  if (container && rectBefore) {
+    const rectAfter = container.getBoundingClientRect();
+    window.scrollBy(0, rectAfter.top - rectBefore.top);
+  }
 }
 
 function renderStaticPage(page) {
