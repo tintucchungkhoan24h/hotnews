@@ -3586,9 +3586,15 @@ function scrollToTop() {
 }
 
 function scrollToBottom() {
-  const footer = document.querySelector('footer, #footer-container') || document.body.lastElementChild;
-  const scrollTarget = footer ? footer.offsetTop - 100 : document.body.scrollHeight - 100;
-  window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+  const footer = document.querySelector('footer, #footer-container');
+  if (footer) {
+    const footerRect = footer.getBoundingClientRect();
+    const scrollTarget = window.scrollY + footerRect.top - window.innerHeight + 100; // 100px above footer
+    window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+  } else {
+    // Fallback if no footer found
+    window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'smooth' });
+  }
 }
 
 // Add scroll buttons to DOM
