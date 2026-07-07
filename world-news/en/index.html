@@ -3161,10 +3161,10 @@ function createPicker(id, onChange) {
   if (!inputEl || !popupEl) return null;
 
   const today = getGMT7Date();
-  const picker = { 
-    inputEl, popupEl, value: null, 
-    viewYear: today.getFullYear(), viewMonth: today.getMonth(), 
-    mode: 'day', min: null, max: null, onChange 
+  const picker = {
+    inputEl, popupEl, value: null,
+    viewYear: today.getFullYear(), viewMonth: today.getMonth(),
+    mode: 'day', min: null, max: null, onChange
   };
   pickers[id] = picker;
 
@@ -3196,15 +3196,15 @@ document.addEventListener('click', () => {
 function renderPicker(id) {
   const picker = pickers[id];
   const loc = langDict.datepicker || {
-    months: ["1","2","3","4","5","6","7","8","9","10","11","12"],
-    days: ["Mo","Tu","We","Th","Fr","Sa","Su"]
+    months: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    days: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
   };
-  
+
   const { viewYear, viewMonth, value, min, max } = picker;
   const today = getGMT7Date();
   const firstDay = createGMT7Date(viewYear, viewMonth, 1);
-  let startDow = firstDay.getDay(); 
-  startDow = (startDow === 0) ? 6 : startDow - 1; 
+  let startDow = firstDay.getDay();
+  startDow = (startDow === 0) ? 6 : startDow - 1;
 
   const daysInMonth = new Date(Date.UTC(viewYear, viewMonth + 1, 0, -7)).getDate();
   const todayIso = dateToIso(today);
@@ -3222,13 +3222,13 @@ function renderPicker(id) {
     <div class="dp-grid">`;
     loc.days.forEach(d => { html += `<div class="dp-day-name">${d}</div>`; });
     for (let i = 0; i < startDow; i++) { html += `<div class="dp-day empty"></div>`; }
-    
+
     for (let d = 1; d <= daysInMonth; d++) {
       const currentIso = dateToIso(createGMT7Date(viewYear, viewMonth, d));
       let classes = ['dp-day'];
       if (currentIso === todayIso) classes.push('today');
       if (currentIso === valIso) classes.push('selected');
-      
+
       let disabled = false;
       if (minIso && currentIso < minIso) disabled = true;
       if (maxIso && currentIso > maxIso) disabled = true;
@@ -3272,7 +3272,7 @@ function setPickerMode(id, mode) {
 // Toggle article expansion
 function toggleArticle(articleEl) {
   const isCollapsed = articleEl.classList.contains('collapsed');
-  
+
   if (isCollapsed) {
     articleEl.classList.remove('collapsed');
     articleEl.classList.add('expanded');
@@ -3357,11 +3357,11 @@ function renderPaginationWidget(total, current) {
   container.innerHTML = `<div class="p-3 sm:p-5 border-t border-gray-800 bg-gray-800/20 flex flex-col sm:flex-row justify-between items-center gap-3">
       <div class="text-xs text-gray-500 font-medium">${showingText}</div>
       <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center">
-        <button onclick="paginationGoto(1)" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm"${current===1?' disabled':''}>«</button>
-        <button onclick="paginationGoto(${current-1})" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all"${current===1?' disabled':''}>${prevLabel}</button>
+        <button onclick="paginationGoto(1)" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm"${current === 1 ? ' disabled' : ''}>«</button>
+        <button onclick="paginationGoto(${current - 1})" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all"${current === 1 ? ' disabled' : ''}>${prevLabel}</button>
         <div class="flex gap-1.5 sm:gap-2">${pageNums}</div>
-        <button onclick="paginationGoto(${current+1})" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all"${current===totalPages?' disabled':''}>${nextLabel}</button>
-        <button onclick="paginationGoto(${totalPages})" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm"${current===totalPages?' disabled':''}>»</button>
+        <button onclick="paginationGoto(${current + 1})" class="px-3 sm:px-4 h-8 sm:h-9 bg-gray-800 border border-gray-700 rounded-lg text-xs font-bold hover:bg-gray-700 disabled:opacity-30 transition-all"${current === totalPages ? ' disabled' : ''}>${nextLabel}</button>
+        <button onclick="paginationGoto(${totalPages})" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 disabled:opacity-30 transition-all text-sm"${current === totalPages ? ' disabled' : ''}>»</button>
       </div>
     </div>`;
 }
@@ -3369,10 +3369,41 @@ function renderPaginationWidget(total, current) {
 function paginationGoto(page) {
   if (page < 1) return;
   paginationCurrentPage = page;
+
+  const container = document.getElementById('paginationContainer');
+  let rectBefore = null;
+  if (container) {
+    rectBefore = container.getBoundingClientRect();
+  }
+
+  let isShortPage = false;
+  if (allArticleRows.length > 0) {
+    const remaining = allArticleRows.length - (page - 1) * ARTICLES_PER_PAGE;
+    isShortPage = remaining > 0 && remaining < ARTICLES_PER_PAGE;
+  } else {
+    const items = document.querySelectorAll('#digest-feed .digest-item');
+    const remaining = items.length - (page - 1) * ARTICLES_PER_PAGE;
+    isShortPage = remaining > 0 && remaining < ARTICLES_PER_PAGE;
+  }
+
   if (allArticleRows.length > 0) {
     renderDynamicPage(page);
   } else {
     renderStaticPage(page);
+  }
+
+  if (isShortPage) {
+    const footer = document.querySelector('footer, #footer-container');
+    if (footer) {
+      const footerRect = footer.getBoundingClientRect();
+      const scrollTarget = window.scrollY + footerRect.top - window.innerHeight + 100;
+      window.scrollTo({ top: scrollTarget, behavior: 'auto' });
+    } else {
+      window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+    }
+  } else if (container && rectBefore) {
+    const rectAfter = container.getBoundingClientRect();
+    window.scrollBy(0, rectAfter.top - rectBefore.top);
   }
 }
 
@@ -3400,9 +3431,9 @@ let stateToDate = '';
 async function fetchDynamicFeed() {
   const mainEl = document.getElementById('digest-feed');
   const fetchBtn = document.getElementById('fetchFeedBtn');
-  
+
   if (!stateFromDate || !stateToDate) return;
-  
+
   // UI Loading state
   fetchBtn.disabled = true;
   fetchBtn.style.opacity = '0.5';
@@ -3416,10 +3447,10 @@ async function fetchDynamicFeed() {
         'Authorization': `Bearer ${window.SUPABASE_ANON_KEY}`
       }
     });
-    
+
     if (!res.ok) throw new Error('Failed to fetch data');
     const rows = await res.json();
-    
+
     if (!rows || rows.length === 0) {
       mainEl.innerHTML = `<div class="text-center py-10 text-gray-400 font-bold text-lg">${langDict.noSummaries || 'No summaries found for this date range.'}</div>`;
       allArticleRows = [];
@@ -3464,13 +3495,13 @@ function renderDynamicPage(page) {
     const row = pageRows[i];
     const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
     const article = getArticleForLang(articles, currentLang);
-    
+
     if (!article) continue;
 
     const rDate = row.summary_date;
     const rCreatedAt = row.created_at || null;
     const articleNumber = start + i + 1;
-    
+
     // Format reference links to appear on separate lines with label
     let formattedContent = article.content || '';
     // Convert h3 to h2 to match stock digest format
@@ -3595,13 +3626,13 @@ function renderDynamicPage(page) {
   document.querySelectorAll('#digest-feed article').forEach(article => {
     const header = article.querySelector('.article-header');
     const chevron = article.querySelector('.article-chevron');
-    
+
     const handleToggle = (e) => {
       // Don't toggle if clicking copy button
       if (e.target.closest('.copy-link-btn')) return;
       toggleArticle(article);
     };
-    
+
     if (header) header.addEventListener('click', handleToggle);
     if (chevron) chevron.addEventListener('click', handleToggle);
   });
@@ -3615,11 +3646,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const today = getGMT7Date();
   const past7 = new Date(today);
   past7.setDate(today.getDate() - 7);
-  
+
   // Remove 30-day limit - allow unlimited past date selection
   const minDateObj = new Date('2020-01-01');
   const maxDateObj = today;
-  
+
   stateFromDate = dateToIso(past7);
   stateToDate = dateToIso(today);
 
@@ -3635,7 +3666,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
-  
+
   const pTo = createPicker('seoToDate', (iso) => {
     stateToDate = iso;
     if (pickers['seoFromDate']) {
@@ -3652,13 +3683,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
       const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
       pFrom.value = spokeDate;
-      pFrom.viewYear  = spokeDate.getFullYear();
+      pFrom.viewYear = spokeDate.getFullYear();
       pFrom.viewMonth = spokeDate.getMonth();
       stateFromDate = dateToIso(spokeDate);
       pFrom.inputEl.value = isoToDisplay(stateFromDate);
     } else {
       pFrom.value = past7;
-      pFrom.viewYear  = past7.getFullYear();
+      pFrom.viewYear = past7.getFullYear();
       pFrom.viewMonth = past7.getMonth();
       pFrom.inputEl.value = isoToDisplay(stateFromDate);
     }
@@ -3669,20 +3700,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.IS_SPOKE_PAGE && window.SPOKE_ARTICLE_DATE) {
       const spokeDate = new Date(window.SPOKE_ARTICLE_DATE);
       pTo.value = spokeDate;
-      pTo.viewYear  = spokeDate.getFullYear();
+      pTo.viewYear = spokeDate.getFullYear();
       pTo.viewMonth = spokeDate.getMonth();
       stateToDate = dateToIso(spokeDate);
       pTo.inputEl.value = isoToDisplay(stateToDate);
     } else {
       pTo.value = today;
-      pTo.viewYear  = today.getFullYear();
+      pTo.viewYear = today.getFullYear();
       pTo.viewMonth = today.getMonth();
       pTo.inputEl.value = isoToDisplay(stateToDate);
     }
     pTo.min = past7;
     pTo.max = maxDateObj;
   }
-  
+
   if (pFrom && pTo) {
     pFrom.max = pTo.value;
   }
@@ -3722,26 +3753,26 @@ function scrollToBottom() {
 }
 
 // Add scroll buttons to DOM
-(function() {
+(function () {
   document.addEventListener('DOMContentLoaded', () => {
     // Check if buttons already exist to avoid duplicates
     if (document.querySelector('.scroll-buttons-container')) return;
-    
+
     const scrollButtonsContainer = document.createElement('div');
     scrollButtonsContainer.className = 'scroll-buttons-container';
-    
+
     const scrollTopBtn = document.createElement('button');
     scrollTopBtn.className = 'scroll-btn';
     scrollTopBtn.innerHTML = '↑';
     scrollTopBtn.addEventListener('click', scrollToTop);
     scrollTopBtn.setAttribute('title', 'Scroll to top');
-    
+
     const scrollBottomBtn = document.createElement('button');
     scrollBottomBtn.className = 'scroll-btn';
     scrollBottomBtn.innerHTML = '↓';
     scrollBottomBtn.addEventListener('click', scrollToBottom);
     scrollBottomBtn.setAttribute('title', 'Scroll to bottom');
-    
+
     scrollButtonsContainer.appendChild(scrollTopBtn);
     scrollButtonsContainer.appendChild(scrollBottomBtn);
     document.body.appendChild(scrollButtonsContainer);
