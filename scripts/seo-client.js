@@ -281,8 +281,8 @@ function renderPaginationWidget(total, current) {
 
   const prevLabel = (langDict && langDict.prev) ? langDict.prev : 'Trước';
   const nextLabel = (langDict && langDict.next) ? langDict.next : 'Sau';
-  const showingTpl = (langDict && langDict.paginationShowing)
-    ? langDict.paginationShowing
+  const showingTpl = (langDict && langDict.paging)
+    ? langDict.paging
     : 'Hiển thị {start} - {end} trên tổng {total}';
   const showingText = showingTpl.replace('{start}', start).replace('{end}', end).replace('{total}', total);
 
