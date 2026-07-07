@@ -826,26 +826,36 @@ article h1 {
 }
 
 /* Article header for collapsing */
+article {
+  position: relative;
+  padding-bottom: 48px; /* Make room for chevron at bottom */
+}
+
 .article-header {
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  width: 100%;
 }
 
 .article-header-left {
-  flex: 1;
+  width: 100%;
 }
 
 .article-chevron {
-  flex-shrink: 0;
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
   transition: transform 0.25s ease;
   color: #ffd700;
   font-size: 20px;
+  cursor: pointer;
 }
 
 /* Collapsed article styles */
+article.collapsed {
+  padding-bottom: 48px;
+}
+
 article.collapsed .article-photo {
   display: none;
 }
@@ -859,7 +869,15 @@ article.collapsed .digest-body {
 }
 
 article.collapsed .article-chevron {
-  transform: rotate(-90deg);
+  transform: translateX(-50%) rotate(0deg); /* Keep pointing down when collapsed */
+}
+
+article.expanded .article-chevron {
+  transform: translateX(-50%) rotate(180deg); /* Point up when expanded */
+}
+
+article.expanded {
+  padding-bottom: 28px; /* Less padding when expanded */
 }
 
 article.expanded .digest-body {
@@ -1999,13 +2017,13 @@ async function fetchDynamicFeed() {
             </div>
             <div class="digest-lead" ${isRtl ? 'style="border-left: none; border-right: 4px solid #ffd700; border-radius: 12px 0 0 12px;"' : ''}>${article.lead}</div>
           </div>
-          <span class="article-chevron">▼</span>
         </div>
         ${article.article_photo_url ? `
         <div class="article-photo" style="margin-bottom: 24px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); max-width: 800px; margin-left: auto; margin-right: auto;">
           <img src="${article.article_photo_url}" alt="${article.title.replace(/"/g, '&quot;')}" style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 500px;">
         </div>` : ''}
         <div class="digest-body">${formattedContent}</div>
+        <span class="article-chevron">▼</span>
       </article>
       <hr class="border-gray-800 my-8">
       `;
@@ -2013,14 +2031,19 @@ async function fetchDynamicFeed() {
 
     mainEl.innerHTML = html;
 
-    // Attach click event listeners to article headers
-    document.querySelectorAll('#digest-feed article .article-header').forEach(header => {
-      header.addEventListener('click', (e) => {
+    // Attach click event listeners to article headers and chevrons
+    document.querySelectorAll('#digest-feed article').forEach(article => {
+      const header = article.querySelector('.article-header');
+      const chevron = article.querySelector('.article-chevron');
+      
+      const handleToggle = (e) => {
         // Don't toggle if clicking copy button
         if (e.target.closest('.copy-link-btn')) return;
-        const article = header.closest('article');
-        if (article) toggleArticle(article);
-      });
+        toggleArticle(article);
+      };
+      
+      if (header) header.addEventListener('click', handleToggle);
+      if (chevron) chevron.addEventListener('click', handleToggle);
     });
 
   } catch (e) {

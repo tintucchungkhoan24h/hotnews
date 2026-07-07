@@ -676,26 +676,36 @@ article h1 {
 }
 
 /* Article header for collapsing */
+article {
+  position: relative;
+  padding-bottom: 48px; /* Make room for chevron at bottom */
+}
+
 .article-header {
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  width: 100%;
 }
 
 .article-header-left {
-  flex: 1;
+  width: 100%;
 }
 
 .article-chevron {
-  flex-shrink: 0;
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
   transition: transform 0.25s ease;
   color: #ffd700;
   font-size: 20px;
+  cursor: pointer;
 }
 
 /* Collapsed article styles */
+article.collapsed {
+  padding-bottom: 48px;
+}
+
 article.collapsed .article-photo {
   display: none;
 }
@@ -709,7 +719,15 @@ article.collapsed .digest-body {
 }
 
 article.collapsed .article-chevron {
-  transform: rotate(-90deg);
+  transform: translateX(-50%) rotate(0deg); /* Keep pointing down when collapsed */
+}
+
+article.expanded .article-chevron {
+  transform: translateX(-50%) rotate(180deg); /* Point up when expanded */
+}
+
+article.expanded {
+  padding-bottom: 28px; /* Less padding when expanded */
 }
 
 article.expanded .digest-body {
