@@ -164,7 +164,9 @@ function setupSpotlightViewEventListeners() {
     if (firstBtnSpotlight) {
         firstBtnSpotlight.onclick = () => { 
             stateSpotlight.currentPage = 0; 
-            fetchSpotlightData(); 
+            const _anchor = document.getElementById('prevBtnSpotlight');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchSpotlightData().then(() => handlePaginationScrollSpotlight(_rect)); 
         };
     }
 
@@ -172,7 +174,9 @@ function setupSpotlightViewEventListeners() {
     if (prevBtnSpotlight) {
         prevBtnSpotlight.onclick = () => { 
             stateSpotlight.currentPage--; 
-            fetchSpotlightData(); 
+            const _anchor = document.getElementById('prevBtnSpotlight');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchSpotlightData().then(() => handlePaginationScrollSpotlight(_rect)); 
         };
     }
 
@@ -180,7 +184,9 @@ function setupSpotlightViewEventListeners() {
     if (nextBtnSpotlight) {
         nextBtnSpotlight.onclick = () => { 
             stateSpotlight.currentPage++; 
-            fetchSpotlightData(); 
+            const _anchor = document.getElementById('prevBtnSpotlight');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchSpotlightData().then(() => handlePaginationScrollSpotlight(_rect)); 
         };
     }
 
@@ -194,7 +200,9 @@ function setupSpotlightViewEventListeners() {
             console.log('Page size:', stateSpotlight.pageSize);
             console.log('Calculated last page:', lastPage);
             stateSpotlight.currentPage = lastPage; 
-            fetchSpotlightData(); 
+            const _anchor = document.getElementById('prevBtnSpotlight');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchSpotlightData().then(() => handlePaginationScrollSpotlight(_rect)); 
         };
     }
 }
@@ -837,7 +845,9 @@ function renderSpotlightPaginationUI() {
         pageBtn.innerText = i + 1;
         pageBtn.onclick = () => {
             stateSpotlight.currentPage = i;
-            fetchSpotlightData();
+            const _anchor = document.getElementById('prevBtnSpotlight');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchSpotlightData().then(() => handlePaginationScrollSpotlight(_rect));
         };
         pageNumbersSpotlightContainer.appendChild(pageBtn);
     }
@@ -1033,3 +1043,25 @@ window.exportSpotlightToExcel = async function exportSpotlightToExcel(btnRef) {
 // ─── Company Name Tooltip ──────────────────────────────────────────────────
 // Note: showCompanyTooltip and openTvChart are defined in coreview_stock.js and shared globally.
 
+
+
+function handlePaginationScrollSpotlight(rectBefore) {
+    const remaining = stateSpotlight.totalCount - (stateSpotlight.currentPage * stateSpotlight.pageSize);
+    const isShortPage = remaining > 0 && remaining < stateSpotlight.pageSize;
+    if (isShortPage) {
+        const footer = document.querySelector('footer, #footer-container');
+        if (footer) {
+            const footerRect = footer.getBoundingClientRect();
+            const scrollTarget = window.scrollY + footerRect.top - window.innerHeight + 100;
+            window.scrollTo({ top: scrollTarget, behavior: 'auto' });
+        } else {
+            window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+        }
+    } else if (rectBefore) {
+        const anchor = document.getElementById('prevBtnSpotlight');
+        if (anchor) {
+            const rectAfter = anchor.getBoundingClientRect();
+            window.scrollBy(0, rectAfter.top - rectBefore.top);
+        }
+    }
+}

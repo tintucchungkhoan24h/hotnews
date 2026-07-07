@@ -159,7 +159,9 @@ function setupStockViewEventListeners() {
     if (firstBtn) {
         firstBtn.onclick = () => { 
             state.currentPage = 0; 
-            fetchData(); 
+            const _anchor = document.getElementById('prevBtn');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchData().then(() => handlePaginationScroll(_rect)); 
         };
     }
 
@@ -167,7 +169,9 @@ function setupStockViewEventListeners() {
     if (prevBtn) {
         prevBtn.onclick = () => { 
             state.currentPage--; 
-            fetchData(); 
+            const _anchor = document.getElementById('prevBtn');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchData().then(() => handlePaginationScroll(_rect)); 
         };
     }
 
@@ -175,7 +179,9 @@ function setupStockViewEventListeners() {
     if (nextBtn) {
         nextBtn.onclick = () => { 
             state.currentPage++; 
-            fetchData(); 
+            const _anchor = document.getElementById('prevBtn');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchData().then(() => handlePaginationScroll(_rect)); 
         };
     }
 
@@ -189,7 +195,9 @@ function setupStockViewEventListeners() {
             console.log('Page size:', state.pageSize);
             console.log('Calculated last page:', lastPage);
             state.currentPage = lastPage; 
-            fetchData(); 
+            const _anchor = document.getElementById('prevBtn');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchData().then(() => handlePaginationScroll(_rect)); 
         };
     }
 }
@@ -860,7 +868,9 @@ function renderPaginationUI() {
         pageBtn.innerText = i + 1;
         pageBtn.onclick = () => {
             state.currentPage = i;
-            fetchData();
+            const _anchor = document.getElementById('prevBtn');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchData().then(() => handlePaginationScroll(_rect));
         };
         pageNumbersContainer.appendChild(pageBtn);
     }
@@ -869,6 +879,27 @@ function renderPaginationUI() {
     document.getElementById('prevBtn').disabled = state.currentPage === 0;
     document.getElementById('nextBtn').disabled = end >= state.totalCount;
     document.getElementById('lastBtn').disabled = end >= state.totalCount;
+}
+
+function handlePaginationScroll(rectBefore) {
+    const remaining = state.totalCount - (state.currentPage * state.pageSize);
+    const isShortPage = remaining > 0 && remaining < state.pageSize;
+    if (isShortPage) {
+        const footer = document.querySelector('footer, #footer-container');
+        if (footer) {
+            const footerRect = footer.getBoundingClientRect();
+            const scrollTarget = window.scrollY + footerRect.top - window.innerHeight + 100;
+            window.scrollTo({ top: scrollTarget, behavior: 'auto' });
+        } else {
+            window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+        }
+    } else if (rectBefore) {
+        const anchor = document.getElementById('prevBtn');
+        if (anchor) {
+            const rectAfter = anchor.getBoundingClientRect();
+            window.scrollBy(0, rectAfter.top - rectBefore.top);
+        }
+    }
 }
 
 // ─── Excel Export ──────────────────────────────────────────────────────────

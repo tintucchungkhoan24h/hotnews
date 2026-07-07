@@ -164,7 +164,9 @@ function setupWatchlistViewEventListeners() {
     if (firstBtnWatchlist) {
         firstBtnWatchlist.onclick = () => { 
             stateWatchlist.currentPage = 0; 
-            fetchWatchlistData(); 
+            const _anchor = document.getElementById('prevBtnWatchlist');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchWatchlistData().then(() => handlePaginationScrollWatchlist(_rect)); 
         };
     }
 
@@ -172,7 +174,9 @@ function setupWatchlistViewEventListeners() {
     if (prevBtnWatchlist) {
         prevBtnWatchlist.onclick = () => { 
             stateWatchlist.currentPage--; 
-            fetchWatchlistData(); 
+            const _anchor = document.getElementById('prevBtnWatchlist');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchWatchlistData().then(() => handlePaginationScrollWatchlist(_rect)); 
         };
     }
 
@@ -180,7 +184,9 @@ function setupWatchlistViewEventListeners() {
     if (nextBtnWatchlist) {
         nextBtnWatchlist.onclick = () => { 
             stateWatchlist.currentPage++; 
-            fetchWatchlistData(); 
+            const _anchor = document.getElementById('prevBtnWatchlist');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchWatchlistData().then(() => handlePaginationScrollWatchlist(_rect)); 
         };
     }
 
@@ -194,7 +200,9 @@ function setupWatchlistViewEventListeners() {
             console.log('Page size:', stateWatchlist.pageSize);
             console.log('Calculated last page:', lastPage);
             stateWatchlist.currentPage = lastPage; 
-            fetchWatchlistData(); 
+            const _anchor = document.getElementById('prevBtnWatchlist');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchWatchlistData().then(() => handlePaginationScrollWatchlist(_rect)); 
         };
     }
 }
@@ -824,7 +832,9 @@ function renderWatchlistPaginationUI() {
         pageBtn.innerText = i + 1;
         pageBtn.onclick = () => {
             stateWatchlist.currentPage = i;
-            fetchWatchlistData();
+            const _anchor = document.getElementById('prevBtnWatchlist');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchWatchlistData().then(() => handlePaginationScrollWatchlist(_rect));
         };
         pageNumbersWatchlistContainer.appendChild(pageBtn);
     }
@@ -1020,3 +1030,25 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
 // ─── Company Name Tooltip ──────────────────────────────────────────────────
 // Note: showCompanyTooltip and openTvChart are defined in coreview_stock.js and shared globally.
 
+
+
+function handlePaginationScrollWatchlist(rectBefore) {
+    const remaining = stateWatchlist.totalCount - (stateWatchlist.currentPage * stateWatchlist.pageSize);
+    const isShortPage = remaining > 0 && remaining < stateWatchlist.pageSize;
+    if (isShortPage) {
+        const footer = document.querySelector('footer, #footer-container');
+        if (footer) {
+            const footerRect = footer.getBoundingClientRect();
+            const scrollTarget = window.scrollY + footerRect.top - window.innerHeight + 100;
+            window.scrollTo({ top: scrollTarget, behavior: 'auto' });
+        } else {
+            window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+        }
+    } else if (rectBefore) {
+        const anchor = document.getElementById('prevBtnWatchlist');
+        if (anchor) {
+            const rectAfter = anchor.getBoundingClientRect();
+            window.scrollBy(0, rectAfter.top - rectBefore.top);
+        }
+    }
+}
