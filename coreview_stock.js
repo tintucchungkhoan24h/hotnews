@@ -159,7 +159,9 @@ function setupStockViewEventListeners() {
     if (firstBtn) {
         firstBtn.onclick = () => { 
             state.currentPage = 0; 
-            fetchData().then(handlePaginationScroll); 
+            const _anchor = document.getElementById('prevBtn');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchData().then(() => handlePaginationScroll(_rect)); 
         };
     }
 
@@ -167,7 +169,9 @@ function setupStockViewEventListeners() {
     if (prevBtn) {
         prevBtn.onclick = () => { 
             state.currentPage--; 
-            fetchData().then(handlePaginationScroll); 
+            const _anchor = document.getElementById('prevBtn');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchData().then(() => handlePaginationScroll(_rect)); 
         };
     }
 
@@ -175,7 +179,9 @@ function setupStockViewEventListeners() {
     if (nextBtn) {
         nextBtn.onclick = () => { 
             state.currentPage++; 
-            fetchData().then(handlePaginationScroll); 
+            const _anchor = document.getElementById('prevBtn');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchData().then(() => handlePaginationScroll(_rect)); 
         };
     }
 
@@ -189,7 +195,9 @@ function setupStockViewEventListeners() {
             console.log('Page size:', state.pageSize);
             console.log('Calculated last page:', lastPage);
             state.currentPage = lastPage; 
-            fetchData().then(handlePaginationScroll); 
+            const _anchor = document.getElementById('prevBtn');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchData().then(() => handlePaginationScroll(_rect)); 
         };
     }
 }
@@ -860,7 +868,9 @@ function renderPaginationUI() {
         pageBtn.innerText = i + 1;
         pageBtn.onclick = () => {
             state.currentPage = i;
-            fetchData().then(handlePaginationScroll);
+            const _anchor = document.getElementById('prevBtn');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchData().then(() => handlePaginationScroll(_rect));
         };
         pageNumbersContainer.appendChild(pageBtn);
     }
@@ -871,7 +881,7 @@ function renderPaginationUI() {
     document.getElementById('lastBtn').disabled = end >= state.totalCount;
 }
 
-function handlePaginationScroll() {
+function handlePaginationScroll(rectBefore) {
     const remaining = state.totalCount - (state.currentPage * state.pageSize);
     const isShortPage = remaining > 0 && remaining < state.pageSize;
     if (isShortPage) {
@@ -882,6 +892,12 @@ function handlePaginationScroll() {
             window.scrollTo({ top: scrollTarget, behavior: 'auto' });
         } else {
             window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+        }
+    } else if (rectBefore) {
+        const anchor = document.getElementById('prevBtn');
+        if (anchor) {
+            const rectAfter = anchor.getBoundingClientRect();
+            window.scrollBy(0, rectAfter.top - rectBefore.top);
         }
     }
 }

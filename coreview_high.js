@@ -156,7 +156,9 @@ function setupHighViewEventListeners() {
     if (firstBtn) {
         firstBtn.onclick = () => { 
             stateHigh.currentPage = 0; 
-            fetchHighData().then(handlePaginationScrollHigh); 
+            const _anchor = document.getElementById('prevBtnHigh');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchHighData().then(() => handlePaginationScrollHigh(_rect)); 
         };
     }
 
@@ -164,7 +166,9 @@ function setupHighViewEventListeners() {
     if (prevBtn) {
         prevBtn.onclick = () => { 
             stateHigh.currentPage--; 
-            fetchHighData().then(handlePaginationScrollHigh); 
+            const _anchor = document.getElementById('prevBtnHigh');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchHighData().then(() => handlePaginationScrollHigh(_rect)); 
         };
     }
 
@@ -172,7 +176,9 @@ function setupHighViewEventListeners() {
     if (nextBtn) {
         nextBtn.onclick = () => { 
             stateHigh.currentPage++; 
-            fetchHighData().then(handlePaginationScrollHigh); 
+            const _anchor = document.getElementById('prevBtnHigh');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchHighData().then(() => handlePaginationScrollHigh(_rect)); 
         };
     }
 
@@ -186,7 +192,9 @@ function setupHighViewEventListeners() {
             console.log('Page size:', stateHigh.pageSize);
             console.log('Calculated last page:', lastPage);
             stateHigh.currentPage = lastPage; 
-            fetchHighData().then(handlePaginationScrollHigh); 
+            const _anchor = document.getElementById('prevBtnHigh');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchHighData().then(() => handlePaginationScrollHigh(_rect)); 
         };
     }
 }
@@ -818,7 +826,9 @@ function renderHighPaginationUI() {
         pageBtn.innerText = i + 1;
         pageBtn.onclick = () => {
             stateHigh.currentPage = i;
-            fetchHighData().then(handlePaginationScrollHigh);
+            const _anchor = document.getElementById('prevBtnHigh');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchHighData().then(() => handlePaginationScrollHigh(_rect));
         };
         pageNumbersContainer.appendChild(pageBtn);
     }
@@ -1074,7 +1084,7 @@ async function exportHighToExcel() {
 
 
 
-function handlePaginationScrollHigh() {
+function handlePaginationScrollHigh(rectBefore) {
     const remaining = stateHigh.totalCount - (stateHigh.currentPage * stateHigh.pageSize);
     const isShortPage = remaining > 0 && remaining < stateHigh.pageSize;
     if (isShortPage) {
@@ -1085,6 +1095,12 @@ function handlePaginationScrollHigh() {
             window.scrollTo({ top: scrollTarget, behavior: 'auto' });
         } else {
             window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+        }
+    } else if (rectBefore) {
+        const anchor = document.getElementById('prevBtnHigh');
+        if (anchor) {
+            const rectAfter = anchor.getBoundingClientRect();
+            window.scrollBy(0, rectAfter.top - rectBefore.top);
         }
     }
 }

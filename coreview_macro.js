@@ -143,7 +143,9 @@ function setupMacroViewEventListeners() {
     if (firstBtn) {
         firstBtn.onclick = () => { 
             state.currentPageMacro = 0; 
-            fetchMacroData().then(handlePaginationScrollMacro); 
+            const _anchor = document.getElementById('prevBtnMacro');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchMacroData().then(() => handlePaginationScrollMacro(_rect)); 
         };
     }
 
@@ -151,7 +153,9 @@ function setupMacroViewEventListeners() {
     if (prevBtn) {
         prevBtn.onclick = () => { 
             state.currentPageMacro--; 
-            fetchMacroData().then(handlePaginationScrollMacro); 
+            const _anchor = document.getElementById('prevBtnMacro');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchMacroData().then(() => handlePaginationScrollMacro(_rect)); 
         };
     }
 
@@ -159,7 +163,9 @@ function setupMacroViewEventListeners() {
     if (nextBtn) {
         nextBtn.onclick = () => { 
             state.currentPageMacro++; 
-            fetchMacroData().then(handlePaginationScrollMacro); 
+            const _anchor = document.getElementById('prevBtnMacro');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchMacroData().then(() => handlePaginationScrollMacro(_rect)); 
         };
     }
 
@@ -167,7 +173,9 @@ function setupMacroViewEventListeners() {
     if (lastBtn) {
         lastBtn.onclick = () => { 
             state.currentPageMacro = Math.ceil(state.totalCountMacro / state.pageSizeMacro) - 1; 
-            fetchMacroData().then(handlePaginationScrollMacro); 
+            const _anchor = document.getElementById('prevBtnMacro');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchMacroData().then(() => handlePaginationScrollMacro(_rect)); 
         };
     }
 }
@@ -650,7 +658,9 @@ function renderMacroPaginationUI() {
         pageBtn.innerText = i + 1;
         pageBtn.onclick = () => {
             state.currentPageMacro = i;
-            fetchMacroData().then(handlePaginationScrollMacro);
+            const _anchor = document.getElementById('prevBtnMacro');
+            const _rect = _anchor ? _anchor.getBoundingClientRect() : null;
+            fetchMacroData().then(() => handlePaginationScrollMacro(_rect));
         };
         pageNumbers.appendChild(pageBtn);
     }
@@ -908,7 +918,7 @@ window.restoreMacroQuoteTooltip = function(e, trElement) {
 };
 
 
-function handlePaginationScrollMacro() {
+function handlePaginationScrollMacro(rectBefore) {
     const remaining = state.totalCountMacro - (state.currentPageMacro * state.pageSizeMacro);
     const isShortPage = remaining > 0 && remaining < state.pageSizeMacro;
     if (isShortPage) {
@@ -919,6 +929,12 @@ function handlePaginationScrollMacro() {
             window.scrollTo({ top: scrollTarget, behavior: 'auto' });
         } else {
             window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+        }
+    } else if (rectBefore) {
+        const anchor = document.getElementById('prevBtnMacro');
+        if (anchor) {
+            const rectAfter = anchor.getBoundingClientRect();
+            window.scrollBy(0, rectAfter.top - rectBefore.top);
         }
     }
 }
