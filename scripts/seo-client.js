@@ -315,7 +315,6 @@ function paginationGoto(page) {
   } else {
     renderStaticPage(page);
   }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function renderStaticPage(page) {
