@@ -700,3 +700,11 @@ function scrollToBottom() {
     document.body.appendChild(scrollButtonsContainer);
   });
 })();
+scrollBottomBtn.addEventListener('click', scrollToBottom);
+scrollBottomBtn.setAttribute('title', 'Scroll to bottom');
+
+scrollButtonsContainer.appendChild(scrollTopBtn);
+scrollButtonsContainer.appendChild(scrollBottomBtn);
+document.body.appendChild(scrollButtonsContainer);
+  });
+}) ();
