@@ -164,7 +164,7 @@ function setupWatchlistViewEventListeners() {
     if (firstBtnWatchlist) {
         firstBtnWatchlist.onclick = () => { 
             stateWatchlist.currentPage = 0; 
-            fetchWatchlistData(); 
+            fetchWatchlistData().then(handlePaginationScrollWatchlist); 
         };
     }
 
@@ -172,7 +172,7 @@ function setupWatchlistViewEventListeners() {
     if (prevBtnWatchlist) {
         prevBtnWatchlist.onclick = () => { 
             stateWatchlist.currentPage--; 
-            fetchWatchlistData(); 
+            fetchWatchlistData().then(handlePaginationScrollWatchlist); 
         };
     }
 
@@ -180,7 +180,7 @@ function setupWatchlistViewEventListeners() {
     if (nextBtnWatchlist) {
         nextBtnWatchlist.onclick = () => { 
             stateWatchlist.currentPage++; 
-            fetchWatchlistData(); 
+            fetchWatchlistData().then(handlePaginationScrollWatchlist); 
         };
     }
 
@@ -194,7 +194,7 @@ function setupWatchlistViewEventListeners() {
             console.log('Page size:', stateWatchlist.pageSize);
             console.log('Calculated last page:', lastPage);
             stateWatchlist.currentPage = lastPage; 
-            fetchWatchlistData(); 
+            fetchWatchlistData().then(handlePaginationScrollWatchlist); 
         };
     }
 }
@@ -824,7 +824,7 @@ function renderWatchlistPaginationUI() {
         pageBtn.innerText = i + 1;
         pageBtn.onclick = () => {
             stateWatchlist.currentPage = i;
-            fetchWatchlistData();
+            fetchWatchlistData().then(handlePaginationScrollWatchlist);
         };
         pageNumbersWatchlistContainer.appendChild(pageBtn);
     }
@@ -1020,3 +1020,19 @@ window.exportWatchlistToExcel = async function exportWatchlistToExcel(btnRef) {
 // ─── Company Name Tooltip ──────────────────────────────────────────────────
 // Note: showCompanyTooltip and openTvChart are defined in coreview_stock.js and shared globally.
 
+
+
+function handlePaginationScrollWatchlist() {
+    const remaining = stateWatchlist.totalCount - (stateWatchlist.currentPage * stateWatchlist.pageSize);
+    const isShortPage = remaining > 0 && remaining < stateWatchlist.pageSize;
+    if (isShortPage) {
+        const footer = document.querySelector('footer, #footer-container');
+        if (footer) {
+            const footerRect = footer.getBoundingClientRect();
+            const scrollTarget = window.scrollY + footerRect.top - window.innerHeight + 100;
+            window.scrollTo({ top: scrollTarget, behavior: 'auto' });
+        } else {
+            window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+        }
+    }
+}

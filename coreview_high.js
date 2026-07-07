@@ -156,7 +156,7 @@ function setupHighViewEventListeners() {
     if (firstBtn) {
         firstBtn.onclick = () => { 
             stateHigh.currentPage = 0; 
-            fetchHighData(); 
+            fetchHighData().then(handlePaginationScrollHigh); 
         };
     }
 
@@ -164,7 +164,7 @@ function setupHighViewEventListeners() {
     if (prevBtn) {
         prevBtn.onclick = () => { 
             stateHigh.currentPage--; 
-            fetchHighData(); 
+            fetchHighData().then(handlePaginationScrollHigh); 
         };
     }
 
@@ -172,7 +172,7 @@ function setupHighViewEventListeners() {
     if (nextBtn) {
         nextBtn.onclick = () => { 
             stateHigh.currentPage++; 
-            fetchHighData(); 
+            fetchHighData().then(handlePaginationScrollHigh); 
         };
     }
 
@@ -186,7 +186,7 @@ function setupHighViewEventListeners() {
             console.log('Page size:', stateHigh.pageSize);
             console.log('Calculated last page:', lastPage);
             stateHigh.currentPage = lastPage; 
-            fetchHighData(); 
+            fetchHighData().then(handlePaginationScrollHigh); 
         };
     }
 }
@@ -818,7 +818,7 @@ function renderHighPaginationUI() {
         pageBtn.innerText = i + 1;
         pageBtn.onclick = () => {
             stateHigh.currentPage = i;
-            fetchHighData();
+            fetchHighData().then(handlePaginationScrollHigh);
         };
         pageNumbersContainer.appendChild(pageBtn);
     }
@@ -1072,3 +1072,19 @@ async function exportHighToExcel() {
     }, 100);
 })();
 
+
+
+function handlePaginationScrollHigh() {
+    const remaining = stateHigh.totalCount - (stateHigh.currentPage * stateHigh.pageSize);
+    const isShortPage = remaining > 0 && remaining < stateHigh.pageSize;
+    if (isShortPage) {
+        const footer = document.querySelector('footer, #footer-container');
+        if (footer) {
+            const footerRect = footer.getBoundingClientRect();
+            const scrollTarget = window.scrollY + footerRect.top - window.innerHeight + 100;
+            window.scrollTo({ top: scrollTarget, behavior: 'auto' });
+        } else {
+            window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+        }
+    }
+}

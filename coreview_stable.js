@@ -156,7 +156,7 @@ function setupStableViewEventListeners() {
     if (firstBtn) {
         firstBtn.onclick = () => { 
             stateStable.currentPage = 0; 
-            fetchStableData(); 
+            fetchStableData().then(handlePaginationScrollStable); 
         };
     }
 
@@ -164,7 +164,7 @@ function setupStableViewEventListeners() {
     if (prevBtn) {
         prevBtn.onclick = () => { 
             stateStable.currentPage--; 
-            fetchStableData(); 
+            fetchStableData().then(handlePaginationScrollStable); 
         };
     }
 
@@ -172,7 +172,7 @@ function setupStableViewEventListeners() {
     if (nextBtn) {
         nextBtn.onclick = () => { 
             stateStable.currentPage++; 
-            fetchStableData(); 
+            fetchStableData().then(handlePaginationScrollStable); 
         };
     }
 
@@ -186,7 +186,7 @@ function setupStableViewEventListeners() {
             console.log('Page size:', stateStable.pageSize);
             console.log('Calculated last page:', lastPage);
             stateStable.currentPage = lastPage; 
-            fetchStableData(); 
+            fetchStableData().then(handlePaginationScrollStable); 
         };
     }
 }
@@ -821,7 +821,7 @@ function renderStablePaginationUI() {
         pageBtn.innerText = i + 1;
         pageBtn.onclick = () => {
             stateStable.currentPage = i;
-            fetchStableData();
+            fetchStableData().then(handlePaginationScrollStable);
         };
         pageNumbersContainer.appendChild(pageBtn);
     }
@@ -1075,3 +1075,19 @@ async function exportStableToExcel() {
     }, 100);
 })();
 
+
+
+function handlePaginationScrollStable() {
+    const remaining = stateStable.totalCount - (stateStable.currentPage * stateStable.pageSize);
+    const isShortPage = remaining > 0 && remaining < stateStable.pageSize;
+    if (isShortPage) {
+        const footer = document.querySelector('footer, #footer-container');
+        if (footer) {
+            const footerRect = footer.getBoundingClientRect();
+            const scrollTarget = window.scrollY + footerRect.top - window.innerHeight + 100;
+            window.scrollTo({ top: scrollTarget, behavior: 'auto' });
+        } else {
+            window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+        }
+    }
+}

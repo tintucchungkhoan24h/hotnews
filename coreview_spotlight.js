@@ -164,7 +164,7 @@ function setupSpotlightViewEventListeners() {
     if (firstBtnSpotlight) {
         firstBtnSpotlight.onclick = () => { 
             stateSpotlight.currentPage = 0; 
-            fetchSpotlightData(); 
+            fetchSpotlightData().then(handlePaginationScrollSpotlight); 
         };
     }
 
@@ -172,7 +172,7 @@ function setupSpotlightViewEventListeners() {
     if (prevBtnSpotlight) {
         prevBtnSpotlight.onclick = () => { 
             stateSpotlight.currentPage--; 
-            fetchSpotlightData(); 
+            fetchSpotlightData().then(handlePaginationScrollSpotlight); 
         };
     }
 
@@ -180,7 +180,7 @@ function setupSpotlightViewEventListeners() {
     if (nextBtnSpotlight) {
         nextBtnSpotlight.onclick = () => { 
             stateSpotlight.currentPage++; 
-            fetchSpotlightData(); 
+            fetchSpotlightData().then(handlePaginationScrollSpotlight); 
         };
     }
 
@@ -194,7 +194,7 @@ function setupSpotlightViewEventListeners() {
             console.log('Page size:', stateSpotlight.pageSize);
             console.log('Calculated last page:', lastPage);
             stateSpotlight.currentPage = lastPage; 
-            fetchSpotlightData(); 
+            fetchSpotlightData().then(handlePaginationScrollSpotlight); 
         };
     }
 }
@@ -837,7 +837,7 @@ function renderSpotlightPaginationUI() {
         pageBtn.innerText = i + 1;
         pageBtn.onclick = () => {
             stateSpotlight.currentPage = i;
-            fetchSpotlightData();
+            fetchSpotlightData().then(handlePaginationScrollSpotlight);
         };
         pageNumbersSpotlightContainer.appendChild(pageBtn);
     }
@@ -1033,3 +1033,19 @@ window.exportSpotlightToExcel = async function exportSpotlightToExcel(btnRef) {
 // ─── Company Name Tooltip ──────────────────────────────────────────────────
 // Note: showCompanyTooltip and openTvChart are defined in coreview_stock.js and shared globally.
 
+
+
+function handlePaginationScrollSpotlight() {
+    const remaining = stateSpotlight.totalCount - (stateSpotlight.currentPage * stateSpotlight.pageSize);
+    const isShortPage = remaining > 0 && remaining < stateSpotlight.pageSize;
+    if (isShortPage) {
+        const footer = document.querySelector('footer, #footer-container');
+        if (footer) {
+            const footerRect = footer.getBoundingClientRect();
+            const scrollTarget = window.scrollY + footerRect.top - window.innerHeight + 100;
+            window.scrollTo({ top: scrollTarget, behavior: 'auto' });
+        } else {
+            window.scrollTo({ top: document.body.scrollHeight - window.innerHeight, behavior: 'auto' });
+        }
+    }
+}
