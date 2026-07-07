@@ -477,7 +477,7 @@ ${LANG_MENU_CSS}
 
     <!-- MAIN ARTICLE FEED -->
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
-      ${articlesList.map(item => {
+      ${articlesList.map((item, index) => {
         // Format reference links to appear on separate lines with label
         let formattedContent = item.article.content || '';
         // Convert h3 to h2 to match stock digest format
@@ -587,13 +587,14 @@ ${LANG_MENU_CSS}
         });
         formattedContent = normalizeReferenceLinks(formattedContent);
         
-        
+        const articleNumber = index + 1;
         const fallbackSpokeUrl = `${SITE_BASE}/diem-tin-vi-mo/${lang}/${parseDateToDDMMYYYY(item.date)}`;
         const absoluteSpokeUrl = absoluteArticleUrl(item.article.article_url, fallbackSpokeUrl);
         const isLatest = (item === articlesList[0]);
         
         return `
         <article${isRtl ? ' dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
+          <div class="article-number">${articleNumber}</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ${item.article.title}
           </h1>

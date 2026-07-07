@@ -318,7 +318,8 @@ async function fetchDynamicFeed() {
       </button>
     </div>`;
 
-    for (const row of rows) {
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
       const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
       const article = getArticleForLang(articles, currentLang);
       
@@ -326,6 +327,7 @@ async function fetchDynamicFeed() {
 
       const rDate = row.summary_date;
       const rCreatedAt = row.created_at || null;
+      const articleNumber = i + 1;
       
       // Format reference links to appear on separate lines with label
       let formattedContent = article.content || '';
@@ -398,6 +400,7 @@ async function fetchDynamicFeed() {
 
       html += `
       <article class="collapsed" ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
+        <div class="article-number">${articleNumber}</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">

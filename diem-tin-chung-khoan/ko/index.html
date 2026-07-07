@@ -516,6 +516,26 @@ article {
   margin-bottom: 28px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Article number badge */
+.article-number {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a192f;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+  z-index: 10;
 }
 article:hover {
   border-color: rgba(255,215,0,0.2);
@@ -1282,6 +1302,7 @@ article.expanded .digest-body {
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/top-5-hottest-stocks-of-the-day-acb-acv-hdb-hvn-pnj-capital-flows-strongly-differentiated-amidst-information-pressure-07-07-2026">
+          <div class="article-number">1</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             오늘의 가장 핫한 주식 TOP 5: ACB, ACV, HDB, HVN, PNJ - 정보 압력에 따른 자금 흐름의 강한 차별화
           </h1>
@@ -1313,6 +1334,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/stock-market-on-07072026-vn-index-heads-towards-old-peak-07-07-2026">
+          <div class="article-number">2</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 7월 7일 증시: VN-Index, 이전 고점 향해
           </h1>
@@ -1344,6 +1366,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/top-5-hottest-stocks-of-the-day-fpt-pnj-vcb-vhm-vic-billions-in-selling-pressure-break-key-vn-index-level-06-07-2026">
+          <div class="article-number">3</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             오늘의 가장 뜨거운 주식 5가지: FPT, PNJ, VCB, VHM, VIC - 수조 동 매도 압력으로 VN-Index 주요 지지선 붕괴
           </h1>
@@ -1375,6 +1398,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/stock-market-on-06072026-vn-index-sees-sharpest-drop-in-a-month-06-07-2026">
+          <div class="article-number">4</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 7월 6일 주식 시장: VN-Index 한 달 내 가장 큰 폭 하락
           </h1>
@@ -1406,6 +1430,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/stock-market-on-july-06-2026-vn-index-fluctuates-strongly-around-1860-points-06-07-2026">
+          <div class="article-number">5</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 7월 6일 주식 시장: VN-Index 1,860포인트 부근에서 강한 변동성
           </h1>
@@ -1437,6 +1462,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/stock-market-on-06072026-vn-index-seeks-equilibrium-06-07-2026">
+          <div class="article-number">6</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 7월 6일 주식 시장: VN-Index, 균형점 모색
           </h1>
@@ -1468,6 +1494,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/stock-market-on-06072026-vn-index-seeks-catalyst-for-breakthrough-06-07-2026">
+          <div class="article-number">7</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 7월 6일 주식 시장: VN-Index, 돌파구 마련을 위한 기폭제 모색
           </h1>
@@ -1499,6 +1526,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/top-5-hottest-stocks-of-the-day-acb-fpt-kbc-mbs-pnj-show-strong-divergence-06-07-2026">
+          <div class="article-number">8</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             오늘의 가장 핫한 주식 5가지: ACB, FPT, KBC, MBS, PNJ 강한 분화 양상
           </h1>
@@ -1530,6 +1558,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/top-5-hottest-stocks-today-dgc-fpt-hpg-pnj-vhm-under-strong-volatility-pressure-05-07-2026">
+          <div class="article-number">9</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             오늘의 가장 뜨거운 주식 5가지: DGC, FPT, HPG, PNJ, VHM, 강한 변동성 압력에 직면
           </h1>
@@ -1561,6 +1590,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-strongly-breaks-out-in-latest-session-thanks-to-securities-group-05-07-2026">
+          <div class="article-number">10</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index, 증권주 덕분에 최근 세션에서 강력한 돌파
           </h1>
@@ -1592,6 +1622,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/top-5-hottest-stocks-of-the-week-bid-fpt-tcb-vhm-vic-strong-fund-flow-divergence-05-07-2026">
+          <div class="article-number">11</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             주간 TOP 5 인기 주식: BID, FPT, TCB, VHM, VIC - 강한 자금 흐름 분화
           </h1>
@@ -1623,6 +1654,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/top-5-hottest-stocks-of-the-day-dgc-fpt-pnj-shs-tcx-strong-divergence-ahead-of-q2-financial-reports-05-07-2026">
+          <div class="article-number">12</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             오늘의 가장 핫한 주식 5가지: DGC, FPT, PNJ, SHS, TCX - 2분기 재무보고서 발표를 앞둔 강한 분화
           </h1>
@@ -1654,6 +1686,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-strongly-differentiated-in-latest-session-cash-flow-seeks-banking-sector-support-04-07-2026">
+          <div class="article-number">13</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index는 지난 세션에서 크게 양분되었고, 자금은 은행 부문에서 지지대를 찾았습니다.
           </h1>
@@ -1685,6 +1718,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-seeks-new-momentum-from-q2-business-results-in-recent-session-04-07-2026">
+          <div class="article-number">14</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index, 최근 세션에서 2분기 실적에서 새로운 동력 모색
           </h1>
@@ -1716,6 +1750,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-sees-strong-volatility-in-recent-session-focus-on-margin-cuts-and-vinhomes-04-07-2026">
+          <div class="article-number">15</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index, 최근 세션에서 큰 변동성: 마진 컷과 빈홈즈가 주요 쟁점
           </h1>
@@ -1747,6 +1782,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/trading-session-on-july-03-2026-vn-index-fluctuates-strongly-cash-flow-diversifies-03-07-2026">
+          <div class="article-number">16</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 7월 3일 거래 세션: VN-Index 크게 흔들림, 자금 흐름 분화
           </h1>
@@ -1778,6 +1814,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-sharply-differentiated-on-july-03-2026-pnjs-floor-drop-creates-pressure-03-07-2026">
+          <div class="article-number">17</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 7월 3일 VN-Index 강한 차별화: PNJ 하한가로 압력 가중
           </h1>
@@ -1809,6 +1846,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-shakes-strongly-on-july-3-2026-pnj-hits-floor-price-exerting-pressure-03-07-2026">
+          <div class="article-number">18</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 7월 3일 VN-Index 심한 변동성: PNJ 하한가로 압력 가중
           </h1>
@@ -1840,6 +1878,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-showed-strong-divergence-in-july-3-2026-trading-session-03-07-2026">
+          <div class="article-number">19</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 7월 3일 거래 세션에서 VN-Index 강한 분화 보여
           </h1>
@@ -1871,6 +1910,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-02-07-2026">
+          <div class="article-number">20</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index 2026년 7월 2일 소폭 하락: 새로운 기회를 기다리는 자금
           </h1>
@@ -1902,6 +1942,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-01-07-2026">
+          <div class="article-number">21</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 7월 1일 VN-Index 급등: 은행권이 주도
           </h1>
@@ -1933,6 +1974,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-30-06-2026">
+          <div class="article-number">22</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 6월 30일 VN-Index 돌파: 강력한 현금 흐름 차별화
           </h1>
@@ -1964,6 +2006,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-29-06-2026">
+          <div class="article-number">23</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 6월 29일 VN-지수 급락: 주요 종목의 차익 실현 압박 심화
           </h1>
@@ -1995,6 +2038,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-28-06-2026">
+          <div class="article-number">24</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             직전 거래일 VN지수: 누적 압박 및 자금 흐름 추세
           </h1>
@@ -2026,6 +2070,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-27-06-2026">
+          <div class="article-number">25</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VIC와 VHM의 주도로 최근 세션에서 강력한 회복세를 보인 VN-Index
           </h1>
@@ -2057,6 +2102,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/macro-news-26-06-2026">
+          <div class="article-number">26</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-지수 2026년 6월 26일: 빈그룹 주도하에 약 9포인트 회복
           </h1>
@@ -2085,6 +2131,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/24-06-2026">
+          <div class="article-number">27</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 6월 24일 시장: VIC, LPB 급등, VN-Index 1880 근접
           </h1>
@@ -2113,6 +2160,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/23-06-2026">
+          <div class="article-number">28</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index 6월 23일: LPB 상한가, VIC 외국인 매수세 주도
           </h1>
@@ -2141,6 +2189,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/22-06-2026">
+          <div class="article-number">29</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026년 6월 22일 VN-Index: Vingroup 급등 속 신중한 유동성
           </h1>
@@ -3060,7 +3109,8 @@ async function fetchDynamicFeed() {
       </button>
     </div>`;
 
-    for (const row of rows) {
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
       const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
       const article = getArticleForLang(articles, currentLang);
       
@@ -3068,6 +3118,7 @@ async function fetchDynamicFeed() {
 
       const rDate = row.summary_date;
       const rCreatedAt = row.created_at || null;
+      const articleNumber = i + 1;
       
       // Format reference links to appear on separate lines with label
       let formattedContent = article.content || '';
@@ -3140,6 +3191,7 @@ async function fetchDynamicFeed() {
 
       html += `
       <article class="collapsed" ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
+        <div class="article-number">${articleNumber}</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">

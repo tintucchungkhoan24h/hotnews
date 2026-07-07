@@ -516,6 +516,26 @@ article {
   margin-bottom: 28px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Article number badge */
+.article-number {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a192f;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+  z-index: 10;
 }
 article:hover {
   border-color: rgba(255,215,0,0.2);
@@ -1282,6 +1302,7 @@ article.expanded .digest-body {
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/tong-ket-5-su-kien-kinh-te-vi-mo-noi-bat-trong-nuoc-thu-hut-fdi-lap-ky-luc-07-07-2026">
+          <div class="article-number">1</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Tổng kết 5 sự kiện kinh tế vĩ mô nổi bật trong nước- Thu hút FDI lập kỷ lục
           </h1>
@@ -1313,6 +1334,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-vi-mo-0707-vn-index-tich-luy-co-hoi-giai-ngan-nua-cuoi-nam-07-07-2026">
+          <div class="article-number">2</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Dòng Tiền Vĩ Mô 07/07: VN-Index Tích Lũy, Cơ Hội Giải Ngân Nửa Cuối Năm?
           </h1>
@@ -1344,6 +1366,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-giang-co-khoi-ngoai-xa-manh-dong-tien-ve-dau-07-07-2026">
+          <div class="article-number">3</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index Giằng Co: Khối Ngoại Xả Mạnh, Dòng Tiền Về Đâu?
           </h1>
@@ -1375,6 +1398,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/fed-ha-nhiet-lai-suat-dong-tien-vi-mo-chon-phe-vn-index-cho-cu-hich-06-07-2026">
+          <div class="article-number">4</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Fed hạ nhiệt lãi suất: Dòng tiền vĩ mô chọn phe, VN-Index chờ cú hích?
           </h1>
@@ -1406,6 +1430,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-giang-co-khoi-ngoai-xa-rong-dong-tien-ne-tranh-rui-ro-06-07-2026">
+          <div class="article-number">5</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index giằng co: Khối ngoại xả ròng, dòng tiền né tránh rủi ro?
           </h1>
@@ -1437,6 +1462,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/thanh-khoan-sut-giam-va-ap-luc-chi-phi-co-hoi-gom-hang-gia-tot-06-07-2026">
+          <div class="article-number">6</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Thanh khoản sụt giảm và áp lực chi phí: Cơ hội gom hàng giá tốt?
           </h1>
@@ -1468,6 +1494,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/tong-ket-5-su-kien-vi-mo-noi-bat-thu-hut-fdi-lap-ky-luc-06-07-2026">
+          <div class="article-number">7</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Tổng kết 5 sự kiện vĩ mô nổi bật- Thu hút FDI lập kỷ lục
           </h1>
@@ -1499,6 +1526,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-nua-cuoi-nam-2026-co-phieu-vang-hay-bat-dong-san-06-07-2026">
+          <div class="article-number">8</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Dòng Tiền Nửa Cuối Năm 2026: Cổ Phiếu, Vàng Hay Bất Động Sản?
           </h1>
@@ -1530,6 +1558,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-viet-nam-0507-gdp-tang-ky-luc-dong-tien-cho-doi-dieu-gi-05-07-2026">
+          <div class="article-number">9</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Vĩ mô Việt Nam 05/07: GDP tăng kỷ lục, dòng tiền chờ đợi điều gì?
           </h1>
@@ -1561,6 +1590,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/fdi-ky-luc-nang-do-vn-index-co-hoi-giai-ngan-hay-bay-hung-phan-05-07-2026">
+          <div class="article-number">10</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             FDI kỷ lục nâng đỡ VN-Index: Cơ hội giải ngân hay bẫy hưng phấn?
           </h1>
@@ -1592,6 +1622,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-qua-gdp-tang-818-va-ap-luc-neo-gia-hang-hoa-05-07-2026">
+          <div class="article-number">11</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Vĩ mô tuần qua: GDP tăng 8,18% và áp lực neo giá hàng hóa
           </h1>
@@ -1623,6 +1654,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/tong-ket-5-su-kien-vi-mo-noi-bat-gdp-tang-818-cao-nhat-nhieu-nhiem-ky-05-07-2026">
+          <div class="article-number">12</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Tổng kết 5 sự kiện vĩ mô nổi bật: GDP tăng 8,18% cao nhất nhiều nhiệm kỳ
           </h1>
@@ -1654,6 +1686,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-viet-nam-but-pha-dong-tien-thong-minh-se-do-ve-dau-05-07-2026">
+          <div class="article-number">13</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Vĩ mô Việt Nam bứt phá: Dòng tiền thông minh sẽ đổ về đâu?
           </h1>
@@ -1685,6 +1718,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-the-gioi-don-song-lon-vn-index-rung-lac-hay-co-hoi-gom-hang-05-07-2026">
+          <div class="article-number">14</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Vĩ mô thế giới đón sóng lớn: VN-Index rung lắc hay cơ hội gom hàng?
           </h1>
@@ -1716,6 +1750,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-qua-gdp-tang-818-va-dong-von-fdi-ky-luc-34-ty-usd-05-07-2026">
+          <div class="article-number">15</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Vĩ mô tuần qua: GDP tăng 8,18% và dòng vốn FDI kỷ lục 34 tỷ USD
           </h1>
@@ -1747,6 +1782,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/5-su-kien-vi-mo-noi-bat-fdi-va-gdp-ky-luc-nang-buoc-ty-gia-04-07-2026">
+          <div class="article-number">16</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             5 sự kiện vĩ mô nổi bật: FDI và GDP kỷ lục nâng bước tỷ giá
           </h1>
@@ -1778,6 +1814,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/kinh-te-vi-mo-viet-nam-2026-gdp-tang-vot-dong-tien-di-ve-dau-04-07-2026">
+          <div class="article-number">17</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Kinh tế vĩ mô Việt Nam 2026: GDP tăng vọt, dòng tiền đi về đâu?
           </h1>
@@ -1809,6 +1846,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/fed-lung-lay-vi-bao-cao-viec-lam-dong-tien-vi-mo-se-do-ve-dau-04-07-2026">
+          <div class="article-number">18</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Fed Lung Lay Vì Báo Cáo Việc Làm: Dòng Tiền Vĩ Mô Sẽ Đổ Về Đâu?
           </h1>
@@ -1840,6 +1878,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/gdp-nua-dau-nam-2026-tang-818-dong-tien-vi-mo-se-chay-ve-dau-04-07-2026">
+          <div class="article-number">19</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             GDP Nửa Đầu Năm 2026 Tăng 8,18%: Dòng Tiền Vĩ Mô Sẽ Chảy Về Đâu?
           </h1>
@@ -1871,6 +1910,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/usd-lao-doc-fdi-do-bo-co-hoi-vang-cho-chung-khoan-viet-04-07-2026">
+          <div class="article-number">20</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             USD lao dốc, FDI đổ bộ: Cơ hội vàng cho chứng khoán Việt?
           </h1>
@@ -1902,6 +1942,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/von-fdi-6-thang-vuot-34-ty-usd-be-do-vi-mo-hay-bay-thanh-khoan-03-07-2026">
+          <div class="article-number">21</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Vốn FDI 6 tháng vượt 34 tỷ USD: Bệ đỡ vĩ mô hay bẫy thanh khoản?
           </h1>
@@ -1933,6 +1974,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/world-bank-nang-hang-viet-nam-cu-hich-vi-mo-xoay-truc-dong-tien-03-07-2026">
+          <div class="article-number">22</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             World Bank nâng hạng Việt Nam: Cú hích vĩ mô xoay trục dòng tiền
           </h1>
@@ -1964,6 +2006,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-the-gioi-bien-dong-dong-tien-thong-minh-se-chay-ve-dau-03-07-2026">
+          <div class="article-number">23</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Vĩ mô thế giới biến động: Dòng tiền thông minh sẽ chảy về đâu?
           </h1>
@@ -1995,6 +2038,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/kinh-te-viet-nam-thang-hang-vi-mo-dong-tien-se-chay-ve-dau-03-07-2026">
+          <div class="article-number">24</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Kinh tế Việt Nam thăng hạng vĩ mô: Dòng tiền sẽ chảy về đâu?
           </h1>
@@ -2026,6 +2070,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-huong-moc-2000-diem-dong-tien-tim-ve-nhom-nganh-nao-03-07-2026">
+          <div class="article-number">25</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index hướng mốc 2.000 điểm: Dòng tiền tìm về nhóm ngành nào?
           </h1>
@@ -2057,6 +2102,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-vi-mo-sau-moc-17-lai-suat-13-va-cu-hich-thue-moi-01-07-2026">
+          <div class="article-number">26</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Dòng tiền vĩ mô sau mốc 1/7: Lãi suất 13% và cú hích thuế mới
           </h1>
@@ -2088,6 +2134,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-vi-mo-nua-cuoi-2026-diem-tua-chinh-sach-va-ap-luc-ty-gia-01-07-2026">
+          <div class="article-number">27</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Dòng tiền vĩ mô nửa cuối 2026: Điểm tựa chính sách và áp lực tỷ giá
           </h1>
@@ -2119,6 +2166,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-usd-dat-dinh-fed-doi-luat-choi-chung-khoan-viet-nam-ra-sao-30-06-2026">
+          <div class="article-number">28</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Đồng USD Đạt Đỉnh, Fed Đổi 'Luật Chơi': Chứng Khoán Việt Nam Ra Sao?
           </h1>
@@ -2150,6 +2198,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chinh-phu-dat-muc-tieu-gdp-119-dong-tien-vi-mo-se-chay-ve-dau-28-06-2026">
+          <div class="article-number">29</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Chính phủ đặt mục tiêu GDP 11,9%: Dòng tiền vĩ mô sẽ chảy về đâu?
           </h1>
@@ -2181,6 +2230,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chinh-phu-bom-suc-bat-vi-mo-goi-125000-ty-dong-kich-hoat-dong-tien-27-06-2026">
+          <div class="article-number">30</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Chính Phủ Bơm Sức Bật Vĩ Mô: Gói 125.000 Tỷ Đồng Kích Hoạt Dòng Tiền
           </h1>
@@ -3062,7 +3112,8 @@ async function fetchDynamicFeed() {
       </button>
     </div>`;
 
-    for (const row of rows) {
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
       const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
       const article = getArticleForLang(articles, currentLang);
       
@@ -3070,6 +3121,7 @@ async function fetchDynamicFeed() {
 
       const rDate = row.summary_date;
       const rCreatedAt = row.created_at || null;
+      const articleNumber = i + 1;
       
       // Format reference links to appear on separate lines with label
       let formattedContent = article.content || '';
@@ -3172,6 +3224,7 @@ async function fetchDynamicFeed() {
 
       html += `
       <article class="collapsed" ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
+        <div class="article-number">${articleNumber}</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">

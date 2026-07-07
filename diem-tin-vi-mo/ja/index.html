@@ -516,6 +516,26 @@ article {
   margin-bottom: 28px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Article number badge */
+.article-number {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a192f;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+  z-index: 10;
 }
 article:hover {
   border-color: rgba(255,215,0,0.2);
@@ -1282,6 +1302,7 @@ article.expanded .digest-body {
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/summary-of-5-prominent-domestic-macroeconomic-events-fdi-attraction-sets-new-record-07-07-2026">
+          <div class="article-number">1</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             国内マクロ経済の主要5イベント総括 - FDI誘致が記録を更新
           </h1>
@@ -1313,6 +1334,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-capital-flow-0707-vn-index-accumulating-disbursement-opportunity-in-h2-07-07-2026">
+          <div class="article-number">2</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             7/7 マクロ資金動向：VN-Indexが蓄積中、下半期の資金投下機会か？
           </h1>
@@ -1344,6 +1366,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vn-index-struggles-foreigners-sell-heavily-where-does-the-money-go-07-07-2026">
+          <div class="article-number">3</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Indexの膠着状態：外国人が大量売却、資金の行方は？
           </h1>
@@ -1375,6 +1398,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/fed-cools-interest-rates-macro-capital-chooses-sides-vn-index-awaits-a-boost-06-07-2026">
+          <div class="article-number">4</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             FRB利上げペース減速：マクロ資金はどちらを選ぶ、VN-Indexは押し上げを待つか？
           </h1>
@@ -1406,6 +1430,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vn-index-fluctuates-foreign-investors-net-sell-is-capital-avoiding-risk-06-07-2026">
+          <div class="article-number">5</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Indexは綱引き状態：外国資本は純売り、資金はリスク回避か？
           </h1>
@@ -1437,6 +1462,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/liquidity-slump-and-cost-pressures-an-opportunity-to-accumulate-good-stocks-06-07-2026">
+          <div class="article-number">6</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             流動性低下とコスト圧力：優良株を買い集めるチャンスか？
           </h1>
@@ -1468,6 +1494,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/summary-of-5-prominent-macroeconomic-events-fdi-attraction-sets-record-06-07-2026">
+          <div class="article-number">7</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ベトナムの主要なマクロ経済イベント5選の総括 - FDI誘致が記録を更新
           </h1>
@@ -1499,6 +1526,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/cash-flow-in-h2-2026-stocks-gold-or-real-estate-06-07-2026">
+          <div class="article-number">8</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026年下半期の資金の流れ：株式、金、それとも不動産？
           </h1>
@@ -1530,6 +1558,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-macroeconomics-0507-record-gdp-growth-what-are-fund-flows-waiting-for-05-07-2026">
+          <div class="article-number">9</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ベトナムのマクロ経済 05/07：GDPは過去最高を記録、資金フローは何を待っているのか？
           </h1>
@@ -1561,6 +1590,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/record-fdi-supports-vn-index-disbursal-opportunity-or-euphoria-trap-05-07-2026">
+          <div class="article-number">10</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             過去最高のFDIがVN-Indexを支える：投資機会か、それとも陶酔の罠か？
           </h1>
@@ -1592,6 +1622,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macroeconomics-last-week-gdp-rose-818-and-sustained-commodity-price-pressure-05-07-2026">
+          <div class="article-number">11</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             先週のマクロ経済：GDPが8.18%増加、商品価格の高止まり圧力
           </h1>
@@ -1623,6 +1654,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/summary-of-5-outstanding-macroeconomic-events-gdp-up-818-highest-in-many-terms-05-07-2026">
+          <div class="article-number">12</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             5つの主要なマクロ経済イベント総括：GDP成長率8.18%で複数期最高を記録
           </h1>
@@ -1654,6 +1686,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnams-macroeconomic-breakthrough-where-will-smart-money-flow-05-07-2026">
+          <div class="article-number">13</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ベトナムのマクロ経済が躍進：スマートマネーはどこへ向かうのか？
           </h1>
@@ -1685,6 +1718,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/global-macro-welcomes-big-waves-vn-index-volatility-or-opportunity-to-accumulate-assets-05-07-2026">
+          <div class="article-number">14</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             世界のマクロ経済は大きな波を迎える：VN-Indexの動揺か、仕込みのチャンスか？
           </h1>
@@ -1716,6 +1750,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macroeconomic-overview-last-week-gdp-rises-818-and-fdi-reaches-record-34-billion-05-07-2026">
+          <div class="article-number">15</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             先週のマクロ経済：GDPが8.18%増加、FDIが過去最高の340億ドルに達する
           </h1>
@@ -1747,6 +1782,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/5-notable-macroeconomic-events-record-fdi-and-gdp-boost-exchange-rates-04-07-2026">
+          <div class="article-number">16</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             5つの注目すべきマクロ経済イベント：記録的なFDIとGDPが為替レートを押し上げる
           </h1>
@@ -1778,6 +1814,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnams-macroeconomy-2026-soaring-gdp-where-is-the-money-flowing-04-07-2026">
+          <div class="article-number">17</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026年ベトナムのマクロ経済：GDPが急増、資金はどこへ流れるのか？
           </h1>
@@ -1809,6 +1846,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/fed-stumbles-on-jobs-report-where-will-macro-capital-flow-04-07-2026">
+          <div class="article-number">18</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             米雇用統計でFRBが揺れる：マクロマネーはどこへ流れるのか？
           </h1>
@@ -1840,6 +1878,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/h1-2026-gdp-rises-818-where-will-macro-capital-flow-04-07-2026">
+          <div class="article-number">19</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026年上半期GDPは8.18%成長：マクロ資金はどこへ流れるのか？
           </h1>
@@ -1871,6 +1910,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/usd-plummets-fdi-pours-in-a-golden-opportunity-for-vietnamese-stocks-04-07-2026">
+          <div class="article-number">20</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             USD急落、FDI流入：ベトナム株式市場にとっての黄金の機会か？
           </h1>
@@ -1902,6 +1942,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/fdi-capital-in-6-months-exceeds-34-billion-macroeconomic-anchor-or-liquidity-trap-03-07-2026">
+          <div class="article-number">21</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             6ヶ月間のFDI資本340億ドル超：マクロ経済の支えか、流動性の罠か？
           </h1>
@@ -1933,6 +1974,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/world-bank-upgrades-vietnam-macroeconomic-boost-pivoting-capital-flows-03-07-2026">
+          <div class="article-number">22</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             世界銀行がベトナムの格付けを引き上げ：マクロ経済の追い風が資金の流れを転換
           </h1>
@@ -1964,6 +2006,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/global-macro-volatility-where-will-smart-money-flow-03-07-2026">
+          <div class="article-number">23</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             世界のマクロ経済変動：スマートマネーはどこへ向かうのか？
           </h1>
@@ -1995,6 +2038,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnams-economy-upgraded-where-will-the-capital-flow-03-07-2026">
+          <div class="article-number">24</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ベトナム経済のマクロ格上げ：資金はどこへ流れるのか？
           </h1>
@@ -2026,6 +2070,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vn-index-towards-2000-points-which-sectors-are-attracting-capital-flows-03-07-2026">
+          <div class="article-number">25</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Indexが2,000ポイントへ向かう：資金はどの産業セクターに流れるのか？
           </h1>
@@ -2057,6 +2102,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-01-07-2026">
+          <div class="article-number">26</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             7月1日以降のマクロ資金動向：13%の金利と新たな税制優遇措置
           </h1>
@@ -2088,6 +2134,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-01-07-2026">
+          <div class="article-number">27</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             2026年下半期のマクロ資金フロー：政策的支えと為替レートの圧力
           </h1>
@@ -2119,6 +2166,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-30-06-2026">
+          <div class="article-number">28</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             米ドル最高値、FRBの「ルール変更」：ベトナム株式市場の運命は？
           </h1>
@@ -2150,6 +2198,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-28-06-2026">
+          <div class="article-number">29</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ベトナムGDP目標11.9%設定：マクロ資金はどこへ流れるのか？
           </h1>
@@ -2181,6 +2230,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-news-27-06-2026">
+          <div class="article-number">30</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ベトナムマクロ経済に追い風：125兆ドン延税と太陽光電力売却で資金活性化
           </h1>
@@ -3062,7 +3112,8 @@ async function fetchDynamicFeed() {
       </button>
     </div>`;
 
-    for (const row of rows) {
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
       const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
       const article = getArticleForLang(articles, currentLang);
       
@@ -3070,6 +3121,7 @@ async function fetchDynamicFeed() {
 
       const rDate = row.summary_date;
       const rCreatedAt = row.created_at || null;
+      const articleNumber = i + 1;
       
       // Format reference links to appear on separate lines with label
       let formattedContent = article.content || '';
@@ -3172,6 +3224,7 @@ async function fetchDynamicFeed() {
 
       html += `
       <article class="collapsed" ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
+        <div class="article-number">${articleNumber}</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">

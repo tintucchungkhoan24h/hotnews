@@ -516,6 +516,26 @@ article {
   margin-bottom: 28px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Article number badge */
+.article-number {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a192f;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+  z-index: 10;
 }
 article:hover {
   border-color: rgba(255,215,0,0.2);
@@ -1292,6 +1312,7 @@ article.expanded .digest-body {
 
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-chuyen-huong-chinh-sach-fed-gia-dau-giam-sau-cang-thang-dia-chinh-tri-07-07-2026/">
+        <div class="article-number">1</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1327,6 +1348,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-vi-mo-toan-cau-bung-no-chip-ai-doi-dau-voi-bat-on-tu-fed-07-07-2026/">
+        <div class="article-number">2</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1362,6 +1384,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/bung-no-chip-nho-ai-bat-on-fed-dong-von-toan-cau-dich-chuyen-07-07-2026/">
+        <div class="article-number">3</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1397,6 +1420,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/fed-doi-huong-dat-cuoc-lai-suat-khi-dia-chinh-tri-toan-cau-cong-nghe-ai-khuay-dong-thi-truong-06-07-2026/">
+        <div class="article-number">4</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1432,6 +1456,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/fed-dieu-hau-khung-hoang-hormuz-chan-dong-em-06-07-2026/">
+        <div class="article-number">5</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1467,6 +1492,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/thay-doi-chinh-sach-fed-va-lan-song-ai-dinh-hinh-lai-dong-von-toan-cau-06-07-2026/">
+        <div class="article-number">6</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1502,6 +1528,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-vi-mo-toan-cau-hom-nay-quan-diem-dieu-hau-cua-warsh-gay-rung-dong-thi-truong-06-07-2026/">
+        <div class="article-number">7</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1537,6 +1564,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/fed-chuyen-huong-that-chat-va-cang-thang-hormuz-gay-chan-dong-thi-truong-toan-cau-06-07-2026/">
+        <div class="article-number">8</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1572,6 +1600,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/ky-vong-cat-giam-lai-suat-fed-tang-vot-nho-du-lieu-viec-lam-yeu-kem-05-07-2026/">
+        <div class="article-number">9</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1607,6 +1636,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/vi-mo-hang-tuan-ky-nguyen-warsh-cua-fed-bat-dau-giua-luc-chien-tranh-iran-ha-nhiet-05-07-2026/">
+        <div class="article-number">10</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1642,6 +1672,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-vi-mo-toan-cau-hang-dau-ky-nguyen-fed-moi-va-bien-dong-thi-truong-05-07-2026/">
+        <div class="article-number">11</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1677,6 +1708,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/soc-thi-truong-toan-cau-cang-thang-iran-fed-thay-doi-chinh-sach-kich-hoat-dich-chuyen-von-05-07-2026/">
+        <div class="article-number">12</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1712,6 +1744,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/chinh-sach-moi-cua-fed-va-lenh-ngung-ban-o-trung-dong-lam-rung-chuyen-thi-truong-toan-cau-05-07-2026/">
+        <div class="article-number">13</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1747,6 +1780,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/diem-tin-vi-mo-toan-cau-hang-tuan-chu-tich-fed-warsh-cham-dut-dinh-huong-truoc-forward-guidance-05-07-2026/">
+        <div class="article-number">14</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1782,6 +1816,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-vi-mo-toan-cau-ky-vong-cat-giam-lai-suat-cua-fed-mo-dan-sau-cu-soc-bao-cao-viec-lam-05-07-2026/">
+        <div class="article-number">15</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1817,6 +1852,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-khoi-sac-khi-lo-ngai-fed-tang-lai-suat-giam-dan-nho-du-lieu-viec-lam-yeu-kem-04-07-2026/">
+        <div class="article-number">16</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1852,6 +1888,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-xoay-truc-khi-lo-ngai-fed-tang-lai-suat-giam-bot-sau-bao-cao-viec-lam-yeu-04-07-2026/">
+        <div class="article-number">17</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1887,6 +1924,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/du-lieu-viec-lam-my-ha-nhiet-noi-lo-fed-tang-lai-suat-ham-y-cho-thi-truong-toan-cau-04-07-2026/">
+        <div class="article-number">18</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1922,6 +1960,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/lo-ngai-fed-tang-lai-suat-giam-bot-khi-thi-truong-viec-lam-my-ha-nhiet-dong-von-toan-cau-bat-dau-xoay-chuyen-04-07-2026/">
+        <div class="article-number">19</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1957,6 +1996,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/noi-lo-fed-tang-lai-suat-giam-dan-khi-viec-lam-my-ha-nhiet-gia-dau-giam-xuong-duoi-71-usd-03-07-2026/">
+        <div class="article-number">20</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -1992,6 +2032,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/k-vng-tng-li-sut-fed-h-nhit-khi-vic-lm-m-suy-yu-dng-vn-ton-cu-chuyn-sang-vng-03-07-2026/">
+        <div class="article-number">21</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -2027,6 +2068,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/fed-gim-t-cc-tng-li-sut-khi-vic-lm-thng-6-h-nhit-dng-chy-thanh-khon-ton-cu-dch-chuyn-03-07-2026/">
+        <div class="article-number">22</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -2062,6 +2104,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/cc-li-sut-fed-xoay-chuyn-dng-vn-ton-cu-c-hi-cho-vit-nam-03-07-2026/">
+        <div class="article-number">23</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -2097,6 +2140,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/ni-lo-fed-tng-li-sut-h-nhit-khi-bo-co-vic-lm-thng-6-lm-du-th-trng-03-07-2026/">
+        <div class="article-number">24</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -2132,6 +2176,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/s-thay-i-chnh-sch-diu-hu-ca-fed-chi-tiu-ai-v-lo-ngi-chin-tranh-thc-y-ri-ro-tng-li-sut-02-07-2026/">
+        <div class="article-number">25</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -2167,6 +2212,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/ni-lo-fed-tng-li-sut-bng-ln-khi-bng-n-ai-thc-y-p-lc-lm-pht/">
+        <div class="article-number">26</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -2202,6 +2248,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/ch-tch-fed-warsh-gi-nguyn-li-sut-cn-st-ai-v-cng-thng-iran-nh-hnh-th-trng-ton-cu/">
+        <div class="article-number">27</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -2237,6 +2284,7 @@ article.expanded .digest-body {
       <hr class="border-gray-800 my-8">
       
       <article class="collapsed" data-spoke-url="https://tintucchungkhoan24h.com/world-news/vi/chuyn-dch-cng-ngh-ton-cu-ai-chip-a-chnh-tr-nh-hnh-li-th-trng/">
+        <div class="article-number">28</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
@@ -3112,7 +3160,8 @@ async function fetchDynamicFeed() {
       </button>
     </div>`;
 
-    for (const row of rows) {
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
       const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
       const article = getArticleForLang(articles, currentLang);
       
@@ -3120,6 +3169,7 @@ async function fetchDynamicFeed() {
 
       const rDate = row.summary_date;
       const rCreatedAt = row.created_at || null;
+      const articleNumber = i + 1;
       
       // Format reference links to appear on separate lines with label
       let formattedContent = article.content || '';
@@ -3222,6 +3272,7 @@ async function fetchDynamicFeed() {
 
       html += `
       <article class="collapsed" ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
+        <div class="article-number">${articleNumber}</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">

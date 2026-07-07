@@ -189,6 +189,26 @@ article {
   margin-bottom: 28px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Article number badge */
+.article-number {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a192f;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+  z-index: 10;
 }
 article:hover {
   border-color: rgba(255,215,0,0.2);

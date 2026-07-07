@@ -516,6 +516,26 @@ article {
   margin-bottom: 28px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Article number badge */
+.article-number {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a192f;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+  z-index: 10;
 }
 article:hover {
   border-color: rgba(255,215,0,0.2);
@@ -1282,6 +1302,7 @@ article.expanded .digest-body {
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-acb-acv-hdb-hvn-pnj-dong-tien-phan-hoa-manh-truoc-ap-luc-thong-tin-07-07-2026">
+          <div class="article-number">1</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Top 5 mã cổ phiếu nóng nhất trong ngày: ACB, ACV, HDB, HVN, PNJ - Dòng tiền phân hóa mạnh trước áp lực thông tin
           </h1>
@@ -1313,6 +1334,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-07072026-vn-index-huong-ve-dinh-cu-07-07-2026">
+          <div class="article-number">2</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Thị trường chứng khoán ngày 07/07/2026: VN-Index hướng về đỉnh cũ
           </h1>
@@ -1344,6 +1366,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-fpt-pnj-vcb-vhm-vic-ap-luc-xa-hang-nghin-ty-khien-vn-index-thung-moc-quan-trong-06-07-2026">
+          <div class="article-number">3</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Top 5 mã cổ phiếu nóng nhất trong ngày: FPT, PNJ, VCB, VHM, VIC - Áp lực xả hàng nghìn tỷ khiến VN-Index thủng mốc quan trọng
           </h1>
@@ -1375,6 +1398,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-06072026-vn-index-giam-manh-nhat-mot-thang-06-07-2026">
+          <div class="article-number">4</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Thị trường chứng khoán ngày 06/07/2026: VN-Index giảm mạnh nhất một tháng
           </h1>
@@ -1406,6 +1430,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-06072026-vn-index-rung-lac-manh-quanh-1860-diem-06-07-2026">
+          <div class="article-number">5</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Thị trường chứng khoán ngày 06/07/2026: VN-Index rung lắc mạnh quanh 1.860 điểm
           </h1>
@@ -1437,6 +1462,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-06072026-vn-index-tim-diem-can-bang-06-07-2026">
+          <div class="article-number">6</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Thị trường chứng khoán ngày 06/07/2026: VN-Index tìm điểm cân bằng
           </h1>
@@ -1468,6 +1494,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-06072026-vn-index-tim-ngoi-no-but-pha-06-07-2026">
+          <div class="article-number">7</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Thị trường chứng khoán ngày 06/07/2026: VN-Index tìm ngòi nổ bứt phá
           </h1>
@@ -1499,6 +1526,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-acb-fpt-kbc-mbs-pnj-phan-hoa-manh-06-07-2026">
+          <div class="article-number">8</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Top 5 mã cổ phiếu nóng nhất trong ngày: ACB, FPT, KBC, MBS, PNJ phân hóa mạnh
           </h1>
@@ -1530,6 +1558,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-dgc-fpt-hpg-pnj-vhm-chiu-ap-luc-rung-lac-manh-05-07-2026">
+          <div class="article-number">9</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Top 5 mã cổ phiếu nóng nhất trong ngày: DGC, FPT, HPG, PNJ, VHM chịu áp lực rung lắc mạnh
           </h1>
@@ -1561,6 +1590,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-but-pha-manh-me-phien-gan-nhat-nho-nhom-chung-khoan-05-07-2026">
+          <div class="article-number">10</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index bứt phá mạnh mẽ phiên gần nhất nhờ nhóm chứng khoán
           </h1>
@@ -1592,6 +1622,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-tuan-bid-fpt-tcb-vhm-vic-dong-tien-phan-hoa-manh-05-07-2026">
+          <div class="article-number">11</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Top 5 mã cổ phiếu nóng nhất trong tuần: BID, FPT, TCB, VHM, VIC - Dòng tiền phân hóa mạnh
           </h1>
@@ -1623,6 +1654,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-dgc-fpt-pnj-shs-tcx-su-phan-hoa-manh-me-truoc-them-bao-cao-tai-chinh-quy-ii-05-07-2026">
+          <div class="article-number">12</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Top 5 mã cổ phiếu nóng nhất trong ngày: DGC, FPT, PNJ, SHS, TCX - Sự phân hóa mạnh mẽ trước thềm báo cáo tài chính quý II
           </h1>
@@ -1654,6 +1686,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-phan-hoa-manh-phien-gan-nhat-dong-tien-tim-be-do-ngan-hang-04-07-2026">
+          <div class="article-number">13</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index phân hóa mạnh phiên gần nhất, dòng tiền tìm bệ đỡ ngân hàng
           </h1>
@@ -1685,6 +1718,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-tim-dong-luc-moi-tu-kqkd-quy-2-trong-phien-gan-nhat-04-07-2026">
+          <div class="article-number">14</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index tìm động lực mới từ KQKD quý 2 trong phiên gần nhất
           </h1>
@@ -1716,6 +1750,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-bien-dong-manh-phien-gan-nhat-tam-diem-cat-margin-va-vinhomes-04-07-2026">
+          <div class="article-number">15</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index biến động mạnh phiên gần nhất: Tâm điểm cắt margin và Vinhomes
           </h1>
@@ -1747,6 +1782,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/phien-giao-dich-ngay-03072026-vn-index-rung-lac-manh-dong-tien-phan-hoa-03-07-2026">
+          <div class="article-number">16</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Phiên giao dịch ngày 03/07/2026: VN-Index rung lắc mạnh, dòng tiền phân hóa
           </h1>
@@ -1778,6 +1814,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-phan-hoa-manh-phien-03072026-pnj-giam-san-gay-ap-luc-03-07-2026">
+          <div class="article-number">17</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index phân hóa mạnh phiên 03/07/2026: PNJ giảm sàn gây áp lực
           </h1>
@@ -1809,6 +1846,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-rung-lac-manh-phien-03072026-pnj-giam-san-gay-ap-luc-03-07-2026">
+          <div class="article-number">18</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index rung lắc mạnh phiên 03/07/2026: PNJ giảm sàn gây áp lực
           </h1>
@@ -1840,6 +1878,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-phan-hoa-manh-me-trong-phien-giao-dich-ngay-03072026-03-07-2026">
+          <div class="article-number">19</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index phân hóa mạnh mẽ trong phiên giao dịch ngày 03/07/2026
           </h1>
@@ -1871,6 +1910,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-giam-nhe-phien-02072026-dong-tien-cho-doi-co-hoi-moi-02-07-2026">
+          <div class="article-number">20</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index giảm nhẹ phiên 02/07/2026: Dòng tiền chờ đợi cơ hội mới
           </h1>
@@ -1902,6 +1942,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-but-pha-manh-me-phien-01072026-nhom-ngan-hang-dan-song-01-07-2026">
+          <div class="article-number">21</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index bứt phá mạnh mẽ phiên 01/07/2026: Nhóm ngân hàng dẫn sóng
           </h1>
@@ -1933,6 +1974,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-but-pha-phien-30062026-dong-tien-phan-hoa-manh-me-30-06-2026">
+          <div class="article-number">22</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index bứt phá phiên 30/06/2026: Dòng tiền phân hóa mạnh mẽ
           </h1>
@@ -1964,6 +2006,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-lao-doc-phien-29062026-ap-luc-chot-loi-de-nang-nhom-tru-29-06-2026">
+          <div class="article-number">23</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index lao dốc phiên 29/06/2026: Áp lực chốt lời đè nặng nhóm trụ
           </h1>
@@ -1995,6 +2038,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-phien-gan-nhat-ap-luc-tich-luy-va-xu-the-dong-tien-28-06-2026">
+          <div class="article-number">24</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index phiên gần nhất: Áp lực tích lũy và xu thế dòng tiền
           </h1>
@@ -2026,6 +2070,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-hoi-phuc-an-tuong-trong-phien-gan-nhat-nho-luc-keo-tu-vic-va-vhm-27-06-2026">
+          <div class="article-number">25</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index hồi phục ấn tượng trong phiên gần nhất nhờ lực kéo từ VIC và VHM
           </h1>
@@ -2057,6 +2102,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-26062026-phuc-hoi-gan-9-diem-nho-luc-day-ho-vingroup-26-06-2026">
+          <div class="article-number">26</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index 26/06/2026: Phục hồi gần 9 điểm nhờ lực đẩy họ Vingroup
           </h1>
@@ -2085,6 +2131,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/24-06-2026">
+          <div class="article-number">27</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Thị trường 24/06/2026: VIC, LPB bùng nổ, VN-Index tiến sát mốc 1880
           </h1>
@@ -2113,6 +2160,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/23-06-2026">
+          <div class="article-number">28</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index 23/06: LPB trần, VIC dẫn sóng ngoại gom ròng đột biến 2.700 tỷ
           </h1>
@@ -2141,6 +2189,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/22-06-2026">
+          <div class="article-number">29</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index ngày 22/06/2026: Nhóm Vingroup bứt phá, thanh khoản thận trọng
           </h1>
@@ -3060,7 +3109,8 @@ async function fetchDynamicFeed() {
       </button>
     </div>`;
 
-    for (const row of rows) {
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
       const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
       const article = getArticleForLang(articles, currentLang);
       
@@ -3068,6 +3118,7 @@ async function fetchDynamicFeed() {
 
       const rDate = row.summary_date;
       const rCreatedAt = row.created_at || null;
+      const articleNumber = i + 1;
       
       // Format reference links to appear on separate lines with label
       let formattedContent = article.content || '';
@@ -3140,6 +3191,7 @@ async function fetchDynamicFeed() {
 
       html += `
       <article class="collapsed" ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
+        <div class="article-number">${articleNumber}</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">

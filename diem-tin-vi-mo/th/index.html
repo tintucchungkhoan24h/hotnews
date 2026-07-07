@@ -516,6 +516,26 @@ article {
   margin-bottom: 28px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Article number badge */
+.article-number {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a192f;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+  z-index: 10;
 }
 article:hover {
   border-color: rgba(255,215,0,0.2);
@@ -1287,6 +1307,7 @@ article.expanded .digest-body {
     <main id="digest-feed" class="max-w-[1440px] mx-auto">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/summary-of-5-prominent-domestic-macroeconomic-events-fdi-attraction-sets-new-record-07-07-2026">
+          <div class="article-number">1</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             สรุป 5 เหตุการณ์เศรษฐกิจมหภาคเด่นในประเทศ - การดึงดูด FDI สร้างสถิติใหม่
           </h1>
@@ -1318,6 +1339,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-capital-flow-0707-vn-index-accumulating-disbursement-opportunity-in-h2-07-07-2026">
+          <div class="article-number">2</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             กระแสเงินทุนมหภาค 07/07: VN-Index สะสมกำลัง, โอกาสเบิกจ่ายในครึ่งปีหลัง?
           </h1>
@@ -1349,6 +1371,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vn-index-struggles-foreigners-sell-heavily-where-does-the-money-go-07-07-2026">
+          <div class="article-number">3</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index ซบเซา: ต่างชาติเทขายหนัก เงินทุนไหลไปไหน?
           </h1>
@@ -1380,6 +1403,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/fed-cools-interest-rates-macro-capital-chooses-sides-vn-index-awaits-a-boost-06-07-2026">
+          <div class="article-number">4</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             เฟดลดดอกเบี้ย: เงินทุนมหภาคเลือกข้าง, VN-Index รอลุ้นแรงหนุน?
           </h1>
@@ -1411,6 +1435,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vn-index-fluctuates-foreign-investors-net-sell-is-capital-avoiding-risk-06-07-2026">
+          <div class="article-number">5</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index ซื้อขายผันผวน: ต่างชาติขายสุทธิ, เงินทุนกำลังหลีกเลี่ยงความเสี่ยง?
           </h1>
@@ -1442,6 +1467,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/liquidity-slump-and-cost-pressures-an-opportunity-to-accumulate-good-stocks-06-07-2026">
+          <div class="article-number">6</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             สภาพคล่องลดลงและแรงกดดันด้านต้นทุน: โอกาสในการสะสมหุ้นราคาดีหรือไม่?
           </h1>
@@ -1473,6 +1499,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/summary-of-5-prominent-macroeconomic-events-fdi-attraction-sets-record-06-07-2026">
+          <div class="article-number">7</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             สรุป 5 เหตุการณ์เศรษฐกิจมหภาคเด่น - FDI ดึงดูดทำสถิติใหม่
           </h1>
@@ -1504,6 +1531,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/cash-flow-in-h2-2026-stocks-gold-or-real-estate-06-07-2026">
+          <div class="article-number">8</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             กระแสเงินสดครึ่งหลังปี 2026: หุ้น ทองคำ หรืออสังหาริมทรัพย์?
           </h1>
@@ -1535,6 +1563,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-macroeconomics-0507-record-gdp-growth-what-are-fund-flows-waiting-for-05-07-2026">
+          <div class="article-number">9</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             เศรษฐกิจมหภาคเวียดนาม 05/07: GDP โตเป็นประวัติการณ์ กระแสเงินทุนกำลังรออะไรอยู่?
           </h1>
@@ -1566,6 +1595,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/record-fdi-supports-vn-index-disbursal-opportunity-or-euphoria-trap-05-07-2026">
+          <div class="article-number">10</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             FDI เป็นประวัติการณ์หนุน VN-Index: โอกาสในการลงทุนหรือกับดักความตื่นเต้น?
           </h1>
@@ -1597,6 +1627,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macroeconomics-last-week-gdp-rose-818-and-sustained-commodity-price-pressure-05-07-2026">
+          <div class="article-number">11</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ภาพรวมเศรษฐกิจมหภาคประจำสัปดาห์: GDP โต 8.18% และแรงกดดันจากราคาสินค้าที่ยังสูง
           </h1>
@@ -1628,6 +1659,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/summary-of-5-outstanding-macroeconomic-events-gdp-up-818-highest-in-many-terms-05-07-2026">
+          <div class="article-number">12</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             สรุป 5 เหตุการณ์เศรษฐกิจมหภาคเด่น: GDP โต 8.18% สูงสุดในหลายวาระ
           </h1>
@@ -1659,6 +1691,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnams-macroeconomic-breakthrough-where-will-smart-money-flow-05-07-2026">
+          <div class="article-number">13</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             เศรษฐกิจมหภาคเวียดนามก้าวหน้า: เม็ดเงินอัจฉริยะจะไหลไปที่ไหน?
           </h1>
@@ -1690,6 +1723,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/global-macro-welcomes-big-waves-vn-index-volatility-or-opportunity-to-accumulate-assets-05-07-2026">
+          <div class="article-number">14</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             มหภาคโลกเผชิญคลื่นลูกใหญ่: VN-Index ผันผวนหรือโอกาสในการสะสมหุ้น?
           </h1>
@@ -1721,6 +1755,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macroeconomic-overview-last-week-gdp-rises-818-and-fdi-reaches-record-34-billion-05-07-2026">
+          <div class="article-number">15</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ภาพรวมเศรษฐกิจมหภาคสัปดาห์ที่ผ่านมา: GDP เติบโต 8.18% และ FDI สูงสุดเป็นประวัติการณ์ 3.4 หมื่นล้านเหรียญสหรัฐ
           </h1>
@@ -1752,6 +1787,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/5-notable-macroeconomic-events-record-fdi-and-gdp-boost-exchange-rates-04-07-2026">
+          <div class="article-number">16</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             5 เหตุการณ์เศรษฐกิจมหภาคเด่น: FDI และ GDP ทุบสถิติหนุนอัตราแลกเปลี่ยน
           </h1>
@@ -1783,6 +1819,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnams-macroeconomy-2026-soaring-gdp-where-is-the-money-flowing-04-07-2026">
+          <div class="article-number">17</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             เศรษฐกิจมหภาคเวียดนามปี 2026: GDP พุ่งสูง เงินทุนไหลไปที่ไหน?
           </h1>
@@ -1814,6 +1851,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/fed-stumbles-on-jobs-report-where-will-macro-capital-flow-04-07-2026">
+          <div class="article-number">18</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             Fed สั่นคลอนจากรายงานการจ้างงาน: กระแสเงินทุนมหภาคจะไหลไปที่ไหน?
           </h1>
@@ -1845,6 +1883,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/h1-2026-gdp-rises-818-where-will-macro-capital-flow-04-07-2026">
+          <div class="article-number">19</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             GDP ครึ่งแรกปี 2026 โต 8.18%: กระแสเงินทุนมหภาคจะไหลไปที่ไหน?
           </h1>
@@ -1876,6 +1915,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/usd-plummets-fdi-pours-in-a-golden-opportunity-for-vietnamese-stocks-04-07-2026">
+          <div class="article-number">20</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             USD ร่วง, FDI หลั่งไหล: โอกาสทองสำหรับหุ้นเวียดนาม?
           </h1>
@@ -1907,6 +1947,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/fdi-capital-in-6-months-exceeds-34-billion-macroeconomic-anchor-or-liquidity-trap-03-07-2026">
+          <div class="article-number">21</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             เงินทุน FDI 6 เดือนเกิน 3.4 หมื่นล้านเหรียญสหรัฐฯ: ตัวหนุนเศรษฐกิจมหภาคหรือกับดักสภาพคล่อง?
           </h1>
@@ -1938,6 +1979,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/world-bank-upgrades-vietnam-macroeconomic-boost-pivoting-capital-flows-03-07-2026">
+          <div class="article-number">22</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ธนาคารโลกปรับอันดับเวียดนามขึ้น: แรงผลักดันมหภาคพลิกทิศทางการไหลของเงินทุน
           </h1>
@@ -1969,6 +2011,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/global-macro-volatility-where-will-smart-money-flow-03-07-2026">
+          <div class="article-number">23</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ภาพรวมเศรษฐกิจมหภาคโลกผันผวน: กระแสเงินอัจฉริยะจะไหลไปที่ใด?
           </h1>
@@ -2000,6 +2043,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnams-economy-upgraded-where-will-the-capital-flow-03-07-2026">
+          <div class="article-number">24</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             เศรษฐกิจเวียดนามยกระดับมาโคร: กระแสเงินจะไหลไปไหน?
           </h1>
@@ -2031,6 +2075,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vn-index-towards-2000-points-which-sectors-are-attracting-capital-flows-03-07-2026">
+          <div class="article-number">25</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             VN-Index มุ่งสู่ 2,000 จุด: กระแสเงินทุนไหลเข้าสู่กลุ่มอุตสาหกรรมใด?
           </h1>
@@ -2062,6 +2107,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-01-07-2026">
+          <div class="article-number">26</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             กระแสเงินทุนมหภาคหลังวันที่ 1 ก.ค.: อัตราดอกเบี้ย 13% และแรงผลักดันภาษีใหม่
           </h1>
@@ -2093,6 +2139,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-01-07-2026">
+          <div class="article-number">27</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             กระแสเงินมหภาคครึ่งหลังปี 2026: แรงหนุนจากนโยบายและแรงกดดันอัตราแลกเปลี่ยน
           </h1>
@@ -2124,6 +2171,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-30-06-2026">
+          <div class="article-number">28</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             ดอลลาร์พุ่งชนเพดาน เฟดเปลี่ยน 'กติกา': หุ้นเวียดนามจะไปทางไหน?
           </h1>
@@ -2155,6 +2203,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-28-06-2026">
+          <div class="article-number">29</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             เวียดนามตั้งเป้า GDP 11.9%: เม็ดเงินมหภาคจะไหลไปที่ใด?
           </h1>
@@ -2186,6 +2235,7 @@ article.expanded .digest-body {
         <hr class="border-gray-800 my-8">
       
         <article data-spoke-url="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-news-27-06-2026">
+          <div class="article-number">30</div>
           <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
             กระตุ้นเศรษฐกิจเวียดนาม: ยืดภาษี 125 แสนล้านดอง หนุนกระแสเงินหมุนเวียน
           </h1>
@@ -3067,7 +3117,8 @@ async function fetchDynamicFeed() {
       </button>
     </div>`;
 
-    for (const row of rows) {
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
       const articles = typeof row.articles === 'string' ? JSON.parse(row.articles) : row.articles;
       const article = getArticleForLang(articles, currentLang);
       
@@ -3075,6 +3126,7 @@ async function fetchDynamicFeed() {
 
       const rDate = row.summary_date;
       const rCreatedAt = row.created_at || null;
+      const articleNumber = i + 1;
       
       // Format reference links to appear on separate lines with label
       let formattedContent = article.content || '';
@@ -3177,6 +3229,7 @@ async function fetchDynamicFeed() {
 
       html += `
       <article class="collapsed" ${isRtl ? 'dir="rtl"' : ''} data-spoke-url="${absoluteSpokeUrl}">
+        <div class="article-number">${articleNumber}</div>
         <div class="article-header">
           <div class="article-header-left">
             <h1 class="text-2xl md:text-3xl font-black leading-tight mb-4">
