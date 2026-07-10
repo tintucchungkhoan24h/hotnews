@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-lao-doc-cuoi-phien-ap-luc-ty-gia-va-bay-gia-dau-the-gioi-10-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-09T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index lao dốc cuối phiên: Áp lực tỷ giá và bẫy giá dầu thế giới?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vn-index-plunges-at-session-end-exchange-rate-pressure-and-global-oil-price-trap-10-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-09T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index plunges at session end: Exchange rate pressure and global oil price trap?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vn-index-plunges-at-session-end-exchange-rate-pressure-and-global-oil-price-trap-10-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-09T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 장마감 급락: 환율 압박과 국제 유가 함정?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vn-index-plunges-at-session-end-exchange-rate-pressure-and-global-oil-price-trap-10-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-09T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 盤末暴跌：匯率壓力與全球油價陷阱？</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vn-index-plunges-at-session-end-exchange-rate-pressure-and-global-oil-price-trap-10-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-09T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index ดิ่งเหวท้ายเซสชั่น: แรงกดดันอัตราแลกเปลี่ยนและกับดักราคาน้ำมันโลก?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vn-index-plunges-at-session-end-exchange-rate-pressure-and-global-oil-price-trap-10-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-09T17:00:00.000Z</news:publication_date>
+      <news:title>تراجع VN-Index في نهاية الجلسة: ضغط سعر الصرف وفخ أسعار النفط العالمية؟</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vn-index-plunges-at-session-end-exchange-rate-pressure-and-global-oil-price-trap-10-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-09T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index、終盤に急落：為替レート圧力と世界の原油価格の罠？</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/chinh-sach-dieu-hau-cua-fed-va-xung-dot-trung-dong-gay-chan-dong-thi-truong-toan-cau-10-07-2026/</loc>
     <news:news>
       <news:publication>
