@@ -543,10 +543,8 @@ function formatMacroDateTime(dateString) {
 // Format source name (remove 'Investing-' prefix)
 function formatSourceName(sourceName) {
     if (!sourceName) return '-';
-    if (sourceName.startsWith('Investing-')) {
-        return 'Investing';
-    }
-    return sourceName;
+    // Only show the first part before any '-' separator (e.g. "Investing-HangHoa" → "Investing")
+    return sourceName.split('-')[0].trim();
 }
 
 function renderMacroBody() {
