@@ -53,6 +53,8 @@ window.injectFastNewsRowsGeneric = function(tbodyId, prefixId) {
 
         const colCount = tr.children.length;
         const uniqueId = `fnq-${prefixId}-${tr.rowIndex}`;
+        // Only show the first part before any '-' separator (e.g. "Investing-HangHoa" → "Investing")
+        const shortSource = source ? source.split('-')[0].trim() : '';
 
         const quoteRow = document.createElement('tr');
         quoteRow.className = 'fast-news-quote-row';
@@ -61,7 +63,7 @@ window.injectFastNewsRowsGeneric = function(tbodyId, prefixId) {
             <td colspan="${colCount}" style="padding: 0; border-top: none; vertical-align: top;">
                 <div class="fast-news-inline-box" id="${uniqueId}" style="position: sticky; left: 0;">
                     <div class="fast-news-header">
-                        <span class="fast-news-source">${source ? window._fnqEsc(source) + (time ? ' · ' + window._fnqEsc(time) : '') : (time ? window._fnqEsc(time) : '')}</span>
+                        <span class="fast-news-source">${shortSource ? window._fnqEsc(shortSource) + (time ? ' · ' + window._fnqEsc(time) : '') : (time ? window._fnqEsc(time) : '')}</span>
                         ${link ? `<a target="_blank" href="${window._fnqEsc(link)}" class="fast-news-link" rel="noopener noreferrer">↗</a>` : ''}
                     </div>
                     <div class="fast-news-headline" id="${uniqueId}-title">${window._fnqEsc(rawHeadline)}</div>
