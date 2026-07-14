@@ -540,10 +540,16 @@ function formatMacroDateTime(dateString) {
     return `${day}/${month} ${hours}:${minutes}`;
 }
 
-// Format source name (remove 'Investing-' prefix)
+// Format source name — use i18n friendly name when available, otherwise raw key
 function formatSourceName(sourceName) {
     if (!sourceName) return '-';
-    // Only show the first part before any '-' separator (e.g. "Investing-HangHoa" → "Investing")
+    // Try localized display name from i18n.sourceNames first
+    if (typeof getSourceDisplayName === 'function' && typeof state !== 'undefined' && state.lang) {
+        const display = getSourceDisplayName(sourceName, state.lang);
+        // getSourceDisplayName returns the raw key as fallback, so always use it
+        return display;
+    }
+    // Fallback: only show the first part before any '-' separator
     return sourceName.split('-')[0].trim();
 }
 
