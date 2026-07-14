@@ -236,7 +236,15 @@
         "Investing-Forex": "Investing-Tiền tệ",
         "Investing-HangHoa": "Investing-Hàng hoá",
         "Investing-TheGioi": "Investing-Thế giới",
-        "Investing-TinPhoBien": "Investing-Tin phổ biến"
+        "Investing-TinPhoBien": "Investing-Tin phổ biến",
+        "Vietstock-DoanhNghiep-HDKD": "Vietstock-Hoạt động kinh doanh",
+        "Vietstock-DoanhNghiep-CoTuc": "Vietstock-Cổ tức",
+        "Vietstock-DoanhNghiep-MA": "Vietstock-Tăng vốn M&A",
+        "Vietstock-DoanhNghiep-IPO": "Vietstock-IPO-Cổ phần hóa",
+        "Vietstock-DoanhNghiep-NhanSu": "Vietstock-Nhân sự doanh nghiệp",
+        "Vietstock-DoanhNghiep-GDNB": "Vietstock-Giao dịch nội bộ",
+        "Vietstock-ChungKhoan-NiemYet": "Vietstock-Niêm yết chứng khoán",
+        "Vietstock-ChungKhoan-ETF": "Vietstock-Quỹ ETF"
       },
       "contact": {
         "founderLabel": "Founder",
@@ -461,7 +469,15 @@
         "Investing-Forex": "Investing-Forex",
         "Investing-HangHoa": "Investing-Commodities",
         "Investing-TheGioi": "Investing-World News",
-        "Investing-TinPhoBien": "Investing-Popular News"
+        "Investing-TinPhoBien": "Investing-Popular News",
+        "Vietstock-DoanhNghiep-HDKD": "Vietstock-Business Operations",
+        "Vietstock-DoanhNghiep-CoTuc": "Vietstock-Dividends",
+        "Vietstock-DoanhNghiep-MA": "Vietstock-Capital Increase & M&A",
+        "Vietstock-DoanhNghiep-IPO": "Vietstock-IPO & Equitization",
+        "Vietstock-DoanhNghiep-NhanSu": "Vietstock-Corporate Personnel",
+        "Vietstock-DoanhNghiep-GDNB": "Vietstock-Insider Trading",
+        "Vietstock-ChungKhoan-NiemYet": "Vietstock-Stock Listing",
+        "Vietstock-ChungKhoan-ETF": "Vietstock-ETF Funds"
       },
       "contact": {
         "founderLabel": "Founder",
@@ -686,7 +702,15 @@
         "Investing-Forex": "Investing-외환",
         "Investing-HangHoa": "Investing-원자재",
         "Investing-TheGioi": "Investing-세계",
-        "Investing-TinPhoBien": "Investing-인기 뉴스"
+        "Investing-TinPhoBien": "Investing-인기 뉴스",
+        "Vietstock-DoanhNghiep-HDKD": "Vietstock-기업 영업활동",
+        "Vietstock-DoanhNghiep-CoTuc": "Vietstock-배당금",
+        "Vietstock-DoanhNghiep-MA": "Vietstock-증자 및 M&A",
+        "Vietstock-DoanhNghiep-IPO": "Vietstock-IPO·주식회사화",
+        "Vietstock-DoanhNghiep-NhanSu": "Vietstock-기업 인사",
+        "Vietstock-DoanhNghiep-GDNB": "Vietstock-내부자 거래",
+        "Vietstock-ChungKhoan-NiemYet": "Vietstock-증권 상장",
+        "Vietstock-ChungKhoan-ETF": "Vietstock-ETF 펀드"
       },
       "contact": {
         "founderLabel": "창립자",
@@ -911,7 +935,15 @@
         "Investing-Forex": "Investing-外匯",
         "Investing-HangHoa": "Investing-大宗商品",
         "Investing-TheGioi": "Investing-國際",
-        "Investing-TinPhoBien": "Investing-熱門新聞"
+        "Investing-TinPhoBien": "Investing-熱門新聞",
+        "Vietstock-DoanhNghiep-HDKD": "Vietstock-企業營運",
+        "Vietstock-DoanhNghiep-CoTuc": "Vietstock-股息",
+        "Vietstock-DoanhNghiep-MA": "Vietstock-增資與併購",
+        "Vietstock-DoanhNghiep-IPO": "Vietstock-IPO·股份化",
+        "Vietstock-DoanhNghiep-NhanSu": "Vietstock-企業人事",
+        "Vietstock-DoanhNghiep-GDNB": "Vietstock-內部人交易",
+        "Vietstock-ChungKhoan-NiemYet": "Vietstock-有價證券上市",
+        "Vietstock-ChungKhoan-ETF": "Vietstock-ETF基金"
       },
       "contact": {
         "founderLabel": "創辦人",
@@ -1134,7 +1166,15 @@
         "Investing-Forex": "Investing-ฟอเร็กซ์",
         "Investing-HangHoa": "Investing-สินค้าโภคภัณฑ์",
         "Investing-TheGioi": "Investing-ข่าวโลก",
-        "Investing-TinPhoBien": "Investing-ข่าวยอดนิยม"
+        "Investing-TinPhoBien": "Investing-ข่าวยอดนิยม",
+        "Vietstock-DoanhNghiep-HDKD": "Vietstock-การดำเนินธุรกิจ",
+        "Vietstock-DoanhNghiep-CoTuc": "Vietstock-เงินปันผล",
+        "Vietstock-DoanhNghiep-MA": "Vietstock-เพิ่มทุนและ M&A",
+        "Vietstock-DoanhNghiep-IPO": "Vietstock-IPO·แปรรูปรัฐวิสาหกิจ",
+        "Vietstock-DoanhNghiep-NhanSu": "Vietstock-บุคลากรองค์กร",
+        "Vietstock-DoanhNghiep-GDNB": "Vietstock-การซื้อขายภายใน",
+        "Vietstock-ChungKhoan-NiemYet": "Vietstock-การจดทะเบียนหลักทรัพย์",
+        "Vietstock-ChungKhoan-ETF": "Vietstock-กองทุน ETF"
       },
       "contact": {
         "founderLabel": "ผู้ก่อตั้ง",
@@ -1357,7 +1397,15 @@
         "Investing-Forex": "Investing-فوركس",
         "Investing-HangHoa": "Investing-سلع",
         "Investing-TheGioi": "Investing-أخبار عالمية",
-        "Investing-TinPhoBien": "Investing-أخبار رائجة"
+        "Investing-TinPhoBien": "Investing-أخبار رائجة",
+        "Vietstock-DoanhNghiep-HDKD": "Vietstock-أنشطة الأعمال",
+        "Vietstock-DoanhNghiep-CoTuc": "Vietstock-توزيعات الأرباح",
+        "Vietstock-DoanhNghiep-MA": "Vietstock-زيادة رأس المال والاندماج",
+        "Vietstock-DoanhNghiep-IPO": "Vietstock-الطرح العام الأولي",
+        "Vietstock-DoanhNghiep-NhanSu": "Vietstock-شؤون الموظفين",
+        "Vietstock-DoanhNghiep-GDNB": "Vietstock-تداول الداخليين",
+        "Vietstock-ChungKhoan-NiemYet": "Vietstock-إدراج الأوراق المالية",
+        "Vietstock-ChungKhoan-ETF": "Vietstock-صناديق ETF"
       },
       "contact": {
         "founderLabel": "المؤسس",
@@ -1580,7 +1628,15 @@
         "Investing-Forex": "Investing-外国為替",
         "Investing-HangHoa": "Investing-商品",
         "Investing-TheGioi": "Investing-国際ニュース",
-        "Investing-TinPhoBien": "Investing-人気ニュース"
+        "Investing-TinPhoBien": "Investing-人気ニュース",
+        "Vietstock-DoanhNghiep-HDKD": "Vietstock-事業活動",
+        "Vietstock-DoanhNghiep-CoTuc": "Vietstock-配当",
+        "Vietstock-DoanhNghiep-MA": "Vietstock-増資・M&A",
+        "Vietstock-DoanhNghiep-IPO": "Vietstock-IPO・民営化",
+        "Vietstock-DoanhNghiep-NhanSu": "Vietstock-企業人事",
+        "Vietstock-DoanhNghiep-GDNB": "Vietstock-インサイダー取引",
+        "Vietstock-ChungKhoan-NiemYet": "Vietstock-有価証券上場",
+        "Vietstock-ChungKhoan-ETF": "Vietstock-ETFファンド"
       },
       "contact": {
         "founderLabel": "創設者",
