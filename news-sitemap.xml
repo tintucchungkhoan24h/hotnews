@@ -1080,6 +1080,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/lam-phat-my-giam-xuong-35-su-phuc-hoi-cua-dong-von-toan-cau-va-co-hoi-cho-viet-nam-15-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-14T17:00:00.000Z</news:publication_date>
+      <news:title>Lạm phát Mỹ giảm xuống 3,5%: Sự phục hồi của dòng vốn toàn cầu và cơ hội cho Việt Nam</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/us-inflation-drops-to-35-global-capital-rebound-and-vietnam-opportunities-15-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-14T17:00:00.000Z</news:publication_date>
+      <news:title>US Inflation Drops to 3.5%: Global Capital Rebound and Vietnam Opportunities</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/us-inflation-drops-to-35-global-capital-rebound-and-vietnam-opportunities-15-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-14T17:00:00.000Z</news:publication_date>
+      <news:title>미국 인플레이션 3.5%로 둔화: 글로벌 자금 반등과 베트남의 기회</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/us-inflation-drops-to-35-global-capital-rebound-and-vietnam-opportunities-15-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-14T17:00:00.000Z</news:publication_date>
+      <news:title>美國通膨降至3.5%：全球資金回流與越南投資機遇</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/us-inflation-drops-to-35-global-capital-rebound-and-vietnam-opportunities-15-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-14T17:00:00.000Z</news:publication_date>
+      <news:title>เงินเฟ้อสหรัฐฯ ลดลงเหลือ 3.5%: การฟื้นตัวของทุนโลกและโอกาสของเวียดนาม</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/us-inflation-drops-to-35-global-capital-rebound-and-vietnam-opportunities-15-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-14T17:00:00.000Z</news:publication_date>
+      <news:title>تراجع التضخم في الولايات المتحدة إلى 3.5%: ارتداد رأس المال العالمي وفرص في فيتنام</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/us-inflation-drops-to-35-global-capital-rebound-and-vietnam-opportunities-15-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-14T17:00:00.000Z</news:publication_date>
+      <news:title>米インフレ率が3.5%に低下：世界的な資金還流とベトナムの投資機会</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-phan-hoa-manh-ap-luc-tu-co-phieu-vua-de-nang-vn-index-14-07-2026/</loc>
     <news:news>
       <news:publication>
