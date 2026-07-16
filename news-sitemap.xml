@@ -156,6 +156,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-iran-leo-thang-my-tan-cong-eo-bien-hormuz-gia-dau-vuot-5-usd-17-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-16T17:00:00.000Z</news:publication_date>
+      <news:title>Chiến tranh Iran leo thang: Mỹ tấn công eo biển Hormuz, giá dầu vượt 5 USD</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/iran-war-escalates-us-strikes-strait-of-hormuz-oil-tops-5-17-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-16T17:00:00.000Z</news:publication_date>
+      <news:title>Iran War Escalates: US Strikes Strait of Hormuz, Oil Tops $5</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/iran-war-escalates-us-strikes-strait-of-hormuz-oil-tops-5-17-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-16T17:00:00.000Z</news:publication_date>
+      <news:title>이란 전쟁 격화: 미국, 호르무즈 해협 타격, 유가 5달러 돌파</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/iran-war-escalates-us-strikes-strait-of-hormuz-oil-tops-5-17-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-16T17:00:00.000Z</news:publication_date>
+      <news:title>伊朗戰爭升級：美國襲擊荷姆茲海峽，油價突破5美元</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/iran-war-escalates-us-strikes-strait-of-hormuz-oil-tops-5-17-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-16T17:00:00.000Z</news:publication_date>
+      <news:title>สงครามอิหร่านทวีความรุนแรง: สหรัฐฯ โจมตีช่องแคบฮอร์มุซ, ราคาน้ำมันพุ่งเกิน 5 ดอลลาร์</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/iran-war-escalates-us-strikes-strait-of-hormuz-oil-tops-5-17-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-16T17:00:00.000Z</news:publication_date>
+      <news:title>تصاعد الحرب الإيرانية: ضربات أمريكية في مضيق هرمز، النفط يتجاوز 5 دولارات</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/iran-war-escalates-us-strikes-strait-of-hormuz-oil-tops-5-17-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-16T17:00:00.000Z</news:publication_date>
+      <news:title>イラン戦争激化：米国がホルムズ海峡を攻撃、原油価格は5ドルを突破</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-dong-tien-phan-hoa-cho-doi-dong-luc-moi-16-07-2026/</loc>
     <news:news>
       <news:publication>
