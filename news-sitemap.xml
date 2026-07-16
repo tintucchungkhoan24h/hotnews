@@ -1080,6 +1080,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-bien-dong-ppi-my-ha-nhiet-doi-dau-voi-dot-tang-lai-suat-cua-han-quoc-16-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-15T17:00:00.000Z</news:publication_date>
+      <news:title>Thị trường toàn cầu biến động: PPI Mỹ hạ nhiệt đối đầu với đợt tăng lãi suất của Hàn Quốc</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-markets-swing-cool-us-ppi-vs-south-korea-rate-hike-16-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-15T17:00:00.000Z</news:publication_date>
+      <news:title>Global Markets Swing: Cool US PPI vs. South Korea Rate Hike</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-markets-swing-cool-us-ppi-vs-south-korea-rate-hike-16-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-15T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 시장의 동요: 미 PPI 둔화 vs 한국 금리 인상</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-markets-swing-cool-us-ppi-vs-south-korea-rate-hike-16-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-15T17:00:00.000Z</news:publication_date>
+      <news:title>全球市場震盪：美 PPI 降溫對決韓國加息</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-markets-swing-cool-us-ppi-vs-south-korea-rate-hike-16-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-15T17:00:00.000Z</news:publication_date>
+      <news:title>ตลาดโลกผันผวน: ดัชนี PPI สหรัฐฯ ชะลอตัว สวนทางเกาหลีใต้ขึ้นดอกเบี้ย</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-markets-swing-cool-us-ppi-vs-south-korea-rate-hike-16-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-15T17:00:00.000Z</news:publication_date>
+      <news:title>تقلبات الأسواق العالمية: تباطؤ مؤشر أسعار المنتجين الأمريكي مقابل رفع الفائدة في كوريا الجنوبية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-markets-swing-cool-us-ppi-vs-south-korea-rate-hike-16-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-15T17:00:00.000Z</news:publication_date>
+      <news:title>世界市場の動揺：米PPI減速 vs 韓国利上げ</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-dan-dat-thi-truong-vn-index-no-luc-giu-moc-1800-15-07-2026/</loc>
     <news:news>
       <news:publication>
