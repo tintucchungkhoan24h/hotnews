@@ -161,7 +161,7 @@ async function fetchSummaries() {
 
 // ── Generate one HTML page (Hub) ─────────────────────────────────────────────────────
 function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clientCss, clientJs, archiveItems, latestSpokeUrl }) {
-  const canonical    = `${CANONICAL_BASE}/world-news/${lang}/`;
+  const canonical    = `${SITE_BASE}/world-news/${lang}/`;
   const dashboardUrl = `${CANONICAL_BASE}/`;
   const isRtl      = lang === 'ar';
   
@@ -201,15 +201,15 @@ function generatePage({ articlesList, lang, headerHtml, footerHtml, langs, clien
   <title>${hubTitle}</title>
   <meta name="description" content="${hubDesc.replace(/"/g, '&quot;')}">
   <link rel="canonical" href="${canonical}">
-${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="${CANONICAL_BASE}/world-news/${l}/">`).join('\n')}
-  <link rel="alternate" hreflang="x-default" href="${CANONICAL_BASE}/world-news/vi/">
+${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="${SITE_BASE}/world-news/${l}/">`).join('\n')}
+  <link rel="alternate" hreflang="x-default" href="${SITE_BASE}/world-news/vi/">
 
   <meta property="og:title" content="${hubTitle.replace(/"/g, '&quot;')}">
   <meta property="og:description" content="${hubDesc.replace(/"/g, '&quot;')}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="${SITE_NAME}">
-  <meta property="og:image" content="${firstArticle.article_photo_url || CANONICAL_BASE + '/ava_icon.png'}">
+  <meta property="og:image" content="${firstArticle.article_photo_url || SITE_BASE + '/ava_icon.png'}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
@@ -217,7 +217,7 @@ ${langs.map(l => `  <link rel="alternate" hreflang="${HREFLANG[l] || l}" href="$
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${hubTitle.replace(/"/g, '&quot;')}">
   <meta name="twitter:description" content="${hubDesc.replace(/"/g, '&quot;')}">
-  <meta name="twitter:image" content="${firstArticle.article_photo_url || CANONICAL_BASE + '/ava_icon.png'}">
+  <meta name="twitter:image" content="${firstArticle.article_photo_url || SITE_BASE + '/ava_icon.png'}">
 
   <link rel="icon" type="image/png" sizes="48x48" href="/ava_icon.png">
   <link rel="stylesheet" href="/index.css">
