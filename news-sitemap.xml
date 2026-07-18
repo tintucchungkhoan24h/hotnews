@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nhom-ngan-hang-phan-hoa-manh-truoc-ap-luc-rung-lac-cua-vn-index-18-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-17T17:00:00.000Z</news:publication_date>
+      <news:title>Nhóm Ngân hàng phân hóa mạnh trước áp lực rung lắc của VN-Index</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/banking-group-diverges-strongly-under-vn-index-fluctuation-pressure-18-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-17T17:00:00.000Z</news:publication_date>
+      <news:title>Banking Group Diverges Strongly Under VN-Index Fluctuation Pressure</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/banking-group-diverges-strongly-under-vn-index-fluctuation-pressure-18-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-17T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 변동성 압박 속 은행주 강한 차별화 양상</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/banking-group-diverges-strongly-under-vn-index-fluctuation-pressure-18-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-17T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 面臨震盪壓力，銀行股走勢呈現強烈分化</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/banking-group-diverges-strongly-under-vn-index-fluctuation-pressure-18-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-17T17:00:00.000Z</news:publication_date>
+      <news:title>กลุ่มธนาคารเผชิญความผันผวนของ VN-Index ดันราคาหุ้นแยกทางอย่างชัดเจน</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/banking-group-diverges-strongly-under-vn-index-fluctuation-pressure-18-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-17T17:00:00.000Z</news:publication_date>
+      <news:title>تباين حاد في قطاع البنوك تحت ضغوط تقلبات مؤشر VN-Index</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/banking-group-diverges-strongly-under-vn-index-fluctuation-pressure-18-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-17T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Indexの乱高下を背景に銀行株セクターで明暗分かれる</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-vi-mo-bien-dong-manh-vang-lao-doc-chung-khoan-cho-co-hoi-18-07-2026/</loc>
     <news:news>
       <news:publication>
