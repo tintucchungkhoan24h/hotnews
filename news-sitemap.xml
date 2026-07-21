@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-diem-tua-dong-tien-truoc-ap-luc-ban-thao-21-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-20T17:00:00.000Z</news:publication_date>
+      <news:title>Cổ phiếu Ngân hàng: Điểm tựa dòng tiền trước áp lực bán tháo</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-20T17:00:00.000Z</news:publication_date>
+      <news:title>Bank Stocks: Anchor for Cash Flow Amid Sell-off Pressure</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-20T17:00:00.000Z</news:publication_date>
+      <news:title>은행주: 매도 공세 속 자금 흐름의 버팀목</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-20T17:00:00.000Z</news:publication_date>
+      <news:title>銀行股：拋售壓力下資金流的避風港與支撐點</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-20T17:00:00.000Z</news:publication_date>
+      <news:title>หุ้นธนาคาร: ที่พึ่งของกระแสเงินทุนท่ามกลางแรงเทขาย</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-20T17:00:00.000Z</news:publication_date>
+      <news:title>أسهم البنوك: ركيزة تدفقات السيولة في مواجهة ضغوط البيع المكثف</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-20T17:00:00.000Z</news:publication_date>
+      <news:title>銀行株：売り浴びせの圧力下における資金流入の支え</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-boc-hoi-44-diem-mach-ngam-ty-gia-va-lai-suat-dang-ep-san-21-07-2026/</loc>
     <news:news>
       <news:publication>
