@@ -5,7 +5,7 @@
   <!-- Homepage / Dashboard -->
   <url>
     <loc>https://tintucchungkhoan24h.com/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,7 +13,7 @@
   <!-- Điểm tin – VI (primary) -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/"/>
@@ -29,7 +29,7 @@
   <!-- Điểm tin – EN -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -37,7 +37,7 @@
   <!-- Điểm tin – KO -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -45,7 +45,7 @@
   <!-- Điểm tin – ZH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -53,7 +53,7 @@
   <!-- Điểm tin – TH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -61,7 +61,7 @@
   <!-- Điểm tin – AR -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -69,7 +69,7 @@
   <!-- Điểm tin – JA -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -77,7 +77,7 @@
   <!-- Điểm tin vĩ mô – VI (primary) -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/"/>
@@ -93,7 +93,7 @@
   <!-- Điểm tin vĩ mô – EN -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -101,7 +101,7 @@
   <!-- Điểm tin vĩ mô – KO -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -109,7 +109,7 @@
   <!-- Điểm tin vĩ mô – ZH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -117,7 +117,7 @@
   <!-- Điểm tin vĩ mô – TH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -125,7 +125,7 @@
   <!-- Điểm tin vĩ mô – AR -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -133,7 +133,7 @@
   <!-- Điểm tin vĩ mô – JA -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -141,7 +141,7 @@
   <!-- World News – VI (primary) -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/"/>
@@ -157,7 +157,7 @@
   <!-- World News – EN -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/en/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -165,7 +165,7 @@
   <!-- World News – KO -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ko/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -173,7 +173,7 @@
   <!-- World News – ZH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/zh/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -181,7 +181,7 @@
   <!-- World News – TH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/th/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -189,7 +189,7 @@
   <!-- World News – AR -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ar/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -197,7 +197,7 @@
   <!-- World News – JA -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ja/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -32654,6 +32654,1046 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/us-iran-war-escalates-global-markets-shaken-as-oil-and-inflation-surge-18-07-2026/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/us-iran-war-escalates-global-markets-shaken-as-oil-and-inflation-surge-18-07-2026/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/us-iran-war-escalates-global-markets-shaken-as-oil-and-inflation-surge-18-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: VN-Index giằng co mạnh: Áp lực từ nhóm Bluechips và bài toán -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-giang-co-manh-ap-luc-tu-nhom-bluechips-va-bai-toan-margin-22-07-2026/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-giang-co-manh-ap-luc-tu-nhom-bluechips-va-bai-toan-margin-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-experiences-heavy-tug-of-war-pressure-from-bluechips-and-the-margin-equation-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-experiences-heavy-tug-of-war-pressure-from-bluechips-and-the-margin-equation-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-experiences-heavy-tug-of-war-pressure-from-bluechips-and-the-margin-equation-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-experiences-heavy-tug-of-war-pressure-from-bluechips-and-the-margin-equation-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-experiences-heavy-tug-of-war-pressure-from-bluechips-and-the-margin-equation-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-experiences-heavy-tug-of-war-pressure-from-bluechips-and-the-margin-equation-22-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: VN-Index nỗ lực phục hồi: Cuộc dịch chuyển dòng tiền lớn -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-no-luc-phuc-hoi-cuoc-dich-chuyen-dong-tien-lon-22-07-2026/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-no-luc-phuc-hoi-cuoc-dich-chuyen-dong-tien-lon-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-recovery-effort-the-great-capital-shift-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-recovery-effort-the-great-capital-shift-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-recovery-effort-the-great-capital-shift-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-recovery-effort-the-great-capital-shift-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-recovery-effort-the-great-capital-shift-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-recovery-effort-the-great-capital-shift-22-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Dịch vụ tài chính: Cơ hội phục hồi từ làn sóng margin kỷ lục -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/dich-vu-tai-chinh-co-hoi-phuc-hoi-tu-lan-song-margin-ky-luc-22-07-2026/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/dich-vu-tai-chinh-co-hoi-phuc-hoi-tu-lan-song-margin-ky-luc-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/financial-services-opportunity-for-recovery-from-the-record-margin-wave-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/financial-services-opportunity-for-recovery-from-the-record-margin-wave-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/financial-services-opportunity-for-recovery-from-the-record-margin-wave-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/financial-services-opportunity-for-recovery-from-the-record-margin-wave-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/financial-services-opportunity-for-recovery-from-the-record-margin-wave-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/financial-services-opportunity-for-recovery-from-the-record-margin-wave-22-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Cổ phiếu Bất động sản: Cơ hội gom hàng khi thị trường phân h -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-bat-dong-san-co-hoi-gom-hang-khi-thi-truong-phan-hoa-22-07-2026/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-bat-dong-san-co-hoi-gom-hang-khi-thi-truong-phan-hoa-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/real-estate-stocks-accumulation-opportunities-amid-market-divergence-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/real-estate-stocks-accumulation-opportunities-amid-market-divergence-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/real-estate-stocks-accumulation-opportunities-amid-market-divergence-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/real-estate-stocks-accumulation-opportunities-amid-market-divergence-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/real-estate-stocks-accumulation-opportunities-amid-market-divergence-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/real-estate-stocks-accumulation-opportunities-amid-market-divergence-22-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Cổ Phiếu Ngân Hàng: Dòng Tiền Phân Hóa, Kỳ Vọng Bứt Phá Cuối -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-dong-tien-phan-hoa-ky-vong-but-pha-cuoi-nam-22-07-2026/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-dong-tien-phan-hoa-ky-vong-but-pha-cuoi-nam-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/banking-stocks-diverging-cash-flows-expectations-of-a-year-end-breakthrough-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/banking-stocks-diverging-cash-flows-expectations-of-a-year-end-breakthrough-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/banking-stocks-diverging-cash-flows-expectations-of-a-year-end-breakthrough-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/banking-stocks-diverging-cash-flows-expectations-of-a-year-end-breakthrough-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/banking-stocks-diverging-cash-flows-expectations-of-a-year-end-breakthrough-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/banking-stocks-diverging-cash-flows-expectations-of-a-year-end-breakthrough-22-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Top 5 mã cổ phiếu nóng nhất trong ngày: ACB, PNJ, SSI, VHM,  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-acb-pnj-ssi-vhm-vic-ap-luc-xa-hang-lan-rong-vn-index-lui-ve-sat-moc-1730-diem-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-acb-pnj-ssi-vhm-vic-ap-luc-xa-hang-lan-rong-vn-index-lui-ve-sat-moc-1730-diem-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/top-5-hottest-stocks-of-the-day-acb-pnj-ssi-vhm-vic-selling-pressure-spreads-vn-index-retreats-to-near-1730-points-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/top-5-hottest-stocks-of-the-day-acb-pnj-ssi-vhm-vic-selling-pressure-spreads-vn-index-retreats-to-near-1730-points-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/top-5-hottest-stocks-of-the-day-acb-pnj-ssi-vhm-vic-selling-pressure-spreads-vn-index-retreats-to-near-1730-points-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/top-5-hottest-stocks-of-the-day-acb-pnj-ssi-vhm-vic-selling-pressure-spreads-vn-index-retreats-to-near-1730-points-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/top-5-hottest-stocks-of-the-day-acb-pnj-ssi-vhm-vic-selling-pressure-spreads-vn-index-retreats-to-near-1730-points-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/top-5-hottest-stocks-of-the-day-acb-pnj-ssi-vhm-vic-selling-pressure-spreads-vn-index-retreats-to-near-1730-points-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: VN-Index lùi sâu về vùng 1.730 điểm trong phiên gần nhất -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-lui-sau-ve-vung-1730-diem-trong-phien-gan-nhat-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-lui-sau-ve-vung-1730-diem-trong-phien-gan-nhat-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-retreated-deeply-to-the-1730-point-zone-in-the-latest-session-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-retreated-deeply-to-the-1730-point-zone-in-the-latest-session-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-retreated-deeply-to-the-1730-point-zone-in-the-latest-session-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-retreated-deeply-to-the-1730-point-zone-in-the-latest-session-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-retreated-deeply-to-the-1730-point-zone-in-the-latest-session-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-retreated-deeply-to-the-1730-point-zone-in-the-latest-session-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Thị trường chứng khoán ngày 21/07/2026: VN-Index chịu áp lực -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-21072026-vn-index-chiu-ap-luc-lon-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-21072026-vn-index-chiu-ap-luc-lon-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/stock-market-july-21-2026-vn-index-under-significant-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/stock-market-july-21-2026-vn-index-under-significant-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/stock-market-july-21-2026-vn-index-under-significant-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/stock-market-july-21-2026-vn-index-under-significant-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/stock-market-july-21-2026-vn-index-under-significant-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/stock-market-july-21-2026-vn-index-under-significant-pressure-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Thị trường chứng khoán ngày 21/07/2026: VN-Index nỗ lực cân  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-21072026-vn-index-no-luc-can-bang-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-21072026-vn-index-no-luc-can-bang-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/stock-market-on-july-21-2026-vn-index-strives-for-balance-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/stock-market-on-july-21-2026-vn-index-strives-for-balance-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/stock-market-on-july-21-2026-vn-index-strives-for-balance-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/stock-market-on-july-21-2026-vn-index-strives-for-balance-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/stock-market-on-july-21-2026-vn-index-strives-for-balance-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/stock-market-on-july-21-2026-vn-index-strives-for-balance-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: VN-Index nỗ lực cân bằng tại vùng hỗ trợ, dòng tiền phân hóa -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-no-luc-can-bang-tai-vung-ho-tro-dong-tien-phan-hoa-manh-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-no-luc-can-bang-tai-vung-ho-tro-dong-tien-phan-hoa-manh-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-strives-for-balance-at-support-zone-capital-flow-strongly-differentiated-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-strives-for-balance-at-support-zone-capital-flow-strongly-differentiated-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-strives-for-balance-at-support-zone-capital-flow-strongly-differentiated-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-strives-for-balance-at-support-zone-capital-flow-strongly-differentiated-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-strives-for-balance-at-support-zone-capital-flow-strongly-differentiated-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-strives-for-balance-at-support-zone-capital-flow-strongly-differentiated-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Ngành dịch vụ tài chính phân hóa: Động lực từ kỷ lục dư nợ m -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-dich-vu-tai-chinh-phan-hoa-dong-luc-tu-ky-luc-du-no-margin-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-dich-vu-tai-chinh-phan-hoa-dong-luc-tu-ky-luc-du-no-margin-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/financial-services-industry-divergence-driven-by-record-margin-debt-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/financial-services-industry-divergence-driven-by-record-margin-debt-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/financial-services-industry-divergence-driven-by-record-margin-debt-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/financial-services-industry-divergence-driven-by-record-margin-debt-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/financial-services-industry-divergence-driven-by-record-margin-debt-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/financial-services-industry-divergence-driven-by-record-margin-debt-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Cổ phiếu Bất động sản: Tìm cơ hội trong sự phân hóa dòng tiề -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-bat-dong-san-tim-co-hoi-trong-su-phan-hoa-dong-tien-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-bat-dong-san-tim-co-hoi-trong-su-phan-hoa-dong-tien-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/real-estate-stocks-finding-opportunities-in-capital-flow-divergence-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/real-estate-stocks-finding-opportunities-in-capital-flow-divergence-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/real-estate-stocks-finding-opportunities-in-capital-flow-divergence-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/real-estate-stocks-finding-opportunities-in-capital-flow-divergence-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/real-estate-stocks-finding-opportunities-in-capital-flow-divergence-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/real-estate-stocks-finding-opportunities-in-capital-flow-divergence-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Cổ phiếu Ngân hàng: Điểm tựa dòng tiền trước áp lực bán tháo -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-diem-tua-dong-tien-truoc-ap-luc-ban-thao-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-diem-tua-dong-tien-truoc-ap-luc-ban-thao-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/bank-stocks-anchor-for-cash-flow-amid-sell-off-pressure-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Top 5 mã cổ phiếu nóng nhất trong ngày: FPT, HPG, MWG, VIC,  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-fpt-hpg-mwg-vic-vpb-ap-luc-ban-thao-dien-rong-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-fpt-hpg-mwg-vic-vpb-ap-luc-ban-thao-dien-rong-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/top-5-hottest-stocks-fpt-hpg-mwg-vic-vpb-widespread-sell-off-pressure-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/top-5-hottest-stocks-fpt-hpg-mwg-vic-vpb-widespread-sell-off-pressure-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/top-5-hottest-stocks-fpt-hpg-mwg-vic-vpb-widespread-sell-off-pressure-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/top-5-hottest-stocks-fpt-hpg-mwg-vic-vpb-widespread-sell-off-pressure-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/top-5-hottest-stocks-fpt-hpg-mwg-vic-vpb-widespread-sell-off-pressure-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/top-5-hottest-stocks-fpt-hpg-mwg-vic-vpb-widespread-sell-off-pressure-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: VN-Index giảm sâu phiên gần nhất: Áp lực bán tháo lan rộng -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-giam-sau-phien-gan-nhat-ap-luc-ban-thao-lan-rong-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-giam-sau-phien-gan-nhat-ap-luc-ban-thao-lan-rong-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-plunges-in-latest-session-widespread-sell-off-pressure-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-plunges-in-latest-session-widespread-sell-off-pressure-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-plunges-in-latest-session-widespread-sell-off-pressure-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-plunges-in-latest-session-widespread-sell-off-pressure-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-plunges-in-latest-session-widespread-sell-off-pressure-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-plunges-in-latest-session-widespread-sell-off-pressure-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Thị trường chứng khoán ngày 20/07/2026: Áp lực bán tháo lan  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-20072026-ap-luc-ban-thao-lan-rong-vn-index-dieu-chinh-manh-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-20072026-ap-luc-ban-thao-lan-rong-vn-index-dieu-chinh-manh-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/stock-market-on-july-20-2026-widespread-sell-off-pressure-vn-index-corrects-sharply-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/stock-market-on-july-20-2026-widespread-sell-off-pressure-vn-index-corrects-sharply-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/stock-market-on-july-20-2026-widespread-sell-off-pressure-vn-index-corrects-sharply-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/stock-market-on-july-20-2026-widespread-sell-off-pressure-vn-index-corrects-sharply-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/stock-market-on-july-20-2026-widespread-sell-off-pressure-vn-index-corrects-sharply-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/stock-market-on-july-20-2026-widespread-sell-off-pressure-vn-index-corrects-sharply-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Thị trường chứng khoán ngày 20/07/2026: VN-Index rung lắc mạ -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-20072026-vn-index-rung-lac-manh-tim-diem-can-bang-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-chung-khoan-ngay-20072026-vn-index-rung-lac-manh-tim-diem-can-bang-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/stock-market-on-july-20-2026-vn-index-shakes-violently-searching-for-an-equilibrium-point-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/stock-market-on-july-20-2026-vn-index-shakes-violently-searching-for-an-equilibrium-point-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/stock-market-on-july-20-2026-vn-index-shakes-violently-searching-for-an-equilibrium-point-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/stock-market-on-july-20-2026-vn-index-shakes-violently-searching-for-an-equilibrium-point-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/stock-market-on-july-20-2026-vn-index-shakes-violently-searching-for-an-equilibrium-point-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/stock-market-on-july-20-2026-vn-index-shakes-violently-searching-for-an-equilibrium-point-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: VN-Index tìm điểm cân bằng, dòng tiền bắt đáy chờ cơ hội -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-tim-diem-can-bang-dong-tien-bat-day-cho-co-hoi-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-tim-diem-can-bang-dong-tien-bat-day-cho-co-hoi-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-seeks-balance-bottom-fishing-capital-awaits-opportunity-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-seeks-balance-bottom-fishing-capital-awaits-opportunity-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-seeks-balance-bottom-fishing-capital-awaits-opportunity-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-seeks-balance-bottom-fishing-capital-awaits-opportunity-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-seeks-balance-bottom-fishing-capital-awaits-opportunity-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-seeks-balance-bottom-fishing-capital-awaits-opportunity-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Ngành dịch vụ tài chính phân hóa mạnh trước mùa báo cáo quý  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-dich-vu-tai-chinh-phan-hoa-manh-truoc-mua-bao-cao-quy-2-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-dich-vu-tai-chinh-phan-hoa-manh-truoc-mua-bao-cao-quy-2-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/financial-services-sector-diverges-strongly-ahead-of-q2-earnings-season-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/financial-services-sector-diverges-strongly-ahead-of-q2-earnings-season-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/financial-services-sector-diverges-strongly-ahead-of-q2-earnings-season-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/financial-services-sector-diverges-strongly-ahead-of-q2-earnings-season-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/financial-services-sector-diverges-strongly-ahead-of-q2-earnings-season-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/financial-services-sector-diverges-strongly-ahead-of-q2-earnings-season-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Cổ phiếu Bất động sản phân hóa mạnh trước thềm kết quả quý 2 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-bat-dong-san-phan-hoa-manh-truoc-them-ket-qua-quy-2-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-bat-dong-san-phan-hoa-manh-truoc-them-ket-qua-quy-2-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/real-estate-stocks-show-strong-divergence-ahead-of-q2-earnings-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/real-estate-stocks-show-strong-divergence-ahead-of-q2-earnings-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/real-estate-stocks-show-strong-divergence-ahead-of-q2-earnings-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/real-estate-stocks-show-strong-divergence-ahead-of-q2-earnings-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/real-estate-stocks-show-strong-divergence-ahead-of-q2-earnings-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/real-estate-stocks-show-strong-divergence-ahead-of-q2-earnings-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Cổ phiếu Ngân hàng dẫn sóng: Cơ hội bứt phá từ kết quả kinh  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-dan-song-co-hoi-but-pha-tu-ket-qua-kinh-doanh-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-dan-song-co-hoi-but-pha-tu-ket-qua-kinh-doanh-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/banking-stocks-lead-the-wave-breakout-opportunities-from-business-results-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/banking-stocks-lead-the-wave-breakout-opportunities-from-business-results-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/banking-stocks-lead-the-wave-breakout-opportunities-from-business-results-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/banking-stocks-lead-the-wave-breakout-opportunities-from-business-results-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/banking-stocks-lead-the-wave-breakout-opportunities-from-business-results-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/banking-stocks-lead-the-wave-breakout-opportunities-from-business-results-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Top 5 mã cổ phiếu nóng nhất trong ngày: ACB, BID, CII, HPG,  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-acb-bid-cii-hpg-pnj-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-acb-bid-cii-hpg-pnj-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/top-5-hottest-stocks-of-the-day-acb-bid-cii-hpg-pnj-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/top-5-hottest-stocks-of-the-day-acb-bid-cii-hpg-pnj-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/top-5-hottest-stocks-of-the-day-acb-bid-cii-hpg-pnj-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/top-5-hottest-stocks-of-the-day-acb-bid-cii-hpg-pnj-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/top-5-hottest-stocks-of-the-day-acb-bid-cii-hpg-pnj-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/top-5-hottest-stocks-of-the-day-acb-bid-cii-hpg-pnj-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Top 5 mã cổ phiếu nóng nhất trong tuần: FPT, PNJ, SSI, TCX,  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-tuan-fpt-pnj-ssi-tcx-vhm-su-phan-hoa-manh-me-cua-dong-tien-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-tuan-fpt-pnj-ssi-tcx-vhm-su-phan-hoa-manh-me-cua-dong-tien-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/top-5-hottest-stocks-of-the-week-fpt-pnj-ssi-tcx-vhm-strong-divergence-in-capital-flow-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/top-5-hottest-stocks-of-the-week-fpt-pnj-ssi-tcx-vhm-strong-divergence-in-capital-flow-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/top-5-hottest-stocks-of-the-week-fpt-pnj-ssi-tcx-vhm-strong-divergence-in-capital-flow-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/top-5-hottest-stocks-of-the-week-fpt-pnj-ssi-tcx-vhm-strong-divergence-in-capital-flow-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/top-5-hottest-stocks-of-the-week-fpt-pnj-ssi-tcx-vhm-strong-divergence-in-capital-flow-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/top-5-hottest-stocks-of-the-week-fpt-pnj-ssi-tcx-vhm-strong-divergence-in-capital-flow-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Ngành dịch vụ tài chính phân hóa mạnh trước mùa báo cáo quý  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-dich-vu-tai-chinh-phan-hoa-manh-truoc-mua-bao-cao-quy-2-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-dich-vu-tai-chinh-phan-hoa-manh-truoc-mua-bao-cao-quy-2-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/financial-services-sector-diverges-sharply-ahead-of-q2-earnings-season-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/financial-services-sector-diverges-sharply-ahead-of-q2-earnings-season-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/financial-services-sector-diverges-sharply-ahead-of-q2-earnings-season-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/financial-services-sector-diverges-sharply-ahead-of-q2-earnings-season-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/financial-services-sector-diverges-sharply-ahead-of-q2-earnings-season-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/financial-services-sector-diverges-sharply-ahead-of-q2-earnings-season-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Cổ phiếu Bất động sản phân hóa mạnh trước áp lực dòng tiền -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-bat-dong-san-phan-hoa-manh-truoc-ap-luc-dong-tien-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-bat-dong-san-phan-hoa-manh-truoc-ap-luc-dong-tien-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/real-estate-stocks-strongly-diverge-under-cash-flow-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/real-estate-stocks-strongly-diverge-under-cash-flow-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/real-estate-stocks-strongly-diverge-under-cash-flow-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/real-estate-stocks-strongly-diverge-under-cash-flow-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/real-estate-stocks-strongly-diverge-under-cash-flow-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/real-estate-stocks-strongly-diverge-under-cash-flow-pressure-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Cổ phiếu Ngân hàng: Dòng tiền nội nâng đỡ trước áp lực ngoại -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-dong-tien-noi-nang-do-truoc-ap-luc-ngoai-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-dong-tien-noi-nang-do-truoc-ap-luc-ngoai-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/banking-stocks-domestic-cash-flow-supports-amid-foreign-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/banking-stocks-domestic-cash-flow-supports-amid-foreign-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/banking-stocks-domestic-cash-flow-supports-amid-foreign-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/banking-stocks-domestic-cash-flow-supports-amid-foreign-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/banking-stocks-domestic-cash-flow-supports-amid-foreign-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/banking-stocks-domestic-cash-flow-supports-amid-foreign-pressure-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Triển vọng Vĩ mô Toàn cầu: Chiến tranh Mỹ-Iran Kích hoạt Cú  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/trien-vong-vi-mo-toan-cau-chien-tranh-my-iran-kich-hoat-cu-soc-dau-mo-trong-khi-fed-doi-mat-voi-moi-de-doa-kep-22-07-2026/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/trien-vong-vi-mo-toan-cau-chien-tranh-my-iran-kich-hoat-cu-soc-dau-mo-trong-khi-fed-doi-mat-voi-moi-de-doa-kep-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-macro-outlook-us-iran-war-sparks-oil-shock-as-fed-faces-double-threat-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-macro-outlook-us-iran-war-sparks-oil-shock-as-fed-faces-double-threat-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-macro-outlook-us-iran-war-sparks-oil-shock-as-fed-faces-double-threat-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-macro-outlook-us-iran-war-sparks-oil-shock-as-fed-faces-double-threat-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-macro-outlook-us-iran-war-sparks-oil-shock-as-fed-faces-double-threat-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-macro-outlook-us-iran-war-sparks-oil-shock-as-fed-faces-double-threat-22-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Đồng Yên chạm đáy 40 năm khi nỗi sợ lạm phát của Fed làm run -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/dong-yen-cham-day-40-nam-khi-noi-so-lam-phat-cua-fed-lam-rung-chuyen-thi-truong-toan-cau-22-07-2026/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/dong-yen-cham-day-40-nam-khi-noi-so-lam-phat-cua-fed-lam-rung-chuyen-thi-truong-toan-cau-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/yen-hits-40-year-low-as-fed-inflation-fears-shake-global-markets-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/yen-hits-40-year-low-as-fed-inflation-fears-shake-global-markets-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/yen-hits-40-year-low-as-fed-inflation-fears-shake-global-markets-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/yen-hits-40-year-low-as-fed-inflation-fears-shake-global-markets-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/yen-hits-40-year-low-as-fed-inflation-fears-shake-global-markets-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/yen-hits-40-year-low-as-fed-inflation-fears-shake-global-markets-22-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Chiến tranh Mỹ-Iran làm dấy lên rủi ro lạm phát toàn cầu khi -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-my-iran-lam-day-len-rui-ro-lam-phat-toan-cau-khi-dau-brent-vuot-91-usd-22-07-2026/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-my-iran-lam-day-len-rui-ro-lam-phat-toan-cau-khi-dau-brent-vuot-91-usd-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/us-iran-war-sparks-global-inflation-risk-as-brent-crude-tops-91-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/us-iran-war-sparks-global-inflation-risk-as-brent-crude-tops-91-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/us-iran-war-sparks-global-inflation-risk-as-brent-crude-tops-91-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/us-iran-war-sparks-global-inflation-risk-as-brent-crude-tops-91-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/us-iran-war-sparks-global-inflation-risk-as-brent-crude-tops-91-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/us-iran-war-sparks-global-inflation-risk-as-brent-crude-tops-91-22-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Thị trường Toàn cầu chịu Áp lực: Rủi ro Lạm phát và Căng thẳ -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-chiu-ap-luc-rui-ro-lam-phat-va-cang-thang-dia-chinh-tri-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-chiu-ap-luc-rui-ro-lam-phat-va-cang-thang-dia-chinh-tri-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-markets-under-pressure-inflation-risks-and-geopolitical-tension-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-markets-under-pressure-inflation-risks-and-geopolitical-tension-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-markets-under-pressure-inflation-risks-and-geopolitical-tension-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-markets-under-pressure-inflation-risks-and-geopolitical-tension-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-markets-under-pressure-inflation-risks-and-geopolitical-tension-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-markets-under-pressure-inflation-risks-and-geopolitical-tension-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Xung đột Mỹ-Iran leo thang: Giá dầu chạm mốc 91 USD khi Fed  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/xung-dot-my-iran-leo-thang-gia-dau-cham-moc-91-usd-khi-fed-ruc-rich-tang-lai-suat-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/xung-dot-my-iran-leo-thang-gia-dau-cham-moc-91-usd-khi-fed-ruc-rich-tang-lai-suat-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/us-iran-conflict-escalates-oil-hits-91-as-fed-rate-hike-looming-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/us-iran-conflict-escalates-oil-hits-91-as-fed-rate-hike-looming-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/us-iran-conflict-escalates-oil-hits-91-as-fed-rate-hike-looming-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/us-iran-conflict-escalates-oil-hits-91-as-fed-rate-hike-looming-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/us-iran-conflict-escalates-oil-hits-91-as-fed-rate-hike-looming-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/us-iran-conflict-escalates-oil-hits-91-as-fed-rate-hike-looming-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Toàn cảnh Vĩ mô Toàn cầu: Chiến tranh Mỹ-Iran đẩy giá dầu vư -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/toan-canh-vi-mo-toan-cau-chien-tranh-my-iran-day-gia-dau-vuot-91-usd-de-doa-lam-phat-dinh-don-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/toan-canh-vi-mo-toan-cau-chien-tranh-my-iran-day-gia-dau-vuot-91-usd-de-doa-lam-phat-dinh-don-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-macro-wrap-us-iran-war-drives-oil-past-91-threatening-stagflation-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-macro-wrap-us-iran-war-drives-oil-past-91-threatening-stagflation-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-macro-wrap-us-iran-war-drives-oil-past-91-threatening-stagflation-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-macro-wrap-us-iran-war-drives-oil-past-91-threatening-stagflation-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-macro-wrap-us-iran-war-drives-oil-past-91-threatening-stagflation-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-macro-wrap-us-iran-war-drives-oil-past-91-threatening-stagflation-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Thị trường toàn cầu chao đảo: Chiến tranh Mỹ-Iran leo thang  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-chao-dao-chien-tranh-my-iran-leo-thang-khi-lam-phat-tang-vot-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-chao-dao-chien-tranh-my-iran-leo-thang-khi-lam-phat-tang-vot-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-markets-shaken-us-iran-war-escalates-as-inflation-surges-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-markets-shaken-us-iran-war-escalates-as-inflation-surges-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-markets-shaken-us-iran-war-escalates-as-inflation-surges-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-markets-shaken-us-iran-war-escalates-as-inflation-surges-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-markets-shaken-us-iran-war-escalates-as-inflation-surges-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-markets-shaken-us-iran-war-escalates-as-inflation-surges-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Thị trường toàn cầu rung chuyển khi chiến tranh Mỹ-Iran leo  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-rung-chuyen-khi-chien-tranh-my-iran-leo-thang-va-fed-can-nhac-tang-lai-suat-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-rung-chuyen-khi-chien-tranh-my-iran-leo-thang-va-fed-can-nhac-tang-lai-suat-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-markets-shake-as-us-iran-war-escalates-and-fed-eyes-rate-hikes-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-markets-shake-as-us-iran-war-escalates-and-fed-eyes-rate-hikes-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-markets-shake-as-us-iran-war-escalates-and-fed-eyes-rate-hikes-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-markets-shake-as-us-iran-war-escalates-and-fed-eyes-rate-hikes-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-markets-shake-as-us-iran-war-escalates-and-fed-eyes-rate-hikes-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-markets-shake-as-us-iran-war-escalates-and-fed-eyes-rate-hikes-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Chiến tranh Trung Đông đẩy giá dầu vượt 90 USD: Rủi ro cú số -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-trung-dong-day-gia-dau-vuot-90-usd-rui-ro-cu-soc-lam-phat-toan-cau-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-trung-dong-day-gia-dau-vuot-90-usd-rui-ro-cu-soc-lam-phat-toan-cau-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/middle-east-war-pushes-oil-over-90-global-inflation-shock-risks-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/middle-east-war-pushes-oil-over-90-global-inflation-shock-risks-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/middle-east-war-pushes-oil-over-90-global-inflation-shock-risks-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/middle-east-war-pushes-oil-over-90-global-inflation-shock-risks-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/middle-east-war-pushes-oil-over-90-global-inflation-shock-risks-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/middle-east-war-pushes-oil-over-90-global-inflation-shock-risks-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Chiến tranh Mỹ - Iran đẩy giá dầu vượt 90 USD: Thị trường to -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-my-iran-day-gia-dau-vuot-90-usd-thi-truong-toan-cau-lao-doc-do-lo-ngai-lai-suat-cua-fed-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-my-iran-day-gia-dau-vuot-90-usd-thi-truong-toan-cau-lao-doc-do-lo-ngai-lai-suat-cua-fed-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/us-iran-war-pushes-oil-over-90-global-markets-sink-on-fed-rate-fears-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/us-iran-war-pushes-oil-over-90-global-markets-sink-on-fed-rate-fears-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/us-iran-war-pushes-oil-over-90-global-markets-sink-on-fed-rate-fears-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/us-iran-war-pushes-oil-over-90-global-markets-sink-on-fed-rate-fears-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/us-iran-war-pushes-oil-over-90-global-markets-sink-on-fed-rate-fears-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/us-iran-war-pushes-oil-over-90-global-markets-sink-on-fed-rate-fears-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): 5 Sự kiện Vĩ mô Toàn cầu: Dầu Vượt Ngưỡng $90 trong bối cảnh -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-vi-mo-toan-cau-dau-vuot-nguong-90-trong-boi-canh-chien-tranh-my-iran-leo-thang-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-vi-mo-toan-cau-dau-vuot-nguong-90-trong-boi-canh-chien-tranh-my-iran-leo-thang-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-macro-5-events-oil-tops-90-amid-us-iran-war-escalation-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-macro-5-events-oil-tops-90-amid-us-iran-war-escalation-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-macro-5-events-oil-tops-90-amid-us-iran-war-escalation-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-macro-5-events-oil-tops-90-amid-us-iran-war-escalation-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-macro-5-events-oil-tops-90-amid-us-iran-war-escalation-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-macro-5-events-oil-tops-90-amid-us-iran-war-escalation-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Phong tỏa Iran và Fed "diều hâu" gây bán tháo thị trường toà -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/phong-toa-iran-va-fed-dieu-hau-gay-ban-thao-thi-truong-toan-cau-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/phong-toa-iran-va-fed-dieu-hau-gay-ban-thao-thi-truong-toan-cau-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/iran-blockade-and-hawkish-fed-trigger-global-market-selloff-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/iran-blockade-and-hawkish-fed-trigger-global-market-selloff-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/iran-blockade-and-hawkish-fed-trigger-global-market-selloff-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/iran-blockade-and-hawkish-fed-trigger-global-market-selloff-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/iran-blockade-and-hawkish-fed-trigger-global-market-selloff-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/iran-blockade-and-hawkish-fed-trigger-global-market-selloff-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Chiến tranh Mỹ-Iran leo thang: Giá dầu tăng vọt giữa bối cản -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-my-iran-leo-thang-gia-dau-tang-vot-giua-boi-canh-fed-dieu-hau-va-ban-thao-ai-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-my-iran-leo-thang-gia-dau-tang-vot-giua-boi-canh-fed-dieu-hau-va-ban-thao-ai-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/us-iran-war-escalates-oil-surges-amid-hawkish-fed-and-ai-selloff-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/us-iran-war-escalates-oil-surges-amid-hawkish-fed-and-ai-selloff-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/us-iran-war-escalates-oil-surges-amid-hawkish-fed-and-ai-selloff-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/us-iran-war-escalates-oil-surges-amid-hawkish-fed-and-ai-selloff-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/us-iran-war-escalates-oil-surges-amid-hawkish-fed-and-ai-selloff-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/us-iran-war-escalates-oil-surges-amid-hawkish-fed-and-ai-selloff-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Cú Sốc Địa Chính Trị Toàn Cầu: Áp Lực Dầu Mỏ và Fed Rung Lắc -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/cu-soc-dia-chinh-tri-toan-cau-ap-luc-dau-mo-va-fed-rung-lac-thi-truong-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-dia-chinh-tri-toan-cau-ap-luc-dau-mo-va-fed-rung-lac-thi-truong-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-geopolitical-shock-oil-and-fed-pressures-rattle-markets-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-geopolitical-shock-oil-and-fed-pressures-rattle-markets-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-geopolitical-shock-oil-and-fed-pressures-rattle-markets-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-geopolitical-shock-oil-and-fed-pressures-rattle-markets-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-geopolitical-shock-oil-and-fed-pressures-rattle-markets-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-geopolitical-shock-oil-and-fed-pressures-rattle-markets-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Căng thẳng Mỹ-Iran & Đợt bán tháo AI làm rung chuyển thị trư -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/cang-thang-my-iran-dot-ban-thao-ai-lam-rung-chuyen-thi-truong-toan-cau-dieu-gi-tiep-theo-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cang-thang-my-iran-dot-ban-thao-ai-lam-rung-chuyen-thi-truong-toan-cau-dieu-gi-tiep-theo-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/us-iran-escalation-ai-selloff-shake-global-markets-what-next-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/us-iran-escalation-ai-selloff-shake-global-markets-what-next-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/us-iran-escalation-ai-selloff-shake-global-markets-what-next-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/us-iran-escalation-ai-selloff-shake-global-markets-what-next-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/us-iran-escalation-ai-selloff-shake-global-markets-what-next-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/us-iran-escalation-ai-selloff-shake-global-markets-what-next-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): 5 Sự kiện Kinh tế Vĩ mô Toàn cầu: Sức nóng AI đối mặt rủi ro -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-kinh-te-vi-mo-toan-cau-suc-nong-ai-doi-mat-rui-ro-chien-tranh-trung-dong-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-kinh-te-vi-mo-toan-cau-suc-nong-ai-doi-mat-rui-ro-chien-tranh-trung-dong-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/5-global-macro-events-ai-hype-meets-middle-east-war-risks-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/5-global-macro-events-ai-hype-meets-middle-east-war-risks-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/5-global-macro-events-ai-hype-meets-middle-east-war-risks-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/5-global-macro-events-ai-hype-meets-middle-east-war-risks-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/5-global-macro-events-ai-hype-meets-middle-east-war-risks-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/5-global-macro-events-ai-hype-meets-middle-east-war-risks-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Top 5 sự kiện vĩ mô toàn cầu: Cú sốc giá dầu và lập trường d -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/top-5-su-kien-vi-mo-toan-cau-cu-soc-gia-dau-va-lap-truong-dieu-hau-cua-fed-gay-ap-luc-len-thi-truong-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/top-5-su-kien-vi-mo-toan-cau-cu-soc-gia-dau-va-lap-truong-dieu-hau-cua-fed-gay-ap-luc-len-thi-truong-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/top-5-global-macro-events-oil-shock-and-feds-hawk-pressure-markets-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/top-5-global-macro-events-oil-shock-and-feds-hawk-pressure-markets-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/top-5-global-macro-events-oil-shock-and-feds-hawk-pressure-markets-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/top-5-global-macro-events-oil-shock-and-feds-hawk-pressure-markets-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/top-5-global-macro-events-oil-shock-and-feds-hawk-pressure-markets-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/top-5-global-macro-events-oil-shock-and-feds-hawk-pressure-markets-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Chiến tranh Mỹ-Iran leo thang: Thị trường năng lượng toàn cầ -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-my-iran-leo-thang-thi-truong-nang-luong-toan-cau-chuan-bi-cho-cu-soc-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-my-iran-leo-thang-thi-truong-nang-luong-toan-cau-chuan-bi-cho-cu-soc-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/us-iran-war-escalates-global-energy-markets-braced-for-shock-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/us-iran-war-escalates-global-energy-markets-braced-for-shock-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/us-iran-war-escalates-global-energy-markets-braced-for-shock-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/us-iran-war-escalates-global-energy-markets-braced-for-shock-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/us-iran-war-escalates-global-energy-markets-braced-for-shock-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/us-iran-war-escalates-global-energy-markets-braced-for-shock-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Chiến tranh Mỹ-Iran leo thang: Thị trường toàn cầu chao đảo  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-my-iran-leo-thang-thi-truong-toan-cau-chao-dao-boi-lan-song-lam-phat-moi-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/chien-tranh-my-iran-leo-thang-thi-truong-toan-cau-chao-dao-boi-lan-song-lam-phat-moi-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/us-iran-war-escalates-global-markets-shaken-by-new-inflation-wave-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/us-iran-war-escalates-global-markets-shaken-by-new-inflation-wave-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/us-iran-war-escalates-global-markets-shaken-by-new-inflation-wave-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/us-iran-war-escalates-global-markets-shaken-by-new-inflation-wave-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/us-iran-war-escalates-global-markets-shaken-by-new-inflation-wave-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/us-iran-war-escalates-global-markets-shaken-by-new-inflation-wave-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke (World News): Căng thẳng chiến tranh Iran leo thang làm rúng động thị trườ -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/cang-thang-chien-tranh-iran-leo-thang-lam-rung-dong-thi-truong-toan-cau-noi-lo-ngai-tang-lai-suat-cua-fed-can-ke-18-07-2026/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cang-thang-chien-tranh-iran-leo-thang-lam-rung-dong-thi-truong-toan-cau-noi-lo-ngai-tang-lai-suat-cua-fed-can-ke-18-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/iran-war-escalation-shocks-global-markets-fed-rate-hike-fears-loom-18-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/iran-war-escalation-shocks-global-markets-fed-rate-hike-fears-loom-18-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/iran-war-escalation-shocks-global-markets-fed-rate-hike-fears-loom-18-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/iran-war-escalation-shocks-global-markets-fed-rate-hike-fears-loom-18-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/iran-war-escalation-shocks-global-markets-fed-rate-hike-fears-loom-18-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/iran-war-escalation-shocks-global-markets-fed-rate-hike-fears-loom-18-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: 5 sự kiện vĩ mô nổi bật: Margin chứng khoán lập kỷ lục mới -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/5-su-kien-vi-mo-noi-bat-margin-chung-khoan-lap-ky-luc-moi-22-07-2026/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/5-su-kien-vi-mo-noi-bat-margin-chung-khoan-lap-ky-luc-moi-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/5-outstanding-macro-events-securities-margin-hits-new-record-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/5-outstanding-macro-events-securities-margin-hits-new-record-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/5-outstanding-macro-events-securities-margin-hits-new-record-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/5-outstanding-macro-events-securities-margin-hits-new-record-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/5-outstanding-macro-events-securities-margin-hits-new-record-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/5-outstanding-macro-events-securities-margin-hits-new-record-22-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Dòng tiền margin kỷ lục: Thị trường sẵn sàng bứt phá? -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-margin-ky-luc-thi-truong-san-sang-but-pha-22-07-2026/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-margin-ky-luc-thi-truong-san-sang-but-pha-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/record-margin-flow-is-the-market-ready-for-a-breakthrough-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/record-margin-flow-is-the-market-ready-for-a-breakthrough-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/record-margin-flow-is-the-market-ready-for-a-breakthrough-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/record-margin-flow-is-the-market-ready-for-a-breakthrough-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/record-margin-flow-is-the-market-ready-for-a-breakthrough-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/record-margin-flow-is-the-market-ready-for-a-breakthrough-22-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Nghịch lý chứng khoán lao dốc: Bom margin 435.000 tỷ có nổ? -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/nghich-ly-chung-khoan-lao-doc-bom-margin-435000-ty-co-no-22-07-2026/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/nghich-ly-chung-khoan-lao-doc-bom-margin-435000-ty-co-no-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/stock-market-plunge-paradox-will-the-435-trillion-vnd-margin-bomb-explode-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/stock-market-plunge-paradox-will-the-435-trillion-vnd-margin-bomb-explode-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/stock-market-plunge-paradox-will-the-435-trillion-vnd-margin-bomb-explode-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/stock-market-plunge-paradox-will-the-435-trillion-vnd-margin-bomb-explode-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/stock-market-plunge-paradox-will-the-435-trillion-vnd-margin-bomb-explode-22-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/stock-market-plunge-paradox-will-the-435-trillion-vnd-margin-bomb-explode-22-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: VN-Index sập 44 điểm: Áp lực margin kỷ lục và nước đi của cá -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-sap-44-diem-ap-luc-margin-ky-luc-va-nuoc-di-cua-ca-map-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-sap-44-diem-ap-luc-margin-ky-luc-va-nuoc-di-cua-ca-map-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vn-index-plunges-44-points-record-margin-pressure-and-the-moves-of-the-sharks-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vn-index-plunges-44-points-record-margin-pressure-and-the-moves-of-the-sharks-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vn-index-plunges-44-points-record-margin-pressure-and-the-moves-of-the-sharks-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vn-index-plunges-44-points-record-margin-pressure-and-the-moves-of-the-sharks-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vn-index-plunges-44-points-record-margin-pressure-and-the-moves-of-the-sharks-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vn-index-plunges-44-points-record-margin-pressure-and-the-moves-of-the-sharks-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Tỷ giá hạ nhiệt, dòng tiền kỷ lục hơn 46.000 tỷ đổ vào chứng -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/ty-gia-ha-nhiet-dong-tien-ky-luc-hon-46000-ty-do-vao-chung-khoan-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/ty-gia-ha-nhiet-dong-tien-ky-luc-hon-46000-ty-do-vao-chung-khoan-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/exchange-rate-cools-down-record-capital-influx-of-over-46-trillion-vnd-pours-into-stocks-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/exchange-rate-cools-down-record-capital-influx-of-over-46-trillion-vnd-pours-into-stocks-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/exchange-rate-cools-down-record-capital-influx-of-over-46-trillion-vnd-pours-into-stocks-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/exchange-rate-cools-down-record-capital-influx-of-over-46-trillion-vnd-pours-into-stocks-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/exchange-rate-cools-down-record-capital-influx-of-over-46-trillion-vnd-pours-into-stocks-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/exchange-rate-cools-down-record-capital-influx-of-over-46-trillion-vnd-pours-into-stocks-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: 5 sự kiện vĩ mô nổi bật: Lãi suất huy động tạo đỉnh Q3/2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/5-su-kien-vi-mo-noi-bat-lai-suat-huy-dong-tao-dinh-q32026-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/5-su-kien-vi-mo-noi-bat-lai-suat-huy-dong-tao-dinh-q32026-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/5-key-macro-events-deposit-interest-rates-to-peak-in-q32026-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/5-key-macro-events-deposit-interest-rates-to-peak-in-q32026-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/5-key-macro-events-deposit-interest-rates-to-peak-in-q32026-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/5-key-macro-events-deposit-interest-rates-to-peak-in-q32026-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/5-key-macro-events-deposit-interest-rates-to-peak-in-q32026-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/5-key-macro-events-deposit-interest-rates-to-peak-in-q32026-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Dòng tiền vĩ mô biến động: VN-Index trước áp lực tỷ giá và l -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-vi-mo-bien-dong-vn-index-truoc-ap-luc-ty-gia-va-lai-suat-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-vi-mo-bien-dong-vn-index-truoc-ap-luc-ty-gia-va-lai-suat-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/fluctuating-macro-cash-flow-vn-index-under-exchange-rate-and-interest-rate-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/fluctuating-macro-cash-flow-vn-index-under-exchange-rate-and-interest-rate-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/fluctuating-macro-cash-flow-vn-index-under-exchange-rate-and-interest-rate-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/fluctuating-macro-cash-flow-vn-index-under-exchange-rate-and-interest-rate-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/fluctuating-macro-cash-flow-vn-index-under-exchange-rate-and-interest-rate-pressure-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/fluctuating-macro-cash-flow-vn-index-under-exchange-rate-and-interest-rate-pressure-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: VN-Index Bốc Hơi 44 Điểm: Mạch Ngầm Tỷ Giá Và Lãi Suất Đang  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-boc-hoi-44-diem-mach-ngam-ty-gia-va-lai-suat-dang-ep-san-21-07-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-boc-hoi-44-diem-mach-ngam-ty-gia-va-lai-suat-dang-ep-san-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vn-index-erases-44-points-are-exchange-rate-and-interest-rate-undercurrents-forcing-a-sell-off-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vn-index-erases-44-points-are-exchange-rate-and-interest-rate-undercurrents-forcing-a-sell-off-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vn-index-erases-44-points-are-exchange-rate-and-interest-rate-undercurrents-forcing-a-sell-off-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vn-index-erases-44-points-are-exchange-rate-and-interest-rate-undercurrents-forcing-a-sell-off-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vn-index-erases-44-points-are-exchange-rate-and-interest-rate-undercurrents-forcing-a-sell-off-21-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vn-index-erases-44-points-are-exchange-rate-and-interest-rate-undercurrents-forcing-a-sell-off-21-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Tỷ giá và dầu mỏ leo thang: VN-Index trước ngưỡng cửa chuyển -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/ty-gia-va-dau-mo-leo-thang-vn-index-truoc-nguong-cua-chuyen-dich-dong-von-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/ty-gia-va-dau-mo-leo-thang-vn-index-truoc-nguong-cua-chuyen-dich-dong-von-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/escalating-exchange-rates-and-oil-prices-vn-index-on-the-threshold-of-capital-flow-shifting-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/escalating-exchange-rates-and-oil-prices-vn-index-on-the-threshold-of-capital-flow-shifting-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/escalating-exchange-rates-and-oil-prices-vn-index-on-the-threshold-of-capital-flow-shifting-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/escalating-exchange-rates-and-oil-prices-vn-index-on-the-threshold-of-capital-flow-shifting-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/escalating-exchange-rates-and-oil-prices-vn-index-on-the-threshold-of-capital-flow-shifting-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/escalating-exchange-rates-and-oil-prices-vn-index-on-the-threshold-of-capital-flow-shifting-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: VN-Index đối mặt vùng 1.770: Áp lực vĩ mô hay cơ hội giải ng -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-doi-mat-vung-1770-ap-luc-vi-mo-hay-co-hoi-giai-ngan-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-doi-mat-vung-1770-ap-luc-vi-mo-hay-co-hoi-giai-ngan-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vn-index-faces-1770-region-macro-pressures-or-disbursement-opportunity-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vn-index-faces-1770-region-macro-pressures-or-disbursement-opportunity-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vn-index-faces-1770-region-macro-pressures-or-disbursement-opportunity-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vn-index-faces-1770-region-macro-pressures-or-disbursement-opportunity-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vn-index-faces-1770-region-macro-pressures-or-disbursement-opportunity-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vn-index-faces-1770-region-macro-pressures-or-disbursement-opportunity-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Vĩ mô tuần 20-24/07: Kết quả quý 2 quyết định dòng tiền -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-20-2407-ket-qua-quy-2-quyet-dinh-dong-tien-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-20-2407-ket-qua-quy-2-quyet-dinh-dong-tien-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-week-jul-20-24-q2-results-to-decide-cash-flow-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-week-jul-20-24-q2-results-to-decide-cash-flow-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-week-jul-20-24-q2-results-to-decide-cash-flow-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-week-jul-20-24-q2-results-to-decide-cash-flow-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-week-jul-20-24-q2-results-to-decide-cash-flow-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-week-jul-20-24-q2-results-to-decide-cash-flow-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Dòng tiền tuần 20-24/07: Kết quả quý 2 có cứu rỗi thị trường -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-tuan-20-2407-ket-qua-quy-2-co-cuu-roi-thi-truong-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-tuan-20-2407-ket-qua-quy-2-co-cuu-roi-thi-truong-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/cash-flow-week-20-2407-can-q2-results-save-the-market-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/cash-flow-week-20-2407-can-q2-results-save-the-market-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/cash-flow-week-20-2407-can-q2-results-save-the-market-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/cash-flow-week-20-2407-can-q2-results-save-the-market-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/cash-flow-week-20-2407-can-q2-results-save-the-market-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/cash-flow-week-20-2407-can-q2-results-save-the-market-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Dòng tiền tìm hầm trú ẩn: Sóng ngầm tỷ giá và thị trường kim -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-tim-ham-tru-an-song-ngam-ty-gia-va-thi-truong-kim-cuong-20-07-2026/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-tim-ham-tru-an-song-ngam-ty-gia-va-thi-truong-kim-cuong-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/capital-seeks-safe-havens-underlying-waves-of-exchange-rates-and-the-diamond-market-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/capital-seeks-safe-havens-underlying-waves-of-exchange-rates-and-the-diamond-market-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/capital-seeks-safe-havens-underlying-waves-of-exchange-rates-and-the-diamond-market-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/capital-seeks-safe-havens-underlying-waves-of-exchange-rates-and-the-diamond-market-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/capital-seeks-safe-havens-underlying-waves-of-exchange-rates-and-the-diamond-market-20-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/capital-seeks-safe-havens-underlying-waves-of-exchange-rates-and-the-diamond-market-20-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: VN-Index mất mốc 1.800 điểm: Dòng tiền vĩ mô đang dịch chuyể -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-mat-moc-1800-diem-dong-tien-vi-mo-dang-dich-chuyen-di-dau-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-mat-moc-1800-diem-dong-tien-vi-mo-dang-dich-chuyen-di-dau-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vn-index-loses-1800-point-mark-where-is-macro-cash-flow-shifting-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vn-index-loses-1800-point-mark-where-is-macro-cash-flow-shifting-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vn-index-loses-1800-point-mark-where-is-macro-cash-flow-shifting-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vn-index-loses-1800-point-mark-where-is-macro-cash-flow-shifting-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vn-index-loses-1800-point-mark-where-is-macro-cash-flow-shifting-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vn-index-loses-1800-point-mark-where-is-macro-cash-flow-shifting-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Vĩ mô tuần mới: Áp lực tỷ giá đè nặng, chứng khoán tìm đáy? -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-moi-ap-luc-ty-gia-de-nang-chung-khoan-tim-day-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-moi-ap-luc-ty-gia-de-nang-chung-khoan-tim-day-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/new-week-macro-exchange-rate-pressure-mounts-will-stocks-bottom-out-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/new-week-macro-exchange-rate-pressure-mounts-will-stocks-bottom-out-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/new-week-macro-exchange-rate-pressure-mounts-will-stocks-bottom-out-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/new-week-macro-exchange-rate-pressure-mounts-will-stocks-bottom-out-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/new-week-macro-exchange-rate-pressure-mounts-will-stocks-bottom-out-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/new-week-macro-exchange-rate-pressure-mounts-will-stocks-bottom-out-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: 5 sự kiện vĩ mô nổi bật tuần qua: GDP Việt Nam tăng 8.18% -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/5-su-kien-vi-mo-noi-bat-tuan-qua-gdp-viet-nam-tang-818-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/5-su-kien-vi-mo-noi-bat-tuan-qua-gdp-viet-nam-tang-818-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/5-prominent-macro-events-last-week-vietnams-gdp-increased-by-818-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/5-prominent-macro-events-last-week-vietnams-gdp-increased-by-818-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/5-prominent-macro-events-last-week-vietnams-gdp-increased-by-818-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/5-prominent-macro-events-last-week-vietnams-gdp-increased-by-818-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/5-prominent-macro-events-last-week-vietnams-gdp-increased-by-818-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/5-prominent-macro-events-last-week-vietnams-gdp-increased-by-818-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: 5 sự kiện vĩ mô nổi bật: Phái sinh bùng nổ 43% -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/5-su-kien-vi-mo-noi-bat-phai-sinh-bung-no-43-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/5-su-kien-vi-mo-noi-bat-phai-sinh-bung-no-43-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/5-outstanding-macro-events-derivatives-explode-43-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/5-outstanding-macro-events-derivatives-explode-43-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/5-outstanding-macro-events-derivatives-explode-43-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/5-outstanding-macro-events-derivatives-explode-43-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/5-outstanding-macro-events-derivatives-explode-43-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/5-outstanding-macro-events-derivatives-explode-43-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: Dòng tiền phái sinh bùng nổ: Cơ hội giải ngân hay bẫy rung l -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-phai-sinh-bung-no-co-hoi-giai-ngan-hay-bay-rung-lac-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/dong-tien-phai-sinh-bung-no-co-hoi-giai-ngan-hay-bay-rung-lac-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/derivative-cash-flow-surge-disbursement-opportunity-or-volatility-trap-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/derivative-cash-flow-surge-disbursement-opportunity-or-volatility-trap-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/derivative-cash-flow-surge-disbursement-opportunity-or-volatility-trap-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/derivative-cash-flow-surge-disbursement-opportunity-or-volatility-trap-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/derivative-cash-flow-surge-disbursement-opportunity-or-volatility-trap-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/derivative-cash-flow-surge-disbursement-opportunity-or-volatility-trap-19-07-2026/"/>
+  </url>
+
+
+  <!-- Spoke: VN-Index thủng mốc 1.800 điểm: Dòng tiền tháo chạy trước áp  -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-thung-moc-1800-diem-dong-tien-thao-chay-truoc-ap-luc-lai-suat-9-19-07-2026/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vn-index-thung-moc-1800-diem-dong-tien-thao-chay-truoc-ap-luc-lai-suat-9-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vn-index-falls-below-1800-capital-flight-under-9-implicit-interest-rate-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vn-index-falls-below-1800-capital-flight-under-9-implicit-interest-rate-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vn-index-falls-below-1800-capital-flight-under-9-implicit-interest-rate-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vn-index-falls-below-1800-capital-flight-under-9-implicit-interest-rate-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vn-index-falls-below-1800-capital-flight-under-9-implicit-interest-rate-pressure-19-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vn-index-falls-below-1800-capital-flight-under-9-implicit-interest-rate-pressure-19-07-2026/"/>
   </url>
 
 </urlset>
