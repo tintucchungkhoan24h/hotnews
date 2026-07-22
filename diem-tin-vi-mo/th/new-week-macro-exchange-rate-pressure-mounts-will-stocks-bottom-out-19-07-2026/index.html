@@ -1951,9 +1951,10 @@ function renderPaginationWidget(total, current) {
   const showingText = showingTpl.replace('{start}', start).replace('{end}', end).replace('{total}', total);
 
   let pageNums = '';
-  let sp = Math.max(1, current - 2);
-  let ep = Math.min(totalPages, sp + 4);
-  if (ep - sp < 4) sp = Math.max(1, ep - 4);
+  const maxPageBtns = window.innerWidth < 480 ? 3 : 5;
+  let sp = Math.max(1, current - Math.floor(maxPageBtns / 2));
+  let ep = Math.min(totalPages, sp + maxPageBtns - 1);
+  if (ep - sp < maxPageBtns - 1) sp = Math.max(1, ep - (maxPageBtns - 1));
   for (let p = sp; p <= ep; p++) {
     const active = p === current;
     pageNums += `<button onclick="paginationGoto(${p})" class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-lg text-xs font-bold transition-all ${active ? 'bg-fin-gold text-fin-blue border border-fin-gold' : 'bg-gray-800 text-white border border-gray-700 hover:bg-gray-700'}">${p}</button>`;
