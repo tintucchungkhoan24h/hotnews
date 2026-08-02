@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-dan-dat-hdbank-bao-lai-ky-luc-vn-index-huong-moc-1700-02-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-01T17:00:00.000Z</news:publication_date>
+      <news:title>Ngành Ngân hàng dẫn dắt: HDBank báo lãi kỷ lục, VN-Index hướng mốc 1.700</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/banking-sector-leads-hdbank-reports-record-profits-vn-index-aims-for-1700-mark-02-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-01T17:00:00.000Z</news:publication_date>
+      <news:title>Banking Sector Leads: HDBank Reports Record Profits, VN-Index Aims for 1,700 Mark</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/banking-sector-leads-hdbank-reports-record-profits-vn-index-aims-for-1700-mark-02-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-01T17:00:00.000Z</news:publication_date>
+      <news:title>은행 부문 주도: HDBank 사상 최고 이익 보고, VN-Index 1,700p 목표</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/banking-sector-leads-hdbank-reports-record-profits-vn-index-aims-for-1700-mark-02-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-01T17:00:00.000Z</news:publication_date>
+      <news:title>銀行業領銜：HDBank報告創紀錄利潤，VN-Index劍指1,700點大關</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/banking-sector-leads-hdbank-reports-record-profits-vn-index-aims-for-1700-mark-02-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-01T17:00:00.000Z</news:publication_date>
+      <news:title>ภาคธนาคารนำหน้า: HDBank รายงานกำไรสูงสุดเป็นประวัติการณ์, VN-Index มุ่งสู่ระดับ 1,700 จุด</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/banking-sector-leads-hdbank-reports-record-profits-vn-index-aims-for-1700-mark-02-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-01T17:00:00.000Z</news:publication_date>
+      <news:title>القطاع المصرفي يتصدر: HDBank يسجل أرباحاً قياسية، ومؤشر VN-Index يتجه نحو 1700 نقطة</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/banking-sector-leads-hdbank-reports-record-profits-vn-index-aims-for-1700-mark-02-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-01T17:00:00.000Z</news:publication_date>
+      <news:title>銀行セクターが牽引：HDBankが記録的利益を報告、VN-Indexは1,700ポイントを目指す</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-0208-ty-gia-ha-nhiet-dong-von-ngoai-chon-viet-nam-lam-mo-neo-02-08-2026/</loc>
     <news:news>
       <news:publication>
