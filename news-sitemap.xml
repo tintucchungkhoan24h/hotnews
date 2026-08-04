@@ -695,6 +695,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-0408-my-nhat-can-thiep-ty-gia-vn-index-dung-truoc-van-hoi-moi-04-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-03T17:00:00.000Z</news:publication_date>
+      <news:title>Vĩ mô 04/08: Mỹ - Nhật can thiệp tỷ giá, VN-Index đứng trước vận hội mới?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-0804-us-japan-intervene-in-exchange-rates-vn-index-facing-a-new-opportunity-04-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-03T17:00:00.000Z</news:publication_date>
+      <news:title>Macro 08/04: US-Japan Intervene in Exchange Rates, VN-Index Facing a New Opportunity?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-0804-us-japan-intervene-in-exchange-rates-vn-index-facing-a-new-opportunity-04-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-03T17:00:00.000Z</news:publication_date>
+      <news:title>08/04 거시경제: 미일 환율 개입, VN-Index 새로운 기회 직면하나?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-0804-us-japan-intervene-in-exchange-rates-vn-index-facing-a-new-opportunity-04-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-03T17:00:00.000Z</news:publication_date>
+      <news:title>宏觀經濟08/04：美日干預匯率，越南VN-Index是否面臨新機遇？</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-0804-us-japan-intervene-in-exchange-rates-vn-index-facing-a-new-opportunity-04-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-03T17:00:00.000Z</news:publication_date>
+      <news:title>ภาพรวมเศรษฐกิจมหภาค 04/08: สหรัฐฯ-ญี่ปุ่นแทรกแซงอัตราแลกเปลี่ยน, VN-Index กำลังเผชิญโอกาสใหม่?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-0804-us-japan-intervene-in-exchange-rates-vn-index-facing-a-new-opportunity-04-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-03T17:00:00.000Z</news:publication_date>
+      <news:title>الاقتصاد الكلي 08/04: تدخل أمريكي ياباني في أسعار الصرف، هل يواجه مؤشر VN-Index فرصة جديدة؟</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-0804-us-japan-intervene-in-exchange-rates-vn-index-facing-a-new-opportunity-04-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-03T17:00:00.000Z</news:publication_date>
+      <news:title>マクロ経済 08/04: 米日による為替介入、VN-Indexは新たな機会に直面するか？</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-tang-vot-trump-tam-dung-tan-cong-iran-khi-fed-doi-mat-rui-ro-xoay-truc-04-08-2026/</loc>
     <news:news>
       <news:publication>
