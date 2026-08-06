@@ -5,7 +5,7 @@
   <!-- Homepage / Dashboard -->
   <url>
     <loc>https://tintucchungkhoan24h.com/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,7 +13,7 @@
   <!-- Điểm tin – VI (primary) -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/"/>
@@ -29,7 +29,7 @@
   <!-- Điểm tin – EN -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -37,7 +37,7 @@
   <!-- Điểm tin – KO -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -45,7 +45,7 @@
   <!-- Điểm tin – ZH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -53,7 +53,7 @@
   <!-- Điểm tin – TH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -61,7 +61,7 @@
   <!-- Điểm tin – AR -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -69,7 +69,7 @@
   <!-- Điểm tin – JA -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -77,7 +77,7 @@
   <!-- Điểm tin vĩ mô – VI (primary) -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/"/>
@@ -93,7 +93,7 @@
   <!-- Điểm tin vĩ mô – EN -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -101,7 +101,7 @@
   <!-- Điểm tin vĩ mô – KO -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -109,7 +109,7 @@
   <!-- Điểm tin vĩ mô – ZH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -117,7 +117,7 @@
   <!-- Điểm tin vĩ mô – TH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -125,7 +125,7 @@
   <!-- Điểm tin vĩ mô – AR -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -133,7 +133,7 @@
   <!-- Điểm tin vĩ mô – JA -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -141,7 +141,7 @@
   <!-- World News – VI (primary) -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/"/>
@@ -157,7 +157,7 @@
   <!-- World News – EN -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/en/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -165,7 +165,7 @@
   <!-- World News – KO -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ko/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -173,7 +173,7 @@
   <!-- World News – ZH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/zh/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -181,7 +181,7 @@
   <!-- World News – TH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/th/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -189,7 +189,7 @@
   <!-- World News – AR -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ar/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -197,7 +197,7 @@
   <!-- World News – JA -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ja/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47865,7 +47865,7 @@
   <!-- Spoke (World News): tin-tuc-the-gioi-phat-trien-kinh-te-toan-cau-trong-tuan-nay -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/tin-tuc-the-gioi-phat-trien-kinh-te-toan-cau-trong-tuan-nay/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47873,7 +47873,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/en/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47881,7 +47881,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ko/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47889,7 +47889,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/zh/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47897,7 +47897,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/th/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47905,7 +47905,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ar/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47913,7 +47913,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ja/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47921,7 +47921,7 @@
   <!-- Spoke (World News): chuyn-dch-cng-ngh-ton-cu-ai-chip-a-chnh-tr-nh-hnh-li-th-trng -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/chuyn-dch-cng-ngh-ton-cu-ai-chip-a-chnh-tr-nh-hnh-li-th-trng/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47929,7 +47929,7 @@
   <!-- Spoke (World News): global-tech-shift-ai-chips-geopolitics-reshape-markets -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/en/global-tech-shift-ai-chips-geopolitics-reshape-markets/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47937,7 +47937,7 @@
   <!-- Spoke (World News): ch-tch-fed-warsh-gi-nguyn-li-sut-cn-st-ai-v-cng-thng-iran-nh-hnh-th-trng-ton-cu -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/ch-tch-fed-warsh-gi-nguyn-li-sut-cn-st-ai-v-cng-thng-iran-nh-hnh-th-trng-ton-cu/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47945,7 +47945,7 @@
   <!-- Spoke (World News): feds-warsh-holds-rates-ai-boom-iran-tensions-shape-global-markets -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/en/feds-warsh-holds-rates-ai-boom-iran-tensions-shape-global-markets/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -48123,7 +48123,7 @@
   <!-- Spoke (World News): ni-lo-fed-tng-li-sut-bng-ln-khi-bng-n-ai-thc-y-p-lc-lm-pht -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/ni-lo-fed-tng-li-sut-bng-ln-khi-bng-n-ai-thc-y-p-lc-lm-pht/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -48131,7 +48131,7 @@
   <!-- Spoke (World News): fed-rate-hike-fears-flare-up-as-ai-boom-fuels-inflationary-pressures -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/en/fed-rate-hike-fears-flare-up-as-ai-boom-fuels-inflationary-pressures/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -64057,13 +64057,13 @@
     <lastmod>2026-07-31</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-thi-truong-toan-cau-fed-giu-nguyen-lai-suat-chien-tranh-iran-tac-dong-den-viet-nam-nhu-the-nao-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-lam-phat-cua-fed-chien-tranh-trung-dong-von-toan-cau-thao-chay-tim-noi-an-toan-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
   </url>
 
   <!-- Spoke (World News): global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026 -->
@@ -64072,13 +64072,13 @@
     <lastmod>2026-07-31</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-thi-truong-toan-cau-fed-giu-nguyen-lai-suat-chien-tranh-iran-tac-dong-den-viet-nam-nhu-the-nao-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-lam-phat-cua-fed-chien-tranh-trung-dong-von-toan-cau-thao-chay-tim-noi-an-toan-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
   </url>
 
   <!-- Spoke (World News): global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026 -->
@@ -64087,13 +64087,13 @@
     <lastmod>2026-07-31</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-thi-truong-toan-cau-fed-giu-nguyen-lai-suat-chien-tranh-iran-tac-dong-den-viet-nam-nhu-the-nao-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-lam-phat-cua-fed-chien-tranh-trung-dong-von-toan-cau-thao-chay-tim-noi-an-toan-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
   </url>
 
   <!-- Spoke (World News): global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026 -->
@@ -64102,13 +64102,13 @@
     <lastmod>2026-07-31</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-thi-truong-toan-cau-fed-giu-nguyen-lai-suat-chien-tranh-iran-tac-dong-den-viet-nam-nhu-the-nao-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-lam-phat-cua-fed-chien-tranh-trung-dong-von-toan-cau-thao-chay-tim-noi-an-toan-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
   </url>
 
   <!-- Spoke (World News): global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026 -->
@@ -64117,13 +64117,13 @@
     <lastmod>2026-07-31</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-thi-truong-toan-cau-fed-giu-nguyen-lai-suat-chien-tranh-iran-tac-dong-den-viet-nam-nhu-the-nao-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-lam-phat-cua-fed-chien-tranh-trung-dong-von-toan-cau-thao-chay-tim-noi-an-toan-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
   </url>
 
   <!-- Spoke (World News): global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026 -->
@@ -64132,13 +64132,13 @@
     <lastmod>2026-07-31</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-thi-truong-toan-cau-fed-giu-nguyen-lai-suat-chien-tranh-iran-tac-dong-den-viet-nam-nhu-the-nao-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-lam-phat-cua-fed-chien-tranh-trung-dong-von-toan-cau-thao-chay-tim-noi-an-toan-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
   </url>
 
   <!-- Spoke (World News): global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026 -->
@@ -64147,13 +64147,13 @@
     <lastmod>2026-07-31</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-thi-truong-toan-cau-fed-giu-nguyen-lai-suat-chien-tranh-iran-tac-dong-den-viet-nam-nhu-the-nao-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-market-shock-how-fed-hold-iran-war-impact-vietnam-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/cu-soc-lam-phat-cua-fed-chien-tranh-trung-dong-von-toan-cau-thao-chay-tim-noi-an-toan-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/fed-inflation-shock-mideast-war-global-capital-flees-to-safety-31-07-2026/"/>
   </url>
 
   <!-- Spoke (World News): soc-thi-truong-toan-cau-lam-phat-dat-dinh-khi-cac-ga-khong-lo-cong-nghe-phan-hoa-31-07-2026 -->
@@ -67199,6 +67199,111 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-markets-2026-ai-frenzy-rate-hikes-and-geopolitical-risks-06-08-2026/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-markets-2026-ai-frenzy-rate-hikes-and-geopolitical-risks-06-08-2026/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-markets-2026-ai-frenzy-rate-hikes-and-geopolitical-risks-06-08-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): 5-su-kien-kinh-te-vi-mo-toan-cau-thoa-thuan-hormuz-my-iran-lam-rung-chuyen-thi-truong-06-08-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-kinh-te-vi-mo-toan-cau-thoa-thuan-hormuz-my-iran-lam-rung-chuyen-thi-truong-06-08-2026/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-kinh-te-vi-mo-toan-cau-thoa-thuan-hormuz-my-iran-lam-rung-chuyen-thi-truong-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-kinh-te-vi-mo-toan-cau-thoa-thuan-hormuz-my-iran-lam-rung-chuyen-thi-truong-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-kinh-te-vi-mo-toan-cau-thoa-thuan-hormuz-my-iran-lam-rung-chuyen-thi-truong-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-kinh-te-vi-mo-toan-cau-thoa-thuan-hormuz-my-iran-lam-rung-chuyen-thi-truong-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-kinh-te-vi-mo-toan-cau-thoa-thuan-hormuz-my-iran-lam-rung-chuyen-thi-truong-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-kinh-te-vi-mo-toan-cau-thoa-thuan-hormuz-my-iran-lam-rung-chuyen-thi-truong-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+  </url>
+
+  <!-- Spoke (World News): global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-kinh-te-vi-mo-toan-cau-thoa-thuan-hormuz-my-iran-lam-rung-chuyen-thi-truong-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/world-news/en/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/world-news/ko/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/world-news/zh/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/world-news/th/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/world-news/ar/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/world-news/ja/global-macro-5-events-us-iran-hormuz-deal-shakes-markets-06-08-2026/"/>
   </url>
 
 </urlset>
