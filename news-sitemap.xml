@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-diem-tua-dan-dat-va-bai-toan-dong-von-ngoai-07-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T17:00:00.000Z</news:publication_date>
+      <news:title>Ngành Ngân hàng: Điểm tựa dẫn dắt và bài toán dòng vốn ngoại</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/banking-sector-the-driving-force-and-the-foreign-capital-conundrum-07-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T17:00:00.000Z</news:publication_date>
+      <news:title>Banking Sector: The Driving Force and the Foreign Capital Conundrum</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/banking-sector-the-driving-force-and-the-foreign-capital-conundrum-07-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T17:00:00.000Z</news:publication_date>
+      <news:title>은행 산업: 주도적 지지대와 외국인 자본 유입 과제</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/banking-sector-the-driving-force-and-the-foreign-capital-conundrum-07-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T17:00:00.000Z</news:publication_date>
+      <news:title>銀行業：引領支柱與外資流入的課題</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/banking-sector-the-driving-force-and-the-foreign-capital-conundrum-07-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T17:00:00.000Z</news:publication_date>
+      <news:title>อุตสาหกรรมธนาคาร: จุดยืนที่แข็งแกร่งและโจทย์การไหลเข้าของเงินทุนต่างชาติ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/banking-sector-the-driving-force-and-the-foreign-capital-conundrum-07-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T17:00:00.000Z</news:publication_date>
+      <news:title>القطاع المصرفي: ركيزة القيادة ومسألة تدفق رأس المال الأجنبي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/banking-sector-the-driving-force-and-the-foreign-capital-conundrum-07-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-06T17:00:00.000Z</news:publication_date>
+      <news:title>銀行業界：牽引役としての支柱と海外資金の流れという課題</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/gia-vang-vuot-4300-usd-vn-index-san-sang-but-pha-len-1885-diem-07-08-2026/</loc>
     <news:news>
       <news:publication>
