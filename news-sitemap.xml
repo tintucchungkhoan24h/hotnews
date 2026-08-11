@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/song-co-phieu-bat-dong-san-dong-luc-tu-chinh-sach-va-cau-chuyen-thoai-von-11-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-10T17:00:00.000Z</news:publication_date>
+      <news:title>Sóng cổ phiếu Bất động sản: Động lực từ chính sách và câu chuyện thoái vốn</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/real-estate-stock-wave-driven-by-policy-and-divestment-story-11-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-10T17:00:00.000Z</news:publication_date>
+      <news:title>Real Estate Stock Wave: Driven by Policy and Divestment Story</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/real-estate-stock-wave-driven-by-policy-and-divestment-story-11-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-10T17:00:00.000Z</news:publication_date>
+      <news:title>부동산 주식 파동: 정책과 매각 이야기에서 비롯된 동력</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/real-estate-stock-wave-driven-by-policy-and-divestment-story-11-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-10T17:00:00.000Z</news:publication_date>
+      <news:title>房地產股浪潮：政策與撤資故事的驅動力</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/real-estate-stock-wave-driven-by-policy-and-divestment-story-11-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-10T17:00:00.000Z</news:publication_date>
+      <news:title>คลื่นหุ้นอสังหาริมทรัพย์: แรงขับเคลื่อนจากนโยบายและเรื่องราวการถอนทุน</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/real-estate-stock-wave-driven-by-policy-and-divestment-story-11-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-10T17:00:00.000Z</news:publication_date>
+      <news:title>موجة أسهم العقارات: دوافع من السياسة وقصة التصفية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/real-estate-stock-wave-driven-by-policy-and-divestment-story-11-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-10T17:00:00.000Z</news:publication_date>
+      <news:title>不動産株の波：政策と資本撤退の物語が原動力</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-1108-bitcoin-giu-gia-vnx-bao-lai-ky-luc-78-ty-moi-ngay-11-08-2026/</loc>
     <news:news>
       <news:publication>
