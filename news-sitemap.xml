@@ -310,6 +310,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/tom-tat-kinh-te-vi-mo-toan-cau-sp-500-dat-dinh-ky-luc-giua-cuoc-chien-iran-doanh-so-ban-le-giam-sut-15-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-14T17:00:00.000Z</news:publication_date>
+      <news:title>Tóm tắt Kinh tế Vĩ mô Toàn cầu: S&amp;P 500 Đạt Đỉnh Kỷ lục giữa Cuộc Chiến Iran &amp; Doanh số Bán lẻ Giảm Sút</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-macro-recap-sp-500-hits-record-amid-iran-war-retail-slump-15-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-14T17:00:00.000Z</news:publication_date>
+      <news:title>Global Macro Recap: S&amp;P 500 Hits Record Amid Iran War &amp; Retail Slump</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-macro-recap-sp-500-hits-record-amid-iran-war-retail-slump-15-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-14T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 거시 경제 요약: 이란 전쟁과 소매 판매 부진 속 S&amp;P 500 사상 최고치 기록</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-macro-recap-sp-500-hits-record-amid-iran-war-retail-slump-15-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-14T17:00:00.000Z</news:publication_date>
+      <news:title>全球宏觀回顧：伊朗戰爭與零售業衰退中 S&amp;P 500 創新高</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-macro-recap-sp-500-hits-record-amid-iran-war-retail-slump-15-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-14T17:00:00.000Z</news:publication_date>
+      <news:title>สรุปเศรษฐกิจมหภาคทั่วโลก: S&amp;P 500 ทำสถิติสูงสุดท่ามกลางสงครามอิหร่านและยอดค้าปลีกที่ซบเซา</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-macro-recap-sp-500-hits-record-amid-iran-war-retail-slump-15-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-14T17:00:00.000Z</news:publication_date>
+      <news:title>ملخص الاقتصاد الكلي العالمي: S&amp;P 500 يسجل رقماً قياسياً وسط حرب إيران وتراجع تجارة التجزئة</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-macro-recap-sp-500-hits-record-amid-iran-war-retail-slump-15-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-14T17:00:00.000Z</news:publication_date>
+      <news:title>グローバルマクロレビュー：S&amp;P 500はイラン戦争と小売販売不振の中で史上最高値を記録</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nhom-ngan-hang-chiu-ap-luc-ban-manh-vn-index-boc-hoi-28-diem-14-08-2026/</loc>
     <news:news>
       <news:publication>
