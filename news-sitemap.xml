@@ -464,6 +464,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-hoi-phuc-nho-nhom-vingroup-thanh-khoan-van-o-muc-thap-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index hồi phục nhờ nhóm Vingroup, thanh khoản vẫn ở mức thấp</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-recovers-thanks-to-vingroup-group-liquidity-remains-low-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index Recovers Thanks to Vingroup Group, Liquidity Remains Low</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-recovers-thanks-to-vingroup-group-liquidity-remains-low-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index, 빈그룹 그룹 덕분에 회복세 보였으나 유동성은 여전히 낮은 수준</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-recovers-thanks-to-vingroup-group-liquidity-remains-low-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 在 Vingroup 集團帶動下反彈，但流動性仍處於低位</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-recovers-thanks-to-vingroup-group-liquidity-remains-low-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index ฟื้นตัวได้ด้วยกลุ่ม Vingroup แต่สภาพคล่องยังคงต่ำ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-recovers-thanks-to-vingroup-group-liquidity-remains-low-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>مؤشر VN-Index يتعافى بفضل مجموعة Vingroup، والسيولة لا تزال منخفضة</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-recovers-thanks-to-vingroup-group-liquidity-remains-low-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index、ビングループ銘柄に牽引され回復も、流動性は引き続き低水準</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2008-loi-suat-trai-phieu-dat-dinh-dong-tien-se-ve-dau-20-08-2026/</loc>
     <news:news>
       <news:publication>
