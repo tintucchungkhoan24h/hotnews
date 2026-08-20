@@ -1003,6 +1003,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/lenh-trung-phat-iran-cua-trump-noi-lo-tang-lai-suat-fed-bien-dong-thi-truong-toan-cau-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>Lệnh trừng phạt Iran của Trump &amp; Nỗi lo tăng lãi suất Fed: Biến động thị trường toàn cầu</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/trumps-iran-sanctions-fed-rate-hike-fears-global-market-volatility-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>Trump&apos;s Iran Sanctions &amp; Fed Rate Hike Fears: Global Market Volatility</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/trumps-iran-sanctions-fed-rate-hike-fears-global-market-volatility-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>트럼프의 이란 제재 및 연준 금리 인상 우려: 글로벌 시장 변동성</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/trumps-iran-sanctions-fed-rate-hike-fears-global-market-volatility-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>川普的伊朗制裁與聯準會升息恐懼：全球市場波動</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/trumps-iran-sanctions-fed-rate-hike-fears-global-market-volatility-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>การคว่ำบาตรอิหร่านของทรัมป์และความกังวลเรื่องการขึ้นดอกเบี้ยของ Fed: ความผันผวนของตลาดโลก</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/trumps-iran-sanctions-fed-rate-hike-fears-global-market-volatility-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>عقوبات ترامب على إيران ومخاوف رفع سعر الفائدة من الاحتياطي الفيدرالي: تقلبات السوق العالمية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/trumps-iran-sanctions-fed-rate-hike-fears-global-market-volatility-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>トランプのイラン制裁とFRB利上げへの懸念：世界市場の変動性</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-suc-bat-tu-nhom-big-4-va-ap-luc-no-xau-tiem-an-19-08-2026/</loc>
     <news:news>
       <news:publication>
