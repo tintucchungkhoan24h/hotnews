@@ -310,6 +310,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/vi-mo-toan-cau-2008-noi-lo-cuc-du-tru-lien-bang-tang-lai-suat-so-voi-cu-soc-gia-dau-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>Vĩ mô toàn cầu 20/08: Nỗi lo Cục Dự trữ Liên bang tăng lãi suất so với Cú sốc giá dầu</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-macro-2008-fed-rate-hike-fears-vs-oil-price-shocks-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>Global Macro 20/08: Fed Rate Hike Fears vs. Oil Price Shocks</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-macro-2008-fed-rate-hike-fears-vs-oil-price-shocks-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 거시 20/08: 연준 금리 인상 공포 vs. 유가 충격</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-macro-2008-fed-rate-hike-fears-vs-oil-price-shocks-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>全球宏觀20/08：聯準會升息擔憂 vs. 油價衝擊</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-macro-2008-fed-rate-hike-fears-vs-oil-price-shocks-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>มหภาคโลก 20/08: ความกังวลเรื่อง Fed ขึ้นดอกเบี้ย vs. วิกฤตราคาพลังงาน</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-macro-2008-fed-rate-hike-fears-vs-oil-price-shocks-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>الاقتصاد الكلي العالمي 20/08: مخاوف رفع سعر الفائدة من الفيدرالي مقابل صدمات أسعار النفط</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-macro-2008-fed-rate-hike-fears-vs-oil-price-shocks-20-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-19T17:00:00.000Z</news:publication_date>
+      <news:title>グローバルマクロ 20/08：FRB利上げ懸念 vs. 原油価格ショック</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-suc-bat-tu-nhom-big-4-va-ap-luc-no-xau-tiem-an-19-08-2026/</loc>
     <news:news>
       <news:publication>
