@@ -618,6 +618,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-268-lam-phat-de-doa-lai-suat-bitcoin-lap-dinh-79000-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>Vĩ mô 26/8: Lạm phát đe dọa lãi suất, Bitcoin lập đỉnh $79,000</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-268-inflation-threatens-interest-rates-bitcoin-hits-79000-peak-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>Macro 26/8: Inflation Threatens Interest Rates, Bitcoin Hits $79,000 Peak</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-268-inflation-threatens-interest-rates-bitcoin-hits-79000-peak-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>거시경제 8/26: 인플레이션 금리 위협, 비트코인 79,000달러 정점</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-268-inflation-threatens-interest-rates-bitcoin-hits-79000-peak-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>8/26 宏觀經濟：通膨威脅利率，比特幣創下 79,000 美元新高</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-268-inflation-threatens-interest-rates-bitcoin-hits-79000-peak-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>มาโคร 26/8: เงินเฟ้อคุกคามอัตราดอกเบี้ย, Bitcoin ทะลุ 79,000 ดอลลาร์</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-268-inflation-threatens-interest-rates-bitcoin-hits-79000-peak-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>الاقتصاد الكلي 26/8: التضخم يهدد أسعار الفائدة، البيتكوين يسجل 79,000 دولارًا</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-268-inflation-threatens-interest-rates-bitcoin-hits-79000-peak-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>マクロ経済 8/26: インフレが金利を脅かし、ビットコインが79,000ドルで最高値更新</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-2026-fed-chuyen-dich-dieu-hau-nvidias-ai-doi-mat-thuc-te-26-08-2026/</loc>
     <news:news>
       <news:publication>
