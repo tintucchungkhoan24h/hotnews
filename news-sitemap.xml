@@ -937,6 +937,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/cu-soc-thi-truong-toan-cau-ket-qua-kinh-doanh-nvidia-so-voi-lenh-trung-phat-ngay-d-kinh-te-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>Cú Sốc Thị Trường Toàn Cầu: Kết Quả Kinh Doanh Nvidia so với Lệnh Trừng Phạt &apos;Ngày D Kinh Tế&apos;</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-market-shock-nvidia-earnings-vs-economic-d-day-sanctions-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>Global Market Shock: Nvidia Earnings vs. &apos;Economic D-Day&apos; Sanctions</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-market-shock-nvidia-earnings-vs-economic-d-day-sanctions-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 시장 충격: 엔비디아 실적 대 &apos;경제 D-데이&apos; 제재</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-market-shock-nvidia-earnings-vs-economic-d-day-sanctions-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>全球市場震盪：Nvidia 財報與「經濟 D 日」制裁</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-market-shock-nvidia-earnings-vs-economic-d-day-sanctions-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>ตลาดโลกช็อก: รายได้ Nvidia ปะทะ มาตรการคว่ำบาตร &apos;วันดีเดย์ทางเศรษฐกิจ&apos;</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-market-shock-nvidia-earnings-vs-economic-d-day-sanctions-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>صدمة السوق العالمية: أرباح إنفيديا مقابل عقوبات &quot;يوم الإنزال الاقتصادي&quot;</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-market-shock-nvidia-earnings-vs-economic-d-day-sanctions-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>世界市場の衝撃：Nvidia決算と「経済Dデイ」制裁</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-dan-song-ky-vong-dong-von-ty-usd-tu-nang-hang-ftse-25-08-2026/</loc>
     <news:news>
       <news:publication>
