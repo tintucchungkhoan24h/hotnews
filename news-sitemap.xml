@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-dan-song-vn-index-but-pha-manh-me-tien-sat-moc-1800-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>Ngành Ngân hàng dẫn sóng, VN-Index bứt phá mạnh mẽ tiến sát mốc 1.800</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/banking-sector-leads-the-wave-vn-index-surges-strongly-nearing-1800-mark-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>Banking Sector Leads the Wave, VN-Index Surges Strongly Nearing 1,800 Mark</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/banking-sector-leads-the-wave-vn-index-surges-strongly-nearing-1800-mark-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>은행 부문 주도, VN-Index 1,800선에 근접하며 강한 돌파</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/banking-sector-leads-the-wave-vn-index-surges-strongly-nearing-1800-mark-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>銀行業引領浪潮，VN-Index強勢突破逼近1,800點大關</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/banking-sector-leads-the-wave-vn-index-surges-strongly-nearing-1800-mark-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>ภาคธนาคารนำคลื่น, VN-Index ทะยานแรงจ่อแตะ 1,800 จุด</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/banking-sector-leads-the-wave-vn-index-surges-strongly-nearing-1800-mark-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>القطاع المصرفي يقود الموجة، مؤشر VN-Index يخترق بقوة ويقترب من 1,800 نقطة</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/banking-sector-leads-the-wave-vn-index-surges-strongly-nearing-1800-mark-26-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-25T17:00:00.000Z</news:publication_date>
+      <news:title>銀行セクターが主導、VN-Indexが1,800ポイントに迫る力強い突破</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2608-bitcoin-lap-dinh-my-siet-iran-va-cu-soc-thue-quan-canada-26-08-2026/</loc>
     <news:news>
       <news:publication>
