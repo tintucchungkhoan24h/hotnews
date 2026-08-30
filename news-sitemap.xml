@@ -328,7 +328,7 @@
         <news:language>en</news:language>
       </news:publication>
       <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index confirms new uptrend despite pre-holiday profit-taking pressure</news:title>
+      <news:title>VN-Index Confirms New Uptrend Despite Pre-Holiday Profit-Taking Pressure</news:title>
     </news:news>
   </url>
   <url>
@@ -339,7 +339,7 @@
         <news:language>ko</news:language>
       </news:publication>
       <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
-      <news:title>VN-지수, 연휴 전 차익 실현 압박에도 새로운 상승 랠리 확인</news:title>
+      <news:title>VN-Index, 연휴 전 차익 실현 압력에도 새로운 상승 파동 확인</news:title>
     </news:news>
   </url>
   <url>
@@ -350,7 +350,7 @@
         <news:language>zh-Hant</news:language>
       </news:publication>
       <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 確立新一輪上漲波段，無視節前獲利了結賣壓</news:title>
+      <news:title>儘管假期前有獲利了結壓力，VN-Index 仍確認新一波漲勢</news:title>
     </news:news>
   </url>
   <url>
@@ -361,7 +361,7 @@
         <news:language>th</news:language>
       </news:publication>
       <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index ยืนยันคลื่นขาขึ้นรอบใหม่ แม้มีแรงเทขายทำกำไรก่อนช่วงวันหยุด</news:title>
+      <news:title>VN-Index ยืนยันคลื่นขาขึ้นใหม่ แม้มีแรงขายทำกำไรก่อนวันหยุดยาว</news:title>
     </news:news>
   </url>
   <url>
@@ -372,7 +372,7 @@
         <news:language>ar</news:language>
       </news:publication>
       <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
-      <news:title>مؤشر VN-Index يؤكد موجة صعود جديدة على الرغم من ضغوط جني الأرباح قبل العطلة</news:title>
+      <news:title>مؤشر VN-Index يؤكد موجة صعود جديدة رغم ضغوط جني الأرباح قبل العطلة</news:title>
     </news:news>
   </url>
   <url>
@@ -383,7 +383,7 @@
         <news:language>ja</news:language>
       </news:publication>
       <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
-      <news:title>VNインデックス、連休前の利益確定売りの圧力にもかかわらず新たな上昇ウェーブを確認</news:title>
+      <news:title>祝日前の利益確定売り圧力にもかかわらず、VN-Indexは新たな上昇波を確認</news:title>
     </news:news>
   </url>
   <url>
@@ -461,6 +461,83 @@
       </news:publication>
       <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
       <news:title>VN-Indexはグリーンを維持：不動産および証券グループが加速</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-xac-nhan-song-tang-moi-du-ap-luc-chot-loi-truoc-ky-nghi-le-30-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index Xác Nhận Sóng Tăng Mới Dù Áp Lực Chốt Lời Trước Kỳ Nghỉ Lễ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-confirms-new-uptrend-despite-pre-holiday-profit-taking-pressure-30-08-2026-2/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index confirms new uptrend despite pre-holiday profit-taking pressure</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-30-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
+      <news:title>VN-지수, 연휴 전 차익 실현 압박에도 새로운 상승 랠리 확인</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-30-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 確立新一輪上漲波段，無視節前獲利了結賣壓</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-30-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index ยืนยันคลื่นขาขึ้นรอบใหม่ แม้มีแรงเทขายทำกำไรก่อนช่วงวันหยุด</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-30-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
+      <news:title>مؤشر VN-Index يؤكد موجة صعود جديدة على الرغم من ضغوط جني الأرباح قبل العطلة</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-30-08-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-29T17:00:00.000Z</news:publication_date>
+      <news:title>VNインデックス、連休前の利益確定売りの圧力にもかかわらず新たな上昇ウェーブを確認</news:title>
     </news:news>
   </url>
   <url>
