@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-suc-bat-tu-dong-tien-va-ky-vong-tang-truong-thang-9-02-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-01T17:00:00.000Z</news:publication_date>
+      <news:title>Ngành Ngân hàng: Sức bật từ dòng tiền và kỳ vọng tăng trưởng tháng 9</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/banking-sector-momentum-from-cash-flow-and-september-growth-expectations-02-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-01T17:00:00.000Z</news:publication_date>
+      <news:title>Banking Sector: Momentum from Cash Flow and September Growth Expectations</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/banking-sector-momentum-from-cash-flow-and-september-growth-expectations-02-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-01T17:00:00.000Z</news:publication_date>
+      <news:title>은행 부문: 유동성 유입과 9월 성장 기대감으로 인한 회복 탄력성</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/banking-sector-momentum-from-cash-flow-and-september-growth-expectations-02-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-01T17:00:00.000Z</news:publication_date>
+      <news:title>銀行業：資金流動的推動和9月增長預期</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/banking-sector-momentum-from-cash-flow-and-september-growth-expectations-02-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-01T17:00:00.000Z</news:publication_date>
+      <news:title>ภาคการธนาคาร: แรงผลักดันจากกระแสเงินสดและความคาดหวังการเติบโตในเดือนกันยายน</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/banking-sector-momentum-from-cash-flow-and-september-growth-expectations-02-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-01T17:00:00.000Z</news:publication_date>
+      <news:title>القطاع المصرفي: زخم من التدفقات النقدية وتوقعات النمو لشهر سبتمبر</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/banking-sector-momentum-from-cash-flow-and-september-growth-expectations-02-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-01T17:00:00.000Z</news:publication_date>
+      <news:title>銀行業界：資金流入と9月成長期待からの回復力</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-0209-vang-rot-tham-loi-suat-trai-phieu-toan-cau-gay-soc-02-09-2026/</loc>
     <news:news>
       <news:publication>
