@@ -926,6 +926,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-bi-vay-ham-dau-dat-100-usd-va-noi-lo-fed-tang-lai-suat-09-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-08T17:00:00.000Z</news:publication_date>
+      <news:title>Thị trường toàn cầu bị vây hãm: Dầu đạt 100 USD và nỗi lo Fed tăng lãi suất</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-markets-under-siege-oil-hits-100-and-fed-rate-hike-fears-09-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-08T17:00:00.000Z</news:publication_date>
+      <news:title>Global Markets Under Siege: Oil Hits $100 and Fed Rate Hike Fears</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-markets-under-siege-oil-hits-100-and-fed-rate-hike-fears-09-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-08T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 시장 포위: 유가 100달러 돌파 및 Fed 금리 인상 우려</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-markets-under-siege-oil-hits-100-and-fed-rate-hike-fears-09-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-08T17:00:00.000Z</news:publication_date>
+      <news:title>全球市場危機四伏：油價逼近100美元與聯準會升息恐懼</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-markets-under-siege-oil-hits-100-and-fed-rate-hike-fears-09-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-08T17:00:00.000Z</news:publication_date>
+      <news:title>ตลาดโลกถูกโจมตี: ราคาน้ำมันแตะ 100 ดอลลาร์และความกังวลเรื่อง Fed ขึ้นดอกเบี้ย</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-markets-under-siege-oil-hits-100-and-fed-rate-hike-fears-09-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-08T17:00:00.000Z</news:publication_date>
+      <news:title>الأسواق العالمية تحت الحصار: النفط يقترب من 100 دولار ومخاوف رفع سعر الفائدة من الفيدرالي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-markets-under-siege-oil-hits-100-and-fed-rate-hike-fears-09-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-08T17:00:00.000Z</news:publication_date>
+      <news:title>世界市場の危機：原油100ドル到達とFRB利上げへの懸念</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-bat-dong-san-vhm-dan-song-loi-nhuan-giua-ap-luc-dieu-chinh-manh-08-09-2026/</loc>
     <news:news>
       <news:publication>
