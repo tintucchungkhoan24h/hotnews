@@ -926,6 +926,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/fed-tang-lai-suat-xung-dot-my-iran-trien-vong-thi-truong-toan-cau-thang-92026-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>Fed Tăng Lãi Suất &amp; Xung Đột Mỹ-Iran: Triển Vọng Thị Trường Toàn Cầu Tháng 9/2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/fed-rate-hike-us-iran-conflict-global-market-outlook-sept-2026-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>Fed Rate Hike &amp; US-Iran Conflict: Global Market Outlook Sept 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/fed-rate-hike-us-iran-conflict-global-market-outlook-sept-2026-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>Fed 금리 인상 및 미-이란 갈등: 2026년 9월 글로벌 시장 전망</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/fed-rate-hike-us-iran-conflict-global-market-outlook-sept-2026-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>聯準會升息與美伊衝突：2026年9月全球市場展望</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/fed-rate-hike-us-iran-conflict-global-market-outlook-sept-2026-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>Fed ขึ้นดอกเบี้ย &amp; ความขัดแย้งสหรัฐฯ-อิหร่าน: ภาพรวมตลาดโลก กันยายน 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/fed-rate-hike-us-iran-conflict-global-market-outlook-sept-2026-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>رفع سعر الفائدة من الفيدرالي وصراع أمريكا وإيران: توقعات السوق العالمية سبتمبر 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/fed-rate-hike-us-iran-conflict-global-market-outlook-sept-2026-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>FRB利上げと米イラン紛争：2026年9月の世界市場見通し</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-but-pha-dong-luc-chinh-dan-dat-vn-index-tien-toi-nang-hang-20-09-2026/</loc>
     <news:news>
       <news:publication>
