@@ -233,6 +233,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-dong-tien-luan-chuyen-sang-nhom-ngan-hang-va-ky-vong-nang-hang-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index: Dòng tiền luân chuyển sang nhóm Ngân hàng và kỳ vọng nâng hạng</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-capital-flow-shifts-to-banking-group-amid-upgrade-expectations-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index: Capital Flow Shifts to Banking Group Amid Upgrade Expectations</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-capital-flow-shifts-to-banking-group-amid-upgrade-expectations-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index: 자금 흐름이 은행 그룹으로 이동하고 시장 등급 상향 기대</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-capital-flow-shifts-to-banking-group-amid-upgrade-expectations-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index：資金流向銀行板塊，並期待市場升級</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-capital-flow-shifts-to-banking-group-amid-upgrade-expectations-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index: กระแสเงินทุนหมุนเวียนสู่กลุ่มธนาคารและความคาดหวังในการยกระดับตลาด</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-capital-flow-shifts-to-banking-group-amid-upgrade-expectations-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>مؤشر VN-Index: تدفق رأس المال ينتقل إلى المجموعة المصرفية وتوقعات رفع تصنيف السوق</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-capital-flow-shifts-to-banking-group-amid-upgrade-expectations-21-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index：資金が銀行グループへ移動し、市場格上げへの期待高まる</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/fed-tang-lai-suat-sieu-du-an-18-ty-usd-dong-tien-di-dau-21-09-2026/</loc>
     <news:news>
       <news:publication>
