@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/thi-truong-bat-dong-san-vhm-dan-dat-nhip-tang-nvl-doi-mat-thach-thuc-27-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-26T17:00:00.000Z</news:publication_date>
+      <news:title>Thị Trường Bất Động Sản: VHM Dẫn Dắt Nhịp Tăng, NVL Đối Mặt Thách Thức</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/real-estate-market-vhm-leads-gains-nvl-faces-challenges-27-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-26T17:00:00.000Z</news:publication_date>
+      <news:title>Real Estate Market: VHM Leads Gains, NVL Faces Challenges</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/real-estate-market-vhm-leads-gains-nvl-faces-challenges-27-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-26T17:00:00.000Z</news:publication_date>
+      <news:title>부동산 시장: VHM 상승 주도, NVL 도전 직면</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/real-estate-market-vhm-leads-gains-nvl-faces-challenges-27-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-26T17:00:00.000Z</news:publication_date>
+      <news:title>房地產市場：VHM 領漲，NVL 面臨挑戰</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/real-estate-market-vhm-leads-gains-nvl-faces-challenges-27-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-26T17:00:00.000Z</news:publication_date>
+      <news:title>ตลาดอสังหาริมทรัพย์: VHM นำขาขึ้น, NVL เผชิญความท้าทาย</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/real-estate-market-vhm-leads-gains-nvl-faces-challenges-27-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-26T17:00:00.000Z</news:publication_date>
+      <news:title>سوق العقارات: VHM تقود الارتفاع، وNVL تواجه تحديات</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/real-estate-market-vhm-leads-gains-nvl-faces-challenges-27-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-26T17:00:00.000Z</news:publication_date>
+      <news:title>不動産市場：VHMが上昇を牽引、NVLは課題に直面</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/thi-truong-2709-nang-hang-don-song-el-nino-va-vang-lap-dinh-27-09-2026/</loc>
     <news:news>
       <news:publication>
