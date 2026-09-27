@@ -5,7 +5,7 @@
   <!-- Homepage / Dashboard -->
   <url>
     <loc>https://tintucchungkhoan24h.com/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,7 +13,7 @@
   <!-- Điểm tin – VI (primary) -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/"/>
@@ -29,7 +29,7 @@
   <!-- Điểm tin – EN -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -37,7 +37,7 @@
   <!-- Điểm tin – KO -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -45,7 +45,7 @@
   <!-- Điểm tin – ZH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -53,7 +53,7 @@
   <!-- Điểm tin – TH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -61,7 +61,7 @@
   <!-- Điểm tin – AR -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -69,7 +69,7 @@
   <!-- Điểm tin – JA -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -77,7 +77,7 @@
   <!-- Điểm tin vĩ mô – VI (primary) -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/"/>
@@ -93,7 +93,7 @@
   <!-- Điểm tin vĩ mô – EN -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -101,7 +101,7 @@
   <!-- Điểm tin vĩ mô – KO -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -109,7 +109,7 @@
   <!-- Điểm tin vĩ mô – ZH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -117,7 +117,7 @@
   <!-- Điểm tin vĩ mô – TH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -125,7 +125,7 @@
   <!-- Điểm tin vĩ mô – AR -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -133,7 +133,7 @@
   <!-- Điểm tin vĩ mô – JA -->
   <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -141,7 +141,7 @@
   <!-- World News – VI (primary) -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/world-news/vi/"/>
@@ -157,7 +157,7 @@
   <!-- World News – EN -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/en/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -165,7 +165,7 @@
   <!-- World News – KO -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ko/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -173,7 +173,7 @@
   <!-- World News – ZH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/zh/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -181,7 +181,7 @@
   <!-- World News – TH -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/th/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -189,7 +189,7 @@
   <!-- World News – AR -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ar/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -197,7 +197,7 @@
   <!-- World News – JA -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ja/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -108853,13 +108853,13 @@
     <lastmod>2026-09-20</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/nang-hang-ttck-2026-dong-tien-ty-usd-lieu-co-dao-chieu-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chung-khoan-viet-nang-hang-ftse-dong-von-ty-usd-do-bo-hay-cu-bay-tam-ly-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
   </url>
 
   <!-- Spoke: vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026 -->
@@ -108868,13 +108868,13 @@
     <lastmod>2026-09-20</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/nang-hang-ttck-2026-dong-tien-ty-usd-lieu-co-dao-chieu-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chung-khoan-viet-nang-hang-ftse-dong-von-ty-usd-do-bo-hay-cu-bay-tam-ly-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
   </url>
 
   <!-- Spoke: vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026 -->
@@ -108883,13 +108883,13 @@
     <lastmod>2026-09-20</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/nang-hang-ttck-2026-dong-tien-ty-usd-lieu-co-dao-chieu-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chung-khoan-viet-nang-hang-ftse-dong-von-ty-usd-do-bo-hay-cu-bay-tam-ly-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
   </url>
 
   <!-- Spoke: vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026 -->
@@ -108898,13 +108898,13 @@
     <lastmod>2026-09-20</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/nang-hang-ttck-2026-dong-tien-ty-usd-lieu-co-dao-chieu-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chung-khoan-viet-nang-hang-ftse-dong-von-ty-usd-do-bo-hay-cu-bay-tam-ly-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
   </url>
 
   <!-- Spoke: vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026 -->
@@ -108913,13 +108913,13 @@
     <lastmod>2026-09-20</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/nang-hang-ttck-2026-dong-tien-ty-usd-lieu-co-dao-chieu-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chung-khoan-viet-nang-hang-ftse-dong-von-ty-usd-do-bo-hay-cu-bay-tam-ly-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
   </url>
 
   <!-- Spoke: vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026 -->
@@ -108928,13 +108928,13 @@
     <lastmod>2026-09-20</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/nang-hang-ttck-2026-dong-tien-ty-usd-lieu-co-dao-chieu-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chung-khoan-viet-nang-hang-ftse-dong-von-ty-usd-do-bo-hay-cu-bay-tam-ly-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
   </url>
 
   <!-- Spoke: vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026 -->
@@ -108943,13 +108943,13 @@
     <lastmod>2026-09-20</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/nang-hang-ttck-2026-dong-tien-ty-usd-lieu-co-dao-chieu-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-upgrade-2026-will-billions-of-usd-reverse-course-for-vn-index-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/chung-khoan-viet-nang-hang-ftse-dong-von-ty-usd-do-bo-hay-cu-bay-tam-ly-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vietnam-stock-market-ftse-upgrade-multi-billion-dollar-capital-inflow-or-psychological-trap-20-09-2026/"/>
   </url>
 
   <!-- Spoke: nang-hang-ftse-va-ap-luc-fed-chung-khoan-viet-nam-tuan-toi-di-dau-20-09-2026 -->
@@ -111997,6 +111997,111 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/market-2709-upgrade-welcomes-el-nino-wave-and-gold-hits-record-high-27-09-2026/"/>
   </url>
 
+  <!-- Spoke: vi-mo-tuan-27092026-co-phieu-tru-sau-nang-hang-va-cu-soc-lng-27-09-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-27092026-co-phieu-tru-sau-nang-hang-va-cu-soc-lng-27-09-2026/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-27092026-co-phieu-tru-sau-nang-hang-va-cu-soc-lng-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-27092026-co-phieu-tru-sau-nang-hang-va-cu-soc-lng-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-27092026-co-phieu-tru-sau-nang-hang-va-cu-soc-lng-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-27092026-co-phieu-tru-sau-nang-hang-va-cu-soc-lng-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-27092026-co-phieu-tru-sau-nang-hang-va-cu-soc-lng-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-27092026-co-phieu-tru-sau-nang-hang-va-cu-soc-lng-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+  </url>
+
+  <!-- Spoke: macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026 -->
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-tuan-27092026-co-phieu-tru-sau-nang-hang-va-cu-soc-lng-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-week-27092026-blue-chip-stocks-after-market-upgrade-and-lng-shock-27-09-2026/"/>
+  </url>
+
   <!-- Spoke (World News): ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026 -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/ban-tin-kinh-te-toan-cau-29062026-dong-tien-ai-va-noi-lo-lam-phat-29-06-2026/</loc>
@@ -112275,7 +112380,7 @@
   <!-- Spoke (World News): tin-tuc-the-gioi-phat-trien-kinh-te-toan-cau-trong-tuan-nay -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/tin-tuc-the-gioi-phat-trien-kinh-te-toan-cau-trong-tuan-nay/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112283,7 +112388,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/en/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112291,7 +112396,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ko/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112299,7 +112404,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/zh/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112307,7 +112412,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/th/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112315,7 +112420,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ar/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112323,7 +112428,7 @@
   <!-- Spoke (World News): world-news-global-economic-development-this-week -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/ja/world-news-global-economic-development-this-week/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112331,7 +112436,7 @@
   <!-- Spoke (World News): chuyn-dch-cng-ngh-ton-cu-ai-chip-a-chnh-tr-nh-hnh-li-th-trng -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/chuyn-dch-cng-ngh-ton-cu-ai-chip-a-chnh-tr-nh-hnh-li-th-trng/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112339,7 +112444,7 @@
   <!-- Spoke (World News): global-tech-shift-ai-chips-geopolitics-reshape-markets -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/en/global-tech-shift-ai-chips-geopolitics-reshape-markets/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112347,7 +112452,7 @@
   <!-- Spoke (World News): ch-tch-fed-warsh-gi-nguyn-li-sut-cn-st-ai-v-cng-thng-iran-nh-hnh-th-trng-ton-cu -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/ch-tch-fed-warsh-gi-nguyn-li-sut-cn-st-ai-v-cng-thng-iran-nh-hnh-th-trng-ton-cu/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112355,7 +112460,7 @@
   <!-- Spoke (World News): feds-warsh-holds-rates-ai-boom-iran-tensions-shape-global-markets -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/en/feds-warsh-holds-rates-ai-boom-iran-tensions-shape-global-markets/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112533,7 +112638,7 @@
   <!-- Spoke (World News): ni-lo-fed-tng-li-sut-bng-ln-khi-bng-n-ai-thc-y-p-lc-lm-pht -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/ni-lo-fed-tng-li-sut-bng-ln-khi-bng-n-ai-thc-y-p-lc-lm-pht/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
@@ -112541,7 +112646,7 @@
   <!-- Spoke (World News): fed-rate-hike-fears-flare-up-as-ai-boom-fuels-inflationary-pressures -->
   <url>
     <loc>https://tintucchungkhoan24h.com/world-news/en/fed-rate-hike-fears-flare-up-as-ai-boom-fuels-inflationary-pressures/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
