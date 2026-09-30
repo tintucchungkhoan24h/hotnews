@@ -310,6 +310,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/tong-quan-vi-mo-toan-cau-noi-lo-cuc-du-tru-lien-bang-tang-lai-suat-soc-gia-dau-30-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T17:00:00.000Z</news:publication_date>
+      <news:title>Tổng quan vĩ mô toàn cầu: Nỗi lo Cục Dự trữ Liên bang tăng lãi suất &amp; Sốc giá dầu</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-macro-recap-fed-rate-hike-fears-oil-price-shocks-30-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T17:00:00.000Z</news:publication_date>
+      <news:title>Global Macro Recap: Fed Rate Hike Fears &amp; Oil Price Shocks</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-macro-recap-fed-rate-hike-fears-oil-price-shocks-30-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 거시 경제 요약: 연준 금리 인상 우려 및 유가 충격</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-macro-recap-fed-rate-hike-fears-oil-price-shocks-30-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T17:00:00.000Z</news:publication_date>
+      <news:title>全球宏觀回顧：聯準會升息擔憂與油價衝擊</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-macro-recap-fed-rate-hike-fears-oil-price-shocks-30-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T17:00:00.000Z</news:publication_date>
+      <news:title>สรุปภาวะเศรษฐกิจมหภาคโลก: ความกังวลเรื่อง Fed ขึ้นดอกเบี้ยและราคาน้ำมันผันผวน</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-macro-recap-fed-rate-hike-fears-oil-price-shocks-30-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T17:00:00.000Z</news:publication_date>
+      <news:title>ملخص الاقتصاد الكلي العالمي: مخاوف رفع سعر الفائدة من الفيدرالي وصدمات أسعار النفط</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-macro-recap-fed-rate-hike-fears-oil-price-shocks-30-09-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T17:00:00.000Z</news:publication_date>
+      <news:title>グローバルマクロレビュー：FRBの利上げ懸念と原油価格ショック</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-chiu-ap-luc-dieu-chinh-dong-tien-dich-chuyen-sang-nang-luong-29-09-2026/</loc>
     <news:news>
       <news:publication>
