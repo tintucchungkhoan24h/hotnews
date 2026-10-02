@@ -156,6 +156,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/suy-thoai-viec-lam-tai-my-va-cang-thang-iran-thi-truong-toan-cau-chuan-bi-doi-mat-voi-bien-dong-03-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-02T17:00:00.000Z</news:publication_date>
+      <news:title>Suy thoái việc làm tại Mỹ và căng thẳng Iran: Thị trường toàn cầu chuẩn bị đối mặt với biến động</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/us-jobs-slowdown-and-iran-tensions-global-markets-braced-for-volatility-03-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-02T17:00:00.000Z</news:publication_date>
+      <news:title>US Jobs Slowdown and Iran Tensions: Global Markets Braced for Volatility</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/us-jobs-slowdown-and-iran-tensions-global-markets-braced-for-volatility-03-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-02T17:00:00.000Z</news:publication_date>
+      <news:title>미국 고용 둔화와 이란 긴장: 글로벌 시장 변동성 대비</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/us-jobs-slowdown-and-iran-tensions-global-markets-braced-for-volatility-03-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-02T17:00:00.000Z</news:publication_date>
+      <news:title>美國就業放緩與伊朗緊張局勢：全球市場嚴陣以待面臨波動</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/us-jobs-slowdown-and-iran-tensions-global-markets-braced-for-volatility-03-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-02T17:00:00.000Z</news:publication_date>
+      <news:title>การชะลอตัวของงานในสหรัฐฯ และความตึงเครียดในอิหร่าน: ตลาดโลกเตรียมรับความผันผวน</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/us-jobs-slowdown-and-iran-tensions-global-markets-braced-for-volatility-03-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-02T17:00:00.000Z</news:publication_date>
+      <news:title>تباطؤ الوظائف الأمريكية وتوترات إيران: الأسواق العالمية تستعد للتقلبات</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/us-jobs-slowdown-and-iran-tensions-global-markets-braced-for-volatility-03-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-02T17:00:00.000Z</news:publication_date>
+      <news:title>米国の雇用減速とイラン情勢の緊張：世界の市場は変動に備える</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-doi-dien-ap-luc-lon-khi-vn-index-thung-moc-quan-trong-02-10-2026/</loc>
     <news:news>
       <news:publication>
