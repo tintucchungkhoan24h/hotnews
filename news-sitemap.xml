@@ -156,6 +156,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-dich-vu-tai-chinh-ky-vong-tu-noi-tran-ldr-va-lan-song-co-tuc-04-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-03T17:00:00.000Z</news:publication_date>
+      <news:title>Ngành Dịch vụ Tài chính: Kỳ vọng từ nới trần LDR và làn sóng cổ tức</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/financial-services-sector-expectations-from-ldr-cap-expansion-and-dividend-wave-04-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-03T17:00:00.000Z</news:publication_date>
+      <news:title>Financial Services Sector: Expectations from LDR Cap Expansion and Dividend Wave</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/financial-services-sector-expectations-from-ldr-cap-expansion-and-dividend-wave-04-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-03T17:00:00.000Z</news:publication_date>
+      <news:title>금융 서비스 부문: LDR 한도 확대 및 배당 파동에 대한 기대감</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/financial-services-sector-expectations-from-ldr-cap-expansion-and-dividend-wave-04-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-03T17:00:00.000Z</news:publication_date>
+      <news:title>金融服務業：放寬 LDR 上限與股息潮的期待</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/financial-services-sector-expectations-from-ldr-cap-expansion-and-dividend-wave-04-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-03T17:00:00.000Z</news:publication_date>
+      <news:title>กลุ่มบริการทางการเงิน: ความคาดหวังจากการขยายเพดาน LDR และกระแสเงินปันผล</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/financial-services-sector-expectations-from-ldr-cap-expansion-and-dividend-wave-04-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-03T17:00:00.000Z</news:publication_date>
+      <news:title>قطاع الخدمات المالية: التوقعات من رفع سقف نسبة القروض إلى الودائع (LDR) وموجة توزيع الأرباح</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/financial-services-sector-expectations-from-ldr-cap-expansion-and-dividend-wave-04-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-03T17:00:00.000Z</news:publication_date>
+      <news:title>金融サービスセクター：LDR上限引き上げと配当ラッシュへの期待</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/kinh-te-viet-nam-2026-gdp-tang-901-dong-von-fdi-bung-no-04-10-2026/</loc>
     <news:news>
       <news:publication>
