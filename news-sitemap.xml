@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-but-pha-vn-index-phuc-hoi-manh-me-vuot-moc-1850-06-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-05T17:00:00.000Z</news:publication_date>
+      <news:title>Ngành Ngân hàng bứt phá, VN-Index phục hồi mạnh mẽ vượt mốc 1.850</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/banking-sector-breaks-out-vn-index-recovers-strongly-beyond-1850-mark-06-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-05T17:00:00.000Z</news:publication_date>
+      <news:title>Banking Sector Breaks Out, VN-Index Recovers Strongly Beyond 1,850 Mark</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/banking-sector-breaks-out-vn-index-recovers-strongly-beyond-1850-mark-06-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-05T17:00:00.000Z</news:publication_date>
+      <news:title>은행 업종 돌파, VN-지수 1,850선 돌파하며 강력한 회복세</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/banking-sector-breaks-out-vn-index-recovers-strongly-beyond-1850-mark-06-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-05T17:00:00.000Z</news:publication_date>
+      <news:title>銀行業突破，VN指數強勁回升並突破1,850點</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/banking-sector-breaks-out-vn-index-recovers-strongly-beyond-1850-mark-06-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-05T17:00:00.000Z</news:publication_date>
+      <news:title>กลุ่มธนาคารพุ่งทะยาน ดัชนี VN-Index ฟื้นตัวแกร่งทะลุระดับ 1,850</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/banking-sector-breaks-out-vn-index-recovers-strongly-beyond-1850-mark-06-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-05T17:00:00.000Z</news:publication_date>
+      <news:title>اختراق قطاع البنوك، مؤشر VN-Index يتعافى بقوة ويتجاوز حاجز 1,850</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/banking-sector-breaks-out-vn-index-recovers-strongly-beyond-1850-mark-06-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-05T17:00:00.000Z</news:publication_date>
+      <news:title>銀行セクターが躍進、VN指数は1,850ポイントを超えて力強く回復</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-0610-gdp-9-thang-tang-901-fdi-50-ty-usd-pha-ky-luc-06-10-2026/</loc>
     <news:news>
       <news:publication>
