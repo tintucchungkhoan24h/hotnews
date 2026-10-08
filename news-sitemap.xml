@@ -695,6 +695,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-0810-ap-luc-ty-gia-bua-vay-co-hoi-tich-luy-co-phieu-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>Vĩ mô 08/10: Áp lực tỷ giá bủa vây, cơ hội tích lũy cổ phiếu?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-oct-08-exchange-rate-pressure-mounts-opportunity-to-accumulate-stocks-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>Macro Oct 08: Exchange Rate Pressure Mounts, Opportunity to Accumulate Stocks?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-oct-08-exchange-rate-pressure-mounts-opportunity-to-accumulate-stocks-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>10/08 거시 경제: 환율 압박 포위, 주식 매집 기회인가?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-oct-08-exchange-rate-pressure-mounts-opportunity-to-accumulate-stocks-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>10/08 宏觀：匯率壓力包圍，累積股票的機會？</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-oct-08-exchange-rate-pressure-mounts-opportunity-to-accumulate-stocks-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>มหภาค 08/10: แรงกดดันอัตราแลกเปลี่ยนล้อมรอบ โอกาสสะสมหุ้น?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-oct-08-exchange-rate-pressure-mounts-opportunity-to-accumulate-stocks-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>الاقتصاد الكلي 08/10: ضغوط سعر الصرف تحاصر السوق، هل هي فرصة لتراكم الأسهم؟</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-oct-08-exchange-rate-pressure-mounts-opportunity-to-accumulate-stocks-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>10/08 マクロ：為替圧力に包囲される中、株式蓄積の機会か？</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/world-news/vi/dau-vuot-100-fed-dieu-hau-bien-dong-thi-truong-toan-cau-phia-truoc-08-10-2026/</loc>
     <news:news>
       <news:publication>
