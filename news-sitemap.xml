@@ -310,6 +310,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-vi-mo-ngay-8-thang-10-fed-dong-long-dieu-hau-cu-soc-nang-luong-toan-cau-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>Cập nhật vĩ mô ngày 8 tháng 10: Fed đồng lòng diều hâu &amp; Cú sốc năng lượng toàn cầu</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/macro-update-oct-8-fed-hawkish-unity-global-energy-shock-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>Macro Update Oct 8: Fed Hawkish Unity &amp; Global Energy Shock</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/macro-update-oct-8-fed-hawkish-unity-global-energy-shock-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>10월 8일 거시 경제 업데이트: 연준의 매파적 단합 및 글로벌 에너지 충격</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/macro-update-oct-8-fed-hawkish-unity-global-energy-shock-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>10月8日宏觀更新：聯準會鷹派共識與全球能源衝擊</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/macro-update-oct-8-fed-hawkish-unity-global-energy-shock-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>อัปเดตเศรษฐกิจมหภาค 8 ต.ค.: Fed เป็นเอกภาพสายเหยี่ยว &amp; วิกฤตพลังงานโลก</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/macro-update-oct-8-fed-hawkish-unity-global-energy-shock-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>تحديث الاقتصاد الكلي 8 أكتوبر: وحدة الفيدرالي المتشددة وصدمة الطاقة العالمية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/macro-update-oct-8-fed-hawkish-unity-global-energy-shock-08-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T17:00:00.000Z</news:publication_date>
+      <news:title>マクロ更新10月8日：FRBのタカ派的結束と世界的なエネルギーショック</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-dong-tien-phan-hoa-ky-vong-tu-thong-tu-50-moi-07-10-2026/</loc>
     <news:news>
       <news:publication>
