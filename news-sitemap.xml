@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-truoc-ap-luc-ban-rong-ky-luc-va-diem-sang-tu-pnj-11-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T17:00:00.000Z</news:publication_date>
+      <news:title>Ngành ngân hàng trước áp lực bán ròng kỷ lục và điểm sáng từ PNJ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/banking-sector-faces-record-net-selling-pressure-and-a-bright-spot-from-pnj-11-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T17:00:00.000Z</news:publication_date>
+      <news:title>Banking Sector Faces Record Net Selling Pressure and a Bright Spot from PNJ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/banking-sector-faces-record-net-selling-pressure-and-a-bright-spot-from-pnj-11-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T17:00:00.000Z</news:publication_date>
+      <news:title>사상 최대 순매도 압력에 직면한 은행업계와 PNJ의 명암</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/banking-sector-faces-record-net-selling-pressure-and-a-bright-spot-from-pnj-11-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T17:00:00.000Z</news:publication_date>
+      <news:title>銀行業面臨創紀錄淨賣壓，PNJ成市場亮點</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/banking-sector-faces-record-net-selling-pressure-and-a-bright-spot-from-pnj-11-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T17:00:00.000Z</news:publication_date>
+      <news:title>อุตสาหกรรมธนาคารเผชิญแรงขายสุทธิทำสถิติสูงสุดและจุดสว่างจาก PNJ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/banking-sector-faces-record-net-selling-pressure-and-a-bright-spot-from-pnj-11-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T17:00:00.000Z</news:publication_date>
+      <news:title>القطاع المصرفي يواجه ضغوط بيع صافي قياسية ونقطة مضيئة من PNJ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/banking-sector-faces-record-net-selling-pressure-and-a-bright-spot-from-pnj-11-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T17:00:00.000Z</news:publication_date>
+      <news:title>記録的な売り越し圧力に直面する銀行業界とPNJの明るい兆し</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-1110-go-global-bac-ninh-va-ap-luc-lam-phat-tu-gia-nang-luong-11-10-2026/</loc>
     <news:news>
       <news:publication>
