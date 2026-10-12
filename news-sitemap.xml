@@ -156,6 +156,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-vi-mo-toan-cau-chien-tranh-trung-dong-leo-thang-va-trong-tam-cpi-cua-my-12-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-11T17:00:00.000Z</news:publication_date>
+      <news:title>Cập nhật vĩ mô toàn cầu: Chiến tranh Trung Đông leo thang và trọng tâm CPI của Mỹ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-macro-update-middle-east-war-escalates-and-us-cpi-focus-12-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-11T17:00:00.000Z</news:publication_date>
+      <news:title>Global Macro Update: Middle East War Escalates and US CPI Focus</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-macro-update-middle-east-war-escalates-and-us-cpi-focus-12-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-11T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 매크로 업데이트: 중동 전쟁 격화 및 미국 CPI 집중</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-macro-update-middle-east-war-escalates-and-us-cpi-focus-12-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-11T17:00:00.000Z</news:publication_date>
+      <news:title>全球宏觀更新：中東戰爭升級與美國CPI焦點</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-macro-update-middle-east-war-escalates-and-us-cpi-focus-12-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-11T17:00:00.000Z</news:publication_date>
+      <news:title>การอัปเดตเศรษฐกิจมหภาคทั่วโลก: สงครามตะวันออกกลางทวีความรุนแรงและโฟกัส CPI ของสหรัฐฯ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-macro-update-middle-east-war-escalates-and-us-cpi-focus-12-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-11T17:00:00.000Z</news:publication_date>
+      <news:title>تحديث الاقتصاد الكلي العالمي: تصاعد حرب الشرق الأوسط وتركيز مؤشر أسعار المستهلك الأمريكي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-macro-update-middle-east-war-escalates-and-us-cpi-focus-12-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-11T17:00:00.000Z</news:publication_date>
+      <news:title>グローバルマクロアップデート：中東戦争激化と米国CPIの焦点</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-truoc-ap-luc-ban-rong-ky-luc-va-diem-sang-tu-pnj-11-10-2026/</loc>
     <news:news>
       <news:publication>
