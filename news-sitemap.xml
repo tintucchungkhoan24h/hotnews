@@ -233,6 +233,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/tom-tat-kinh-te-vi-mo-toan-cau-lam-phat-nong-sup-do-ai-rui-ro-chien-tranh-16-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-15T17:00:00.000Z</news:publication_date>
+      <news:title>Tóm Tắt Kinh Tế Vĩ Mô Toàn Cầu: Lạm Phát Nóng, Sụp Đổ AI &amp; Rủi Ro Chiến Tranh</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/macro-global-recap-hot-inflation-meets-ai-rout-and-war-risks-16-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-15T17:00:00.000Z</news:publication_date>
+      <news:title>Macro Global Recap: Hot Inflation Meets AI Rout and War Risks</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/macro-global-recap-hot-inflation-meets-ai-rout-and-war-risks-16-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-15T17:00:00.000Z</news:publication_date>
+      <news:title>거시 글로벌 요약: 고물가, AI 폭락 및 전쟁 위험 동반</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/macro-global-recap-hot-inflation-meets-ai-rout-and-war-risks-16-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-15T17:00:00.000Z</news:publication_date>
+      <news:title>全球宏觀概況：通膨飆升，AI崩盤與戰爭風險</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/macro-global-recap-hot-inflation-meets-ai-rout-and-war-risks-16-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-15T17:00:00.000Z</news:publication_date>
+      <news:title>สรุปภาวะเศรษฐกิจมหภาคโลก: เงินเฟ้อร้อนระอุ AI ร่วง และความเสี่ยงสงคราม</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/macro-global-recap-hot-inflation-meets-ai-rout-and-war-risks-16-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-15T17:00:00.000Z</news:publication_date>
+      <news:title>ملخص الاقتصاد الكلي العالمي: تضخم حاد وانهيار الذكاء الاصطناعي ومخاطر الحرب</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/macro-global-recap-hot-inflation-meets-ai-rout-and-war-risks-16-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-15T17:00:00.000Z</news:publication_date>
+      <news:title>世界のマクロ経済概況：インフレ加熱、AI暴落、戦争リスク</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-bat-dong-san-qcg-but-pha-manh-me-dong-tien-than-trong-tim-diem-den-15-10-2026/</loc>
     <news:news>
       <news:publication>
