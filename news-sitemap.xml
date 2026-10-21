@@ -310,6 +310,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/5-su-kien-vi-mo-toan-cau-trien-vong-lam-phat-xau-di-lai-suat-tang-21-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-20T17:00:00.000Z</news:publication_date>
+      <news:title>5 Sự Kiện Vĩ Mô Toàn Cầu: Triển Vọng Lạm Phát Xấu đi, Lãi Suất Tăng</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/top-5-global-macro-events-inflation-outlook-worsens-as-rates-rise-21-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-20T17:00:00.000Z</news:publication_date>
+      <news:title>Top 5 Global Macro Events: Inflation Outlook Worsens as Rates Rise</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/top-5-global-macro-events-inflation-outlook-worsens-as-rates-rise-21-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-20T17:00:00.000Z</news:publication_date>
+      <news:title>세계 거시경제 5대 이슈: 인플레이션 전망 악화, 금리 상승</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/top-5-global-macro-events-inflation-outlook-worsens-as-rates-rise-21-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-20T17:00:00.000Z</news:publication_date>
+      <news:title>全球宏觀5大事件：通膨前景惡化，利率持續上升</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/top-5-global-macro-events-inflation-outlook-worsens-as-rates-rise-21-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-20T17:00:00.000Z</news:publication_date>
+      <news:title>5 เหตุการณ์สำคัญเศรษฐกิจโลก: แนวโน้มเงินเฟ้อแย่ลง ดอกเบี้ยพุ่งสูง</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/top-5-global-macro-events-inflation-outlook-worsens-as-rates-rise-21-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-20T17:00:00.000Z</news:publication_date>
+      <news:title>أبرز 5 أحداث اقتصاد كلي عالمية: توقعات التضخم تتدهور مع ارتفاع الأسعار</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/top-5-global-macro-events-inflation-outlook-worsens-as-rates-rise-21-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-20T17:00:00.000Z</news:publication_date>
+      <news:title>世界のマクロ経済5大イベント：インフレ見通し悪化、金利上昇</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-vpb-va-stb-but-pha-loi-nhuan-giua-ap-luc-chot-loi-20-10-2026/</loc>
     <news:news>
       <news:publication>
