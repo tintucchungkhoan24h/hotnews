@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-giang-co-diem-sang-masan-va-ky-vong-he-thong-ccp-22-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index Giằng Co: Điểm Sáng Masan Và Kỳ Vọng Hệ Thống CCP</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index Sideways: Masan as a Bright Spot and CCP System Expectations</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
+      <news:title>VN-지수 혼조세: 마산(Masan)의 활약과 CCP 시스템에 대한 기대</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 橫盤整理：Masan 亮點與 CCP 系統預期</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index ผันผวน: Masan โดดเด่นและความคาดหวังต่อระบบ CCP</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
+      <news:title>مؤشر VN-Index يتذبذب: ماسان (Masan) نقطة مضيئة وتوقعات بنظام CCP</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
+      <news:title>VN指数はもみ合い：マサン（Masan）の躍進とCCPシステムへの期待</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-but-pha-techcombank-va-vietcombank-lap-ky-luc-loi-nhuan-21-10-2026/</loc>
     <news:news>
       <news:publication>
