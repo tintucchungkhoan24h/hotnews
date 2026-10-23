@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2410-vang-dau-ruc-lua-chung-khoan-chao-dao-vi-lan-song-ai-24-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-23T17:00:00.000Z</news:publication_date>
+      <news:title>Vĩ mô 24/10: Vàng - Dầu rực lửa, chứng khoán chao đảo vì làn sóng AI</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-oct-24-gold-oil-ablaze-stocks-shaken-by-ai-wave-24-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-23T17:00:00.000Z</news:publication_date>
+      <news:title>Macro Oct 24: Gold - Oil Ablaze, Stocks Shaken by AI Wave</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-oct-24-gold-oil-ablaze-stocks-shaken-by-ai-wave-24-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-23T17:00:00.000Z</news:publication_date>
+      <news:title>10/24 거시 경제: 금·유가 급등, AI 열풍에 흔들리는 증시</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-oct-24-gold-oil-ablaze-stocks-shaken-by-ai-wave-24-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-23T17:00:00.000Z</news:publication_date>
+      <news:title>10/24 宏觀經濟：金價油價飆升，AI 浪潮引發股市動盪</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-oct-24-gold-oil-ablaze-stocks-shaken-by-ai-wave-24-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-23T17:00:00.000Z</news:publication_date>
+      <news:title>มหภาค 24/10: ทอง-น้ำมันพุ่งแรง ตลาดหุ้นระส่ำจากระลอกคลื่น AI</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-oct-24-gold-oil-ablaze-stocks-shaken-by-ai-wave-24-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-23T17:00:00.000Z</news:publication_date>
+      <news:title>ماكرو 24/10: الذهب والنفط يشتعلان، والأسهم تهتز بسبب موجة الذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-oct-24-gold-oil-ablaze-stocks-shaken-by-ai-wave-24-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-23T17:00:00.000Z</news:publication_date>
+      <news:title>10/24 マクロ経済：金・原油高騰、AIの波で株式市場が揺らぐ</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/co-phieu-ngan-hang-but-pha-tcb-va-stb-dan-dat-dong-tien-khoi-ngoai-23-10-2026/</loc>
     <news:news>
       <news:publication>
@@ -1308,622 +1385,6 @@
       </news:publication>
       <news:publication_date>2026-10-22T17:00:00.000Z</news:publication_date>
       <news:title>世界市場の動揺：AI投資への懸念と中東情勢の緊迫化</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-giang-co-diem-sang-masan-va-ky-vong-he-thong-ccp-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index Giằng Co: Điểm Sáng Masan Và Kỳ Vọng Hệ Thống CCP</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index Sideways: Masan as a Bright Spot and CCP System Expectations</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-지수 혼조세: 마산(Masan)의 활약과 CCP 시스템에 대한 기대</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 橫盤整理：Masan 亮點與 CCP 系統預期</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index ผันผวน: Masan โดดเด่นและความคาดหวังต่อระบบ CCP</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>مؤشر VN-Index يتذبذب: ماسان (Masan) نقطة مضيئة وتوقعات بنظام CCP</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-sideways-masan-as-a-bright-spot-and-ccp-system-expectations-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN指数はもみ合い：マサン（Masan）の躍進とCCPシステムへの期待</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-giang-co-nhom-tru-msn-vpb-dan-dat-thi-truong-hoi-phuc-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index giằng co: Nhóm trụ MSN, VPB dẫn dắt thị trường hồi phục</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-struggles-pillar-stocks-msn-and-vpb-lead-market-recovery-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index Struggles: Pillar Stocks MSN and VPB Lead Market Recovery</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-struggles-pillar-stocks-msn-and-vpb-lead-market-recovery-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-지수 보합세: MSN, VPB 등 대형주가 시장 회복 견인</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-struggles-pillar-stocks-msn-and-vpb-lead-market-recovery-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 陷入拉鋸戰：權值股 MSN、VPB 引領市場反彈</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-struggles-pillar-stocks-msn-and-vpb-lead-market-recovery-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index ผันผวน: หุ้นกลุ่มหลัก MSN, VPB นำตลาดฟื้นตัว</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-struggles-pillar-stocks-msn-and-vpb-lead-market-recovery-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>تذبذب مؤشر VN-Index: أسهم القيادية MSN وVPB تقود تعافي السوق</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-struggles-pillar-stocks-msn-and-vpb-lead-market-recovery-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN指数がもみ合い：主力株のMSN、VPBが市場の回復を牽引</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-giang-co-manh-ho-vin-nang-do-thi-truong-giua-ap-luc-chot-loi-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index giằng co mạnh: Họ Vin nâng đỡ thị trường giữa áp lực chốt lời</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-struggles-vin-group-stocks-support-market-amid-profit-taking-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index struggles: Vin Group stocks support market amid profit-taking pressure</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-struggles-vin-group-stocks-support-market-amid-profit-taking-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-지수 공방전: 차익 실현 압력 속 빈(Vin) 그룹주가 시장 지지</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-struggles-vin-group-stocks-support-market-amid-profit-taking-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 劇烈震盪：Vin 家族在獲利回吐壓力中支撐大盤</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-struggles-vin-group-stocks-support-market-amid-profit-taking-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index ผันผวนหนัก: หุ้นกลุ่ม Vin ช่วยพยุงตลาดท่ามกลางแรงเทขายทำกำไร</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-struggles-vin-group-stocks-support-market-amid-profit-taking-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>مؤشر VN-Index يتذبذب بقوة: مجموعة فين تدعم السوق وسط ضغوط جني الأرباح</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-struggles-vin-group-stocks-support-market-amid-profit-taking-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN指数は激しく交錯：利益確定売り圧力の中、ビングループが相場を下支え</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-but-pha-manh-me-nhom-co-phieu-vingroup-dan-dat-dong-tien-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index bứt phá mạnh mẽ, nhóm cổ phiếu Vingroup dẫn dắt dòng tiền</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-surges-vingroup-stocks-lead-capital-flow-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index Surges, Vingroup Stocks Lead Capital Flow</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-surges-vingroup-stocks-lead-capital-flow-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index 급등, 빈그룹 주식군이 자금 흐름 주도</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-surges-vingroup-stocks-lead-capital-flow-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index強勢突破，Vingroup股票領漲資金流向</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-surges-vingroup-stocks-lead-capital-flow-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Index ทะยานแรง กลุ่มหุ้น Vingroup นำกระแสเงินทุน</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-surges-vingroup-stocks-lead-capital-flow-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>مؤشر VN-Index يرتفع بقوة، ومجموعة أسهم Vingroup تقود تدفقات رأس المال</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-surges-vingroup-stocks-lead-capital-flow-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VN-Indexが大幅反発、ビングループ株が資金の流れを牽引</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-fpt-ssi-tcb-vhm-vic-tru-cot-nang-do-chi-so-trong-boi-canh-thanh-khoan-sut-giam-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>Top 5 mã cổ phiếu nóng nhất trong ngày: FPT, SSI, TCB, VHM, VIC - Trụ cột nâng đỡ chỉ số trong bối cảnh thanh khoản sụt giảm</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/top-5-hottest-stocks-of-the-day-fpt-ssi-tcb-vhm-vic-pillars-supporting-the-index-amid-declining-liquidity-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>Top 5 Hottest Stocks of the Day: FPT, SSI, TCB, VHM, VIC - Pillars Supporting the Index Amid Declining Liquidity</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/top-5-hottest-stocks-of-the-day-fpt-ssi-tcb-vhm-vic-pillars-supporting-the-index-amid-declining-liquidity-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>오늘의 핫한 5개 주식: FPT, SSI, TCB, VHM, VIC - 거래량 감소 속 지수 지탱 버팀목</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/top-5-hottest-stocks-of-the-day-fpt-ssi-tcb-vhm-vic-pillars-supporting-the-index-amid-declining-liquidity-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>今日 5 大熱門股票：FPT、SSI、TCB、VHM、VIC - 流動性下降背景下的撐盤主力</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/top-5-hottest-stocks-of-the-day-fpt-ssi-tcb-vhm-vic-pillars-supporting-the-index-amid-declining-liquidity-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>5 หุ้นร้อนแรงประจำวัน: FPT, SSI, TCB, VHM, VIC - เสาหลักพยุงดัชนีท่ามกลางสภาพคล่องที่ลดลง</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/top-5-hottest-stocks-of-the-day-fpt-ssi-tcb-vhm-vic-pillars-supporting-the-index-amid-declining-liquidity-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>أفضل 5 أسهم نشاطاً لهذا اليوم: FPT، SSI، TCB، VHM، VIC - الركائز الداعمة للمؤشر في ظل تراجع السيولة</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/top-5-hottest-stocks-of-the-day-fpt-ssi-tcb-vhm-vic-pillars-supporting-the-index-amid-declining-liquidity-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>本日のホットな銘柄トップ5：FPT、SSI、TCB、VHM、VIC — 流動性低下の中での指数を支える柱</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vinfast-va-pgbank-toa-sang-vn-index-dung-truoc-nguong-cua-bung-no-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VinFast và PGBank Tỏa Sáng: VN-Index Đứng Trước Ngưỡng Cửa Bùng Nổ?</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/vinfast-and-pgbank-shine-is-vn-index-on-the-brink-of-an-explosion-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VinFast and PGBank Shine: Is VN-Index on the Brink of an Explosion?</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/vinfast-and-pgbank-shine-is-vn-index-on-the-brink-of-an-explosion-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VinFast와 PGBank의 빛나는 성과: VN-Index 폭발적인 상승 문턱에 서 있나?</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/vinfast-and-pgbank-shine-is-vn-index-on-the-brink-of-an-explosion-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VinFast與PGBank閃耀：VN-Index正站在爆發的門檻上？</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/vinfast-and-pgbank-shine-is-vn-index-on-the-brink-of-an-explosion-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VinFast และ PGBank ส่องประกาย: VN-Index กำลังยืนอยู่บนปากเหวแห่งการระเบิดหรือไม่?</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/vinfast-and-pgbank-shine-is-vn-index-on-the-brink-of-an-explosion-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VinFast وPGBank يتألقان: هل مؤشر VN-Index على أعتاب الانفجار؟</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/vinfast-and-pgbank-shine-is-vn-index-on-the-brink-of-an-explosion-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>VinFastとPGBankが輝く：VN-Indexは爆発的上昇の瀬戸際か？</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-2210-gia-xang-giam-manh-ty-gia-nong-va-ap-luc-no-trai-phieu-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>Vĩ mô 22/10: Giá xăng giảm mạnh, tỷ giá &apos;nóng&apos; và áp lực nợ trái phiếu</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-oct-22-fuel-prices-drop-sharply-exchange-rate-heats-up-and-bond-debt-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>Macro Oct 22: Fuel prices drop sharply, exchange rate &apos;heats up&apos; and bond debt pressure</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-oct-22-fuel-prices-drop-sharply-exchange-rate-heats-up-and-bond-debt-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>10/22 거시 경제: 휘발유 가격 급락, 환율 &apos;과열&apos; 및 채권 부채 압박</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-oct-22-fuel-prices-drop-sharply-exchange-rate-heats-up-and-bond-debt-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>10/22 宏觀經濟：汽油價格大幅下跌，匯率「過熱」與債券債務壓力</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-oct-22-fuel-prices-drop-sharply-exchange-rate-heats-up-and-bond-debt-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>มหภาค 22 ต.ค.: ราคาน้ำมันลดลงแรง, อัตราแลกเปลี่ยน &apos;ร้อนแรง&apos; และแรงกดดันหนี้หุ้นกู้</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-oct-22-fuel-prices-drop-sharply-exchange-rate-heats-up-and-bond-debt-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>الاقتصاد الكلي 22/10: انخفاض حاد في أسعار البنزين، وسعر صرف &apos;ساخن&apos; وضغوط ديون السندات</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-oct-22-fuel-prices-drop-sharply-exchange-rate-heats-up-and-bond-debt-pressure-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>10/22 マクロ経済：ガソリン価格が大幅下落、為替の「過熱」と債券債務の圧力</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-rung-dong-gia-dau-vot-len-112-usd-giua-lo-ngai-chien-tranh-trung-dong-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>vi</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>Thị trường toàn cầu rúng động: Giá dầu vọt lên 112 USD giữa lo ngại chiến tranh Trung Đông</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/world-news/en/global-markets-shaken-oil-surges-to-112-amid-mideast-war-fears-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>Global Markets Shaken: Oil Surges to $112 Amid Mideast War Fears</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-markets-shaken-oil-surges-to-112-amid-mideast-war-fears-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>글로벌 시장 동요: 중동 전쟁 공포 속에 유가 112달러로 급등</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-markets-shaken-oil-surges-to-112-amid-mideast-war-fears-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>zh-Hant</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>全球市場震盪：中東戰爭擔憂籠罩 油價飆升至 112 美元</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/world-news/th/global-markets-shaken-oil-surges-to-112-amid-mideast-war-fears-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>th</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>ตลาดโลกสั่นคลอน: ราคาน้ำมันพุ่งแตะ 112 ดอลลาร์ ท่ามกลางความกังวลสงครามตะวันออกกลาง</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-markets-shaken-oil-surges-to-112-amid-mideast-war-fears-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ar</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>الأسواق العالمية تهتز: النفط يقفز إلى 112 دولاراً وسط مخاوف من حرب في الشرق الأوسط</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-markets-shaken-oil-surges-to-112-amid-mideast-war-fears-22-10-2026/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Tin Tức Chứng Khoán 24h</news:name>
-        <news:language>ja</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-21T17:00:00.000Z</news:publication_date>
-      <news:title>世界市場に動揺：中東戦争への懸念から原油価格が112ドルに急騰</news:title>
     </news:news>
   </url>
 </urlset>
