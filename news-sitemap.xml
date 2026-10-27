@@ -772,6 +772,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/ipo-anthropic-vs-quyet-dinh-cua-fed-con-sot-vang-ai-doi-mat-voi-khung-hoang-lam-phat-27-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-26T17:00:00.000Z</news:publication_date>
+      <news:title>IPO Anthropic vs. Quyết định của Fed: Cơn sốt vàng AI đối mặt với Khủng hoảng lạm phát</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/anthropic-ipo-vs-fed-decision-ai-gold-rush-meets-inflation-crisis-27-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-26T17:00:00.000Z</news:publication_date>
+      <news:title>Anthropic IPO vs. Fed Decision: AI Gold Rush Meets Inflation Crisis</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/anthropic-ipo-vs-fed-decision-ai-gold-rush-meets-inflation-crisis-27-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-26T17:00:00.000Z</news:publication_date>
+      <news:title>Anthropic IPO vs. 연준의 결정: AI 골드러시와 인플레이션 위기의 만남</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/anthropic-ipo-vs-fed-decision-ai-gold-rush-meets-inflation-crisis-27-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-26T17:00:00.000Z</news:publication_date>
+      <news:title>Anthropic IPO 對決聯準會決議：AI 淘金熱遭遇通膨危機</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/anthropic-ipo-vs-fed-decision-ai-gold-rush-meets-inflation-crisis-27-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-26T17:00:00.000Z</news:publication_date>
+      <news:title>การทำ IPO ของ Anthropic ปะทะการตัดสินใจของ Fed: เมื่อยุคตื่นทอง AI เผชิญกับวิกฤตเงินเฟ้อ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/anthropic-ipo-vs-fed-decision-ai-gold-rush-meets-inflation-crisis-27-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-26T17:00:00.000Z</news:publication_date>
+      <news:title>اكتتاب Anthropic مقابل قرار الفيدرالي: حمى الذهب في الذكاء الاصطناعي تواجه أزمة التضخم</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/anthropic-ipo-vs-fed-decision-ai-gold-rush-meets-inflation-crisis-27-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-26T17:00:00.000Z</news:publication_date>
+      <news:title>AnthropicのIPO対FRBの決定：AIゴールドラッシュとインフレ危機の激突</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-but-pha-dong-luc-chinh-dua-vn-index-huong-moc-1800-diem-26-10-2026/</loc>
     <news:news>
       <news:publication>
