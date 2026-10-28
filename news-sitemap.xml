@@ -1003,6 +1003,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/cu-soc-vi-mo-toan-cau-quyet-dinh-cua-fed-va-ngan-sach-anh-gay-bien-dong-thi-truong-28-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-27T17:00:00.000Z</news:publication_date>
+      <news:title>Cú Sốc Vĩ Mô Toàn Cầu: Quyết Định của Fed và Ngân Sách Anh Gây Biến Động Thị Trường</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-macro-shock-fed-decisions-and-uk-budget-trigger-market-volatility-28-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-27T17:00:00.000Z</news:publication_date>
+      <news:title>Global Macro Shock: Fed Decisions and UK Budget Trigger Market Volatility</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-macro-shock-fed-decisions-and-uk-budget-trigger-market-volatility-28-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-27T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 거시 충격: Fed 결정 및 영국 예산이 시장 변동성 촉발</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-macro-shock-fed-decisions-and-uk-budget-trigger-market-volatility-28-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-27T17:00:00.000Z</news:publication_date>
+      <news:title>全球宏觀衝擊：聯準會決策和英國預算引發市場波動</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-macro-shock-fed-decisions-and-uk-budget-trigger-market-volatility-28-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-27T17:00:00.000Z</news:publication_date>
+      <news:title>มหภาคโลกสะเทือน: การตัดสินใจของ Fed และงบประมาณสหราชอาณาจักรกระตุ้นความผันผวนของตลาด</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-macro-shock-fed-decisions-and-uk-budget-trigger-market-volatility-28-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-27T17:00:00.000Z</news:publication_date>
+      <news:title>صدمة الاقتصاد الكلي العالمية: قرارات الفيدرالي وميزانية المملكة المتحدة تطلق العنان لتقلبات السوق</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-macro-shock-fed-decisions-and-uk-budget-trigger-market-volatility-28-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-27T17:00:00.000Z</news:publication_date>
+      <news:title>世界のマクロショック：FRBの決定と英国の予算が市場の変動を引き起こす</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-dan-song-thi-truong-no-luc-tim-diem-can-bang-moi-27-10-2026/</loc>
     <news:news>
       <news:publication>
