@@ -233,6 +233,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/nhip-dap-vi-mo-fed-tam-dung-hormuz-de-doa-nang-luong-toan-cau-29-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-28T17:00:00.000Z</news:publication_date>
+      <news:title>Nhịp Đập Vĩ Mô: Fed Tạm Dừng, Hormuz Đe Dọa Năng Lượng Toàn Cầu</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/macro-pulse-fed-pauses-as-hormuz-crisis-threatens-global-energy-29-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-28T17:00:00.000Z</news:publication_date>
+      <news:title>Macro Pulse: Fed Pauses as Hormuz Crisis Threatens Global Energy</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/macro-pulse-fed-pauses-as-hormuz-crisis-threatens-global-energy-29-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-28T17:00:00.000Z</news:publication_date>
+      <news:title>거시경제 동향: Fed 금리 동결, 호르무즈 위기 글로벌 에너지 위협</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/macro-pulse-fed-pauses-as-hormuz-crisis-threatens-global-energy-29-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-28T17:00:00.000Z</news:publication_date>
+      <news:title>宏觀脈動：聯準會暫停升息，荷姆茲海峽危機威脅全球能源</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/macro-pulse-fed-pauses-as-hormuz-crisis-threatens-global-energy-29-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-28T17:00:00.000Z</news:publication_date>
+      <news:title>ชีพจรเศรษฐกิจมหภาค: เฟดพักดอกเบี้ย ขณะวิกฤตฮอร์มุซคุกคามพลังงานโลก</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/macro-pulse-fed-pauses-as-hormuz-crisis-threatens-global-energy-29-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-28T17:00:00.000Z</news:publication_date>
+      <news:title>نبض الاقتصاد الكلي: الفيدرالي يتوقف وأزمة هرمز تهدد الطاقة العالمية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/macro-pulse-fed-pauses-as-hormuz-crisis-threatens-global-energy-29-10-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-28T17:00:00.000Z</news:publication_date>
+      <news:title>マクロ経済の脈動：FRB一時停止、ホルムズ危機が世界エネルギーを脅かす</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-phan-hoa-shb-toa-sang-fpt-chiu-ap-luc-chot-loi-manh-28-10-2026/</loc>
     <news:news>
       <news:publication>
