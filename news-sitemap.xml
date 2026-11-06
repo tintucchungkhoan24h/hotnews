@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-doi-mat-bien-so-moi-tam-diem-chuyen-giao-the-he-lanh-dao-06-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-05T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index Đối Mặt Biến Số Mới: Tâm Điểm Chuyển Giao Thế Hệ Lãnh Đạo</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/vn-index-faces-new-variables-focus-on-leadership-succession-06-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-05T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index Faces New Variables: Focus on Leadership Succession</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/vn-index-faces-new-variables-focus-on-leadership-succession-06-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-05T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index, 새로운 변수에 직면: 리더십 세대교체에 주목</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/vn-index-faces-new-variables-focus-on-leadership-succession-06-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-05T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index 面臨新變數：領導層世代交替成為焦點</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/vn-index-faces-new-variables-focus-on-leadership-succession-06-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-05T17:00:00.000Z</news:publication_date>
+      <news:title>VN-Index เผชิญตัวแปรใหม่: จุดโฟกัสที่การสืบทอดตำแหน่งผู้นำ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/vn-index-faces-new-variables-focus-on-leadership-succession-06-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-05T17:00:00.000Z</news:publication_date>
+      <news:title>مؤشر VN-Index يواجه متغيرات جديدة: التركيز على تعاقب الأجيال في القيادة</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/vn-index-faces-new-variables-focus-on-leadership-succession-06-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-05T17:00:00.000Z</news:publication_date>
+      <news:title>VN指数、新たな変数に直面：指導者層の世代交代が焦点に</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-0611-dang-dan-chu-thang-the-gia-dau-lao-doc-cu-hich-fdi-06-11-2026/</loc>
     <news:news>
       <news:publication>
