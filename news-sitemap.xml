@@ -79,6 +79,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/thi-truong-tuan-09-13112026-lam-phat-cao-chung-khoan-rung-lac-09-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-08T17:00:00.000Z</news:publication_date>
+      <news:title>Thị trường tuần 09-13/11/2026: Lạm phát cao, chứng khoán rung lắc?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/market-week-09-13112026-high-inflation-shaky-stock-market-09-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-08T17:00:00.000Z</news:publication_date>
+      <news:title>Market Week 09-13/11/2026: High Inflation, Shaky Stock Market?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/market-week-09-13112026-high-inflation-shaky-stock-market-09-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-08T17:00:00.000Z</news:publication_date>
+      <news:title>2026년 11월 9일-13일 시장 주간: 높은 인플레이션, 주식시장 흔들리나?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/market-week-09-13112026-high-inflation-shaky-stock-market-09-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-08T17:00:00.000Z</news:publication_date>
+      <news:title>2026年11月9日至13日市場週報：通膨高漲，股市震盪？</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/market-week-09-13112026-high-inflation-shaky-stock-market-09-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-08T17:00:00.000Z</news:publication_date>
+      <news:title>ตลาดสัปดาห์ 09-13/11/2026: เงินเฟ้อสูง, ตลาดหุ้นผันผวน?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/market-week-09-13112026-high-inflation-shaky-stock-market-09-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-08T17:00:00.000Z</news:publication_date>
+      <news:title>سوق الأسبوع 09-13/11/2026: تضخم مرتفع، سوق الأسهم يهتز؟</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/market-week-09-13112026-high-inflation-shaky-stock-market-09-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-08T17:00:00.000Z</news:publication_date>
+      <news:title>2026年11月9日～13日の市場週間：高インフレ、株式市場は動揺するか？</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/top-5-ma-co-phieu-nong-nhat-trong-ngay-acv-fpt-hpg-kbc-vnm-dong-tien-phan-hoa-manh-truoc-ky-vong-tao-day-thang-11-08-11-2026/</loc>
     <news:news>
       <news:publication>
