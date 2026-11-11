@@ -156,6 +156,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/vi-mo-1111-fed-canh-bao-tang-lai-suat-va-bom-xit-chip-nvidia-11-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10T17:00:00.000Z</news:publication_date>
+      <news:title>Vĩ mô 11/11: Fed cảnh báo tăng lãi suất và &apos;bom xịt&apos; chip Nvidia</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/macro-1111-fed-warns-of-rate-hike-and-nvidia-chip-dud-11-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10T17:00:00.000Z</news:publication_date>
+      <news:title>Macro 11/11: Fed Warns of Rate Hike and Nvidia Chip &apos;Dud&apos;</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/macro-1111-fed-warns-of-rate-hike-and-nvidia-chip-dud-11-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10T17:00:00.000Z</news:publication_date>
+      <news:title>거시경제 11/11: Fed 금리 인상 경고 및 엔비디아 칩 &apos;불발탄&apos;</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/macro-1111-fed-warns-of-rate-hike-and-nvidia-chip-dud-11-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10T17:00:00.000Z</news:publication_date>
+      <news:title>宏觀11/11：聯準會升息警告與Nvidia晶片「啞彈」</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/macro-1111-fed-warns-of-rate-hike-and-nvidia-chip-dud-11-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10T17:00:00.000Z</news:publication_date>
+      <news:title>มหภาค 11/11: Fed เตือนขึ้นดอกเบี้ยและ &apos;ระเบิดด้าน&apos; ชิป Nvidia</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/macro-1111-fed-warns-of-rate-hike-and-nvidia-chip-dud-11-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10T17:00:00.000Z</news:publication_date>
+      <news:title>اقتصاد كلي 11/11: تحذير الفيدرالي من رفع الفائدة و &apos;فشل&apos; شريحة إنفيديا</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/macro-1111-fed-warns-of-rate-hike-and-nvidia-chip-dud-11-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10T17:00:00.000Z</news:publication_date>
+      <news:title>マクロ経済11/11：FRBが利上げ警告、Nvidiaチップの「不発弾」</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-doi-mat-nguong-1700-diem-dong-tien-tim-diem-tua-tao-day-10-11-2026/</loc>
     <news:news>
       <news:publication>
