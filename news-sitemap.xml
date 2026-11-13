@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vi-mo-1411-nvidia-rung-lac-va-ap-luc-ty-gia-bua-vay-vn-index-14-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-13T17:00:00.000Z</news:publication_date>
+      <news:title>Vĩ mô 14/11: Nvidia &apos;rung lắc&apos; và Áp lực Tỷ giá bủa vây VN-Index</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/en/macro-1411-nvidia-shakes-and-exchange-rate-pressure-surrounds-vn-index-14-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-13T17:00:00.000Z</news:publication_date>
+      <news:title>Macro 14/11: Nvidia Shakes and Exchange Rate Pressure Surrounds VN-Index</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ko/macro-1411-nvidia-shakes-and-exchange-rate-pressure-surrounds-vn-index-14-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-13T17:00:00.000Z</news:publication_date>
+      <news:title>11/14 거시경제: 엔비디아 &apos;흔들림&apos;과 환율 압박에 둘러싸인 VN-지수</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/zh/macro-1411-nvidia-shakes-and-exchange-rate-pressure-surrounds-vn-index-14-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-13T17:00:00.000Z</news:publication_date>
+      <news:title>11/14 宏觀經濟：輝達「震盪」與匯率壓力包圍 VN-Index</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/th/macro-1411-nvidia-shakes-and-exchange-rate-pressure-surrounds-vn-index-14-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-13T17:00:00.000Z</news:publication_date>
+      <news:title>มหภาค 14/11: Nvidia &apos;สั่นคลอน&apos; และแรงกดดันจากอัตราแลกเปลี่ยนล้อมรอบ VN-Index</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ar/macro-1411-nvidia-shakes-and-exchange-rate-pressure-surrounds-vn-index-14-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-13T17:00:00.000Z</news:publication_date>
+      <news:title>الاقتصاد الكلي 14/11: اهتزاز إنفيديا وضغوط سعر الصرف تحاصر مؤشر VN-Index</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/ja/macro-1411-nvidia-shakes-and-exchange-rate-pressure-surrounds-vn-index-14-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-13T17:00:00.000Z</news:publication_date>
+      <news:title>11/14 マクロ経済：Nvidiaの「揺れ」と為替圧力がVN指数を包囲</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/vn-index-giang-co-quanh-1250-diem-tam-ly-than-trong-bao-trum-13-11-2026/</loc>
     <news:news>
       <news:publication>
