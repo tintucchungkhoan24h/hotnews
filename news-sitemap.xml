@@ -309,4 +309,81 @@
       <news:title>マクロショック11月13日：Nvidia CEO辞任、米国インフレ5%急騰</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-vi-mo-1311-khung-hoang-nvidia-va-fed-chuyen-huong-dieu-hau-13-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T17:00:00.000Z</news:publication_date>
+      <news:title>Cập Nhật Vĩ Mô 13/11: Khủng Hoảng Nvidia và Fed Chuyển Hướng Diều Hâu</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/macro-update-nov-13-nvidia-crisis-and-fed-hawkish-pivot-13-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T17:00:00.000Z</news:publication_date>
+      <news:title>Macro Update Nov 13: Nvidia Crisis and Fed Hawkish Pivot</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/macro-update-nov-13-nvidia-crisis-and-fed-hawkish-pivot-13-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T17:00:00.000Z</news:publication_date>
+      <news:title>거시 경제 업데이트 11/13: Nvidia 위기 및 Fed 매파적 전환</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/macro-update-nov-13-nvidia-crisis-and-fed-hawkish-pivot-13-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T17:00:00.000Z</news:publication_date>
+      <news:title>11/13 宏觀更新：Nvidia危機與聯準會鷹派轉向</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/macro-update-nov-13-nvidia-crisis-and-fed-hawkish-pivot-13-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T17:00:00.000Z</news:publication_date>
+      <news:title>อัปเดตเศรษฐกิจมหภาค 13 พ.ย.: วิกฤต Nvidia และ Fed ส่งสัญญาณเหยี่ยว</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/macro-update-nov-13-nvidia-crisis-and-fed-hawkish-pivot-13-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T17:00:00.000Z</news:publication_date>
+      <news:title>تحديث الاقتصاد الكلي 13 نوفمبر: أزمة Nvidia ومحور الفيدرالي المتشدد</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/macro-update-nov-13-nvidia-crisis-and-fed-hawkish-pivot-13-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T17:00:00.000Z</news:publication_date>
+      <news:title>マクロ経済アップデート 11月13日: Nvidia危機とFRBのタカ派転換</news:title>
+    </news:news>
+  </url>
 </urlset>
