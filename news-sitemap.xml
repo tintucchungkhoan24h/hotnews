@@ -156,6 +156,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/fed-tang-lai-suat-khung-hoang-nvidia-thi-truong-toan-cau-doi-mat-voi-bat-on-nam-2026-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>Fed Tăng Lãi Suất &amp; Khủng Hoảng Nvidia: Thị Trường Toàn Cầu Đối Mặt Với Bất Ổn Năm 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/fed-rate-hikes-nvidia-crisis-global-markets-face-2026-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>Fed Rate Hikes &amp; Nvidia Crisis: Global Markets Face 2026 Turmoil</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/fed-rate-hikes-nvidia-crisis-global-markets-face-2026-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>Fed 금리 인상 &amp; 엔비디아 위기: 2026년 글로벌 시장 혼란 직면</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/fed-rate-hikes-nvidia-crisis-global-markets-face-2026-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>聯準會升息與Nvidia危機：全球市場面臨2026年動盪</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/fed-rate-hikes-nvidia-crisis-global-markets-face-2026-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>Fed ขึ้นดอกเบี้ย &amp; วิกฤต Nvidia: ตลาดโลกเผชิญความวุ่นวายปี 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/fed-rate-hikes-nvidia-crisis-global-markets-face-2026-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>رفع الفائدة من الفيدرالي وأزمة إنفيديا: الأسواق العالمية تواجه اضطرابات عام 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/fed-rate-hikes-nvidia-crisis-global-markets-face-2026-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>FRB利上げとNvidia危機：2026年、世界市場は混乱に直面</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-bat-dong-san-suc-ep-phan-hoa-va-co-hoi-tu-cac-ma-co-phieu-tru-cot-14-11-2026/</loc>
     <news:news>
       <news:publication>
