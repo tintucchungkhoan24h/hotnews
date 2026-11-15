@@ -724,7 +724,7 @@
         <news:language>ko</news:language>
       </news:publication>
       <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
-      <news:title>Fed 금리 인상 &amp; 엔비디아 위기: 2026년 글로벌 시장 혼란 직면</news:title>
+      <news:title>연준 금리 인상 및 엔비디아 위기: 2026년 글로벌 시장 혼란 직면</news:title>
     </news:news>
   </url>
   <url>
@@ -735,7 +735,7 @@
         <news:language>zh-Hant</news:language>
       </news:publication>
       <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
-      <news:title>聯準會升息與Nvidia危機：全球市場面臨2026年動盪</news:title>
+      <news:title>美聯儲加息與英偉達危機：2026年全球市場面臨動盪</news:title>
     </news:news>
   </url>
   <url>
@@ -746,7 +746,7 @@
         <news:language>th</news:language>
       </news:publication>
       <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
-      <news:title>Fed ขึ้นดอกเบี้ย &amp; วิกฤต Nvidia: ตลาดโลกเผชิญความวุ่นวายปี 2026</news:title>
+      <news:title>การปรับขึ้นอัตราดอกเบี้ยของ Fed และวิกฤต Nvidia: ตลาดโลกเผชิญความผันผวนในปี 2026</news:title>
     </news:news>
   </url>
   <url>
@@ -757,7 +757,7 @@
         <news:language>ar</news:language>
       </news:publication>
       <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
-      <news:title>رفع الفائدة من الفيدرالي وأزمة إنفيديا: الأسواق العالمية تواجه اضطرابات عام 2026</news:title>
+      <news:title>زيادات أسعار الفائدة من الاحتياطي الفيدرالي وأزمة إنفيديا: الأسواق العالمية تواجه اضطرابات عام 2026</news:title>
     </news:news>
   </url>
   <url>
@@ -768,7 +768,7 @@
         <news:language>ja</news:language>
       </news:publication>
       <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
-      <news:title>FRB利上げとNvidia危機：2026年、世界市場は混乱に直面</news:title>
+      <news:title>FRB利上げとエヌビディア危機：2026年の世界市場は混乱に直面</news:title>
     </news:news>
   </url>
   <url>
@@ -1000,6 +1000,160 @@
       </news:publication>
       <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
       <news:title>グローバルマクロレビュー：Nvidiaのリーダーシップ危機とFRBのタカ派転換</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/thi-truong-toan-cau-chao-dao-lam-phat-my-tang-vot-khi-cac-ong-lon-ai-doi-mat-voi-hon-loan-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>Thị trường toàn cầu chao đảo: Lạm phát Mỹ tăng vọt khi các ông lớn AI đối mặt với hỗn loạn</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/fed-tang-lai-suat-khung-hoang-nvidia-thi-truong-toan-cau-doi-mat-bien-dong-nam-2026-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>Fed Tăng Lãi Suất &amp; Khủng Hoảng Nvidia: Thị Trường Toàn Cầu Đối Mặt Biến Động Năm 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-markets-shaken-us-inflation-spikes-as-ai-giants-face-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>Global Markets Shaken: US Inflation Spikes as AI Giants Face Turmoil</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/fed-rate-hikes-nvidia-crisis-global-markets-face-2026-turmoil-15-11-2026-2/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>Fed Rate Hikes &amp; Nvidia Crisis: Global Markets Face 2026 Turmoil</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-markets-shaken-us-inflation-spikes-as-ai-giants-face-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 시장 흔들림: 미국 인플레이션 급등 및 AI 거대 기업 혼란 직면</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/fed-2026-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>Fed 금리 인상 &amp; 엔비디아 위기: 2026년 글로벌 시장 혼란 직면</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-markets-shaken-us-inflation-spikes-as-ai-giants-face-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>全球市場震盪：美國通膨飆升，AI 巨頭面臨動盪</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/nvidia2026-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>聯準會升息與Nvidia危機：全球市場面臨2026年動盪</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-markets-shaken-us-inflation-spikes-as-ai-giants-face-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>ตลาดโลกสั่นสะเทือน: เงินเฟ้อสหรัฐฯ พุ่งสูง ขณะที่ยักษ์ใหญ่ AI เผชิญความปั่นป่วน</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/fed-nvidia-2026-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>Fed ขึ้นดอกเบี้ย &amp; วิกฤต Nvidia: ตลาดโลกเผชิญความวุ่นวายปี 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-markets-shaken-us-inflation-spikes-as-ai-giants-face-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>الأسواق العالمية تهتز: التضخم الأمريكي يرتفع بينما عمالقة الذكاء الاصطناعي يواجهون الاضطرابات</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/2026-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>رفع الفائدة من الفيدرالي وأزمة إنفيديا: الأسواق العالمية تواجه اضطرابات عام 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-markets-shaken-us-inflation-spikes-as-ai-giants-face-turmoil-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>世界市場が動揺：米国インフレ急騰とAI大手企業の混乱</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/frbnvidia2026-15-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-14T17:00:00.000Z</news:publication_date>
+      <news:title>FRB利上げとNvidia危機：2026年、世界市場は混乱に直面</news:title>
     </news:news>
   </url>
   <url>
