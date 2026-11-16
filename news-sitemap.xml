@@ -310,6 +310,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/vi-mo-the-gioi-1611-fed-canh-bao-ai-nvidia-doi-mat-phep-thu-dinh-gia-16-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-15T17:00:00.000Z</news:publication_date>
+      <news:title>Vĩ mô thế giới 16/11: Fed cảnh báo AI, Nvidia đối mặt phép thử định giá</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-macro-1116-fed-warns-on-ai-nvidia-faces-valuation-test-16-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-15T17:00:00.000Z</news:publication_date>
+      <news:title>Global Macro 11/16: Fed Warns on AI, Nvidia Faces Valuation Test</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-macro-1116-fed-warns-on-ai-nvidia-faces-valuation-test-16-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-15T17:00:00.000Z</news:publication_date>
+      <news:title>11/16 글로벌 거시경제: 연준의 AI 경고, 엔비디아의 가치 평가 시험대</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-macro-1116-fed-warns-on-ai-nvidia-faces-valuation-test-16-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-15T17:00:00.000Z</news:publication_date>
+      <news:title>11/16全球宏觀：聯準會警告AI，Nvidia面臨估值考驗</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-macro-1116-fed-warns-on-ai-nvidia-faces-valuation-test-16-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-15T17:00:00.000Z</news:publication_date>
+      <news:title>ภาพรวมเศรษฐกิจโลก 16/11: เฟดเตือนภัย AI, Nvidia เผชิญบททดสอบการประเมินมูลค่า</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-macro-1116-fed-warns-on-ai-nvidia-faces-valuation-test-16-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-15T17:00:00.000Z</news:publication_date>
+      <news:title>الاقتصاد الكلي العالمي 16/11: تحذير الفيدرالي بشأن الذكاء الاصطناعي، وإنفيديا تواجه اختبار التقييم</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-macro-1116-fed-warns-on-ai-nvidia-faces-valuation-test-16-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-15T17:00:00.000Z</news:publication_date>
+      <news:title>世界のマクロ経済 11/16: FRBがAIに警鐘、Nvidiaは評価の試練に直面</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-ngan-hang-dong-tien-ngoai-ty-usd-do-bo-trien-vong-but-pha-15-11-2026/</loc>
     <news:news>
       <news:publication>
