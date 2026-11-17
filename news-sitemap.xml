@@ -310,6 +310,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/cap-nhat-kinh-te-vi-mo-khung-hoang-nvidia-va-ipo-anthropic-lung-lay-niem-tin-ai-17-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-16T17:00:00.000Z</news:publication_date>
+      <news:title>Cập nhật Kinh tế Vĩ mô: Khủng hoảng Nvidia và IPO Anthropic lung lay niềm tin AI</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-macro-update-nvidia-crisis-and-anthropic-ipo-shakes-ai-faith-17-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-16T17:00:00.000Z</news:publication_date>
+      <news:title>Global Macro Update: Nvidia Crisis and Anthropic IPO Shakes AI Faith</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-macro-update-nvidia-crisis-and-anthropic-ipo-shakes-ai-faith-17-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-16T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 거시경제 업데이트: 엔비디아 위기 및 앤트로픽 IPO가 AI 신뢰를 흔들다</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-macro-update-nvidia-crisis-and-anthropic-ipo-shakes-ai-faith-17-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-16T17:00:00.000Z</news:publication_date>
+      <news:title>全球總體經濟更新：Nvidia危機與Anthropic IPO動搖AI信心</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-macro-update-nvidia-crisis-and-anthropic-ipo-shakes-ai-faith-17-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-16T17:00:00.000Z</news:publication_date>
+      <news:title>อัปเดตเศรษฐกิจมหภาค: วิกฤต Nvidia และ IPO Anthropic เขย่าความเชื่อมั่น AI</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-macro-update-nvidia-crisis-and-anthropic-ipo-shakes-ai-faith-17-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-16T17:00:00.000Z</news:publication_date>
+      <news:title>تحديث الاقتصاد الكلي العالمي: أزمة Nvidia واكتتاب Anthropic يهزان ثقة الذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-macro-update-nvidia-crisis-and-anthropic-ipo-shakes-ai-faith-17-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-16T17:00:00.000Z</news:publication_date>
+      <news:title>グローバルマクロ更新：Nvidia危機とAnthropic IPOがAI信頼を揺るがす</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-bat-dong-san-dong-tien-dot-pha-ky-vong-cu-hich-phap-ly-16-11-2026/</loc>
     <news:news>
       <news:publication>
