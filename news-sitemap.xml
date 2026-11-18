@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/diem-tin-thi-truong-1811-vn30-chiu-ap-luc-dieu-chinh-nvidia-va-loat-tin-tuc-doanh-nghiep-dang-chu-y-18-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-17T17:00:00.000Z</news:publication_date>
+      <news:title>Điểm tin thị trường 18/11: VN30 chịu áp lực điều chỉnh, Nvidia và loạt tin tức doanh nghiệp đáng chú ý</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/en/market-news-nov-18-vn30-under-correction-pressure-nvidia-and-notable-corporate-updates-18-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-17T17:00:00.000Z</news:publication_date>
+      <news:title>Market News Nov 18: VN30 Under Correction Pressure, Nvidia and Notable Corporate Updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ko/market-news-nov-18-vn30-under-correction-pressure-nvidia-and-notable-corporate-updates-18-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-17T17:00:00.000Z</news:publication_date>
+      <news:title>11월 18일 시장 뉴스: VN30 조정 압력, 엔비디아 및 주목할 만한 기업 소식</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/zh/market-news-nov-18-vn30-under-correction-pressure-nvidia-and-notable-corporate-updates-18-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-17T17:00:00.000Z</news:publication_date>
+      <news:title>11月18日市場快訊：VN30面臨回調壓力，輝達及多項企業重要動態</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/th/market-news-nov-18-vn30-under-correction-pressure-nvidia-and-notable-corporate-updates-18-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-17T17:00:00.000Z</news:publication_date>
+      <news:title>สรุปข่าวตลาด 18 พ.ย.: VN30 เผชิญแรงกดดันการปรับฐาน, Nvidia และข่าวธุรกิจที่น่าสนใจ</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ar/market-news-nov-18-vn30-under-correction-pressure-nvidia-and-notable-corporate-updates-18-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-17T17:00:00.000Z</news:publication_date>
+      <news:title>أخبار السوق 18 نوفمبر: VN30 تحت ضغط التصحيح، وإنفيديا وأخبار الشركات البارزة</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/ja/market-news-nov-18-vn30-under-correction-pressure-nvidia-and-notable-corporate-updates-18-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-17T17:00:00.000Z</news:publication_date>
+      <news:title>11月18日市場ニュース：VN30に調整圧力、エヌビディアと注目企業の重要ニュース</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-vi-mo/vi/vang-vot-dinh-usd-lap-dinh-19-thang-ap-luc-ty-gia-bua-vay-vn-index-18-11-2026/</loc>
     <news:news>
       <news:publication>
