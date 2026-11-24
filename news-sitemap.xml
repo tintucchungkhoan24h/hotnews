@@ -156,6 +156,83 @@
     </news:news>
   </url>
   <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/vi/canh-bao-thi-truong-toan-cau-giao-dich-ai-chan-dong-khi-anthropic-giam-duoi-gia-ipo-25-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>vi</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-24T17:00:00.000Z</news:publication_date>
+      <news:title>Cảnh báo Thị trường Toàn cầu: Giao dịch AI chấn động khi Anthropic giảm dưới giá IPO</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/en/global-market-alert-ai-trade-shaken-as-anthropic-sinks-below-ipo-25-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-24T17:00:00.000Z</news:publication_date>
+      <news:title>Global Market Alert: AI Trade Shaken as Anthropic Sinks Below IPO</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ko/global-market-alert-ai-trade-shaken-as-anthropic-sinks-below-ipo-25-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-24T17:00:00.000Z</news:publication_date>
+      <news:title>글로벌 시장 경고: Anthropic IPO가 흔들리며 AI 거래가 흔들리다</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/zh/global-market-alert-ai-trade-shaken-as-anthropic-sinks-below-ipo-25-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>zh-Hant</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-24T17:00:00.000Z</news:publication_date>
+      <news:title>全球市場警報：Anthropic 股價跌破 IPO 價位，AI 交易遭受震盪</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/th/global-market-alert-ai-trade-shaken-as-anthropic-sinks-below-ipo-25-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>th</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-24T17:00:00.000Z</news:publication_date>
+      <news:title>เตือนตลาดโลก: การซื้อขาย AI สั่นสะเทือนเมื่อ Anthropic ร่วงต่ำกว่า IPO</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ar/global-market-alert-ai-trade-shaken-as-anthropic-sinks-below-ipo-25-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-24T17:00:00.000Z</news:publication_date>
+      <news:title>تنبيه السوق العالمي: تجارة الذكاء الاصطناعي تهتز مع هبوط Anthropic دون سعر الاكتتاب العام</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://tintucchungkhoan24h.com/world-news/ja/global-market-alert-ai-trade-shaken-as-anthropic-sinks-below-ipo-25-11-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tin Tức Chứng Khoán 24h</news:name>
+        <news:language>ja</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-24T17:00:00.000Z</news:publication_date>
+      <news:title>世界市場警報：AnthropicがIPO価格を下回り、AI取引が揺らぐ</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://tintucchungkhoan24h.com/diem-tin-chung-khoan/vi/nganh-bat-dong-san-dong-tien-phan-hoa-tim-kiem-diem-sang-dau-tu-24-11-2026/</loc>
     <news:news>
       <news:publication>
